@@ -1,0 +1,14 @@
+﻿<Window x:Class="WindowsPresentationFramework.HorizontalGridSplitter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Form1" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Background="Yellow" Grid.Column="0"/>
+            <GridSplitter Grid.Column="0" Width="2" Name="splitter"/>
+                <Label Background="Green" Grid.Column="1"/>
+    </Grid>
+</Window>

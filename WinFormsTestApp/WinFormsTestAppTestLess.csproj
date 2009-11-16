@@ -1,0 +1,172 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDD325EF-D400-4A37-B4C6-D7BF150587C7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WinFormsTestApp</RootNamespace>
+    <AssemblyName>WinFormsTestApp</AssemblyName>
+    <StartupObject>WinFormsTestApp.Program</StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <NoWarn>1591</NoWarn>
+    <DocumentationFile>bin\Debug\WinFormsTestApp.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Core\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormContainingLargeTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormContainingLargeTree.Designer.cs">
+      <DependentUpon>FormContainingLargeTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWithoutScrollAndItemOutside.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWithoutScrollAndItemOutside.Designer.cs">
+      <DependentUpon>FormWithoutScrollAndItemOutside.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormWithPropertyGrid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWithPropertyGrid.Designer.cs">
+      <DependentUpon>FormWithPropertyGrid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewScenarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListViewScenarios.Designer.cs">
+      <DependentUpon>ListViewScenarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModalForm.Designer.cs">
+      <DependentUpon>ModalForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyDateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyDateControl.Designer.cs">
+      <DependentUpon>MyDateControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormContainingLargeTree.resx">
+      <DependentUpon>FormContainingLargeTree.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWithoutScrollAndItemOutside.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormWithoutScrollAndItemOutside.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWithPropertyGrid.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FormWithPropertyGrid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListViewScenarios.resx">
+      <DependentUpon>ListViewScenarios.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModalForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ModalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyDateControl.resx">
+      <DependentUpon>MyDateControl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TabControlsWithSpecialProperties.resx">
+      <DependentUpon>TabControlsWithSpecialProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TabControlsWithSpecialProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TabControlsWithSpecialProperties.Designer.cs">
+      <DependentUpon>TabControlsWithSpecialProperties.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

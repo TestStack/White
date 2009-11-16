@@ -1,0 +1,21 @@
+﻿<Window x:Class="WindowsPresentationFramework.TreeViewItemWithoutHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Form1" Height="300" Width="300">
+    <TreeView HorizontalAlignment="Left" Margin="19,75,0,0" Name="ped" Width="195" Height="155" VerticalAlignment="Top">
+        <TreeViewItem>
+            <TreeViewItem.Header>
+                <StackPanel Name="StackPanel1">
+                    <TextBlock Name="HeaderTextBlock1" Text="Root" />
+                </StackPanel>
+            </TreeViewItem.Header>
+            <TreeViewItem>
+                <TreeViewItem.Header>
+                    <StackPanel Name="StackPanel2">
+                        <TextBlock Name="HeaderTextBlock2" Text="Child" />
+                    </StackPanel>
+                </TreeViewItem.Header>
+            </TreeViewItem>
+        </TreeViewItem>
+    </TreeView>
+</Window>

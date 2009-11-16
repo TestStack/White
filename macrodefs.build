@@ -1,0 +1,101 @@
+<?xml version="1.0" ?>
+<project name="Shared">
+  <loadtasks path="Tools\Nant\CustomTasks"/>
+  <property name="framework.dir" value="c:\windows\microsoft.net\framework\v3.5"/>
+  <property name="fail.test.onerror" value="true" unless="${property::exists('fail.test.onerror')}"/>
+  
+  <macrodef name="msbuild-compile">
+    <attributes>
+      <attribute name="project"/>
+    </attributes>
+    <sequential>
+      <property name="solution" value="${project}"/>
+      <echo message="Building ${project} using MSBuild from ${framework.dir}" />
+      <exec program="${framework.dir}\msbuild.exe">
+        <arg value="/t:ReBuild"/>
+        <arg value="/verbosity:quiet"/>
+        <arg value="/nologo"/>
+        <arg value="${project}"/>
+        <arg value="/p:Configuration=Debug"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="exec-ndoc">
+    <attributes>
+      <attribute name="assembly"/>
+      <attribute name="project"/>
+    </attributes>
+    <sequential>
+      <property name="ndoc.dir" value="${build.output.dir}\NDoc"/>
+      <exec program="tools\ndoc\NDocConsole.exe">
+        <arg value="${project}\bin\debug\${assembly}"/>
+        <arg value="-OutputDirectory=${ndoc.dir}\${project}"/>
+        <arg value="-HtmlHelpName=${path::get-full-path(ndoc.dir)}\index.html"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="clean-dir">
+    <attributes>
+      <attribute name="dir"/>
+    </attributes>
+    <sequential>
+      <delete>
+        <fileset basedir="${dir}">
+          <include name="**/*.*"/>
+        </fileset>
+      </delete>
+      <mkdir dir="${dir}"/>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="core-test">
+    <attributes>
+      <attribute name="excludes" default=""/>
+      <attribute name="includes" default=""/>
+      <attribute name="framework"/>
+    </attributes>
+    <sequential>
+      <copy-core-config framework="${framework}"/>
+      <copy file="core\app.config" tofile="core\bin\debug\white.core.dll.config" overwrite="true"/>
+      <property name="nunit.arg" value="Core\bin\debug\White.Core.dll /xml:&quot;${build.output.dir}\Core_TestResults_${framework}_.xml&quot;"/>
+      <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
+      <if test="${excludes==''}">
+        <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /include:&quot;${includes}&quot;" failonerror="${fail.test.onerror}"/>
+      </if>
+      <if test="${includes==''}">
+        <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /exclude:&quot;${excludes}&quot;" failonerror="${fail.test.onerror}"/>
+      </if>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="nunit-test">
+    <attributes>
+      <attribute name="projects"/>
+    </attributes>
+    <sequential>
+      <property name="assemblies" value=""/>
+      <foreach item="String" in="${projects}" delim="," property="project">
+        <property name="assemblies" value="${assemblies} ${project}\bin\debug\White.${project}.dll"/>
+      </foreach>
+      <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
+      <exec program="${nunit.exe}" commandline="/nologo /nothread ${assemblies} /xml:&quot;${build.output.dir}\TestResults.xml&quot;" failonerror="${fail.test.onerror}"/>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="copy-core-config">
+    <attributes>
+      <attribute name="framework"/>
+    </attributes>
+    <sequential>
+      <copy file="core\app.config.template" tofile="core\app.config" overwrite="true">
+        <filterchain>
+          <replacetokens>
+            <token key="test.mode" value="${framework}" />
+          </replacetokens>
+        </filterchain>
+      </copy>
+    </sequential>
+  </macrodef>
+</project>

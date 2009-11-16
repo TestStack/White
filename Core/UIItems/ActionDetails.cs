@@ -1,0 +1,3 @@
+namespace White.Core.UIItems
+{
+}

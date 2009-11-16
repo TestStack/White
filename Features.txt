@@ -1,0 +1,9 @@
+Visual studio plugin
+White Spy
+Wrapper for desktop, word, ie, firefox, outlook, excel
+Documentation
+Graphics based test writer
+Silverlight
+
+Lower priority
+Recorder

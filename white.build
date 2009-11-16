@@ -1,0 +1,142 @@
+<?xml version="1.0" ?>
+<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension-->
+<project name="White" default="test">
+  <property name="release.major.version" value="1"/>
+  <property name="release.minor.version" value="9"/>
+  <include buildfile="macrodefs.build"/>
+  
+  <property name="build.output.dir" value="build"/>
+  <property name="release.dir" value="Release"/>
+  
+  <loadtasks assembly="Tools\Nant\WhiteCustomTasks\Bricks.Nant.dll"/>
+  <loadtasks assembly="tools\nant\lib\nantcontrib\bin\NAnt.Contrib.Tasks.dll"/>
+  <loadtasks assembly="nantbuild\bin\debug\White.NantBuild.dll" failonerror="false"/>
+
+  <target name="release" depends="test, dist"/>
+  
+  <target name="compile" depends="clean">
+    <copy-core-config framework="WPF"/>
+    <msbuild-compile project="white-all.sln"/>
+  </target>
+
+  <target name="clean">
+    <clean-dir dir="${build.output.dir}"/>
+    <clean-dir dir="${release.dir}"/>
+    <delete>
+      <fileset basedir=".">
+        <exclude name="tools/**"/>
+        <exclude name="TestApplications/SampleSWTApp/**"/>
+        <exclude name="NantBuild/bin/debug/*.*"/>
+        <include name="**/bin/*"/>
+        <include name="**/bin/debug/*"/>
+        <include name="**/obj/*"/>
+        <include name="**/obj/debug/*"/>
+      </fileset>
+    </delete>
+  </target>
+
+  <target name="-copy.assembly.info">
+    <copy file="Core\AssemblyInfo.cs.template" tofile="Core\AssemblyInfo.cs" overwrite="true" >
+      <filterchain>
+        <replacetokens>
+          <token key="major" value="${release.major.version}"/>
+          <token key="minor" value="${release.minor.version}"/>
+        </replacetokens>
+      </filterchain>
+    </copy>
+  </target>
+  
+  <target name="doc" depends="compile, doc.only"/>
+  <target name="doc.only">
+    <exec-ndoc assembly="White.Core.dll" project="Core"/>
+    <exec-ndoc assembly="White.Repository.dll" project="Repository"/>
+    <exec-ndoc assembly="White.Reporting.dll" project="Reporting"/>
+    <exec-ndoc assembly="White.Recorder.exe" project="Recorder"/>
+    <exec-ndoc assembly="White.NUnit.dll" project="White.NUnit"/>
+    <exec-ndoc assembly="White.WebBrowser.dll" project="WebBrowser"/>
+  </target>
+
+  <target name="test" depends="test.core, test.noncore"/>
+
+  <target name="test.noncore" depends="compile">
+    <nunit-test projects="UnitTests,WebBrowser,Reporting,Repository"/>
+  </target>
+  
+  <target name="test.core" depends="compile, test.wpf.and.common, test.winform, test.swt"/>
+  <target name="test.wpf.and.common">
+    <core-test excludes="WinForm,SWT" framework="WPF"/>
+  </target>
+  
+  <target name="test.winform">
+    <core-test excludes="WPF,SWT,Normal" framework="WinForm"/>
+  </target>
+
+  <target name="test.swt">
+    <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
+  </target>
+
+  <target name="dist" depends="compile, doc, dist.source, dist.binary"/>
+
+  <target name="dist.source" depends="compile, dist.source.only"/>
+  <target name="dist.source.only">
+    <zip zipfile="${release.dir}\White_Src_${date::today-to-string()}.zip">
+      <fileset basedir=".">
+        <include name="**/*.*"/>
+        <exclude name="**/obj/**"/>
+        <exclude name="**/bin/Debug/**"/>
+        <exclude name="**/*.bak"/>
+        <exclude name="**/*.log"/>
+        <exclude name="**/*.user"/>
+        <exclude name="**/.svn/**"/>
+        <exclude name="WhiteLib/**"/>
+        <exclude name="**/.metadata/**"/>
+        <exclude name="**/_ReSharper*/**"/>
+        <exclude name="**/NDoc/**"/>
+        <exclude name="**/RecorderAddIn/bin/**"/>
+        <exclude name="**/SampleSWTApp/bin/**"/>
+        <exclude name="**/*.suo"/>
+        <exclude name="**/*TestLess*/**"/>
+        <exclude name="white-up.bat"/>
+        <exclude name="Features.txt"/>
+        <exclude name="CopyWhiteTo.bat"/>
+        <exclude name="white-commit.bat"/>
+        <exclude name="white-up.bat"/>
+        <exclude name="build-output.txt"/>
+        <exclude name="docs/*.ppt"/>
+        <exclude name="docs/*.doc"/>
+        <exclude name="TestDistributor/**"/>
+        <exclude name="tools/nunit/**"/>
+      </fileset>
+
+      <fileset basedir=".">
+        <include name="WPFTestApp/bin/**"/>
+        <exclude name="**/.svn/**"/>
+        <include name="SampleSWTApp/bin/**"/>
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="dist.binary" depends="clean, doc.only, dist.binary.only"/>
+  <target name="dist.binary.only">
+    <copy todir="${build.output.dir}" flatten="true">
+      <fileset basedir=".">
+        <include name="**\bin\debug\*.*"/>
+        <include name="Core\log4net.config"/>
+        <exclude name="WinFormsTestApp/**"/>
+        <exclude name="WPFTestApp/**"/>
+        <exclude name="TestApplications/**"/>
+        <exclude name="White.NantBuild/**"/>
+      </fileset>
+    </copy>
+    <zip zipfile="${release.dir}\White_Bin_0.18.zip">
+      <fileset basedir="${build.output.dir}">
+        <include name="**/*.*"/>
+      </fileset>
+    </zip>
+  </target>
+
+  <target name="test.app.deploy" depends="compile, test.app.deploy.only"/>
+  <target name="test.app.deploy.only">
+    <mkiisdir dirpath="TestApplications\Silverlight\TestSilverlightApplication.Web" vdirname="White.TestSilverlight"/>
+  </target>
+</project>

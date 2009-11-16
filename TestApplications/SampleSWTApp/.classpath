@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="SWT_CONTAINER"/>
+	<classpathentry kind="lib" path="org.eclipse.swt.win32.win32.x86_3.2.1.v3235.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,12 @@
+﻿<Window x:Class="WindowsPresentationFramework.ComboBoxWithObjectWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Form1" Height="300" Width="300">
+    <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Height="100" Name="theListBox">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <TextBlock Text="{Binding Path=Name}" />
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+</Window>

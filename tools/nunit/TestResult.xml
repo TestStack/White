@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="..\..\Reporting\bin\Debug\Reporting.exe" total="1" failures="0" not-run="0" date="2007-08-11" time="13:20:30">
+  <environment nunit-version="2.4.2.0" clr-version="2.0.50727.832" os-version="Microsoft Windows NT 5.1.2600 Service Pack 2" platform="Win32NT" cwd="D:\white\tools\nunit" machine-name="VIVEK" user="vsingh" user-domain="CORPORATE" />
+  <culture-info current-culture="en-GB" current-uiculture="en-US" />
+  <test-suite name="..\..\Reporting\bin\Debug\Reporting.exe" success="True" time="2.016" asserts="0">
+    <results>
+      <test-suite name="Reporting" success="True" time="2.016" asserts="0">
+        <results>
+          <test-suite name="Test1" success="True" time="1.984" asserts="0">
+            <results>
+              <test-case name="Reporting.Test1.MethodName" executed="True" success="True" time="1.984" asserts="0" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
