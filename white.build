@@ -20,9 +20,8 @@
     <msbuild-compile project="white-all.sln"/>
   </target>
 
-  <target name="clean">
+  <target name="clean" depends="clean.dist" >
     <deliisdir vdirname="White.TestSilverlight" failonerror="false"/>
-    <clean-dir dir="${build.output.dir}"/>
     <clean-dir dir="${release.dir}"/>
     <delete>
       <fileset basedir=".">
@@ -35,6 +34,10 @@
         <include name="**/obj/debug/*"/>
       </fileset>
     </delete>
+  </target>
+
+  <target name="clean.dist">
+    <clean-dir dir="${build.output.dir}"/>
   </target>
 
   <target name="-copy.assembly.info">
@@ -118,8 +121,8 @@
     </zip>
   </target>
 
-  <target name="dist.binary" depends="clean, doc.only, dist.binary.only"/>
-  <target name="dist.binary.only">
+  <target name="dist.binary" depends="compile, doc.only, dist.binary.only"/>
+  <target name="dist.binary.only" depends="clean.dist" >
     <copy todir="${build.output.dir}" flatten="true">
       <fileset basedir=".">
         <include name="**\bin\debug\*.*"/>
@@ -128,9 +131,13 @@
         <exclude name="WPFTestApp/**"/>
         <exclude name="TestApplications/**"/>
         <exclude name="White.NantBuild/**"/>
+        <exclude name="**/*Nant*"/>
+        <exclude name="**/*Test*"/>
+        <exclude name="**/*Rhino*"/>
+        <exclude name="**/WPFVisifire.Charts*"/>
       </fileset>
     </copy>
-    <zip zipfile="${release.dir}\White_Bin_0.18.zip">
+    <zip zipfile="${release.dir}\White_Bin_0.19.zip">
       <fileset basedir="${build.output.dir}">
         <include name="**/*.*"/>
       </fileset>
