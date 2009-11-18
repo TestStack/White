@@ -16,10 +16,12 @@
   
   <target name="compile" depends="clean">
     <copy-core-config framework="WPF"/>
+    <mkiisdir vdirname="White.TestSilverlight" dirpath="TestApplications\Silverlight\TestSilverlightApplication.Web"/>
     <msbuild-compile project="white-all.sln"/>
   </target>
 
   <target name="clean">
+    <deliisdir vdirname="White.TestSilverlight" failonerror="false"/>
     <clean-dir dir="${build.output.dir}"/>
     <clean-dir dir="${release.dir}"/>
     <delete>

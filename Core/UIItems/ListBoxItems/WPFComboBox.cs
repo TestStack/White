@@ -1,0 +1,38 @@
+using System.Windows.Automation;
+using White.Core.UIA;
+using White.Core.UIItems.Actions;
+using White.Core.UIItems.Scrolling;
+
+namespace White.Core.UIItems.ListBoxItems
+{
+    [PlatformSpecificItem]
+    public class WPFComboBox : ComboBox
+    {
+        protected WPFComboBox() {}
+        public WPFComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+
+        public override IScrollBars ScrollBars
+        {
+            get
+            {
+                if (scrollBars == null) scrollBars = new WPFScrollBars(automationElement, actionListener);
+                return scrollBars;
+            }
+        }
+
+        public override VerticalSpan VerticalSpan
+        {
+            get
+            {
+                var scrollPattern = (ScrollPattern) Pattern(ScrollPattern.Pattern);
+                var calculator = new WPFComboBoxVerticalSpanCalculator(Bounds, Items[0].Bounds, Items[Items.Count - 1].Bounds, scrollPattern.Current.VerticalViewSize);
+                return calculator.VerticalSpan;
+            }
+        }
+
+        protected override void ToggleDropDown()
+        {
+            mouse.Click(automationElement.Current.BoundingRectangle.Center(), actionListener);
+        }
+    }
+}
