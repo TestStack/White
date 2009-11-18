@@ -58,8 +58,8 @@
     </attributes>
     <sequential>
       <copy-core-config framework="${framework}"/>
-      <copy file="core\app.config" tofile="core\bin\debug\white.core.dll.config" overwrite="true"/>
-      <property name="nunit.arg" value="Core\bin\debug\White.Core.dll /xml:&quot;${build.output.dir}\Core_TestResults_${framework}_.xml&quot;"/>
+      <copy file="unittests\app.config" tofile="unittests\bin\debug\White.UnitTests.dll.config" overwrite="true"/>
+      <property name="nunit.arg" value="unittests\bin\debug\White.UnitTests.dll /xml:&quot;${build.output.dir}\Core_TestResults_${framework}_.xml&quot;"/>
       <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
       <if test="${excludes==''}">
         <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /include:&quot;${includes}&quot;" failonerror="${fail.test.onerror}"/>
