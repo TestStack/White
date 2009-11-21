@@ -130,7 +130,7 @@
         <exclude name="WinFormsTestApp/**"/>
         <exclude name="WPFTestApp/**"/>
         <exclude name="TestApplications/**"/>
-        <exclude name="White.NantBuild/**"/>
+        <exclude name="NantBuild/**"/>
         <exclude name="**/*Nant*"/>
         <exclude name="**/*Test*"/>
         <exclude name="**/*Rhino*"/>
