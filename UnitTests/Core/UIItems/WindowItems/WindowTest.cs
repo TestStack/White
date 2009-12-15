@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using White.Core.Logging;
 using White.Core.Testing;
 using White.Core.UIItems.Finders;
 
