@@ -31,7 +31,7 @@ namespace White.Core.UIItems.Finders
             indexCondition = searchCondition;
         }
 
-        internal SearchCriteria() {}
+        private SearchCriteria() {}
 
         public static SearchCriteria All
         {
@@ -46,7 +46,7 @@ namespace White.Core.UIItems.Finders
         /// <returns></returns>
         public static SearchCriteria ByText(string text)
         {
-            return new SearchCriteria(new NameCondition(text));
+            return new SearchCriteria(SearchConditionFactory.CreateForName(text));
         }
 
         /// <summary>
@@ -63,22 +63,22 @@ namespace White.Core.UIItems.Finders
 
         public static SearchCriteria ByAutomationId(string identification)
         {
-            return new SearchCriteria(new AutomationIdCondition(identification));
+            return new SearchCriteria(SearchConditionFactory.CreateForAutomationId(identification));
         }
 
         public static SearchCriteria ByFramework(string framework)
         {
-            return new SearchCriteria(new FrameworkIdCondition(framework));
+            return new SearchCriteria(SearchConditionFactory.CreateForFrameworkId(framework));
         }
 
         public static SearchCriteria ByControlType(ControlType controlType)
         {
-            return new SearchCriteria(new ControlTypeCondition(controlType));
+            return new SearchCriteria(SearchConditionFactory.CreateForControlType(controlType));
         }
 
         public static SearchCriteria ByControlType(Type testControlType)
         {
-            var searchCriteria = new SearchCriteria(new ControlTypeCondition(testControlType));
+            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(testControlType));
             searchCriteria.InferCustomItemType(testControlType);
             return searchCriteria;
         }
@@ -102,7 +102,6 @@ namespace White.Core.UIItems.Finders
         public virtual Type CustomItemType
         {
             get { return customItemType; }
-            set { customItemType = value; }
         }
 
         internal virtual AutomationSearchCondition AutomationSearchCondition
@@ -125,32 +124,32 @@ namespace White.Core.UIItems.Finders
 
         public virtual SearchCriteria AndByText(string text)
         {
-            conditions.Insert(0, new NameCondition(text));
+            conditions.Insert(0, SearchConditionFactory.CreateForName(text));
             return this;
         }
 
         public virtual SearchCriteria AndOfFramework(string frameworkId)
         {
-            conditions.Insert(0, new FrameworkIdCondition(frameworkId));
+            conditions.Insert(0, SearchConditionFactory.CreateForFrameworkId(frameworkId));
             return this;
         }
 
         public virtual SearchCriteria NotIdentifiedByText(string name)
         {
-            conditions.Insert(0, new NotCondition(new NameCondition(name)));
+            conditions.Insert(0, new NotCondition(SearchConditionFactory.CreateForName(name)));
             return this;
         }
 
         public virtual SearchCriteria AndControlType(Type testControlType)
         {
             InferCustomItemType(testControlType);
-            conditions.Insert(0, new ControlTypeCondition(testControlType));
+            conditions.Insert(0, SearchConditionFactory.CreateForControlType(testControlType));
             return this;
         }
 
         public virtual SearchCriteria AndAutomationId(string id)
         {
-            conditions.Insert(0, new AutomationIdCondition(id));
+            conditions.Insert(0, SearchConditionFactory.CreateForAutomationId(id));
             return this;
         }
 
@@ -209,7 +208,7 @@ namespace White.Core.UIItems.Finders
 
         internal static SearchCriteria ForMenuBar(WindowsFramework framework)
         {
-            var searchCriteria = new SearchCriteria(new ControlTypeCondition(typeof(MenuBar), framework.ToString()));
+            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof(MenuBar), framework.ToString()));
             return searchCriteria.NotIdentifiedByText("System Menu Bar");
         }
     }

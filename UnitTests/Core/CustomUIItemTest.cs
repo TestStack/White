@@ -34,7 +34,7 @@ namespace White.UnitTests.Core
             myDateUIItem.EnterDate(DateTime.Today);
         }
 
-        [Test]
+        [Test, Ignore]
         public void ItemsReturnsCustomUIItemToo()
         {
             UIItemCollection uiItemCollection = window.Items;

@@ -1,7 +1,9 @@
 using NUnit.Framework;
+using White.Core;
+using White.Core.AutomationElementSearch;
 using White.Core.UIItems.Finders;
 
-namespace White.Core.AutomationElementSearch
+namespace White.UnitTests.Core.AutomationElementSearch
 {
     [TestFixture, NormalCategory]
     public class SearchConditionTest
@@ -17,9 +19,9 @@ namespace White.Core.AutomationElementSearch
         [Test]
         public void Equals()
         {
-            Assert.AreEqual(new AutomationIdCondition("foo"), new AutomationIdCondition("foo"));
-            Assert.AreNotEqual(new AutomationIdCondition("foo"), new AutomationIdCondition("foo1"));
-            Assert.AreNotEqual(new AutomationIdCondition("foo"), new NameCondition("foo"));
+            Assert.AreEqual(SearchConditionFactory.CreateForAutomationId("foo"), SearchConditionFactory.CreateForAutomationId("foo"));
+            Assert.AreNotEqual(SearchConditionFactory.CreateForAutomationId("foo"), SearchConditionFactory.CreateForAutomationId("foo1"));
+            Assert.AreNotEqual(SearchConditionFactory.CreateForAutomationId("foo"), SearchConditionFactory.CreateForName(("foo")));
         }
     }
 }

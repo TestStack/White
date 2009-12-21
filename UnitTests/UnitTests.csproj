@@ -133,6 +133,7 @@
     <Compile Include="Core\UIItems\DateTimePickerTest.cs" />
     <Compile Include="Core\UIItems\ErrorProviderTest.cs" />
     <Compile Include="Core\UIItems\Finders\ControlTypeConditionTest.cs" />
+    <Compile Include="Core\UIItems\Finders\SearchConditionFactoryTest.cs" />
     <Compile Include="Core\UIItems\Finders\SearchCriteriaTest.cs" />
     <Compile Include="Core\UIItems\GroupBoxTest.cs" />
     <Compile Include="Core\UIItems\HorizontalThumbTest.cs" />

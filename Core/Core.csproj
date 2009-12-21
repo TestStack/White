@@ -105,15 +105,9 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="AutomationElementSearch\AutomationElementFinder.cs" />
     <Compile Include="AutomationElementSearch\AutomationSearchConditionFactory.cs" />
-    <Compile Include="AutomationElementSearch\Properties\AutomationElementProperty.cs" />
     <Compile Include="AutomationElementSearch\AutomationElementSearchException.cs" />
     <Compile Include="AutomationElementSearch\AutomationSearchCondition.cs" />
     <Compile Include="AutomationElementSearch\MultiLevelAutomationElementFinder.cs" />
-    <Compile Include="AutomationElementSearch\Properties\AutomationIdProperty.cs" />
-    <Compile Include="AutomationElementSearch\Properties\ClassNameProperty.cs" />
-    <Compile Include="AutomationElementSearch\Properties\ControlTypeProperty.cs" />
-    <Compile Include="AutomationElementSearch\Properties\NameProperty.cs" />
-    <Compile Include="AutomationElementSearch\Properties\ProcessIdProperty.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinder.cs" />
     <Compile Include="AutomationException.cs" />
     <Compile Include="CacheMode.cs" />
@@ -162,6 +156,11 @@
     <Compile Include="UIA\AutomationPatterns.cs" />
     <Compile Include="UIA\WindowsPointX.cs" />
     <Compile Include="UIA\RectX.cs" />
+    <Compile Include="UIItems\Finders\AutomationElementProperty.cs" />
+    <Compile Include="UIItems\Finders\ControlTypeProperty.cs" />
+    <Compile Include="UIItems\Finders\SearchConditionFactory.cs" />
+    <Compile Include="UIItems\Finders\SimpleSearchCondition.cs" />
+    <Compile Include="UIItems\Finders\TestControlTypeX.cs" />
     <Compile Include="UIItems\ListBoxItems\WinFormComboBox.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFComboBoxVerticalSpanCalculator.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGrid.cs" />
@@ -171,7 +170,6 @@
     <Compile Include="UIItems\Scrolling\VerticalSpanProvider.cs" />
     <Compile Include="UIItems\Slider.cs" />
     <Compile Include="UIItems\DateUnit.cs" />
-    <Compile Include="UIItems\Finders\FrameworkIdCondition.cs" />
     <Compile Include="UIItems\ListBoxItems\Win32ComboBox.cs" />
     <Compile Include="UIItems\DateFormat.cs" />
     <Compile Include="UIItems\TableItems\NullTableHeader.cs" />
@@ -236,10 +234,7 @@
     <Compile Include="UIItems\Custom\CustomUIItemException.cs" />
     <Compile Include="UIItems\Custom\CustomUIItemType.cs" />
     <Compile Include="UIItems\DateTimePicker.cs" />
-    <Compile Include="UIItems\Finders\AutomationIdCondition.cs" />
-    <Compile Include="UIItems\Finders\ControlTypeCondition.cs" />
     <Compile Include="UIItems\Finders\IndexCondition.cs" />
-    <Compile Include="UIItems\Finders\NameCondition.cs" />
     <Compile Include="UIItems\Finders\NotCondition.cs" />
     <Compile Include="UIItems\Finders\SearchCondition.cs" />
     <Compile Include="UIItems\Finders\SearchConditions.cs" />
