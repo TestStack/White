@@ -1,0 +1,10 @@
+[Bb]in
+[Dd]ebug*/
+*[Rr]e[Ss]harper*/*
+*.log
+tools/nant/WhiteCustomTasks/*.dll
+tools/nant/WhiteCustomTasks/*.pdb
+*.suo
+*.cache
+*.user
+*.xap

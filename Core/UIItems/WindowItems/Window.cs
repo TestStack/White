@@ -153,7 +153,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             try
             {
-                Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
+                WaitForProcessIdle();
                 var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
                 if (!CoreAppXmlConfiguration.Instance.InProc && !("ConsoleWindowClass".Equals(automationElement.Current.ClassName)) &&
                     (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
@@ -173,6 +173,17 @@ UI actions on window needing mouse would not work in area not falling under the 
             {
                 if (!(e is InvalidOperationException || e is ElementNotAvailableException))
                     throw new UIActionException(string.Format("Window didn't respond" + Constants.BusyMessage), e);
+            }
+        }
+
+        private void WaitForProcessIdle()
+        {
+            try
+            {
+                Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
+            }
+            catch
+            {
             }
         }
 
