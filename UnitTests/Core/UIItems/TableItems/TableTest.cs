@@ -1,6 +1,8 @@
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems.TableItems;
 
-namespace White.Core.UIItems.TableItems
+namespace White.UnitTests.Core.UIItems.TableItems
 {
     [WinFormCategory]
     public class TableTest : AbstractTableTest
