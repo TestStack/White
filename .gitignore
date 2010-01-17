@@ -8,3 +8,5 @@ tools/nant/WhiteCustomTasks/*.pdb
 *.cache
 *.user
 *.xap
+Release/*
+build/*
