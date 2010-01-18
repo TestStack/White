@@ -23,6 +23,7 @@
   <target name="clean" depends="clean.dist" >
     <deliisdir vdirname="White.TestSilverlight" failonerror="false"/>
     <clean-dir dir="${release.dir}"/>
+    <clean-dir dir="${build.output.dir}"/>
     <delete>
       <fileset basedir=".">
         <exclude name="tools/**"/>
@@ -131,7 +132,9 @@
         <exclude name="WPFTestApp/**"/>
         <exclude name="TestApplications/**"/>
         <exclude name="White.NantBuild/**"/>
+        <exclude name="tools/**"/>
         <exclude name="**/*Nant*"/>
+        <exclude name="NantBuild/**"/>
         <exclude name="**/*Test*"/>
         <exclude name="**/*Rhino*"/>
         <exclude name="**/WPFVisifire.Charts*"/>
