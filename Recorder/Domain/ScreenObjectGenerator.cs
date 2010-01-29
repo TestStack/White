@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using Bricks.Core;
 using White.Core.Factory;
+using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using Microsoft.CSharp;
 using Recorder.CodeGeneration;
@@ -32,18 +33,16 @@ namespace Recorder.Domain
         public virtual string Generate(Window window)
         {
             window.ReInitialize(InitializeOption.WithCache);
-            StringBuilder stringBuilder = new StringBuilder();
-            StringWriter stringWriter = new StringWriter(stringBuilder);
+            var stringBuilder = new StringBuilder();
+            var stringWriter = new StringWriter(stringBuilder);
 
-            CSharpCodeProvider cscProvider = new CSharpCodeProvider();
+            var cscProvider = new CSharpCodeProvider();
             ICodeGenerator codeGenerator = cscProvider.CreateGenerator(stringWriter);
-            CodeGeneratorOptions codeGeneratorOptions = new CodeGeneratorOptions();
-            codeGeneratorOptions.BlankLinesBetweenMembers = false;
-            codeGeneratorOptions.VerbatimOrder = false;
+            var codeGeneratorOptions = new CodeGeneratorOptions {BlankLinesBetweenMembers = false, VerbatimOrder = false};
 
-            codeGenerator.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("using Core.UIItems;"), stringWriter, codeGeneratorOptions);
-            codeGenerator.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("using Core.UIItems.WindowItems;"), stringWriter, codeGeneratorOptions);
-            codeGenerator.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit("using Repository;"), stringWriter, codeGeneratorOptions);
+            codeGenerator.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(string.Format("using {0};", typeof(UIItem).Namespace)), stringWriter, codeGeneratorOptions);
+            codeGenerator.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(string.Format("using {0};", typeof(Window).Namespace)), stringWriter, codeGeneratorOptions);
+            codeGenerator.GenerateCodeFromCompileUnit(new CodeSnippetCompileUnit(string.Format("using {0};", typeof(AppScreen).Namespace)), stringWriter, codeGeneratorOptions);
 
             CodeNamespace codeNamespace = null;
             if (S.IsNotEmpty(options.Namespace))
@@ -51,26 +50,26 @@ namespace Recorder.Domain
                 codeNamespace = new CodeNamespace(options.Namespace);
             }
 
-            CodeTypeDeclaration classDefinition = new CodeTypeDeclaration();
-            classDefinition.IsClass = true;
-            classDefinition.IsPartial = true;
-            classDefinition.Name = window.Title.Trim().Replace(" ", string.Empty);
-            classDefinition.TypeAttributes = TypeAttributes.Public;
+            var classDefinition = new CodeTypeDeclaration
+                                      {
+                                          IsClass = true,
+                                          IsPartial = true,
+                                          Name = window.Title.Trim().Replace(" ", string.Empty),
+                                          TypeAttributes = TypeAttributes.Public
+                                      };
             classDefinition.BaseTypes.Add(typeof (AppScreen));
 
-            CodeConstructor constructor = new CodeConstructor();
-            constructor.Attributes = MemberAttributes.Family;
+            var constructor = new CodeConstructor {Attributes = MemberAttributes.Family};
             classDefinition.Members.Add(constructor);
 
-            constructor = new CodeConstructor();
-            constructor.Attributes = MemberAttributes.Public;
+            constructor = new CodeConstructor {Attributes = MemberAttributes.Public};
             constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof(Window), "window"));
             constructor.Parameters.Add(new CodeParameterDeclarationExpression(typeof (ScreenRepository), "screenRepository"));
             constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("window"));
             constructor.BaseConstructorArgs.Add(new CodeVariableReferenceExpression("screenRepository"));
             classDefinition.Members.Add(constructor);
 
-            CodeGenerationVisitor visitor = new CodeGenerationVisitor(new WindowCodeGenerationStrategy(options));
+            var visitor = new CodeGenerationVisitor(new WindowCodeGenerationStrategy(options));
             window.Visit(visitor);
             visitor.Generate(classDefinition);
 
