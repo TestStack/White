@@ -94,7 +94,7 @@
     <Compile Include="Core\ControlsActionTest.cs" />
     <Compile Include="Core\CoreProjectTest.cs" />
     <Compile Include="Core\CTest.cs" />
-    <Compile Include="Core\CustomItemTest.cs" />
+    <Compile Include="Core\CustomUIItemTest.cs" />
     <Compile Include="Core\DesktopTest.cs" />
     <Compile Include="Core\Drawing\DrawingPointXTest.cs" />
     <Compile Include="Core\Factory\InitializeOptionTest.cs" />
@@ -216,6 +216,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="white.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Automation;
 using NUnit.Framework;
+using White.Core;
 using White.Core.Factory;
 using White.Core.Testing;
 using White.Core.UIItems;
@@ -8,10 +9,10 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Custom;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Core
+namespace White.UnitTests.Core
 {
     [TestFixture, WinFormCategory]
-    public class CustomItemTest : CoreTestTemplate
+    public class CustomUIItemTest : CoreTestTemplate
     {
         private Window window;
 
@@ -33,6 +34,13 @@ namespace White.Core
             myDateUIItem.EnterDate(DateTime.Today);
         }
 
+        [Test]
+        public void ItemsReturnsCustomUIItemToo()
+        {
+            UIItemCollection uiItemCollection = window.Items;
+            Assert.AreEqual(true, uiItemCollection.Contains(item => item is MyDateUIItem));
+        }
+
         [Test, ExpectedException(typeof (CustomUIItemException))]
         public void NoDateUIItemMappingDefined()
         {
@@ -45,7 +53,6 @@ namespace White.Core
         }
     }
 
-    //Empty contructor with protected or public access. White creates dynamic proxy of UIItem so that common operations (aspects) can be performed
     [ControlTypeMapping(CustomUIItemType.Pane)]
     public class MyDateUIItem : CustomUIItem
     {

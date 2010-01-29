@@ -1,8 +1,10 @@
 using System;
 using NUnit.Framework;
+using White.Core;
 using White.Core.Testing;
+using White.Core.UIItems;
 
-namespace White.Core.UIItems
+namespace White.UnitTests.Core.UIItems
 {
     [TestFixture, WinFormCategory]
     public class DateTimePickerTest : ControlsActionTest
@@ -10,14 +12,14 @@ namespace White.Core.UIItems
         [Test]
         public void GetDate()
         {
-            DateTimePicker dateTimePicker = window.Get<DateTimePicker>("dateTimePicker");
+            var dateTimePicker = window.Get<DateTimePicker>("dateTimePicker");
             Assert.AreEqual(DateTime.Today, dateTimePicker.Date);
         }
 
         [Test]
         public void SetDate()
         {
-            DateTimePicker dateTimePicker = window.Get<DateTimePicker>("dateTimePicker");
+            var dateTimePicker = window.Get<DateTimePicker>("dateTimePicker");
             DateTime changedDate = DateTime.Today.AddDays(23);
             dateTimePicker.Date = changedDate;
             Assert.AreEqual(changedDate, dateTimePicker.Date);

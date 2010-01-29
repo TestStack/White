@@ -6,7 +6,7 @@ using White.Core.UIItems;
 
 namespace White.Core
 {
-    public class Debug
+    public static class Debug
     {
         private const string Tab = "  ";
 
@@ -29,6 +29,7 @@ namespace White.Core
             try
             {
                 var stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine();
                 Details(stringBuilder, automationElement, string.Empty);
                 return stringBuilder.ToString();
             }
