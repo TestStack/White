@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Automation;
 using White.Core.Recording;
 using White.Core.UIItems.Actions;
@@ -7,8 +8,12 @@ namespace White.Core.UIItems
     //TODO Implement standard controls library like OpenDialog
     public class Button : UIItem
     {
+        private readonly ToggleableItem toggleableItem;
         protected Button() {}
-        public Button(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Button(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        {
+            toggleableItem = new ToggleableItem(this);
+        }
 
         public override void HookEvents(UIItemEventListener eventListener)
         {
@@ -18,6 +23,23 @@ namespace White.Core.UIItems
         public override void UnHookEvents()
         {
             UnHookClickEvent();
+        }
+
+        public virtual ToggleState State
+        {
+            get { return toggleableItem.State; }
+            set { toggleableItem.State = value; }
+        }
+
+        public virtual void Toggle()
+        {
+            toggleableItem.Toggle();
+        }
+
+        public virtual void RaiseClickEvent()
+        {
+            var invokePattern = (InvokePattern) Pattern(InvokePattern.Pattern);
+            invokePattern.Invoke();
         }
     }
 }

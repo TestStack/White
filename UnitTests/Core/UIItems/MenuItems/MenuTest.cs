@@ -1,8 +1,8 @@
 using NUnit.Framework;
-using White.Core.Testing;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowStripControls;
 using White.Core.WindowsAPI;
+using White.UnitTests.Core.Testing;
 
 namespace White.Core.UIItems.MenuItems
 {

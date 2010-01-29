@@ -184,6 +184,7 @@
     <Compile Include="Core\UIItems\TreeItems\TreeScrollingTest.cs" />
     <Compile Include="Core\UIItems\TreeItems\TreeTest.cs" />
     <Compile Include="Core\UIItems\TreeItems\TreeWithModalLaunchedOnTreeNodeClickTest.cs" />
+    <Compile Include="Core\UIItems\TristateItemTest.cs" />
     <Compile Include="Core\UIItems\VerticalThumbTest.cs" />
     <Compile Include="Core\UIItems\VScrollBarTest.cs" />
     <Compile Include="Core\UIItems\WindowItems\TitleBarTest.cs" />
@@ -210,17 +211,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="white.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

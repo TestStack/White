@@ -1,7 +1,8 @@
 using NUnit.Framework;
-using White.Core.Testing;
+using White.Core.UIItems;
+using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems
+namespace White.UnitTests.Core.UIItems
 {
     [TestFixture]
     public class CheckBoxTest : ControlsActionTest

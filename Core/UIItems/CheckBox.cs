@@ -13,7 +13,8 @@ namespace White.Core.UIItems
         {
         }
 
-        public CheckBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public CheckBox(AutomationElement automationElement, ActionListener actionListener)
+            : base(automationElement, actionListener)
         {
         }
 
@@ -40,11 +41,6 @@ namespace White.Core.UIItems
             }
         }
 
-        public virtual ToggleState State
-        {
-            get { return (ToggleState) Property(TogglePattern.ToggleStateProperty); }
-        }
-
         /// <summary>
         /// Unchecks the checkbox
         /// </summary>
@@ -60,7 +56,8 @@ namespace White.Core.UIItems
                               ActionPerformed();
                               eventListener.EventOccured(new CheckBoxEvent(this));
                           };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler, TogglePattern.ToggleStateProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler,
+                                                                TogglePattern.ToggleStateProperty);
         }
 
         public override void UnHookEvents()
@@ -70,7 +67,8 @@ namespace White.Core.UIItems
 
         public override void SetValue(object value)
         {
-            if (!(value is bool)) throw new UIActionException("Cannot set non bool value to a checkbox. Trying to set: " + value);
+            if (!(value is bool))
+                throw new UIActionException("Cannot set non bool value to a checkbox. Trying to set: " + value);
             Checked = (bool) value;
         }
     }

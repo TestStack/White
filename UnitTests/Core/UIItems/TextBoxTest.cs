@@ -2,8 +2,8 @@ using System.Windows;
 using System.Windows.Forms;
 using NUnit.Framework;
 using White.Core.InputDevices;
-using White.Core.Testing;
 using White.Core.WindowsAPI;
+using White.UnitTests.Core.Testing;
 
 namespace White.Core.UIItems
 {

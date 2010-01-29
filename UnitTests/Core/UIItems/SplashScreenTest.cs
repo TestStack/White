@@ -1,8 +1,8 @@
 using NUnit.Framework;
 using White.Core.Factory;
-using White.Core.Testing;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
+using White.UnitTests.Core.Testing;
 
 namespace White.Core.UIItems
 {

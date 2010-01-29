@@ -1,8 +1,8 @@
 using System;
 using White.Core.UIA;
 using NUnit.Framework;
-using White.Core.Testing;
 using White.Core.UIItems;
+using White.UnitTests.Core.Testing;
 
 namespace White.Core.WindowsAPI
 {

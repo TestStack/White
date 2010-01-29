@@ -9,11 +9,20 @@ namespace WindowsPresentationFramework
     public partial class App
     {
         private static readonly List<string> windowsForCommand;
-        
+
         static App()
         {
-            windowsForCommand = new List<string> { "ScenarioSet1", "HorizontalGridSplitter", "VerticalGridSplitter", 
-                                                    "ComboBoxWithObjectWindow", "ControlsWithoutUIASupport", "TreeViewItemWithoutHeader" };
+            windowsForCommand = new List<string>
+                                    {
+                                        "ScenarioSet1",
+                                        "HorizontalGridSplitter",
+                                        "VerticalGridSplitter",
+                                        "ComboBoxWithObjectWindow",
+                                        "ControlsWithoutUIASupport",
+                                        "TreeViewItemWithoutHeader",
+                                        "TreeViewItemWithoutHeader",
+                                        "TristateControlWindow"
+                                    };
         }
 
         public App()
