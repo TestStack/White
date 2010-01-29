@@ -53,7 +53,7 @@ namespace White.Core.UIItems.WindowItems
 
         private void InitializeWindow()
         {
-            WaitWhileBusy();
+            ActionPerformed();
             Rect bounds = Desktop.Instance.Bounds;
             if (!bounds.Contains(Bounds) && (TitleBar != null && TitleBar.MinimizeButton != null))
             {
@@ -127,7 +127,7 @@ UI actions on window needing mouse would not work in area not falling under the 
                 else if (windowPattern != null)
                 {
                     windowPattern.Close();
-                    WaitWhileBusy();
+                    ActionPerformed();
                 }
             }
             catch (ElementNotAvailableException) {}
@@ -151,16 +151,20 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void WaitWhileBusy()
         {
+            WaitForProcess();
+            WaitForWindow();
+        }
+
+        private void WaitForWindow()
+        {
             try
             {
-                WaitForProcessIdle();
+                WaitForProcess();
                 var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
                 if (!CoreAppXmlConfiguration.Instance.InProc && !("ConsoleWindowClass".Equals(automationElement.Current.ClassName)) &&
                     (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
                     throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
-
                 if (windowPattern == null) return;
-
                 var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
                 clock.RunWhile(() => Thread.Sleep(50), () => windowPattern.Current.WindowInteractionState.Equals(WindowInteractionState.NotResponding),
                                delegate
@@ -176,7 +180,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        private void WaitForProcessIdle()
+        private void WaitForProcess()
         {
             try
             {
@@ -290,7 +294,7 @@ UI actions on window needing mouse would not work in area not falling under the 
                 if (AlreadyInAskedState(value)) return;
 
                 WinPattern.SetWindowVisualState(windowStates[value]);
-                WaitWhileBusy();
+                ActionPerformed();
 
                 if (AlreadyInAskedState(value) || TitleBar == null) return;
 

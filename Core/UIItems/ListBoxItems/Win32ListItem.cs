@@ -34,7 +34,7 @@ namespace White.Core.UIItems.ListBoxItems
         {
             get
             {
-                ToggleState toggleState = (ToggleState) Property(TogglePattern.ToggleStateProperty);
+                var toggleState = (ToggleState) Property(TogglePattern.ToggleStateProperty);
                 return toggleState.Equals(ToggleState.On);
             }
         }

@@ -10,7 +10,7 @@ using White.Core.UIItems.TreeItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
 
-namespace Recorder
+namespace NonCoreTests.Recorder
 {
     [TestFixture]
     public class SimpleControlRecorderTest : ControlsActionTest
@@ -51,8 +51,8 @@ namespace Recorder
         {
             window.WaitWhileBusy();
             dashboard.WaitWhileBusy();
-            Clock.Do @do = delegate { return editor.Text.Trim(); };
-            Clock clock = new Clock(5000);
+            Clock.Do @do = () => editor.Text.Trim();
+            var clock = new Clock(5000);
             Clock.Expired expired = delegate { throw new Exception(); };
             clock.Perform(@do, matched, expired);
         }
@@ -60,7 +60,7 @@ namespace Recorder
         private void ClearText()
         {
             editor.Text = string.Empty;
-            WaitTill(delegate(object obj) { return S.IsEmpty((string)obj); });
+            WaitTill(obj => S.IsEmpty((string) obj));
         }
 
         [Test]
@@ -88,7 +88,7 @@ namespace Recorder
         [Test]
         public void TreeRootClick()
         {
-            Tree tree = window.Get<Tree>("ped");
+            var tree = window.Get<Tree>("ped");
             Assert.IsNotNull(tree);
             TreeNode treeNode = tree.Node("Root");
             treeNode.Select();
@@ -102,7 +102,7 @@ namespace Recorder
         [Test]
         public void ListView_TryUnSelectAll()
         {
-            ListView listView = window.Get<ListView>("listView");
+            var listView = window.Get<ListView>("listView");
             listView.Select("Key", "Search");
             ClearText();
             listView.TryUnSelectAll();
@@ -110,7 +110,7 @@ namespace Recorder
         }
 
         [Test]
-        public void Text_in_TextBox()
+        public void TextInTextBox()
         {
             window.Get<TextBox>("textBox").Text = "blah";
             AssertAndClearRecordedText("window.Get<TextBox>(\"textBox\").BulkText = \"blah\";");
