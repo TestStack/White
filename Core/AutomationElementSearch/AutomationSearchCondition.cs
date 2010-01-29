@@ -1,22 +1,23 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch.Properties;
 
 namespace White.Core.AutomationElementSearch
 {
     public class AutomationSearchCondition
     {
         private readonly List<Condition> conditions = new List<Condition>();
-        private static readonly Dictionary<string, AutomationElementProperty> properties = new Dictionary<string, AutomationElementProperty>();
+        private static readonly Dictionary<string, Func<AutomationElement.AutomationElementInformation, object, bool>> valueMatchers =
+            new Dictionary<string, Func<AutomationElement.AutomationElementInformation, object, bool>>();
 
         static AutomationSearchCondition()
         {
-            properties[AutomationElement.NameProperty.ProgrammaticName] = new NameProperty();
-            properties[AutomationElement.AutomationIdProperty.ProgrammaticName] = new AutomationIdProperty();
-            properties[AutomationElement.ClassNameProperty.ProgrammaticName] = new ClassNameProperty();
-            properties[AutomationElement.ProcessIdProperty.ProgrammaticName] = new ProcessIdProperty();
-            properties[AutomationElement.ControlTypeProperty.ProgrammaticName] = new ControlTypeProperty();
+            valueMatchers[AutomationElement.NameProperty.ProgrammaticName] = (information, value) => information.Name.Equals(value);
+            valueMatchers[AutomationElement.AutomationIdProperty.ProgrammaticName] = (information, value) => information.AutomationId.Equals(value);
+            valueMatchers[AutomationElement.ClassNameProperty.ProgrammaticName] = (information, value) => information.ClassName.Equals(value);
+            valueMatchers[AutomationElement.ProcessIdProperty.ProgrammaticName] = (information, value) => information.ProcessId.ToString().Equals(value.ToString());
+            valueMatchers[AutomationElement.ControlTypeProperty.ProgrammaticName] = (information, value) => information.ControlType.Id.Equals(value);
         }
 
         public static AutomationSearchCondition ByName(string name)
@@ -110,8 +111,7 @@ namespace White.Core.AutomationElementSearch
         {
             foreach (PropertyCondition condition in conditions)
             {
-                if (!properties[condition.Property.ProgrammaticName].HasValue(element.Current, condition.Value))
-                    return false;
+                if (!valueMatchers[condition.Property.ProgrammaticName](element.Current, condition.Value)) return false;
             }
             return true;
         }

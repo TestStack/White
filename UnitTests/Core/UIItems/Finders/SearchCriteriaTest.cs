@@ -1,7 +1,10 @@
 using NUnit.Framework;
+using White.Core;
 using White.Core.Testing;
+using White.Core.UIItems;
+using White.Core.UIItems.Finders;
 
-namespace White.Core.UIItems.Finders
+namespace White.UnitTests.Core.UIItems.Finders
 {
     [TestFixture, Category("Normal")]
     public class SearchCriteriaTest
@@ -19,6 +22,8 @@ namespace White.Core.UIItems.Finders
         {
             Assert.AreEqual(SearchCriteria.ByAutomationId("foo"), SearchCriteria.ByAutomationId("foo"));
             Assert.AreNotEqual(SearchCriteria.ByText("foo"), SearchCriteria.ByAutomationId("foo"));
+            Assert.AreEqual(SearchCriteria.ByFramework(Constants.Win32FrameworkId), SearchCriteria.ByFramework(Constants.Win32FrameworkId));
+            Assert.AreNotEqual(SearchCriteria.ByFramework(Constants.WinFormFrameworkId), SearchCriteria.ByFramework(Constants.Win32FrameworkId));
         }
     }
 

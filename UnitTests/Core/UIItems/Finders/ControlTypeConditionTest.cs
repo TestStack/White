@@ -1,9 +1,11 @@
-using System.Windows.Automation;
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems;
 using White.Core.UIItems.Custom;
+using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowStripControls;
 
-namespace White.Core.UIItems.Finders
+namespace White.UnitTests.Core.UIItems.Finders
 {
     [TestFixture, NormalCategory]
     public class ControlTypeConditionTest
@@ -11,10 +13,10 @@ namespace White.Core.UIItems.Finders
         [Test]
         public void ControlTypeCondition()
         {
-            Assert.AreEqual(ControlType.Button, new ControlTypeCondition(typeof (Button)).ControlType);
-            Assert.AreEqual(ControlType.Pane, new ControlTypeCondition(typeof (TestCustomUIItem)).ControlType);
-            Assert.AreEqual(ControlType.MenuBar, new ControlTypeCondition(typeof (MenuBar), Constants.WinFormFrameworkId).ControlType);
-            Assert.AreEqual(ControlType.Menu, new ControlTypeCondition(typeof (MenuBar), Constants.WPFFrameworkId).ControlType);
+            Assert.AreEqual("ControlType=button", SearchConditionFactory.CreateForControlType(typeof(Button)).ToString());
+            Assert.AreEqual("ControlType=pane", SearchConditionFactory.CreateForControlType(typeof(TestCustomUIItem)).ToString());
+            Assert.AreEqual("ControlType=menu bar", SearchConditionFactory.CreateForControlType(typeof(MenuBar), Constants.WinFormFrameworkId).ToString());
+            Assert.AreEqual("ControlType=menu", SearchConditionFactory.CreateForControlType(typeof(MenuBar), Constants.WPFFrameworkId).ToString());
         }
     }
 
