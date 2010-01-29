@@ -3,7 +3,7 @@ using White.Core;
 
 namespace White.WebBrowser
 {
-    public class InternetExplorer
+    public static class InternetExplorer
     {
         public static InternetExplorerWindow Launch(string url, string title)
         {

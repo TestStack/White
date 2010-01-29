@@ -8,8 +8,14 @@ namespace White.Core.UIItems
     public class CheckBox : Button
     {
         private AutomationPropertyChangedEventHandler handler;
-        protected CheckBox() {}
-        public CheckBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+
+        protected CheckBox()
+        {
+        }
+
+        public CheckBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        {
+        }
 
         public virtual void Select()
         {
@@ -26,16 +32,17 @@ namespace White.Core.UIItems
 
         public virtual bool Checked
         {
-            get
-            {
-                ToggleState toggleState = (ToggleState) Property(TogglePattern.ToggleStateProperty);
-                return toggleState.Equals(ToggleState.On);
-            }
+            get { return State.Equals(ToggleState.On); }
             set
             {
                 if (Checked == value) return;
                 Click();
             }
+        }
+
+        public virtual ToggleState State
+        {
+            get { return (ToggleState) Property(TogglePattern.ToggleStateProperty); }
         }
 
         /// <summary>

@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
-using White.Core.InputDevices;
 using White.Core.Sessions;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
@@ -21,8 +20,8 @@ namespace White.Core
             return new Desktop(AutomationElement.RootElement, new NullActionListener(), InitializeOption.NoCache, new NullWindowSession());
         }
 
-        private Desktop(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption, WindowSession windowSession)
-            : base(automationElement, actionListener, initializeOption, windowSession)
+        private Desktop(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption,
+                        WindowSession windowSession) : base(automationElement, actionListener, initializeOption, windowSession)
         {
             finder = new AutomationElementFinder(automationElement);
         }
@@ -37,12 +36,11 @@ namespace White.Core
             get
             {
                 AutomationElement element =
-                    finder.Child(
-                        new[]
-                            {
-                                AutomationSearchCondition.ByControlType(ControlType.Pane).OfName("Program Manager"),
-                                AutomationSearchCondition.ByControlType(ControlType.List).OfName("Desktop")
-                            });
+                    finder.Child(new[]
+                                     {
+                                         AutomationSearchCondition.ByControlType(ControlType.Pane).OfName("Program Manager"),
+                                         AutomationSearchCondition.ByControlType(ControlType.List).OfName("Desktop")
+                                     });
                 return new ListControl(element, new ProcessActionListener(element));
             }
         }
