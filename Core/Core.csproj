@@ -175,6 +175,7 @@
     <Compile Include="UIItems\TableItems\NullTableHeader.cs" />
     <Compile Include="UIItems\TableItems\TableVerticalScrollOffset.cs" />
     <Compile Include="UIItems\Thumb.cs" />
+    <Compile Include="UIItems\ToggleableItem.cs" />
     <Compile Include="UIItems\WinFormSlider.cs" />
     <Compile Include="UIItems\Spinner.cs" />
     <Compile Include="UIItems\Panel.cs" />

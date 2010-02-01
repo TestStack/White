@@ -3,12 +3,12 @@ using System.Diagnostics;
 using Bricks.Core;
 using White.Core;
 using White.Core.Factory;
-using White.Core.Testing;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UIItems.TreeItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
+using White.UnitTests.Core.Testing;
 
 namespace NonCoreTests.Recorder
 {

@@ -1,12 +1,14 @@
 using System;
 using NUnit.Framework;
+using White.Core;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Logging;
+using White.Core.Testing;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Core.Testing
+namespace White.UnitTests.Core.Testing
 {
     public class CoreTestTemplate
     {
@@ -51,7 +53,7 @@ namespace White.Core.Testing
             testConfiguration = null;
         }
 
-        protected virtual void CloseModal(Window window)
+        protected void CloseModal(Window window)
         {
             Window modalWindow = null;
             try

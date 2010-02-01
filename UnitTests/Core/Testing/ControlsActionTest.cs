@@ -1,10 +1,11 @@
 using System.Configuration;
 using NUnit.Framework;
+using White.Core;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using White.Core.WindowsAPI;
 
-namespace White.Core.Testing
+namespace White.UnitTests.Core.Testing
 {
     public class ControlsActionTest : CoreTestTemplate
     {

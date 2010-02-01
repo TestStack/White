@@ -1,8 +1,8 @@
 using System.Text;
 using NUnit.Framework;
-using White.Core.Testing;
 using White.Core.UIItems;
 using White.Core.WindowsAPI;
+using White.UnitTests.Core.Testing;
 
 namespace White.Core.InputDevices
 {

@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Core
+namespace White.UnitTests.Core
 {
     [TestFixture, NormalCategory]
     public class DesktopTest
@@ -11,9 +13,9 @@ namespace White.Core
         [Test, Ignore]
         public void Experiment()
         {
-            Application application = Application.Attach(536);
-            Window window = application.GetWindow("Yahoo! Messenger");
-            Assert.AreNotEqual(null, window);
+            var window = Application.Attach("Notepad").GetWindows()[0];
+            var element = window.Get(SearchCriteria.ByText("Save As"));
+            Assert.AreNotEqual(null, element);
         }
 
         [Test]
@@ -36,7 +38,7 @@ namespace White.Core
             }
             finally
             {
-                process.Kill();
+                if (process != null) process.Kill();
             }
         }
 

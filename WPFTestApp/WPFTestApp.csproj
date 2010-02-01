@@ -93,6 +93,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="TristateControlWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="TreeViewItemWithoutHeader.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -132,6 +136,9 @@
     </Compile>
     <Compile Include="ControlsWithoutUIASupport.xaml.cs">
       <DependentUpon>ControlsWithoutUIASupport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TristateControlWindow.xaml.cs">
+      <DependentUpon>TristateControlWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TreeViewItemWithoutHeader.xaml.cs">
       <DependentUpon>TreeViewItemWithoutHeader.xaml</DependentUpon>

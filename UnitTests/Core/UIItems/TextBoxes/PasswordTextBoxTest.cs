@@ -1,6 +1,6 @@
 using Bricks;
 using NUnit.Framework;
-using White.Core.Testing;
+using White.UnitTests.Core.Testing;
 
 namespace White.Core.UIItems.TextBoxes
 {

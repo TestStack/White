@@ -159,6 +159,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             try
             {
+                WaitForProcess();
                 var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
                 if (!CoreAppXmlConfiguration.Instance.InProc && !("ConsoleWindowClass".Equals(automationElement.Current.ClassName)) &&
                     (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
