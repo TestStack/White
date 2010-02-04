@@ -156,6 +156,7 @@
     <Compile Include="UIA\AutomationPatterns.cs" />
     <Compile Include="UIA\WindowsPointX.cs" />
     <Compile Include="UIA\RectX.cs" />
+    <Compile Include="UIItems\Custom\CustomUIItemType.cs" />
     <Compile Include="UIItems\Finders\AutomationElementProperty.cs" />
     <Compile Include="UIItems\Finders\ControlTypeProperty.cs" />
     <Compile Include="UIItems\Finders\SearchConditionFactory.cs" />
@@ -233,7 +234,6 @@
     <Compile Include="UIItems\Custom\CustomControlTypeMapping.cs" />
     <Compile Include="UIItems\Custom\CustomUIItem.cs" />
     <Compile Include="UIItems\Custom\CustomUIItemException.cs" />
-    <Compile Include="UIItems\Custom\CustomUIItemType.cs" />
     <Compile Include="UIItems\DateTimePicker.cs" />
     <Compile Include="UIItems\Finders\IndexCondition.cs" />
     <Compile Include="UIItems\Finders\NotCondition.cs" />

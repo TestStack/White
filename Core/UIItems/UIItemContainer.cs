@@ -1,17 +1,23 @@
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Windows.Automation;
+using Bricks.Core;
+using Bricks.RuntimeFramework;
 using Castle.Core.Interceptor;
+using White.Core.AutomationElementSearch;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Interceptors;
 using White.Core.Sessions;
+using White.Core.UIA;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Container;
 using White.Core.UIItems.Custom;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
+using White.Core.UIItems.TabItems;
+using White.Core.UIItems.WindowStripControls;
 
 namespace White.Core.UIItems
 {
@@ -22,17 +28,23 @@ namespace White.Core.UIItems
         protected readonly CurrentContainerItemFactory currentContainerItemFactory;
         protected WindowSession windowSession;
 
-        protected UIItemContainer() {}
+        protected UIItemContainer()
+        {
+        }
 
-        public UIItemContainer(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption,
+        public UIItemContainer(AutomationElement automationElement, ActionListener actionListener,
+                               InitializeOption initializeOption,
                                WindowSession windowSession) : base(automationElement, actionListener)
         {
             this.windowSession = windowSession;
-            currentContainerItemFactory = new CurrentContainerItemFactory(factory, initializeOption, automationElement, ChildrenActionListener);
+            currentContainerItemFactory = new CurrentContainerItemFactory(factory, initializeOption, automationElement,
+                                                                          ChildrenActionListener);
         }
 
         public UIItemContainer(AutomationElement automationElement, ActionListener actionListener)
-            : this(automationElement, actionListener, InitializeOption.NoCache, new NullWindowSession()) {}
+            : this(automationElement, actionListener, InitializeOption.NoCache, new NullWindowSession())
+        {
+        }
 
         /// <summary>
         /// Finds UIItem which matches specified type. Useful for non managed applications where controls are not identified by AutomationId, like in 
@@ -108,10 +120,12 @@ namespace White.Core.UIItems
             var customUIItem = uiItem as CustomUIItem;
             if (customUIItem == null) return;
             FieldInfo interceptorField = customUIItem.GetType().GetField("__interceptors",
-                                                                         BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
+                                                                         BindingFlags.NonPublic | BindingFlags.Public |
+                                                                         BindingFlags.Instance);
             var interceptors = (IInterceptor[]) interceptorField.GetValue(customUIItem);
             var realCustomUIItem = (CustomUIItem) ((CoreInterceptor) interceptors[0]).Context.UiItem;
-            realCustomUIItem.SetContainer(new UIItemContainer(customUIItem.AutomationElement, ActionListener, InitializeOption.NoCache, windowSession));
+            realCustomUIItem.SetContainer(new UIItemContainer(customUIItem.AutomationElement, ChildrenActionListener,
+                                                              InitializeOption.NoCache, windowSession));
         }
 
         /// <summary>
@@ -142,6 +156,7 @@ namespace White.Core.UIItems
         {
             get { return currentContainerItemFactory.FindAll(); }
         }
+
         /// <summary>
         /// Returns a keyboard which is associated to this window. Any operation performed using the mouse would wait till the window is busy after this
         /// operation. Before any operation is performed the window is brought to focus.
@@ -150,6 +165,7 @@ namespace White.Core.UIItems
         {
             get { return new AttachedKeyboard(this, keyboard); }
         }
+
         /// <summary>
         /// Returns a mouse which is associated to this window. Any operation performed using the mouse would wait till the window is busy after this
         /// operation. Before any operation is performed the window is brought to focus.
@@ -178,6 +194,70 @@ namespace White.Core.UIItems
         {
             var screenItem = new ScreenItem(uiItem, ScrollBars);
             screenItem.MakeVisible(this);
+        }
+
+        public virtual MenuBar MenuBar
+        {
+            get { return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework)); }
+        }
+
+        public virtual MenuBar GetMenuBar(SearchCriteria searchCriteria)
+        {
+            return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework).Merge(searchCriteria));
+        }
+
+        public virtual List<MenuBar> MenuBars
+        {
+            get { return new BricksCollection<MenuBar>(GetMultiple(SearchCriteria.ForMenuBar(Framework))); }
+        }
+
+        public virtual ToolTip ToolTip
+        {
+            get { return factory.ToolTip; }
+        }
+
+        public virtual ToolTip GetToolTipOn(UIItem uiItem)
+        {
+            Mouse.Location = uiItem.Bounds.Center();
+            var finder = new AutomationElementFinder(automationElement);
+            Clock.Do perform = () => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip));
+            return ToolTipFinder.FindToolTip(perform);
+        }
+
+        public virtual ToolStrip ToolStrip
+        {
+            get
+            {
+                Focus();
+                return (ToolStrip) Get(SearchCriteria.ByControlType(ControlType.ToolBar));
+            }
+        }
+
+        public virtual List<Tab> Tabs
+        {
+            get { return currentContainerItemFactory.FindAll<Tab>(); }
+        }
+
+        public virtual ToolStrip GetToolStrip(string primaryIdentification)
+        {
+            var toolStrip = (ToolStrip) Get(SearchCriteria.ByAutomationId(primaryIdentification));
+            if (toolStrip == null) return null;
+            toolStrip.Associate(windowSession);
+            return toolStrip;
+        }
+
+        /// <summary>
+        /// Find all the UIItems which belongs to a window and are within (bounds of) another UIItem.
+        /// </summary>
+        /// <param name="containingItem">Containing item</param>
+        /// <returns>List of all the items.</returns>
+        public virtual List<UIItem> ItemsWithin(UIItem containingItem)
+        {
+            UIItemCollection itemsWithin = factory.ItemsWithin(containingItem.Bounds, this);
+            var items = new List<UIItem>();
+            foreach (var item in itemsWithin)
+                if (!item.Equals(containingItem)) items.Add((UIItem) item);
+            return items;
         }
     }
 }

@@ -1,10 +1,8 @@
 using System.Threading;
 using System.Windows.Automation;
-using Bricks.Core;
-using White.Core.AutomationElementSearch;
+using White.Core;
 using White.Core.Factory;
 using White.Core.Sessions;
-using White.Core.UIA;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 
@@ -12,19 +10,20 @@ namespace White.WebBrowser.Silverlight
 {
     public class SilverlightDocument : UIItemContainer
     {
-        protected SilverlightDocument() {}
-
-        public SilverlightDocument(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption,
-                                   WindowSession windowSession) : base(automationElement, actionListener, initializeOption, windowSession) {}
-
-        public SilverlightDocument(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
-
-        public virtual ToolTip GetToolTipOn(UIItem uiItem)
+        protected SilverlightDocument()
         {
-            Mouse.Location = uiItem.Bounds.Center();
-            var finder = new AutomationElementFinder(automationElement);
-            Clock.Do perform = () => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip));
-            return ToolTipFinder.FindToolTip(perform);
+        }
+
+        public SilverlightDocument(AutomationElement automationElement, ActionListener actionListener,
+                                   InitializeOption initializeOption,
+                                   WindowSession windowSession)
+            : base(automationElement, actionListener, initializeOption, windowSession)
+        {
+        }
+
+        public SilverlightDocument(AutomationElement automationElement, ActionListener actionListener)
+            : base(automationElement, actionListener)
+        {
         }
 
         public override void ActionPerformed(Action action)
@@ -36,6 +35,11 @@ namespace White.WebBrowser.Silverlight
         protected override ActionListener ChildrenActionListener
         {
             get { return this; }
+        }
+
+        public override WindowsFramework Framework
+        {
+            get { return new WindowsFramework(Constants.SilverlightFrameworkId); }
         }
     }
 }

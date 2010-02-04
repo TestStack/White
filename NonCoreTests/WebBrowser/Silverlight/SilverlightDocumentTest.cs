@@ -1,14 +1,21 @@
-using White.Core;
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
+using System.Windows.Automation;
 using NUnit.Framework;
+using White.Core;
+using White.Core.InputDevices;
+using White.Core.UIItems;
+using White.Core.UIItems.Actions;
+using White.Core.UIItems.Custom;
+using White.Core.UIItems.ListBoxItems;
+using White.WebBrowser.Silverlight;
+using White.Core.UIA;
 
-namespace White.WebBrowser.Silverlight
+namespace NonCoreTests.WebBrowser.Silverlight
 {
     [TestFixture]
     public class SilverlightDocumentTest : SilverlightTestFixture
     {
         private SilverlightDocument document;
+        private Label label;
 
         [Test]
         public void Get()
@@ -20,16 +27,16 @@ namespace White.WebBrowser.Silverlight
         protected override void PostSetup()
         {
             document = browserWindow.SilverlightDocument;
+            label = document.Get<Label>("status");
         }
 
         [Test]
         public void Event()
         {
-            var button = document.Get<Button>("buton");
-            var label = document.Get<Label>("status");
             Assert.AreNotEqual(null, label);
+            var button = document.Get<Button>("buton");
             button.Click();
-            Assert.AreEqual("Buton Clicked", label.Text);
+            Assert.AreEqual("0", label.Text);
         }
 
         [Test]
@@ -52,6 +59,42 @@ namespace White.WebBrowser.Silverlight
             Assert.AreNotEqual(null, toolTip);
             Debug.LogPatterns(toolTip);
             Debug.LogProperties(toolTip);
+        }
+
+        [Test]
+        public void SelectItemInComboBoxWhichIsAlreadySelected()
+        {
+            string previousText = label.Text;
+            var button = document.Get<Button>("buton");
+            var comboBox = document.Get<ComboBox>("combo");
+            comboBox.Select("foo");
+            comboBox.Select("foo");
+            Mouse.Instance.Click(button.Bounds.Center(), document);
+            Assert.AreNotEqual(label.Text, previousText);
+        }
+
+        [Test]
+        public void CustomUIItemsContainer()
+        {
+            var customButton = document.Get<CustomButton>("buton");
+            Assert.IsInstanceOfType(typeof(SilverlightDocument), customButton.ButtonContainer.ActionListener);
+        }
+    }
+
+    [ControlTypeMapping(CustomUIItemType.Button)]
+    public class CustomButton : CustomUIItem
+    {
+        protected CustomButton(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        {
+        }
+
+        protected CustomButton()
+        {
+        }
+
+        public virtual UIItemContainer ButtonContainer
+        {
+            get { return Container; }
         }
     }
 }

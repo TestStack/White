@@ -15,13 +15,11 @@ namespace White.Core.Configuration
         private readonly DynamicProxyInterceptors interceptors = new DynamicProxyInterceptors();
 
         private static readonly Dictionary<string, object> defaultValues = new Dictionary<string, object>();
-        private const string logActionsKey = "LogActions";
 
         static CoreAppXmlConfiguration()
         {
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().BusyTimeout), 5000);
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().WaitBasedOnHourGlass), true);
-            defaultValues.Add(logActionsKey, false);
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().WorkSessionLocation), ".");
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().UIAutomationZeroWindowBugTimeout), 5000);
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().PopupTimeout), 5000);
@@ -30,6 +28,7 @@ namespace White.Core.Configuration
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().DefaultDateFormat), DateFormat.CultureDefault.ToString());
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().DragStepCount), 1);
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().InProc), false);
+            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen), true);
         }
 
         public static CoreConfiguration Instance
@@ -115,6 +114,12 @@ namespace White.Core.Configuration
         {
             get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().InProc)]); }
             set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().InProc), value); }
+        }
+
+        public bool ComboBoxItemsPopulatedWithoutDropDownOpen
+        {
+            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen)]); }
+            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen), value); }
         }
     }
 }

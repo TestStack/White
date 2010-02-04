@@ -5,6 +5,8 @@ namespace TestSilverlightApplication
 {
     public partial class Page
     {
+        private int butonClickCount;
+
         public Page()
         {
             InitializeComponent();
@@ -22,7 +24,8 @@ namespace TestSilverlightApplication
 
         private void ButonClick(object sender, RoutedEventArgs e)
         {
-            status.Text = "Buton Clicked";
+            status.Text = butonClickCount.ToString();
+            butonClickCount++;
         }
     }
 }

@@ -6,7 +6,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
 using Bricks.Core;
-using Bricks.RuntimeFramework;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
@@ -17,7 +16,6 @@ using White.Core.UIA;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
-using White.Core.UIItems.TabItems;
 using White.Core.UIItems.WindowStripControls;
 using Action=White.Core.UIItems.Actions.Action;
 using Condition=System.Windows.Automation.Condition;
@@ -31,7 +29,9 @@ namespace White.Core.UIItems.WindowItems
     //TODO move window
     public abstract class Window : UIItemContainer, IDisposable
     {
-        private static readonly Dictionary<DisplayState, WindowVisualState> windowStates = new Dictionary<DisplayState, WindowVisualState>();
+        private static readonly Dictionary<DisplayState, WindowVisualState> windowStates =
+            new Dictionary<DisplayState, WindowVisualState>();
+
         private AutomationEventHandler handler;
 
         public delegate bool WaitTillDelegate();
@@ -43,9 +43,12 @@ namespace White.Core.UIItems.WindowItems
             windowStates.Add(DisplayState.Restored, WindowVisualState.Normal);
         }
 
-        protected Window() {}
+        protected Window()
+        {
+        }
 
-        protected Window(AutomationElement automationElement, InitializeOption initializeOption, WindowSession windowSession)
+        protected Window(AutomationElement automationElement, InitializeOption initializeOption,
+                         WindowSession windowSession)
             : base(automationElement, new NullActionListener(), initializeOption, windowSession)
         {
             InitializeWindow();
@@ -73,11 +76,6 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual string Title
         {
             get { return TitleBar == null ? Name : TitleBar.Name; }
-        }
-
-        public virtual ToolTip ToolTip
-        {
-            get { return factory.ToolTip; }
         }
 
         private WindowPattern WinPattern
@@ -108,15 +106,6 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        public virtual ToolStrip ToolStrip
-        {
-            get
-            {
-                Focus();
-                return (ToolStrip) Get(SearchCriteria.ByControlType(ControlType.ToolBar));
-            }
-        }
-
         public virtual void Close()
         {
             var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
@@ -130,15 +119,9 @@ UI actions on window needing mouse would not work in area not falling under the 
                     ActionPerformed();
                 }
             }
-            catch (ElementNotAvailableException) {}
-        }
-
-        public virtual ToolStrip GetToolStrip(string primaryIdentification)
-        {
-            var toolStrip = (ToolStrip) Get(SearchCriteria.ByAutomationId(primaryIdentification));
-            if (toolStrip == null) return null;
-            toolStrip.Associate(windowSession);
-            return toolStrip;
+            catch (ElementNotAvailableException)
+            {
+            }
         }
 
         public virtual StatusStrip StatusBar(InitializeOption initializeOption)
@@ -161,16 +144,22 @@ UI actions on window needing mouse would not work in area not falling under the 
             {
                 WaitForProcess();
                 var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
-                if (!CoreAppXmlConfiguration.Instance.InProc && !("ConsoleWindowClass".Equals(automationElement.Current.ClassName)) &&
-                    (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
+                if (!CoreAppXmlConfiguration.Instance.InProc &&
+                    !("ConsoleWindowClass".Equals(automationElement.Current.ClassName)) &&
+                    (windowPattern != null &&
+                     !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
                     throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
                 if (windowPattern == null) return;
                 var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
-                clock.RunWhile(() => Thread.Sleep(50), () => windowPattern.Current.WindowInteractionState.Equals(WindowInteractionState.NotResponding),
+                clock.RunWhile(() => Thread.Sleep(50),
+                               () =>
+                               windowPattern.Current.WindowInteractionState.Equals(WindowInteractionState.NotResponding),
                                delegate
                                    {
-                                       throw new UIActionException(string.Format("Window didn't come out of WaitState{0} last state known was {1}",
-                                                                                 Constants.BusyMessage, windowPattern.Current.WindowInteractionState));
+                                       throw new UIActionException(
+                                           string.Format(
+                                               "Window didn't come out of WaitState{0} last state known was {1}",
+                                               Constants.BusyMessage, windowPattern.Current.WindowInteractionState));
                                    });
             }
             catch (Exception e)
@@ -189,36 +178,6 @@ UI actions on window needing mouse would not work in area not falling under the 
             catch
             {
             }
-        }
-
-        /// <summary>
-        /// This should be used after RightClick on a UIItem (which can be window as well).
-        /// </summary>
-        /// <param name="path">Path to the menu which need to be retrieved.
-        /// e.g. "Root" is one of the menus in the first level, "Level1" is inside "Root" menu and "Level2" is inside "Level1". So on.
-        /// "Root", etc are text of the menu visible to user.
-        /// </param>
-        /// <returns></returns>
-        public virtual Menu PopupMenu(params string[] path)
-        {
-            return Popup.Item(path);
-        }
-
-        public virtual bool HasPopup()
-        {
-            return Popup != null;
-        }
-
-        public abstract PopUpMenu Popup { get; }
-
-        public virtual MenuBar MenuBar
-        {
-            get { return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework)); }
-        }
-
-        public virtual List<MenuBar> MenuBars
-        {
-            get { return new BricksCollection<MenuBar>(GetMultiple(SearchCriteria.ForMenuBar(Framework))); }
         }
 
         public override void ActionPerformed(Action action)
@@ -308,15 +267,11 @@ UI actions on window needing mouse would not work in area not falling under the 
                    (DisplayState.Minimized == value && !WinPattern.Current.CanMinimize);
         }
 
-        public virtual List<Tab> Tabs
-        {
-            get { return currentContainerItemFactory.FindAll<Tab>(); }
-        }
-
         public override void HookEvents(UIItemEventListener eventListener)
         {
             handler = delegate { };
-            Automation.AddAutomationEventHandler(AutomationElement.MenuOpenedEvent, automationElement, TreeScope.Descendants, handler);
+            Automation.AddAutomationEventHandler(AutomationElement.MenuOpenedEvent, automationElement,
+                                                 TreeScope.Descendants, handler);
         }
 
         public override void UnHookEvents()
@@ -341,7 +296,8 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// <returns></returns>
         public virtual Window MessageBox(string title)
         {
-            Window window = factory.ModalWindow(title, InitializeOption.NoCache, windowSession.ModalWindowSession(InitializeOption.NoCache));
+            Window window = factory.ModalWindow(title, InitializeOption.NoCache,
+                                                windowSession.ModalWindowSession(InitializeOption.NoCache));
             window.actionListener = this;
             return window;
         }
@@ -365,20 +321,6 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual bool IsModal
         {
             get { return WinPattern.Current.IsModal; }
-        }
-
-        /// <summary>
-        /// Find all the UIItems which belongs to a window and are within (bounds of) another UIItem.
-        /// </summary>
-        /// <param name="containingItem">Containing item</param>
-        /// <returns>List of all the items.</returns>
-        public virtual List<UIItem> ItemsWithin(UIItem containingItem)
-        {
-            UIItemCollection itemsWithin = factory.ItemsWithin(containingItem.Bounds, this);
-            var items = new List<UIItem>();
-            foreach (var item in itemsWithin)
-                if (!item.Equals(containingItem)) items.Add((UIItem) item);
-            return items;
         }
 
         //TODO: Position based find should understand MdiChild
@@ -408,11 +350,32 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             var modalWindows = new List<Window>();
             var finder = new AutomationElementFinder(automationElement);
-            AutomationElementCollection descendants = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Window));
+            AutomationElementCollection descendants =
+                finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Window));
             foreach (AutomationElement descendant in descendants)
                 modalWindows.Add(ChildWindowFactory.Create(descendant, InitializeOption.NoCache,
                                                            windowSession.ModalWindowSession(InitializeOption.NoCache)));
             return modalWindows;
+        }
+
+        public abstract PopUpMenu Popup { get; }
+
+        /// <summary>
+        /// This should be used after RightClick on a UIItem (which can be window as well).
+        /// </summary>
+        /// <param name="path">Path to the menu which need to be retrieved.
+        /// e.g. "Root" is one of the menus in the first level, "Level1" is inside "Root" menu and "Level2" is inside "Level1". So on.
+        /// "Root", etc are text of the menu visible to user.
+        /// </param>
+        /// <returns></returns>
+        public virtual Menu PopupMenu(params string[] path)
+        {
+            return Popup.Item(path);
+        }
+
+        public virtual bool HasPopup()
+        {
+            return Popup != null;
         }
 
         /// <summary>
@@ -424,8 +387,12 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             get
             {
-                AutomationElementCollection allElements = automationElement.FindAll(TreeScope.Descendants | TreeScope.Element, Condition.TrueCondition);
-                return allElements.Contains(element => element.Current.HasKeyboardFocus && !element.Current.ControlType.Equals(ControlType.Custom));
+                AutomationElementCollection allElements =
+                    automationElement.FindAll(TreeScope.Descendants | TreeScope.Element, Condition.TrueCondition);
+                return
+                    allElements.Contains(
+                        element =>
+                        element.Current.HasKeyboardFocus && !element.Current.ControlType.Equals(ControlType.Custom));
             }
         }
     }

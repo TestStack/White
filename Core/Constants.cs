@@ -2,14 +2,14 @@ using White.Core.Configuration;
 
 namespace White.Core
 {
-    public class Constants
+    public static class Constants
     {
-        public static readonly string WPFFrameworkId = "WPF";
-        public static readonly string WinFormFrameworkId = "WinForm";
-        public static readonly string Win32FrameworkId = "Win32";
-        public static readonly string MissingFrameworkId = "";
-        public static readonly string SWT = "SWT";
-        public static readonly string SilverlightFrameworkId = "Silverlight";
+        public const string WPFFrameworkId = "WPF";
+        public const string WinFormFrameworkId = "WinForm";
+        public const string Win32FrameworkId = "Win32";
+        public const string MissingFrameworkId = "";
+        public const string SWT = "SWT";
+        public const string SilverlightFrameworkId = "Silverlight";
 
         public static string BusyMessage
         {

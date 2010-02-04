@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using White.Core;
+using White.Core.Configuration;
 using White.Core.Logging;
 using White.Core.UIItems.ListBoxItems;
 using White.UnitTests.Core.Testing;
@@ -81,7 +82,15 @@ namespace White.UnitTests.Core.UIItems.ListBoxItems
         [Test]
         public void ListItemInComboBoxWithoutTextAvailableInitially()
         {
-            Assert.AreEqual("e", window.Get<ComboBox>("ExampleComboBox").SelectedItemText);
+            try
+            {
+                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+                Assert.AreEqual("e", window.Get<ComboBox>("ExampleComboBox").SelectedItemText);
+            }
+            finally
+            {
+                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
+            }
         }
     }
 

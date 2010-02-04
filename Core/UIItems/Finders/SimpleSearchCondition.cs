@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Automation;
 
 namespace White.Core.UIItems.Finders
@@ -10,7 +9,8 @@ namespace White.Core.UIItems.Finders
 
         public delegate object PropertyValue(AutomationElement.AutomationElementInformation information);
 
-        public SimpleSearchCondition(PropertyValue propertyValueDelegate, AutomationElementProperty automationElementProperty)
+        public SimpleSearchCondition(PropertyValue propertyValueDelegate,
+                                     AutomationElementProperty automationElementProperty)
         {
             this.propertyValueDelegate = propertyValueDelegate;
             this.automationElementProperty = automationElementProperty;
@@ -33,7 +33,8 @@ namespace White.Core.UIItems.Finders
 
         internal override string ToString(string operation)
         {
-            return string.Format("{0}{1}{2}", automationElementProperty.DisplayName, operation, automationElementProperty.DisplayValue);
+            return string.Format("{0}{1}{2}", automationElementProperty.DisplayName, operation,
+                                 automationElementProperty.DisplayValue);
         }
 
         protected internal override object SearchValue
@@ -46,11 +47,17 @@ namespace White.Core.UIItems.Finders
             return automationElementProperty.Value.Equals(ElementValue(element));
         }
 
+        public override bool OfSameType(SearchCondition otherCondition)
+        {
+            return base.OfSameType(otherCondition) &&
+                   automationElementProperty.Equals(((SimpleSearchCondition) otherCondition).automationElementProperty);
+        }
+
         public override string ToString()
         {
             return ToString("=");
         }
-        
+
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -61,8 +68,6 @@ namespace White.Core.UIItems.Finders
 
         private bool Equals(SimpleSearchCondition other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
             return Equals(other.automationElementProperty, automationElementProperty);
         }
 

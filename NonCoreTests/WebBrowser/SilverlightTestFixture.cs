@@ -1,6 +1,7 @@
 using NUnit.Framework;
+using White.WebBrowser;
 
-namespace White.WebBrowser.Silverlight
+namespace NonCoreTests.WebBrowser
 {
     public class SilverlightTestFixture
     {

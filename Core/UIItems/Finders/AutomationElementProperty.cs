@@ -37,8 +37,6 @@ namespace White.Core.UIItems.Finders
 
         private bool Equals(AutomationElementProperty other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
             return Equals(other.value, value) && Equals(other.propertyType, propertyType);
         }
 
@@ -46,7 +44,7 @@ namespace White.Core.UIItems.Finders
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (AutomationElementProperty)) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((AutomationElementProperty) obj);
         }
 

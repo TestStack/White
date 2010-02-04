@@ -17,6 +17,7 @@ namespace White.Core.UIItems.Actions
 
             waitCursors.Add(MouseCursor.DefaultAndWait);
             waitCursors.Add(MouseCursor.Wait);
+            waitCursors.Add(MouseCursor.SilverlightWait);
         }
 
         public virtual void Handle(Window window)

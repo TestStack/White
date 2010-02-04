@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
 
@@ -17,5 +16,10 @@ namespace White.Core.UIItems.Finders
         protected internal abstract object SearchValue { get; }
 
         public abstract bool AppliesTo(AutomationElement element);
+
+        public virtual bool OfSameType(SearchCondition otherCondition)
+        {
+            return otherCondition is IndexCondition;
+        }
     }
 }

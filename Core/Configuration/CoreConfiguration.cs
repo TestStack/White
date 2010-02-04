@@ -20,5 +20,6 @@ namespace White.Core.Configuration
         DateFormat DefaultDateFormat { get; set; }
         int DragStepCount { get; }
         bool InProc { get; set; }
+        bool ComboBoxItemsPopulatedWithoutDropDownOpen { get; set; }
     }
 }

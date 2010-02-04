@@ -6,7 +6,9 @@ namespace White.Core.UIItems.Finders
     {
         private readonly SearchCondition condition;
 
-        protected NotCondition() {}
+        protected NotCondition()
+        {
+        }
 
         public NotCondition(SearchCondition condition)
         {
@@ -41,6 +43,29 @@ namespace White.Core.UIItems.Finders
         public override bool AppliesTo(AutomationElement element)
         {
             return !condition.AppliesTo(element);
+        }
+
+        public override bool OfSameType(SearchCondition otherCondition)
+        {
+            return base.OfSameType(otherCondition) && condition.OfSameType(((NotCondition) otherCondition).condition);
+        }
+
+        private bool Equals(NotCondition other)
+        {
+            return Equals(other.condition, condition);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (NotCondition)) return false;
+            return Equals((NotCondition) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (condition != null ? condition.GetHashCode() : 0);
         }
     }
 }

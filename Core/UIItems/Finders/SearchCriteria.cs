@@ -31,7 +31,9 @@ namespace White.Core.UIItems.Finders
             indexCondition = searchCondition;
         }
 
-        private SearchCriteria() {}
+        private SearchCriteria()
+        {
+        }
 
         public static SearchCriteria All
         {
@@ -147,6 +149,12 @@ namespace White.Core.UIItems.Finders
             return this;
         }
 
+        public virtual SearchCriteria AndControlType(ControlType controlType)
+        {
+            conditions.Insert(0, SearchConditionFactory.CreateForControlType(controlType));
+            return this;
+        }
+
         public virtual SearchCriteria AndAutomationId(string id)
         {
             conditions.Insert(0, SearchConditionFactory.CreateForAutomationId(id));
@@ -208,8 +216,21 @@ namespace White.Core.UIItems.Finders
 
         internal static SearchCriteria ForMenuBar(WindowsFramework framework)
         {
-            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof(MenuBar), framework.ToString()));
+            var searchCriteria =
+                new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof (MenuBar), framework.ToString()));
             return searchCriteria.NotIdentifiedByText("System Menu Bar");
+        }
+
+        public virtual SearchCriteria Merge(SearchCriteria other)
+        {
+            foreach (var searchCondition in other.conditions)
+            {
+                if (!conditions.Contains(condition => condition.OfSameType(searchCondition)))
+                {
+                    conditions.Add(searchCondition);
+                }
+            }
+            return this;
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.Logging;
 using White.Core.Recording;
 using White.Core.UIItemEvents;
@@ -43,6 +44,7 @@ namespace White.Core.UIItems.ListBoxItems
                 WhiteLogger.Instance.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
                 return;
             }
+            if (Equals(itemText, SelectedItemText)) return;
             ToggleDropDown();
             base.Select(itemText);
         }
@@ -60,6 +62,8 @@ namespace White.Core.UIItems.ListBoxItems
 
         protected virtual void MakeActionReady()
         {
+            if (CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
+
             ToggleDropDown();
             ToggleDropDown();
         }
@@ -92,7 +96,7 @@ namespace White.Core.UIItems.ListBoxItems
         private bool SameListItem()
         {
             if (lastSelectedItem == null && SelectedItem != null) return false;
-            return SelectedItemText.Equals(lastSelectedItem.Text);
+            return Equals(SelectedItemText, lastSelectedItem == null ? null : lastSelectedItem.Text);
         }
     }
 }
