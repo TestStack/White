@@ -70,16 +70,14 @@
     <Compile Include="Automation\CustomCommand.cs" />
     <Compile Include="Automation\ICustomCommand.cs" />
     <Compile Include="Automation\WhitePeer.cs" />
-    <Compile Include="Configuration\CustomControlsAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\CustomControlsConfiguration.cs" />
     <Compile Include="Automation\CustomCommandDeserializer.cs" />
     <Compile Include="Automation\ICustomCommandDeserializer.cs" />
-    <Compile Include="Automation\PeerRepositoryAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Configuration\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
