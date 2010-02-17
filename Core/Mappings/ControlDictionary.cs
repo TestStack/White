@@ -23,10 +23,7 @@ namespace White.Core.Mappings
 
         private ControlDictionary()
         {
-            items.AddWin32Primary(typeof (TextBox), ControlType.Edit);
-            items.AddWPFPrimary(typeof (TextBox), ControlType.Edit);
-            items.AddSilverlightPrimary(typeof (TextBox), ControlType.Edit);
-            items.AddWinFormPrimary(typeof (WinFormTextBox), ControlType.Edit);
+            items.AddFrameworkSpecificPrimary(ControlType.Edit, typeof(TextBox), typeof(WinFormTextBox), typeof(TextBox), typeof(TextBox));
 
             items.AddWinFormPrimary(typeof (WinFormSlider), ControlType.Slider);
             items.AddWPFPrimary(typeof (WPFSlider), ControlType.Slider);
@@ -44,10 +41,12 @@ namespace White.Core.Mappings
             items.AddPrimary(typeof (Tab), ControlType.Tab, true);
             items.AddPrimary(typeof (ListView), ControlType.DataGrid);
             items.AddPrimary(typeof (ToolStrip), ControlType.ToolBar);
+
             items.AddWin32Primary(typeof (MenuBar), ControlType.MenuBar);
             items.AddWinFormPrimary(typeof (MenuBar), ControlType.MenuBar);
             items.AddWPFPrimary(typeof (MenuBar), ControlType.Menu);
             items.AddSilverlightPrimary(typeof(MenuBar), ControlType.Menu);
+            
             items.AddPrimary(typeof (ProgressBar), ControlType.ProgressBar);
             items.AddPrimary(typeof (Spinner), ControlType.Spinner);
 
@@ -57,20 +56,10 @@ namespace White.Core.Mappings
             dictionaryItem.IsIdentifiedByName = true;
             items.Add(dictionaryItem);
 
-            items.AddWinFormPrimary(typeof (Label), ControlType.Text);
-            items.AddWin32Primary(typeof (Label), ControlType.Text);
-            items.AddWPFPrimary(typeof (WPFLabel), ControlType.Text);
-            items.AddSilverlightPrimary(typeof (WPFLabel), ControlType.Text);
+            items.AddFrameworkSpecificPrimary(ControlType.Text, typeof(Label), typeof(Label), typeof(WPFLabel), typeof(WPFLabel));
+            items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox), typeof(WPFComboBox));
+            items.AddFrameworkSpecificPrimary(ControlType.StatusBar, typeof(StatusStrip), typeof(StatusStrip), typeof(WPFStatusBar), typeof(WPFStatusBar));
 
-            items.AddWin32Primary(typeof (Win32ComboBox), ControlType.ComboBox);
-            items.AddWinFormPrimary(typeof (WinFormComboBox), ControlType.ComboBox);
-            items.AddWPFPrimary(typeof (WPFComboBox), ControlType.ComboBox);
-            items.AddSilverlightPrimary(typeof (WPFComboBox), ControlType.ComboBox);
-
-            items.AddWin32Primary(typeof (StatusStrip), ControlType.StatusBar);
-            items.AddWinFormPrimary(typeof (StatusStrip), ControlType.StatusBar);
-            items.AddWPFPrimary(typeof (WPFStatusBar), ControlType.StatusBar);
-            items.AddSilverlightPrimary(typeof (WPFStatusBar), ControlType.StatusBar);
             items.AddWPFPrimary(typeof (Image), ControlType.Image);
             items.AddSilverlightPrimary(typeof (Image), ControlType.Image);
             items.AddWin32Primary(typeof (Image), ControlType.Image);

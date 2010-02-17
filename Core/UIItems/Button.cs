@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Automation;
 using White.Core.Recording;
 using White.Core.UIItems.Actions;

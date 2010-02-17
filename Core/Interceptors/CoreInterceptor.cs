@@ -19,6 +19,7 @@ namespace White.Core.Interceptors
 
         public virtual void Intercept(IInvocation invocation)
         {
+            coreInterceptContext.VerifyUIItem();
             try
             {
                 CoreAppXmlConfiguration.Instance.Interceptors.Process(invocation, coreInterceptContext);

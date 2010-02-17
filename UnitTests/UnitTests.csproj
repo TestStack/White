@@ -14,7 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <StartupObject>
     </StartupObject>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -55,6 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="Rhino.Mocks, Version=3.1.0.707, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\Rhino.Mocks.dll</HintPath>
@@ -85,6 +88,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Core\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="Core\ApplicationTest.cs" />
     <Compile Include="Core\AutomationElementSearch\AutomationSearchConditionFactoryTest.cs" />
     <Compile Include="Core\AutomationElementSearch\RawAutomationElementFinderTest.cs" />
@@ -94,6 +100,8 @@
     <Compile Include="Core\ControlsActionTest.cs" />
     <Compile Include="Core\CoreProjectTest.cs" />
     <Compile Include="Core\CTest.cs" />
+    <Compile Include="Core\CustomCommands\CustomButtonCommandTest.cs" />
+    <Compile Include="Core\CustomCommands\CustomCommandSerializerTest.cs" />
     <Compile Include="Core\CustomUIItemTest.cs" />
     <Compile Include="Core\DesktopTest.cs" />
     <Compile Include="Core\Drawing\DrawingPointXTest.cs" />
@@ -208,27 +216,28 @@
     <Compile Include="Core\WindowWithoutTitleBarTest.cs" />
     <Compile Include="Core\WPFModalWindowTest.cs" />
     <Compile Include="TestProgram.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomCommands.WPF\CustomCommands.WPF.csproj">
+      <Project>{C5589F07-067E-408D-8B95-5C3CE132843E}</Project>
+      <Name>CustomCommands.WPF</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="white.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

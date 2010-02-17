@@ -55,12 +55,12 @@ namespace Repository
 
         public virtual void Populate(FieldMap fieldMap, Entity entity)
         {
-            List<string> fieldsWithNoValueOnEntity = new List<string>();
+            var fieldsWithNoValueOnEntity = new List<string>();
 
-            Class @class = new Class(GetType());
+            var @class = new Class(GetType());
             @class.EachField(delegate(FieldInfo fieldInfo)
                                  {
-                                     UIItem uiItem = fieldInfo.GetValue(this) as UIItem;
+                                     var uiItem = fieldInfo.GetValue(this) as UIItem;
                                      if (uiItem == null || !ControlDictionary.Instance.IsEditable(uiItem)) return;
 
                                      string fieldName = fieldMap.GetFieldNameFor(fieldInfo.Name, fieldInfo.FieldType);

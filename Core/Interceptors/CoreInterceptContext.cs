@@ -1,3 +1,4 @@
+using System;
 using Bricks.DynamicProxy;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
@@ -28,6 +29,11 @@ namespace White.Core.Interceptors
         public virtual object Target
         {
             get { return uiItem; }
+        }
+
+        public virtual void VerifyUIItem()
+        {
+            if (uiItem.AutomationElement == null) throw new NullReferenceException("AutomationElement in this UIItem is null");
         }
     }
 }

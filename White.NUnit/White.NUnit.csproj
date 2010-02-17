@@ -15,6 +15,8 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +54,9 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="Verify.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

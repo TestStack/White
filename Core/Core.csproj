@@ -85,6 +85,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -117,6 +120,10 @@
     <Compile Include="Configuration\UIItemIdConfiguration.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CoreTestTemplate.cs" />
+    <Compile Include="CustomCommands\CustomCommandException.cs" />
+    <Compile Include="CustomCommands\CustomCommandFactory.cs" />
+    <Compile Include="CustomCommands\CustomCommandInterceptor.cs" />
+    <Compile Include="CustomCommands\CustomCommandSerializer.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Desktop.cs" />
     <Compile Include="Drawing\DrawingPointX.cs" />
@@ -182,6 +189,7 @@
     <Compile Include="UIItems\Panel.cs" />
     <Compile Include="UIItems\Scrolling\ComboBoxScrollBars.cs" />
     <Compile Include="UIItems\Scrolling\WinFormScrollBars.cs" />
+    <Compile Include="UIItems\WPFButton.cs" />
     <Compile Include="UIItems\WPFUIItems\WPFUIItem.cs" />
     <Compile Include="WindowsAPI\WindowPlacement.cs" />
     <Compile Include="InputDevices\WindowsConstants.cs" />

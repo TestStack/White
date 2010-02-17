@@ -1,7 +1,10 @@
 using System;
 using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Automation;
+using Bricks;
+using White.Core.CustomCommands;
 using White.Core.UIA;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
@@ -14,6 +17,7 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
 using White.Core.WindowsAPI;
 using Action=White.Core.UIItems.Actions.Action;
+using CoreAppXmlConfiguration=White.Core.Configuration.CoreAppXmlConfiguration;
 using Point=System.Windows.Point;
 using Window=White.Core.UIItems.WindowItems.Window;
 
@@ -360,6 +364,14 @@ namespace White.Core.UIItems
         internal virtual UIItemContainer AsContainer()
         {
             return new UIItemContainer(automationElement, actionListener);
+        }
+
+        protected object Do(string assemblyFile, string typeName, string method, object[] arguments)
+        {
+            var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+            if (valuePattern == null) throw new CustomCommandException(string.Format("{0} does not implement ValuePattern", automationElement.Display()));
+            valuePattern.SetValue(CustomCommandSerializer.ToString(assemblyFile, typeName, method, arguments));
+            return CustomCommandSerializer.ToObject(valuePattern.Current.Value);
         }
     }
 }

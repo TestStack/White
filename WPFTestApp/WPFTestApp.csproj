@@ -31,6 +31,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -75,10 +77,6 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="WPFVisifire.Charts, Version=2.2.4.0, Culture=neutral, PublicKeyToken=99d724542e4db593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\WPFVisifire.Charts.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -89,7 +87,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ControlsWithoutUIASupport.xaml">
+    <Page Include="CustomWhiteControlsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -131,11 +129,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Core\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="ComboBoxWithObjectWindow.xaml.cs">
       <DependentUpon>ComboBoxWithObjectWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ControlsWithoutUIASupport.xaml.cs">
-      <DependentUpon>ControlsWithoutUIASupport.xaml</DependentUpon>
+    <Compile Include="CustomWhiteControlsWindow.xaml.cs">
+      <DependentUpon>CustomWhiteControlsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TristateControlWindow.xaml.cs">
       <DependentUpon>TristateControlWindow.xaml</DependentUpon>
@@ -150,7 +151,6 @@
       <SubType>Code</SubType>
       <DependentUpon>ModalWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -161,6 +161,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="white.snk" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -214,9 +215,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WPFCustomControls\White.WPFCustomControls.csproj">
+    <ProjectReference Include="..\CustomControls.WPF\CustomControls.WPF.csproj">
+      <Project>{5F2861DE-7DB6-4FB2-BB45-4175F1C2E511}</Project>
+      <Name>CustomControls.WPF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControls\CustomControls.csproj">
       <Project>{8513D286-87D2-459D-A713-2E583FB797F8}</Project>
-      <Name>White.WPFCustomControls</Name>
+      <Name>CustomControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

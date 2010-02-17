@@ -32,12 +32,12 @@ namespace Repository
                                      object injectedObject = null;
                                      if (typeof (IUIItem).IsAssignableFrom(fieldInfo.FieldType))
                                      {
-                                         UIItemInterceptor interceptor = new UIItemInterceptor(SearchCondition(fieldInfo), window, screenRepository.SessionReport);
+                                         var interceptor = new UIItemInterceptor(SearchCondition(fieldInfo), window, screenRepository.SessionReport);
                                          injectedObject = DynamicProxyGenerator.Instance.CreateProxy(interceptor, fieldInfo.FieldType);
                                      }
                                      else if (typeof (AppScreenComponent).IsAssignableFrom(fieldInfo.FieldType))
                                      {
-                                         ScreenClass componentScreenClass = new ScreenClass(new Class(fieldInfo.FieldType));
+                                         var componentScreenClass = new ScreenClass(new Class(fieldInfo.FieldType));
                                          injectedObject = componentScreenClass.New(window, screenRepository);
                                      }
 

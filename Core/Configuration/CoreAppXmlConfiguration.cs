@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Bricks;
@@ -116,7 +117,7 @@ namespace White.Core.Configuration
             set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().InProc), value); }
         }
 
-        public bool ComboBoxItemsPopulatedWithoutDropDownOpen
+        public virtual bool ComboBoxItemsPopulatedWithoutDropDownOpen
         {
             get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen)]); }
             set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen), value); }

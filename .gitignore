@@ -11,3 +11,6 @@ tools/nant/WhiteCustomTasks/*.pdb
 *.xap
 Release/*
 build/*
+*/white.snk
+*/*/white.snk
+*/*/*/white.snk

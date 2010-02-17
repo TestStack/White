@@ -1,14 +1,12 @@
 <?xml version="1.0" ?>
 <!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension-->
 <project name="White" default="test">
-  <property name="release.major.version" value="1"/>
-  <property name="release.minor.version" value="9"/>
   <include buildfile="macrodefs.build"/>
   
   <property name="build.output.dir" value="build"/>
   <property name="release.dir" value="Release"/>
   
-  <loadtasks assembly="Tools\Nant\WhiteCustomTasks\Bricks.Nant.dll"/>
+  <loadtasks assembly="tools\nant\WhiteCustomTasks\Bricks.NAnt.dll"/>
   <loadtasks assembly="tools\nant\lib\nantcontrib\bin\NAnt.Contrib.Tasks.dll"/>
   <loadtasks assembly="nantbuild\bin\debug\White.NantBuild.dll" failonerror="false"/>
 
@@ -45,8 +43,8 @@
     <copy file="Core\AssemblyInfo.cs.template" tofile="Core\AssemblyInfo.cs" overwrite="true" >
       <filterchain>
         <replacetokens>
-          <token key="major" value="${release.major.version}"/>
-          <token key="minor" value="${release.minor.version}"/>
+          <token key="major" value="${major.version}"/>
+          <token key="minor" value="${minor.version}"/>
         </replacetokens>
       </filterchain>
     </copy>
@@ -81,7 +79,7 @@
     <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
   </target>
 
-  <target name="dist" depends="compile, doc, dist.source, dist.binary"/>
+  <target name="dist" depends="-copy.assembly.info, compile, doc, dist.source, dist.binary"/>
 
   <target name="dist.source" depends="compile, dist.source.only"/>
   <target name="dist.source.only">

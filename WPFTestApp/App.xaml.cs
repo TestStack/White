@@ -18,10 +18,10 @@ namespace WindowsPresentationFramework
                                         "HorizontalGridSplitter",
                                         "VerticalGridSplitter",
                                         "ComboBoxWithObjectWindow",
-                                        "ControlsWithoutUIASupport",
                                         "TreeViewItemWithoutHeader",
                                         "TreeViewItemWithoutHeader",
-                                        "TristateControlWindow"
+                                        "TristateControlWindow",
+                                        "CustomWhiteControlsWindow"
                                     };
         }
 

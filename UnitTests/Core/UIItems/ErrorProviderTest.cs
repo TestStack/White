@@ -1,8 +1,10 @@
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems
+namespace White.UnitTests.Core.UIItems
 {
     [TestFixture, WinFormCategory]
     public class ErrorProviderTest : ControlsActionTest
