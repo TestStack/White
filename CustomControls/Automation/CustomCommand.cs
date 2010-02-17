@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace White.WPFCustomControls.Automation
+namespace White.CustomControls.Automation
 {
     public class CustomCommand : ICustomCommand
     {
@@ -11,7 +11,7 @@ namespace White.WPFCustomControls.Automation
             this.commandList = commandList;
         }
 
-        public string AssemblyFile
+        public virtual string AssemblyFile
         {
             get { return (string) commandList[0]; }
         }

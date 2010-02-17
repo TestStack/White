@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 
-namespace White.WPFCustomControls.Automation
+namespace White.CustomControls.Automation
 {
     public class WhitePeer
     {

@@ -7,7 +7,7 @@
     <ProjectGuid>{67FDDCB4-FABC-4273-B8DD-25EA930D0ADF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Recorder</RootNamespace>
+    <RootNamespace>White.Recorder</RootNamespace>
     <AssemblyName>White.Recorder</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>

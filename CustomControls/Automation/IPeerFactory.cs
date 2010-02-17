@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Automation.Peers;
 
-namespace White.WPFCustomControls.Automation
+namespace White.CustomControls.Automation
 {
     public interface IPeerFactory
     {

@@ -1,15 +1,18 @@
 using System.Windows.Automation;
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems;
 using White.Core.UIItems.Finders;
+using White.Core.UIItems.WindowItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems.WindowItems
+namespace White.UnitTests.Core.UIItems.WindowItems
 {
     [TestFixture, NormalCategory]
     public class UIItemContainerScenarioTest
     {
         //TODO: Create an MDI application for testing.
-        [Test]
+        [Test, Ignore]
         public void FindContainer()
         {
             Window window = Desktop.Instance.Windows().Find(obj => obj.Title.Contains("Microsoft Visual Studio"));

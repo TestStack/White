@@ -1,4 +1,5 @@
 using System.Windows.Automation;
+using NonCoreTests.WebBrowser;
 using NUnit.Framework;
 using White.Core;
 using White.Core.InputDevices;
@@ -9,7 +10,7 @@ using White.Core.UIItems.ListBoxItems;
 using White.WebBrowser.Silverlight;
 using White.Core.UIA;
 
-namespace NonCoreTests.WebBrowser.Silverlight
+namespace White.NonCoreTests.WebBrowser.Silverlight
 {
     [TestFixture]
     public class SilverlightDocumentTest : SilverlightTestFixture

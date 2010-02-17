@@ -54,7 +54,7 @@ namespace White.Core.InputDevices
             ActionPerformed();
         }
 
-        public void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
+        public virtual void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
         {
             mouse.DragAndDrop(draggedItem, startPosition, dropItem, endPosition);
             ActionPerformed();

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace White.WPFCustomControls.Configuration
+namespace White.CustomControls.Configuration
 {
     public class CustomControlsAppXmlConfiguration : CustomControlsConfiguration
     {

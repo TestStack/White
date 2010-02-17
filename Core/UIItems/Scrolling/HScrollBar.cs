@@ -30,7 +30,7 @@ namespace White.Core.UIItems.Scrolling
             ForwardLargeChangeButton.PerformClick();
         }
 
-        public bool IsScrollable
+        public virtual bool IsScrollable
         {
             get { return BackSmallChangeButton != null; }
         }

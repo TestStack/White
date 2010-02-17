@@ -32,7 +32,7 @@ namespace White.Core.UIItems.TableItems
             ;
         }
 
-        public bool IsScrollable
+        public virtual bool IsScrollable
         {
             get { return false; }
         }

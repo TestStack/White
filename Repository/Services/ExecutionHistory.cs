@@ -61,7 +61,7 @@ namespace Repository.Services
             }
         }
 
-        public ServiceCalls ServiceCalls
+        public virtual ServiceCalls ServiceCalls
         {
             get { return serviceCalls; }
         }

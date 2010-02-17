@@ -56,7 +56,7 @@ namespace White.Core.Mappings
             return Find(controlDictionaryItem => testControlType.IsAssignableFrom(controlDictionaryItem.TestControlType) && (frameworkId == null || Equals(controlDictionaryItem.FrameworkId, frameworkId)));
         }
 
-        public void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType, Type silverlightType)
+        public virtual void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType, Type silverlightType)
         {
             AddWin32Primary(win32Type, controlType);
             AddWinFormPrimary(winformType, controlType);

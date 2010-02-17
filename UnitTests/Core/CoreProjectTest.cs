@@ -11,7 +11,7 @@ namespace White.UnitTests.Core
         [Test]
         public void AllMethodsAreVirtual()
         {
-            AssemblyTest.AllMethodsVirtual(Assembly.GetExecutingAssembly());
+            AssemblyTest.AllMethodsVirtual(typeof(UIItem).Assembly);
         }
 
         [Test]

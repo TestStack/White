@@ -23,7 +23,7 @@ namespace White.Core.CustomCommands
             this.uiItem = uiItem;
         }
 
-        public void Intercept(IInvocation invocation)
+        public virtual void Intercept(IInvocation invocation)
         {
             if (uiItem.AutomationElement == null) throw new NullReferenceException("AutomationElement in this UIItem is null");
             Type type = invocation.Method.DeclaringType;

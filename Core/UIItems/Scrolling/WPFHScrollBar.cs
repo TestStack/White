@@ -59,7 +59,7 @@ namespace White.Core.UIItems.Scrolling
             Scroll(ScrollAmount.LargeIncrement);
         }
 
-        public bool IsScrollable
+        public virtual bool IsScrollable
         {
             get { return scrollPattern.Current.HorizontallyScrollable; }
         }

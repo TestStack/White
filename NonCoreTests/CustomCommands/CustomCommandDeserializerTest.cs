@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using White.Core.CustomCommands;
-using White.WPFCustomControls.Automation;
+using White.CustomControls.Automation;
 
 namespace White.NonCoreTests.CustomCommands
 {

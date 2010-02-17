@@ -7,12 +7,6 @@ namespace White.Core.UIA
     public class RectXTest
     {
         [Test]
-        public void TestName()
-        {
-            Assert.AreEqual(true, new Rect(7, 141, 1348, 732).Contains(new Rect(1285, 877, 28, 28)));
-        }
-
-        [Test]
         public void IsZero()
         {
             Assert.AreEqual(true, new Rect(0, 0, 0, 0).IsZeroSize());

@@ -89,15 +89,13 @@
     <Compile Include="NonCoreExperimentTest.cs" />
     <Compile Include="Recorder\CodeGeneration\DynamicScreenClassTest.cs" />
     <Compile Include="Recorder\CodeGeneration\ScreenClassFieldTest.cs" />
-    <Compile Include="Recorder\RecorderProjectTest.cs" />
     <Compile Include="Recorder\Recording\CoreCodeWriterTest.cs" />
     <Compile Include="Recorder\Recording\DuplicateEventFilterTest.cs" />
     <Compile Include="Recorder\SimpleControlRecorderTest.cs" />
-    <Compile Include="Reporting\ReportingProjectTest.cs" />
     <Compile Include="Repository\EntityMapping\EntitiesTest.cs" />
     <Compile Include="Repository\EntityMapping\EntityTest.cs" />
     <Compile Include="Repository\EntityMapping\NestedEntitiesTest.cs" />
-    <Compile Include="Repository\RepositoryProjectTest.cs" />
+    <Compile Include="Repository\NonCoreProjectsTest.cs" />
     <Compile Include="Repository\ScreenClassTest.cs" />
     <Compile Include="Repository\ScreenRepositoryTest.cs" />
     <Compile Include="Repository\ScreenRepositoryTester.cs" />
@@ -151,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Reporting\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

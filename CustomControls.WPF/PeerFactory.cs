@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using White.CustomControls.WPF.Peers;
-using White.WPFCustomControls.Automation;
+using White.CustomControls.Automation;
 
 namespace White.CustomControls.WPF
 {

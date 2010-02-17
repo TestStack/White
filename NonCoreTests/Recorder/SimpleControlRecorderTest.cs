@@ -10,9 +10,9 @@ using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
 using White.UnitTests.Core.Testing;
 
-namespace NonCoreTests.Recorder
+namespace White.NonCoreTests.Recorder
 {
-    [TestFixture]
+    [TestFixture, Ignore]
     public class SimpleControlRecorderTest : ControlsActionTest
     {
         private MultilineTextBox editor;

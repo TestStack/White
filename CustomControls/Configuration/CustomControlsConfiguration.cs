@@ -1,4 +1,4 @@
-namespace White.WPFCustomControls.Configuration
+namespace White.CustomControls.Configuration
 {
     public interface CustomControlsConfiguration
     {

@@ -26,7 +26,7 @@ namespace White.WebBrowser.Config
             }
         }
 
-        public int FirefoxSingleWindowCheckWait
+        public virtual int FirefoxSingleWindowCheckWait
         {
             get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<WebBrowserConfiguration>().FirefoxSingleWindowCheckWait)]); }
         }

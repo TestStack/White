@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
-using White.WPFCustomControls.Automation;
+using White.CustomControls.Automation;
 
 namespace White.NonCoreTests.CustomControls.Automation
 {

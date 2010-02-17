@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace White.WPFCustomControls.Automation
+namespace White.CustomControls.Automation
 {
     public class CustomCommandDeserializer : ICustomCommandDeserializer
     {

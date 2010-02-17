@@ -36,7 +36,7 @@ namespace Repository.Services
             set { returnValue = value; }
         }
 
-        public string[] ParameterTypes
+        public virtual string[] ParameterTypes
         {
             get { return parameterTypes; }
         }

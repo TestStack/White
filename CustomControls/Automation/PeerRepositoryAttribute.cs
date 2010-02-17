@@ -1,6 +1,6 @@
 using System;
 
-namespace White.WPFCustomControls.Automation
+namespace White.CustomControls.Automation
 {
     [AttributeUsage(AttributeTargets.Assembly)]
     public class PeerRepositoryAttribute : Attribute

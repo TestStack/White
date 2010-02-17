@@ -3,9 +3,9 @@ using NUnit.Framework;
 using White.Core.UIItems.Finders;
 using White.WebBrowser;
 
-namespace NonCoreTests
+namespace White.NonCoreTests
 {
-    [TestFixture]
+    [TestFixture, Ignore]
     public class NonCoreExperimentTest
     {
         [Test]

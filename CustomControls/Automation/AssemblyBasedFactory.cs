@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-namespace White.WPFCustomControls.Automation
+namespace White.CustomControls.Automation
 {
     public class AssemblyBasedFactory
     {

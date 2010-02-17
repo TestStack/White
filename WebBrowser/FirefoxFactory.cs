@@ -12,12 +12,12 @@ namespace White.WebBrowser
             WindowFactory.AddSpecializedWindowFactory(new FirefoxFactory());
         }
 
-        public bool DoesSpecializedThis(AutomationElement windowElement)
+        public virtual bool DoesSpecializedThis(AutomationElement windowElement)
         {
             return windowElement.Current.ClassName.Contains("MozillaUIWindowClass");
         }
 
-        public Window Create(AutomationElement automationElement, InitializeOption initializeOption, WindowSession session)
+        public virtual Window Create(AutomationElement automationElement, InitializeOption initializeOption, WindowSession session)
         {
             return new FirefoxWindow(automationElement, WindowFactory.Desktop, initializeOption, session);
         }

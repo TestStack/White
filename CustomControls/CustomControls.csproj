@@ -8,8 +8,8 @@
     <ProjectGuid>{8513D286-87D2-459D-A713-2E583FB797F8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.WPFCustomControls</RootNamespace>
-    <AssemblyName>White.WPFCustomControls</AssemblyName>
+    <RootNamespace>White.CustomControls</RootNamespace>
+    <AssemblyName>White.CustomControls</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
