@@ -1,6 +1,6 @@
 namespace White.CustomCommands.WPF
 {
-    public interface IWPFWhiteButton
+    public interface IButtonCommands
     {
         Thickness BorderThickness { get; }
     }

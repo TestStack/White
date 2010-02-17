@@ -5,11 +5,11 @@ using White.CustomControls.Automation;
 
 namespace White.CustomControls.WPF.Peers
 {
-    public class WhiteWPFButtonPeer : ButtonAutomationPeer, IValueProvider
+    public class WhiteButtonPeer : ButtonAutomationPeer, IValueProvider
     {
         private readonly WhitePeer whitePeer;
 
-        public WhiteWPFButtonPeer(Button button, ICustomCommandDeserializer customCommandDeserializer) : base(button)
+        public WhiteButtonPeer(Button button, ICustomCommandDeserializer customCommandDeserializer) : base(button)
         {
             whitePeer = new WhitePeer(this, button, customCommandDeserializer);
         }

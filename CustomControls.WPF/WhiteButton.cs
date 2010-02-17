@@ -9,7 +9,7 @@ namespace White.CustomControls.WPF
     {
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new WhiteWPFButtonPeer(this, new CustomCommandDeserializer());
+            return new WhiteButtonPeer(this, new CustomCommandDeserializer());
         }
     }
 }

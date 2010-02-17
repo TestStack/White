@@ -74,7 +74,6 @@
     <Compile Include="Configuration\CustomControlsConfiguration.cs" />
     <Compile Include="Automation\CustomCommandDeserializer.cs" />
     <Compile Include="Automation\ICustomCommandDeserializer.cs" />
-    <Compile Include="Automation\IPeerFactory.cs" />
     <Compile Include="Automation\PeerRepositoryAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

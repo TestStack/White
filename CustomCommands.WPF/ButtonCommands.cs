@@ -2,11 +2,11 @@ using System.Windows.Controls;
 
 namespace White.CustomCommands.WPF
 {
-    public class WPFWhiteButton : IWPFWhiteButton
+    public class ButtonCommands : IButtonCommands
     {
         private readonly Button button;
 
-        public WPFWhiteButton(Button button)
+        public ButtonCommands(Button button)
         {
             this.button = button;
         }

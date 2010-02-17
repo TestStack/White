@@ -59,9 +59,9 @@
     <Compile Include="..\Core\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="IWPFWhiteButton.cs" />
+    <Compile Include="IButtonCommands.cs" />
     <Compile Include="Thickness.cs" />
-    <Compile Include="WPFWhiteButton.cs" />
+    <Compile Include="ButtonCommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />

@@ -18,7 +18,7 @@ namespace White.UnitTests.Core.CustomCommands
         public void GetBorderThickness()
         {
             var button = window.Get<Button>("button");
-            var wpfWhiteButton = new CustomCommandFactory().Create<IWPFWhiteButton>(button);
+            var wpfWhiteButton = new CustomCommandFactory().Create<IButtonCommands>(button);
             Thickness thickness = wpfWhiteButton.BorderThickness;
             Assert.AreNotEqual(0, thickness.Bottom);
         }
