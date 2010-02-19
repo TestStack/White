@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems;
 using White.Core.UIItems.Finders;
+using White.Core.UIItems.WindowItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems.WindowItems
+namespace White.UnitTests.Core.UIItems.WindowItems
 {
-    //TODO WinForm exception, should this be propogated as exception
-    //TODO Screenshot thingy should be available for core as well
     [TestFixture]
     public class WindowTest : ControlsActionTest
     {

@@ -62,7 +62,7 @@ namespace White.Core.Factory
             Clock.Do @do = delegate
                                {
                                    var windowElements = new BricksCollection<AutomationElement>();
-                                   FindChildWindowElements(finder, process, windowElements);
+                                   FindDescendantWindowElements(finder, process, windowElements);
                                    if (windowElements.Count == 0) WhiteLogger.Instance.Warn("Could not find any windows for this application.");
                                    return windowElements;
                                };
@@ -72,13 +72,13 @@ namespace White.Core.Factory
             return (BricksCollection<AutomationElement>) clock.Perform(@do, matched, expired);
         }
 
-        private void FindChildWindowElements(AutomationElementFinder windowFinder, Process process, BricksCollection<AutomationElement> windowElements)
+        private void FindDescendantWindowElements(AutomationElementFinder windowFinder, Process process, BricksCollection<AutomationElement> windowElements)
         {
             AutomationElementCollection children =
                 windowFinder.Children(AutomationSearchCondition.ByControlType(ControlType.Window).WithProcessId(process.Id));
             windowElements.AddRange(children);
             foreach (AutomationElement automationElement in children)
-                FindChildWindowElements(new AutomationElementFinder(automationElement), process, windowElements);
+                FindDescendantWindowElements(new AutomationElementFinder(automationElement), process, windowElements);
         }
 
         public virtual Window SplashWindow(Process process)
@@ -122,6 +122,7 @@ namespace White.Core.Factory
 
                                          AutomationElement titleBarElement =
                                              new AutomationElementFinder(obj).Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
+                                         if (titleBarElement == null) return false;
                                          return match.Invoke(titleBarElement.Current.Name);
                                      });
         }
