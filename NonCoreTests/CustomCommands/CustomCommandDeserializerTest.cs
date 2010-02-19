@@ -15,9 +15,6 @@ namespace White.NonCoreTests.CustomCommands
             Assert.AreEqual("White.NonCoreTests.CustomCommands.dll", customCommand.AssemblyFile);
             Assert.AreEqual("IBazCommand", customCommand.TypeName);
             Assert.AreEqual("Foo", customCommand.MethodName);
-            Assert.AreEqual(2, customCommand.Arguments.Length);
-            Assert.AreEqual("bar", customCommand.Arguments[0]);
-            Assert.AreEqual(1, customCommand.Arguments[1]);
         }
     }
 }

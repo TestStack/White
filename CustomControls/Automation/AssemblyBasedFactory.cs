@@ -22,28 +22,16 @@ namespace White.CustomControls.Automation
                 if (!File.Exists(fullName))
                     throw new ConfigurationErrorsException(string.Format("Could not find custom peers assembly. Searched for {0} at {1}", fileName,
                                                                          Environment.CurrentDirectory));
-                loadedAssemblies[fullName] = Assembly.LoadFile(fullName);
+                loadedAssemblies[fullName] = Assembly.Load(File.ReadAllBytes(fullName));
             }
             assembly = loadedAssemblies[fullName];
         }
-
-//
-//        public virtual object CreateBasedOn(Type attributeType)
-//        {
-//            object[] peerRepositoryAttributes = assembly.GetCustomAttributes(attributeType, false);
-//            if (peerRepositoryAttributes.Length == 0)
-//                throw new ConfigurationErrorsException(string.Format("No PeerRepositoryAttribute defined in {0}", assembly.FullName));
-//
-//            var peerRepositoryAttribute = (PeerRepositoryAttribute) peerRepositoryAttributes[0];
-//            Type type = peerRepositoryAttribute.PeerFactory;
-//            return Create(type);
-//        }
 
         public virtual object Create(string typeName, params object[] arguments)
         {
             try
             {
-                Type type = assembly.GetType(typeName);
+                Type type = GetType(typeName);
                 ConstructorInfo[] constructors = type.GetConstructors();
                 ConstructorInfo constructorInfo = constructors.FirstOrDefault(info => info.GetParameters().Length == arguments.Length);
                 return constructorInfo.Invoke(arguments);
@@ -52,6 +40,11 @@ namespace White.CustomControls.Automation
             {
                 throw new ArgumentException(string.Format("Could not matching constructor, {0}", GetTypeNames(arguments)), argumentException);
             }
+        }
+
+        public virtual Type GetType(string typeName)
+        {
+            return assembly.GetType(typeName);
         }
 
         private static string GetTypeNames(object[] arguments)

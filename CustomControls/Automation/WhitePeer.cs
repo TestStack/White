@@ -14,11 +14,11 @@ namespace White.CustomControls.Automation
         private readonly ICustomCommandDeserializer customCommandDeserializer;
         private object value;
 
-        public WhitePeer(AutomationPeer automationPeer, Control control, ICustomCommandDeserializer customCommandDeserializer)
+        public WhitePeer(AutomationPeer automationPeer, Control control)
         {
             this.automationPeer = automationPeer;
             this.control = control;
-            this.customCommandDeserializer = customCommandDeserializer;
+            customCommandDeserializer = new CustomCommandDeserializer();
         }
 
         public virtual string Value
@@ -27,6 +27,7 @@ namespace White.CustomControls.Automation
             {
                 try
                 {
+                    if (value == null) return null;
                     return ToString(value);
                 }
                 catch (Exception e)
@@ -34,6 +35,11 @@ namespace White.CustomControls.Automation
                     return ToString(e);
                 }
             }
+        }
+
+        public virtual bool IsReadOnly
+        {
+            get { return false; }
         }
 
         private string ToString(object @object)
@@ -58,11 +64,12 @@ namespace White.CustomControls.Automation
         {
             try
             {
+                value = null;
                 ICustomCommand customCommand = customCommandDeserializer.GetCommand(commandString);
                 var factory = new AssemblyBasedFactory(customCommand.AssemblyFile);
                 object commandImpl = factory.Create(customCommand.GetImplementedTypeName(), control);
                 MethodInfo methodInfo = commandImpl.GetType().GetMethod(customCommand.MethodName);
-                value = methodInfo.Invoke(commandImpl, customCommand.Arguments);
+                value = methodInfo.Invoke(commandImpl, customCommand.GetArguments(factory));
             }
             catch (Exception e)
             {

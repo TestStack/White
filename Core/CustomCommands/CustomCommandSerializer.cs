@@ -8,8 +8,11 @@ namespace White.Core.CustomCommands
     {
         public static string ToString(string assemblyFile, string typeName, string methodName, object[] @arguments)
         {
-            var list = new List<object> { assemblyFile, typeName, methodName, @arguments };
-            return Convert.ToBase64String(BricksBinaryFormatter.ToByteArray(list));
+            var list = new List<object> { typeName, methodName, @arguments };
+            byte[] payloadBytes = BricksBinaryFormatter.ToByteArray(list);
+            var request = new object[] {assemblyFile, payloadBytes};
+            byte[] requestBytes = BricksBinaryFormatter.ToByteArray(request);
+            return Convert.ToBase64String(requestBytes);
         }
 
         public static object ToObject(string @string)

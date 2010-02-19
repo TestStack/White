@@ -7,13 +7,19 @@ namespace White.CustomControls.Automation
 {
     public class CustomCommandDeserializer : ICustomCommandDeserializer
     {
-        public virtual ICustomCommand GetCommand(string s)
+        public virtual ICustomCommand GetCommand(string requestString)
         {
-            byte[] bytes = Convert.FromBase64String(s);
+            byte[] requestBytes = Convert.FromBase64String(requestString);
+            var request = (object[]) Deserialize(requestBytes);
+            var assemblyFile = (string) request[0];
+            return new CustomCommand(assemblyFile, (List<object>) Deserialize((byte[]) request[1]));
+        }
+
+        private static object Deserialize(byte[] bytes)
+        {
             using (var stream = new MemoryStream(bytes))
             {
-                var dictionary = new BinaryFormatter().Deserialize(stream);
-                return new CustomCommand((List<object>) dictionary);
+                return new BinaryFormatter().Deserialize(stream);
             }
         }
     }

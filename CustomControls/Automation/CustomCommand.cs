@@ -1,34 +1,52 @@
+using System;
 using System.Collections.Generic;
 
 namespace White.CustomControls.Automation
 {
     public class CustomCommand : ICustomCommand
     {
+        private readonly string assemblyFile;
         private readonly List<object> commandList;
 
-        public CustomCommand(List<object> commandList)
+        public CustomCommand(string assemblyFile, List<object> payload)
         {
-            this.commandList = commandList;
+            this.assemblyFile = assemblyFile;
+            commandList = payload;
         }
 
         public virtual string AssemblyFile
         {
-            get { return (string) commandList[0]; }
+            get { return assemblyFile; }
         }
 
         public virtual string TypeName
         {
-            get { return (string) commandList[1]; }
+            get { return (string) commandList[0]; }
         }
 
         public virtual string MethodName
         {
-            get { return (string) commandList[2]; }
+            get { return (string) commandList[1]; }
         }
 
-        public virtual object[] Arguments
+        public virtual object[] GetArguments(AssemblyBasedFactory factory)
         {
-            get { return (object[]) commandList[3]; }
+            var arguments = (object[]) commandList[2];
+            var copiedArguments = new object[arguments.Length];
+
+            for (int i = 0; i < arguments.Length; i++)
+            {
+                if (arguments[i] == null)
+                {
+                    copiedArguments[i] = null;
+                }
+                else
+                {
+                    Type type = factory.GetType(arguments[i].GetType().FullName);
+                    copiedArguments[i] = type == null ? arguments[i] : ObjectCopier.Copy(arguments[i], type);
+                }
+            }
+            return copiedArguments;
         }
 
         public virtual string GetImplementedTypeName()

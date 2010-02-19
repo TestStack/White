@@ -27,10 +27,13 @@ namespace White.Core.CustomCommands
         {
             if (uiItem.AutomationElement == null) throw new NullReferenceException("AutomationElement in this UIItem is null");
             Type type = invocation.Method.DeclaringType;
-            string assemblyFileName = new FileInfo(type.Assembly.Location).Name;
+            string assemblyFileName = new FileInfo(type.Assembly.Location).FullName;
             object returnValue = doMethod.Invoke(uiItem, new object[] {assemblyFileName, type.FullName, invocation.Method.Name, invocation.Arguments});
             var exception = returnValue as Exception;
-            if (exception != null) throw exception;
+            if (exception != null)
+            {
+                throw new WhiteException("Exception when executing command.", exception);
+            }
             invocation.ReturnValue = returnValue;
         }
     }

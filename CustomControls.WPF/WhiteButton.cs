@@ -1,7 +1,6 @@
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using White.CustomControls.WPF.Peers;
-using White.CustomControls.Automation;
 
 namespace White.CustomControls.WPF
 {
@@ -9,7 +8,7 @@ namespace White.CustomControls.WPF
     {
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new WhiteButtonPeer(this, new CustomCommandDeserializer());
+            return new WhiteButtonPeer(this);
         }
     }
 }

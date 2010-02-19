@@ -86,6 +86,7 @@
     <Compile Include="CustomCommands\CustomCommandDeserializerTest.cs" />
     <Compile Include="CustomControls\AssemblyBasedFactoryTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandTest.cs" />
+    <Compile Include="CustomControls\Automation\ObjectCopierTest.cs" />
     <Compile Include="NonCoreExperimentTest.cs" />
     <Compile Include="Recorder\CodeGeneration\DynamicScreenClassTest.cs" />
     <Compile Include="Recorder\CodeGeneration\ScreenClassFieldTest.cs" />

@@ -9,9 +9,9 @@ namespace White.CustomControls.WPF.Peers
     {
         private readonly WhitePeer whitePeer;
 
-        public WhiteButtonPeer(Button button, ICustomCommandDeserializer customCommandDeserializer) : base(button)
+        public WhiteButtonPeer(Button button) : base(button)
         {
-            whitePeer = new WhitePeer(this, button, customCommandDeserializer);
+            whitePeer = new WhitePeer(this, button);
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -31,7 +31,7 @@ namespace White.CustomControls.WPF.Peers
 
         public virtual bool IsReadOnly
         {
-            get { return false; }
+            get { return whitePeer.IsReadOnly; }
         }
     }
 }

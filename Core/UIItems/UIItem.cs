@@ -1,23 +1,20 @@
 using System;
 using System.Drawing;
-using System.IO;
 using System.Windows;
 using System.Windows.Automation;
-using Bricks;
-using White.Core.CustomCommands;
-using White.Core.UIA;
 using White.Core.AutomationElementSearch;
+using White.Core.CustomCommands;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Logging;
 using White.Core.Recording;
+using White.Core.UIA;
 using White.Core.UIItemEvents;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
 using White.Core.WindowsAPI;
 using Action=White.Core.UIItems.Actions.Action;
-using CoreAppXmlConfiguration=White.Core.Configuration.CoreAppXmlConfiguration;
 using Point=System.Windows.Point;
 using Window=White.Core.UIItems.WindowItems.Window;
 
@@ -35,7 +32,9 @@ namespace White.Core.UIItems
         protected IScrollBars scrollBars;
         private AutomationEventHandler handler;
 
-        protected UIItem() {}
+        protected UIItem()
+        {
+        }
 
         public UIItem(AutomationElement automationElement, ActionListener actionListener)
         {
@@ -101,10 +100,7 @@ namespace White.Core.UIItems
 
         public virtual Point ClickablePoint
         {
-            get
-            {
-                return (Point) Property(AutomationElement.ClickablePointProperty);
-            }
+            get { return (Point) Property(AutomationElement.ClickablePointProperty); }
         }
 
         public virtual string AccessKey
@@ -156,7 +152,9 @@ namespace White.Core.UIItems
                 if (automationElement.Current.IsKeyboardFocusable) automationElement.SetFocus();
                 ActionPerformed();
             }
-            catch (InvalidOperationException) {}
+            catch (InvalidOperationException)
+            {
+            }
         }
 
         public virtual void Visit(WindowControlVisitor windowControlVisitor)
@@ -289,10 +287,7 @@ namespace White.Core.UIItems
 
         public virtual Color BorderColor
         {
-            get
-            {
-                return VisibleImage.GetPixel(0, 0);
-            }
+            get { return VisibleImage.GetPixel(0, 0); }
         }
 
         public virtual Bitmap VisibleImage
@@ -308,17 +303,25 @@ namespace White.Core.UIItems
         /// <summary>
         /// Internal to white and intended to be used for white recording
         /// </summary>
-        public virtual void UnHookEvents() {}
+        public virtual void UnHookEvents()
+        {
+        }
 
         /// <summary>
         /// Internal to white and intended to be used for white recording
         /// </summary>
         /// <param name="eventListener"></param>
-        public virtual void HookEvents(UIItemEventListener eventListener) {}
+        public virtual void HookEvents(UIItemEventListener eventListener)
+        {
+        }
 
-        public virtual void SetValue(object value) {}
+        public virtual void SetValue(object value)
+        {
+        }
 
-        public virtual void ActionPerforming(UIItem uiItem) {}
+        public virtual void ActionPerforming(UIItem uiItem)
+        {
+        }
 
         public virtual void ActionPerformed(Action action)
         {
@@ -371,7 +374,9 @@ namespace White.Core.UIItems
             var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
             if (valuePattern == null) throw new CustomCommandException(string.Format("{0} does not implement ValuePattern", automationElement.Display()));
             valuePattern.SetValue(CustomCommandSerializer.ToString(assemblyFile, typeName, method, arguments));
-            return CustomCommandSerializer.ToObject(valuePattern.Current.Value);
+            string value = valuePattern.Current.Value;
+            if (string.IsNullOrEmpty(value)) return value;
+            return CustomCommandSerializer.ToObject(value);
         }
     }
 }
