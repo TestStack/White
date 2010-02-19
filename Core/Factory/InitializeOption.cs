@@ -1,3 +1,5 @@
+using System;
+
 namespace White.Core.Factory
 {
     /// <summary>
@@ -50,6 +52,11 @@ namespace White.Core.Factory
         public virtual string Identifier
         {
             get { return identifier; }
+        }
+
+        public virtual bool NoIdentification
+        {
+            get { return string.IsNullOrEmpty(identifier); }
         }
 
         public override string ToString()

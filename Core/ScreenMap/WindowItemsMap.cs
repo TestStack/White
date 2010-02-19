@@ -27,6 +27,23 @@ namespace White.Core.ScreenMap
             lastWindowPosition = currentWindowPosition = windowPosition;
         }
 
+        public static WindowItemsMap Create(InitializeOption initializeOption, Point currentWindowPosition)
+        {
+            if (initializeOption.NoIdentification) return new NullWindowItemsMap();
+
+            string fileLocation = FileLocation(initializeOption);
+            if (File.Exists(fileLocation))
+            {
+                var windowItemsMap = (WindowItemsMap) CreateFileXStream(fileLocation).FromFile();
+                windowItemsMap.currentWindowPosition = currentWindowPosition;
+                windowItemsMap.loadedFromFile = true;
+                return windowItemsMap;
+            }
+
+            WhiteLogger.Instance.InfoFormat("Creating new WindowItemsMap for: {0}", initializeOption.Identifier);
+            return new WindowItemsMap(fileLocation, currentWindowPosition);
+        }
+
         public virtual void Add(Point point, SearchCriteria searchCriteria)
         {
             var uiItemLocation = new UIItemLocation(point, searchCriteria);
@@ -75,21 +92,6 @@ namespace White.Core.ScreenMap
         private static Point Offset(Point point, double xOffset, double yOffset)
         {
             return new Point(point.X + xOffset, point.Y + yOffset);
-        }
-
-        public static WindowItemsMap Create(InitializeOption initializeOption, Point currentWindowPosition)
-        {
-            string fileLocation = FileLocation(initializeOption);
-            if (File.Exists(fileLocation))
-            {
-                var windowItemsMap = (WindowItemsMap) CreateFileXStream(fileLocation).FromFile();
-                windowItemsMap.currentWindowPosition = currentWindowPosition;
-                windowItemsMap.loadedFromFile = true;
-                return windowItemsMap;
-            }
-
-            WhiteLogger.Instance.Info("Creating new WindowItemsMap for: " + initializeOption.Identifier);
-            return new WindowItemsMap(fileLocation, currentWindowPosition);
         }
 
         private static string FileLocation(InitializeOption initializeOption)

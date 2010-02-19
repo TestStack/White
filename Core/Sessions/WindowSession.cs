@@ -33,16 +33,15 @@ namespace White.Core.Sessions
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
         {
-            Point location = windowItemsMap.GetItemLocation(searchCriteria);
             WhiteLogger.Instance.DebugFormat("Finding item based on criteria: {0}", searchCriteria);
+            Point location = windowItemsMap.GetItemLocation(searchCriteria);
             if (location.Equals(RectX.UnlikelyWindowPosition))
             {
                 WhiteLogger.Instance.Debug("Could not find based on position, finding using search");
                 return Create(containerItemFactory, searchCriteria, actionListener);
             }
 
-            AutomationElement automationElement = AutomationElement.FromPoint(location);
-            WhiteLogger.Instance.DebugFormat("Found AutomationElement {0} based on position", automationElement.Display());
+            AutomationElement automationElement = AutomationElementX.GetAutomationElementFromPoint(location);
             if (searchCriteria.AppliesTo(automationElement))
             {
                 IUIItem item = new DictionaryMappedItemFactory().Create(automationElement, actionListener, searchCriteria.CustomItemType);

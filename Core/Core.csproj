@@ -156,6 +156,7 @@
     <Compile Include="Interceptors\CoreInterceptContext.cs" />
     <Compile Include="Interceptors\ScrollInterceptor.cs" />
     <Compile Include="Mappings\ControlDictionaryItems.cs" />
+    <Compile Include="ScreenMap\NullWindowItemsMap.cs" />
     <Compile Include="Span.cs" />
     <Compile Include="SystemExtensions\DoubleX.cs" />
     <Compile Include="UIA\AutomationElementCollectionX.cs" />
