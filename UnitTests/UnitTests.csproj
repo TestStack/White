@@ -102,6 +102,7 @@
     <Compile Include="Core\CTest.cs" />
     <Compile Include="Core\CustomCommands\CustomButtonCommandTest.cs" />
     <Compile Include="Core\CustomCommands\CustomCommandSerializerTest.cs" />
+    <Compile Include="Core\CustomCommands\CustomTextBoxCommandTest.cs" />
     <Compile Include="Core\CustomUIItemTest.cs" />
     <Compile Include="Core\DesktopTest.cs" />
     <Compile Include="Core\Drawing\DrawingPointXTest.cs" />

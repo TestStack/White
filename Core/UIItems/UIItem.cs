@@ -1,5 +1,7 @@
 using System;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
@@ -369,18 +371,28 @@ namespace White.Core.UIItems
             return new UIItemContainer(automationElement, actionListener);
         }
 
-        protected object Do(string assemblyFile, string typeName, string method, object[] arguments)
+        protected object Do(string assemblyFile, string typeName, MethodInfo method, object[] arguments)
         {
             var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
             if (valuePattern == null) throw new CustomCommandException(string.Format("{0} does not implement ValuePattern", automationElement.Display()));
-            
-            ICustomCommandSerializer commandSerializer = CustomCommandSerializerFactory.Create(Framework);
-            string serializedCommand = commandSerializer.ToString(assemblyFile, typeName, method, arguments);
+            object[] response = Execute(valuePattern, assemblyFile, typeName, method, arguments);
+            if (response.Length == 1) return response[0];
+
+            var commandSerializer = new CustomCommandSerializer();
+            string serializedAssemblyRequest = commandSerializer.SerializeAssembly(assemblyFile);
+            valuePattern.SetValue(serializedAssemblyRequest);
+
+            return Execute(valuePattern, assemblyFile, typeName, method, arguments);
+        }
+
+        private object[] Execute(ValuePattern valuePattern, string assemblyFile, string typeName, MethodInfo method, object[] arguments)
+        {
+            var commandSerializer = new CustomCommandSerializer();
+            string serializedCommand = commandSerializer.Serialize(new FileInfo(assemblyFile).Name, typeName, method.Name, arguments);
             valuePattern.SetValue(serializedCommand);
-            
+            ActionPerformed(Action.WindowMessage);
             string value = valuePattern.Current.Value;
-            if (string.IsNullOrEmpty(value)) return value;
-            return commandSerializer.ToObject(value);
+            return commandSerializer.ToObject(value, method);
         }
     }
 }

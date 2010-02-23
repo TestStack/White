@@ -14,7 +14,7 @@ namespace White.NonCoreTests.Repository
         [Test]
         public void AllMethodsAreVirtual()
         {
-            AssemblyTest.AllMethodsVirtual(typeof (ICustomCommand).Assembly);
+            AssemblyTest.AllMethodsVirtual(typeof (ICommand).Assembly);
             AssemblyTest.AllMethodsVirtual(typeof (RecorderForm).Assembly);
             AssemblyTest.AllMethodsVirtual(typeof (ScreenRepository).Assembly);
             AssemblyTest.AllMethodsVirtual(typeof (Firefox).Assembly);

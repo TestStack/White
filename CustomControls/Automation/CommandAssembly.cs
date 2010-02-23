@@ -1,30 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 
 namespace White.CustomControls.Automation
 {
-    public class AssemblyBasedFactory
+    public class CommandAssembly
     {
         private readonly Assembly assembly;
-        private static readonly Dictionary<string, Assembly> loadedAssemblies = new Dictionary<string, Assembly>();
 
-        public AssemblyBasedFactory(string fileName)
+        public CommandAssembly(Assembly assembly)
         {
-            var fileInfo = new FileInfo(fileName);
-            string fullName = fileInfo.FullName;
-
-            if (!loadedAssemblies.ContainsKey(fullName))
-            {
-                if (!File.Exists(fullName))
-                    throw new ConfigurationErrorsException(string.Format("Could not find custom peers assembly. Searched for {0} at {1}", fileName,
-                                                                         Environment.CurrentDirectory));
-                loadedAssemblies[fullName] = Assembly.Load(File.ReadAllBytes(fullName));
-            }
-            assembly = loadedAssemblies[fullName];
+            this.assembly = assembly;
         }
 
         public virtual object Create(string typeName, params object[] arguments)

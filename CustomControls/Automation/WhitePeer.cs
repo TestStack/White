@@ -1,7 +1,5 @@
 using System;
-using System.IO;
-using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 
@@ -11,14 +9,42 @@ namespace White.CustomControls.Automation
     {
         private readonly AutomationPeer automationPeer;
         private readonly object control;
-        private readonly ICustomCommandDeserializer customCommandDeserializer;
+        private readonly ICommandSerializer commandSerializer;
+        private readonly GetValue getValue;
         private object value;
 
-        public WhitePeer(AutomationPeer automationPeer, Control control)
+        public delegate string GetValue();
+
+        public static WhitePeer Create(AutomationPeer automationPeer, Control control)
+        {
+            return CreateForValueProvider(automationPeer, control, null);
+        }
+
+        public static WhitePeer CreateForValueProvider(AutomationPeer automationPeer, Control control, GetValue getValue)
+        {
+            return new WhitePeer(automationPeer, control, new CommandSerializer(new CommandAssemblies()), getValue);
+        }
+
+        private WhitePeer(AutomationPeer automationPeer, Control control, ICommandSerializer commandDeserializer, GetValue getValue)
         {
             this.automationPeer = automationPeer;
             this.control = control;
-            customCommandDeserializer = new CustomCommandDeserializer();
+            commandSerializer = commandDeserializer;
+            this.getValue = getValue;
+        }
+
+        public virtual void SetValue(string commandString)
+        {
+            try
+            {
+                value = null;
+                ICommand command = commandSerializer.Deserialize(commandString);
+                value = command == null ? new object[2] : new[] {command.Execute(control)};
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
 
         public virtual string Value
@@ -27,12 +53,22 @@ namespace White.CustomControls.Automation
             {
                 try
                 {
-                    if (value == null) return null;
-                    return ToString(value);
+                    if (value == null)
+                    {
+                        return getValue();
+                    }
+                    var response = ((object[]) value);
+                    object commandReturnValue = response[0];
+                    List<Type> knownTypes = commandReturnValue == null ? new List<Type>() : new List<Type> {commandReturnValue.GetType()};
+                    return commandSerializer.Serialize(response, knownTypes);
                 }
                 catch (Exception e)
                 {
-                    return ToString(e);
+                    return commandSerializer.Serialize(e, new List<Type>());
+                }
+                finally
+                {
+                    value = null;
                 }
             }
         }
@@ -42,39 +78,10 @@ namespace White.CustomControls.Automation
             get { return false; }
         }
 
-        private string ToString(object @object)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                var formatter = new BinaryFormatter();
-                formatter.Serialize(memoryStream, @object);
-                memoryStream.Position = 0;
-                byte[] bytes = memoryStream.ToArray();
-                return Convert.ToBase64String(bytes);
-            }
-        }
-
         public virtual object GetPattern(PatternInterface patternInterface)
         {
             if (patternInterface == PatternInterface.Value) return automationPeer;
             return null;
-        }
-
-        public virtual void SetValue(string commandString)
-        {
-            try
-            {
-                value = null;
-                ICustomCommand customCommand = customCommandDeserializer.GetCommand(commandString);
-                var factory = new AssemblyBasedFactory(customCommand.AssemblyFile);
-                object commandImpl = factory.Create(customCommand.GetImplementedTypeName(), control);
-                MethodInfo methodInfo = commandImpl.GetType().GetMethod(customCommand.MethodName);
-                value = methodInfo.Invoke(commandImpl, customCommand.GetArguments(factory));
-            }
-            catch (Exception e)
-            {
-                throw new Exception(e.ToString());
-            }
         }
     }
 }

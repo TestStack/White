@@ -61,6 +61,8 @@
     </Compile>
     <Compile Include="IButtonCommands.cs" />
     <Compile Include="ButtonCommands.cs" />
+    <Compile Include="ITextBoxCommands.cs" />
+    <Compile Include="TextBoxCommands.cs" />
     <Compile Include="Thickness.cs" />
   </ItemGroup>
   <ItemGroup>

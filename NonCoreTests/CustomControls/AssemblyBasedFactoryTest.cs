@@ -1,3 +1,4 @@
+using System.Reflection;
 using NUnit.Framework;
 using White.CustomControls.Automation;
 
@@ -6,25 +7,25 @@ namespace White.NonCoreTests.CustomControls
     [TestFixture]
     public class AssemblyBasedFactoryTest
     {
-        private AssemblyBasedFactory assemblyBasedFactory;
+        private CommandAssembly commandAssembly;
 
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            assemblyBasedFactory = new AssemblyBasedFactory("White.NonCoreTests.dll");
+            commandAssembly = new CommandAssembly(Assembly.GetExecutingAssembly());
         }
 
         [Test]
         public void Create()
         {
-            object o = assemblyBasedFactory.Create(typeof(AssemblyBasedFactoryTest).FullName);
+            object o = commandAssembly.Create(typeof(AssemblyBasedFactoryTest).FullName);
             Assert.AreNotEqual(null, o);
         }
 
         [Test]
         public void CreateWithArguments()
         {
-            object o = assemblyBasedFactory.Create(typeof (ForAssemblyBasedFactoryTest).FullName, "bar");
+            object o = commandAssembly.Create(typeof (ForAssemblyBasedFactoryTest).FullName, "bar");
             Assert.AreNotEqual(null, o);
         }
     }

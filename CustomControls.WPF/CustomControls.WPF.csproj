@@ -62,8 +62,10 @@
     <Compile Include="..\Core\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Peers\WhiteTextBoxPeer.cs" />
     <Compile Include="WhiteButton.cs" />
     <Compile Include="Peers\WhiteButtonPeer.cs" />
+    <Compile Include="WhiteTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CustomControls\CustomControls.csproj">

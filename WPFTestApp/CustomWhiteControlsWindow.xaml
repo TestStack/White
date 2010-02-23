@@ -3,11 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:WPF="clr-namespace:White.CustomControls.WPF;assembly=White.CustomControls.WPF"
     Title="Form1" Height="300" Width="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <WPF:WhiteButton Height="23" Margin="12,24,13,0" Name="button" VerticalAlignment="Top">Button</WPF:WhiteButton>
-    </Grid>
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="100"/>
+      <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+    <WPF:WhiteButton Height="23" Margin="12,24,13,0" Name="button" VerticalAlignment="Top">Button</WPF:WhiteButton>
+    <WPF:WhiteTextBox Height="23" Margin="22,62,21,0" Name="textbox" VerticalAlignment="Top">Foo</WPF:WhiteTextBox>
+  </Grid>
 </Window>

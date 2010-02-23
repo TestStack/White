@@ -1,35 +1,30 @@
 using System;
-using System.Collections.Generic;
+using System.Reflection;
 
 namespace White.CustomControls.Automation
 {
-    public class CustomCommand : ICustomCommand
+    public class CustomCommand : ICommand
     {
-        private readonly string assemblyFile;
-        private readonly List<object> commandList;
+        private readonly object[] commandList;
+        private readonly CommandAssembly commandAssembly;
 
-        public CustomCommand(string assemblyFile, List<object> payload)
+        public CustomCommand(string assemblyName, object[] payload, CommandAssemblies commandAssemblies)
         {
-            this.assemblyFile = assemblyFile;
             commandList = payload;
+            commandAssembly = commandAssemblies.Get(assemblyName);
         }
 
-        public virtual string AssemblyFile
-        {
-            get { return assemblyFile; }
-        }
-
-        public virtual string TypeName
+        private string TypeName
         {
             get { return (string) commandList[0]; }
         }
 
-        public virtual string MethodName
+        private string MethodName
         {
             get { return (string) commandList[1]; }
         }
 
-        public virtual object[] GetArguments(AssemblyBasedFactory factory)
+        private object[] GetArguments()
         {
             var arguments = (object[]) commandList[2];
             var copiedArguments = new object[arguments.Length];
@@ -42,7 +37,7 @@ namespace White.CustomControls.Automation
                 }
                 else
                 {
-                    Type type = factory.GetType(arguments[i].GetType().FullName);
+                    Type type = commandAssembly.GetType(arguments[i].GetType().FullName);
                     copiedArguments[i] = type == null ? arguments[i] : ObjectCopier.Copy(arguments[i], type);
                 }
             }
@@ -55,6 +50,13 @@ namespace White.CustomControls.Automation
             int lastIndex = strings.Length - 1;
             strings[lastIndex] = strings[lastIndex].Substring(1);
             return string.Join(".", strings);
+        }
+
+        public object Execute(object control)
+        {
+            object commandImpl = commandAssembly.Create(GetImplementedTypeName(), control);
+            MethodInfo methodInfo = commandImpl.GetType().GetMethod(MethodName);
+            return methodInfo.Invoke(commandImpl, GetArguments());
         }
     }
 }

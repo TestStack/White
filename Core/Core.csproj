@@ -124,9 +124,6 @@
     <Compile Include="CustomCommands\CustomCommandFactory.cs" />
     <Compile Include="CustomCommands\CustomCommandInterceptor.cs" />
     <Compile Include="CustomCommands\CustomCommandSerializer.cs" />
-    <Compile Include="CustomCommands\CustomCommandSerializerFactory.cs" />
-    <Compile Include="CustomCommands\CustomSilverlightCommandSerializer.cs" />
-    <Compile Include="CustomCommands\ICustomCommandSerializer.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Desktop.cs" />
     <Compile Include="Drawing\DrawingPointX.cs" />
