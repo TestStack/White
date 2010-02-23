@@ -29,11 +29,12 @@ namespace White.Core.CustomCommands
             Type type = invocation.Method.DeclaringType;
             string assemblyFileName = new FileInfo(type.Assembly.Location).FullName;
             object returnValue = doMethod.Invoke(uiItem, new object[] {assemblyFileName, type.FullName, invocation.Method, invocation.Arguments});
+            var objects = returnValue as object[];
             var exception = returnValue as Exception;
             if (exception != null)
                 throw new WhiteException("Exception when executing command.", exception);
-
-            var objects = returnValue as object[];
+            if ((objects != null && (objects[0] is Exception)))
+                throw new WhiteException("Exception when executing command.", (Exception) objects[0]);
             invocation.ReturnValue = objects[0];
         }
     }

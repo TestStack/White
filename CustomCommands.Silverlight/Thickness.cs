@@ -1,5 +1,8 @@
+using System.Runtime.Serialization;
+
 namespace White.CustomCommands.Silverlight
 {
+    [DataContract]
     public class Thickness
     {
         private readonly double bottom;

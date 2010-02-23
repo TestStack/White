@@ -89,6 +89,12 @@
     <None Include="Properties\AppManifest.xml" />
     <None Include="white.snk" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CustomControls.Silverlight\CustomControls.Silverlight.csproj">
+      <Project>{8DE29F87-D81B-4973-9951-0AFA3437955E}</Project>
+      <Name>CustomControls.Silverlight</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\v3.0\Microsoft.Silverlight.CSharp.targets" Condition="" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

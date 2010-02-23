@@ -1,5 +1,4 @@
 using System.Windows.Automation;
-using NonCoreTests.WebBrowser;
 using NUnit.Framework;
 using White.Core;
 using White.Core.InputDevices;

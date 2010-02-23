@@ -1,7 +1,8 @@
+using System.Diagnostics;
 using NUnit.Framework;
 using White.WebBrowser;
 
-namespace NonCoreTests.WebBrowser
+namespace White.NonCoreTests.WebBrowser
 {
     public class SilverlightTestFixture
     {
@@ -10,7 +11,19 @@ namespace NonCoreTests.WebBrowser
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            browserWindow = InternetExplorer.Launch("http://localhost/white.testsilverlight/TestSilverlightApplicationTestPage.aspx", "TestSilverlightApplication - Windows Internet Explorer");
+            Process[] processes = Process.GetProcessesByName("iexplore");
+            foreach (var process in processes)
+            {
+                try
+                {
+                    process.Kill();
+                }
+                catch
+                {
+                }
+            }
+            browserWindow = InternetExplorer.Launch("http://localhost/white.testsilverlight/TestSilverlightApplicationTestPage.aspx",
+                                                    "TestSilverlightApplication - Windows Internet Explorer");
             PostSetup();
         }
 

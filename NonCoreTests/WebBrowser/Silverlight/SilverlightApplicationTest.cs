@@ -1,4 +1,3 @@
-using NonCoreTests.WebBrowser;
 using NUnit.Framework;
 using White.WebBrowser.Silverlight;
 

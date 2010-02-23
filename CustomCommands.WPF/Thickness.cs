@@ -1,8 +1,5 @@
-using System;
-
 namespace White.CustomCommands.WPF
 {
-    [Serializable]
     public class Thickness
     {
         private readonly double bottom;

@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Xml;
 
 namespace White.CustomControls.Automation
 {
@@ -42,10 +43,13 @@ namespace White.CustomControls.Automation
 
         public virtual string Serialize(object o, List<Type> knownTypes)
         {
+            var stringBuilder = new StringBuilder();
+            var xmlWriter = XmlWriter.Create(stringBuilder);
+
             using (var stream = new MemoryStream())
             {
                 var dataContractSerializer = new DataContractSerializer(o.GetType(), knownTypes);
-                dataContractSerializer.WriteObject(stream, o);
+                dataContractSerializer.WriteObject(stream, o); 
                 stream.Position = 0;
                 byte[] bytes = stream.ToArray();
                 return Convert.ToBase64String(bytes);

@@ -53,10 +53,9 @@ namespace White.CustomControls.Automation
             {
                 try
                 {
-                    if (value == null)
-                    {
-                        return getValue();
-                    }
+                    if (value == null) return null;
+                    if (value == null && getValue != null) return getValue();
+                    
                     var response = ((object[]) value);
                     object commandReturnValue = response[0];
                     List<Type> knownTypes = commandReturnValue == null ? new List<Type>() : new List<Type> {commandReturnValue.GetType()};
@@ -68,7 +67,8 @@ namespace White.CustomControls.Automation
                 }
                 finally
                 {
-                    value = null;
+                    if (getValue != null)
+                        value = null;
                 }
             }
         }

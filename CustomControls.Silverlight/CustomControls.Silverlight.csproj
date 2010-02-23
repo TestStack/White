@@ -4,12 +4,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{11FBB4B6-E269-43E4-A335-F0AD1F848493}</ProjectGuid>
+    <ProjectGuid>{8DE29F87-D81B-4973-9951-0AFA3437955E}</ProjectGuid>
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.CustomCommands.Silverlight</RootNamespace>
-    <AssemblyName>White.CustomCommands.Silverlight</AssemblyName>
+    <RootNamespace>CustomControls.Silverlight</RootNamespace>
+    <AssemblyName>CustomControls.Silverlight</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
@@ -39,8 +39,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -50,10 +48,15 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ButtonCommands.cs" />
-    <Compile Include="IButtonCommands.cs" />
+    <Compile Include="Peers\WhiteButtonPeer.cs" />
+    <Compile Include="WhiteButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Thickness.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControls\SilverlightCustomControls.csproj">
+      <Project>{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}</Project>
+      <Name>SilverlightCustomControls</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />
