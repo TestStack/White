@@ -1,9 +1,9 @@
-using White.Core;
+using Recorder.CodeGeneration;
+using Recorder.Domain;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
-using Recorder.Domain;
 
-namespace Recorder.CodeGeneration
+namespace White.Recorder.CodeGeneration
 {
     public class WindowCodeGenerationStrategy : CodeGenerationStrategy
     {

@@ -2,7 +2,7 @@ using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.CustomControls.Automation;
 
-namespace White.NonCoreTests.CustomCommands
+namespace White.NonCoreTests.CustomControls.Automation
 {
     [TestFixture]
     public class CustomCommandDeserializerTest
@@ -10,7 +10,7 @@ namespace White.NonCoreTests.CustomCommands
         [Test]
         public void Deserialize()
         {
-            var s = CustomCommandSerializer.ToString("White.NonCoreTests.CustomCommands.dll", "IBazCommand", "Foo", new object[] { "bar", 1 });
+            var s = CustomCommandSerializer.ToString("White.UnitTests.dll", "IBazCommand", "Foo", new object[] { "bar", 1 });
             ICustomCommand customCommand = new CustomCommandDeserializer().GetCommand(s);
             Assert.AreEqual("White.NonCoreTests.CustomCommands.dll", customCommand.AssemblyFile);
             Assert.AreEqual("IBazCommand", customCommand.TypeName);

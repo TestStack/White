@@ -3,6 +3,7 @@ using System.Windows.Automation;
 using White.Core.Factory;
 using White.Core.UIItems.WindowItems;
 using Recorder.Recording;
+using White.Recorder.Domain;
 
 namespace Recorder.Domain
 {

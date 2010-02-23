@@ -373,10 +373,14 @@ namespace White.Core.UIItems
         {
             var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
             if (valuePattern == null) throw new CustomCommandException(string.Format("{0} does not implement ValuePattern", automationElement.Display()));
-            valuePattern.SetValue(CustomCommandSerializer.ToString(assemblyFile, typeName, method, arguments));
+            
+            ICustomCommandSerializer commandSerializer = CustomCommandSerializerFactory.Create(Framework);
+            string serializedCommand = commandSerializer.ToString(assemblyFile, typeName, method, arguments);
+            valuePattern.SetValue(serializedCommand);
+            
             string value = valuePattern.Current.Value;
             if (string.IsNullOrEmpty(value)) return value;
-            return CustomCommandSerializer.ToObject(value);
+            return commandSerializer.ToObject(value);
         }
     }
 }

@@ -4,23 +4,17 @@ using System.IO;
 using System.Reflection;
 using System.Text;
 using Bricks.Core;
+using Recorder.Domain;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using Microsoft.CSharp;
 using Recorder.CodeGeneration;
 using Repository;
+using White.Recorder.CodeGeneration;
 
-namespace Recorder.Domain
+namespace White.Recorder.Domain
 {
-    /*TODO: If there are standard labels associated with every control input field e.g. Mandatory, then is it possible to identify these
-     * which would be better than using the index.
-     * 1. Create variable names which are meaningful and have attributes containing indexes on them. In case of change this can be painful.
-     * 2. Provide mechanism for identifying custom controls in the recorder and repository. This is the best solution.
-     * 3. Change the code so that all the mandatory labels have a name. Ideally test should not dictate this.*/
-    /*TODO: Generate BaseScreen and make it configurable. Input from recorder and provide a way of configuring these setting, 
-     * as they would not change very often. Same applies to other settings on the Recorder screen.*/
-    //TODO: Screen containing dynamic controls. The visual studio plugin should ask whether to merge with existing file or overwrite
     public class ScreenObjectGenerator
     {
         private readonly ScreenObjectGeneratorOptions options = new ScreenObjectGeneratorOptions();

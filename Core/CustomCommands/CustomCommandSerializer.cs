@@ -4,9 +4,9 @@ using Bricks.Objects;
 
 namespace White.Core.CustomCommands
 {
-    public static class CustomCommandSerializer
+    public class CustomCommandSerializer : ICustomCommandSerializer
     {
-        public static string ToString(string assemblyFile, string typeName, string methodName, object[] @arguments)
+        public virtual string ToString(string assemblyFile, string typeName, string methodName, object[] @arguments)
         {
             var list = new List<object> { typeName, methodName, @arguments };
             byte[] payloadBytes = BricksBinaryFormatter.ToByteArray(list);
@@ -15,7 +15,7 @@ namespace White.Core.CustomCommands
             return Convert.ToBase64String(requestBytes);
         }
 
-        public static object ToObject(string @string)
+        public virtual object ToObject(string @string)
         {
             byte[] bytes = Convert.FromBase64String(@string);
             return BricksBinaryFormatter.ToObject(bytes);

@@ -1,8 +1,5 @@
-using System;
-
-namespace White.CustomCommands.WPF
+namespace White.CustomCommands.Silverlight
 {
-    [Serializable]
     public class Thickness
     {
         private readonly double bottom;

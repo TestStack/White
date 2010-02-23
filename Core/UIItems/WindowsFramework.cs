@@ -36,6 +36,11 @@ namespace White.Core.UIItems
             get { return S.IsEmpty(frameworkId); }
         }
 
+        public virtual bool Silverlight
+        {
+            get { return frameworkId.Equals(Constants.SilverlightFrameworkId); }
+        }
+
         public override string ToString()
         {
             return frameworkId;
