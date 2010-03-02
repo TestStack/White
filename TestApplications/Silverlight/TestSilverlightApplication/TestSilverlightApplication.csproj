@@ -90,8 +90,8 @@
     <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CustomControls.Silverlight\CustomControls.Silverlight.csproj">
-      <Project>{8DE29F87-D81B-4973-9951-0AFA3437955E}</Project>
+    <ProjectReference Include="..\..\..\CustomControls\CustomControls.Silverlight.csproj">
+      <Project>{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}</Project>
       <Name>CustomControls.Silverlight</Name>
     </ProjectReference>
   </ItemGroup>

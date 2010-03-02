@@ -10,36 +10,54 @@ namespace White.CustomControls.Automation
         private readonly AutomationPeer automationPeer;
         private readonly object control;
         private readonly ICommandSerializer commandSerializer;
-        private readonly GetValue getValue;
+        private readonly GetValueDelegate getValueDelegate;
+        private readonly SetValueDelegate setValueDelegate;
         private object value;
+        private bool customCommandSessionOpen;
 
-        public delegate string GetValue();
+        public delegate string GetValueDelegate();
+
+        public delegate void SetValueDelegate(string value);
 
         public static WhitePeer Create(AutomationPeer automationPeer, Control control)
         {
-            return CreateForValueProvider(automationPeer, control, null);
+            return CreateForValueProvider(automationPeer, control, null, null);
         }
 
-        public static WhitePeer CreateForValueProvider(AutomationPeer automationPeer, Control control, GetValue getValue)
+        public static WhitePeer CreateForValueProvider(AutomationPeer automationPeer, Control control, GetValueDelegate getValueDelegate,
+                                                       SetValueDelegate setValueDelegate)
         {
-            return new WhitePeer(automationPeer, control, new CommandSerializer(new CommandAssemblies()), getValue);
+            return new WhitePeer(automationPeer, control, new CommandSerializer(new CommandAssemblies()), getValueDelegate, setValueDelegate);
         }
 
-        private WhitePeer(AutomationPeer automationPeer, Control control, ICommandSerializer commandDeserializer, GetValue getValue)
+        private WhitePeer(AutomationPeer automationPeer, Control control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
+                          SetValueDelegate setValueDelegate)
         {
             this.automationPeer = automationPeer;
             this.control = control;
-            commandSerializer = commandDeserializer;
-            this.getValue = getValue;
+            this.commandSerializer = commandSerializer;
+            this.getValueDelegate = getValueDelegate;
+            this.setValueDelegate = setValueDelegate;
         }
 
         public virtual void SetValue(string commandString)
         {
             try
             {
-                value = null;
-                ICommand command = commandSerializer.Deserialize(commandString);
-                value = command == null ? new object[2] : new[] {command.Execute(control)};
+                ICommand command;
+                customCommandSessionOpen = commandSerializer.TryDeserialize(commandString, out command);
+                if (customCommandSessionOpen && command is EndSessionCommand)
+                {
+                    customCommandSessionOpen = false;
+                }
+                else if (customCommandSessionOpen)
+                {
+                    value = command == null ? new object[2] : new[] { command.Execute(control) };
+                }
+                else
+                {
+                    setValueDelegate(commandString);
+                }
             }
             catch (Exception e)
             {
@@ -53,9 +71,9 @@ namespace White.CustomControls.Automation
             {
                 try
                 {
-                    if (value == null) return null;
-                    if (value == null && getValue != null) return getValue();
+                    if (!customCommandSessionOpen) return getValueDelegate();
                     
+                    if (value == null) return null;
                     var response = ((object[]) value);
                     object commandReturnValue = response[0];
                     List<Type> knownTypes = commandReturnValue == null ? new List<Type>() : new List<Type> {commandReturnValue.GetType()};
@@ -64,11 +82,6 @@ namespace White.CustomControls.Automation
                 catch (Exception e)
                 {
                     return commandSerializer.Serialize(e, new List<Type>());
-                }
-                finally
-                {
-                    if (getValue != null)
-                        value = null;
                 }
             }
         }

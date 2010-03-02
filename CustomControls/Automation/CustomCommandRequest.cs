@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace White.CustomControls.Automation
 {
     public class CustomCommandRequest
@@ -13,7 +11,7 @@ namespace White.CustomControls.Automation
 
         public virtual bool IsLoadAssemblyCommand
         {
-            get { return request[1] is byte[]; }
+            get { return request.Length == 2 && request[1] is byte[]; }
         }
 
         public virtual string AssemblyName
@@ -29,6 +27,11 @@ namespace White.CustomControls.Automation
         public virtual string Payload
         {
             get { return (string) request[1]; }
+        }
+
+        public virtual bool IsEndSessionCommand
+        {
+            get { return request.Length == 0; }
         }
     }
 }

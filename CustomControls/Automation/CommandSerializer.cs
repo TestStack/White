@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using System.Text;
 using System.Xml;
 
 namespace White.CustomControls.Automation
@@ -11,23 +10,57 @@ namespace White.CustomControls.Automation
     {
         private readonly CommandAssemblies commandAssemblies;
 
+        private static List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
+
         public CommandSerializer(CommandAssemblies commandAssemblies)
         {
             this.commandAssemblies = commandAssemblies;
         }
 
-        public virtual ICommand Deserialize(string requestString)
+        public virtual bool TryDeserialize(string requestString, out ICommand command)
         {
-            object request = DeserializeString(requestString);
-            var customCommandRequest = new CustomCommandRequest((object[]) request);
-            if (customCommandRequest.IsLoadAssemblyCommand)
+            object[] request;
+            if (!TryDeserializeString(requestString, out request))
             {
-                return new LoadAssemblyCommand(customCommandRequest.AssemblyName, customCommandRequest.AssemblyContents, commandAssemblies);
+                command = null;
+                return false;
             }
 
-            CommandAssembly commandAssembly = commandAssemblies.Get(customCommandRequest.AssemblyName);
-            if (commandAssembly == null) return null;
-            return new CustomCommand(customCommandRequest.AssemblyName, DeserializeString(customCommandRequest.Payload), new CommandAssemblies());
+            var customCommandRequest = new CustomCommandRequest(request);
+            if (customCommandRequest.IsLoadAssemblyCommand)
+            {
+                command = new LoadAssemblyCommand(customCommandRequest.AssemblyName, customCommandRequest.AssemblyContents, commandAssemblies);
+            }
+            else if (customCommandRequest.IsEndSessionCommand)
+            {
+                command = new EndSessionCommand();
+            }
+            else
+            {
+                CommandAssembly commandAssembly = commandAssemblies.Get(customCommandRequest.AssemblyName);
+                command = commandAssembly == null
+                              ? null
+                              : new CustomCommand(customCommandRequest.AssemblyName, DeserializeString(customCommandRequest.Payload), new CommandAssemblies());
+            }
+            return true;
+        }
+
+        private bool TryDeserializeString(string @string, out object[] objects)
+        {
+            try
+            {
+                objects = DeserializeString(@string);
+                return true;
+            }
+            catch (Exception e)
+            {
+                if (exceptions.Contains(e.GetType()))
+                {
+                    objects = null;
+                    return false;
+                }
+                throw;
+            }
         }
 
         private object[] DeserializeString(string @string)
@@ -43,13 +76,10 @@ namespace White.CustomControls.Automation
 
         public virtual string Serialize(object o, List<Type> knownTypes)
         {
-            var stringBuilder = new StringBuilder();
-            var xmlWriter = XmlWriter.Create(stringBuilder);
-
             using (var stream = new MemoryStream())
             {
                 var dataContractSerializer = new DataContractSerializer(o.GetType(), knownTypes);
-                dataContractSerializer.WriteObject(stream, o); 
+                dataContractSerializer.WriteObject(stream, o);
                 stream.Position = 0;
                 byte[] bytes = stream.ToArray();
                 return Convert.ToBase64String(bytes);

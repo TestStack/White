@@ -5,7 +5,7 @@ namespace White.CustomControls.Automation
 {
     public interface ICommandSerializer
     {
-        ICommand Deserialize(string @string);
+        bool TryDeserialize(string @string, out ICommand command);
         string Serialize(object o, List<Type> knownTypes);
     }
 }

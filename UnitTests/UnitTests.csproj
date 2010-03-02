@@ -228,7 +228,7 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CustomCommands.WPF\CustomCommands.WPF.csproj">
+    <ProjectReference Include="..\CustomCommands\CustomCommands.WPF.csproj">
       <Project>{C5589F07-067E-408D-8B95-5C3CE132843E}</Project>
       <Name>CustomCommands.WPF</Name>
     </ProjectReference>

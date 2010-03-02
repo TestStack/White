@@ -3,7 +3,7 @@ using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using White.CustomControls.Automation;
 
-namespace CustomControls.Silverlight.Peers
+namespace White.CustomControls.Peers
 {
     public class WhiteButtonPeer : ButtonAutomationPeer, IValueProvider
     {
@@ -14,24 +14,24 @@ namespace CustomControls.Silverlight.Peers
             whitePeer = WhitePeer.Create(this, button);
         }
 
-        public void SetValue(string commandString)
+        public override object GetPattern(PatternInterface patternInterface)
         {
-            whitePeer.SetValue(commandString);
+            return whitePeer.GetPattern(patternInterface);
         }
 
-        public string Value
+        public virtual void SetValue(string command)
+        {
+            whitePeer.SetValue(command);
+        }
+
+        public virtual string Value
         {
             get { return whitePeer.Value; }
         }
 
-        public bool IsReadOnly
+        public virtual bool IsReadOnly
         {
             get { return whitePeer.IsReadOnly; }
-        }
-
-        public override object GetPattern(PatternInterface patternInterface)
-        {
-            return whitePeer.GetPattern(patternInterface);
         }
     }
 }

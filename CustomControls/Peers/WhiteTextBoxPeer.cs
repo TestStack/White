@@ -3,17 +3,15 @@ using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 using White.CustomControls.Automation;
 
-namespace White.CustomControls.WPF.Peers
+namespace White.CustomControls.Peers
 {
     public class WhiteTextBoxPeer : TextBoxAutomationPeer, IValueProvider
     {
         private readonly WhitePeer whitePeer;
-        private readonly TextBox textBox;
 
         public WhiteTextBoxPeer(TextBox textBox) : base(textBox)
         {
-            whitePeer = WhitePeer.CreateForValueProvider(this, textBox, () => textBox.Text);
-            this.textBox = textBox;
+            whitePeer = WhitePeer.CreateForValueProvider(this, textBox, () => textBox.Text, value => textBox.Text = value);
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -23,11 +21,6 @@ namespace White.CustomControls.WPF.Peers
 
         public virtual void SetValue(string command)
         {
-            if (string.IsNullOrEmpty(command))
-            {
-                textBox.Text = command;
-                return;
-            }
             whitePeer.SetValue(command);
         }
 

@@ -215,10 +215,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CustomControls.WPF\CustomControls.WPF.csproj">
-      <Project>{5F2861DE-7DB6-4FB2-BB45-4175F1C2E511}</Project>
-      <Name>CustomControls.WPF</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CustomControls\CustomControls.csproj">
       <Project>{8513D286-87D2-459D-A713-2E583FB797F8}</Project>
       <Name>CustomControls</Name>

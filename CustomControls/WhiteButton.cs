@@ -1,8 +1,8 @@
-﻿using System.Windows.Automation.Peers;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using CustomControls.Silverlight.Peers;
+using White.CustomControls.Peers;
 
-namespace CustomControls.Silverlight
+namespace White.CustomControls
 {
     public class WhiteButton : Button
     {

@@ -1,8 +1,8 @@
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using White.CustomControls.WPF.Peers;
+using White.CustomControls.Peers;
 
-namespace White.CustomControls.WPF
+namespace White.CustomControls
 {
     public class WhiteTextBox : TextBox
     {

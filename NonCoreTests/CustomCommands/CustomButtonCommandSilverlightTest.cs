@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.Core.UIItems;
-using White.CustomCommands.Silverlight;
+using White.CustomCommands;
 using White.NonCoreTests.WebBrowser;
 
 namespace White.NonCoreTests.CustomCommands
@@ -14,7 +14,7 @@ namespace White.NonCoreTests.CustomCommands
         {
             var button = browserWindow.SilverlightDocument.Get<Button>("buton");
             var wpfWhiteButton = new CustomCommandFactory().Create<IButtonCommands>(button);
-            Assert.AreNotEqual(0, wpfWhiteButton.BottomBorderThickness);
+            Assert.AreNotEqual(0, wpfWhiteButton.BorderBottomThickness);
         }
     }
 }

@@ -1,6 +1,6 @@
 using System.Windows.Controls;
 
-namespace White.CustomCommands.WPF
+namespace White.CustomCommands
 {
     public class ButtonCommands : IButtonCommands
     {
@@ -9,6 +9,11 @@ namespace White.CustomCommands.WPF
         public ButtonCommands(Button button)
         {
             this.button = button;
+        }
+
+        public double BorderBottomThickness
+        {
+            get { return button.BorderThickness.Bottom; }
         }
 
         public Thickness BorderThickness

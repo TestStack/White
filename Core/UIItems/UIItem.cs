@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -382,7 +383,9 @@ namespace White.Core.UIItems
             string serializedAssemblyRequest = commandSerializer.SerializeAssembly(assemblyFile);
             valuePattern.SetValue(serializedAssemblyRequest);
 
-            return Execute(valuePattern, assemblyFile, typeName, method, arguments);
+            object[] objects = Execute(valuePattern, assemblyFile, typeName, method, arguments);
+            valuePattern.SetValue(commandSerializer.SerializeEndSession());
+            return objects;
         }
 
         private object[] Execute(ValuePattern valuePattern, string assemblyFile, string typeName, MethodInfo method, object[] arguments)
@@ -392,7 +395,7 @@ namespace White.Core.UIItems
             valuePattern.SetValue(serializedCommand);
             ActionPerformed(Action.WindowMessage);
             string value = valuePattern.Current.Value;
-            return commandSerializer.ToObject(value, method);
+            return commandSerializer.ToObject(value, method.ReturnType);
         }
     }
 }

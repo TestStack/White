@@ -1,4 +1,4 @@
-namespace White.CustomCommands.WPF
+namespace White.CustomCommands
 {
     public class Thickness
     {

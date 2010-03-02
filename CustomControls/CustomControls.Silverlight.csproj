@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>White.CustomControls</RootNamespace>
-    <AssemblyName>White.SilverlightCustomControls</AssemblyName>
+    <AssemblyName>White.CustomControls.Silverlight</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
@@ -56,12 +56,19 @@
     <Compile Include="Automation\CommandSerializer.cs" />
     <Compile Include="Automation\CustomCommand.cs" />
     <Compile Include="Automation\CustomCommandRequest.cs" />
+    <Compile Include="Automation\EndSessionCommand.cs" />
     <Compile Include="Automation\ICommand.cs" />
     <Compile Include="Automation\ICommandSerializer.cs" />
     <Compile Include="Automation\LoadAssemblyCommand.cs" />
     <Compile Include="Automation\ObjectCopier.cs" />
     <Compile Include="Automation\WhitePeer.cs" />
-    <Compile Include="SilverlightCommandAssemblies.cs" />
+    <Compile Include="Peers\WhiteButtonPeer.cs" />
+    <Compile Include="Peers\WhiteComboBoxPeer.cs" />
+    <Compile Include="Peers\WhiteTextBoxPeer.cs" />
+    <Compile Include="Automation\SilverlightCommandAssemblies.cs" />
+    <Compile Include="WhiteButton.cs" />
+    <Compile Include="WhiteComboBox.cs" />
+    <Compile Include="WhiteTextBox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />

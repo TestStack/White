@@ -1,23 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using Bricks.Objects;
 
 namespace White.Core.CustomCommands
 {
     public class CustomCommandSerializer
     {
+        private readonly BricksDataContractSerializer bricksDataContractSerializer = new BricksDataContractSerializer();
+
         public virtual string SerializeAssembly(string assemblyFile)
         {
-            var serializeAssemblyRequest = new object[] { new FileInfo(assemblyFile).Name, File.ReadAllBytes(assemblyFile) };
-            var bricksDataContractSerializer = new BricksDataContractSerializer();
+            var serializeAssemblyRequest = new object[] {new FileInfo(assemblyFile).Name, File.ReadAllBytes(assemblyFile)};
             return bricksDataContractSerializer.ToString(serializeAssemblyRequest, new Type[0]);
         }
 
         public virtual string Serialize(string assemblyName, string typeName, string method, object[] arguments)
         {
-            var bricksDataContractSerializer = new BricksDataContractSerializer();
             var knownTypes = new List<Type> {typeof (object[])};
             foreach (var argument in arguments)
             {
@@ -30,9 +29,14 @@ namespace White.Core.CustomCommands
             return bricksDataContractSerializer.ToString(request, knownTypes);
         }
 
-        public virtual object[] ToObject(string @string, MethodInfo methodInfo)
+        public virtual object[] ToObject(string @string, Type returnType)
         {
-            return new BricksDataContractSerializer().ToObject<object[]>(@string, new List<Type> {methodInfo.ReturnType});
+            return bricksDataContractSerializer.ToObject<object[]>(@string, new List<Type> {returnType});
+        }
+
+        public virtual string SerializeEndSession()
+        {
+            return bricksDataContractSerializer.ToString(new object[0], new Type[0]);
         }
     }
 }

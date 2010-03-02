@@ -11,8 +11,18 @@ namespace White.NonCoreTests.CustomControls.Automation
         public void Deserialize()
         {
             var s = new CustomCommandSerializer().Serialize("White.NonCoreTests.CustomCommands.dll", "IBazCommand", "Foo", new object[] {"bar", 1});
-            var customCommand = (CustomCommand) new CommandSerializer(new CommandAssemblies()).Deserialize(s);
-            Assert.AreNotEqual(null, customCommand);
+            ICommand customCommand;
+            bool result = new CommandSerializer(new CommandAssemblies()).TryDeserialize(s, out customCommand);
+            Assert.AreEqual(true, result);
+        }
+
+        [Test]
+        public void DeserializeInvalidString()
+        {
+            ICommand customCommand;
+            bool result = new CommandSerializer(new CommandAssemblies()).TryDeserialize("merylstreep", out customCommand);
+            Assert.AreEqual(false, result);
+            Assert.AreEqual(null, customCommand);
         }
     }
 }

@@ -10,16 +10,19 @@ namespace TestSilverlightApplication
         public Page()
         {
             InitializeComponent();
-            AddItemToComboBox("foo");
-            AddItemToComboBox("bar");
+            AddItemToComboBox(combo, "foo", "bar");
+            AddItemToComboBox(custom_combo, "Baz", "Quux");
 
             buton.Click += ButonClick;
         }
 
-        private void AddItemToComboBox(string text)
+        private static void AddItemToComboBox(ComboBox comboBox, params string[] texts)
         {
-            var comboBoxItem = new ComboBoxItem {Content = text};
-            combo.Items.Add(comboBoxItem);
+            foreach (var text in texts)
+            {
+                var comboBoxItem = new ComboBoxItem {Content = text};
+                comboBox.Items.Add(comboBoxItem);
+            }
         }
 
         private void ButonClick(object sender, RoutedEventArgs e)

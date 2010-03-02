@@ -1,14 +1,14 @@
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using White.CustomControls.WPF.Peers;
+using White.CustomControls.Peers;
 
-namespace White.CustomControls.WPF
+namespace White.CustomControls
 {
-    public class WhiteButton : Button
+    public class WhiteComboBox : ComboBox
     {
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new WhiteButtonPeer(this);
+            return new WhiteComboBoxPeer(this);
         }
     }
 }

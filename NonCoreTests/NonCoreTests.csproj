@@ -89,8 +89,12 @@
     <Compile Include="CustomCommands\CustomButtonCommandSilverlightTest.cs" />
     <Compile Include="CustomControls\AssemblyBasedFactoryTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandDeserializerTest.cs" />
+    <Compile Include="CustomControls\Automation\CustomCommandRequestTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandTest.cs" />
     <Compile Include="CustomControls\Automation\ObjectCopierTest.cs" />
+    <Compile Include="CustomControls\Automation\TestAutomationPeer.cs" />
+    <Compile Include="CustomControls\Automation\WhitePeerForValueProviderTest.cs" />
+    <Compile Include="CustomControls\Automation\WhitePeerTest.cs" />
     <Compile Include="NonCoreExperimentTest.cs" />
     <Compile Include="Recorder\CodeGeneration\DynamicScreenClassTest.cs" />
     <Compile Include="Recorder\CodeGeneration\ScreenClassFieldTest.cs" />
@@ -120,9 +124,9 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CustomCommands.Silverlight\CustomCommands.Silverlight.csproj">
-      <Project>{11FBB4B6-E269-43E4-A335-F0AD1F848493}</Project>
-      <Name>CustomCommands.Silverlight</Name>
+    <ProjectReference Include="..\CustomCommands\CustomCommands.WPF.csproj">
+      <Project>{C5589F07-067E-408D-8B95-5C3CE132843E}</Project>
+      <Name>CustomCommands.WPF</Name>
     </ProjectReference>
     <ProjectReference Include="..\CustomControls\CustomControls.csproj">
       <Project>{8513D286-87D2-459D-A713-2E583FB797F8}</Project>

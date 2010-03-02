@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using White.CustomControls.Automation;
 
-namespace White.CustomControls
+namespace White.CustomControls.Automation
 {
     public class CommandAssemblies
     {

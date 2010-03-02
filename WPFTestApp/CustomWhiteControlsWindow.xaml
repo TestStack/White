@@ -1,14 +1,14 @@
 ﻿<Window x:Class="WindowsPresentationFramework.CustomWhiteControlsWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:WPF="clr-namespace:White.CustomControls.WPF;assembly=White.CustomControls.WPF"
+    xmlns:CustomControls="clr-namespace:White.CustomControls;assembly=White.CustomControls"
     Title="Form1" Height="300" Width="300">
   <Grid>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="100"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <WPF:WhiteButton Height="23" Margin="12,24,13,0" Name="button" VerticalAlignment="Top">Button</WPF:WhiteButton>
-    <WPF:WhiteTextBox Height="23" Margin="22,62,21,0" Name="textbox" VerticalAlignment="Top">Foo</WPF:WhiteTextBox>
+    <CustomControls:WhiteButton Height="23" Margin="12,24,13,0" Name="button" VerticalAlignment="Top">Button</CustomControls:WhiteButton>
+    <CustomControls:WhiteTextBox Height="23" Margin="22,62,21,0" Name="textbox" VerticalAlignment="Top">Foo</CustomControls:WhiteTextBox>
   </Grid>
 </Window>
