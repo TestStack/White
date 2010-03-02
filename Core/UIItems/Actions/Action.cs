@@ -44,7 +44,16 @@ namespace White.Core.UIItems.Actions
                         };
                 new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout).Perform(@do, matched, expired);
             }
+            CustomWait(window);
             if (types.Contains(ActionType.NewControls)) window.ReloadIfCached();
+        }
+
+        public virtual void CustomWait(UIItemContainer uiItemContainer)
+        {
+            if (CoreAppXmlConfiguration.Instance.AdditionalWaitHook != null)
+            {
+                CoreAppXmlConfiguration.Instance.AdditionalWaitHook.WaitFor(uiItemContainer);
+            }
         }
 
         public static readonly Action WindowMessage = new Action(ActionType.WindowMessage);

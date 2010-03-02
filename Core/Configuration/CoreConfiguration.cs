@@ -21,5 +21,6 @@ namespace White.Core.Configuration
         int DragStepCount { get; }
         bool InProc { get; set; }
         bool ComboBoxItemsPopulatedWithoutDropDownOpen { get; set; }
+        IWaitHook AdditionalWaitHook { get; }
     }
 }
