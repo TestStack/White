@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 
 namespace White.NonCoreTests.CustomControls.Automation
 {
-    public class TestAutomationPeer : AutomationPeer
+    public class TestAutomationPeer : AutomationPeer, IValueProvider
     {
         protected override List<AutomationPeer> GetChildrenCore()
         {
@@ -125,6 +126,21 @@ namespace White.NonCoreTests.CustomControls.Automation
         protected override void SetFocusCore()
         {
             throw new NotImplementedException();
+        }
+
+        public void SetValue(string value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Value
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public bool IsReadOnly
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 }

@@ -377,7 +377,7 @@ namespace White.Core.UIItems
             var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
             if (valuePattern == null) throw new CustomCommandException(string.Format("{0} does not implement ValuePattern", automationElement.Display()));
             object[] response = Execute(valuePattern, assemblyFile, typeName, method, arguments);
-            if (response.Length == 1) return response[0];
+            if (response.Length == 1) return response;
 
             var commandSerializer = new CustomCommandSerializer();
             string serializedAssemblyRequest = commandSerializer.SerializeAssembly(assemblyFile);

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
 
 namespace White.CustomControls.Automation
@@ -33,6 +34,8 @@ namespace White.CustomControls.Automation
         private WhitePeer(AutomationPeer automationPeer, Control control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
                           SetValueDelegate setValueDelegate)
         {
+            if (!(automationPeer is IValueProvider)) throw new ArgumentException("Automation Peer should be a IValueProvider");
+
             this.automationPeer = automationPeer;
             this.control = control;
             this.commandSerializer = commandSerializer;

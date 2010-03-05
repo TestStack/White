@@ -6,10 +6,18 @@ namespace White.UnitTests.Core.CustomCommands
     [TestFixture]
     public class CustomCommandSerializerTest
     {
+        private CustomCommandSerializer commandSerializer;
+
+        [SetUp]
+        public void SetUp()
+        {
+            commandSerializer = new CustomCommandSerializer();
+        }
+
         [Test]
         public void ToXml()
         {
-            var s = new CustomCommandSerializer().Serialize("", "IBazCommand", "foo", new object[] { "bar", 1 });
+            var s = commandSerializer.Serialize("", "IBazCommand", "foo", new object[] { "bar", 1 });
             Assert.AreNotEqual(null, s);
             Assert.AreNotEqual(0, s.Length);
         }
@@ -17,9 +25,17 @@ namespace White.UnitTests.Core.CustomCommands
         [Test]
         public void ToXmlWhenOneOfTheArgumentsIsNull()
         {
-            var s = new CustomCommandSerializer().Serialize("", "IBazCommand", "foo", new object[] { "bar", 1, null });
+            var s = commandSerializer.Serialize("", "IBazCommand", "foo", new object[] { "bar", 1, null });
             Assert.AreNotEqual(null, s);
             Assert.AreNotEqual(0, s.Length);
+        }
+
+        [Test]
+        public void SerializeAndDeserialize()
+        {
+            string @string = commandSerializer.Serialize("", "IBazCommand", "foo", new object[] {new[] {"bar", "1"}});
+            object[] objects = commandSerializer.ToObject(@string, typeof (object[]));
+            commandSerializer.ToObject((string) objects[1], typeof (object[]));
         }
     }
 }

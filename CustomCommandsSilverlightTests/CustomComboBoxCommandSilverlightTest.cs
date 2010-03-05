@@ -16,6 +16,8 @@ namespace White.CustomCommandsSilverlightTests
             var comboBoxCommands = new CustomCommandFactory().Create<IComboBoxCommands>(comboBox);
             comboBoxCommands.Select("Quux");
             Assert.AreEqual("Quux", comboBox.SelectedItemText);
+            comboBoxCommands.Select("Quux");
+            Assert.AreEqual("Quux", comboBox.SelectedItemText);
         }
     }
 }

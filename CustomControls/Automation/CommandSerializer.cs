@@ -10,7 +10,15 @@ namespace White.CustomControls.Automation
     {
         private readonly CommandAssemblies commandAssemblies;
 
-        private static List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
+        private static readonly List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
+        private static readonly List<Type> standardKnownTypes = new List<Type>
+                                                           {
+                                                               typeof (object[]),
+                                                               typeof (string[]),
+                                                               typeof (int[]),
+                                                               typeof (double[]),
+                                                               typeof (DateTime[])
+                                                           };
 
         public CommandSerializer(CommandAssemblies commandAssemblies)
         {
@@ -68,7 +76,7 @@ namespace White.CustomControls.Automation
             byte[] requestBytes = Convert.FromBase64String(@string);
             using (var stream = new MemoryStream(requestBytes))
             {
-                var dataContractSerializer = new DataContractSerializer(typeof (object[]));
+                var dataContractSerializer = new DataContractSerializer(typeof(object[]), standardKnownTypes);
                 stream.Position = 0;
                 return (object[]) dataContractSerializer.ReadObject(stream);
             }
