@@ -1,9 +1,11 @@
 using System.IO;
 using NUnit.Framework;
+using White.Core;
+using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Core.Factory
+namespace White.UnitTests.Core.Factory
 {
     [TestFixture, WinFormCategory]
     public class InitializeOptionTest

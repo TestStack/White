@@ -1,10 +1,11 @@
 using NUnit.Framework;
+using White.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core
+namespace White.UnitTests.Core
 {
     [TestFixture, WinFormCategory]
     public class ModalWindowSessionTest : ControlsActionTest

@@ -93,5 +93,12 @@ namespace White.UnitTests.Core.UIItems.WindowItems
         {
             Assert.AreNotEqual(null, window.Mouse);
         }
+
+        [Test]
+        public void FindNonExistentItem()
+        {
+            var button = window.Get<Button>("DoesntExist");
+            Assert.AreEqual(null, button);
+        }
     }
 }

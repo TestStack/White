@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using White.Core.UIItems;
+using White.Core.UIItems.Finders;
 using White.UnitTests.Core.Testing;
+using White.Core.UIItems.WPFUIItems;
 
 namespace White.UnitTests.Core.UIItems
 {
@@ -20,6 +22,13 @@ namespace White.UnitTests.Core.UIItems
         {
             button.Click();
             AssertResultLabelText("Button Clicked");
+        }
+
+        [Test]
+        public void FindNonExistent()
+        {
+            var box = button.Get<TextBox>(SearchCriteria.ByAutomationId("foo"));
+            Assert.AreEqual(null, box);
         }
 
         [Test]

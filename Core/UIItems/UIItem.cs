@@ -369,7 +369,7 @@ namespace White.Core.UIItems
 
         internal virtual UIItemContainer AsContainer()
         {
-            return new UIItemContainer(automationElement, actionListener);
+            return new UIItemContainer(AutomationElement, actionListener);
         }
 
         protected object Do(string assemblyFile, string typeName, MethodInfo method, object[] arguments)
