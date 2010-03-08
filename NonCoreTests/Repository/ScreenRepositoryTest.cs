@@ -1,3 +1,4 @@
+using Repository;
 using White.Core;
 using White.Core.Factory;
 using White.Core.Sessions;
@@ -5,7 +6,7 @@ using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
 using Rhino.Mocks;
 
-namespace Repository
+namespace White.NonCoreTests.Repository
 {
     [TestFixture]
     public class ScreenRepositoryTest
@@ -26,7 +27,7 @@ namespace Repository
         }
 
         [Test]
-        public void Controls_with_same_name_are_resolved_using_index()
+        public void ControlsWithSameNameAreResolvedUsingIndex()
         {
             screenRepositoryTester.SetUp(InitializeOption.NoCache);
             screenRepositoryTester.Controls_with_same_name_are_resolved_using_index();

@@ -55,7 +55,7 @@ namespace White.CustomControls.Automation
                 }
                 else if (customCommandSessionOpen)
                 {
-                    value = command == null ? new object[2] : new[] { command.Execute(control) };
+                    value = command == null ? new object[2] : new[] {command.Execute(control)};
                 }
                 else
                 {
@@ -64,7 +64,7 @@ namespace White.CustomControls.Automation
             }
             catch (Exception e)
             {
-                throw new Exception(e.ToString());
+                value = new object[2]{e.ToString(), null};
             }
         }
 
@@ -75,7 +75,7 @@ namespace White.CustomControls.Automation
                 try
                 {
                     if (!customCommandSessionOpen) return getValueDelegate();
-                    
+
                     if (value == null) return null;
                     var response = ((object[]) value);
                     object commandReturnValue = response[0];

@@ -19,6 +19,7 @@ namespace White.NonCoreTests.Repository
             AssemblyTest.AllMethodsVirtual(typeof (ScreenRepository).Assembly);
             AssemblyTest.AllMethodsVirtual(typeof (Firefox).Assembly);
             AssemblyTest.AllMethodsVirtual(typeof (ReportingConfiguration).Assembly);
+            AssemblyTest.AllMethodsVirtual(typeof (WhitePeer).Assembly);
         }
     }
 }

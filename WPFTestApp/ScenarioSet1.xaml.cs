@@ -47,6 +47,9 @@ namespace WindowsPresentationFramework
             dataBoundComboBox.ItemsSource = GetList();
             dataBoundComboBox.DisplayMemberPath = "EmployeeName";
             dataBoundComboBox.SelectedIndex = 0;
+
+            editableComboBox.Items.Add("whatever");
+            editableComboBox.IsEditable = true;
         }
 
         private static IList GetList()

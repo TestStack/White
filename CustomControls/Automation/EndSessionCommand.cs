@@ -4,7 +4,7 @@ namespace White.CustomControls.Automation
 {
     public class EndSessionCommand : ICommand
     {
-        public object Execute(object control)
+        public virtual object Execute(object control)
         {
             throw new NotImplementedException();
         }

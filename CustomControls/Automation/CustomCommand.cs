@@ -52,7 +52,7 @@ namespace White.CustomControls.Automation
             return string.Join(".", strings);
         }
 
-        public object Execute(object control)
+        public virtual object Execute(object control)
         {
             object commandImpl = commandAssembly.Create(GetImplementedTypeName(), control);
             MethodInfo methodInfo = commandImpl.GetType().GetMethod(MethodName);

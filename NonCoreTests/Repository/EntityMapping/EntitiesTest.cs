@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using System.Text;
+using Repository.EntityMapping;
 using White.Core;
 using White.Core.UIItems.TableItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
 
-namespace Repository.EntityMapping
+namespace White.NonCoreTests.Repository.EntityMapping
 {
     [TestFixture]
     public class EntitiesTest
@@ -13,13 +14,13 @@ namespace Repository.EntityMapping
         [Test]
         public void To_String()
         {
-            Entities<Entity> list = new Entities<Entity>();
-            NestedEntity nestedEntity = new NestedEntity();
-            TestEntity testEntity = new TestEntity(nestedEntity);
+            var list = new Entities<Entity>();
+            var nestedEntity = new NestedEntity();
+            var testEntity = new TestEntity(nestedEntity);
             nestedEntity.Yo = "7";
             testEntity.Zo = "8";
             list.Add(testEntity);
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             builder.AppendLine("ZO, YO, ");
             builder.AppendLine("8, 7, ");
             Assert.AreEqual(builder.ToString(), list.ToString());
@@ -28,8 +29,8 @@ namespace Repository.EntityMapping
         [Test]
         public void Construction()
         {
-            var data = new List<string[]> {new string[] {"1", "2"}, new string[] {"3", "4"}};
-            var entities = new Entities<TestEntity>(new string[] {"ZO", "YO"}, data);
+            var data = new List<string[]> {new[] {"1", "2"}, new[] {"3", "4"}};
+            var entities = new Entities<TestEntity>(new[] {"ZO", "YO"}, data);
             Assert.AreEqual("1", entities[0].Zo);
             Assert.AreEqual("2", entities[0].NestedEntity.Yo);
             Assert.AreEqual("3", entities[1].Zo);
@@ -46,7 +47,7 @@ namespace Repository.EntityMapping
         [TestFixtureSetUp]
         public void FixtureSetup()
         {
-            WinFormTestConfiguration configuration = new WinFormTestConfiguration(string.Empty);
+            var configuration = new WinFormTestConfiguration(string.Empty);
             application = configuration.Launch();
             window = application.GetWindow("Form1");
         }
@@ -54,8 +55,8 @@ namespace Repository.EntityMapping
         [Test]
         public void FromTable()
         {
-            Table table = window.Get<Table>("people");
-            Entities<Cricketer> entities = new Entities<Cricketer>(table);
+            var table = window.Get<Table>("people");
+            var entities = new Entities<Cricketer>(table);
             Assert.AreEqual(entities.Count, table.Rows.Count);
             Assert.AreEqual("Imran", entities[0].Name);
         }

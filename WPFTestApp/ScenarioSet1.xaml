@@ -1,10 +1,11 @@
 ﻿<Window x:Class="WindowsPresentationFramework.ScenarioSet1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Form1" Height="300" Width="300">
+    Title="Form1" Height="600" Width="600">
     <Grid>
         <TextBlock Height="21" Margin="66,0,92,83" Name="textBlock1" VerticalAlignment="Bottom">Textblock text</TextBlock>
         <ComboBox Height="23" Margin="26,0,132,4" Name="comboBox1" VerticalAlignment="Bottom" />
         <ComboBox Height="23" Margin="86,35,72,0" Name="dataBoundComboBox" VerticalAlignment="Top"/>
+        <ComboBox Height="23" Margin="66,109,152,0" Name="editableComboBox" VerticalAlignment="Top"/>
     </Grid>
 </Window>

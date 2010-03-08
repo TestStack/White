@@ -26,9 +26,9 @@ namespace White.NonCoreTests.CustomControls.Automation
         {
             string serializedCommand = commandSerializer.Serialize("Foo.dll", "Bar", "Baz", new object[0]);
             whitePeer.SetValue(serializedCommand);
-            object[] response = commandSerializer.ToObject(whitePeer.Value, typeof (void));
+            object[] response = commandSerializer.ToObject(whitePeer.Value);
             Assert.AreEqual(2, response.Length);
-            response = commandSerializer.ToObject(whitePeer.Value, typeof (void));
+            response = commandSerializer.ToObject(whitePeer.Value);
             Assert.AreEqual(2, response.Length);
         }
 
@@ -41,7 +41,7 @@ namespace White.NonCoreTests.CustomControls.Automation
 
             string serializedCommand = commandSerializer.Serialize(new FileInfo(assemblyFile).Name, typeof (ITestCommand).FullName, "Perform", new object[0]);
             whitePeer.SetValue(serializedCommand);
-            object[] response = commandSerializer.ToObject(whitePeer.Value, typeof (void));
+            object[] response = commandSerializer.ToObject(whitePeer.Value);
             Assert.AreEqual(1, response.Length);
         }
 

@@ -1,6 +1,7 @@
 using NUnit.Framework;
+using Repository.EntityMapping;
 
-namespace Repository.EntityMapping
+namespace White.NonCoreTests.Repository.EntityMapping
 {
     [TestFixture]
     public class NestedEntitiesTest

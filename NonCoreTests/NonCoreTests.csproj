@@ -89,7 +89,6 @@
       <Link>AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="AdditionalAssemblyInfo.cs" />
-    <Compile Include="CustomCommands\CustomButtonCommandSilverlightTest.cs" />
     <Compile Include="CustomControls\AssemblyBasedFactoryTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandDeserializerTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandRequestTest.cs" />
@@ -164,6 +163,7 @@
     <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="CustomCommands\" />
     <Folder Include="Properties\" />
     <Folder Include="Reporting\" />
   </ItemGroup>

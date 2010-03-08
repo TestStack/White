@@ -17,7 +17,8 @@ namespace White.CustomControls.Automation
                                                                typeof (string[]),
                                                                typeof (int[]),
                                                                typeof (double[]),
-                                                               typeof (DateTime[])
+                                                               typeof (DateTime[]),
+                                                               typeof (Exception)
                                                            };
 
         public CommandSerializer(CommandAssemblies commandAssemblies)

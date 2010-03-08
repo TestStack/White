@@ -13,7 +13,7 @@ namespace White.CustomControls.Automation
             this.commandAssemblies = commandAssemblies;
         }
 
-        public object Execute(object control)
+        public virtual object Execute(object control)
         {
             commandAssemblies.Add(assemblyName, contents);
             return null;

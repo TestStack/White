@@ -10,7 +10,7 @@ namespace White.UnitTests.Core.UIItems.ListBoxItems
     [TestFixture]
     public class ComboBoxTest : ControlsActionTest
     {
-        protected ComboBox comboBox;
+        private ComboBox comboBox;
 
         protected override void TestFixtureSetUp()
         {

@@ -124,6 +124,7 @@
     <Compile Include="CustomCommands\CustomCommandException.cs" />
     <Compile Include="CustomCommands\CustomCommandFactory.cs" />
     <Compile Include="CustomCommands\CustomCommandInterceptor.cs" />
+    <Compile Include="CustomCommands\CustomCommandResponse.cs" />
     <Compile Include="CustomCommands\CustomCommandSerializer.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Desktop.cs" />

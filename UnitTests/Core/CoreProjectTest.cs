@@ -28,7 +28,7 @@ namespace White.UnitTests.Core
                                                  if (constructorInfo.GetParameters().Length == 0)
                                                      hasDefaultConstructor = true;
                                              });
-                if (!hasDefaultConstructor && !subClass.Name.Equals("Desktop")) collection.Add(subClass);
+                if (!hasDefaultConstructor &&  subClass.ClassType.IsVisible && !subClass.Name.Equals("Desktop")) collection.Add(subClass);
             }
 
             Assert.AreEqual(0, collection.Count, collection.ToString());

@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems.WindowItems
+namespace White.UnitTests.Core.UIItems.WindowItems
 {
     [TestFixture]
     public class WindowCloseTest : ControlsActionTest

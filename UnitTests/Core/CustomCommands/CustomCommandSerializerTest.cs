@@ -34,8 +34,8 @@ namespace White.UnitTests.Core.CustomCommands
         public void SerializeAndDeserialize()
         {
             string @string = commandSerializer.Serialize("", "IBazCommand", "foo", new object[] {new[] {"bar", "1"}});
-            object[] objects = commandSerializer.ToObject(@string, typeof (object[]));
-            commandSerializer.ToObject((string) objects[1], typeof (object[]));
+            object[] objects = commandSerializer.ToObject(@string);
+            commandSerializer.ToObject((string) objects[1]);
         }
     }
 }

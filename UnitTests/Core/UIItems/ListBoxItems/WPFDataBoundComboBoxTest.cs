@@ -29,5 +29,22 @@ namespace White.UnitTests.Core.UIItems.ListBoxItems
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
         }
+
+        [Test]
+        public void SetValueInEditableComboBox()
+        {
+            var comboBox = window.Get<ComboBox>("editableComboBox");
+            comboBox.EditableText = "foobar";
+            Assert.AreEqual("foobar", comboBox.EditableText);
+        }
+
+        [Test]
+        public void SelectItemInEditableComboBox()
+        {
+            var comboBox = window.Get<ComboBox>("editableComboBox");
+            comboBox.Select("whatever");
+            Assert.AreEqual("whatever", comboBox.EditableText);
+            Assert.AreEqual("whatever", comboBox.SelectedItemText);
+        }
     }
 }

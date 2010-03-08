@@ -14,7 +14,9 @@ namespace White.Core.UIItems.ListBoxItems
         private AutomationPropertyChangedEventHandler handler;
         private ListItem lastSelectedItem;
 
-        protected ComboBox() {}
+        protected ComboBox()
+        {
+        }
 
         public ComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
@@ -35,6 +37,35 @@ namespace White.Core.UIItems.ListBoxItems
         public override IScrollBars ScrollBars
         {
             get { return new ComboBoxScrollBars(automationElement, actionListener); }
+        }
+
+        public virtual string EditableText
+        {
+            get { return EditableItem.Text; }
+            set { EditableItem.Text = value; }
+        }
+
+        protected virtual TextBox EditableItem
+        {
+            get
+            {
+                AutomationElement editElement = EditableElement();
+                if (editElement != null)
+                {
+                    return new TextBox(editElement, actionListener);
+                }
+                throw new WhiteException("ComboBox is not editable");
+            }
+        }
+
+        public virtual bool IsEditable
+        {
+            get { return EditableElement() != null;}
+        }
+
+        private AutomationElement EditableElement()
+        {
+            return finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit));
         }
 
         public override void Select(string itemText)
@@ -84,8 +115,7 @@ namespace White.Core.UIItems.ListBoxItems
                               lastSelectedItem = SelectedItem;
                               eventListener.EventOccured(new ComboBoxEvent(this, SelectedItemText));
                           };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler,
-                                                                ExpandCollapsePattern.ExpandCollapseStateProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler, ExpandCollapsePattern.ExpandCollapseStateProperty);
         }
 
         public override void UnHookEvents()

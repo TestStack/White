@@ -6,7 +6,7 @@ using Reporting.Utility;
 
 namespace Reporting.Test.Utility
 {
-    [TestFixture]
+    [TestFixture, Ignore]
     public class HtmlGeneratorTest
     {
         private readonly SubFlows subFlows = new SubFlows("archiveLocation", "flowName");

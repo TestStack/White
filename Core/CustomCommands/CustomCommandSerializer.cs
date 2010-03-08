@@ -15,7 +15,8 @@ namespace White.Core.CustomCommands
                                                                typeof (string[]),
                                                                typeof (int[]),
                                                                typeof (double[]),
-                                                               typeof (DateTime[])
+                                                               typeof (DateTime[]),
+                                                               typeof(Exception)
                                                            };
 
         public virtual string SerializeAssembly(string assemblyFile)
@@ -27,16 +28,6 @@ namespace White.Core.CustomCommands
 
         public virtual string Serialize(string assemblyName, string typeName, string method, object[] arguments)
         {
-//            foreach (var argument in arguments)
-//            {
-//                if (argument != null) AddKnownType(knownTypes, argument);
-//                var collection = argument as ICollection;
-//                if (collection != null)
-//                {
-//                    object collectionItem = new ArrayList(collection)[0];
-//                    if (collectionItem != null) AddKnownType(knownTypes, argument);
-//                }
-//            }
             var commandList = new object[] {typeName, method, @arguments};
             string payload = bricksDataContractSerializer.ToString(commandList, standardKnownTypes);
 
@@ -44,13 +35,7 @@ namespace White.Core.CustomCommands
             return bricksDataContractSerializer.ToString(request, standardKnownTypes);
         }
 
-//        private void AddKnownType(List<Type> knownTypes, object argument)
-//        {
-//            if (!knownTypes.Contains(argument.GetType()))
-//                knownTypes.Add(argument.GetType());
-//        }
-
-        public virtual object[] ToObject(string @string, Type returnType)
+        public virtual object[] ToObject(string @string)
         {
             return bricksDataContractSerializer.ToObject<object[]>(@string, standardKnownTypes);
         }

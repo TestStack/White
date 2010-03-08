@@ -1,7 +1,6 @@
 using System;
 using NUnit.Framework;
 using White.Core;
-using White.Core.Testing;
 using White.Core.UIItems;
 using White.UnitTests.Core.Testing;
 

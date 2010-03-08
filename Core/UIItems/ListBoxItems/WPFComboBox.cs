@@ -1,3 +1,4 @@
+using System.Windows;
 using System.Windows.Automation;
 using White.Core.UIA;
 using White.Core.UIItems.Actions;
@@ -32,7 +33,8 @@ namespace White.Core.UIItems.ListBoxItems
 
         protected override void ToggleDropDown()
         {
-            mouse.Click(automationElement.Current.BoundingRectangle.Center(), actionListener);
+            Point point = IsEditable ? EditableItem.Bounds.ImmediateExteriorEast() : automationElement.Current.BoundingRectangle.Center();
+            mouse.Click(point, actionListener);
         }
     }
 }

@@ -22,17 +22,17 @@ namespace White.CustomControls.Peers
                                                              });
         }
 
-        public void SetValue(string commandString)
+        public virtual void SetValue(string commandString)
         {
             whitePeer.SetValue(commandString);
         }
 
-        public string Value
+        public virtual string Value
         {
             get { return whitePeer.Value; }
         }
 
-        public bool IsReadOnly
+        public virtual bool IsReadOnly
         {
             get { return whitePeer.IsReadOnly; }
         }
