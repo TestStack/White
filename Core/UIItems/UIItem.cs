@@ -152,11 +152,12 @@ namespace White.Core.UIItems
             actionListener.ActionPerforming(this);
             try
             {
-                if (automationElement.Current.IsKeyboardFocusable) automationElement.SetFocus();
+                automationElement.SetFocus();
                 ActionPerformed();
             }
-            catch (InvalidOperationException)
+            catch
             {
+                WhiteLogger.Instance.Debug("Could not set focus on " + automationElement.Current.AutomationId);
             }
         }
 
