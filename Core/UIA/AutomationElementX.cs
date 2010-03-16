@@ -4,34 +4,33 @@ using System.Windows.Automation;
 using White.Core.Logging;
 using White.Core.Mappings;
 
-namespace White.Core.UIA
-{
-    public static class AutomationElementX
-    {
-        public static string Display(this AutomationElement automationElement)
-        {
-            AutomationElement.AutomationElementInformation elementInformation = automationElement.Current;
-            return String.Format("AutomationId:{0}, Name:{1}, ControlType:{2}, FrameworkId:{3}", elementInformation.AutomationId, elementInformation.Name,
-                                 elementInformation.ControlType.LocalizedControlType, elementInformation.FrameworkId);
+namespace White.Core.UIA {
+    public static class AutomationElementX {
+        public static string Display(this AutomationElement automationElement) {
+            try {
+                AutomationElement.AutomationElementInformation elementInformation = automationElement.Current;
+                return String.Format("AutomationId:{0}, Name:{1}, ControlType:{2}, FrameworkId:{3}", elementInformation.AutomationId,
+                    elementInformation.Name, elementInformation.ControlType.LocalizedControlType, elementInformation.FrameworkId);
+            }
+            catch {
+                return "Cannot display automation element details. The UIItem might have been disposed";
+            }
         }
 
-        public static bool IsPrimaryControl(this AutomationElement automationElement)
-        {
+        public static bool IsPrimaryControl(this AutomationElement automationElement) {
             AutomationElement.AutomationElementInformation elementInformation = automationElement.Current;
-            return ControlDictionary.Instance.IsPrimaryControl(elementInformation.ControlType, elementInformation.ClassName, elementInformation.Name);
+            return ControlDictionary.Instance.IsPrimaryControl(elementInformation.ControlType, elementInformation.ClassName,
+                elementInformation.Name);
         }
 
-        public static AutomationElement GetAutomationElementFromPoint(Point location)
-        {
+        public static AutomationElement GetAutomationElementFromPoint(Point location) {
             AutomationElement automationElement;
-            try
-            {
+            try {
                 automationElement = AutomationElement.FromPoint(location);
                 WhiteLogger.Instance.DebugFormat("Found AutomationElement {0} based on position", automationElement.Display());
                 return automationElement;
             }
-            catch
-            {
+            catch {
                 return null;
             }
         }

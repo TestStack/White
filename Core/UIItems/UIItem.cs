@@ -157,7 +157,7 @@ namespace White.Core.UIItems
             }
             catch
             {
-                WhiteLogger.Instance.Debug("Could not set focus on " + automationElement.Current.AutomationId);
+                WhiteLogger.Instance.Debug("Could not set focus on " + automationElement.Display());
             }
         }
 
