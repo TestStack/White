@@ -192,6 +192,7 @@ namespace White.Core.UIItems
 
         public override void ActionPerforming(UIItem uiItem)
         {
+            Focus();
             var screenItem = new ScreenItem(uiItem, ScrollBars);
             screenItem.MakeVisible(this);
         }
