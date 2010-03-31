@@ -121,11 +121,27 @@ namespace White.Core.WindowsAPI
             F10 = 0x79,
             F11 = 0x7A,
             F12 = 0x7B,
+            F13 = 0x7C,
+            F14 = 0x7D,
+            F15 = 0x7E,
+            F16 = 0x7F,
+            F17 = 0x80,
+            F18 = 0x81,
+            F19 = 0x82,
+            F20 = 0x83,
+            F21 = 0x84,
+            F22 = 0x85,
+            F23 = 0x86,
+            F24 = 0x87,
             PAGEUP = 0x21,
             PAGEDOWN = 0x22,
             PRINT = 0x2A,
             PRINTSCREEN = 0x2C,
-            SPACE = 0x20
+            SPACE = 0x20,
+            NUMLOCK = 0x90,
+            SCROLL = 0x91,
+            LWIN = 0x5B,
+            RWIN = 0x5C,
         }
     }
 

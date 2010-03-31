@@ -77,12 +77,22 @@
     <Compile Include="Automation\WhitePeer.cs" />
     <Compile Include="Automation\CommandSerializer.cs" />
     <Compile Include="Automation\ICommandSerializer.cs" />
+    <Compile Include="Peers\WhiteHyperlinkAutomationPeer.cs" />
+    <Compile Include="Peers\WhiteListBoxAutomationPeer.cs" />
+    <Compile Include="Peers\WhiteSliderAutomationPeer.cs" />
     <Compile Include="Peers\WhiteButtonPeer.cs" />
+    <Compile Include="Peers\WhiteCheckBoxPeer.cs" />
     <Compile Include="Peers\WhiteComboBoxPeer.cs" />
     <Compile Include="Peers\WhiteTextBoxPeer.cs" />
+    <Compile Include="Peers\WhiteThumbAutomationPeer.cs" />
+    <Compile Include="Peers\WhiteTreeViewAutomationPeer.cs" />
     <Compile Include="WhiteButton.cs" />
+    <Compile Include="WhiteCheckBox.cs" />
     <Compile Include="WhiteComboBox.cs" />
+    <Compile Include="WhiteHyperlink.cs" />
+    <Compile Include="WhiteSlider.cs" />
     <Compile Include="WhiteTextBox.cs" />
+    <Compile Include="WhiteThumb.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />

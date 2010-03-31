@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using White.Core.UIItems.Actions;
@@ -13,6 +14,23 @@ namespace White.Core.InputDevices
     /// </summary>
     public class Keyboard : IKeyboard
     {
+        private static List<KeyboardInput.SpecialKeys> scanCodeDependent = new List<KeyboardInput.SpecialKeys>
+                                                                               {
+                                                                                   KeyboardInput.SpecialKeys.RIGHT_ALT,
+                                                                                   KeyboardInput.SpecialKeys.INSERT,
+                                                                                   KeyboardInput.SpecialKeys.DELETE,
+                                                                                   KeyboardInput.SpecialKeys.LEFT,
+                                                                                   KeyboardInput.SpecialKeys.HOME,
+                                                                                   KeyboardInput.SpecialKeys.END,
+                                                                                   KeyboardInput.SpecialKeys.UP,
+                                                                                   KeyboardInput.SpecialKeys.DOWN,
+                                                                                   KeyboardInput.SpecialKeys.PAGEUP,
+                                                                                   KeyboardInput.SpecialKeys.PAGEDOWN,
+                                                                                   KeyboardInput.SpecialKeys.RIGHT,
+                                                                                   KeyboardInput.SpecialKeys.LWIN,
+                                                                                   KeyboardInput.SpecialKeys.RWIN
+                                                                               };
+
         [DllImport("user32", EntryPoint = "SendInput")]
         private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
 
@@ -31,11 +49,13 @@ namespace White.Core.InputDevices
         /// Use Window.Keyboard method to get handle to the Keyboard. Keyboard instance got using this method would not wait while the application
         /// is busy.
         /// </summary>
-        public static Keyboard Instance = new Keyboard();
+        public static readonly Keyboard Instance = new Keyboard();
 
         private readonly List<int> keysHeld = new List<int>();
 
-        private Keyboard() {}
+        private Keyboard()
+        {
+        }
 
         public virtual void Enter(string keysToType)
         {
@@ -110,19 +130,23 @@ namespace White.Core.InputDevices
 
         private void SendKeyUp(short b, bool specialKey)
         {
-            if (!keysHeld.Contains(b)) throw new InputDeviceException("Cannot press the key " + b + " as its already pressed");
+            if (!keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
             keysHeld.Remove(b);
-            KeyboardInput.KeyUpDown keyUpDown = KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP;
-            if (specialKey) keyUpDown |= KeyboardInput.KeyUpDown.KEYEVENTF_EXTENDEDKEY;
+            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
             SendInput(GetInputFor(b, keyUpDown));
+        }
+
+        private static KeyboardInput.KeyUpDown GetSpecialKeyCode(bool specialKey, KeyboardInput.KeyUpDown key)
+        {
+            if (specialKey && scanCodeDependent.Contains((KeyboardInput.SpecialKeys) key)) key |= KeyboardInput.KeyUpDown.KEYEVENTF_EXTENDEDKEY;
+            return key;
         }
 
         private void SendKeyDown(short b, bool specialKey)
         {
-            if (keysHeld.Contains(b)) throw new InputDeviceException("Cannot press the key " + b + " as its already pressed");
+            if (keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
             keysHeld.Add(b);
-            KeyboardInput.KeyUpDown keyUpDown = KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN;
-            if (specialKey) keyUpDown |= KeyboardInput.KeyUpDown.KEYEVENTF_EXTENDEDKEY;
+            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
             SendInput(GetInputFor(b, keyUpDown));
         }
 
@@ -153,8 +177,7 @@ namespace White.Core.InputDevices
 
         public virtual void LeaveAllKeys()
         {
-            var list = new List<KeyboardInput.SpecialKeys>(heldKeys);
-            list.ForEach(LeaveKey);
+            new List<KeyboardInput.SpecialKeys>(heldKeys).ForEach(LeaveKey);
         }
     }
 }

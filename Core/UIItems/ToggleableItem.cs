@@ -3,13 +3,13 @@ using System.Windows.Automation;
 
 namespace White.Core.UIItems
 {
-    internal class ToggleableItem : UIItem
+    public class ToggleableItem : UIItem
     {
         public ToggleableItem(UIItem uiItem) : base(uiItem.AutomationElement, uiItem.ActionListener)
         {
         }
 
-        internal virtual ToggleState State
+        public virtual ToggleState State
         {
             get { return (ToggleState) Property(TogglePattern.ToggleStateProperty); }
             set
@@ -23,7 +23,7 @@ namespace White.Core.UIItems
             }
         }
 
-        internal virtual void Toggle()
+        public virtual void Toggle()
         {
             var pattern = (TogglePattern) Pattern(TogglePattern.Pattern);
             pattern.Toggle();

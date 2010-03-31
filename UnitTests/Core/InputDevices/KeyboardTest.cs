@@ -1,10 +1,12 @@
 using System.Text;
 using NUnit.Framework;
+using White.Core;
+using White.Core.InputDevices;
 using White.Core.UIItems;
 using White.Core.WindowsAPI;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.InputDevices
+namespace White.UnitTests.Core.InputDevices
 {
     [TestFixture, NormalCategory]
     public class KeyboardTest : ControlsActionTest
@@ -16,11 +18,17 @@ namespace White.Core.InputDevices
             textBox = window.Get<TextBox>("textBox");
         }
 
-        [Test]
+        [TearDown]
+        public void TearDown()
+        {
+            keyboard.LeaveAllKeys();
+        }
+
+        [Test, Ignore]
         public void EnterAccentedChars()
         {
             textBox.BulkText = "דאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהב";
-//            EnterAndAssertValueOfTextEntered();
+//            EnterAndAssertValueOfTextEntered("דאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהב");
         }
 
         [Test]
@@ -102,15 +110,15 @@ namespace White.Core.InputDevices
     }
 
     [TestFixture, WinFormCategory]
-    public class KeyboardTest_OnWinForm : ControlsActionTest
+    public class KeyboardTestOnWinForm : ControlsActionTest
     {
         [Test]
         public void MultilineTextBox()
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             builder.Append("abcd").AppendLine();
             builder.Append("efgh").AppendLine();
-            MultilineTextBox multilineTextBox = window.Get<MultilineTextBox>("multilineTextBox");
+            var multilineTextBox = window.Get<MultilineTextBox>("multilineTextBox");
             multilineTextBox.Text = builder.ToString();
             Assert.AreEqual(builder.ToString(), multilineTextBox.Text);
         }

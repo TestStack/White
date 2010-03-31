@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
-using System.Windows.Controls;
 
 namespace White.CustomControls.Automation
 {
@@ -20,18 +19,18 @@ namespace White.CustomControls.Automation
 
         public delegate void SetValueDelegate(string value);
 
-        public static WhitePeer Create(AutomationPeer automationPeer, Control control)
+        public static WhitePeer Create(AutomationPeer automationPeer, object control)
         {
             return CreateForValueProvider(automationPeer, control, null, null);
         }
 
-        public static WhitePeer CreateForValueProvider(AutomationPeer automationPeer, Control control, GetValueDelegate getValueDelegate,
+        public static WhitePeer CreateForValueProvider(AutomationPeer automationPeer, object control, GetValueDelegate getValueDelegate,
                                                        SetValueDelegate setValueDelegate)
         {
             return new WhitePeer(automationPeer, control, new CommandSerializer(new CommandAssemblies()), getValueDelegate, setValueDelegate);
         }
 
-        private WhitePeer(AutomationPeer automationPeer, Control control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
+        private WhitePeer(AutomationPeer automationPeer, object control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
                           SetValueDelegate setValueDelegate)
         {
             if (!(automationPeer is IValueProvider)) throw new ArgumentException("Automation Peer should be a IValueProvider");
@@ -64,7 +63,7 @@ namespace White.CustomControls.Automation
             }
             catch (Exception e)
             {
-                value = new object[2]{e.ToString(), null};
+                value = new object[] {e.ToString(), null};
             }
         }
 

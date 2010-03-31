@@ -1,7 +1,9 @@
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems.TableItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems.TableItems
+namespace White.UnitTests.Core.UIItems.TableItems
 {
     [TestFixture, WinFormCategory]
     public class TableRowTest : ControlsActionTest
@@ -18,14 +20,31 @@ namespace White.Core.UIItems.TableItems
         [Test]
         public void RowData()
         {
-            rows[0].LogStructure();
-            Assert.AreEqual("Imran", rows[0].Cells[0].Value);
-            Assert.AreEqual("Pakistan", rows[0].Cells[1].Value);
-            Assert.AreEqual(true.ToString(), rows[0].Cells[2].Value);
+            TableRow firstRow = rows[0];
+            Assert.AreEqual("Imran", firstRow.Cells[0].Value);
+            Assert.AreEqual("Pakistan", firstRow.Cells[1].Value);
+            Assert.AreEqual(true.ToString(), firstRow.Cells[2].Value);
 
-            Assert.AreEqual("Raman Lamba", rows[2].Cells[0].Value);
-            Assert.AreEqual("India", rows[2].Cells[1].Value);
-            Assert.AreEqual(false.ToString(), rows[2].Cells[2].Value);
+            TableRow thirdRow = rows[2];
+            Assert.AreEqual("Raman Lamba", thirdRow.Cells[0].Value);
+            Assert.AreEqual("India", thirdRow.Cells[1].Value);
+            Assert.AreEqual(false.ToString(), thirdRow.Cells[2].Value);
+        }
+
+        [Test]
+        public void GetRowAfterSortingOnAColumn()
+        {
+            table.Header.Columns["Name"].Click();
+            table.Refresh();
+            TableRow firstRow = rows[0];
+            Assert.AreEqual("Imran", firstRow.Cells[0].Value);
+            Assert.AreEqual("Pakistan", firstRow.Cells[1].Value);
+            Assert.AreEqual(true.ToString(), firstRow.Cells[2].Value);
+
+            TableRow thirdRow = rows[2];
+            Assert.AreEqual("Raman Lamba", thirdRow.Cells[0].Value);
+            Assert.AreEqual("India", thirdRow.Cells[1].Value);
+            Assert.AreEqual(false.ToString(), thirdRow.Cells[2].Value);
         }
 
         [Test]

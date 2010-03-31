@@ -25,6 +25,7 @@ namespace White.Core.UIItems
             keyboard.Send(dateFormat.DisplayValue(dateTime, 1).ToString(), actionListener);
             keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, actionListener);
             keyboard.Send(dateFormat.DisplayValue(dateTime, 2).ToString(), actionListener);
+            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, actionListener);
         }
     }
 }

@@ -63,10 +63,12 @@
     <Compile Include="Automation\ObjectCopier.cs" />
     <Compile Include="Automation\WhitePeer.cs" />
     <Compile Include="Peers\WhiteButtonPeer.cs" />
+    <Compile Include="Peers\WhiteCheckBoxPeer.cs" />
     <Compile Include="Peers\WhiteComboBoxPeer.cs" />
     <Compile Include="Peers\WhiteTextBoxPeer.cs" />
     <Compile Include="Automation\SilverlightCommandAssemblies.cs" />
     <Compile Include="WhiteButton.cs" />
+    <Compile Include="WhiteCheckBox.cs" />
     <Compile Include="WhiteComboBox.cs" />
     <Compile Include="WhiteTextBox.cs" />
   </ItemGroup>

@@ -13,18 +13,12 @@ namespace White.Core.WindowsAPI
 
         public static Input Mouse(MouseInput mouseInput)
         {
-            Input input = new Input();
-            input.type = WindowsConstants.INPUT_MOUSE;
-            input.mi = mouseInput;
-            return input;
+            return new Input {type = WindowsConstants.INPUT_MOUSE, mi = mouseInput};
         }
 
         public static Input Keyboard(KeyboardInput keyboardInput)
         {
-            Input input = new Input();
-            input.type = WindowsConstants.INPUT_KEYBOARD;
-            input.ki = keyboardInput;
-            return input;
+            return new Input {type = WindowsConstants.INPUT_KEYBOARD, ki = keyboardInput};
         }
     }
 }
