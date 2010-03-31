@@ -33,10 +33,5 @@ namespace White.Core
                 return new VerticalSpan(start, rect.Top);
             return this;
         }
-
-        public override string ToString()
-        {
-            return string.Format("Start: {0}, End: {1}", start, end);
-        }
     }
 }

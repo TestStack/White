@@ -8,7 +8,7 @@ namespace White.Core
         protected double start;
         protected double end;
 
-        public Span(double start, double end)
+        protected Span(double start, double end)
         {
             this.start = start;
             this.end = end;

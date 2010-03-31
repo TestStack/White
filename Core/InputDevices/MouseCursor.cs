@@ -23,7 +23,7 @@ namespace White.Core.InputDevices
             waitCursors.AddRange(DynamicWaitCursors());
         }
 
-        private MouseCursor(int value)
+        public MouseCursor(int value)
         {
             this.value = value;
         }

@@ -66,7 +66,7 @@ namespace White.Core.InputDevices
                 CursorInfo cursorInfo = CursorInfo.New();
                 GetCursorInfo(ref cursorInfo);
                 int i = cursorInfo.handle.ToInt32();
-                return (MouseCursor) Enum.ToObject(typeof (MouseCursor), i);
+                return new MouseCursor(i);
             }
         }
 

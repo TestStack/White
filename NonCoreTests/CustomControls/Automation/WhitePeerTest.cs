@@ -48,9 +48,11 @@ namespace White.NonCoreTests.CustomControls.Automation
             string serializedCommand = commandSerializer.Serialize(new FileInfo(typeof(IExceptionCommand).Assembly.Location).Name, typeof(IExceptionCommand).FullName, "ThrowException", new object[0]);
             whitePeer.SetValue(serializedCommand);
             var response = commandSerializer.ToObject(whitePeer.Value);
-            Assert.IsInstanceOfType(typeof(Exception), response[0]);
+            var commandResponse = new CustomCommandResponse(response);
+            Assert.AreEqual(true, commandResponse.IsException);
             response = commandSerializer.ToObject(whitePeer.Value);
-            Assert.IsInstanceOfType(typeof(Exception), response[0]);
+            commandResponse = new CustomCommandResponse(response);
+            Assert.AreEqual(true, commandResponse.IsException);
         }
     }
 

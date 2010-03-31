@@ -163,6 +163,7 @@
     <Compile Include="Core\UIItems\ListBoxItems\WPFListBoxTest.cs" />
     <Compile Include="Core\UIItems\ListBoxItems\WPFListBoxWithObjectBehindTest.cs" />
     <Compile Include="Core\UIItems\ListViewInvisibleItemTest.cs" />
+    <Compile Include="Core\UIItems\ListViewItems\ListViewScenario2Test.cs" />
     <Compile Include="Core\UIItems\ListViewItems\ListViewScenarioTest.cs" />
     <Compile Include="Core\UIItems\ListViewScenarioTest.cs" />
     <Compile Include="Core\UIItems\ListViewTest.cs" />

@@ -87,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ListViewScenarios.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CustomWhiteControlsWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -134,6 +138,9 @@
     </Compile>
     <Compile Include="ComboBoxWithObjectWindow.xaml.cs">
       <DependentUpon>ComboBoxWithObjectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewScenarios.xaml.cs">
+      <DependentUpon>ListViewScenarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomWhiteControlsWindow.xaml.cs">
       <DependentUpon>CustomWhiteControlsWindow.xaml</DependentUpon>

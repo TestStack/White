@@ -117,7 +117,10 @@ namespace White.Core.UIItems.Finders
             {
                 var automationSearchCondition = new AutomationSearchCondition();
                 foreach (SearchCondition searchCondition in conditions)
-                    automationSearchCondition.Add(searchCondition.AutomationCondition);
+                {
+                    Condition condition = searchCondition.AutomationCondition;
+                    if (condition != null) automationSearchCondition.Add(condition);
+                }
                 return automationSearchCondition;
             }
         }

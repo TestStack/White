@@ -21,7 +21,8 @@ namespace WindowsPresentationFramework
                                         "TreeViewItemWithoutHeader",
                                         "TreeViewItemWithoutHeader",
                                         "TristateControlWindow",
-                                        "CustomWhiteControlsWindow"
+                                        "CustomWhiteControlsWindow",
+                                        "ListViewScenarios"
                                     };
         }
 

@@ -53,7 +53,7 @@ namespace White.Core.UIItems.Scrolling
                                                                        {
                                                                            Rect bounds = uiItem.Bounds;
                                                                            WhiteLogger.Instance.DebugFormat(
-                                                                               "Trying to make visible {0}, item's bounds are {1} and parent's span is {2}",
+                                                                               "Trying to make     visible {0}, item's bounds are {1} and parent's span is {2}",
                                                                                uiItem, bounds, verticalSpan);
                                                                            return verticalSpan.DoesntContain(bounds);
                                                                        },

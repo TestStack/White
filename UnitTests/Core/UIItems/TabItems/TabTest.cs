@@ -1,10 +1,12 @@
 using System.Windows.Automation;
 using NUnit.Framework;
+using White.Core.UIItems;
 using White.Core.UIItems.Finders;
+using White.Core.UIItems.TabItems;
 using White.Core.UIItems.WindowItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems.TabItems
+namespace White.UnitTests.Core.UIItems.TabItems
 {
     [TestFixture]
     public class TabTest : ControlsActionTest
