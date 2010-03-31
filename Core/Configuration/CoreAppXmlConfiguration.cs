@@ -29,6 +29,8 @@ namespace White.Core.Configuration
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().DragStepCount), 1);
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().InProc), false);
             defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen), true);
+            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().RawElementBasedSearch), false);
+            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().MaxElementSearchDepth), 10);
         }
 
         public static CoreConfiguration Instance
@@ -123,5 +125,17 @@ namespace White.Core.Configuration
         }
 
         public virtual IWaitHook AdditionalWaitHook { get; set; }
+
+        public virtual int MaxElementSearchDepth
+        {
+            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().MaxElementSearchDepth)]); }
+            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().MaxElementSearchDepth), value); }
+        }
+
+        public virtual bool RawElementBasedSearch
+        {
+            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().RawElementBasedSearch)]); }
+            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().RawElementBasedSearch), value); }
+        }
     }
 }

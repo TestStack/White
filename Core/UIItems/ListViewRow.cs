@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.UIItems.Actions;
@@ -38,7 +39,7 @@ namespace White.Core.UIItems
             get
             {
                 actionListener.ActionPerforming(this);
-                AutomationElementCollection collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.Text));
+                List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.Text));
                 return new ListViewCells(collection, actionListener, header);
             }
         }

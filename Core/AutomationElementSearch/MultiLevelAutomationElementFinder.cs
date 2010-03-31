@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 
 namespace White.Core.AutomationElementSearch
@@ -31,7 +32,7 @@ namespace White.Core.AutomationElementSearch
             return Find(searchConditions.Length - 1, startElement);
         }
 
-        public virtual AutomationElementCollection FindAll(AutomationElement startElement)
+        public virtual List<AutomationElement> FindAll(AutomationElement startElement)
         {
             AutomationElement currentElement = startElement;
             for (int i = 0; i < searchConditions.Length; i++)

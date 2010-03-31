@@ -88,6 +88,7 @@
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -110,8 +111,12 @@
     <Compile Include="AutomationElementSearch\AutomationSearchConditionFactory.cs" />
     <Compile Include="AutomationElementSearch\AutomationElementSearchException.cs" />
     <Compile Include="AutomationElementSearch\AutomationSearchCondition.cs" />
+    <Compile Include="AutomationElementSearch\DescendantFinder.cs" />
+    <Compile Include="AutomationElementSearch\DescendantFinderFactory.cs" />
+    <Compile Include="AutomationElementSearch\IDescendantFinder.cs" />
     <Compile Include="AutomationElementSearch\MultiLevelAutomationElementFinder.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinder.cs" />
+    <Compile Include="AutomationElementSearch\ElementSearchResult.cs" />
     <Compile Include="AutomationException.cs" />
     <Compile Include="CacheMode.cs" />
     <Compile Include="Configuration\CoreAppXmlConfiguration.cs" />

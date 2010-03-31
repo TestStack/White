@@ -78,6 +78,11 @@ namespace White.Core.UIItems.Finders
             return new SearchCriteria(SearchConditionFactory.CreateForControlType(controlType));
         }
 
+        public static SearchCriteria ByNativeProperty(AutomationProperty automationProperty, string value)
+        {
+            return new SearchCriteria(SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
+        }
+
         public static SearchCriteria ByControlType(Type testControlType)
         {
             var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(testControlType));
@@ -158,6 +163,12 @@ namespace White.Core.UIItems.Finders
         public virtual SearchCriteria AndAutomationId(string id)
         {
             conditions.Insert(0, SearchConditionFactory.CreateForAutomationId(id));
+            return this;
+        }
+
+        public virtual SearchCriteria AndNativeProperty(AutomationProperty automationProperty, string value)
+        {
+            conditions.Insert(0, SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
             return this;
         }
 

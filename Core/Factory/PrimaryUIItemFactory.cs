@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Automation;
 using Bricks.Core;
@@ -79,7 +80,7 @@ namespace White.Core.Factory
 
         public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, ActionListener actionListener)
         {
-            return new UIItemCollection(finder.Descendants(searchCriteria.AutomationCondition), actionListener, searchCriteria.CustomItemType);
+            return new UIItemCollection(finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
         }
 
         public virtual Image WinFormImage(string primaryIdentification, ActionListener actionListener)
@@ -91,7 +92,7 @@ namespace White.Core.Factory
         public virtual UIItemCollection ItemsWithin(Rect bounds, ActionListener actionListener)
         {
             var collection = new UIItemCollection();
-            AutomationElementCollection descendants = finder.Descendants(AutomationSearchCondition.All);
+            List<AutomationElement> descendants = finder.Descendants(AutomationSearchCondition.All);
             foreach (AutomationElement automationElement in descendants)
             {
                 if (!bounds.Contains(automationElement.Current.BoundingRectangle)) continue;

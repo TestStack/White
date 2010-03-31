@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.UIItems.Actions;
@@ -19,7 +20,7 @@ namespace White.Core.UIItems.ListViewItems
         {
             get
             {
-                AutomationElementCollection collection = automationElementFinder.Children(AutomationSearchCondition.ByControlType(ControlType.HeaderItem));
+                List<AutomationElement> collection = automationElementFinder.Children(AutomationSearchCondition.ByControlType(ControlType.HeaderItem));
                 return new ListViewColumns(collection, actionListener);
             }
         }

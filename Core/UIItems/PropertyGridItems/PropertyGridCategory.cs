@@ -22,7 +22,7 @@ namespace White.Core.UIItems.PropertyGridItems
             {
                 bool thisElementFound = false;
                 var properties = new List<PropertyGridProperty>();
-                AutomationElementCollection rows = gridElementFinder.FindRows();
+                List<AutomationElement> rows = gridElementFinder.FindRows();
                 foreach (AutomationElement rowElement in rows)
                 {
                     bool thisElement = rowElement.Equals(automationElement);

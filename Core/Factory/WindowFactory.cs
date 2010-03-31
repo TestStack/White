@@ -74,7 +74,7 @@ namespace White.Core.Factory
 
         private void FindDescendantWindowElements(AutomationElementFinder windowFinder, Process process, BricksCollection<AutomationElement> windowElements)
         {
-            AutomationElementCollection children =
+            List<AutomationElement> children =
                 windowFinder.Children(AutomationSearchCondition.ByControlType(ControlType.Window).WithProcessId(process.Id));
             windowElements.AddRange(children);
             foreach (AutomationElement automationElement in children)
@@ -178,7 +178,7 @@ namespace White.Core.Factory
 
         private void AddWindowsBy(List<Window> windows, ControlType controlType)
         {
-            AutomationElementCollection children = finder.Children(AutomationSearchCondition.ByControlType(controlType));
+            List<AutomationElement> children = finder.Children(AutomationSearchCondition.ByControlType(controlType));
             foreach (AutomationElement childElement in children)
                 windows.Add(Create(childElement, InitializeOption.NoCache, new NullWindowSession()));
         }

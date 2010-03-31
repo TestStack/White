@@ -23,7 +23,7 @@ namespace White.Core.UIItems.PropertyGridItems
             get
             {
                 var categories = new List<PropertyGridCategory>();
-                AutomationElementCollection rows = finder.FindRows();
+                List<AutomationElement> rows = finder.FindRows();
                 foreach (AutomationElement element in rows)
                 {
                     var automationPatterns = new AutomationPatterns(element);

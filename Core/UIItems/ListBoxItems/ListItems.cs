@@ -1,4 +1,4 @@
-using System.Windows;
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.UIA;
 using White.Core.UIItems.Actions;
@@ -9,7 +9,7 @@ namespace White.Core.UIItems.ListBoxItems
     {
         private readonly ActionListener actionListener;
 
-        public ListItems(AutomationElementCollection collection, ActionListener actionListener) : base(collection, actionListener)
+        public ListItems(List<AutomationElement> collection, ActionListener actionListener) : base(collection, actionListener)
         {
             this.actionListener = actionListener;
         }
@@ -37,7 +37,7 @@ namespace White.Core.UIItems.ListBoxItems
 
             foundItem = ItemWithText(text);
             if (foundItem != null) return foundItem;
-            
+
             throw new UIActionException(string.Format("Item of text {0} not found.", text));
         }
 

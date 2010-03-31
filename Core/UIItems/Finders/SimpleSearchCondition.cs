@@ -7,7 +7,7 @@ namespace White.Core.UIItems.Finders
         private readonly PropertyValue propertyValueDelegate;
         private readonly AutomationElementProperty automationElementProperty;
 
-        public delegate object PropertyValue(AutomationElement.AutomationElementInformation information);
+        public delegate object PropertyValue(AutomationElement automationElement);
 
         public SimpleSearchCondition(PropertyValue propertyValueDelegate,
                                      AutomationElementProperty automationElementProperty)
@@ -23,7 +23,7 @@ namespace White.Core.UIItems.Finders
 
         private object ElementValue(AutomationElement element)
         {
-            return propertyValueDelegate(element.Current);
+            return propertyValueDelegate(element);
         }
 
         public override Condition AutomationCondition

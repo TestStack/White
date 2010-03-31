@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
@@ -13,7 +14,7 @@ namespace White.Core.UIItems
 
         public ListViewRows(AutomationElementFinder finder, ActionListener actionListener, ListViewHeader header)
         {
-            AutomationElementCollection collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.DataItem));
+            List<AutomationElement> collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.DataItem));
             foreach (AutomationElement element in collection)
                 Add(new ListViewRow(element, actionListener, header));
         }

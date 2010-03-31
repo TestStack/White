@@ -18,9 +18,9 @@ namespace White.Core
             foreach (T t in tees) Add(t);
         }
 
-        public UIItemList(AutomationElementCollection collection, ActionListener actionListener) : this(collection, factory, actionListener) {}
+        public UIItemList(List<AutomationElement> collection, ActionListener actionListener) : this(collection, factory, actionListener) { }
 
-        public UIItemList(AutomationElementCollection collection, UIItemFactory factory, ActionListener actionListener)
+        public UIItemList(List<AutomationElement> collection, UIItemFactory factory, ActionListener actionListener)
         {
             foreach (AutomationElement element in collection)
                 Add((T) factory.Create(element, actionListener));

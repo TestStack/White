@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 using Bricks.Core;
 using White.Core.Factory;
@@ -10,7 +11,7 @@ namespace White.Core.UIItems
     {
         private readonly ListViewHeader header;
 
-        public ListViewCells(AutomationElementCollection collection, ActionListener actionListener, ListViewHeader header)
+        public ListViewCells(List<AutomationElement> collection, ActionListener actionListener, ListViewHeader header)
             : base(collection, new ListViewCellFactory(), actionListener)
         {
             this.header = header;
@@ -30,7 +31,7 @@ namespace White.Core.UIItems
         {
             get
             {
-                HorizontalSpan span = new HorizontalSpan(column.Bounds);
+                var span = new HorizontalSpan(column.Bounds);
                 return Find(cell => !span.IsOutside(cell.Bounds));
             }
         }

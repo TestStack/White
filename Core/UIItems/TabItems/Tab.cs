@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
@@ -33,7 +34,7 @@ namespace White.Core.UIItems.TabItems
                 {
                     pages = new TabPages();
                     var finder = new AutomationElementFinder(automationElement);
-                    AutomationElementCollection collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.TabItem));
+                    List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.TabItem));
                     foreach (AutomationElement tabItemElement in collection)
                         pages.Add(new TabPage(tabItemElement, actionListener));
                 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 
@@ -12,7 +13,7 @@ namespace White.Core.UIItems.PropertyGridItems
             finder = new AutomationElementFinder(automationElement);
         }
 
-        public virtual AutomationElementCollection FindRows()
+        public virtual List<AutomationElement> FindRows()
         {
             return finder.Children(AutomationSearchCondition.ByControlType(ControlType.Table),
                                    AutomationSearchCondition.ByControlType(ControlType.Custom));

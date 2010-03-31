@@ -20,6 +20,15 @@ namespace White.Core.AutomationElementSearch
             valueMatchers[AutomationElement.ControlTypeProperty.ProgrammaticName] = (information, value) => information.ControlType.Id.Equals(value);
         }
 
+        public AutomationSearchCondition(Condition condition)
+        {
+            conditions.Add(condition);
+        }
+
+        public AutomationSearchCondition()
+        {
+        }
+
         public static AutomationSearchCondition ByName(string name)
         {
             var automationSearchCondition = new AutomationSearchCondition();
@@ -88,7 +97,7 @@ namespace White.Core.AutomationElementSearch
         {
             var stringBuilder = new StringBuilder();
             foreach (PropertyCondition condition in conditions)
-                stringBuilder.Append(condition.Property.ProgrammaticName + ":" + condition.Value);
+                stringBuilder.AppendFormat("{0}:{1}", condition.Property.ProgrammaticName, condition.Value);
             return stringBuilder.ToString();
         }
 
@@ -109,9 +118,22 @@ namespace White.Core.AutomationElementSearch
 
         public virtual bool Satisfies(AutomationElement element)
         {
-            foreach (PropertyCondition condition in conditions)
+            return Satisfies(element, conditions.ToArray(), true);
+        }
+
+        private bool Satisfies(AutomationElement element, Condition[] testConditions, bool and)
+        {
+            foreach (Condition condition in testConditions)
             {
-                if (!valueMatchers[condition.Property.ProgrammaticName](element.Current, condition.Value)) return false;
+                if (condition is AndCondition && !Satisfies(element, ((AndCondition)condition).GetConditions(), true)) return false;
+                if (condition is OrCondition && !Satisfies(element, ((AndCondition)condition).GetConditions(), false)) return false;
+
+                if (condition is PropertyCondition)
+                {
+                    var match = valueMatchers[((PropertyCondition)condition).Property.ProgrammaticName](element.Current, ((PropertyCondition)condition).Value);
+                    if (!match && and) return false;
+                    if (match && !and) return true;
+                }
             }
             return true;
         }

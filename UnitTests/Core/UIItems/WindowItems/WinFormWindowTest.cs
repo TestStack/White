@@ -1,8 +1,11 @@
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
+using White.Core.UIItems.WindowItems;
 
-namespace White.Core.UIItems.WindowItems
+namespace White.UnitTests.Core.UIItems.WindowItems
 {
     [TestFixture, WinFormCategory]
     public class WinFormWindowTest : WindowAbstractTest

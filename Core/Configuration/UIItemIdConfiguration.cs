@@ -10,5 +10,6 @@ namespace White.Core.Configuration
         string TableHeader { get; set; }
         string HorizontalScrollBar { get; set; }
         string VerticalScrollBar { get; set; }
+        string TableCellPrefix { get; set; }
     }
 }

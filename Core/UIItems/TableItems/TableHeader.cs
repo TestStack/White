@@ -17,7 +17,7 @@ namespace White.Core.UIItems.TableItems
         {
             get
             {
-                AutomationElementCollection descendants =
+                List<AutomationElement> descendants =
                     new AutomationElementFinder(automationElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.Header));
                 List<AutomationElement> columnElements =
                     new BricksCollection<AutomationElement>(descendants).FindAll(obj => !obj.Current.Name.StartsWith(UIItemIdAppXmlConfiguration.Instance.TableColumn));

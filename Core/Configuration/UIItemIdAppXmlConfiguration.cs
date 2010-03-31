@@ -19,6 +19,7 @@ namespace White.Core.Configuration
             defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHeader), "Top Row");
             defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().HorizontalScrollBar), "Horizontal ScrollBar");
             defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().VerticalScrollBar), "Vertical ScrollBar");
+            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellPrefix), " Row ");
         }
 
         public static UIItemIdConfiguration Instance
@@ -83,6 +84,12 @@ namespace White.Core.Configuration
         {
             get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().VerticalScrollBar)]; }
             set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().VerticalScrollBar), value); }
+        }
+
+        public virtual string TableCellPrefix
+        {
+            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellPrefix)]; }
+            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellPrefix), value); }
         }
     }
 }

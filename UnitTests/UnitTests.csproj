@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Core\ApplicationTest.cs" />
     <Compile Include="Core\AutomationElementSearch\AutomationSearchConditionFactoryTest.cs" />
+    <Compile Include="Core\AutomationElementSearch\ElementSearchResultTest.cs" />
     <Compile Include="Core\AutomationElementSearch\RawAutomationElementFinderTest.cs" />
     <Compile Include="Core\AutomationElementSearch\RawAutomationElementFinderWPFTest.cs" />
     <Compile Include="Core\AutomationElementSearch\SearchConditionTest.cs" />

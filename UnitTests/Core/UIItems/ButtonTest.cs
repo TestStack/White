@@ -1,3 +1,4 @@
+using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
@@ -28,6 +29,13 @@ namespace White.UnitTests.Core.UIItems
         public void FindNonExistent()
         {
             var box = button.Get<TextBox>(SearchCriteria.ByAutomationId("foo"));
+            Assert.AreEqual(null, box);
+        }
+
+        [Test]
+        public void FindViaNativeProperty()
+        {
+            var box = button.Get<TextBox>(SearchCriteria.ByNativeProperty(AutomationElement.AutomationIdProperty, "foo"));
             Assert.AreEqual(null, box);
         }
 

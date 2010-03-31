@@ -9,15 +9,10 @@ namespace White.Core.UIItems.Actions
     public class Action
     {
         private readonly List<ActionType> types = new List<ActionType>();
-        private readonly List<MouseCursor> waitCursors = new List<MouseCursor>();
 
         public Action(params ActionType[] actionTypes)
         {
             types.AddRange(actionTypes);
-
-            waitCursors.Add(MouseCursor.DefaultAndWait);
-            waitCursors.Add(MouseCursor.Wait);
-            waitCursors.Add(MouseCursor.SilverlightWait);
         }
 
         public virtual void Handle(Window window)
@@ -29,7 +24,7 @@ namespace White.Core.UIItems.Actions
                 Clock.Matched matched = delegate(object obj)
                                             {
                                                 var cursor = (MouseCursor) obj;
-                                                if (waitCursors.Contains(cursor))
+                                                if (MouseCursor.WaitCursors.Contains(cursor))
                                                 {
                                                     Mouse.Instance.MoveOut();
                                                     return false;
@@ -37,11 +32,7 @@ namespace White.Core.UIItems.Actions
                                                 return true;
                                             };
                 Clock.Expired expired =
-                    delegate
-                        {
-                            throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", Mouse.Instance.Cursor,
-                                                                      Constants.BusyMessage));
-                        };
+                    delegate { throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", Mouse.Instance.Cursor, Constants.BusyMessage)); };
                 new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout).Perform(@do, matched, expired);
             }
             CustomWait(window);

@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
 using Bricks.Core;
-using Bricks.RuntimeFramework;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.TableItems;
 
@@ -13,7 +13,7 @@ namespace White.Core.Factory
     {
         private readonly AutomationElement tableElement;
         private readonly ActionListener actionListener;
-        private AutomationElementCollection customControlTypes;
+        private List<AutomationElement> customControlTypes;
 
         public TableCellFactory(AutomationElement tableElement, ActionListener actionListener)
         {
@@ -29,9 +29,9 @@ namespace White.Core.Factory
             Predicate<AutomationElement> cellPredicate = delegate(AutomationElement element)
                                                              {
                                                                  string name = element.Current.Name;
-                                                                 return name.Contains(" Row ") && zeroBasedRowNumber == int.Parse(S.LastWords(name, 2)[1]);
+                                                                 return name.Contains(UIItemIdAppXmlConfiguration.Instance.TableCellPrefix) && zeroBasedRowNumber == int.Parse(S.LastWords(name, 2)[1]);
                                                              };
-            List<AutomationElement> tableCellElements = new BricksCollection<AutomationElement>(customControlTypes).FindAll(cellPredicate);
+            List<AutomationElement> tableCellElements = customControlTypes.FindAll(cellPredicate);
             return new TableCells(tableCellElements, tableHeader, actionListener);
         }
     }

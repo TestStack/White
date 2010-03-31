@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.UIItems.Finders;
+using System.Linq;
 
 namespace White.Core.AutomationElementSearch
 {
@@ -21,9 +22,9 @@ namespace White.Core.AutomationElementSearch
             get { return automationElement; }
         }
 
-        public virtual AutomationElementCollection Children(params AutomationSearchCondition[] automationSearchConditions)
+        public virtual List<AutomationElement> Children(params AutomationSearchCondition[] automationSearchConditions)
         {
-            return new MultiLevelAutomationElementFinder(automationSearchConditions).FindAll(automationElement);
+            return new MultiLevelAutomationElementFinder(automationSearchConditions).FindAll(automationElement).Cast<AutomationElement>().ToList();
         }
 
         public virtual AutomationElement Child(params AutomationSearchCondition[] automationSearchConditions)
@@ -36,9 +37,9 @@ namespace White.Core.AutomationElementSearch
             return new MultiLevelAutomationElementFinder(automationSearchConditions).Find(returnLevel, automationElement);
         }
 
-        public virtual AutomationElementCollection Children(AutomationSearchCondition automationSearchCondition)
+        public virtual List<AutomationElement> Children(AutomationSearchCondition automationSearchCondition)
         {
-            return automationElement.FindAll(TreeScope.Children, automationSearchCondition.Condition);
+            return automationElement.FindAll(TreeScope.Children, automationSearchCondition.Condition).Cast<AutomationElement>().ToList();
         }
 
         public virtual AutomationElement Child(AutomationSearchCondition automationSearchCondition)
@@ -53,18 +54,12 @@ namespace White.Core.AutomationElementSearch
 
         public virtual AutomationElement Descendant(Condition condition)
         {
-            return automationElement.FindFirst(TreeScope.Descendants, condition);
+            return DescendantFinderFactory.Create(automationElement).Descendant(condition);
         }
 
-        //Should take AutomationSearchCondition
-        public virtual AutomationElementCollection Descendants(Condition condition)
+        public virtual List<AutomationElement> Descendants(AutomationSearchCondition automationSearchCondition)
         {
-            return automationElement.FindAll(TreeScope.Descendants, condition);
-        }
-
-        public virtual AutomationElementCollection Descendants(AutomationSearchCondition automationSearchCondition)
-        {
-            return automationElement.FindAll(TreeScope.Descendants, automationSearchCondition.Condition);
+            return DescendantFinderFactory.Create(automationElement).Descendants(automationSearchCondition);
         }
 
         public virtual AutomationElement FindWindow(string title, int processId)

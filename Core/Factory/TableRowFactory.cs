@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Automation;
 using Bricks.RuntimeFramework;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.TableItems;
 
@@ -16,7 +17,7 @@ namespace White.Core.Factory
         static TableRowFactory()
         {
             rowPredicate =
-                delegate(AutomationElement element) { return element.Current.Name.StartsWith("Row ") && element.Current.Name.Split(' ').Length == 2; };
+                delegate(AutomationElement element) { return element.Current.Name.StartsWith(UIItemIdAppXmlConfiguration.Instance.TableColumn) && element.Current.Name.Split(' ').Length == 2; };
         }
 
         public TableRowFactory(AutomationElementFinder automationElementFinder)
@@ -32,7 +33,7 @@ namespace White.Core.Factory
 
         private List<AutomationElement> GetRowElements()
         {
-            AutomationElementCollection descendants = automationElementFinder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Custom));
+            List<AutomationElement> descendants = automationElementFinder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Custom));
             var automationElements = new BricksCollection<AutomationElement>(descendants);
             return automationElements.FindAll(rowPredicate);
         }

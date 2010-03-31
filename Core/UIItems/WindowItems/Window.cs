@@ -350,7 +350,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             var modalWindows = new List<Window>();
             var finder = new AutomationElementFinder(automationElement);
-            AutomationElementCollection descendants =
+            var descendants =
                 finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Window));
             foreach (AutomationElement descendant in descendants)
                 modalWindows.Add(ChildWindowFactory.Create(descendant, InitializeOption.NoCache,

@@ -17,7 +17,7 @@ namespace White.Core.UIItems.MenuItems
             AutomationSearchCondition condition = AutomationSearchCondition.ByControlType(ControlType.MenuItem);
             var finder = new AutomationElementFinder(parent);
             finder = PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent);
-            AutomationElementCollection children = finder.Descendants(condition);
+            List<AutomationElement> children = finder.Descendants(condition);
             foreach (AutomationElement child in children)
                 Add((Menu) factory.Create(child, actionListener));
         }

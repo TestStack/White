@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.Factory;
 using White.Core.UIItems.Actions;
@@ -6,7 +7,7 @@ namespace White.Core.UIItems.ListViewItems
 {
     public class ListViewColumns : UIItemList<ListViewColumn>
     {
-        public ListViewColumns(AutomationElementCollection automationElementCollection, ActionListener actionListener)
+        public ListViewColumns(List<AutomationElement> automationElementCollection, ActionListener actionListener)
         {
             int i = 0;
             foreach (AutomationElement element in automationElementCollection)

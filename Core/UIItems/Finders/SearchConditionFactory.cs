@@ -9,7 +9,7 @@ namespace White.Core.UIItems.Finders
     {
         public static SimpleSearchCondition CreateForControlType(ControlType controlType)
         {
-            return new SimpleSearchCondition(information => information.ControlType, new ControlTypeProperty(controlType, "ControlType"));
+            return new SimpleSearchCondition(automationElement => automationElement.Current.ControlType, new ControlTypeProperty(controlType, "ControlType"));
         }
 
         public static SimpleSearchCondition CreateForControlType(Type testControlType)
@@ -30,26 +30,31 @@ namespace White.Core.UIItems.Finders
 
         public static SearchCondition CreateForFrameworkId(string frameworkId)
         {
-            return new SimpleSearchCondition(information => information.FrameworkId,
-                                                    new AutomationElementProperty(frameworkId, "FrameworkId", AutomationElement.FrameworkIdProperty));
+            return new SimpleSearchCondition(automationElement => automationElement.Current.FrameworkId,
+                                             new AutomationElementProperty(frameworkId, "FrameworkId", AutomationElement.FrameworkIdProperty));
         }
 
         public static SearchCondition CreateForAutomationId(string id)
         {
-            return new SimpleSearchCondition(information => information.AutomationId,
-                                                    new AutomationElementProperty(id, "AutomationId", AutomationElement.AutomationIdProperty));
+            return new SimpleSearchCondition(automationElement => automationElement.Current.AutomationId,
+                                             new AutomationElementProperty(id, "AutomationId", AutomationElement.AutomationIdProperty));
         }
 
         public static SearchCondition CreateForName(string name)
         {
-            return new SimpleSearchCondition(information => information.Name,
-                                                    new AutomationElementProperty(name, "Name", AutomationElement.NameProperty));
+            return new SimpleSearchCondition(automationElement => automationElement.Current.Name, new AutomationElementProperty(name, "Name", AutomationElement.NameProperty));
         }
 
         public static SearchCondition CreateForClassName(string className)
         {
-            return new SimpleSearchCondition(information => information.ClassName,
-                                                    new AutomationElementProperty(className, "ClassName", AutomationElement.ClassNameProperty));
+            return new SimpleSearchCondition(automationElement => automationElement.Current.ClassName,
+                                             new AutomationElementProperty(className, "ClassName", AutomationElement.ClassNameProperty));
+        }
+
+        public static SearchCondition CreateForNativeProperty(AutomationProperty automationProperty, string value)
+        {
+            var automationElementProperty = new AutomationElementProperty(value, automationProperty.ProgrammaticName, automationProperty);
+            return new SimpleSearchCondition(automationElement => automationElement.GetCurrentPropertyValue(automationProperty), automationElementProperty);
         }
     }
 }

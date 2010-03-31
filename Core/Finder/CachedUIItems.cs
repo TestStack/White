@@ -28,8 +28,8 @@ namespace White.Core.Finder
 
         private void FindAll(AutomationElement automationElement, InitializeOption option)
         {
-            AutomationElementFinder finder = new AutomationElementFinder(automationElement);
-            AutomationElementCollection children = finder.Children(AutomationSearchCondition.All);
+            var finder = new AutomationElementFinder(automationElement);
+            List<AutomationElement> children = finder.Children(AutomationSearchCondition.All);
             ControlDictionary controlDictionary = ControlDictionary.Instance;
             foreach (AutomationElement child in children)
             {
