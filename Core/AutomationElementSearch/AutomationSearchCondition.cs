@@ -89,6 +89,7 @@ namespace White.Core.AutomationElementSearch
             get
             {
                 if (conditions.Count == 1) return conditions[0];
+                if (conditions.Count == 0) return Condition.TrueCondition;
                 return new AndCondition(conditions.ToArray());
             }
         }

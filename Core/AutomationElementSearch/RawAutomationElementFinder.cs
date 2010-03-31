@@ -29,7 +29,7 @@ namespace White.Core.AutomationElementSearch
                     ();
         }
 
-        public AutomationElement Descendant(Condition condition)
+        public virtual AutomationElement Descendant(Condition condition)
         {
             return Descendant(new AutomationSearchCondition(condition));
         }

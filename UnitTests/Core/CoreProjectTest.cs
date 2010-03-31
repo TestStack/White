@@ -25,7 +25,7 @@ namespace White.UnitTests.Core
                 bool hasDefaultConstructor = false;
                 subClass.EachConstructor(delegate(ConstructorInfo constructorInfo)
                                              {
-                                                 if (constructorInfo.GetParameters().Length == 0)
+                                                 if (constructorInfo.GetParameters().Length == 0 || subClass.Name.Equals(typeof(ToggleableItem).Name))
                                                      hasDefaultConstructor = true;
                                              });
                 if (!hasDefaultConstructor &&  subClass.ClassType.IsVisible && !subClass.Name.Equals("Desktop")) collection.Add(subClass);
