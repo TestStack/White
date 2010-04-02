@@ -4,6 +4,10 @@ namespace White.Core.UIItems.Finders
 {
     public class ControlTypeProperty : AutomationElementProperty
     {
+        protected ControlTypeProperty()
+        {
+        }
+
         public ControlTypeProperty(ControlType controlType, string displayName)
             : base(controlType, displayName, AutomationElement.ControlTypeProperty) {}
 

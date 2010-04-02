@@ -9,6 +9,9 @@ namespace White.Core.UIItems.Finders
 
         public delegate object PropertyValue(AutomationElement automationElement);
 
+        //required for xstream
+        private SimpleSearchCondition() {}
+
         public SimpleSearchCondition(PropertyValue propertyValueDelegate,
                                      AutomationElementProperty automationElementProperty)
         {

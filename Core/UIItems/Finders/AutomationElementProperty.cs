@@ -8,6 +8,11 @@ namespace White.Core.UIItems.Finders
         private readonly string displayName;
         private readonly AutomationProperty propertyType;
 
+        //required for xstream
+        protected AutomationElementProperty()
+        {
+        }
+
         public AutomationElementProperty(object value, string displayName, AutomationProperty propertyType)
         {
             this.value = value;
@@ -37,7 +42,8 @@ namespace White.Core.UIItems.Finders
 
         private bool Equals(AutomationElementProperty other)
         {
-            return Equals(other.value, value) && Equals(other.propertyType, propertyType);
+            return Equals(other.value, value) && Equals(other.propertyType.Id, propertyType.Id) &&
+                   Equals(other.propertyType.ProgrammaticName, other.propertyType.ProgrammaticName);
         }
 
         public override bool Equals(object obj)

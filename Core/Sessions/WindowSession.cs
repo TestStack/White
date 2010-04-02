@@ -9,6 +9,7 @@ using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Container;
 using White.Core.UIItems.Finders;
+using Window=White.Core.UIItems.WindowItems.Window;
 
 namespace White.Core.Sessions
 {
@@ -16,12 +17,14 @@ namespace White.Core.Sessions
     {
         private readonly ApplicationSession applicationSession;
         private readonly WindowItemsMap windowItemsMap;
+        private readonly InitializeOption initializeOption;
 
         public WindowSession(ApplicationSession applicationSession, InitializeOption initializeOption)
         {
             this.applicationSession = applicationSession;
             windowItemsMap = WindowItemsMap.Create(initializeOption, RectX.UnlikelyWindowPosition);
             if (windowItemsMap.LoadedFromFile) initializeOption.NonCached();
+            this.initializeOption = initializeOption;
         }
 
         protected WindowSession() {}
@@ -33,11 +36,11 @@ namespace White.Core.Sessions
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
         {
-            WhiteLogger.Instance.DebugFormat("Finding item based on criteria: {0}", searchCriteria);
+            WhiteLogger.Instance.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);
             Point location = windowItemsMap.GetItemLocation(searchCriteria);
             if (location.Equals(RectX.UnlikelyWindowPosition))
             {
-                WhiteLogger.Instance.Debug("Could not find based on position, finding using search");
+                WhiteLogger.Instance.Debug("[PositionBasedSearch] Could not find based on position, finding using search.");
                 return Create(containerItemFactory, searchCriteria, actionListener);
             }
 
@@ -48,7 +51,7 @@ namespace White.Core.Sessions
                 return UIItemProxyFactory.Create(item, actionListener);
             }
 
-            WhiteLogger.Instance.DebugFormat("UIItem {0} changed its position, finding using search", searchCriteria);
+            WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] UIItem {0} changed its position, finding using search.", searchCriteria);
             return Create(containerItemFactory, searchCriteria, actionListener);
         }
 
@@ -65,9 +68,14 @@ namespace White.Core.Sessions
             windowItemsMap.Save();
         }
 
-        public virtual void Register(UIItems.WindowItems.Window window)
+        public virtual void Register(Window window)
         {
             window.Focus();
+            LocationChanged(window);
+        }
+
+        public virtual void LocationChanged(Window window)
+        {
             windowItemsMap.CurrentWindowPosition = window.Location;
         }
     }

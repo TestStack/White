@@ -26,7 +26,7 @@ namespace White.Core.UIItems
     public class UIItemContainer : UIItem, IUIItemContainer, VerticalSpanProvider
     {
         protected readonly CurrentContainerItemFactory currentContainerItemFactory;
-        protected WindowSession windowSession;
+        protected WindowSession windowSession = new NullWindowSession();
 
         protected UIItemContainer()
         {

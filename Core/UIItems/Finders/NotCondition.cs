@@ -6,9 +6,8 @@ namespace White.Core.UIItems.Finders
     {
         private readonly SearchCondition condition;
 
-        protected NotCondition()
-        {
-        }
+        //required for xstream
+        protected NotCondition() {}
 
         public NotCondition(SearchCondition condition)
         {

@@ -254,10 +254,11 @@ UI actions on window needing mouse would not work in area not falling under the 
 
                 WinPattern.SetWindowVisualState(windowStates[value]);
                 ActionPerformed();
-
+                windowSession.LocationChanged(this);
                 if (AlreadyInAskedState(value) || TitleBar == null) return;
 
                 TitleBar.SetDisplayState(value);
+                windowSession.LocationChanged(this);
             }
         }
 

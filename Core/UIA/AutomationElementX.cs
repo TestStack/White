@@ -35,7 +35,7 @@ namespace White.Core.UIA
             try
             {
                 automationElement = AutomationElement.FromPoint(location);
-                WhiteLogger.Instance.DebugFormat("Found AutomationElement {0} based on position", automationElement.Display());
+                WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] Found AutomationElement ({0}) at location ({1})", automationElement.Display(), location);
                 return automationElement;
             }
             catch

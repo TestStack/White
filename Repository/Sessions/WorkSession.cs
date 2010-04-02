@@ -6,7 +6,6 @@ using Repository.Services;
 
 namespace Repository.Sessions
 {
-    //TODO: Make it work across terminal sessions. May be by using white test co-ordinator
     /// <summary>
     /// Represents white session for test/automation. There should be only one instance of this.
     /// </summary>
@@ -29,11 +28,10 @@ namespace Repository.Sessions
             screenRepositories.Add(new ScreenRepository(application.ApplicationSession, sessionReport));
         }
 
-        //TODO: Log memory usage of the application
         public virtual void Dispose()
         {
-            screenRepositories.ForEach(delegate(ScreenRepository obj) { obj.ForEachScreen(delegate(AppScreen appScreen) { appScreen.Focus(); }); });
-            screenRepositories.ForEach(delegate(ScreenRepository obj) { obj.Dispose(); });
+            screenRepositories.ForEach(obj => obj.ForEachScreen(appScreen => appScreen.Focus()));
+            screenRepositories.ForEach(obj => obj.Dispose());
             whiteExecution.Dispose();
         }
 

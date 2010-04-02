@@ -19,8 +19,16 @@ namespace White.Core.Sessions
             return containerItemFactory.Get(searchCriteria, actionListener);
         }
 
-        public override void Dispose() {}
+        public override void Dispose()
+        {
+        }
 
-        public override void Register(Window window) {}
+        public override void Register(Window window)
+        {
+        }
+
+        public override void LocationChanged(Window window)
+        {
+        }
     }
 }

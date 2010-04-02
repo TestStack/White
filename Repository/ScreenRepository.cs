@@ -52,7 +52,7 @@ namespace Repository
         {
             ClearClosedScreens();
             AppScreen screen;
-            ScreenRepositoryCacheKey repositoryCacheKey = new ScreenRepositoryCacheKey(title, typeof (T));
+            var repositoryCacheKey = new ScreenRepositoryCacheKey(title, typeof (T));
             if (!screenCache.TryGetValue(repositoryCacheKey, out screen))
             {
                 Window window = applicationSession.Application.GetWindow(title, IdentifiedOption<T>(option));
@@ -95,7 +95,7 @@ namespace Repository
 
         private void ClearClosedScreens()
         {
-            List<ScreenRepositoryCacheKey> cacheKeys = new List<ScreenRepositoryCacheKey>();
+            var cacheKeys = new List<ScreenRepositoryCacheKey>();
             foreach (KeyValuePair<ScreenRepositoryCacheKey, AppScreen> pair in screenCache)
                 if (screenCache[pair.Key].IsClosed) cacheKeys.Add(pair.Key);
 
@@ -110,8 +110,8 @@ namespace Repository
 
         private T GetScreen<T>(Window window) where T : AppScreen
         {
-            Class @class = new Class(typeof (T));
-            ScreenClass screenClass = new ScreenClass(@class);
+            var @class = new Class(typeof (T));
+            var screenClass = new ScreenClass(@class);
             return (T) screenClass.New(window, this);
         }
 

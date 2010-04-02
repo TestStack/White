@@ -20,6 +20,8 @@ namespace White.Core.UIItems.Finders
         private IndexCondition indexCondition = IndexCondition.NotSpecified;
         private Type customItemType;
 
+        private SearchCriteria() {}
+
         private SearchCriteria(SearchCondition searchCondition)
         {
             conditions.Add(searchCondition);
@@ -29,10 +31,6 @@ namespace White.Core.UIItems.Finders
         {
             conditions.Add(searchCondition);
             indexCondition = searchCondition;
-        }
-
-        private SearchCriteria()
-        {
         }
 
         public static SearchCriteria All
@@ -189,7 +187,6 @@ namespace White.Core.UIItems.Finders
         {
             var stringBuilder = new StringBuilder();
             stringBuilder.Append(conditions.ToString());
-            if (IsIndexed) stringBuilder.Append(",").Append(indexCondition.ToString());
             return stringBuilder.ToString();
         }
 

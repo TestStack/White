@@ -11,6 +11,7 @@ namespace White.Core.UIItems.Finders
         private readonly int index;
         public static readonly IndexCondition NotSpecified = new IndexCondition(-1);
 
+        //required for xstream
         protected IndexCondition() {}
 
         public IndexCondition(int index)
@@ -66,6 +67,19 @@ namespace White.Core.UIItems.Finders
         public override string ToString()
         {
             return ToString("=");
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != typeof (IndexCondition)) return false;
+            return ((IndexCondition) obj).index == index;
+        }
+
+        public override int GetHashCode()
+        {
+            return index;
         }
     }
 }

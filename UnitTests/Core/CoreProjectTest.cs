@@ -1,7 +1,9 @@
+using System;
 using System.Reflection;
 using Bricks.RuntimeFramework;
 using White.Core.UIItems;
 using NUnit.Framework;
+using White.Core.UIItems.Finders;
 
 namespace White.UnitTests.Core
 {
@@ -18,7 +20,15 @@ namespace White.UnitTests.Core
         public void AllUIItemsHaveDefaultConstructor()
         {
             var collection = new BricksCollection<Class>();
-            var @class = new Class(typeof (UIItem));
+            AllSubsclassesHaveEmptyConstructor(collection, typeof (UIItem));
+            AllSubsclassesHaveEmptyConstructor(collection, typeof (SearchCondition));
+            AllSubsclassesHaveEmptyConstructor(collection, typeof (SearchCriteria));
+            AllSubsclassesHaveEmptyConstructor(collection, typeof (AutomationElementProperty));
+        }
+
+        private void AllSubsclassesHaveEmptyConstructor(BricksCollection<Class> collection, Type type)
+        {
+            var @class = new Class(type);
             Classes classes = @class.SubClassesInAssembly();
             foreach (Class subClass in classes)
             {

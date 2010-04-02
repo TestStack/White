@@ -61,15 +61,15 @@ namespace White.UnitTests.Core.ScreenMap
         [Test]
         public void GetItemLocationWhenWindowPositionChanges()
         {
-            WindowItemsMap windowItemsMap = WindowItemsMap.Create(InitializeOption(), new Point(5, 5));
-            windowItemsMap.Add(new Point(7, 7), SearchCriteria.ByAutomationId("foo"));
-            Assert.AreEqual(new Point(7, 7), windowItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
+            WindowItemsMap windowsItemsMap = WindowItemsMap.Create(InitializeOption(), new Point(20, 20));
+            windowsItemsMap.Add(new Point(27, 27), SearchCriteria.ByAutomationId("foo"));
+            windowsItemsMap.Save();
 
-            windowItemsMap.CurrentWindowPosition = new Point(10, 10);
-            Assert.AreEqual(new Point(12, 12), windowItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
+            windowsItemsMap = WindowItemsMap.Create(InitializeOption(), new Point(5, 5));
+            Assert.AreEqual(new Point(12, 12), windowsItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
 
-            windowItemsMap.CurrentWindowPosition = new Point(2, 3);
-            Assert.AreEqual(new Point(4, 5), windowItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
+            windowsItemsMap.CurrentWindowPosition = new Point(10, 10);
+            Assert.AreEqual(new Point(17, 17), windowsItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
         }
     }
 }

@@ -24,7 +24,7 @@ namespace White.Core.ScreenMap
         private WindowItemsMap(string fileLocation, Point windowPosition)
         {
             this.fileLocation = fileLocation;
-            lastWindowPosition = currentWindowPosition = windowPosition;
+            currentWindowPosition = windowPosition;
         }
 
         public static WindowItemsMap Create(InitializeOption initializeOption, Point currentWindowPosition)
@@ -34,13 +34,14 @@ namespace White.Core.ScreenMap
             string fileLocation = FileLocation(initializeOption);
             if (File.Exists(fileLocation))
             {
+                WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] Loading WindowItemsMap for: {0}, from {1}", initializeOption.Identifier, fileLocation);
                 var windowItemsMap = (WindowItemsMap) CreateFileXStream(fileLocation).FromFile();
                 windowItemsMap.currentWindowPosition = currentWindowPosition;
                 windowItemsMap.loadedFromFile = true;
                 return windowItemsMap;
             }
 
-            WhiteLogger.Instance.InfoFormat("Creating new WindowItemsMap for: {0}", initializeOption.Identifier);
+            WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] Creating new WindowItemsMap for: {0}", initializeOption.Identifier);
             return new WindowItemsMap(fileLocation, currentWindowPosition);
         }
 
@@ -52,12 +53,12 @@ namespace White.Core.ScreenMap
 
             if (searchCriteriaIndex >= 0)
             {
-                WhiteLogger.Instance.Info(string.Format("Found another UIItem {0} at {1}", searchCriteria, this[searchCriteriaIndex]));
+                WhiteLogger.Instance.Debug(string.Format("[PositionBasedSearch] Found another UIItem {0} at {1}", searchCriteria, this[searchCriteriaIndex]));
                 RemoveAt(searchCriteriaIndex);
             }
             else if (pointIndex >= 0)
             {
-                WhiteLogger.Instance.Info(string.Format("UIItem {0} at {1} changed", searchCriteria, point));
+                WhiteLogger.Instance.Debug(string.Format("[PositionBasedSearch] UIItem {0} at {1} changed", searchCriteria, point));
                 RemoveAt(pointIndex);
             }
 
@@ -75,7 +76,6 @@ namespace White.Core.ScreenMap
         {
             set
             {
-                if (RectX.UnlikelyWindowPosition.Equals(lastWindowPosition)) lastWindowPosition = value;
                 currentWindowPosition = value;
             }
         }
@@ -101,7 +101,11 @@ namespace White.Core.ScreenMap
 
         public virtual void Save()
         {
-            if (dirty) CreateFileXStream(fileLocation).ToXml(this);
+            if (dirty)
+            {
+                lastWindowPosition = currentWindowPosition;
+                CreateFileXStream(fileLocation).ToXml(this);
+            }
         }
 
         private static FileXStream CreateFileXStream(string fileLocation)

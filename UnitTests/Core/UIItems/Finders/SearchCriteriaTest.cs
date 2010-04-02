@@ -35,6 +35,13 @@ namespace White.UnitTests.Core.UIItems.Finders
             Assert.AreEqual(SearchCriteria.ByAutomationId("foo").AndByText("bar"), SearchCriteria.ByAutomationId("foo").AndByText("bar"));
             Assert.AreEqual(SearchCriteria.ByText("bar").AndAutomationId("foo"), SearchCriteria.ByAutomationId("foo").AndByText("bar"));
         }
+
+        [Test]
+        public void TestToString()
+        {
+            Assert.AreEqual("AutomationId=foo,Name=bar", SearchCriteria.ByText("bar").AndAutomationId("foo").ToString());
+            Assert.AreEqual("AutomationId=foo,Name=bar,Index=1", SearchCriteria.ByText("bar").AndAutomationId("foo").AndIndex(1).ToString());
+        }
     }
 
     [TestFixture, NormalCategory]
