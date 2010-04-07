@@ -8,9 +8,11 @@ namespace White.Core.UIItems.Scrolling
         internal static IScrollBars CreateBars(AutomationElement parentElement, ActionListener listener)
         {
             var frameworkId = parentElement.Current.FrameworkId;
-            if (frameworkId == Constants.WPFFrameworkId || frameworkId == Constants.SilverlightFrameworkId)
+            if (frameworkId == Constants.WPFFrameworkId)
                 return new WPFScrollBars(parentElement, listener);
-            return new ScrollBars(parentElement, listener);
+            if (frameworkId == Constants.SilverlightFrameworkId)
+                return new ScrollBars(parentElement, listener, new SilverlightHScrollBarButtonAutomationIds(), new SilverlightVScrollBarButtonAutomationIds());
+            return new ScrollBars(parentElement, listener, new DefaultScrollBarButtonAutomationIds(), new DefaultScrollBarButtonAutomationIds());
         }
     }
 }

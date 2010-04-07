@@ -8,7 +8,7 @@ namespace White.Core.UIItems.Scrolling
     {
         protected HScrollBar() {}
 
-        public HScrollBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public HScrollBar(AutomationElement automationElement, ActionListener actionListener, ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds) {}
 
         public virtual void ScrollLeft()
         {

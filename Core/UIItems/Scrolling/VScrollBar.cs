@@ -6,7 +6,7 @@ namespace White.Core.UIItems.Scrolling
     internal class VScrollBar : ScrollBar, IVScrollBar
     {
         protected VScrollBar() {}
-        public VScrollBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public VScrollBar(AutomationElement automationElement, ActionListener actionListener, ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds) {}
 
         public virtual void ScrollUp()
         {

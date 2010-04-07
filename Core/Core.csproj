@@ -183,6 +183,10 @@
     <Compile Include="UIItems\PropertyGridItems\PropertyGridCategory.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGridElementFinder.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGridProperty.cs" />
+    <Compile Include="UIItems\Scrolling\DefaultScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\ScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\SilverlightHScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\SilverlightVScrollBarButtonAutomationIds.cs" />
     <Compile Include="UIItems\Scrolling\VerticalSpanProvider.cs" />
     <Compile Include="UIItems\Slider.cs" />
     <Compile Include="UIItems\DateUnit.cs" />
