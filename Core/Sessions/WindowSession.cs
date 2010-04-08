@@ -45,7 +45,7 @@ namespace White.Core.Sessions
             }
 
             AutomationElement automationElement = AutomationElementX.GetAutomationElementFromPoint(location);
-            if (searchCriteria.AppliesTo(automationElement))
+            if (automationElement != null && searchCriteria.AppliesTo(automationElement))
             {
                 IUIItem item = new DictionaryMappedItemFactory().Create(automationElement, actionListener, searchCriteria.CustomItemType);
                 return UIItemProxyFactory.Create(item, actionListener);
