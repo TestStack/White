@@ -9,6 +9,9 @@ namespace White.Core.Interceptors
     {
         public virtual void PreProcess(IInvocation invocation, object target)
         {
+            if (invocation.Method.Name.StartsWith("get_") || "ToString".Equals(invocation.Method.Name))
+                return;
+
             var coreInterceptContext = (CoreInterceptContext) target;
             coreInterceptContext.ActionListener.ActionPerforming((UIItem) coreInterceptContext.UiItem);
         }
