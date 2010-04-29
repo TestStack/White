@@ -1,4 +1,3 @@
-using System.Threading;
 using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.Core.UIItems;
@@ -15,7 +14,6 @@ namespace White.CustomCommandsSilverlightTests
         {
             var button = browserWindow.SilverlightDocument.Get<Button>("buton");
             var wpfWhiteButton = new CustomCommandFactory().Create<IButtonCommands>(button);
-//            Thread.Sleep(10000);
             Assert.AreEqual(1, wpfWhiteButton.BorderBottomThickness);
         }
     }
