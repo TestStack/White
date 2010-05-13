@@ -1,12 +1,13 @@
 using NUnit.Framework;
+using White.Core;
 using White.Core.CustomCommands;
 using White.Core.UIItems;
-using White.CustomCommands.WPF;
+using White.CustomCommands;
 using White.UnitTests.Core.Testing;
 
 namespace White.UnitTests.Core.CustomCommands
 {
-    [TestFixture]
+    [TestFixture, WPFCategory]
     public class CustomTextBoxCommandTest : ControlsActionTest
     {
         protected override string CommandLineArguments

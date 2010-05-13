@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace White.CustomControls.Automation
+namespace White.CustomControls.Peers.Automation
 {
     public static class ObjectCopier
     {

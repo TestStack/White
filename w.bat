@@ -1,1 +1,1 @@
-call tools\nant\NAnt.exe -nologo -buildfile:white.build %* 2>&1 | tee b.log
+call tools\nant\NAnt.exe -nologo -buildfile:white.build %* -logfile:b.log

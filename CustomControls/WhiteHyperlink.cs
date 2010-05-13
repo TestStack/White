@@ -8,7 +8,7 @@ namespace White.CustomControls
     {
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new WhiteHyperlinkAutomationPeer(this);
+            return new WhiteHyperlinkPeer(this);
         }
     }
 }

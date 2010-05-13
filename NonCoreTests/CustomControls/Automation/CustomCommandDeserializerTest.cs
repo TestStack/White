@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using White.CustomControls.Automation;
+using White.CustomControls.Peers.Automation;
 using CustomCommandSerializer=White.Core.CustomCommands.CustomCommandSerializer;
 
 namespace White.NonCoreTests.CustomControls.Automation

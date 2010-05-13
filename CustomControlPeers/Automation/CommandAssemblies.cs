@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace White.CustomControls.Automation
+namespace White.CustomControls.Peers.Automation
 {
     public class CommandAssemblies
     {

@@ -9,10 +9,9 @@
       <attribute name="project"/>
     </attributes>
     <sequential>
-      <property name="solution" value="${project}"/>
       <echo message="Building ${project} using MSBuild from ${framework.dir}" />
       <exec program="${framework.dir}\msbuild.exe">
-        <arg value="/t:ReBuild"/>
+        <arg value="/t:Build"/>
         <arg value="/verbosity:quiet"/>
         <arg value="/nologo"/>
         <arg value="${project}"/>

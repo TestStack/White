@@ -104,6 +104,7 @@
     <Compile Include="Core\CustomCommands\CustomButtonCommandTest.cs" />
     <Compile Include="Core\CustomCommands\CustomCommandResponseTest.cs" />
     <Compile Include="Core\CustomCommands\CustomCommandSerializerTest.cs" />
+    <Compile Include="Core\CustomCommands\CustomListBoxCommandTest.cs" />
     <Compile Include="Core\CustomCommands\CustomTextBoxCommandTest.cs" />
     <Compile Include="Core\CustomUIItemTest.cs" />
     <Compile Include="Core\DesktopTest.cs" />

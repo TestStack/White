@@ -1,10 +1,11 @@
 using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Controls;
-using White.CustomControls.Automation;
+using White.CustomControls.Peers.Automation;
 
 namespace White.CustomControls.Peers
 {
-    public class WhiteCheckBoxPeer : CheckBoxAutomationPeer
+    public class WhiteCheckBoxPeer : CheckBoxAutomationPeer, IValueProvider
     {
         private readonly WhitePeer whitePeer;
 

@@ -8,7 +8,7 @@ namespace White.CustomControls
     {
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new WhiteThumbAutomationPeer(this);
+            return new WhiteThumbPeer(this);
         }
     }
 }

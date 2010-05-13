@@ -12,7 +12,7 @@
     <AssemblyName>White.CustomControls.Peers</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -77,12 +77,52 @@
     <Compile Include="WhiteButtonPeer.cs" />
     <Compile Include="WhiteCheckBoxPeer.cs" />
     <Compile Include="WhiteComboBoxPeer.cs" />
-    <Compile Include="WhiteHyperlinkAutomationPeer.cs" />
-    <Compile Include="WhiteListBoxAutomationPeer.cs" />
-    <Compile Include="WhiteSliderAutomationPeer.cs" />
+    <Compile Include="WhiteContextMenuPeer.cs" />
+    <Compile Include="WhiteDocumentPageViewPeer.cs" />
+    <Compile Include="WhiteDocumentViewerPeer.cs" />
+    <Compile Include="WhiteExpanderPeer.cs" />
+    <Compile Include="WhiteFlowDocumentPageViewerPeer.cs" />
+    <Compile Include="WhiteFlowDocumentReaderPeer.cs" />
+    <Compile Include="WhiteFlowDocumentScrollViewerPeer.cs" />
+    <Compile Include="WhiteFramePeer.cs" />
+    <Compile Include="WhiteFrameworkContentElementPeer.cs" />
+    <Compile Include="WhiteGroupBoxPeer.cs" />
+    <Compile Include="WhiteHyperlinkPeer.cs" />
+    <Compile Include="WhiteImagePeer.cs" />
+    <Compile Include="WhiteInkCanvasPeer.cs" />
+    <Compile Include="WhiteInkPresenterPeer.cs" />
+    <Compile Include="WhiteLabelPeer.cs" />
+    <Compile Include="WhiteListBoxPeer.cs" />
+    <Compile Include="WhiteListViewPeer.cs" />
+    <Compile Include="WhiteMediaElementPeer.cs" />
+    <Compile Include="WhiteMenuItemPeer.cs" />
+    <Compile Include="WhiteMenuPeer.cs" />
+    <Compile Include="WhiteNavigationWindowPeer.cs" />
+    <Compile Include="WhiteProgressBarPeer.cs" />
+    <Compile Include="WhiteRadioButtonPeer.cs" />
+    <Compile Include="WhiteRepeatButtonPeer.cs" />
+    <Compile Include="WhiteRichTextBoxPeer.cs" />
+    <Compile Include="WhiteScrollBarPeer.cs" />
+    <Compile Include="WhiteScrollViewerPeer.cs" />
+    <Compile Include="WhiteSeparatorPeer.cs" />
+    <Compile Include="WhiteSliderPeer.cs" />
+    <Compile Include="WhiteStatusBarItemPeer.cs" />
+    <Compile Include="WhiteStatusBarPeer.cs" />
+    <Compile Include="WhiteTabControlPeer.cs" />
+    <Compile Include="WhiteTabItemPeer.cs" />
+    <Compile Include="WhiteTableCellPeer.cs" />
+    <Compile Include="WhiteTablePeer.cs" />
+    <Compile Include="WhiteTextBlockPeer.cs" />
     <Compile Include="WhiteTextBoxPeer.cs" />
-    <Compile Include="WhiteThumbAutomationPeer.cs" />
-    <Compile Include="WhiteTreeViewAutomationPeer.cs" />
+    <Compile Include="WhiteThumbPeer.cs" />
+    <Compile Include="WhiteToggleButtonPeer.cs" />
+    <Compile Include="WhiteToolBarPeer.cs" />
+    <Compile Include="WhiteToolTipPeer.cs" />
+    <Compile Include="WhiteTreeViewItemPeer.cs" />
+    <Compile Include="WhiteTreeViewPeer.cs" />
+    <Compile Include="WhiteUserControlPeer.cs" />
+    <Compile Include="WhiteViewport3DPeer.cs" />
+    <Compile Include="WhiteWindowPeer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />

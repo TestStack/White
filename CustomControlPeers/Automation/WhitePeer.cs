@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
-namespace White.CustomControls.Automation
+namespace White.CustomControls.Peers.Automation
 {
     public class WhitePeer
     {
-        private readonly AutomationPeer automationPeer;
+        private readonly object automationPeer;
         private readonly object control;
         private readonly ICommandSerializer commandSerializer;
         private readonly GetValueDelegate getValueDelegate;
@@ -19,20 +20,21 @@ namespace White.CustomControls.Automation
 
         public delegate void SetValueDelegate(string value);
 
-        public static WhitePeer Create(AutomationPeer automationPeer, object control)
+        public static WhitePeer Create(object automationPeer, object control)
         {
             return CreateForValueProvider(automationPeer, control, null, null);
         }
 
-        public static WhitePeer CreateForValueProvider(AutomationPeer automationPeer, object control, GetValueDelegate getValueDelegate,
+        public static WhitePeer CreateForValueProvider(object automationPeer, object control, GetValueDelegate getValueDelegate,
                                                        SetValueDelegate setValueDelegate)
         {
             return new WhitePeer(automationPeer, control, new CommandSerializer(new CommandAssemblies()), getValueDelegate, setValueDelegate);
         }
 
-        private WhitePeer(AutomationPeer automationPeer, object control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
+        private WhitePeer(object automationPeer, object control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
                           SetValueDelegate setValueDelegate)
         {
+            
             if (!(automationPeer is IValueProvider)) throw new ArgumentException("Automation Peer should be a IValueProvider");
 
             this.automationPeer = automationPeer;

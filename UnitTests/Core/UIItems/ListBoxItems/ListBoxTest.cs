@@ -1,7 +1,8 @@
 using NUnit.Framework;
+using White.Core.UIItems.ListBoxItems;
 using White.UnitTests.Core.Testing;
 
-namespace White.Core.UIItems.ListBoxItems
+namespace White.UnitTests.Core.UIItems.ListBoxItems
 {
     [TestFixture]
     public class ListBoxTest : ControlsActionTest

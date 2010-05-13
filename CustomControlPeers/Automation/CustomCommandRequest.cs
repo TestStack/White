@@ -1,4 +1,4 @@
-namespace White.CustomControls.Automation
+namespace White.CustomControls.Peers.Automation
 {
     public class CustomCommandRequest
     {

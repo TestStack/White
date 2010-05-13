@@ -29,6 +29,7 @@ namespace White.UnitTests.Core.UIItems.WindowItems
         {
             Assert.AreEqual(false, window.IsClosed);
             window.Close();
+            window.WaitTill(() => window.IsClosed);
             Assert.AreEqual(true, window.IsClosed);
         }
     }

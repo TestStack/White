@@ -10,5 +10,6 @@
     </Grid.ColumnDefinitions>
     <CustomControls:WhiteButton Height="23" Margin="12,24,13,0" Name="button" VerticalAlignment="Top">Button</CustomControls:WhiteButton>
     <CustomControls:WhiteTextBox Height="23" Margin="22,62,21,0" Name="textbox" VerticalAlignment="Top">Foo</CustomControls:WhiteTextBox>
+    <CustomControls:WhiteListBox Margin="30,114,13,75" Name="listBox"></CustomControls:WhiteListBox>
   </Grid>
 </Window>

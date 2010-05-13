@@ -3,7 +3,7 @@ using NUnit.Framework;
 using Recorder;
 using Reporting.Configuration;
 using Repository;
-using White.CustomControls.Automation;
+using White.CustomControls.Peers.Automation;
 using White.WebBrowser;
 
 namespace White.NonCoreTests.Repository

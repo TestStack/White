@@ -10,6 +10,9 @@ namespace WindowsPresentationFramework
         public CustomWhiteControlsWindow()
         {
             InitializeComponent();
+            button.BorderThickness = new Thickness(1, 1, 1, 1);
+            listBox.Items.Add("Foo");
+            listBox.Items.Add("Bar");
         }
     }
 }

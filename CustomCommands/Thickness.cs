@@ -1,10 +1,17 @@
+using System.Runtime.Serialization;
+
 namespace White.CustomCommands
 {
+    [DataContract]
     public class Thickness
     {
+        [DataMember]
         private readonly double bottom;
+        [DataMember]
         private readonly double left;
+        [DataMember]
         private readonly double right;
+        [DataMember]
         private readonly double top;
 
         public Thickness(System.Windows.Thickness thickness)

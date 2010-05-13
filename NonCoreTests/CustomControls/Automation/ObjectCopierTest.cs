@@ -1,6 +1,6 @@
 using System;
 using NUnit.Framework;
-using White.CustomControls.Automation;
+using White.CustomControls.Peers.Automation;
 
 namespace White.NonCoreTests.CustomControls.Automation
 {

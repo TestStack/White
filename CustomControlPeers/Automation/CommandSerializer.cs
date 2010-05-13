@@ -4,7 +4,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
 
-namespace White.CustomControls.Automation
+namespace White.CustomControls.Peers.Automation
 {
     public class CommandSerializer : ICommandSerializer
     {
@@ -12,14 +12,14 @@ namespace White.CustomControls.Automation
 
         private static readonly List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
         private static readonly List<Type> standardKnownTypes = new List<Type>
-                                                           {
-                                                               typeof (object[]),
-                                                               typeof (string[]),
-                                                               typeof (int[]),
-                                                               typeof (double[]),
-                                                               typeof (DateTime[]),
-                                                               typeof (Exception)
-                                                           };
+                                                                    {
+                                                                        typeof (object[]),
+                                                                        typeof (string[]),
+                                                                        typeof (int[]),
+                                                                        typeof (double[]),
+                                                                        typeof (DateTime[]),
+                                                                        typeof (Exception)
+                                                                    };
 
         public CommandSerializer(CommandAssemblies commandAssemblies)
         {

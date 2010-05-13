@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using White.Core;
 using White.Core.CustomCommands;
 using White.Core.UIItems;
 using White.CustomCommands;
@@ -6,7 +7,7 @@ using White.UnitTests.Core.Testing;
 
 namespace White.UnitTests.Core.CustomCommands
 {
-    [TestFixture]
+    [TestFixture, WPFCategory]
     public class CustomButtonCommandTest : ControlsActionTest
     {
         protected override string CommandLineArguments
@@ -14,9 +15,10 @@ namespace White.UnitTests.Core.CustomCommands
             get { return "CustomWhiteControlsWindow"; }
         }
 
-        [Test, Ignore("Doesn't work yet")]
+        [Test]
         public void GetBorderThickness()
         {
+            CustomCommandSerializer.AddKnownTypes(typeof(Thickness));
             var button = window.Get<Button>("button");
             var wpfWhiteButton = new CustomCommandFactory().Create<IButtonCommands>(button);
             Thickness thickness = wpfWhiteButton.BorderThickness;

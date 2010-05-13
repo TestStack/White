@@ -2,7 +2,7 @@ using System.IO;
 using System.Windows.Controls;
 using NUnit.Framework;
 using White.Core.CustomCommands;
-using White.CustomControls.Automation;
+using White.CustomControls.Peers.Automation;
 
 namespace White.NonCoreTests.CustomControls.Automation
 {

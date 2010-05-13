@@ -14,7 +14,7 @@
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -64,10 +64,14 @@
     <Compile Include="WhiteButtonPeer.cs" />
     <Compile Include="WhiteCheckBoxPeer.cs" />
     <Compile Include="WhiteComboBoxPeer.cs" />
-    <Compile Include="WhiteListBoxAutomationPeer.cs" />
-    <Compile Include="WhiteSliderAutomationPeer.cs" />
+    <Compile Include="WhiteHyperlinkButtonPeer.cs" />
+    <Compile Include="WhiteListBoxPeer.cs" />
+    <Compile Include="WhiteProgressBarPeer.cs" />
+    <Compile Include="WhiteRadioButtonPeer.cs" />
+    <Compile Include="WhiteSliderPeer.cs" />
     <Compile Include="WhiteTextBoxPeer.cs" />
-    <Compile Include="WhiteThumbAutomationPeer.cs" />
+    <Compile Include="WhiteThumbPeer.cs" />
+    <Compile Include="WhiteToggleButtonPeer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />

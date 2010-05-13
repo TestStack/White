@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows;
 
-namespace White.CustomControls.Automation
+namespace White.CustomControls.Peers.Automation
 {
     public class CommandAssemblies
     {

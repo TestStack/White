@@ -1,6 +1,6 @@
 using System.Windows.Controls;
 
-namespace White.CustomCommands.WPF
+namespace White.CustomCommands
 {
     public class TextBoxCommands : ITextBoxCommands
     {

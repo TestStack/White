@@ -15,9 +15,19 @@ namespace White.Core.CustomCommands
                                                                typeof (string[]),
                                                                typeof (int[]),
                                                                typeof (double[]),
+                                                               typeof (long[]),
+                                                               typeof (decimal[]),
+                                                               typeof (float[]),
+                                                               typeof (short[]),
+                                                               typeof (bool[]),
                                                                typeof (DateTime[]),
                                                                typeof(Exception)
                                                            };
+
+        public static void AddKnownTypes(params Type[] additionalKnownTypes)
+        {
+            standardKnownTypes.AddRange(additionalKnownTypes);
+        }
 
         public virtual string SerializeAssembly(string assemblyFile)
         {
