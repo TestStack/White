@@ -130,6 +130,10 @@
       <Project>{C5589F07-067E-408D-8B95-5C3CE132843E}</Project>
       <Name>CustomCommands.WPF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CustomControlPeers\CustomControlPeers.csproj">
+      <Project>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</Project>
+      <Name>CustomControlPeers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomControls\CustomControls.csproj">
       <Project>{8513D286-87D2-459D-A713-2E583FB797F8}</Project>
       <Name>CustomControls</Name>

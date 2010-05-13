@@ -52,21 +52,6 @@
     <Compile Include="..\Core\AssemblyInfo.cs">
       <Link>AssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Automation\CommandAssembly.cs" />
-    <Compile Include="Automation\CommandSerializer.cs" />
-    <Compile Include="Automation\CustomCommand.cs" />
-    <Compile Include="Automation\CustomCommandRequest.cs" />
-    <Compile Include="Automation\EndSessionCommand.cs" />
-    <Compile Include="Automation\ICommand.cs" />
-    <Compile Include="Automation\ICommandSerializer.cs" />
-    <Compile Include="Automation\LoadAssemblyCommand.cs" />
-    <Compile Include="Automation\ObjectCopier.cs" />
-    <Compile Include="Automation\WhitePeer.cs" />
-    <Compile Include="Peers\WhiteButtonPeer.cs" />
-    <Compile Include="Peers\WhiteCheckBoxPeer.cs" />
-    <Compile Include="Peers\WhiteComboBoxPeer.cs" />
-    <Compile Include="Peers\WhiteTextBoxPeer.cs" />
-    <Compile Include="Automation\SilverlightCommandAssemblies.cs" />
     <Compile Include="WhiteButton.cs" />
     <Compile Include="WhiteCheckBox.cs" />
     <Compile Include="WhiteComboBox.cs" />
@@ -74,6 +59,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControlPeers\CustomControlPeers.Silverlight.csproj">
+      <Project>{ED8E108C-4469-4D07-B60F-436178EB5E2C}</Project>
+      <Name>CustomControlPeers.Silverlight</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

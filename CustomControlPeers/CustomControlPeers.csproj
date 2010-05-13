@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8513D286-87D2-459D-A713-2E583FB797F8}</ProjectGuid>
+    <ProjectGuid>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.CustomControls</RootNamespace>
-    <AssemblyName>White.CustomControls</AssemblyName>
+    <RootNamespace>White.CustomControls.Peers</RootNamespace>
+    <AssemblyName>White.CustomControls.Peers</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>
@@ -40,9 +40,11 @@
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -60,29 +62,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Core\AssemblyInfo.cs">
-      <Link>AssemblyInfo.cs</Link>
-    </Compile>
-    <Compile Include="WhiteButton.cs" />
-    <Compile Include="WhiteCheckBox.cs" />
-    <Compile Include="WhiteComboBox.cs" />
-    <Compile Include="WhiteHyperlink.cs" />
-    <Compile Include="WhiteSlider.cs" />
-    <Compile Include="WhiteTextBox.cs" />
-    <Compile Include="WhiteThumb.cs" />
+    <Compile Include="Automation\CommandAssemblies.cs" />
+    <Compile Include="Automation\CommandAssembly.cs" />
+    <Compile Include="Automation\CommandSerializer.cs" />
+    <Compile Include="Automation\CustomCommand.cs" />
+    <Compile Include="Automation\CustomCommandRequest.cs" />
+    <Compile Include="Automation\EndSessionCommand.cs" />
+    <Compile Include="Automation\ICommand.cs" />
+    <Compile Include="Automation\ICommandSerializer.cs" />
+    <Compile Include="Automation\LoadAssemblyCommand.cs" />
+    <Compile Include="Automation\ObjectCopier.cs" />
+    <Compile Include="Automation\WhitePeer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhiteButtonPeer.cs" />
+    <Compile Include="WhiteCheckBoxPeer.cs" />
+    <Compile Include="WhiteComboBoxPeer.cs" />
+    <Compile Include="WhiteHyperlinkAutomationPeer.cs" />
+    <Compile Include="WhiteListBoxAutomationPeer.cs" />
+    <Compile Include="WhiteSliderAutomationPeer.cs" />
+    <Compile Include="WhiteTextBoxPeer.cs" />
+    <Compile Include="WhiteThumbAutomationPeer.cs" />
+    <Compile Include="WhiteTreeViewAutomationPeer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomControlPeers\CustomControlPeers.csproj">
-      <Project>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</Project>
-      <Name>CustomControlPeers</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Peers\" />
-    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

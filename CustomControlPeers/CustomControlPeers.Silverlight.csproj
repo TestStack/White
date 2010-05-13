@@ -4,12 +4,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8DE29F87-D81B-4973-9951-0AFA3437955E}</ProjectGuid>
+    <ProjectGuid>{ED8E108C-4469-4D07-B60F-436178EB5E2C}</ProjectGuid>
     <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomControls.Silverlight</RootNamespace>
-    <AssemblyName>CustomControls.Silverlight</AssemblyName>
+    <RootNamespace>White.CustomControls.Peers</RootNamespace>
+    <AssemblyName>White.CustomControls.Peers.Silverlight</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SilverlightApplication>false</SilverlightApplication>
     <ValidateXaml>true</ValidateXaml>
@@ -39,6 +39,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows" />
     <Reference Include="mscorlib" />
     <Reference Include="system" />
@@ -48,17 +49,25 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Peers\WhiteButtonPeer.cs" />
-    <Compile Include="Peers\WhiteComboBoxPeer.cs" />
-    <Compile Include="WhiteButton.cs" />
+    <Compile Include="Automation\CommandAssembly.cs" />
+    <Compile Include="Automation\CommandSerializer.cs" />
+    <Compile Include="Automation\CustomCommand.cs" />
+    <Compile Include="Automation\CustomCommandRequest.cs" />
+    <Compile Include="Automation\EndSessionCommand.cs" />
+    <Compile Include="Automation\ICommand.cs" />
+    <Compile Include="Automation\ICommandSerializer.cs" />
+    <Compile Include="Automation\LoadAssemblyCommand.cs" />
+    <Compile Include="Automation\ObjectCopier.cs" />
+    <Compile Include="Automation\SilverlightCommandAssemblies.cs" />
+    <Compile Include="Automation\WhitePeer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhiteComboBox.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CustomControls\SilverlightCustomControls.csproj">
-      <Project>{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}</Project>
-      <Name>SilverlightCustomControls</Name>
-    </ProjectReference>
+    <Compile Include="WhiteButtonPeer.cs" />
+    <Compile Include="WhiteCheckBoxPeer.cs" />
+    <Compile Include="WhiteComboBoxPeer.cs" />
+    <Compile Include="WhiteListBoxAutomationPeer.cs" />
+    <Compile Include="WhiteSliderAutomationPeer.cs" />
+    <Compile Include="WhiteTextBoxPeer.cs" />
+    <Compile Include="WhiteThumbAutomationPeer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="white.snk" />
