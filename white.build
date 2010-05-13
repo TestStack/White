@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension-->
+<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension;minor.version;major.version-->
 <project name="White" default="test">
   <include buildfile="macrodefs.build"/>
   
@@ -79,46 +79,7 @@
     <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
   </target>
 
-  <target name="dist" depends="-copy.assembly.info, compile, doc, dist.source, dist.binary"/>
-
-  <target name="dist.source" depends="compile, dist.source.only"/>
-  <target name="dist.source.only">
-    <zip zipfile="${release.dir}\White_Src_${date::today-to-string()}.zip">
-      <fileset basedir=".">
-        <include name="**/*.*"/>
-        <exclude name="**/obj/**"/>
-        <exclude name="**/bin/Debug/**"/>
-        <exclude name="**/*.bak"/>
-        <exclude name="**/*.log"/>
-        <exclude name="**/*.user"/>
-        <exclude name="**/.svn/**"/>
-        <exclude name="WhiteLib/**"/>
-        <exclude name="**/.metadata/**"/>
-        <exclude name="**/_ReSharper*/**"/>
-        <exclude name="**/NDoc/**"/>
-        <exclude name="**/RecorderAddIn/bin/**"/>
-        <exclude name="**/SampleSWTApp/bin/**"/>
-        <exclude name="**/*.suo"/>
-        <exclude name="**/*TestLess*/**"/>
-        <exclude name="white-up.bat"/>
-        <exclude name="Features.txt"/>
-        <exclude name="CopyWhiteTo.bat"/>
-        <exclude name="white-commit.bat"/>
-        <exclude name="white-up.bat"/>
-        <exclude name="build-output.txt"/>
-        <exclude name="docs/*.ppt"/>
-        <exclude name="docs/*.doc"/>
-        <exclude name="TestDistributor/**"/>
-        <exclude name="tools/nunit/**"/>
-      </fileset>
-
-      <fileset basedir=".">
-        <include name="WPFTestApp/bin/**"/>
-        <exclude name="**/.svn/**"/>
-        <include name="SampleSWTApp/bin/**"/>
-      </fileset>
-    </zip>
-  </target>
+  <target name="dist" depends="-copy.assembly.info, compile, doc, dist.binary"/>
 
   <target name="dist.binary" depends="compile, doc.only, dist.binary.only"/>
   <target name="dist.binary.only" depends="clean.dist" >
@@ -137,9 +98,11 @@
         <exclude name="**/*Test*"/>
         <exclude name="**/*Rhino*"/>
         <exclude name="**/WPFVisifire.Charts*"/>
+        <exclude name="**/White.CustomCommands.WPF.*"/>
+        <exclude name="**/White.CustomCommands.Silverlight.*"/>
       </fileset>
     </copy>
-    <zip zipfile="${release.dir}\White_Bin_0.19.zip">
+    <zip zipfile="${release.dir}\White_Bin_0.${major.version}.${minor.version}.zip">
       <fileset basedir="${build.output.dir}">
         <include name="**/*.*"/>
       </fileset>
