@@ -1,16 +1,29 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 
 namespace White.CustomControls.Peers.Automation
 {
-    public class CommandAssembly
+    public interface ICommandAssembly
+    {
+        object Create(string typeName, params object[] arguments);
+        Type GetType(Type type);
+    }
+
+    public class CommandAssembly : ICommandAssembly
     {
         private readonly Assembly assembly;
 
-        public CommandAssembly(Assembly assembly)
+        public CommandAssembly(Assembly assembly, IKnownTypeHolder knownTypeHolder)
         {
             this.assembly = assembly;
+            var types = assembly.GetTypes();
+            foreach (Type type in types)
+            {
+                if (type.IsInterface || type.GetCustomAttributes(typeof(DataContractAttribute), false).Length != 1) continue;
+                knownTypeHolder.Add(type);
+            }
         }
 
         public virtual object Create(string typeName, params object[] arguments)
@@ -28,9 +41,14 @@ namespace White.CustomControls.Peers.Automation
             }
         }
 
-        public virtual Type GetType(string typeName)
+        public virtual Type GetType(Type type)
         {
-            return assembly.GetType(typeName);
+            return GetType(type.FullName);
+        }
+
+        private Type GetType(string typeFullName)
+        {
+            return assembly.GetType(typeFullName);
         }
 
         private static string GetTypeNames(object[] arguments)

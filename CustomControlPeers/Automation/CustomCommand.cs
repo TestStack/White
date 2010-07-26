@@ -37,8 +37,7 @@ namespace White.CustomControls.Peers.Automation
                 }
                 else
                 {
-                    Type type = commandAssembly.GetType(arguments[i].GetType().FullName);
-                    copiedArguments[i] = type == null ? arguments[i] : ObjectCopier.Copy(arguments[i], type);
+                    copiedArguments[i] = ObjectCopier.Copy(arguments[i], commandAssembly);
                 }
             }
             return copiedArguments;

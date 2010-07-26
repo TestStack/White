@@ -13,7 +13,7 @@ namespace Repository.Sessions
     public class WorkSessionTest
     {
         [Test]
-        public void Should_not_save_any_window_information_to_file_when_no_windows_are_launched()
+        public void ShouldNotSaveAnyWindowInformationToFileWhenNoWindowsAreLaunched()
         {
             int numberOfFilesBeforeSessionStart = NumberOfFiles();
             using (WorkSession()){}
@@ -21,12 +21,12 @@ namespace Repository.Sessions
         }
 
         [Test]
-        public void Should_save_window_information_in_file()
+        public void ShouldSaveWindowInformationInFile()
         {
             File.Delete("foo.xml");
             using (WorkSession workSession = WorkSession())
             {
-                Application application = Application.Launch(WinFormTestConfiguration.WinFormsTestAppLocation);
+                Application application = Application.Launch(TestConfiguration.WinFormsTestAppLocation);
                 workSession.Attach(application);
                 Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("buton");
@@ -40,12 +40,12 @@ namespace Repository.Sessions
         }
 
         [Test]
-        public void Should_find_control_based_location()
+        public void ShouldFindCONTROLBasedLocation()
         {
             File.Delete("foo.xml");
             using (WorkSession workSession = WorkSession())
             {
-                Application application = Application.Launch(WinFormTestConfiguration.WinFormsTestAppLocation);
+                Application application = Application.Launch(TestConfiguration.WinFormsTestAppLocation);
                 workSession.Attach(application);
                 Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("buton");
@@ -53,7 +53,7 @@ namespace Repository.Sessions
             }
             using (WorkSession workSession = WorkSession())
             {
-                Application application = Application.Launch(WinFormTestConfiguration.WinFormsTestAppLocation);
+                Application application = Application.Launch(TestConfiguration.WinFormsTestAppLocation);
                 workSession.Attach(application);
                 Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("buton");

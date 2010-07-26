@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using White.Recorder.CodeGeneration;
 
 namespace Recorder.CodeGeneration
 {

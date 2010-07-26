@@ -9,12 +9,12 @@ namespace White.Core.ScreenMap
     public class ControlTypeConverter : IConverter
     {
         private static readonly Type type = typeof (ControlType);
-        private readonly string CONTROL_TYPE_ALIAS = "controlType";
+        private const string controlTypeAlias = "controlType";
 
         public virtual void Register(IMarshalContext context)
         {
             context.RegisterConverter(type, this);
-            context.Alias(CONTROL_TYPE_ALIAS, type);
+            context.Alias(controlTypeAlias, type);
         }
 
         public virtual void ToXml(object value, FieldInfo field, XmlTextWriter xml, IMarshalContext context)

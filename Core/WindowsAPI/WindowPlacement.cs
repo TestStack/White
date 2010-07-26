@@ -42,12 +42,12 @@ namespace White.Core.WindowsAPI
     [StructLayout(LayoutKind.Sequential)]
     public struct MouseInput
     {
-        private int dx;
-        private int dy;
-        private int mouseData;
-        private int dwFlags;
-        private int time;
-        private IntPtr dwExtraInfo;
+        private readonly int dx;
+        private readonly int dy;
+        private readonly int mouseData;
+        private readonly int dwFlags;
+        private readonly int time;
+        private readonly IntPtr dwExtraInfo;
 
         public MouseInput(int dwFlags, IntPtr dwExtraInfo)
         {
@@ -66,11 +66,11 @@ namespace White.Core.WindowsAPI
     [StructLayout(LayoutKind.Sequential)]
     public struct KeyboardInput
     {
-        private short wVk;
-        private short wScan;
-        private KeyUpDown dwFlags;
-        private int time;
-        private IntPtr dwExtraInfo;
+        private readonly short wVk;
+        private readonly short wScan;
+        private readonly KeyUpDown dwFlags;
+        private readonly int time;
+        private readonly IntPtr dwExtraInfo;
 
         public KeyboardInput(short wVk, KeyUpDown dwFlags, IntPtr dwExtraInfo)
         {

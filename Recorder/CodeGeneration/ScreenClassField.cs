@@ -1,6 +1,6 @@
 using System;
 
-namespace Recorder.CodeGeneration
+namespace White.Recorder.CodeGeneration
 {
     public class ScreenClassField
     {
@@ -8,9 +8,9 @@ namespace Recorder.CodeGeneration
         private readonly string uiItemName;
         private readonly Type type;
         private int index = nonIndexedValue;
-        private static readonly string invalidCharacters = "._;:'][{}+=!@#$%^&*()~`\"?/><, ";
+        private const string invalidCharacters = "._;:'][{}+=!@#$%^&*()~`\"?/><, ";
         private readonly bool invalidFieldName;
-        public static readonly int nonIndexedValue = -1;
+        public const int nonIndexedValue = -1;
 
         public ScreenClassField(string name, Type type, int index)
         {

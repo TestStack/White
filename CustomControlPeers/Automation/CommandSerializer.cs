@@ -6,12 +6,12 @@ using System.Xml;
 
 namespace White.CustomControls.Peers.Automation
 {
-    public class CommandSerializer : ICommandSerializer
+    public class CommandSerializer : ICommandSerializer, IKnownTypeHolder
     {
         private readonly CommandAssemblies commandAssemblies;
 
         private static readonly List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
-        private static readonly List<Type> standardKnownTypes = new List<Type>
+        private static readonly List<Type> knownTypes = new List<Type>
                                                                     {
                                                                         typeof (object[]),
                                                                         typeof (string[]),
@@ -38,7 +38,7 @@ namespace White.CustomControls.Peers.Automation
             var customCommandRequest = new CustomCommandRequest(request);
             if (customCommandRequest.IsLoadAssemblyCommand)
             {
-                command = new LoadAssemblyCommand(customCommandRequest.AssemblyName, customCommandRequest.AssemblyContents, commandAssemblies);
+                command = new LoadAssemblyCommand(customCommandRequest.AssemblyName, customCommandRequest.AssemblyContents, commandAssemblies, this);
             }
             else if (customCommandRequest.IsEndSessionCommand)
             {
@@ -77,7 +77,7 @@ namespace White.CustomControls.Peers.Automation
             byte[] requestBytes = Convert.FromBase64String(@string);
             using (var stream = new MemoryStream(requestBytes))
             {
-                var dataContractSerializer = new DataContractSerializer(typeof(object[]), standardKnownTypes);
+                var dataContractSerializer = new DataContractSerializer(typeof(object[]), knownTypes);
                 stream.Position = 0;
                 return (object[]) dataContractSerializer.ReadObject(stream);
             }
@@ -93,6 +93,12 @@ namespace White.CustomControls.Peers.Automation
                 byte[] bytes = stream.ToArray();
                 return Convert.ToBase64String(bytes);
             }
+        }
+
+        public void Add(Type type)
+        {
+            knownTypes.Add(type);
+            knownTypes.Add(type.MakeArrayType());
         }
     }
 }

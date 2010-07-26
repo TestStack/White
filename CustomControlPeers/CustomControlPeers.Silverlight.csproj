@@ -56,6 +56,7 @@
     <Compile Include="Automation\EndSessionCommand.cs" />
     <Compile Include="Automation\ICommand.cs" />
     <Compile Include="Automation\ICommandSerializer.cs" />
+    <Compile Include="Automation\IKnownTypeHolder.cs" />
     <Compile Include="Automation\LoadAssemblyCommand.cs" />
     <Compile Include="Automation\ObjectCopier.cs" />
     <Compile Include="Automation\SilverlightCommandAssemblies.cs" />

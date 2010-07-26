@@ -9,7 +9,7 @@ namespace White.CustomControls.Peers.Automation
     {
         private static readonly Dictionary<string, CommandAssembly> list = new Dictionary<string, CommandAssembly>();
 
-        public virtual CommandAssembly Add(string name, byte[] contents)
+        public virtual CommandAssembly Add(string name, byte[] contents, IKnownTypeHolder knownTypeHolder)
         {
             if (!list.ContainsKey(name))
             {
@@ -17,7 +17,7 @@ namespace White.CustomControls.Peers.Automation
                 {
                     var part = new AssemblyPart();
                     Assembly assembly = part.Load(memoryStream);
-                    list[name] = new CommandAssembly(assembly);
+                    list[name] = new CommandAssembly(assembly, knownTypeHolder);
                 }
             }
             return list[name];

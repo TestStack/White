@@ -9,7 +9,7 @@ namespace White.Core.WindowsAPI
         [FieldOffset(0)] private int type;
         [FieldOffset(4)] private MouseInput mi;
         [FieldOffset(4)] private KeyboardInput ki;
-        [FieldOffset(4)] private HardwareInput hi;
+        [FieldOffset(4)] private readonly HardwareInput hi;
 
         public static Input Mouse(MouseInput mouseInput)
         {

@@ -1,6 +1,7 @@
 using System;
 using White.Core.UIItems;
 using NUnit.Framework;
+using White.Recorder.CodeGeneration;
 
 namespace Recorder.CodeGeneration
 {

@@ -5,8 +5,8 @@ namespace White.Core.UIItemEvents
 {
     public class TabEvent : UserEvent
     {
-        private static string action;
-        private object[] parameters;
+        private static readonly string action;
+        private readonly object[] parameters;
 
         static TabEvent()
         {

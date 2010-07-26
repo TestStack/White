@@ -3,6 +3,7 @@ using System.CodeDom;
 using White.Core;
 using White.Core.UIItems;
 using Repository.ScreenAttributes;
+using White.Recorder.CodeGeneration;
 
 namespace Recorder.CodeGeneration
 {

@@ -10,7 +10,7 @@ namespace White.Core.Recording
     {
         private readonly IUIItem uiItem;
         private readonly Create createUserEvent;
-        private UIItemEventListener eventListener;
+        private readonly UIItemEventListener eventListener;
 
         public delegate UserEvent Create(object[] parameters);
 

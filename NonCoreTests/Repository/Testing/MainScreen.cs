@@ -11,6 +11,7 @@ using Repository.ScreenAttributes;
 namespace Repository.Testing
 {
     //TODO: Why do the tests continue running even after it has finished
+    // ReSharper disable FieldCanBeMadeReadOnly.Local
     public class MainScreen : AppScreen
     {
         private Button buton = null;
@@ -149,4 +150,5 @@ namespace Repository.Testing
             mainProgressBars.Check();
         }
     }
+    // ReSharper restore FieldCanBeMadeReadOnly.Local
 }

@@ -1,6 +1,7 @@
 using System.Reflection;
 using NUnit.Framework;
 using White.CustomControls.Peers.Automation;
+using White.NonCoreTests.CustomControls.Automation;
 
 namespace White.NonCoreTests.CustomControls
 {
@@ -12,7 +13,7 @@ namespace White.NonCoreTests.CustomControls
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            commandAssembly = new CommandAssembly(Assembly.GetExecutingAssembly());
+            commandAssembly = new CommandAssembly(Assembly.GetExecutingAssembly(), new KnownTypeHolderStub());
         }
 
         [Test]

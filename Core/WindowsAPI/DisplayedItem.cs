@@ -32,8 +32,8 @@ namespace White.Core.WindowsAPI
         [StructLayout(LayoutKind.Sequential)]
         private struct Rect
         {
-            public int left;
-            public int top;
+            public readonly int left;
+            public readonly int top;
             public int right;
             public int bottom;
         }

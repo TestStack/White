@@ -14,7 +14,7 @@ namespace White.Core.InputDevices
     /// </summary>
     public class Keyboard : IKeyboard
     {
-        private static List<KeyboardInput.SpecialKeys> scanCodeDependent = new List<KeyboardInput.SpecialKeys>
+        private static readonly List<KeyboardInput.SpecialKeys> scanCodeDependent = new List<KeyboardInput.SpecialKeys>
                                                                                {
                                                                                    KeyboardInput.SpecialKeys.RIGHT_ALT,
                                                                                    KeyboardInput.SpecialKeys.INSERT,

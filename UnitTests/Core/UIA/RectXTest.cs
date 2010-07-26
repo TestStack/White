@@ -1,7 +1,9 @@
 using System.Windows;
 using NUnit.Framework;
+using White.Core;
+using White.Core.UIA;
 
-namespace White.Core.UIA
+namespace White.UnitTests.Core.UIA
 {
     [TestFixture, NormalCategory]
     public class RectXTest

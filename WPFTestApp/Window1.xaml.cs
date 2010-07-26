@@ -326,7 +326,7 @@ namespace WindowsPresentationFramework
             result.Content = "ToolBar Button Clicked";
         }
 
-        private void textBox_TextChanged(object sender, EventArgs e)
+        private void textBox_TextChanged(object sender, TextChangedEventArgs textChangedEventArgs)
         {
             result.Content = "Text changed";
         }

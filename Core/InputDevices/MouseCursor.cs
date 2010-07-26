@@ -12,7 +12,7 @@ namespace White.Core.InputDevices
         public static readonly MouseCursor SilverlightWait = new MouseCursor(65543);
         public static MouseCursor SilverlightPointer = new MouseCursor(65539);
 
-        private int value;
+        private readonly int value;
         private static readonly List<MouseCursor> waitCursors = new List<MouseCursor>();
 
         static MouseCursor()
@@ -49,6 +49,11 @@ namespace White.Core.InputDevices
         public override int GetHashCode()
         {
             return value;
+        }
+
+        public override string ToString()
+        {
+            return value.ToString();
         }
     }
 }
