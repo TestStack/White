@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
@@ -34,7 +35,6 @@ namespace White.CustomControls.Peers.Automation
         private WhitePeer(object automationPeer, object control, ICommandSerializer commandSerializer, GetValueDelegate getValueDelegate,
                           SetValueDelegate setValueDelegate)
         {
-            
             if (!(automationPeer is IValueProvider)) throw new ArgumentException("Automation Peer should be a IValueProvider");
 
             this.automationPeer = automationPeer;
@@ -49,7 +49,7 @@ namespace White.CustomControls.Peers.Automation
             try
             {
                 ICommand command;
-                customCommandSessionOpen = commandSerializer.TryDeserialize(commandString, out command);
+                customCommandSessionOpen = commandSerializer.TryDeserializeCommand(commandString, out command);
                 if (customCommandSessionOpen && command is EndSessionCommand)
                 {
                     customCommandSessionOpen = false;
@@ -65,7 +65,8 @@ namespace White.CustomControls.Peers.Automation
             }
             catch (Exception e)
             {
-                value = new object[] {e.ToString(), null};
+                customCommandSessionOpen = true;
+                value = new object[] { FormattedExceptionMessage(e), null };
             }
         }
 
@@ -85,7 +86,7 @@ namespace White.CustomControls.Peers.Automation
                 }
                 catch (Exception e)
                 {
-                    return commandSerializer.Serialize(e, new List<Type>());
+                    return commandSerializer.Serialize(FormattedExceptionMessage(e), new List<Type>());
                 }
             }
         }
@@ -99,6 +100,12 @@ namespace White.CustomControls.Peers.Automation
         {
             if (patternInterface == PatternInterface.Value) return automationPeer;
             return null;
+        }
+
+        private static string FormattedExceptionMessage(Exception exception)
+        {
+            if (exception == null) return "";
+            return exception.GetType().Name + " " + exception.Message + exception.StackTrace + Environment.NewLine + FormattedExceptionMessage(exception.InnerException);
         }
     }
 }

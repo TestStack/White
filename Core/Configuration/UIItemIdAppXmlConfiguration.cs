@@ -11,15 +11,15 @@ namespace White.Core.Configuration
 
         static UIItemIdAppXmlConfiguration()
         {
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableVerticalScrollBar), "Vertical Scroll Bar");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHorizontalScrollBar), "Horizontal Scroll Bar");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableColumn), "Row ");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableTopLeftHeaderCell), "Top Left Header Cell");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellNullValue), "(null)");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHeader), "Top Row");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().HorizontalScrollBar), "Horizontal ScrollBar");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().VerticalScrollBar), "Vertical ScrollBar");
-            defaultValues.Add(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellPrefix), " Row ");
+            defaultValues.Add("TableVerticalScrollBar", "Vertical Scroll Bar");
+            defaultValues.Add("TableHorizontalScrollBar", "Horizontal Scroll Bar");
+            defaultValues.Add("TableColumn", "Row ");
+            defaultValues.Add("TableTopLeftHeaderCell", "Top Left Header Cell");
+            defaultValues.Add("TableCellNullValue", "(null)");
+            defaultValues.Add("TableHeader", "Top Row");
+            defaultValues.Add("HorizontalScrollBar", "Horizontal ScrollBar");
+            defaultValues.Add("VerticalScrollBar", "Vertical ScrollBar");
+            defaultValues.Add("TableCellPrefix", " Row ");
         }
 
         public static UIItemIdConfiguration Instance
@@ -40,56 +40,56 @@ namespace White.Core.Configuration
 
         public virtual string TableVerticalScrollBar
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableVerticalScrollBar)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableVerticalScrollBar), value); }
+            get { return usedValues["TableVerticalScrollBar"]; }
+            set { SetUsedValue("TableVerticalScrollBar", value); }
         }
 
         public virtual string TableHorizontalScrollBar
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHorizontalScrollBar)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHorizontalScrollBar), value); }
+            get { return usedValues["TableHorizontalScrollBar"]; }
+            set { SetUsedValue("TableHorizontalScrollBar", value); }
         }
 
         public virtual string TableColumn
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableColumn)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableColumn), value); }
+            get { return usedValues["TableColumn"]; }
+            set { SetUsedValue("TableColumn", value); }
         }
 
         public virtual string TableTopLeftHeaderCell
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableTopLeftHeaderCell)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableTopLeftHeaderCell), value); }
+            get { return usedValues["TableTopLeftHeaderCell"]; }
+            set { SetUsedValue("TableTopLeftHeaderCell", value); }
         }
 
         public virtual string TableCellNullValue
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellNullValue)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellNullValue), value); }
+            get { return usedValues["TableCellNullValue"]; }
+            set { SetUsedValue("TableCellNullValue", value); }
         }
 
         public virtual string TableHeader
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHeader)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableHeader), value); }
+            get { return usedValues["TableHeader"]; }
+            set { SetUsedValue("TableHeader", value); }
         }
 
         public virtual string HorizontalScrollBar
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().HorizontalScrollBar)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().HorizontalScrollBar), value); }
+            get { return usedValues["HorizontalScrollBar"]; }
+            set { SetUsedValue("HorizontalScrollBar", value); }
         }
 
         public virtual string VerticalScrollBar
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().VerticalScrollBar)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().VerticalScrollBar), value); }
+            get { return usedValues["VerticalScrollBar"]; }
+            set { SetUsedValue("VerticalScrollBar", value); }
         }
 
         public virtual string TableCellPrefix
         {
-            get { return usedValues[CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellPrefix)]; }
-            set { SetUsedValue(CodePath.Get(CodePath.New<UIItemIdConfiguration>().TableCellPrefix), value); }
+            get { return usedValues["TableCellPrefix"]; }
+            set { SetUsedValue("TableCellPrefix", value); }
         }
     }
 }

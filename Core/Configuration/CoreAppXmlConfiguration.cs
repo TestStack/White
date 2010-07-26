@@ -18,28 +18,24 @@ namespace White.Core.Configuration
 
         static CoreAppXmlConfiguration()
         {
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().BusyTimeout), 5000);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().WaitBasedOnHourGlass), true);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().WorkSessionLocation), ".");
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().UIAutomationZeroWindowBugTimeout), 5000);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().PopupTimeout), 5000);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().TooltipWaitTime), 0);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().SuggestionListTimeout), 3000);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().DefaultDateFormat), DateFormat.CultureDefault.ToString());
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().DragStepCount), 1);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().InProc), false);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen), true);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().RawElementBasedSearch), false);
-            defaultValues.Add(CodePath.Get(CodePath.New<CoreConfiguration>().MaxElementSearchDepth), 10);
+            defaultValues.Add("BusyTimeout", 5000);
+            defaultValues.Add("WaitBasedOnHourGlass", true);
+            defaultValues.Add("WorkSessionLocation", ".");
+            defaultValues.Add("UIAutomationZeroWindowBugTimeout", 5000);
+            defaultValues.Add("PopupTimeout", 5000);
+            defaultValues.Add("TooltipWaitTime", 0);
+            defaultValues.Add("SuggestionListTimeout", 3000);
+            defaultValues.Add("DefaultDateFormat", DateFormat.CultureDefault.ToString());
+            defaultValues.Add("DragStepCount", 1);
+            defaultValues.Add("InProc", false);
+            defaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", true);
+            defaultValues.Add("RawElementBasedSearch", false);
+            defaultValues.Add("MaxElementSearchDepth", 10);
         }
 
         public static CoreConfiguration Instance
         {
-            get
-            {
-                if (instance == null) instance = new CoreAppXmlConfiguration();
-                return instance;
-            }
+            get { return instance ?? (instance = new CoreAppXmlConfiguration()); }
         }
 
         private CoreAppXmlConfiguration() : base("White", "Core", defaultValues, WhiteLogger.Instance)
@@ -55,20 +51,20 @@ namespace White.Core.Configuration
 
         public virtual DirectoryInfo WorkSessionLocation
         {
-            get { return new DirectoryInfo(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().WorkSessionLocation)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().WorkSessionLocation), value); }
+            get { return new DirectoryInfo(usedValues["WorkSessionLocation"]); }
+            set { SetUsedValue("WorkSessionLocation", value); }
         }
 
         public virtual int BusyTimeout
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().BusyTimeout)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().BusyTimeout), value); }
+            get { return S.ToInt(usedValues["BusyTimeout"]); }
+            set { SetUsedValue("BusyTimeout", value); }
         }
 
         public virtual bool WaitBasedOnHourGlass
         {
-            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().WaitBasedOnHourGlass)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().WaitBasedOnHourGlass), value); }
+            get { return S.ToBool(usedValues["WaitBasedOnHourGlass"]); }
+            set { SetUsedValue("WaitBasedOnHourGlass", value); }
         }
 
         public virtual DynamicProxyInterceptors Interceptors
@@ -78,64 +74,64 @@ namespace White.Core.Configuration
 
         public virtual int UIAutomationZeroWindowBugTimeout
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().UIAutomationZeroWindowBugTimeout)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().UIAutomationZeroWindowBugTimeout), value); }
+            get { return S.ToInt(usedValues["UIAutomationZeroWindowBugTimeout"]); }
+            set { SetUsedValue("UIAutomationZeroWindowBugTimeout", value); }
         }
 
         public virtual int PopupTimeout
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().PopupTimeout)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().PopupTimeout), value); }
+            get { return S.ToInt(usedValues["PopupTimeout"]); }
+            set { SetUsedValue("PopupTimeout", value); }
         }
 
         public virtual int TooltipWaitTime
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().TooltipWaitTime)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().TooltipWaitTime), value); }
+            get { return S.ToInt(usedValues["TooltipWaitTime"]); }
+            set { SetUsedValue("TooltipWaitTime", value); }
         }
 
         public virtual int SuggestionListTimeout
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().SuggestionListTimeout)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().SuggestionListTimeout), value); }
+            get { return S.ToInt(usedValues["SuggestionListTimeout"]); }
+            set { SetUsedValue("SuggestionListTimeout", value); }
         }
 
         public virtual DateFormat DefaultDateFormat
         {
-            get { return DateFormat.Parse(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().DefaultDateFormat)]); }
-            set { usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().DefaultDateFormat)] = value.ToString(); }
+            get { return DateFormat.Parse(usedValues["DefaultDateFormat"]); }
+            set { usedValues["DefaultDateFormat"] = value.ToString(); }
         }
 
         public virtual int DragStepCount
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().DragStepCount)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().DragStepCount), value); }
+            get { return S.ToInt(usedValues["DragStepCount"]); }
+            set { SetUsedValue("DragStepCount", value); }
         }
 
         public virtual bool InProc
         {
-            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().InProc)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().InProc), value); }
+            get { return S.ToBool(usedValues["InProc"]); }
+            set { SetUsedValue("InProc", value); }
         }
 
         public virtual bool ComboBoxItemsPopulatedWithoutDropDownOpen
         {
-            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().ComboBoxItemsPopulatedWithoutDropDownOpen), value); }
+            get { return S.ToBool(usedValues["ComboBoxItemsPopulatedWithoutDropDownOpen"]); }
+            set { SetUsedValue("ComboBoxItemsPopulatedWithoutDropDownOpen", value); }
         }
 
         public virtual IWaitHook AdditionalWaitHook { get; set; }
 
         public virtual int MaxElementSearchDepth
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().MaxElementSearchDepth)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().MaxElementSearchDepth), value); }
+            get { return S.ToInt(usedValues["MaxElementSearchDepth"]); }
+            set { SetUsedValue("MaxElementSearchDepth", value); }
         }
 
         public virtual bool RawElementBasedSearch
         {
-            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<CoreConfiguration>().RawElementBasedSearch)]); }
-            set { SetUsedValue(CodePath.Get(CodePath.New<CoreConfiguration>().RawElementBasedSearch), value); }
+            get { return S.ToBool(usedValues["RawElementBasedSearch"]); }
+            set { SetUsedValue("RawElementBasedSearch", value); }
         }
     }
 }

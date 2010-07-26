@@ -91,6 +91,7 @@
     <Compile Include="AdditionalAssemblyInfo.cs" />
     <Compile Include="CustomControls\AssemblyBasedFactoryTest.cs" />
     <Compile Include="CustomControls\Automation\CommandAssemblyTest.cs" />
+    <Compile Include="CustomControls\Automation\CommandSerializerTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandDeserializerTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandRequestTest.cs" />
     <Compile Include="CustomControls\Automation\CustomCommandTest.cs" />

@@ -4,10 +4,10 @@ namespace White.CustomControls.Peers.Automation
     {
         private readonly string assemblyName;
         private readonly byte[] contents;
-        private readonly CommandAssemblies commandAssemblies;
+        private readonly ICommandAssemblies commandAssemblies;
         private readonly IKnownTypeHolder knownTypeHolder;
 
-        public LoadAssemblyCommand(string assemblyName, byte[] contents, CommandAssemblies commandAssemblies, IKnownTypeHolder knownTypeHolder)
+        public LoadAssemblyCommand(string assemblyName, byte[] contents, ICommandAssemblies commandAssemblies, IKnownTypeHolder knownTypeHolder)
         {
             this.assemblyName = assemblyName;
             this.contents = contents;

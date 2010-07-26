@@ -1,12 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Threading;
 using NUnit.Framework;
 using White.Core;
-using White.Core.Factory;
-using White.Core.InputDevices;
+using White.Core.Configuration;
 using White.Core.UIItems.WindowItems;
-using White.Core.WindowsAPI;
 
 namespace White.UnitTests.Core
 {
@@ -16,16 +14,7 @@ namespace White.UnitTests.Core
         [Test, Ignore]
         public void Experiment()
         {
-            Application application = Application.Launch(@"C:\Documents and Settings\All Users\Start Menu\Programs\Microsoft Office\Microsoft Office Excel 2007");
-            Assert.IsNotNull(application);
-            Thread.Sleep(10000); // // Find the main window 
-            var window = application.GetWindow("Microsoft Excel - Book1", InitializeOption.NoCache);
-            Assert.IsNotNull(window);
-            AttachedKeyboard keyboard = window.Keyboard;
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ALT);
-            keyboard.Enter("y");
-            keyboard.Enter("0");
-            keyboard.Enter("1");
+            Console.WriteLine(CoreAppXmlConfiguration.Instance.WorkSessionLocation);
         }
 
         [Test]

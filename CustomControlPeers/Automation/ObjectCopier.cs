@@ -5,6 +5,8 @@ namespace White.CustomControls.Peers.Automation
 {
     public static class ObjectCopier
     {
+        private const BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public;
+
         public static object Copy(object @object, ICommandAssembly commandAssembly)
         {
             if (@object == null) return null;
@@ -15,8 +17,8 @@ namespace White.CustomControls.Peers.Automation
 
             if (copiedType.IsArray)
             {
-                Array copiedArray = Array.CreateInstance(copiedType.GetElementType(), ((Array)@object).Length);
-                var array = ((Array)@object);
+                Array copiedArray = Array.CreateInstance(copiedType.GetElementType(), ((Array) @object).Length);
+                var array = ((Array) @object);
                 for (int i = 0; i < array.Length; i++)
                     copiedArray.SetValue(Copy(array.GetValue(i), commandAssembly), i);
                 return copiedArray;
@@ -29,14 +31,14 @@ namespace White.CustomControls.Peers.Automation
             if (IsPrimitiveOrArrayOfPrimitives(copiedType)) return @object;
 
             object copy = Activator.CreateInstance(copiedType);
-            FieldInfo[] copiedFields = copiedType.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            FieldInfo[] copiedFields = copiedType.GetFields(bindingFlags);
 
             Type type = @object.GetType();
-            FieldInfo[] fields = type.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            FieldInfo[] fields = type.GetFields(bindingFlags);
 
             for (int i = 0; i < copiedFields.Length; i++)
             {
-                copiedFields[i].SetValue(copy, fields[i].GetValue(@object));                
+                copiedFields[i].SetValue(copy, fields[i].GetValue(@object));
             }
             return copy;
         }
@@ -48,7 +50,7 @@ namespace White.CustomControls.Peers.Automation
 
         private static bool IsPrimitive(Type copiedType)
         {
-            return copiedType == null || copiedType.IsPrimitive || Equals(copiedType, typeof(string));
+            return copiedType == null || copiedType.IsPrimitive || Equals(copiedType, typeof (string));
         }
     }
 }

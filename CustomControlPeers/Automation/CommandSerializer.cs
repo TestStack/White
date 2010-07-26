@@ -8,7 +8,7 @@ namespace White.CustomControls.Peers.Automation
 {
     public class CommandSerializer : ICommandSerializer, IKnownTypeHolder
     {
-        private readonly CommandAssemblies commandAssemblies;
+        private readonly ICommandAssemblies commandAssemblies;
 
         private static readonly List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
         private static readonly List<Type> knownTypes = new List<Type>
@@ -21,12 +21,12 @@ namespace White.CustomControls.Peers.Automation
                                                                         typeof (Exception)
                                                                     };
 
-        public CommandSerializer(CommandAssemblies commandAssemblies)
+        public CommandSerializer(ICommandAssemblies commandAssemblies)
         {
             this.commandAssemblies = commandAssemblies;
         }
 
-        public virtual bool TryDeserialize(string requestString, out ICommand command)
+        public virtual bool TryDeserializeCommand(string requestString, out ICommand command)
         {
             object[] request;
             if (!TryDeserializeString(requestString, out request))
@@ -46,7 +46,7 @@ namespace White.CustomControls.Peers.Automation
             }
             else
             {
-                CommandAssembly commandAssembly = commandAssemblies.Get(customCommandRequest.AssemblyName);
+                ICommandAssembly commandAssembly = commandAssemblies.Get(customCommandRequest.AssemblyName);
                 command = commandAssembly == null
                               ? null
                               : new CustomCommand(customCommandRequest.AssemblyName, DeserializeString(customCommandRequest.Payload), new CommandAssemblies());
@@ -83,7 +83,7 @@ namespace White.CustomControls.Peers.Automation
             }
         }
 
-        public virtual string Serialize(object o, List<Type> knownTypes)
+        public virtual string Serialize(object o, IEnumerable<Type> knownTypes)
         {
             using (var stream = new MemoryStream())
             {

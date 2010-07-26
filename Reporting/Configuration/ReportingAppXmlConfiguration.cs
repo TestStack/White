@@ -13,7 +13,7 @@ namespace Reporting.Configuration
 
         static ReportingAppXmlConfiguration()
         {
-            defaultValues.Add(CodePath.Get(CodePath.New<ReportingConfiguration>().PublishTestReports), true);
+            defaultValues.Add("PublishTestReports", true);
         }
 
         private ReportingAppXmlConfiguration() : base("White", "Reporting", defaultValues, WhiteLogger.Instance) {}
@@ -29,7 +29,7 @@ namespace Reporting.Configuration
 
         public virtual bool PublishTestReports
         {
-            get { return S.ToBool(usedValues[CodePath.Get(CodePath.New<ReportingConfiguration>().PublishTestReports)]); }
+            get { return S.ToBool(usedValues["PublishTestReports"]); }
         }
     }
 }

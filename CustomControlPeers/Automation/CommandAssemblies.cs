@@ -3,11 +3,11 @@ using System.Reflection;
 
 namespace White.CustomControls.Peers.Automation
 {
-    public class CommandAssemblies
+    public class CommandAssemblies : ICommandAssemblies
     {
         private static readonly Dictionary<string, CommandAssembly> list = new Dictionary<string, CommandAssembly>();
 
-        public virtual CommandAssembly Add(string name, byte[] contents, IKnownTypeHolder knownTypeHolder)
+        public virtual ICommandAssembly Add(string name, byte[] contents, IKnownTypeHolder knownTypeHolder)
         {
             if (!list.ContainsKey(name))
             {
@@ -16,7 +16,7 @@ namespace White.CustomControls.Peers.Automation
             return list[name];
         }
 
-        public virtual CommandAssembly Get(string assemblyName)
+        public virtual ICommandAssembly Get(string assemblyName)
         {
             if (list.ContainsKey(assemblyName)) return list[assemblyName];
             return null;

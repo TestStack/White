@@ -11,9 +11,9 @@ namespace Repository.Configuration
         public static RepositoryConfiguration instance;
 
         private static readonly Dictionary<string, object> defaultValues = new Dictionary<string, object>();
-        private static readonly string useHistoryKey = CodePath.Get(CodePath.New<RepositoryConfiguration>().UseHistory);
-        private static readonly string serviceCallHistoryLocationKey = CodePath.Get(CodePath.New<RepositoryConfiguration>().ServiceCallHistoryLocation);
-        private static readonly string recordFlowKey = CodePath.Get(CodePath.New<RepositoryConfiguration>().RecordFlow);
+        private const string useHistoryKey = "UseHistory";
+        private const string serviceCallHistoryLocationKey = "ServiceCallHistoryLocation";
+        private const string recordFlowKey = "RecordFlow";
 
         static RepositoryAppXmlConfiguration()
         {

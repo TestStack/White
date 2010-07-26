@@ -6,7 +6,7 @@ namespace White.CustomControls.Peers.Automation
     public class CustomCommand : ICommand
     {
         private readonly object[] commandList;
-        private readonly CommandAssembly commandAssembly;
+        private readonly ICommandAssembly commandAssembly;
 
         public CustomCommand(string assemblyName, object[] payload, CommandAssemblies commandAssemblies)
         {

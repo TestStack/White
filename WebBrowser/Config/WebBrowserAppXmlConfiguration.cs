@@ -12,7 +12,7 @@ namespace White.WebBrowser.Config
 
         static WebBrowserAppXmlConfiguration()
         {
-            defaultValues.Add(CodePath.Get(CodePath.New<WebBrowserConfiguration>().FirefoxSingleWindowCheckWait), 2000);
+            defaultValues.Add("FirefoxSingleWindowCheckWait", 2000);
         }
 
         private WebBrowserAppXmlConfiguration() : base("White", "WebBrowser", defaultValues, WhiteLogger.Instance){}
@@ -28,7 +28,7 @@ namespace White.WebBrowser.Config
 
         public virtual int FirefoxSingleWindowCheckWait
         {
-            get { return S.ToInt(usedValues[CodePath.Get(CodePath.New<WebBrowserConfiguration>().FirefoxSingleWindowCheckWait)]); }
+            get { return S.ToInt(usedValues["FirefoxSingleWindowCheckWait"]); }
         }
     }
 }
