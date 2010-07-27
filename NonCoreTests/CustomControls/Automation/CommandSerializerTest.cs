@@ -23,6 +23,26 @@ namespace White.NonCoreTests.CustomControls.Automation
         }
 
         [Test]
+        public void ShouldFailToDeserializeValidBase64ButInvalidDataContractSerializationString()
+        {
+            mocks.ReplayAll();
+            ICommand command;
+            var hasSucceeded = commandSerializer.TryDeserializeCommand("Durables", out command);
+            Assert.IsFalse(hasSucceeded);
+            Assert.IsNull(command);
+        }
+
+        [Test]
+        public void ShouldFailToDeserializeInvalidBase64String()
+        {
+            mocks.ReplayAll();
+            ICommand command;
+            var hasSucceeded = commandSerializer.TryDeserializeCommand("Retail", out command);
+            Assert.IsFalse(hasSucceeded);
+            Assert.IsNull(command);
+        }
+
+        [Test]
         public void TryDeserializeWrongString()
         {
             mocks.ReplayAll();

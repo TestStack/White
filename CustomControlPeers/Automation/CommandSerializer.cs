@@ -10,7 +10,7 @@ namespace White.CustomControls.Peers.Automation
     {
         private readonly ICommandAssemblies commandAssemblies;
 
-        private static readonly List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException) };
+        private static readonly List<Type> exceptions = new List<Type> { typeof(XmlException), typeof(FormatException), typeof(SerializationException) };
         private static readonly List<Type> knownTypes = new List<Type>
                                                                     {
                                                                         typeof (object[]),
