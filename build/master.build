@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<project name="master">
+  <loadtasks path="..\Tools\Nant\WhiteCustomTasks"/>
+  <property name="first_target_run" value="true"/>
+  
+  <target name="help" descripton="" >
+  </target>
+  
+  <target name="*">
+    <parseTarget target="${target::get-current-target()}"/>  
+    <nant buildfile="components.build" target="${component}" inheritall="false">
+      <properties>
+        <property name="target" value="${target}"/>
+        <property name="first_target_run" value="${first_target_run}"/>
+      </properties>
+    </nant>
+    <property name="first_target_run" value="false"/>
+  </target>
+</project>

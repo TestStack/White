@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<project name="White">
+  <include buildfile="macrodefs.build"/>
+  
+  <target name="compile.custom.nant">
+    <msbuild-compile project="NantBuild\NantBuild.csproj"/>
+    <copy todir="tools\nant\WhiteCustomTasks">
+      <fileset basedir="NantBuild\bin\debug">
+        <include name="White.NantBuild.*"/> 
+        <include name="Bricks.*"/>
+        <include name="Castle.*"/>
+        <include name="nunit.*"/>
+      </fileset>
+    </copy>
+  </target>
+</project>

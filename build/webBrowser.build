@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<project name="WebBrowser">
+  <target name="webBrowser.clean">
+    <component-clean/>
+  </target>
+
+  <target name="webBrowser.compile" depends="webBrowser.clean" >
+    <component-compile/>  
+  </target>
+
+  <target name="webBrowser.test" depends="webBrowser.compile" >
+  </target>
+</project>

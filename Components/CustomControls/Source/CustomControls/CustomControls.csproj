@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8513D286-87D2-459D-A713-2E583FB797F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>White.CustomControls</RootNamespace>
+    <AssemblyName>White.CustomControls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\..\Output\Components\CustomControls\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="WhiteButton.cs" />
+    <Compile Include="WhiteCheckBox.cs" />
+    <Compile Include="WhiteComboBox.cs" />
+    <Compile Include="WhiteContextMenu.cs" />
+    <Compile Include="WhiteDocumentPageView.cs" />
+    <Compile Include="WhiteDocumentViewer.cs" />
+    <Compile Include="WhiteExpander.cs" />
+    <Compile Include="WhiteFlowDocumentPageViewer.cs" />
+    <Compile Include="WhiteFlowDocumentReader.cs" />
+    <Compile Include="WhiteFlowDocumentScrollViewer.cs" />
+    <Compile Include="WhiteFrame.cs" />
+    <Compile Include="WhiteFrameworkContentElement.cs" />
+    <Compile Include="WhiteGroupBox.cs" />
+    <Compile Include="WhiteHyperlink.cs" />
+    <Compile Include="WhiteImage.cs" />
+    <Compile Include="WhiteInkCanvas.cs" />
+    <Compile Include="WhiteInkPresenter.cs" />
+    <Compile Include="WhiteLabel.cs" />
+    <Compile Include="WhiteListBox.cs" />
+    <Compile Include="WhiteListView.cs" />
+    <Compile Include="WhiteMediaElement.cs" />
+    <Compile Include="WhiteMenu.cs" />
+    <Compile Include="WhiteMenuItem.cs" />
+    <Compile Include="WhiteNavigationWindow.cs" />
+    <Compile Include="WhiteProgressBar.cs" />
+    <Compile Include="WhiteRadioButton.cs" />
+    <Compile Include="WhiteRepeatButton.cs" />
+    <Compile Include="WhiteRichTextBox.cs" />
+    <Compile Include="WhiteScrollBar.cs" />
+    <Compile Include="WhiteScrollViewer.cs" />
+    <Compile Include="WhiteSeparator.cs" />
+    <Compile Include="WhiteSlider.cs" />
+    <Compile Include="WhiteStatusBar.cs" />
+    <Compile Include="WhiteStatusBarItem.cs" />
+    <Compile Include="WhiteTabControl.cs" />
+    <Compile Include="WhiteTabItem.cs" />
+    <Compile Include="WhiteTable.cs" />
+    <Compile Include="WhiteTableCell.cs" />
+    <Compile Include="WhiteTextBlock.cs" />
+    <Compile Include="WhiteTextBox.cs" />
+    <Compile Include="WhiteThumb.cs" />
+    <Compile Include="WhiteToggleButton.cs" />
+    <Compile Include="WhiteToolBar.cs" />
+    <Compile Include="WhiteToolTip.cs" />
+    <Compile Include="WhiteTreeView.cs" />
+    <Compile Include="WhiteTreeViewItem.cs" />
+    <Compile Include="WhiteUserControl.cs" />
+    <Compile Include="WhiteViewport3D.cs" />
+    <Compile Include="WhiteWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="white.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomControlPeers\CustomControlPeers.csproj">
+      <Project>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</Project>
+      <Name>CustomControlPeers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,6 +1,8 @@
 # Ignored
 [Bb]in
 [Dd]ebug*/
+*/*/*[Rr]e[Ss]harper*/*
+*/*[Rr]e[Ss]harper*/*
 *[Rr]e[Ss]harper*/*
 *.log
 tools/nant/WhiteCustomTasks/*.dll
@@ -10,4 +12,4 @@ tools/nant/WhiteCustomTasks/*.pdb
 *.user
 *.xap
 Release/*
-build/*
+Output/*

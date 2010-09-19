@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>White.Core.UITests</RootNamespace>
+    <AssemblyName>White.Core.UITests</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bricks, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83a26c96fb92c77f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Bricks.dll</HintPath>
+    </Reference>
+    <Reference Include="Bricks.RuntimeFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=83a26c96fb92c77f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\Bricks.RuntimeFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.6.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Output\Components\Core\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationTypes">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationTest.cs" />
+    <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
+    <Compile Include="AutomationElementSearch\RawAutomationElementFinderWPFTest.cs" />
+    <Compile Include="CustomUIItemTest.cs" />
+    <Compile Include="DesktopTest.cs" />
+    <Compile Include="Factory\InitializeOptionTest.cs" />
+    <Compile Include="InputDevices\AttachedKeyboardTest.cs" />
+    <Compile Include="InputDevices\DragAndDropBasedOnPositionTest.cs" />
+    <Compile Include="InputDevices\DragAndDropTest.cs" />
+    <Compile Include="InputDevices\KeyboardTest.cs" />
+    <Compile Include="InputDevices\MouseTest.cs" />
+    <Compile Include="Interceptors\DisabledControlsTest.cs" />
+    <Compile Include="Interceptors\ScrollInterceptorTest.cs" />
+    <Compile Include="MessageBoxTest.cs" />
+    <Compile Include="ModalWindowSessionTest.cs" />
+    <Compile Include="ModalWindowTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCategories.cs" />
+    <Compile Include="TestConfiguration.cs" />
+    <Compile Include="Testing\ApplicationClass.cs" />
+    <Compile Include="Testing\ControlsActionTest.cs" />
+    <Compile Include="Testing\CoreTestTemplate.cs" />
+    <Compile Include="Testing\IllegalTestException.cs" />
+    <Compile Include="Testing\TestMode.cs" />
+    <Compile Include="Testing\TestModeTest.cs" />
+    <Compile Include="UIAutomationTest.cs" />
+    <Compile Include="UIA\AutomationElementXTest.cs" />
+    <Compile Include="UIItems\AbstractScrollBarsTest.cs" />
+    <Compile Include="UIItems\ButtonTest.cs" />
+    <Compile Include="UIItems\CheckBoxTest.cs" />
+    <Compile Include="UIItems\ColorTest.cs" />
+    <Compile Include="UIItems\DateTimePickerTest.cs" />
+    <Compile Include="UIItems\ErrorProviderTest.cs" />
+    <Compile Include="UIItems\Finders\SearchCriteriaTest.cs" />
+    <Compile Include="UIItems\GroupBoxTest.cs" />
+    <Compile Include="UIItems\HorizontalThumbTest.cs" />
+    <Compile Include="UIItems\HotKeyTest.cs" />
+    <Compile Include="UIItems\HScrollBarTest.cs" />
+    <Compile Include="UIItems\HyperlinkTest.cs" />
+    <Compile Include="UIItems\ImageTest.cs" />
+    <Compile Include="UIItems\LabelTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\CheckedListBoxTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\ComboBoxItemSelectTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\ComboBoxOpeningUpTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\ComboBoxTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListBoxTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFComboBoxVerticalSpanCalculatorTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFDataBoundComboBoxTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFListBoxTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFListBoxWithObjectBehindTest.cs" />
+    <Compile Include="UIItems\ListViewInvisibleItemTest.cs" />
+    <Compile Include="UIItems\ListViewItems\ListViewScenario2Test.cs" />
+    <Compile Include="UIItems\ListViewItems\ListViewScenarioTest.cs" />
+    <Compile Include="UIItems\ListViewScenarioTest.cs" />
+    <Compile Include="UIItems\ListViewTest.cs" />
+    <Compile Include="UIItems\MenuItems\MenuTest.cs" />
+    <Compile Include="UIItems\MenuItems\PopUpMenuTest.cs" />
+    <Compile Include="UIItems\PanelTest.cs" />
+    <Compile Include="UIItems\PlatformSpecificItemAttributeTest.cs" />
+    <Compile Include="UIItems\ProgressBarTest.cs" />
+    <Compile Include="UIItems\PropertyGridItems\PropertyGridTest.cs" />
+    <Compile Include="UIItems\RadioButtonTest.cs" />
+    <Compile Include="UIItems\SliderTest.cs" />
+    <Compile Include="UIItems\SpinnerTest.cs" />
+    <Compile Include="UIItems\SplashScreenTest.cs" />
+    <Compile Include="UIItems\SWTMenuTest.cs" />
+    <Compile Include="UIItems\TabItems\TabItemTest.cs" />
+    <Compile Include="UIItems\TabItems\TabTest.cs" />
+    <Compile Include="UIItems\TabItems\TabWithReverseDisplayOrderTest.cs" />
+    <Compile Include="UIItems\TableItems\AbstractTableTest.cs" />
+    <Compile Include="UIItems\TableItems\NoTableHeaderTest.cs" />
+    <Compile Include="UIItems\TableItems\TableCellTest.cs" />
+    <Compile Include="UIItems\TableItems\TableRowsTest.cs" />
+    <Compile Include="UIItems\TableItems\TableRowTest.cs" />
+    <Compile Include="UIItems\TableItems\TableTest.cs" />
+    <Compile Include="UIItems\TableItems\TableVerticalScrollOffsetTest.cs" />
+    <Compile Include="UIItems\TextBoxes\PasswordTextBoxTest.cs" />
+    <Compile Include="UIItems\TextBoxTest.cs" />
+    <Compile Include="UIItems\TreeItems\TestNodeWithoutHeaderTest.cs" />
+    <Compile Include="UIItems\TreeItems\TreeNodesTest.cs" />
+    <Compile Include="UIItems\TreeItems\TreeNodeTest.cs" />
+    <Compile Include="UIItems\TreeItems\TreeScrollingTest.cs" />
+    <Compile Include="UIItems\TreeItems\TreeTest.cs" />
+    <Compile Include="UIItems\TreeItems\TreeWithModalLaunchedOnTreeNodeClickTest.cs" />
+    <Compile Include="UIItems\TristateItemTest.cs" />
+    <Compile Include="UIItems\VerticalThumbTest.cs" />
+    <Compile Include="UIItems\VScrollBarTest.cs" />
+    <Compile Include="UIItems\WindowAbstractTest.cs" />
+    <Compile Include="UIItems\WindowItems\TitleBarTest.cs" />
+    <Compile Include="UIItems\WindowItems\UIItemContainerTest.cs" />
+    <Compile Include="UIItems\WindowItems\WindowCloseTest.cs" />
+    <Compile Include="UIItems\WindowItems\WindowControlsTest.cs" />
+    <Compile Include="UIItems\WindowItems\WindowTest.cs" />
+    <Compile Include="UIItems\WindowItems\WinFormWindowTest.cs" />
+    <Compile Include="UIItems\WindowItems\WPFWindowTest.cs" />
+    <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />
+    <Compile Include="UIItems\WindowStripControls\StatusStripTest.cs" />
+    <Compile Include="UIItems\WindowWithoutAmpersandInTitleTest.cs" />
+    <Compile Include="UIItems\WindowWithoutTitleBarTest.cs" />
+    <Compile Include="UIItems\WinFormHyperlinkTest.cs" />
+    <Compile Include="UIItems\WinFormListViewTest.cs" />
+    <Compile Include="UIItems\WinFormTextBoxTest.cs" />
+    <Compile Include="UIItems\WPFHyperlinkTest.cs" />
+    <Compile Include="UIItems\WPFTextBlockTest.cs" />
+    <Compile Include="WindowsAPI\NativeWindowTest.cs" />
+    <Compile Include="WindowWithoutTitleBarTest.cs" />
+    <Compile Include="WPFModalWindowTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Source\Core.csproj">
+      <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

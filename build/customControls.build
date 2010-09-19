@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<project name="CustomControls">
+  <target name="customControls.clean">
+    <component-clean/>
+  </target>
+
+  <target name="customControls.compile" depends="customControls.clean" >
+    <component-compile/>
+  </target>
+
+  <target name="customControls.test" depends="customControls.compile" >
+  </target>
+</project>

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension;minor.version;major.version-->
+<project name="Core">
+  <include buildfile="macrodefs.build"/>
+
+  <target name="component.clean">
+    <clean-dir dir="..\Output\Components\${component}"/>
+  </target>
+</project>

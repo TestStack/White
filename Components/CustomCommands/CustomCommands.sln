@@ -1,0 +1,43 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.Framework.Silverlight", "Framework\CustomCommands.Framework.Silverlight.csproj", "{11FBB4B6-E269-43E4-A335-F0AD1F848493}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.Framework.WPF", "Framework\CustomCommands.Framework.WPF.csproj", "{81A680B4-21B8-4AF4-8D6E-795376E6F855}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.UnitTests", "Tests\CustomCommands.UnitTests\CustomCommands.UnitTests.csproj", "{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.WPFTests", "Tests\CustomCommands.WPFTests\CustomCommands.WPFTests.csproj", "{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.SilverlightTests", "Tests\CustomCommands.SilverlightTests\CustomCommands.SilverlightTests.csproj", "{196A0B37-0824-4B54-A2A3-87D98B02CFA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

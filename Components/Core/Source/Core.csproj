@@ -1,0 +1,421 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12C59CE2-9CF7-44F4-B27C-90754609F979}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>White.Core</RootNamespace>
+    <AssemblyName>White.Core</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>http://localhost/Core/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Output\Components\Core\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <NoWarn>1591, 1570</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bricks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Bricks.dll</HintPath>
+    </Reference>
+    <Reference Include="Bricks.RuntimeFramework, Version=1.0.2942.23145, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Bricks.RuntimeFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.0.0.1, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationFramework, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="UIAutomationTypes, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Xstream.Core, Version=1.0.2722.20556, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\Xstream.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\AssemblyInfo.cs">
+      <Link>AssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="Application.cs" />
+    <Compile Include="AutomationElementSearch\AutomationElementFinder.cs" />
+    <Compile Include="AutomationElementSearch\AutomationSearchConditionFactory.cs" />
+    <Compile Include="AutomationElementSearch\AutomationElementSearchException.cs" />
+    <Compile Include="AutomationElementSearch\AutomationSearchCondition.cs" />
+    <Compile Include="AutomationElementSearch\DescendantFinder.cs" />
+    <Compile Include="AutomationElementSearch\DescendantFinderFactory.cs" />
+    <Compile Include="AutomationElementSearch\IDescendantFinder.cs" />
+    <Compile Include="AutomationElementSearch\MultiLevelAutomationElementFinder.cs" />
+    <Compile Include="AutomationElementSearch\RawAutomationElementFinder.cs" />
+    <Compile Include="AutomationElementSearch\ElementSearchResult.cs" />
+    <Compile Include="AutomationException.cs" />
+    <Compile Include="CacheMode.cs" />
+    <Compile Include="Configuration\CoreAppXmlConfiguration.cs" />
+    <Compile Include="Configuration\CoreConfiguration.cs" />
+    <Compile Include="Configuration\IWaitHook.cs" />
+    <Compile Include="Configuration\UIItemIdAppXmlConfiguration.cs" />
+    <Compile Include="Configuration\UIItemIdConfiguration.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="CoreTestTemplate.cs" />
+    <Compile Include="CustomCommands\CustomCommandException.cs" />
+    <Compile Include="CustomCommands\CustomCommandFactory.cs" />
+    <Compile Include="CustomCommands\CustomCommandInterceptor.cs" />
+    <Compile Include="CustomCommands\CustomCommandResponse.cs" />
+    <Compile Include="CustomCommands\CustomCommandSerializer.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="Desktop.cs" />
+    <Compile Include="Drawing\DrawingPointX.cs" />
+    <Compile Include="Factory\ChildWindowFactory.cs" />
+    <Compile Include="Factory\ToolTipFinder.cs" />
+    <Compile Include="Factory\DictionaryMappedItemFactory.cs" />
+    <Compile Include="Factory\ListViewCellFactory.cs" />
+    <Compile Include="Factory\PrimaryUIItemFactory.cs" />
+    <Compile Include="Factory\SpecializedWindowFactory.cs" />
+    <Compile Include="Factory\TableCellFactory.cs" />
+    <Compile Include="Factory\TableHeaderFactory.cs" />
+    <Compile Include="Factory\TableRowFactory.cs" />
+    <Compile Include="Factory\UIItemFactory.cs" />
+    <Compile Include="Factory\UIItemProxyFactory.cs" />
+    <Compile Include="Factory\UIItemSearchException.cs" />
+    <Compile Include="Factory\WindowFactory.cs" />
+    <Compile Include="Factory\InitializeOption.cs" />
+    <Compile Include="Finder\CachedUIItems.cs" />
+    <Compile Include="Finder\PositionBasedComparer.cs" />
+    <Compile Include="HorizontalSpan.cs" />
+    <Compile Include="InputDevices\AttachedKeyboard.cs" />
+    <Compile Include="InputDevices\AttachedMouse.cs" />
+    <Compile Include="InputDevices\IKeyboard.cs" />
+    <Compile Include="InputDevices\IMouse.cs" />
+    <Compile Include="InputDevices\InputDeviceException.cs" />
+    <Compile Include="InputDevices\Keyboard.cs" />
+    <Compile Include="InputDevices\Mouse.cs" />
+    <Compile Include="InputDevices\MouseCursor.cs" />
+    <Compile Include="InputDevices\MouseIcon.cs" />
+    <Compile Include="Interceptors\CoreInterceptContext.cs" />
+    <Compile Include="Interceptors\ScrollInterceptor.cs" />
+    <Compile Include="Mappings\ControlDictionaryItems.cs" />
+    <Compile Include="ScreenMap\NullWindowItemsMap.cs" />
+    <Compile Include="Span.cs" />
+    <Compile Include="SystemExtensions\DoubleX.cs" />
+    <Compile Include="UIA\AutomationElementCollectionX.cs" />
+    <Compile Include="UIA\AutomationElementX.cs" />
+    <Compile Include="UIA\AutomationPatterns.cs" />
+    <Compile Include="UIA\WindowsPointX.cs" />
+    <Compile Include="UIA\RectX.cs" />
+    <Compile Include="UIItems\Custom\CustomUIItemType.cs" />
+    <Compile Include="UIItems\Finders\AutomationElementProperty.cs" />
+    <Compile Include="UIItems\Finders\ControlTypeProperty.cs" />
+    <Compile Include="UIItems\Finders\SearchConditionFactory.cs" />
+    <Compile Include="UIItems\Finders\SimpleSearchCondition.cs" />
+    <Compile Include="UIItems\Finders\TestControlTypeX.cs" />
+    <Compile Include="UIItems\ListBoxItems\WinFormComboBox.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFComboBoxVerticalSpanCalculator.cs" />
+    <Compile Include="UIItems\PropertyGridItems\PropertyGrid.cs" />
+    <Compile Include="UIItems\PropertyGridItems\PropertyGridCategory.cs" />
+    <Compile Include="UIItems\PropertyGridItems\PropertyGridElementFinder.cs" />
+    <Compile Include="UIItems\PropertyGridItems\PropertyGridProperty.cs" />
+    <Compile Include="UIItems\Scrolling\DefaultScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\ScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\SilverlightHScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\SilverlightVScrollBarButtonAutomationIds.cs" />
+    <Compile Include="UIItems\Scrolling\VerticalSpanProvider.cs" />
+    <Compile Include="UIItems\Slider.cs" />
+    <Compile Include="UIItems\DateUnit.cs" />
+    <Compile Include="UIItems\ListBoxItems\Win32ComboBox.cs" />
+    <Compile Include="UIItems\DateFormat.cs" />
+    <Compile Include="UIItems\TableItems\NullTableHeader.cs" />
+    <Compile Include="UIItems\TableItems\TableVerticalScrollOffset.cs" />
+    <Compile Include="UIItems\Thumb.cs" />
+    <Compile Include="UIItems\ToggleableItem.cs" />
+    <Compile Include="UIItems\WinFormSlider.cs" />
+    <Compile Include="UIItems\Spinner.cs" />
+    <Compile Include="UIItems\Panel.cs" />
+    <Compile Include="UIItems\Scrolling\ComboBoxScrollBars.cs" />
+    <Compile Include="UIItems\Scrolling\WinFormScrollBars.cs" />
+    <Compile Include="UIItems\WPFButton.cs" />
+    <Compile Include="UIItems\WPFUIItems\WPFUIItem.cs" />
+    <Compile Include="WindowsAPI\WindowPlacement.cs" />
+    <Compile Include="InputDevices\WindowsConstants.cs" />
+    <Compile Include="Interceptors\CoreInterceptor.cs" />
+    <Compile Include="Interceptors\FocusInterceptor.cs" />
+    <Compile Include="Logging\WhiteLogger.cs" />
+    <Compile Include="Mappings\ControlDictionary.cs" />
+    <Compile Include="Mappings\ControlDictionaryException.cs" />
+    <Compile Include="Mappings\ControlDictionaryItem.cs" />
+    <Compile Include="NullApplication.cs" />
+    <Compile Include="Processes.cs" />
+    <Compile Include="Recording\SafeAutomationEventHandler.cs" />
+    <Compile Include="Recording\UIItemEventListener.cs" />
+    <Compile Include="ScreenMap\ControlTypeConverter.cs" />
+    <Compile Include="ScreenMap\UIItemLocation.cs" />
+    <Compile Include="ScreenMap\WindowItemsMap.cs" />
+    <Compile Include="Sessions\ApplicationSession.cs" />
+    <Compile Include="Sessions\NoApplicationSession.cs" />
+    <Compile Include="Sessions\NullWindowSession.cs" />
+    <Compile Include="Sessions\WindowSession.cs" />
+    <Compile Include="UIItemEvents\EventOption.cs" />
+    <Compile Include="UIItemEvents\TreeNodeEvent.cs" />
+    <Compile Include="UIItemEvents\UIItemClickEvent.cs" />
+    <Compile Include="UIItemEvents\CheckBoxEvent.cs" />
+    <Compile Include="UIItemEvents\ComboBoxEvent.cs" />
+    <Compile Include="UIItemEvents\EventWriter.cs" />
+    <Compile Include="UIItemEvents\ExceptionEvent.cs" />
+    <Compile Include="UIItemEvents\ListBoxEvent.cs" />
+    <Compile Include="UIItemEvents\ListControlEvent.cs" />
+    <Compile Include="UIItemEvents\ListViewEvent.cs" />
+    <Compile Include="UIItemEvents\MultilineTextBoxEvent.cs" />
+    <Compile Include="UIItemEvents\RadioButtonEvent.cs" />
+    <Compile Include="UIItemEvents\TabEvent.cs" />
+    <Compile Include="UIItemEvents\TextBoxEvent.cs" />
+    <Compile Include="UIItemEvents\TreeNodeClickedEvent.cs" />
+    <Compile Include="UIItemEvents\UserAction.cs" />
+    <Compile Include="UIItemEvents\UserEvent.cs" />
+    <Compile Include="UIItemList.cs" />
+    <Compile Include="UIItems\ActionDetails.cs" />
+    <Compile Include="UIItems\Actions\Action.cs" />
+    <Compile Include="UIItems\Actions\ActionListener.cs" />
+    <Compile Include="UIItems\Actions\ActionType.cs" />
+    <Compile Include="UIItems\Actions\ProcessActionListener.cs" />
+    <Compile Include="UIItems\Button.cs" />
+    <Compile Include="UIItems\Container\CachedContainerItemFactory.cs" />
+    <Compile Include="UIItems\CheckBox.cs" />
+    <Compile Include="UIItems\Container\ContainerItemFactory.cs" />
+    <Compile Include="UIItems\Container\CurrentContainerItemFactory.cs" />
+    <Compile Include="UIItems\Custom\ControlTypeMappingAttribute.cs" />
+    <Compile Include="UIItems\Custom\CustomControlTypeMapping.cs" />
+    <Compile Include="UIItems\Custom\CustomUIItem.cs" />
+    <Compile Include="UIItems\Custom\CustomUIItemException.cs" />
+    <Compile Include="UIItems\DateTimePicker.cs" />
+    <Compile Include="UIItems\Finders\IndexCondition.cs" />
+    <Compile Include="UIItems\Finders\NotCondition.cs" />
+    <Compile Include="UIItems\Finders\SearchCondition.cs" />
+    <Compile Include="UIItems\Finders\SearchConditions.cs" />
+    <Compile Include="UIItems\Finders\SearchCriteria.cs" />
+    <Compile Include="UIItems\FormSection.cs" />
+    <Compile Include="UIItems\GroupBox.cs" />
+    <Compile Include="UIItems\Hyperlink.cs" />
+    <Compile Include="UIItems\Image.cs" />
+    <Compile Include="UIItems\IUIItem.cs" />
+    <Compile Include="UIItems\IUIItemContainer.cs" />
+    <Compile Include="UIItems\Label.cs" />
+    <Compile Include="UIItems\ListBoxItems\ComboBox.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListBox.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListControl.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListItem.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListItemContainer.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListItems.cs" />
+    <Compile Include="UIItems\ListBoxItems\Win32ListItem.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFListItem.cs" />
+    <Compile Include="UIItems\ListView.cs" />
+    <Compile Include="UIItems\ListViewCell.cs" />
+    <Compile Include="UIItems\ListViewCells.cs" />
+    <Compile Include="UIItems\ListViewItems\ListViewColumn.cs" />
+    <Compile Include="UIItems\ListViewItems\ListViewColumns.cs" />
+    <Compile Include="UIItems\ListViewItems\ListViewFactory.cs" />
+    <Compile Include="UIItems\ListViewItems\ListViewHeader.cs" />
+    <Compile Include="UIItems\ListViewItems\SuggestionList.cs" />
+    <Compile Include="UIItems\ListViewItems\SuggestionListView.cs" />
+    <Compile Include="UIItems\ListViewRow.cs" />
+    <Compile Include="UIItems\ListViewRows.cs" />
+    <Compile Include="UIItems\MenuItems\Menu.cs" />
+    <Compile Include="UIItems\MenuItems\Menus.cs" />
+    <Compile Include="UIItems\MenuItems\PopUpMenu.cs" />
+    <Compile Include="UIItems\MultilineTextBox.cs" />
+    <Compile Include="UIItems\Container\NonCachedContainerItemFactory.cs" />
+    <Compile Include="UIItems\PlatformSpecificItemAttribute.cs" />
+    <Compile Include="UIItems\ProgressBar.cs" />
+    <Compile Include="UIItems\RadioButton.cs" />
+    <Compile Include="UIItems\Scrollable.cs" />
+    <Compile Include="UIItems\Scrolling\HScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\IHScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\IScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\IScrollBars.cs" />
+    <Compile Include="UIItems\Scrolling\IVScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\NullHScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\NullScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\NullVScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\ScreenItem.cs" />
+    <Compile Include="UIItems\Scrolling\ScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\ScrollBars.cs" />
+    <Compile Include="UIItems\Scrolling\ScrollerFactory.cs" />
+    <Compile Include="UIItems\Scrolling\VScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\WPFHScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\WPFScrollBar.cs" />
+    <Compile Include="UIItems\Scrolling\WPFScrollBars.cs" />
+    <Compile Include="UIItems\Scrolling\WPFVScrollBar.cs" />
+    <Compile Include="UIItems\SelectionItem.cs" />
+    <Compile Include="UIItems\SplashWindow.cs" />
+    <Compile Include="UIItems\TabItems\ITabPage.cs" />
+    <Compile Include="UIItems\TabItems\Tab.cs" />
+    <Compile Include="UIItems\TabItems\TabPage.cs" />
+    <Compile Include="UIItems\TableItems\Table.cs" />
+    <Compile Include="UIItems\TableItems\TableCell.cs" />
+    <Compile Include="UIItems\TableItems\TableCells.cs" />
+    <Compile Include="UIItems\TableItems\TableColumn.cs" />
+    <Compile Include="UIItems\TableItems\TableColumns.cs" />
+    <Compile Include="UIItems\TableItems\TableHeader.cs" />
+    <Compile Include="UIItems\TableItems\TableHorizontalScrollBar.cs" />
+    <Compile Include="UIItems\TableItems\TableRow.cs" />
+    <Compile Include="UIItems\TableItems\TableRowHeader.cs" />
+    <Compile Include="UIItems\TableItems\TableRows.cs" />
+    <Compile Include="UIItems\TableItems\TableScrollBars.cs" />
+    <Compile Include="UIItems\TableItems\TableVerticalScrollBar.cs" />
+    <Compile Include="UIItems\TextBox.cs" />
+    <Compile Include="UIItems\ToolTip.cs" />
+    <Compile Include="UIItems\TooltipSafeMouse.cs" />
+    <Compile Include="UIItems\TreeItems\ClickedNodeVisitor.cs" />
+    <Compile Include="UIItems\TreeItems\SelectedNodeVisitor.cs" />
+    <Compile Include="UIItems\TreeItems\Tree.cs" />
+    <Compile Include="UIItems\TreeItems\TreeNode.cs" />
+    <Compile Include="UIItems\TreeItems\TreeNodes.cs" />
+    <Compile Include="UIItems\TreeItems\TreeNodeSelectEvent.cs" />
+    <Compile Include="UIItems\TreeItems\TreeNodeVisitor.cs" />
+    <Compile Include="UIItems\TreeItems\Win32TreeNode.cs" />
+    <Compile Include="UIItems\TreeItems\WPFTreeNode.cs" />
+    <Compile Include="UIItems\UIActionException.cs" />
+    <Compile Include="UIItems\UIItem.cs" />
+    <Compile Include="UIItems\UIItemCollection.cs" />
+    <Compile Include="UIItems\UIItemContainer.cs" />
+    <Compile Include="UIItems\WindowItems\DisplayState.cs" />
+    <Compile Include="UIItems\WindowItems\TitleBar.cs" />
+    <Compile Include="UIItems\WindowItems\Win32Window.cs" />
+    <Compile Include="UIItems\WindowItems\Window.cs" />
+    <Compile Include="UIItems\WindowItems\WinFormWindow.cs" />
+    <Compile Include="UIItems\WindowItems\WPFWindow.cs" />
+    <Compile Include="UIItems\WindowsFramework.cs" />
+    <Compile Include="UIItems\WindowStripControls\ContainerStrip.cs" />
+    <Compile Include="UIItems\WindowStripControls\MenuBar.cs" />
+    <Compile Include="UIItems\WindowStripControls\MenuContainer.cs" />
+    <Compile Include="UIItems\WindowStripControls\StatusStrip.cs" />
+    <Compile Include="UIItems\WindowStripControls\StatusStripSplitButton.cs" />
+    <Compile Include="UIItems\WindowStripControls\ToolStrip.cs" />
+    <Compile Include="UIItems\WindowStripControls\WPFStatusBar.cs" />
+    <Compile Include="UIItems\ListBoxItems\WPFComboBox.cs" />
+    <Compile Include="UIItems\WPFLabel.cs" />
+    <Compile Include="VerticalSpan.cs" />
+    <Compile Include="WhiteAssertionException.cs" />
+    <Compile Include="WhiteException.cs" />
+    <Compile Include="WindowControlVisitor.cs" />
+    <Compile Include="WindowsAPI\Input.cs" />
+    <Compile Include="WindowsAPI\NativeWindow.cs" />
+    <Compile Include="WindowsAPI\DisplayedItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App.config.template" />
+    <None Include="AssemblyInfo.cs.template" />
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="white.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

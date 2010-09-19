@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<project name="Recorder">
+  <target name="recorder.clean">
+    <component-clean/>
+  </target>
+
+  <target name="recorder.compile" depends="recorder.clean" >
+    <component-compile/>
+  </target>
+
+  <target name="recorder.test" depends="recorder.compile" >
+  </target>
+</project>

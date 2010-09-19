@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<project name="White.NUnit">
+  <target name="white-nunit.clean">
+    <component-clean/>
+  </target>
+
+  <target name="white-nunit.compile" depends="white-nunit.clean">
+    <component-compile/>
+  </target>
+
+  <target name="white-nunit.test" depends="white-nunit.compile">
+  </target>
+</project>

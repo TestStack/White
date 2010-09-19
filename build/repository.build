@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<project name="Repository">
+  <target name="repository.clean">
+  </target>
+
+  <target name="repository.compile">
+    <component-compile/>
+  </target>
+
+  <target name="repository.test">
+  </target>
+</project>

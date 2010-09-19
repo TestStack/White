@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<project name="Reporting">
+  <target name="reporting.clean">
+    <component-clean/>
+  </target>
+
+  <target name="reporting.compile" depends="reporting.clean" >
+    <component-compile/>
+  </target>
+
+  <target name="reporting.test" depends="reporting.compile">
+  </target>
+</project>

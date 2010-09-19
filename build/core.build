@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension;minor.version;major.version-->
+<project name="Core">
+  <target name="core.clean">
+    <component-clean/>
+  </target>
+  
+  <target name="core.compile" depends="core.clean">
+    <component-compile/>
+  </target>
+
+  <target name="core.test" depends="core.compile">
+    <core-test excludes="WinForm,SWT" framework="WPF"/>
+    <core-test excludes="WPF,SWT,Normal" framework="WinForm"/>
+    <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
+  </target>
+</project>
