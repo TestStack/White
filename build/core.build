@@ -9,9 +9,13 @@
     <component-compile/>
   </target>
 
-  <target name="core.test" depends="core.compile">
+  <target name="core.uitest" depends="core.compile">
     <core-test excludes="WinForm,SWT" framework="WPF"/>
     <core-test excludes="WPF,SWT,Normal" framework="WinForm"/>
     <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
+  </target>
+
+  <target name="core.unittest" depends="core.compile">
+    <unit-test/>
   </target>
 </project>

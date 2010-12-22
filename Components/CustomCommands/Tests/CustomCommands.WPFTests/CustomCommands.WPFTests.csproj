@@ -8,8 +8,8 @@
     <ProjectGuid>{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CustomCommands.WPFTests</RootNamespace>
-    <AssemblyName>CustomCommands.WPFTests</AssemblyName>
+    <RootNamespace>White.CustomCommands.WPFTests</RootNamespace>
+    <AssemblyName>White.CustomCommands.WPFTests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,9 +51,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Output\Components\Core\White.Core.dll</HintPath>
     </Reference>
-    <Reference Include="White.Core.UnitTests, Version=0.2.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
+    <Reference Include="White.Core.UITests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\Core\White.Core.UnitTests.dll</HintPath>
+      <HintPath>..\..\..\..\Output\Components\Core\White.Core.UITests.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

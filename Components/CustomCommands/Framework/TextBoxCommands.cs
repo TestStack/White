@@ -11,7 +11,7 @@ namespace White.CustomCommands
             this.textBox = textBox;
         }
 
-        public void SelectText(string text)
+        public virtual void SelectText(string text)
         {
             string currentText = textBox.Text;
             textBox.Select(currentText.IndexOf(text), text.Length);

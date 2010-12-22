@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
-namespace White.CustomControls.Tests.Automation
+namespace White.CustomControls.UnitTests.Automation
 {
     public class TestAutomationPeer : AutomationPeer, IValueProvider
     {

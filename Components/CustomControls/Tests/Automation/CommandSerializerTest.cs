@@ -5,7 +5,7 @@ using NUnit.Framework;
 using Rhino.Mocks;
 using White.CustomControls.Peers.Automation;
 
-namespace White.CustomControls.Tests.Automation
+namespace White.CustomControls.UnitTests.Automation
 {
     [TestFixture]
     public class CommandSerializerTest

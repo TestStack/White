@@ -1,12 +1,18 @@
 <?xml version="1.0" ?>
 <project name="Repository">
   <target name="repository.clean">
+    <component-clean/>
   </target>
 
   <target name="repository.compile">
     <component-compile/>
   </target>
 
-  <target name="repository.test">
+  <target name="repository.unittest" depends="repository.compile" >
+    <unit-test/>
+  </target>
+
+  <target name="repository.uitest" depends="repository.compile" >
+    <ui-test/>
   </target>
 </project>

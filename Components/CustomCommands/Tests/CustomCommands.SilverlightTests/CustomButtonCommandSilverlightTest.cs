@@ -2,7 +2,7 @@ using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.Core.UIItems;
 using White.CustomCommands;
-using White.NonCoreTests.WebBrowser;
+using White.WebBrowser.UITests;
 
 namespace White.CustomCommandsSilverlightTests
 {

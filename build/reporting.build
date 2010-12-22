@@ -8,6 +8,11 @@
     <component-compile/>
   </target>
 
-  <target name="reporting.test" depends="reporting.compile">
+  <target name="reporting.unittest" depends="reporting.compile">
+    <unit-test/>
+  </target>
+
+  <target name="reporting.uitest" depends="reporting.compile">
+    <ui-test/>
   </target>
 </project>

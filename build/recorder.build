@@ -8,6 +8,11 @@
     <component-compile/>
   </target>
 
-  <target name="recorder.test" depends="recorder.compile" >
+  <target name="recorder.unittest" depends="recorder.compile" >
+    <unit-test/>
+  </target>
+
+  <target name="recorder.uitest" depends="recorder.compile">
+    <ui-test/>
   </target>
 </project>

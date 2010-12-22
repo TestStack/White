@@ -8,6 +8,11 @@
     <component-compile/>
   </target>
 
-  <target name="customCommands.test" depends="customControls.compile">
+  <target name="customCommands.unittest" depends="customCommands.compile">
+    <unit-test/>
+  </target>
+
+  <target name="customCommands.uitest" depends="customCommands.compile">
+    <ui-test/>
   </target>
 </project>

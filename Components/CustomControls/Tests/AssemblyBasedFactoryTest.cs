@@ -1,9 +1,9 @@
 using System.Reflection;
 using NUnit.Framework;
 using White.CustomControls.Peers.Automation;
-using White.CustomControls.Tests.Automation;
+using White.CustomControls.UnitTests.Automation;
 
-namespace White.CustomControls.Tests
+namespace White.CustomControls.UnitTests
 {
     [TestFixture]
     public class AssemblyBasedFactoryTest

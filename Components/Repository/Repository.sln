@@ -2,7 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Source\Repository.csproj", "{FCD3E92F-FEE9-414D-A460-09F7F685B83E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Repository.Tests", "Tests\White.Repository.Tests.csproj", "{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Repository.UITests", "Tests\UITests\White.Repository.UITests.csproj", "{168E237E-07C8-4379-8199-9FDEB6B7D402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Repository.UnitTests", "Tests\UnitTests\White.Repository.UnitTests.csproj", "{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,6 +16,10 @@ Global
 		{FCD3E92F-FEE9-414D-A460-09F7F685B83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCD3E92F-FEE9-414D-A460-09F7F685B83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCD3E92F-FEE9-414D-A460-09F7F685B83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168E237E-07C8-4379-8199-9FDEB6B7D402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168E237E-07C8-4379-8199-9FDEB6B7D402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168E237E-07C8-4379-8199-9FDEB6B7D402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168E237E-07C8-4379-8199-9FDEB6B7D402}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}.Release|Any CPU.ActiveCfg = Release|Any CPU

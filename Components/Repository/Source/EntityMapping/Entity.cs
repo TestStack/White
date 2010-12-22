@@ -13,7 +13,6 @@ namespace Repository.EntityMapping
     /// <summary>
     /// Represents an entity which can be mapped to the screen objects.
     /// </summary>
-
     [Serializable]
     public class Entity
     {

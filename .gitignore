@@ -12,4 +12,7 @@ tools/nant/WhiteCustomTasks/*.pdb
 *.user
 *.xap
 Release/*
-Output/*
+Output
+Components/Output/Components/*/*.dll
+Components/Output/Components/*/*.pdb
+Components/Core/Tests/UITests/App.config

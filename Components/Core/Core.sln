@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Source\Core.csproj"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Core.UnitTests", "Tests\Unit\White.Core.UnitTests.csproj", "{7C7960B2-905D-409A-8068-B010A35BA151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITests", "Tests\UITests\UITests.csproj", "{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Core.UITests", "Tests\UITests\White.Core.UITests.csproj", "{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

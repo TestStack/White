@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Bricks.Core;
 using White.Core.Configuration;
 using White.Core.Factory;
+using White.Core.Logging;
 using White.Core.Sessions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
@@ -47,6 +48,7 @@ namespace White.Core
         /// <returns></returns>
         public static Application Launch(ProcessStartInfo processStartInfo)
         {
+            WhiteLogger.Instance.DebugFormat("Launching process: {0} in working directory: {1}", processStartInfo.FileName, processStartInfo.WorkingDirectory);
             return Attach(Process.Start(processStartInfo));
         }
 

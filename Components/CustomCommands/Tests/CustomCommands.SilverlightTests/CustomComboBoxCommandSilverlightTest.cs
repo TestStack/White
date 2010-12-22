@@ -2,7 +2,7 @@
 using White.Core.CustomCommands;
 using White.Core.UIItems.ListBoxItems;
 using White.CustomCommands;
-using White.NonCoreTests.WebBrowser;
+using White.WebBrowser.UITests;
 
 namespace White.CustomCommandsSilverlightTests
 {

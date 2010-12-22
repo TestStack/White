@@ -7,7 +7,7 @@
   </target>
   
   <target name="*">
-    <parseTarget target="${target::get-current-target()}"/>  
+    <parseTarget target="${target::get-current-target()}"/>
     <nant buildfile="components.build" target="${component}" inheritall="false">
       <properties>
         <property name="target" value="${target}"/>

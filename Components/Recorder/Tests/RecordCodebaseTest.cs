@@ -2,7 +2,7 @@ using Bricks.RuntimeFramework;
 using NUnit.Framework;
 using Recorder;
 
-namespace White.Recorder.Tests
+namespace White.Recorder.UnitTests
 {
     [TestFixture]
     public class RecordCodebaseTest

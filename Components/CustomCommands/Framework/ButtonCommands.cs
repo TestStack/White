@@ -11,12 +11,12 @@ namespace White.CustomCommands
             this.button = button;
         }
 
-        public double BorderBottomThickness
+        public virtual double BorderBottomThickness
         {
             get { return button.BorderThickness.Bottom; }
         }
 
-        public Thickness BorderThickness
+        public virtual Thickness BorderThickness
         {
             get { return new Thickness(button.BorderThickness); }
         }

@@ -11,15 +11,11 @@ namespace White.CustomCommands
             this.comboBox = comboBox;
         }
 
-        public void Select(string itemText)
+        public virtual void Select(string itemText)
         {
             foreach (ComboBoxItem comboBoxItem in comboBox.Items)
-            {
                 if (Equals(comboBoxItem.Content, itemText))
-                {
                     comboBox.SelectedItem = comboBoxItem;
-                }
-            }
         }
     }
 }

@@ -3,7 +3,7 @@ using Recorder.Recording;
 using White.Core.UIItemEvents;
 using NUnit.Framework;
 
-namespace White.UnitTests.Recorder.Recording
+namespace White.Recorder.UnitTests.Recording
 {
     [TestFixture]
     public class DuplicateEventFilterTest

@@ -1,9 +1,10 @@
 using System;
+using Recorder.CodeGeneration;
 using White.Core.UIItems;
 using NUnit.Framework;
 using White.Recorder.CodeGeneration;
 
-namespace Recorder.CodeGeneration
+namespace White.Recorder.UnitTests.CodeGeneration
 {
     [TestFixture]
     public class DynamicScreenClassTest

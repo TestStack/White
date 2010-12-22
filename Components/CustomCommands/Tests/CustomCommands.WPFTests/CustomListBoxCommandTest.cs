@@ -1,11 +1,10 @@
 using NUnit.Framework;
-using White.Core;
 using White.Core.CustomCommands;
 using White.Core.UIItems.ListBoxItems;
-using White.CustomCommands;
-using White.Core.UnitTests.Testing;
+using White.Core.UITests;
+using White.Core.UITests.Testing;
 
-namespace White.Core.UnitTests.CustomCommands
+namespace White.CustomCommands.WPFTests
 {
     [TestFixture, WPFCategory]
     public class CustomListBoxCommandTest : ControlsActionTest

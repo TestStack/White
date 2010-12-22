@@ -1,10 +1,8 @@
 <?xml version="1.0" ?>
 <project name="components">
   <loadtasks path="..\Tools\Nant\CustomTasks"/>
-  <property name="framework.dir" value="c:\windows\microsoft.net\framework\v3.5"/>
   <property name="fail.test.onerror" value="true" unless="${property::exists('fail.test.onerror')}"/>
 
-  <echo message="################# ${first_target_run}"/>
   <if test="${property::get-value('first_target_run') == 'true'}">
     <include buildfile="macrodefs.build"/>
     <property name="macrodef_included" value="true"/>
@@ -20,13 +18,20 @@
   <include buildfile="white-nunit.build"/>
 
   <target name="core" depends="core.${target}" />
-  <target name="repository" depends="core, repository.${target}" />
-  <target name="reporting" depends="core, reporting.${target}" />
-  <target name="recorder" depends="core,repository, recorder.${target}" />
-  <target name="customCommands" depends="core, customCommands.${target}" />
-  <target name="customControls" depends="core, customControls.${target}" />
-  <target name="webBrowser" depends="core, webBrowser.${target}" />
-  <target name="white-nunit" depends="core, white-nunit.${target}" />
+  <target name="repository" depends="core.compile, repository.${target}" />
+  <target name="reporting" depends="core.compile, reporting.${target}" />
+  <target name="recorder" depends="core.compile, repository.compile, recorder.${target}" />
+  <target name="customCommands" depends="core.compile, webBrowser.compile, customCommands.${target}" />
+  <target name="customControls" depends="core.compile, customControls.${target}" />
+  <target name="webBrowser" depends="core.compile, webBrowser.${target}" />
+  <target name="white-nunit" depends="core.compile, white-nunit.${target}" />
 
   <target name="all" depends="core,repository,reporting,recorder,customCommands,customControls,webBrowser,white-nunit"/>
+<!---->
+<!--  <target name="*">-->
+<!--    <if test="${property::get-value('first_target_run') == 'true'}">-->
+<!--      <include buildfile="macrodefs.build"/>-->
+<!--      <property name="macrodef_included" value="true"/>-->
+<!--    </if>-->
+<!--  </target>-->
 </project>

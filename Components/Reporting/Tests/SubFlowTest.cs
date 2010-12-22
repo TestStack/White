@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Reporting.Domain;
 
-namespace White.Reporting.Tests
+namespace White.Reporting.UnitTests
 {
     [TestFixture]
     public class SubFlowTest

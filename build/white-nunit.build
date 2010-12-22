@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="White.NUnit">
+<project name="White-NUnit">
   <target name="white-nunit.clean">
     <component-clean/>
   </target>
@@ -8,6 +8,11 @@
     <component-compile/>
   </target>
 
-  <target name="white-nunit.test" depends="white-nunit.compile">
+  <target name="white-nunit.unittest" depends="white-nunit.compile">
+    <unit-test/>
+  </target>
+
+  <target name="white-nunit.uitest" depends="white-nunit.compile">
+    <ui-test/>
   </target>
 </project>

@@ -55,9 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Output\Components\WebBrowser\White.WebBrowser.dll</HintPath>
     </Reference>
-    <Reference Include="White.WebBrowser.Tests, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="White.WebBrowser.UITests, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\WebBrowser\White.WebBrowser.Tests.dll</HintPath>
+      <HintPath>..\..\..\..\Output\Components\WebBrowser\White.WebBrowser.UITests.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

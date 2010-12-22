@@ -7,8 +7,8 @@
     <ProjectGuid>{910CC90B-31CD-4A13-8EAC-9B197395EE6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.Recorder.Tests</RootNamespace>
-    <AssemblyName>White.Recorder.Tests</AssemblyName>
+    <RootNamespace>White.Recorder.UnitTests</RootNamespace>
+    <AssemblyName>White.Recorder.UnitTests</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>

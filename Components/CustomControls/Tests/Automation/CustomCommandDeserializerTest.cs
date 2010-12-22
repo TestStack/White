@@ -1,8 +1,8 @@
 using NUnit.Framework;
+using White.Core.CustomCommands;
 using White.CustomControls.Peers.Automation;
-using CustomCommandSerializer=White.Core.CustomCommands.CustomCommandSerializer;
 
-namespace White.CustomControls.Tests.Automation
+namespace White.CustomControls.UnitTests.Automation
 {
     [TestFixture]
     public class CustomCommandDeserializerTest

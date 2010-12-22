@@ -22,22 +22,22 @@ namespace White.CustomCommands
             top = thickness.Top;
         }
 
-        public double Bottom
+        public virtual double Bottom
         {
             get { return bottom; }
         }
 
-        public double Left
+        public virtual double Left
         {
             get { return left; }
         }
 
-        public double Right
+        public virtual double Right
         {
             get { return right; }
         }
 
-        public double Top
+        public virtual double Top
         {
             get { return top; }
         }

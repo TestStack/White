@@ -6,7 +6,7 @@ using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.CustomControls.Peers.Automation;
 
-namespace White.CustomControls.Tests.Automation
+namespace White.CustomControls.UnitTests.Automation
 {
     [TestFixture]
     public class WhitePeerTest

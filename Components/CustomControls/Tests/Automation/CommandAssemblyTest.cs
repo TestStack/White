@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Windows;
+using System.Runtime.Serialization;
 using NUnit.Framework;
 using White.CustomControls.Peers.Automation;
 
-namespace White.CustomControls.Tests.Automation
+namespace White.CustomControls.UnitTests.Automation
 {
     [TestFixture]
     public class CommandAssemblyTest
@@ -14,7 +14,7 @@ namespace White.CustomControls.Tests.Automation
         {
             var holder = new KnownTypeHolderStub();
             new CommandAssembly(typeof (Thickness).Assembly, holder);
-            Assert.AreEqual(true, holder.KnownTypes.Contains(typeof(Thickness)));
+            Assert.AreEqual(true, holder.KnownTypes.Contains(typeof (Thickness)));
         }
     }
 
@@ -31,5 +31,10 @@ namespace White.CustomControls.Tests.Automation
         {
             get { return knownTypes; }
         }
+    }
+
+    [DataContract]
+    public class Thickness
+    {
     }
 }

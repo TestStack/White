@@ -113,6 +113,7 @@
     <Compile Include="UIItems\Finders\IndexConditionTest.cs" />
     <Compile Include="UIItems\Finders\SearchConditionFactoryTest.cs" />
     <Compile Include="UIItems\Finders\SearchCriteriaTest.cs" />
+    <Compile Include="UIItems\PlatformSpecificItemAttributeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config">

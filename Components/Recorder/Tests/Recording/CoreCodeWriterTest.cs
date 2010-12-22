@@ -1,8 +1,9 @@
+using Recorder.Recording;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 using NUnit.Framework;
 
-namespace Recorder.Recording
+namespace White.Recorder.UnitTests.Recording
 {
     [TestFixture]
     public class CoreCodeWriterTest

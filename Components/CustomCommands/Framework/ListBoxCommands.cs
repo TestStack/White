@@ -11,7 +11,7 @@ namespace White.CustomCommands
             this.listBox = listBox;
         }
 
-        public int ItemCount
+        public virtual int ItemCount
         {
             get { return listBox.Items.Count; }
         }

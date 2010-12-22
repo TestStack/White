@@ -1,5 +1,9 @@
 <?xml version="1.0" ?>
-<project name="Shared">
+<project name="Macrodefs">
+  <loadtasks assembly="..\tools\nant\CustomTasks\macrodef.dll"/>
+  <property name="framework.dir" value="c:\windows\microsoft.net\framework\v3.5"/>
+  <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
+
   <macrodef name="component-compile">
     <sequential>
       <parseTarget target="${target::get-current-target()}"/>
@@ -73,6 +77,20 @@
     </sequential>
   </macrodef>
 
+  <macrodef name="unit-test">
+    <sequential>
+      <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UnitTests.dll /xml:&quot;..\Output\Components\${component}\${component}_UnitTestResults.xml&quot;"/>
+      <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg}" failonerror="${fail.test.onerror}"/>
+    </sequential>
+  </macrodef>
+
+  <macrodef name="ui-test">
+    <sequential>
+      <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
+      <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg}" failonerror="${fail.test.onerror}"/>
+    </sequential>
+  </macrodef>
+
   <macrodef name="core-test">
     <attributes>
       <attribute name="excludes" default=""/>
@@ -80,31 +98,21 @@
       <attribute name="framework"/>
     </attributes>
     <sequential>
-      <copy-core-config framework="${framework}"/>
-      <copy file="unittests\app.config" tofile="unittests\bin\debug\White.UnitTests.dll.config" overwrite="true"/>
-      <property name="nunit.arg" value="unittests\bin\debug\White.UnitTests.dll /xml:&quot;${build.output.dir}\Core_TestResults_${framework}_.xml&quot;"/>
-      <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
+      <copy file="..\Components\Core\Tests\UITests\app.config.template" tofile="..\Output\Components\Core\White.Core.UITests.dll.config" overwrite="true">
+        <filterchain>
+          <replacetokens>
+            <token key="TestMode" value="${framework}" />
+          </replacetokens>
+        </filterchain>
+      </copy>
+
+      <property name="nunit.arg" value="..\Output\Components\Core\White.Core.UITests.dll /xml:&quot;..\Output\Components\Core\Core_UITestResults_${framework}_.xml&quot;"/>
       <if test="${excludes==''}">
         <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /include:&quot;${includes}&quot;" failonerror="${fail.test.onerror}"/>
       </if>
       <if test="${includes==''}">
         <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /exclude:&quot;${excludes}&quot;" failonerror="${fail.test.onerror}"/>
       </if>
-    </sequential>
-  </macrodef>
-
-  <macrodef name="copy-core-config">
-    <attributes>
-      <attribute name="framework"/>
-    </attributes>
-    <sequential>
-      <copy file="core\app.config.template" tofile="core\app.config" overwrite="true">
-        <filterchain>
-          <replacetokens>
-            <token key="test.mode" value="${framework}" />
-          </replacetokens>
-        </filterchain>
-      </copy>
     </sequential>
   </macrodef>
 </project>
