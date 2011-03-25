@@ -205,6 +205,10 @@
     <Compile Include="UIItems\Scrolling\WinFormScrollBars.cs" />
     <Compile Include="UIItems\WPFButton.cs" />
     <Compile Include="UIItems\WPFUIItems\WPFUIItem.cs" />
+    <Compile Include="Utility\MonitorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utility\TestExecutionMonitor.cs" />
     <Compile Include="WindowsAPI\WindowPlacement.cs" />
     <Compile Include="InputDevices\WindowsConstants.cs" />
     <Compile Include="Interceptors\CoreInterceptor.cs" />

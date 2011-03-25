@@ -9,12 +9,20 @@
     <component-compile/>
   </target>
 
-  <target name="core.uitest" depends="core.compile">
-    <core-test excludes="WinForm,SWT" framework="WPF"/>
-    <core-test excludes="WPF,SWT,Normal" framework="WinForm"/>
+  <target name="core.uitest" depends="core.compile,core.wpf.uitest,core.winform.uitest,core.swt.uitest"/>
+    
+  <target name="core.swt.uitest" depends="core.compile">
     <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
+  </target> 
+
+  <target name="core.winform.uitest" depends="core.compile">
+    <core-test excludes="WPF,SWT,Normal" framework="WinForm"/>
   </target>
 
+  <target name="core.wpf.uitest" depends="core.compile">
+    <core-test excludes="WinForm,SWT" framework="WPF"/>
+  </target>
+  
   <target name="core.unittest" depends="core.compile">
     <unit-test/>
   </target>

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using Bricks.Core;
 using White.Core.Configuration;
 using White.Core.Factory;
@@ -20,7 +22,9 @@ namespace White.Core
         private readonly ApplicationSession applicationSession;
         private readonly WindowFactory windowFactory;
 
-        protected Application() {}
+        protected Application()
+        {
+        }
 
         private Application(Process process)
         {
@@ -48,8 +52,20 @@ namespace White.Core
         /// <returns></returns>
         public static Application Launch(ProcessStartInfo processStartInfo)
         {
-            WhiteLogger.Instance.DebugFormat("Launching process: {0} in working directory: {1}", processStartInfo.FileName, processStartInfo.WorkingDirectory);
-            return Attach(Process.Start(processStartInfo));
+            WhiteLogger.Instance.DebugFormat("[Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
+                                             processStartInfo.FileName, 
+                                             new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,
+                                             new FileInfo(processStartInfo.FileName).FullName, 
+                                             Environment.CurrentDirectory);
+            Process process = Process.Start(processStartInfo);
+            if (ConfigurationManager.AppSettings["CaptureAUTOutput"] != null && process != null)
+            {
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+                WhiteLogger.Instance.DebugFormat("[TestProcessOutput:{0}]", output);
+                WhiteLogger.Instance.DebugFormat("[TestProcessError:{0}]", error);
+            }
+            return Attach(process);
         }
 
         /// <summary>
@@ -159,7 +175,9 @@ namespace White.Core
                 process.Kill();
                 process.WaitForExit();
             }
-            catch {}
+            catch
+            {
+            }
         }
 
         /// <summary>

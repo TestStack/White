@@ -1,15 +1,17 @@
 using System;
+using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using White.Core.Factory;
 
 namespace White.Core.UITests
 {
     public abstract class TestConfiguration
     {
-        public static string WPFTestAppLocation = @"..\..\..\WPFTestApp\bin\debug\WindowsPresentationFramework.exe";
-        public static string WinFormsTestAppLocation = @"..\..\..\WinFormsTestApp\bin\debug\WinFormsTestApp.exe";
+        public static string WPFTestAppLocation = @"..\..\..\TestApplications\WPFTestApp\bin\debug\WindowsPresentationFramework.exe";
+        public static string WinFormsTestAppLocation = @"..\..\..\TestApplications\WinFormsTestApp\bin\debug\WinFormsTestApp.exe";
 
-        public static string SWTTestAppLocation = @"java";
+        public static string SWTTestAppLocation = @"java.exe";
 
         private readonly string program;
         protected string commandLineArguments;
@@ -30,7 +32,9 @@ namespace White.Core.UITests
                                            FileName = program,
                                            Arguments = commandLineArguments.Trim(),
                                            UseShellExecute = false,
-                                           CreateNoWindow = true
+                                           CreateNoWindow = true,
+                                           RedirectStandardOutput = true,
+                                           RedirectStandardError = true
                                        };
             return Application.Launch(processStartInfo);
         }
@@ -60,9 +64,16 @@ namespace White.Core.UITests
     {
         public SWTTestConfiguration(string commandLineArguments)
             : base(
-                SWTTestAppLocation,
+                SWTAppFullPath(),
                 @" -classpath SampleSWTApp\bin;""%classpath%"";SampleSWTApp\org.eclipse.swt.win32.win32.x86_3.2.1.v3235.jar -Djava.library.path=SampleSWTApp Program " +
                 commandLineArguments) {}
+
+        private static string SWTAppFullPath()
+        {
+            string javaLocation = ConfigurationManager.AppSettings["JavaLocation"];
+            if (javaLocation == null) throw new ConfigurationErrorsException("JavaLocation key is not configured in appSettings");
+            return Path.Combine(javaLocation, SWTTestAppLocation);
+        }
 
         protected override string WorkingDir
         {
