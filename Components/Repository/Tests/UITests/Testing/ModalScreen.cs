@@ -1,7 +1,7 @@
 using Repository;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Repository.Tests.Testing
+namespace White.Repository.UITests.Testing
 {
     public class ModalScreen : AppScreen
     {

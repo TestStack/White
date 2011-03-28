@@ -16,4 +16,8 @@
     </nant>
     <property name="first_target_run" value="false"/>
   </target>
+
+  <target name="uitest">
+    <nant buildfile="components.build" target="core.uitest, repository.uitest, webBrowser.uitest" inheritall="false"/>
+  </target>
 </project>

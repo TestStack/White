@@ -12,6 +12,7 @@
   <appSettings>
     <add key="SaveWindowItemsMap" value="true"/>
     <add key="TestMode" value="@TestMode@"/>
+    <add key="JavaLocation" value="C:\Java\jdk1.6.0_14\bin"/>
   </appSettings>
   <NUnit>
     <TestRunner>

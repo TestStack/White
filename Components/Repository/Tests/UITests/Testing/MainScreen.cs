@@ -1,4 +1,5 @@
 using System;
+using Repository;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
@@ -7,9 +8,8 @@ using White.Core.UIItems.TreeItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
 using Repository.ScreenAttributes;
-using White.Repository.Tests.Testing;
 
-namespace Repository.Testing
+namespace White.Repository.UITests.Testing
 {
     //TODO: Why do the tests continue running even after it has finished
     // ReSharper disable FieldCanBeMadeReadOnly.Local

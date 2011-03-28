@@ -13,8 +13,8 @@ namespace White.Repository.UnitTests
         public void NewScreenContainingComponent()
         {
             var mocks = new MockRepository();
-            var window = mocks.CreateMock<Window>();
-            var screenRepository = mocks.CreateMock<ScreenRepository>();
+            var window = mocks.StrictMock<Window>();
+            var screenRepository = mocks.StrictMock<ScreenRepository>();
             mocks.ReplayAll();
             var @class = new Class(typeof(ScreenClassContainingComponent));
             new ScreenClass(@class).New(window, screenRepository);

@@ -5,9 +5,8 @@ using White.Core.Factory;
 using White.Core.Sessions;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
-using White.Repository.UITests;
 
-namespace White.Repository.Tests
+namespace White.Repository.UITests
 {
     [TestFixture]
     public class ScreenRepositoryTest
@@ -52,14 +51,14 @@ namespace White.Repository.Tests
     public class ScreenRepositoryCacheTest
     {
         [Test]
-        public void Screens_should_be_cached()
+        public void ScreensShouldBeCached()
         {
             var mocks = new MockRepository();
-            var mockApplication = mocks.CreateMock<Application>();
-            var window = mocks.CreateMock<DummyWindow>();
+            var mockApplication = mocks.StrictMock<Application>();
+            var window = mocks.StrictMock<DummyWindow>();
             SetupResult.For(window.IsClosed).Return(false);
             Expect.Call(mockApplication.GetWindow("dummy", InitializeOption.NoCache)).Return(window).IgnoreArguments();
-            var applicationSession = mocks.CreateMock<ApplicationSession>();
+            var applicationSession = mocks.StrictMock<ApplicationSession>();
             SetupResult.For(applicationSession.Application).Return(mockApplication);
             mocks.ReplayAll();
 
@@ -73,13 +72,13 @@ namespace White.Repository.Tests
         public void ScreenShouldRemovedFromCacheWhenClosed()
         {
             var mocks = new MockRepository();
-            var mockApplication = mocks.CreateMock<Application>();
-            var window = mocks.CreateMock<DummyWindow>();
+            var mockApplication = mocks.StrictMock<Application>();
+            var window = mocks.StrictMock<DummyWindow>();
             Expect.Call(window.Title).Return("dummy");
             SetupResult.For(window.IsClosed).Return(false);
             window.Close();
             Expect.Call(mockApplication.GetWindow("dummy", InitializeOption.NoCache)).Return(window).IgnoreArguments().Repeat.Twice();
-            var applicationSession = mocks.CreateMock<ApplicationSession>();
+            var applicationSession = mocks.StrictMock<ApplicationSession>();
             SetupResult.For(applicationSession.Application).Return(mockApplication);
             mocks.ReplayAll();
 
@@ -95,12 +94,12 @@ namespace White.Repository.Tests
         public void ScreenCachingWithMatches()
         {
             var mocks = new MockRepository();
-            var mockApplication = mocks.CreateMock<Application>();
-            var window = mocks.CreateMock<DummyWindow>();
+            var mockApplication = mocks.StrictMock<Application>();
+            var window = mocks.StrictMock<DummyWindow>();
             SetupResult.For(window.Title).Return("whatever");
             SetupResult.For(window.IsClosed).Return(false);
-            Expect.Call(mockApplication.Find(delegate { return true; }, InitializeOption.NoCache)).Return(window).IgnoreArguments();
-            var applicationSession = mocks.CreateMock<ApplicationSession>();
+            Expect.Call(mockApplication.Find(t => true, InitializeOption.NoCache)).Return(window).IgnoreArguments();
+            var applicationSession = mocks.StrictMock<ApplicationSession>();
             SetupResult.For(applicationSession.Application).Return(mockApplication);
             mocks.ReplayAll();
 
@@ -111,7 +110,7 @@ namespace White.Repository.Tests
         }
 
         private static DummyScreen FindScreen(ScreenRepository screenRepository) {
-            return screenRepository.Get<DummyScreen>(delegate { return true; }, InitializeOption.NoCache);
+            return screenRepository.Get<DummyScreen>(t => true, InitializeOption.NoCache);
         }
 
         private static DummyScreen GetScreen(ScreenRepository screenRepository) {

@@ -1,8 +1,8 @@
 using Repository;
 using White.Core;
 using White.Core.Factory;
-using Repository.Testing;
 using White.Core.UITests;
+using White.Repository.UITests.Testing;
 
 namespace White.Repository.UITests
 {

@@ -6,7 +6,7 @@ using White.Core.UIItems.WindowItems;
 using White.Core.UITests;
 using White.Repository.UnitTests.EntityMapping;
 
-namespace White.Repository.Tests.EntityMapping
+namespace White.Repository.UITests.EntityMapping
 {
     [TestFixture]
     public class EntitiesFromUIItemsTest

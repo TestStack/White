@@ -52,6 +52,8 @@ namespace White.Core
         /// <returns></returns>
         public static Application Launch(ProcessStartInfo processStartInfo)
         {
+            if (string.IsNullOrEmpty(processStartInfo.WorkingDirectory)) processStartInfo.WorkingDirectory = ".";
+
             WhiteLogger.Instance.DebugFormat("[Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
                                              processStartInfo.FileName, 
                                              new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,

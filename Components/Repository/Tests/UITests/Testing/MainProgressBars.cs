@@ -1,9 +1,10 @@
+using Repository;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
 using Repository.ScreenFieldAttributes;
 
-namespace Repository.Testing
+namespace White.Repository.UITests.Testing
 {
     [ScreenComponent]
     public class MainProgressBars : AppScreenComponent

@@ -378,9 +378,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="AssemblyInfo.cs.template" />
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>

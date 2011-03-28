@@ -4,15 +4,15 @@
     <component-clean/>
   </target>
 
-  <target name="repository.compile">
+  <target name="repository.compile" depends="repository.clean">
     <component-compile/>
   </target>
 
-  <target name="repository.unittest" depends="repository.compile" >
+  <target name="repository.unittest" depends="repository.compile">
     <unit-test/>
   </target>
 
-  <target name="repository.uitest" depends="repository.compile" >
+  <target name="repository.uitest" depends="repository.compile">
     <ui-test/>
   </target>
 </project>

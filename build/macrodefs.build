@@ -79,6 +79,7 @@
 
   <macrodef name="unit-test">
     <sequential>
+      <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\${component}\log4net.config"/>
       <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UnitTests.dll /xml:&quot;..\Output\Components\${component}\${component}_UnitTestResults.xml&quot;"/>
       <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg}" failonerror="${fail.test.onerror}"/>
     </sequential>
@@ -86,6 +87,7 @@
 
   <macrodef name="ui-test">
     <sequential>
+      <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\${component}\log4net.config"/>
       <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
       <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg}" failonerror="${fail.test.onerror}"/>
     </sequential>
@@ -98,6 +100,7 @@
       <attribute name="framework"/>
     </attributes>
     <sequential>
+      <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\Core\log4net.config"/>
       <copy file="..\Components\Core\Tests\UITests\app.config.template" tofile="..\Output\Components\Core\White.Core.UITests.dll.config" overwrite="true">
         <filterchain>
           <replacetokens>

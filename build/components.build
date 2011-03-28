@@ -27,11 +27,4 @@
   <target name="white-nunit" depends="core.compile, white-nunit.${target}" />
 
   <target name="all" depends="core,repository,reporting,recorder,customCommands,customControls,webBrowser,white-nunit"/>
-<!---->
-<!--  <target name="*">-->
-<!--    <if test="${property::get-value('first_target_run') == 'true'}">-->
-<!--      <include buildfile="macrodefs.build"/>-->
-<!--      <property name="macrodef_included" value="true"/>-->
-<!--    </if>-->
-<!--  </target>-->
 </project>

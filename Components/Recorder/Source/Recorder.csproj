@@ -138,9 +138,6 @@
       <DependentUpon>WindowBrowser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="white.snk" />
     <Compile Include="Configuration\RecorderAppXmlConfiguration.cs" />
     <Compile Include="RecorderForm.cs" />
