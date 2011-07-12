@@ -17,4 +17,3 @@ Output
 Output/Components/*/*.dll
 Output/Components/*/*.pdb
 Output/Components/*/*.config
-Components/Core/Tests/UITests/App.config
