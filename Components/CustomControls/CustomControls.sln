@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlPeers", "Sourc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlPeers.Silverlight", "Source\CustomControlPeers\CustomControlPeers.Silverlight.csproj", "{ED8E108C-4469-4D07-B60F-436178EB5E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Tests\UnitTests.csproj", "{9F509E89-5158-4095-B3D8-53FE00027363}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.CustomControls.UnitTests", "Tests\White.CustomControls.UnitTests.csproj", "{9F509E89-5158-4095-B3D8-53FE00027363}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

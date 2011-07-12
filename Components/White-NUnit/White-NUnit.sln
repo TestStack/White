@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.NUnit", "Source\White.NUnit.csproj", "{0CD3A7F2-1FC8-4F02-AD66-2A3F95B1C546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "Tests\UnitTests\UnitTests.csproj", "{8729FCC8-D69B-4A64-AAF7-B908ABCD77B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.White-NUnit.UnitTests", "Tests\UnitTests\White.White-NUnit.UnitTests.csproj", "{8729FCC8-D69B-4A64-AAF7-B908ABCD77B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,1 +1,1 @@
-call tools\nant\NAnt.exe -nologo -buildfile:build\master.build %* -logfile:w.log
+call tools\nant\NAnt.exe -nologo -buildfile:build\master.build %1 -logfile:w.log
