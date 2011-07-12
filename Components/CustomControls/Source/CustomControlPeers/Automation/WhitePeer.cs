@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 
@@ -66,7 +64,7 @@ namespace White.CustomControls.Peers.Automation
             catch (Exception e)
             {
                 customCommandSessionOpen = true;
-                value = new object[] { FormattedExceptionMessage(e), null };
+                value = new object[] {FormattedExceptionMessage(e), null};
             }
         }
 
@@ -105,7 +103,8 @@ namespace White.CustomControls.Peers.Automation
         private static string FormattedExceptionMessage(Exception exception)
         {
             if (exception == null) return "";
-            return exception.GetType().Name + " " + exception.Message + exception.StackTrace + Environment.NewLine + FormattedExceptionMessage(exception.InnerException);
+            return exception.GetType().Name + " " + exception.Message + exception.StackTrace + Environment.NewLine +
+                   FormattedExceptionMessage(exception.InnerException);
         }
     }
 }

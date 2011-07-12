@@ -30,6 +30,11 @@ namespace White.Core.UIItems.TreeItems
             return ValueOfEquals(ExpandCollapsePattern.ExpandCollapseStateProperty, ExpandCollapseState.Expanded);
         }
 
+        public virtual ExpandCollapseState DisplayState
+        {
+            get { return (ExpandCollapseState) Property(ExpandCollapsePattern.ExpandCollapseStateProperty); }
+        }
+
         /// <summary>
         /// Gets the TreeNode matching the path. If multi-level find is specified in arguments then in process of finding the TreeNode it would also expand the TreeNodes.
         /// </summary>
@@ -49,6 +54,20 @@ namespace White.Core.UIItems.TreeItems
         {
             actionListener.ActionPerforming(this);
             mouse.Click(SelectPoint, actionListener);
+        }
+
+        /// <summary>
+        /// Un select the node. This depends on whether the automation element backing it supports SelectionItemPattern
+        /// </summary>
+        public virtual bool UnSelect()
+        {
+            var pattern = (SelectionItemPattern) Pattern(SelectionItemPattern.Pattern);
+            if (pattern != null)
+            {
+                pattern.RemoveFromSelection();
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

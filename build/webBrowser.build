@@ -5,6 +5,7 @@
   </target>
 
   <target name="webBrowser.compile" depends="webBrowser.clean" >
+    <mkiisdir vdirname="White.TestSilverlight" dirpath="..\TestApplications\Silverlight\TestSilverlightApplication.Web"/>
     <component-compile/>  
   </target>
 

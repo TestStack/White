@@ -3,6 +3,9 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.TabItems
 {
+    /// <summary>
+    /// Access tab page by first finding a Tab and then getting hold of the TabPage inside it.
+    /// </summary>
     public class TabPage : UIItem, ITabPage
     {
         private readonly SelectionItem selectionItem;

@@ -31,6 +31,8 @@ namespace White.Core.Configuration
             defaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", true);
             defaultValues.Add("RawElementBasedSearch", false);
             defaultValues.Add("MaxElementSearchDepth", 10);
+            defaultValues.Add("DoubleClickInterval", 0);
+            defaultValues.Add("MoveMouseToGetStatusOfHourGlass", true);
         }
 
         public static CoreConfiguration Instance
@@ -120,6 +122,12 @@ namespace White.Core.Configuration
             set { SetUsedValue("ComboBoxItemsPopulatedWithoutDropDownOpen", value); }
         }
 
+        public virtual bool MoveMouseToGetStatusOfHourGlass
+        {
+            get { return S.ToBool(usedValues["MoveMouseToGetStatusOfHourGlass"]); }
+            set { SetUsedValue("MoveMouseToGetStatusOfHourGlass", value); }
+        }
+
         public virtual IWaitHook AdditionalWaitHook { get; set; }
 
         public virtual int MaxElementSearchDepth
@@ -132,6 +140,12 @@ namespace White.Core.Configuration
         {
             get { return S.ToBool(usedValues["RawElementBasedSearch"]); }
             set { SetUsedValue("RawElementBasedSearch", value); }
+        }
+
+        public virtual int DoubleClickInterval
+        {
+            get { return S.ToInt(usedValues["DoubleClickInterval"]); }
+            set { SetUsedValue("DoubleClickInterval", value); }
         }
     }
 }

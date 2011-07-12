@@ -34,11 +34,5 @@ namespace White.Core.UIItems
         {
             toggleableItem.Toggle();
         }
-
-        public virtual void RaiseClickEvent()
-        {
-            var invokePattern = (InvokePattern) Pattern(InvokePattern.Pattern);
-            invokePattern.Invoke();
-        }
     }
 }

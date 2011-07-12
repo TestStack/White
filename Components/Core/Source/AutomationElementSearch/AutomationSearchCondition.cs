@@ -128,7 +128,7 @@ namespace White.Core.AutomationElementSearch
             foreach (Condition condition in testConditions)
             {
                 if (condition is AndCondition && !Satisfies(element, ((AndCondition) condition).GetConditions(), true)) return false;
-                if (condition is OrCondition && !Satisfies(element, ((AndCondition) condition).GetConditions(), false)) return false;
+                if (condition is OrCondition && !Satisfies(element, ((OrCondition) condition).GetConditions(), false)) return false;
 
                 if (condition is PropertyCondition)
                 {

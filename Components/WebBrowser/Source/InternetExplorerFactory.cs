@@ -12,7 +12,7 @@ namespace White.WebBrowser
             WindowFactory.AddSpecializedWindowFactory(new InternetExplorerFactory());
         }
 
-        public virtual bool DoesSpecializedThis(AutomationElement windowElement)
+        public virtual bool DoesSpecializeInThis(AutomationElement windowElement)
         {
             return windowElement.Current.ClassName.Contains("IEFrame");
         }

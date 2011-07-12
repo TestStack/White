@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Automation;
 using White.Core.Factory;
 using White.Core.Sessions;
@@ -12,7 +13,7 @@ namespace White.WebBrowser
             WindowFactory.AddSpecializedWindowFactory(new FirefoxFactory());
         }
 
-        public virtual bool DoesSpecializedThis(AutomationElement windowElement)
+        public virtual bool DoesSpecializeInThis(AutomationElement windowElement)
         {
             return windowElement.Current.ClassName.Contains("MozillaUIWindowClass");
         }

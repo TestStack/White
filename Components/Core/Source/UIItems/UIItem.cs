@@ -16,9 +16,9 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
 using White.Core.WindowsAPI;
-using Action=White.Core.UIItems.Actions.Action;
-using Point=System.Windows.Point;
-using Window=White.Core.UIItems.WindowItems.Window;
+using Action = White.Core.UIItems.Actions.Action;
+using Point = System.Windows.Point;
+using Window = White.Core.UIItems.WindowItems.Window;
 
 namespace White.Core.UIItems
 {
@@ -182,7 +182,8 @@ namespace White.Core.UIItems
         /// <returns></returns>
         public virtual string ErrorProviderMessage(Window window)
         {
-            AutomationElement element = AutomationElement.FromPoint(automationElement.Current.BoundingRectangle.ImmediateExteriorEast());
+            AutomationElement element =
+                AutomationElement.FromPoint(automationElement.Current.BoundingRectangle.ImmediateExteriorEast());
             if (element == null) return null;
             Rect errorProviderBounds = element.Current.BoundingRectangle;
             if (automationElement.Current.BoundingRectangle.Right != errorProviderBounds.Left) return null;
@@ -270,7 +271,8 @@ namespace White.Core.UIItems
         protected virtual void HookClickEvent(UIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new UIItemClickEvent(this)); };
-            Automation.AddAutomationEventHandler(InvokePattern.InvokedEvent, automationElement, TreeScope.Element, handler);
+            Automation.AddAutomationEventHandler(InvokePattern.InvokedEvent, automationElement, TreeScope.Element,
+                                                 handler);
         }
 
         protected virtual void UnHookClickEvent()
@@ -346,7 +348,9 @@ namespace White.Core.UIItems
         /// <returns>null or found AutomationElement</returns>
         public virtual AutomationElement GetElement(SearchCriteria searchCriteria)
         {
-            return new AutomationElementFinder(automationElement).FindDescendantRaw(searchCriteria.AutomationSearchCondition);
+            return
+                new AutomationElementFinder(automationElement).FindDescendantRaw(
+                    searchCriteria.AutomationSearchCondition);
         }
 
         public virtual void Enter(string value)
@@ -372,10 +376,13 @@ namespace White.Core.UIItems
             return new UIItemContainer(AutomationElement, actionListener);
         }
 
-        internal virtual CustomCommandResponse Do(string assemblyFile, string typeName, MethodInfo method, object[] arguments)
+        internal virtual CustomCommandResponse Do(string assemblyFile, string typeName, MethodInfo method,
+                                                  object[] arguments)
         {
             var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
-            if (valuePattern == null) throw new CustomCommandException(string.Format("{0} does not implement ValuePattern", automationElement.Display()));
+            if (valuePattern == null)
+                throw new CustomCommandException(string.Format("{0} does not implement ValuePattern",
+                                                               automationElement.Display()));
             CustomCommandResponse response = Execute(valuePattern, assemblyFile, typeName, method, arguments);
             if (response.IsValidResponse) return response;
 
@@ -388,14 +395,22 @@ namespace White.Core.UIItems
             return response;
         }
 
-        private CustomCommandResponse Execute(ValuePattern valuePattern, string assemblyFile, string typeName, MethodInfo method, object[] arguments)
+        private CustomCommandResponse Execute(ValuePattern valuePattern, string assemblyFile, string typeName,
+                                              MethodInfo method, object[] arguments)
         {
             var commandSerializer = new CustomCommandSerializer();
-            string serializedCommand = commandSerializer.Serialize(new FileInfo(assemblyFile).Name, typeName, method.Name, arguments);
+            string serializedCommand = commandSerializer.Serialize(new FileInfo(assemblyFile).Name, typeName,
+                                                                   method.Name, arguments);
             valuePattern.SetValue(serializedCommand);
             ActionPerformed(Action.WindowMessage);
             string value = valuePattern.Current.Value;
             return new CustomCommandResponse(commandSerializer.ToObject(value));
+        }
+
+        public virtual void RaiseClickEvent()
+        {
+            var invokePattern = (InvokePattern) Pattern(InvokePattern.Pattern);
+            if (invokePattern != null) invokePattern.Invoke();
         }
     }
 }

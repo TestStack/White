@@ -39,6 +39,14 @@ namespace White.Core.UITests.UIItems.MenuItems
             menu.Click();
             AssertResultLabelText("Click Me Clicked");
         }
+
+        [Test]
+        public void RaiseClickEvent()
+        {
+            Menu menu = window.MenuBar.MenuItem("File", "Click Me");
+            menu.Click();
+            AssertResultLabelText("Click Me Clicked");
+        }
     }
 
     [TestFixture, WPFCategory]

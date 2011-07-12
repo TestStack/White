@@ -1,3 +1,4 @@
+using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.UIItems.TreeItems;
 using White.Core.UITests.Testing;
@@ -45,6 +46,16 @@ namespace White.Core.UITests.UIItems.TreeItems
         }
 
         [Test]
+        public void DisplayState()
+        {
+            TreeNode treeNode = tree.Node("Root");
+            treeNode.Expand();
+            Assert.AreEqual(ExpandCollapseState.Expanded, treeNode.DisplayState);
+            treeNode.Collapse();
+            Assert.AreEqual(ExpandCollapseState.Collapsed, treeNode.DisplayState);
+        }
+
+        [Test]
         public void DoubleClick()
         {
             TreeNode treeNode = tree.Node("Root");
@@ -53,6 +64,16 @@ namespace White.Core.UITests.UIItems.TreeItems
             Assert.AreNotEqual(state, treeNode.IsExpanded());
             treeNode.DoubleClick();
             Assert.AreEqual(state, treeNode.IsExpanded());
+        }
+
+        [Test]
+        public void UnSelect()
+        {
+            TreeNode treeNode = tree.Node("Root", "Child");
+            treeNode.Select();
+            Assert.AreEqual("Child", tree.SelectedNode.Name);
+            treeNode.UnSelect();
+            Assert.AreEqual(null, tree.SelectedNode);
         }
     }
 }

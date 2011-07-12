@@ -43,7 +43,7 @@ namespace White.Core.Factory
 
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
         {
-            SpecializedWindowFactory specializedWindowFactory = specializedWindowFactories.Find(factory => factory.DoesSpecializedThis(element));
+            SpecializedWindowFactory specializedWindowFactory = specializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
             if (specializedWindowFactory != null)
             {
                 return specializedWindowFactory.Create(element, option, windowSession);

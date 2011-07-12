@@ -11,7 +11,9 @@ namespace White.Core.UIA
 
         public static Point Center(this Rect rect)
         {
-            return new Point((int) (rect.Left + (rect.Right - rect.Left)/2), (int) (rect.Top + (rect.Bottom - rect.Top)/2));
+            double topLeftX = rect.Left;
+            double topRightX = rect.Right;
+            return new Point((int) (topLeftX + (topRightX - topLeftX)/2), (int) (rect.Top + (rect.Bottom - rect.Top)/2));
         }
 
         public static Point ImmediateExteriorEast(this Rect rectangle)

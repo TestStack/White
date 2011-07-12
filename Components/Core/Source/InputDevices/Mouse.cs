@@ -2,30 +2,33 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
-using White.Core.Drawing;
-using White.Core.UIA;
 using White.Core.Configuration;
+using White.Core.Drawing;
 using White.Core.Logging;
+using White.Core.UIA;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 using White.Core.WindowsAPI;
-using Action=White.Core.UIItems.Actions.Action;
+using Action = White.Core.UIItems.Actions.Action;
 
 namespace White.Core.InputDevices
 {
     public class Mouse : IMouse
     {
-        [DllImport("user32", EntryPoint = "SendInput")]
-        private static extern int SendInput(int numberOfInputs, ref Input input, int structSize);
+        [DllImport("User32.dll")]
+        private static extern uint SendInput(uint numberOfInputs,
+                                             [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] Input[] input,
+                                             int structSize);
 
         [DllImport("user32.dll")]
         private static extern IntPtr GetMessageExtraInfo();
 
         [DllImport("user32.dll")]
+
         private static extern bool GetCursorPos(ref System.Drawing.Point cursorInfo);
 
         [DllImport("user32.dll")]
-        private static extern bool SetCursorPos(System.Drawing.Point cursorInfo);
+        private static extern bool SetCursorPos(int x, int y);
 
         [DllImport("user32.dll")]
         private static extern bool GetCursorInfo(ref CursorInfo cursorInfo);
@@ -37,9 +40,11 @@ namespace White.Core.InputDevices
         private DateTime lastClickTime = DateTime.Now;
         private readonly short doubleClickTime = GetDoubleClickTime();
         private Point lastClickLocation;
-        private const int extraMillisecondsBecauseOfBugInWindows = 13;
+        private const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
-        private Mouse() {}
+        private Mouse()
+        {
+        }
 
         public virtual Point Location
         {
@@ -55,7 +60,7 @@ namespace White.Core.InputDevices
                 {
                     throw new WhiteException(string.Format("Trying to set location outside the screen. {0}", value));
                 }
-                SetCursorPos(value.ToDrawingPoint());
+                SetCursorPos((int) value.X, (int) value.Y);
             }
         }
 
@@ -72,8 +77,8 @@ namespace White.Core.InputDevices
 
         public virtual void RightClick()
         {
-            SendInput(Input.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_RIGHTDOWN)));
-            SendInput(Input.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_RIGHTUP)));
+            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_RIGHTDOWN)));
+            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_RIGHTUP)));
         }
 
         public virtual void Click()
@@ -82,7 +87,7 @@ namespace White.Core.InputDevices
             if (lastClickLocation.Equals(clickLocation))
             {
                 int timeout = doubleClickTime - DateTime.Now.Subtract(lastClickTime).Milliseconds;
-                if (timeout > 0) Thread.Sleep(timeout + extraMillisecondsBecauseOfBugInWindows);
+                if (timeout > 0) Thread.Sleep(timeout + ExtraMillisecondsBecauseOfBugInWindows);
             }
             MouseLeftButtonUpAndDown();
             lastClickTime = DateTime.Now;
@@ -91,12 +96,12 @@ namespace White.Core.InputDevices
 
         public static void LeftUp()
         {
-            SendInput(Input.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_LEFTUP)));
+            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_LEFTUP)));
         }
 
         public static void LeftDown()
         {
-            SendInput(Input.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_LEFTDOWN)));
+            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_LEFTDOWN)));
         }
 
         public virtual void DoubleClick(Point point)
@@ -108,13 +113,14 @@ namespace White.Core.InputDevices
         {
             Location = point;
             MouseLeftButtonUpAndDown();
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
             MouseLeftButtonUpAndDown();
             ActionPerformed(actionListener);
         }
 
         private static void SendInput(Input input)
         {
-            SendInput(1, ref input, Marshal.SizeOf(typeof (Input)));
+            SendInput(1, new[] {input}, Marshal.SizeOf(input));
         }
 
         private static MouseInput MouseInput(int command)
@@ -188,13 +194,13 @@ namespace White.Core.InputDevices
             Location = startPosition;
             HoldForDrag();
             draggedItem.ActionPerformed(Action.WindowMessage);
-            var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
+            var dragStepFraction = (float) (1.0/CoreAppXmlConfiguration.Instance.DragStepCount);
             WhiteLogger.Instance.Info(CoreAppXmlConfiguration.Instance.DragStepCount + ":" + dragStepFraction);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
-                double newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
-                double newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);
-                var newPoint = new Point((int)newX, (int)newY);
+                double newX = startPosition.X + (endPosition.X - startPosition.X)*(dragStepFraction*i);
+                double newY = startPosition.Y + (endPosition.Y - startPosition.Y)*(dragStepFraction*i);
+                var newPoint = new Point((int) newX, (int) newY);
                 Location = newPoint;
                 draggedItem.ActionPerformed(Action.WindowMessage);
             }
@@ -222,7 +228,7 @@ namespace White.Core.InputDevices
 
         public virtual void DragHorizontally(UIItem uiItem, int distance)
         {
-            Location = uiItem.Location;
+            Location = uiItem.Bounds.Center();
             double currentXLocation = Location.X;
             double currentYLocation = Location.Y;
             HoldForDrag();
@@ -233,7 +239,7 @@ namespace White.Core.InputDevices
 
         public virtual void DragVertically(UIItem uiItem, int distance)
         {
-            Location = uiItem.Location;
+            Location = uiItem.Bounds.Center();
             double currentXLocation = Location.X;
             double currentYLocation = Location.Y;
             HoldForDrag();

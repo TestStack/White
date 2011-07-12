@@ -24,5 +24,7 @@ namespace White.Core.Configuration
         IWaitHook AdditionalWaitHook { get; set; }
         int MaxElementSearchDepth { get; set; }
         bool RawElementBasedSearch { get; set; }
+        int DoubleClickInterval { get; set; }
+        bool MoveMouseToGetStatusOfHourGlass { get; set; }
     }
 }

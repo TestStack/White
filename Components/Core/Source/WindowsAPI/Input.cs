@@ -1,5 +1,4 @@
 using System.Runtime.InteropServices;
-using White.Core.InputDevices;
 
 namespace White.Core.WindowsAPI
 {
@@ -11,14 +10,14 @@ namespace White.Core.WindowsAPI
         [FieldOffset(4)] private KeyboardInput ki;
         [FieldOffset(4)] private readonly HardwareInput hi;
 
-        public static Input Mouse(MouseInput mouseInput)
+        public static Input MouseInput(int type, MouseInput mouseInput)
         {
-            return new Input {type = WindowsConstants.INPUT_MOUSE, mi = mouseInput};
+            return new Input {type = type, mi = mouseInput};
         }
 
-        public static Input Keyboard(KeyboardInput keyboardInput)
+        public static Input KeyboardInput(int type, KeyboardInput keyboardInput)
         {
-            return new Input {type = WindowsConstants.INPUT_KEYBOARD, ki = keyboardInput};
+            return new Input {type = type, ki = keyboardInput};
         }
     }
 }

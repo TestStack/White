@@ -64,6 +64,8 @@ namespace White.Core.InputDevices
 
         public virtual void Send(string keysToType, ActionListener actionListener)
         {
+            if (heldKeys.Count > 0) keysToType = keysToType.ToLower();
+
             CapsLockOn = false;
             foreach (char c in keysToType)
             {
@@ -157,7 +159,7 @@ namespace White.Core.InputDevices
 
         private static Input GetInputFor(short character, KeyboardInput.KeyUpDown keyUpOrDown)
         {
-            return Input.Keyboard(new KeyboardInput(character, keyUpOrDown, GetMessageExtraInfo()));
+            return InputFactory.Keyboard(new KeyboardInput(character, keyUpOrDown, GetMessageExtraInfo()));
         }
 
         public virtual bool CapsLockOn

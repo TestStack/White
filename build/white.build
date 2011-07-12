@@ -19,11 +19,6 @@
   
   <target name="release" depends="test, dist"/>
   
-  <target name="compile" depends="clean">
-    <mkiisdir vdirname="White.TestSilverlight" dirpath="TestApplications\Silverlight\TestSilverlightApplication.Web"/>
-    <msbuild-compile project="white-all.sln"/>
-  </target>
-
   <target name="clean" depends="clean.dist" >
     <deliisdir vdirname="White.TestSilverlight" failonerror="false"/>
     <clean-dir dir="${release.dir}"/>

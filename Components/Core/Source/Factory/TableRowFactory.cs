@@ -12,11 +12,11 @@ namespace White.Core.Factory
     public class TableRowFactory
     {
         private readonly AutomationElementFinder automationElementFinder;
-        private static readonly Predicate<AutomationElement> rowPredicate;
+        private static readonly Predicate<AutomationElement> RowPredicate;
 
         static TableRowFactory()
         {
-            rowPredicate =
+            RowPredicate =
                 delegate(AutomationElement element) { return element.Current.Name.StartsWith(UIItemIdAppXmlConfiguration.Instance.TableColumn) && element.Current.Name.Split(' ').Length == 2; };
         }
 
@@ -35,7 +35,7 @@ namespace White.Core.Factory
         {
             List<AutomationElement> descendants = automationElementFinder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Custom));
             var automationElements = new BricksCollection<AutomationElement>(descendants);
-            return automationElements.FindAll(rowPredicate);
+            return automationElements.FindAll(RowPredicate);
         }
 
         public virtual int NumberOfRows

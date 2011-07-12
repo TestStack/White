@@ -18,6 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		recorder.build = recorder.build
 		reporting.build = reporting.build
 		repository.build = repository.build
+		test-applications.build = test-applications.build
 		..\w.bat = ..\w.bat
 		..\w.log = ..\w.log
 		webBrowser.build = webBrowser.build

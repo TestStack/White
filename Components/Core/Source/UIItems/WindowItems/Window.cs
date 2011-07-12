@@ -299,7 +299,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             Window window = factory.ModalWindow(title, InitializeOption.NoCache,
                                                 windowSession.ModalWindowSession(InitializeOption.NoCache));
-            window.actionListener = this;
+            if (window != null) window.actionListener = this;
             return window;
         }
 

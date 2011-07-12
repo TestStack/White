@@ -24,7 +24,7 @@ namespace White.Core.UIItems.Actions
                 Clock.Matched matched = delegate(object obj)
                                             {
                                                 var cursor = (MouseCursor) obj;
-                                                if (MouseCursor.WaitCursors.Contains(cursor))
+                                                if (MouseCursor.WaitCursors.Contains(cursor) && CoreAppXmlConfiguration.Instance.MoveMouseToGetStatusOfHourGlass)
                                                 {
                                                     Mouse.Instance.MoveOut();
                                                     return false;
