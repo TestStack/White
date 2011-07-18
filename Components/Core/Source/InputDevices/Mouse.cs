@@ -17,8 +17,11 @@ namespace White.Core.InputDevices
     {
         [DllImport("User32.dll")]
         private static extern uint SendInput(uint numberOfInputs,
-                                             [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] Input[] input,
+                                             ref Input input,
                                              int structSize);
+//        private static extern uint SendInput(uint numberOfInputs,
+//                                             [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] Input[] input,
+//                                             int structSize);
 
         [DllImport("user32.dll")]
         private static extern IntPtr GetMessageExtraInfo();
@@ -120,7 +123,8 @@ namespace White.Core.InputDevices
 
         private static void SendInput(Input input)
         {
-            SendInput(1, new[] {input}, Marshal.SizeOf(input));
+            SendInput(1, ref input, Marshal.SizeOf(input));
+//            SendInput(1, new[] {input}, Marshal.SizeOf(input));
         }
 
         private static MouseInput MouseInput(int command)
