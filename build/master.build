@@ -5,7 +5,7 @@
   
   <target name="*">
     <parseTarget target="${target::get-current-target()}"/>
-    <nant buildfile="components.build" target="${component}" inheritall="false">
+    <nant buildfile="components.build" target="${component}" inheritall="true">
       <properties>
         <property name="target" value="${target}"/>
         <property name="first_target_run" value="${first_target_run}"/>
@@ -15,6 +15,6 @@
   </target>
 
   <target name="uitest">
-    <nant buildfile="components.build" target="core.uitest, repository.uitest, webBrowser.uitest" inheritall="false"/>
+    <nant buildfile="components.build" target="core.uitest, repository.uitest, webBrowser.uitest" inheritall="true"/>
   </target>
 </project>
