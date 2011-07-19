@@ -105,6 +105,7 @@
         <filterchain>
           <replacetokens>
             <token key="TestMode" value="${framework}" />
+            <token key="JavaLocation" value="${java.location}" />
           </replacetokens>
         </filterchain>
       </copy>
