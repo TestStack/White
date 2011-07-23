@@ -119,4 +119,18 @@
       </if>
     </sequential>
   </macrodef>
+
+  <macrodef name="clean-test-project">
+    <attributes>
+      <attribute name="project.dir"/>
+    </attributes>
+    <sequential>
+      <delete>
+        <fileset basedir="${project.dir}">
+          <include name="bin/**/*.*"/>
+          <include name="obj/**/*.*"/>
+        </fileset>
+      </delete>
+    </sequential>
+  </macrodef>
 </project>

@@ -3,6 +3,8 @@
 <project name="Core">
   <target name="core.clean">
     <component-clean/>
+    <clean-test-project project.dir="..\Components\Core\Tests\WinFormsTestApp"/>
+    <clean-test-project project.dir="..\Components\Core\Tests\WPFTestApp"/>
   </target>
   
   <target name="core.compile" depends="core.clean">
@@ -12,7 +14,7 @@
   <target name="core.uitest" depends="core.compile,core.wpf.uitest,core.winform.uitest,core.swt.uitest"/>
     
   <target name="core.swt.uitest" depends="core.compile">
-    <fail unless="${property::exists(java.location)}" message="Java location is not specified. Java is needed for running SWT tests"/>  
+    <fail unless="${property::exists('java.location')}" message="Java location is not specified. Java is needed for running SWT tests"/>  
     <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
   </target> 
 

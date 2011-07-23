@@ -2,6 +2,7 @@
 <project name="CustomControls">
   <target name="customControls.clean">
     <component-clean/>
+    <clean-test-project project.dir="..\Components\CustomControls\Tests\WPFTestApplication"/>
   </target>
 
   <target name="customControls.compile" depends="customControls.clean" >

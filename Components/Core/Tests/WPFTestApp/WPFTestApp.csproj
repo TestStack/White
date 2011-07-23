@@ -99,10 +99,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CustomWhiteControlsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="TristateControlWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -149,9 +145,6 @@
     </Compile>
     <Compile Include="ListViewScenarios.xaml.cs">
       <DependentUpon>ListViewScenarios.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomWhiteControlsWindow.xaml.cs">
-      <DependentUpon>CustomWhiteControlsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TristateControlWindow.xaml.cs">
       <DependentUpon>TristateControlWindow.xaml</DependentUpon>

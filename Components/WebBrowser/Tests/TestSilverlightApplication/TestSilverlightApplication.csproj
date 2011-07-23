@@ -62,9 +62,6 @@
     <Reference Include="System.Windows.Browser" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\Core\AssemblyInfo.cs">
-      <Link>AssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

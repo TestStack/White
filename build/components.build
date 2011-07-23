@@ -18,7 +18,6 @@
   <include buildfile="customCommands.build"/>
   <include buildfile="webBrowser.build"/>
   <include buildfile="white-nunit.build"/>
-  <include buildfile="test-applications.build"/>
 
   <target name="core" depends="core.${target}" />
   <target name="repository" depends="core, reporting, repository.${target}" />
@@ -28,7 +27,6 @@
   <target name="customControls" depends="core, customControls.${target}" />
   <target name="webBrowser" depends="core, webBrowser.${target}" />
   <target name="white-nunit" depends="core, white-nunit.${target}" />
-  <target name="test-applications" depends="test-applications.${target}"/>
 
-  <target name="all" depends="core,repository,reporting,recorder,customCommands,customControls,webBrowser,white-nunit,test-applications"/>
+  <target name="all" depends="core,repository,reporting,recorder,customCommands,customControls,webBrowser,white-nunit"/>
 </project>

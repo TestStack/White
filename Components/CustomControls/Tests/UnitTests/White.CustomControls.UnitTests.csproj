@@ -36,7 +36,7 @@
   <ItemGroup>
     <Reference Include="nunit.framework, Version=2.4.6.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\..\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
@@ -46,7 +46,7 @@
     </Reference>
     <Reference Include="Rhino.Mocks, Version=3.6.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Rhino.Mocks.dll</HintPath>
+      <HintPath>..\..\..\..\lib\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -69,16 +69,13 @@
     </Reference>
     <Reference Include="White.Core, Version=0.2.0.0, Culture=neutral, PublicKeyToken=2672efbf3e161801, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Output\Components\Core\White.Core.dll</HintPath>
+      <HintPath>..\..\..\..\Output\Components\core\White.Core.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\AssemblyInfo.cs">
-      <Link>AssemblyInfo.cs</Link>
-    </Compile>
     <Compile Include="AssemblyBasedFactoryTest.cs" />
     <Compile Include="Automation\CommandAssemblyTest.cs" />
     <Compile Include="Automation\CommandSerializerTest.cs" />
@@ -91,7 +88,7 @@
     <Compile Include="Automation\WhitePeerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Source\CustomControlPeers\CustomControlPeers.csproj">
+    <ProjectReference Include="..\..\Source\CustomControlPeers\CustomControlPeers.csproj">
       <Project>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</Project>
       <Name>CustomControlPeers</Name>
     </ProjectReference>
