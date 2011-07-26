@@ -108,8 +108,8 @@ namespace White.Core.Factory
 
         public virtual Window FindWindow(Process process, Predicate<string> match, InitializeOption initializeOption, WindowSession windowSession)
         {
-            AutomationElement foundElement =
-                WaitTillFound(() => FindWindowElement(process, match), "Could not find window matching condition");
+            string message = string.Format("Could not find window matching condition. ProcessName: {0}, ProcessId: {1}, MatchingConditionMethod: {2}, MatchingConditionTarget: {3}", process.ProcessName, process.Id, match.Method, match.Target);
+            AutomationElement foundElement = WaitTillFound(() => FindWindowElement(process, match), message);
             return Create(foundElement, initializeOption, windowSession);
         }
 

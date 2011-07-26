@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension;minor.version;major.version-->
+<!--EXTERNAL_PROPERTIES: fixture;excludes;today;projectName;extension;minor.version;major.version;java.location-->
 <project name="Core">
   <target name="core.clean">
     <component-clean/>
@@ -11,11 +11,11 @@
     <component-compile/>
   </target>
 
-  <target name="core.uitest" depends="core.compile,core.wpf.uitest,core.winform.uitest,core.swt.uitest"/>
+  <target name="core.uitest" depends="core.swt.uitest"/>
     
   <target name="core.swt.uitest" depends="core.compile">
-    <fail unless="${property::exists('java.location')}" message="Java location is not specified. Java is needed for running SWT tests"/>  
-    <core-test excludes="WPF,WinForm,Normal" framework="SWT"/>
+    <fail unless="${property::exists('java.location')}" message="Java location is not specified. Java is needed for running SWT tests"/>
+    <core-test excludes="WPF,WinForm,Normal" framework="SWT" java.location="${java.location}"/>
   </target> 
 
   <target name="core.winform.uitest" depends="core.compile">

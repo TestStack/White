@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -8,8 +9,8 @@ namespace White.Core.UITests
 {
     public abstract class TestConfiguration
     {
-        public static string WPFTestAppLocation = @"..\..\..\Components\Tests\WPFTestApp\bin\debug\WindowsPresentationFramework.exe";
-        public static string WinFormsTestAppLocation = @"..\..\..\Components\Tests\WinFormsTestApp\bin\debug\WinFormsTestApp.exe";
+        public static string WPFTestAppLocation = @"..\..\..\Components\Core\Tests\WPFTestApp\bin\debug\WindowsPresentationFramework.exe";
+        public static string WinFormsTestAppLocation = @"..\..\..\Components\Core\Tests\WinFormsTestApp\bin\debug\WinFormsTestApp.exe";
 
         public static string SWTTestAppLocation = @"java.exe";
 
@@ -62,11 +63,24 @@ namespace White.Core.UITests
 
     public class SWTTestConfiguration : TestConfiguration
     {
+        private static readonly Dictionary<String, String> SWTJarFiles = new Dictionary<string, string>
+                                                             {
+                                                                 {"32bit", "org.eclipse.swt.win32.win32.x86_3.7.0.v3735b.jar"},
+                                                                 {"64bit", "org.eclipse.swt.win32.win32.x86_64_3.7.0.v3735b.jar"}
+                                                             };
+
         public SWTTestConfiguration(string commandLineArguments)
-            : base(
-                SWTAppFullPath(),
-                @" -classpath SampleSWTApp\bin;""%classpath%"";SampleSWTApp\org.eclipse.swt.win32.win32.x86_3.2.1.v3235.jar -Djava.library.path=SampleSWTApp Program " +
-                commandLineArguments) {}
+            : base(SWTAppFullPath(),
+                    string.Format(@" -classpath SampleSWTApp\bin;""%classpath%"";SampleSWTApp\" + SWTJarFile() + @" -Djava.library.path=SampleSWTApp Program {0}", commandLineArguments)) { }
+
+        private static string SWTJarFile()
+        {
+            string processorType = ConfigurationManager.AppSettings["ProcessorType"];
+            string jarFile;
+            if (!SWTJarFiles.TryGetValue(processorType, out jarFile))
+                throw new ConfigurationErrorsException("ProcessorType property is not specified in AppSettings");
+            return jarFile;
+        }
 
         private static string SWTAppFullPath()
         {
@@ -77,7 +91,7 @@ namespace White.Core.UITests
 
         protected override string WorkingDir
         {
-            get { return @"..\..\..\TestApplications"; }
+            get { return @"..\..\..\Components\Core\Tests"; }
         }
     }
 }

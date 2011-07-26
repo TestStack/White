@@ -2,7 +2,8 @@
 <project name="Macrodefs">
   <loadtasks assembly="..\tools\nant\CustomTasks\macrodef.dll"/>
   <property name="framework.dir" value="c:\windows\microsoft.net\framework\v3.5"/>
-  <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
+  <property name="nunit.exe" value="tools\nunit\nunit-console-x86.exe" if="${property::get-value('processor-type') == '64bit'}"/>
+  <property name="nunit.exe" value="tools\nunit\nunit-console.exe" if="${property::get-value('processor-type') == '32bit'}"/>
 
   <macrodef name="component-compile">
     <sequential>
@@ -63,33 +64,24 @@
     </sequential>
   </macrodef>
 
-  <macrodef name="nunit-test">
-    <attributes>
-      <attribute name="projects"/>
-    </attributes>
-    <sequential>
-      <property name="assemblies" value=""/>
-      <foreach item="String" in="${projects}" delim="," property="project">
-        <property name="assemblies" value="${assemblies} ${project}\bin\debug\White.${project}.dll"/>
-      </foreach>
-      <property name="nunit.exe" value="tools\nunit\nunit-console.exe"/>
-      <exec program="${nunit.exe}" commandline="/nologo /nothread ${assemblies} /xml:&quot;${build.output.dir}\TestResults.xml&quot;" failonerror="${fail.test.onerror}"/>
-    </sequential>
-  </macrodef>
-
   <macrodef name="unit-test">
     <sequential>
       <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\${component}\log4net.config"/>
       <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UnitTests.dll /xml:&quot;..\Output\Components\${component}\${component}_UnitTestResults.xml&quot;"/>
-      <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg}" failonerror="${fail.test.onerror}"/>
+      <exec program="${nunit.exe}" commandline="/nologo /nothread ${nunit.arg}" failonerror="${fail.test.onerror}"/>
     </sequential>
   </macrodef>
 
   <macrodef name="ui-test">
     <sequential>
       <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\${component}\log4net.config"/>
-      <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
-      <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg}" failonerror="${fail.test.onerror}"/>
+      <if test="${property::exists('test.fixture')}">
+        <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /fixture:${test.fixture} /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
+      </if>
+      <if test="${not property::exists('test.fixture')}">
+        <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
+      </if>
+      <exec program="${nunit.exe}" commandline="/nologo /nothread ${nunit.arg}" failonerror="${fail.test.onerror}"/>
     </sequential>
   </macrodef>
 
@@ -97,25 +89,33 @@
     <attributes>
       <attribute name="excludes" default=""/>
       <attribute name="includes" default=""/>
+      <attribute name="java.location" default=""/>
       <attribute name="framework"/>
     </attributes>
     <sequential>
-      <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\Core\log4net.config"/>
       <copy file="..\Components\Core\Tests\UITests\app.config.template" tofile="..\Output\Components\Core\White.Core.UITests.dll.config" overwrite="true">
         <filterchain>
           <replacetokens>
             <token key="TestMode" value="${framework}" />
             <token key="JavaLocation" value="${java.location}" />
+            <token key="ProcessorType" value="${processor-type}" />
           </replacetokens>
         </filterchain>
       </copy>
+      <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\${component}\log4net.config"/>
 
-      <property name="nunit.arg" value="..\Output\Components\Core\White.Core.UITests.dll /xml:&quot;..\Output\Components\Core\Core_UITestResults_${framework}_.xml&quot;"/>
+      <if test="${property::exists('test.fixture')}">
+        <property name="nunit.arg" value="..\Output\Components\Core\White.Core.UITests.dll /fixture:${test.fixture} /xml:&quot;..\Output\Components\Core\Core_UITestResults_${framework}_.xml&quot;"/>
+      </if>
+      <if test="${not property::exists('test.fixture')}">
+        <property name="nunit.arg" value="..\Output\Components\Core\White.Core.UITests.dll /xml:&quot;..\Output\Components\Core\Core_UITestResults_${framework}_.xml&quot;"/>
+      </if>
+      
       <if test="${excludes==''}">
-        <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /include:&quot;${includes}&quot;" failonerror="${fail.test.onerror}"/>
+        <exec program="${nunit.exe}" commandline="/nologo /nothread ${nunit.arg} /include:&quot;${includes}&quot;" failonerror="${fail.test.onerror}"/>
       </if>
       <if test="${includes==''}">
-        <exec program="${nunit.exe}" commandline="/nologo ${nunit.arg} /exclude:&quot;${excludes}&quot;" failonerror="${fail.test.onerror}"/>
+        <exec program="${nunit.exe}" commandline="/nologo /nothread ${nunit.arg} /exclude:&quot;${excludes}&quot;" failonerror="${fail.test.onerror}"/>
       </if>
     </sequential>
   </macrodef>

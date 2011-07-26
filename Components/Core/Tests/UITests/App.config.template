@@ -13,6 +13,7 @@
     <add key="SaveWindowItemsMap" value="true"/>
     <add key="TestMode" value="@TestMode@"/>
     <add key="JavaLocation" value="@JavaLocation@"/>
+    <add key="ProcessorType" value="@ProcessorType@"/>
   </appSettings>
   <NUnit>
     <TestRunner>
