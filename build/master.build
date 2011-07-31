@@ -14,7 +14,11 @@
     <property name="first_target_run" value="false"/>
   </target>
 
-  <target name="uitest">
-    <nant buildfile="components.build" target="core.uitest, repository.uitest, webBrowser.uitest" inheritall="true"/>
+  <target name="webBrowser.test">
+    <nant buildfile="components.build" target="${target::get-current-target()}" inheritall="true">
+      <properties>
+        <property name="target" value="test"/>
+      </properties>
+    </nant>
   </target>
 </project>

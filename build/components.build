@@ -25,8 +25,17 @@
   <target name="recorder" depends="core, repository, recorder.${target}" />
   <target name="customCommands" depends="core, webBrowser, customCommands.${target}" />
   <target name="customControls" depends="core, customControls.${target}" />
-  <target name="webBrowser" depends="core, webBrowser.${target}" />
+  <target name="webBrowser" depends="core, customControls, webBrowser.${target}" />
   <target name="white-nunit" depends="core, white-nunit.${target}" />
+
+  <target name="core.test" depends="core.unittest, core.uitest" />
+  <target name="repository.test" depends="repository.unittest, repository.uitest" />
+  <target name="reporting.test" depends="reporting.unittest, reporting.uitest" />
+  <target name="recorder.test" depends="recorder.unittest, recorder.uitest" />
+  <target name="customCommands.test" depends="customCommands.unittest, customCommands.uitest" />
+  <target name="customControls.test" depends="customControls.unittest" />
+  <target name="webBrowser.test" depends="webBrowser.unittest, webBrowser.uitest" />
+  <target name="white-nunit.test" depends="white-nunit.unittest, white-nunit.uitest" />
 
   <target name="all" depends="core,repository,reporting,recorder,customCommands,customControls,webBrowser,white-nunit"/>
 </project>

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPFTestApplication
+namespace White.Core.CustomControls.WPFTestApplication
 {
     /// <summary>
     /// Interaction logic for App.xaml
