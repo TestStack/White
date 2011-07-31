@@ -13,6 +13,7 @@
   </target>
 
   <target name="customCommands.uitest" depends="customCommands.compile">
-    <ui-test/>
+    <ui-test test.assembly.last.name="WPFTests"/>
+    <ui-test test.assembly.last.name="SilverlightTests"/>
   </target>
 </project>

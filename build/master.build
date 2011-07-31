@@ -14,7 +14,7 @@
     <property name="first_target_run" value="false"/>
   </target>
 
-  <target name="webBrowser.test">
+  <target name="customCommands.test">
     <nant buildfile="components.build" target="${target::get-current-target()}" inheritall="true">
       <properties>
         <property name="target" value="test"/>

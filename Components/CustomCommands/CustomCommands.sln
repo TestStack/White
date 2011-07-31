@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.WPFTests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.SilverlightTests", "Tests\CustomCommands.SilverlightTests\CustomCommands.SilverlightTests.csproj", "{196A0B37-0824-4B54-A2A3-87D98B02CFA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestApplication", "Tests\WPFTestApplication\WPFTestApplication.csproj", "{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

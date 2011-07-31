@@ -73,13 +73,16 @@
   </macrodef>
 
   <macrodef name="ui-test">
+    <attributes>
+      <attribute name="test.assembly.last.name" default="UITests"/>
+    </attributes>
     <sequential>
       <copy file="..\Components\log4net4test.config" tofile="..\Output\Components\${component}\log4net.config"/>
       <if test="${property::exists('test.fixture')}">
-        <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /fixture:${test.fixture} /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
+        <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.${test.assembly.last.name}.dll /fixture:${test.fixture} /xml:&quot;..\Output\Components\${component}\${component}_${test.assembly.last.name}Results.xml&quot;"/>
       </if>
       <if test="${not property::exists('test.fixture')}">
-        <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.UITests.dll /xml:&quot;..\Output\Components\${component}\${component}_UITestResults.xml&quot;"/>
+        <property name="nunit.arg" value="..\Output\Components\${component}\White.${component}.${test.assembly.last.name}.dll /xml:&quot;..\Output\Components\${component}\${component}_${test.assembly.last.name}Results.xml&quot;"/>
       </if>
       <exec program="${nunit.exe}" commandline="/nologo /nothread ${nunit.arg}" failonerror="${fail.test.onerror}"/>
     </sequential>

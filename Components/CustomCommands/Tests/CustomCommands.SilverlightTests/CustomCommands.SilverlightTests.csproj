@@ -8,8 +8,8 @@
     <ProjectGuid>{196A0B37-0824-4B54-A2A3-87D98B02CFA6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.CustomCommandsSilverlightTests</RootNamespace>
-    <AssemblyName>White.CustomCommandsSilverlightTests</AssemblyName>
+    <RootNamespace>White.CustomCommands.SilverlightTests</RootNamespace>
+    <AssemblyName>White.CustomCommands.SilverlightTests</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -70,9 +70,6 @@
       <Project>{11FBB4B6-E269-43E4-A335-F0AD1F848493}</Project>
       <Name>CustomCommands.Framework.Silverlight</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

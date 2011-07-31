@@ -23,7 +23,7 @@
   <target name="repository" depends="core, reporting, repository.${target}" />
   <target name="reporting" depends="core, reporting.${target}" />
   <target name="recorder" depends="core, repository, recorder.${target}" />
-  <target name="customCommands" depends="core, webBrowser, customCommands.${target}" />
+  <target name="customCommands" depends="core, customControls, webBrowser, customCommands.${target}" />
   <target name="customControls" depends="core, customControls.${target}" />
   <target name="webBrowser" depends="core, customControls, webBrowser.${target}" />
   <target name="white-nunit" depends="core, white-nunit.${target}" />

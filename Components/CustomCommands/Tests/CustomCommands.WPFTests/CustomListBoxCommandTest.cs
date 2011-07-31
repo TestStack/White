@@ -1,19 +1,12 @@
 using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.Core.UIItems.ListBoxItems;
-using White.Core.UITests;
-using White.Core.UITests.Testing;
 
 namespace White.CustomCommands.WPFTests
 {
-    [TestFixture, WPFCategory]
-    public class CustomListBoxCommandTest : ControlsActionTest
+    [TestFixture]
+    public class CustomListBoxCommandTest : WPFCustomCommandsTest
     {
-        protected override string CommandLineArguments
-        {
-            get { return "CustomWhiteControlsWindow"; }
-        }
-
         [Test]
         public void CustomCommandForListBox()
         {

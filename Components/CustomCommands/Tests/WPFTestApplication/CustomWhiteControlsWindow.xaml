@@ -1,4 +1,4 @@
-﻿<Window x:Class="White.Core.CustomControls.WPFTestApplication.CustomWhiteControlsWindow"
+﻿<Window x:Class="White.CustomCommands.WPFTestApplication.CustomWhiteControlsWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:CustomControls="clr-namespace:White.CustomControls;assembly=White.CustomControls"

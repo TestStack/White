@@ -51,22 +51,22 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Output\Components\Core\White.Core.dll</HintPath>
     </Reference>
-    <Reference Include="White.Core.UITests, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Output\Components\Core\White.Core.UITests.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomButtonCommandTest.cs" />
     <Compile Include="CustomListBoxCommandTest.cs" />
     <Compile Include="CustomTextBoxCommandTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WPFCustomCommandsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\CustomCommands.Framework.WPF.csproj">
       <Project>{81A680B4-21B8-4AF4-8D6E-795376E6F855}</Project>
       <Name>CustomCommands.Framework.WPF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

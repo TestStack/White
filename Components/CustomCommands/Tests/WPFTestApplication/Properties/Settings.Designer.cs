@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace White.Core.CustomControls.WPFTestApplication.Properties {
+namespace White.CustomCommands.WPFTestApplication.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace White.Core.CustomControls.WPFTestApplication
+namespace White.CustomCommands.WPFTestApplication
 {
     /// <summary>
     /// Interaction logic for GridSplitter.xaml

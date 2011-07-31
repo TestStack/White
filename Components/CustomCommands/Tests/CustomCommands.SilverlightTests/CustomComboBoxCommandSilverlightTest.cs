@@ -1,10 +1,9 @@
 ﻿using NUnit.Framework;
 using White.Core.CustomCommands;
 using White.Core.UIItems.ListBoxItems;
-using White.CustomCommands;
 using White.WebBrowser.UITests;
 
-namespace White.CustomCommandsSilverlightTests
+namespace White.CustomCommands.SilverlightTests
 {
     [TestFixture]
     public class CustomComboBoxCommandSilverlightTest : SilverlightTestFixture
