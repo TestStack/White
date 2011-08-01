@@ -30,19 +30,4 @@
       </fileset>
     </zip>
   </target>
-
-  <macrodef name="exec-ndoc">
-    <attributes>
-      <attribute name="assembly"/>
-      <attribute name="project"/>
-    </attributes>
-    <sequential>
-      <property name="ndoc.dir" value="${release.dir}\temp\NDoc"/>
-      <exec program="tools\ndoc\NDocConsole.exe">
-        <arg value="..\Output\Components\${project}\${assembly}"/>
-        <arg value="-OutputDirectory=${ndoc.dir}\${project}"/>
-        <arg value="-HtmlHelpName=${path::get-full-path(ndoc.dir)}\index.html"/>
-      </exec>
-    </sequential>
-  </macrodef>
 </project>
