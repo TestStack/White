@@ -22,6 +22,7 @@
         <include name="Output/**/*.*"/>
         <include name="Components/log4net.config"/>
         <exclude name="**/*Test*/**"/>
+        <exclude name="**/*Rhino.Mocks*/**"/>
       </fileset>
     </copy>
     <zip zipfile="${release.dir}\White_Bin_0.${major.version}.${minor.version}.zip">
