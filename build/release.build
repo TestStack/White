@@ -10,8 +10,6 @@
     <exec-ndoc assembly="White.Recorder.exe" project="Recorder"/>
     <exec-ndoc assembly="White.NUnit.dll" project="White.NUnit"/>
     <exec-ndoc assembly="White.WebBrowser.dll" project="WebBrowser"/>
-    <exec-ndoc assembly="White.CustomCommands.dll" project="CustomCommands"/>
-    <exec-ndoc assembly="White.CustomControls.dll" project="CustomControls"/>
   </target>
 
   <target name="clean.dist">
