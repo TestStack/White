@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<project name="release">
+  <property name="release.dir" value="../release"/>
+  <target name="dist" depends="doc, dist.binary"/>
+
+  <target name="doc">
+    <exec-ndoc assembly="White.Core.dll" project="Core"/>
+    <exec-ndoc assembly="White.Repository.dll" project="Repository"/>
+    <exec-ndoc assembly="White.Reporting.dll" project="Reporting"/>
+    <exec-ndoc assembly="White.Recorder.exe" project="Recorder"/>
+    <exec-ndoc assembly="White.NUnit.dll" project="White.NUnit"/>
+    <exec-ndoc assembly="White.WebBrowser.dll" project="WebBrowser"/>
+    <exec-ndoc assembly="White.CustomCommands.dll" project="CustomCommands"/>
+    <exec-ndoc assembly="White.CustomControls.dll" project="CustomControls"/>
+  </target>
+
+  <target name="clean.dist">
+    <clean-dir dir="${release.dir}"/>
+  </target>
+
+  <target name="dist.binary" depends="clean.dist" >
+    <copy todir="${release.dir}/temp" flatten="true">
+      <fileset basedir="..">
+        <include name="Output/**/*.*"/>
+        <include name="Components/log4net.config"/>
+        <exclude name="**/*Test*/**"/>
+      </fileset>
+    </copy>
+    <zip zipfile="${release.dir}\White_Bin_0.${major.version}.${minor.version}.zip">
+      <fileset basedir="${release.dir}/temp">
+        <include name="**/*.*"/>
+      </fileset>
+    </zip>
+  </target>
+</project>

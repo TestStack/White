@@ -1,5 +1,7 @@
 <?xml version="1.0" ?>
 <project name="master">
+  <include buildfile="release.build"/>
+  <include buildfile="macrodefs.build"/>
   <loadtasks path="..\Tools\Nant\WhiteCustomTasks"/>
   <property name="first_target_run" value="true"/>
   

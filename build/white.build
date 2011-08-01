@@ -35,21 +35,6 @@
       </fileset>
     </delete>
   </target>
-
-  <target name="clean.dist">
-    <clean-dir dir="${build.output.dir}"/>
-  </target>
-
-  <target name="-copy.assembly.info">
-    <copy file="Core\AssemblyInfo.cs.template" tofile="Core\AssemblyInfo.cs" overwrite="true" >
-      <filterchain>
-        <replacetokens>
-          <token key="major" value="${major.version}"/>
-          <token key="minor" value="${minor.version}"/>
-        </replacetokens>
-      </filterchain>
-    </copy>
-  </target>
   
   <target name="doc" depends="compile, doc.only"/>
   <target name="doc.only">
@@ -68,47 +53,9 @@
   </target>
   
   <target name="test.core" depends="compile, test.wpf.and.common, test.winform, test.swt"/>
-  <target name="test.wpf.and.common">
-    
-  </target>
-  
-  <target name="test.winform">
-    
-  </target>
 
-  <target name="test.swt">
-    
-  </target>
-
-  <target name="dist" depends="-copy.assembly.info, compile, doc, dist.binary"/>
 
   <target name="dist.binary" depends="compile, doc.only, dist.binary.only"/>
-  <target name="dist.binary.only" depends="clean.dist" >
-    <copy todir="${build.output.dir}" flatten="true">
-      <fileset basedir=".">
-        <include name="**\bin\debug\*.*"/>
-        <include name="Core\log4net.config"/>
-        <exclude name="WinFormsTestApp/**"/>
-        <exclude name="WPFTestApp/**"/>
-        <exclude name="TestApplications/**"/>
-        <exclude name="White.NantBuild/**"/>
-        <exclude name="tools/**"/>
-        <exclude name="NantBuild/**"/>
-        <exclude name="**/*Nant*"/>
-        <exclude name="NantBuild/**"/>
-        <exclude name="**/*Test*"/>
-        <exclude name="**/*Rhino*"/>
-        <exclude name="**/WPFVisifire.Charts*"/>
-        <exclude name="**/White.CustomCommands.WPF.*"/>
-        <exclude name="**/White.CustomCommands.Silverlight.*"/>
-      </fileset>
-    </copy>
-    <zip zipfile="${release.dir}\White_Bin_0.${major.version}.${minor.version}.zip">
-      <fileset basedir="${build.output.dir}">
-        <include name="**/*.*"/>
-      </fileset>
-    </zip>
-  </target>
 
   <target name="test.app.deploy" depends="compile, test.app.deploy.only"/>
   <target name="test.app.deploy.only">

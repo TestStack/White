@@ -34,9 +34,9 @@
       <attribute name="project"/>
     </attributes>
     <sequential>
-      <property name="ndoc.dir" value="${build.output.dir}\NDoc"/>
+      <property name="ndoc.dir" value="${release.dir}\temp\NDoc"/>
       <exec program="tools\ndoc\NDocConsole.exe">
-        <arg value="${project}\bin\debug\${assembly}"/>
+        <arg value="..\Output\Components\${project}\${assembly}"/>
         <arg value="-OutputDirectory=${ndoc.dir}\${project}"/>
         <arg value="-HtmlHelpName=${path::get-full-path(ndoc.dir)}\index.html"/>
       </exec>

@@ -379,7 +379,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="AssemblyInfo.cs.template" />
     <None Include="white.snk" />
   </ItemGroup>
   <ItemGroup>
