@@ -216,6 +216,7 @@ namespace White.Core.InputDevices
         {
             LeftDown();
             LeftUp();
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
             LeftDown();
         }
 
