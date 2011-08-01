@@ -5,11 +5,6 @@
 
   <property name="fail.test.onerror" value="true" unless="${property::exists('fail.test.onerror')}"/>
 
-  <if test="${property::get-value('first_target_run') == 'true'}">
-    <include buildfile="macrodefs.build"/>
-    <property name="macrodef_included" value="true"/>
-  </if>
-
   <include buildfile="core.build"/>
   <include buildfile="repository.build"/>
   <include buildfile="reporting.build"/>
