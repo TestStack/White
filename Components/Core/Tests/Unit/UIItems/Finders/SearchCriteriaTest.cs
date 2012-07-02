@@ -33,6 +33,12 @@ namespace White.Core.UnitTests.UIItems.Finders
             Assert.AreNotEqual(SearchCriteria.ByFramework(Constants.WinFormFrameworkId), SearchCriteria.ByFramework(Constants.Win32FrameworkId));
             Assert.AreEqual(SearchCriteria.ByAutomationId("foo").AndByText("bar"), SearchCriteria.ByAutomationId("foo").AndByText("bar"));
             Assert.AreEqual(SearchCriteria.ByText("bar").AndAutomationId("foo"), SearchCriteria.ByAutomationId("foo").AndByText("bar"));
+            //ByNativePropertyTests...
+            Assert.AreEqual(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "blah"), SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "blah"));
+            Assert.AreNotEqual(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "blah"), SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "blah1"));
+            Assert.AreEqual(SearchCriteria.ByNativeProperty(AutomationElement.IsControlElementProperty, true), SearchCriteria.ByNativeProperty(AutomationElement.IsControlElementProperty, true));
+            Assert.AreNotEqual(SearchCriteria.ByNativeProperty(AutomationElement.IsControlElementProperty, true), SearchCriteria.ByNativeProperty(AutomationElement.IsControlElementProperty, false));
+            Assert.AreNotEqual(SearchCriteria.ByNativeProperty(AutomationElement.IsControlElementProperty, true), SearchCriteria.ByNativeProperty(AutomationElement.IsDockPatternAvailableProperty, true));
         }
 
         [Test]
@@ -40,6 +46,9 @@ namespace White.Core.UnitTests.UIItems.Finders
         {
             Assert.AreEqual("AutomationId=foo,Name=bar", SearchCriteria.ByText("bar").AndAutomationId("foo").ToString());
             Assert.AreEqual("AutomationId=foo,Name=bar,Index=1", SearchCriteria.ByText("bar").AndAutomationId("foo").AndIndex(1).ToString());
+            //ByNativePropertyTests...
+            Assert.AreEqual("AutomationElementIdentifiers.NameProperty=blah", SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "blah").ToString());
+            Assert.AreEqual("AutomationElementIdentifiers.IsControlElementProperty=True", SearchCriteria.ByNativeProperty(AutomationElement.IsControlElementProperty, true).ToString());
         }
     }
 }

@@ -56,5 +56,11 @@ namespace White.Core.UIItems.Finders
             var automationElementProperty = new AutomationElementProperty(value, automationProperty.ProgrammaticName, automationProperty);
             return new SimpleSearchCondition(automationElement => automationElement.GetCurrentPropertyValue(automationProperty), automationElementProperty);
         }
+
+        public static SearchCondition CreateForNativeProperty(AutomationProperty automationProperty, bool value)
+        {
+            var automationElementProperty = new AutomationElementProperty(value, automationProperty.ProgrammaticName, automationProperty);
+            return new SimpleSearchCondition(automationElement => automationElement.GetCurrentPropertyValue(automationProperty), automationElementProperty);
+        }
     }
 }
