@@ -86,6 +86,10 @@ namespace White.Core.UITests
         {
             string javaLocation = ConfigurationManager.AppSettings["JavaLocation"];
             if (javaLocation == null) throw new ConfigurationErrorsException("JavaLocation key is not configured in appSettings");
+            //check this location exists
+            if (!Directory.Exists(javaLocation)) throw new ConfigurationErrorsException("JavaLocation does not point to a valid installation of JDK in appSettings!");
+            //check it contains java.exe
+            if (!File.Exists(javaLocation + "\\java.exe")) throw new ConfigurationErrorsException("JavaLocation contains a valid JDK folder, but can't find java.exe within the folder in appSettings!");
             return Path.Combine(javaLocation, SWTTestAppLocation);
         }
 
