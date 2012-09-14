@@ -12,9 +12,7 @@ namespace White.CustomCommands.WPFTests
         [SetUp]
         public void SetUp()
         {
-            application =
-                Application.Launch(
-                    @"..\..\..\Components\CustomCommands\Tests\WPFTestApplication\bin\debug\White.CustomCommands.WPFTestApplication.exe");
+            application = Application.Launch(@"White.CustomCommands.WPFTestApplication.exe");
             window = application.GetWindow("Form1");
         }
 

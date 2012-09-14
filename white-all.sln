@@ -63,7 +63,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.White-NUnit.UnitTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.CustomControls.UnitTests", "Components\CustomControls\Tests\UnitTests\White.CustomControls.UnitTests.csproj", "{9F509E89-5158-4095-B3D8-53FE00027363}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestApp", "Components\Core\Tests\WPFTestApp\WPFTestApp.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentWPFTestApp", "Components\Core\Tests\WPFTestApp\ComponentWPFTestApp.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}"
 EndProject
@@ -75,6 +75,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{87CF3A
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsWPFTestApplication", "Components\CustomCommands\Tests\WPFTestApplication\CommandsWPFTestApplication.csproj", "{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -190,6 +192,10 @@ Global
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Debug|x86.Build.0 = Debug|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Release|x86.ActiveCfg = Release|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Release|x86.Build.0 = Release|x86
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Debug|x86.ActiveCfg = Debug|x86
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Debug|x86.Build.0 = Debug|x86
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Release|x86.ActiveCfg = Release|x86
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -197,5 +203,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
+		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
 	EndGlobalSection
 EndGlobal
