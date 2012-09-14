@@ -1,6 +1,6 @@
 using System;
 using Bricks.RuntimeFramework;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 using White.Core.UIItems.WindowItems;
 
 namespace Repository.Interceptors

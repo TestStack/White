@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Windows.Automation;
 using Bricks.Core;
 using Bricks.RuntimeFramework;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
 using White.Core.InputDevices;

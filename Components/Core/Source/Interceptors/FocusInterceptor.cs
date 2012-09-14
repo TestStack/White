@@ -1,5 +1,5 @@
 using Bricks.DynamicProxy;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 
 namespace White.Core.Interceptors
 {

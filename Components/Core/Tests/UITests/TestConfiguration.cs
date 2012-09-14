@@ -9,8 +9,8 @@ namespace White.Core.UITests
 {
     public abstract class TestConfiguration
     {
-        public static string WPFTestAppLocation = @"..\..\..\Components\Core\Tests\WPFTestApp\bin\debug\WindowsPresentationFramework.exe";
-        public static string WinFormsTestAppLocation = @"..\..\..\Components\Core\Tests\WinFormsTestApp\bin\debug\WinFormsTestApp.exe";
+        public static string WPFTestAppLocation = @"WindowsPresentationFramework.exe";
+        public static string WinFormsTestAppLocation = @"WinFormsTestApp.exe";
 
         public static string SWTTestAppLocation = @"java.exe";
 

@@ -1,5 +1,5 @@
 using Bricks.RuntimeFramework;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 
 namespace Repository.Interceptors
 {

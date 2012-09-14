@@ -1,6 +1,6 @@
 using System;
 using Bricks.DynamicProxy;
-using Castle.Core.Interceptor;
+using Castle.DynamicProxy;
 using White.Core.Configuration;
 using White.Core.Logging;
 using White.Core.UIItems;
