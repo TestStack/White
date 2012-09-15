@@ -203,9 +203,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Source\White.Core.csproj">
+    <ProjectReference Include="..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>White.Core</Name>
+      <Name>TestStack.White</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Repository\Source\Repository.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>

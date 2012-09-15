@@ -134,12 +134,6 @@
     <Compile Include="UIItems\PlatformSpecificItemAttributeTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\White.Core.csproj">
-      <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>White.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="white.snk" />
@@ -159,6 +153,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
+      <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
+      <Name>TestStack.White</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

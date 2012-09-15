@@ -100,9 +100,9 @@
     <Compile Include="Automation\WhitePeerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Source\White.Core.csproj">
+    <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>White.Core</Name>
+      <Name>TestStack.White</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Source\CustomControlPeers\CustomControlPeers.csproj">
       <Project>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</Project>

@@ -1,4 +1,4 @@
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildProjectDirectory)\</Root>
     <Configuration Condition="$(Configuration) == ''">Release</Configuration>
@@ -30,6 +30,9 @@
   </Target>
 
   <Target Name="Publish" DependsOnTargets="Test">
-    
+    <PropertyGroup>
+      <Version Condition="'$(Version)' = ''">0.2.1.0</Version>
+    </PropertyGroup>
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.csproj -Version $(Version) -OutputDir $(Root)build\Artifacts" />
   </Target>
 </Project>

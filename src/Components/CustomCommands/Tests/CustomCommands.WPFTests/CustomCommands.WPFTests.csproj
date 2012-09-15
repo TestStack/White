@@ -71,9 +71,9 @@
     <Compile Include="WPFCustomCommandsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Source\White.Core.csproj">
+    <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>White.Core</Name>
+      <Name>TestStack.White</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Framework\CustomCommands.Framework.WPF.csproj">
       <Project>{81A680B4-21B8-4AF4-8D6E-795376E6F855}</Project>
