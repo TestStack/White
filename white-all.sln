@@ -57,8 +57,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.WebBrowser.UnitTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.WebBrowser.UITests", "Components\WebBrowser\Tests\UITests\White.WebBrowser.UITests.csproj", "{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.NUnit", "Components\White-NUnit\Source\White.NUnit.csproj", "{0CD3A7F2-1FC8-4F02-AD66-2A3F95B1C546}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.White-NUnit.UnitTests", "Components\White-NUnit\Tests\UnitTests\White.White-NUnit.UnitTests.csproj", "{8729FCC8-D69B-4A64-AAF7-B908ABCD77B2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.CustomControls.UnitTests", "Components\CustomControls\Tests\UnitTests\White.CustomControls.UnitTests.csproj", "{9F509E89-5158-4095-B3D8-53FE00027363}"
@@ -172,10 +170,6 @@ Global
 		{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}.Debug|x86.Build.0 = Debug|x86
 		{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}.Release|x86.ActiveCfg = Release|x86
 		{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}.Release|x86.Build.0 = Release|x86
-		{0CD3A7F2-1FC8-4F02-AD66-2A3F95B1C546}.Debug|x86.ActiveCfg = Debug|x86
-		{0CD3A7F2-1FC8-4F02-AD66-2A3F95B1C546}.Debug|x86.Build.0 = Debug|x86
-		{0CD3A7F2-1FC8-4F02-AD66-2A3F95B1C546}.Release|x86.ActiveCfg = Release|x86
-		{0CD3A7F2-1FC8-4F02-AD66-2A3F95B1C546}.Release|x86.Build.0 = Release|x86
 		{8729FCC8-D69B-4A64-AAF7-B908ABCD77B2}.Debug|x86.ActiveCfg = Debug|x86
 		{8729FCC8-D69B-4A64-AAF7-B908ABCD77B2}.Debug|x86.Build.0 = Debug|x86
 		{8729FCC8-D69B-4A64-AAF7-B908ABCD77B2}.Release|x86.ActiveCfg = Release|x86

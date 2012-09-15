@@ -120,6 +120,14 @@
       <Project>{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}</Project>
       <Name>White.Core.UITests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Tests\WinFormsTestApp\WinFormsTestApp.csproj">
+      <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
+      <Name>WinFormsTestApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Core\Tests\WPFTestApp\ComponentWPFTestApp.csproj">
+      <Project>{eac2eaa3-9c17-4f59-bc5b-89c2601d38ac}</Project>
+      <Name>ComponentWPFTestApp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Source\Repository.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
       <Name>Repository</Name>
