@@ -112,9 +112,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Source\Core.csproj">
+    <ProjectReference Include="..\..\..\Core\Source\White.Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>Core</Name>
+      <Name>White.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Tests\UITests\White.Core.UITests.csproj">
       <Project>{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}</Project>

@@ -22,6 +22,14 @@
   </Target>
   
   <Target Name="Build" DependsOnTargets="Cleanup">
-    <MSBuild Projects="$(Root)src\white-all.sln" />
+    <MSBuild Projects="$(Root)src\TestStack.ProjectWhite.sln" />
+  </Target>
+
+  <Target Name="Test" DependsOnTargets="Build">
+
+  </Target>
+
+  <Target Name="Publish" DependsOnTargets="Test">
+    
   </Target>
 </Project>

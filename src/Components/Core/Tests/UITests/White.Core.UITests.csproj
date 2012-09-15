@@ -219,9 +219,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Source\Core.csproj">
+    <ProjectReference Include="..\..\Source\White.Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>Core</Name>
+      <Name>White.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\WinFormsTestApp\WinFormsTestApp.csproj">
       <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>

@@ -89,9 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Source\Core.csproj">
+    <ProjectReference Include="..\..\..\Core\Source\White.Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>Core</Name>
+      <Name>White.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Framework\CustomCommands.Framework.WPF.csproj">
       <Project>{81A680B4-21B8-4AF4-8D6E-795376E6F855}</Project>

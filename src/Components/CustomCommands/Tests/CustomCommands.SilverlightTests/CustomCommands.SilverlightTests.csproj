@@ -76,9 +76,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Source\Core.csproj">
+    <ProjectReference Include="..\..\..\Core\Source\White.Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>Core</Name>
+      <Name>White.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\WebBrowser\Source\WebBrowser.csproj">
       <Project>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</Project>

@@ -88,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyBasedFactoryTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Automation\CommandAssemblyTest.cs" />
     <Compile Include="Automation\CommandSerializerTest.cs" />
     <Compile Include="Automation\CustomCommandDeserializerTest.cs" />
@@ -99,9 +100,9 @@
     <Compile Include="Automation\WhitePeerTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Source\Core.csproj">
+    <ProjectReference Include="..\..\..\Core\Source\White.Core.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
-      <Name>Core</Name>
+      <Name>White.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Source\CustomControlPeers\CustomControlPeers.csproj">
       <Project>{E73299E0-35A0-4923-B0DD-93B6744EE75E}</Project>
@@ -112,9 +113,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
