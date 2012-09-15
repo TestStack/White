@@ -8,7 +8,7 @@
     <ProjectGuid>{12C59CE2-9CF7-44F4-B27C-90754609F979}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestStack.White</RootNamespace>
+    <RootNamespace>White.Core</RootNamespace>
     <AssemblyName>TestStack.White</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
