@@ -1,0 +1,27 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Root>$(MSBuildProjectDirectory)\</Root>
+    <Configuration Condition="$(Configuration) == ''">Release</Configuration>
+  </PropertyGroup>
+
+  <Target Name="Cleanup">
+    <Error Condition="$(Root) == ''" Text="Root variable must be defined" />
+    
+    <!-- Diagnostics -->
+    <Message Text="Diagnostics:"/>
+    <Message Text="Project root:    $(Root)" />
+    <Message Text="Drop path:       build\Artifacts" />
+
+    <!-- Clean up -->
+    <ItemGroup>
+      <FilesToDelete Include="$(Root)**\bin\**\*.*" />
+      <FilesToDelete Include="$(Root)**\obj\**\*.*" />
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)" />
+    <Delete Files="$(Root)build\Artifacts" />
+  </Target>
+  
+  <Target Name="Build" DependsOnTargets="Cleanup">
+    <MSBuild Projects="$(Root)src\white-all.sln" />
+  </Target>
+</Project>

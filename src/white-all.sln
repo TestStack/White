@@ -2,15 +2,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1BCBA4C4-8C47-496C-B0D4-FDE9D066ED27}"
 	ProjectSection(SolutionItems) = preProject
-		a.log = a.log
-		b.bat = b.bat
-		b.log = b.log
-		build-output.txt = build-output.txt
-		custom-nant.build = custom-nant.build
-		macrodefs.build = macrodefs.build
+		..\Build.cmd = ..\Build.cmd
 		Override.config = Override.config
-		w.bat = w.bat
-		white.build = white.build
+		..\White.msbuild = ..\White.msbuild
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Components\Core\Source\Core.csproj", "{12C59CE2-9CF7-44F4-B27C-90754609F979}"
