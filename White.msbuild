@@ -26,7 +26,7 @@
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
-
+    <!--Unit tests-->
   </Target>
 
   <Target Name="Publish" DependsOnTargets="Test">

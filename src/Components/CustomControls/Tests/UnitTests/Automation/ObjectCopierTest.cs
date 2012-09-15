@@ -14,7 +14,7 @@ namespace White.CustomControls.UnitTests.Automation
         public void SetUp()
         {
             var mocks = new MockRepository();
-            commandAssembly = mocks.CreateMock<ICommandAssembly>();
+            commandAssembly = mocks.StrictMock<ICommandAssembly>();
             SetupResult.For(commandAssembly.GetType(typeof (ObjectForObjectCopierTest))).Return(typeof (ObjectForObjectCopierTest));
             SetupResult.For(commandAssembly.GetType(typeof(ObjectWithoutNoArgConstructor))).Return(typeof(ObjectWithoutNoArgConstructor));
             SetupResult.For(commandAssembly.GetType(typeof(CustomEnum))).Return(typeof(CustomEnum));

@@ -18,7 +18,7 @@ namespace White.CustomControls.UnitTests.Automation
         public void SetUp()
         {
             mocks = new MockRepository();
-            commandAssemblies = mocks.CreateMock<ICommandAssemblies>();
+            commandAssemblies = mocks.StrictMock<ICommandAssemblies>();
             commandSerializer = new CommandSerializer(commandAssemblies);
         }
 
@@ -59,7 +59,7 @@ namespace White.CustomControls.UnitTests.Automation
             string serialized = commandSerializer.Serialize(objects, new List<Type>());
             ICommand command;
             Assert.AreEqual(true, commandSerializer.TryDeserializeCommand(serialized, out command));
-            Assert.IsInstanceOfType(typeof(LoadAssemblyCommand), command);
+            Assert.IsInstanceOf<LoadAssemblyCommand>(command);
         }
 
         [Test]
@@ -69,17 +69,17 @@ namespace White.CustomControls.UnitTests.Automation
             string serialized = commandSerializer.Serialize(new object[0], new List<Type>());
             ICommand command;
             Assert.AreEqual(true, commandSerializer.TryDeserializeCommand(serialized, out command));
-            Assert.IsInstanceOfType(typeof(EndSessionCommand), command);
+            Assert.IsInstanceOf<EndSessionCommand>(command);
         }
 
         [Test, ExpectedException(typeof(XmlException))]
         public void InValidCustomCommand()
         {
-            var commandAssembly = mocks.CreateMock<ICommandAssembly>();
+            var commandAssembly = mocks.StrictMock<ICommandAssembly>();
             SetupResult.For(commandAssemblies.Get(null)).Return(commandAssembly).IgnoreArguments();
             mocks.ReplayAll();
 
-            string serialized = commandSerializer.Serialize(new object[2]{"foo", ""}, new List<Type>());
+            string serialized = commandSerializer.Serialize(new object[]{"foo", ""}, new List<Type>());
             ICommand command;
             commandSerializer.TryDeserializeCommand(serialized, out command);
         }

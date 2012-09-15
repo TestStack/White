@@ -13,8 +13,8 @@ namespace White.Core.UnitTests.AutomationElementSearch
         {
             List<AutomationSearchCondition> conditions = new AutomationSearchConditionFactory().GetWindowSearchConditions(1);
             Assert.AreEqual(2, conditions.Count);
-            Assert.IsInstanceOfType(typeof (AndCondition), conditions[0].Condition);
-            Assert.IsInstanceOfType(typeof (AndCondition), conditions[1].Condition);
+            Assert.IsInstanceOf<AndCondition>(conditions[0].Condition);
+            Assert.IsInstanceOf<AndCondition>(conditions[1].Condition);
         }
 
         [Test]
@@ -22,8 +22,8 @@ namespace White.Core.UnitTests.AutomationElementSearch
         {
             List<AutomationSearchCondition> conditions = new AutomationSearchConditionFactory().GetWindowSearchConditions(0);
             Assert.AreEqual(2, conditions.Count);
-            Assert.IsInstanceOfType(typeof(PropertyCondition), conditions[0].Condition);
-            Assert.IsInstanceOfType(typeof(PropertyCondition), conditions[1].Condition);
+            Assert.IsInstanceOf<PropertyCondition>(conditions[0].Condition);
+            Assert.IsInstanceOf<PropertyCondition>(conditions[1].Condition);
         }
     }
 }

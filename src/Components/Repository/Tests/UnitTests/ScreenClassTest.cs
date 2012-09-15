@@ -23,7 +23,6 @@ namespace White.Repository.UnitTests
 
     public class ScreenClassContainingComponent : AppScreen
     {
-        private ScreenClassComponent screenClassComponent;
         public ScreenClassContainingComponent(Window window, ScreenRepository screenRepository) : base(window, screenRepository) {}
     }
 

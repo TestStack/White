@@ -77,7 +77,7 @@ namespace White.WebBrowser.UITests.Silverlight
         public void CustomUIItemsContainer()
         {
             var customButton = document.Get<CustomButton>("buton");
-            Assert.IsInstanceOfType(typeof(SilverlightDocument), customButton.ButtonContainer.ActionListener);
+            Assert.IsInstanceOf<SilverlightDocument>(customButton.ButtonContainer.ActionListener);
         }
     }
 
