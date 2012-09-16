@@ -1,18 +1,25 @@
 <?xml version="1.0"?>
-<package >
+<package>
   <metadata>
-    <id>$id$</id>
+    <id>TestStack.White</id>
     <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <title>TestStack.White</title>
+    <authors>Thoughtworks</authors>
+    <owners>Thoughtworks</owners>
     <licenseUrl>http://teststack.github.com/copy</licenseUrl>
     <projectUrl>http://teststack.github.com/white</projectUrl>
     <iconUrl>http://teststack.github.com/white/icon.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <description>UI Automation Framework</description>
     <copyright>Copyright 2012</copyright>
     <tags>UIAutomation Testing</tags>
+    <dependencies>
+      <dependency id="Bricks.Toolkit" version="1.0.0" />
+      <dependency id="Castle.Core" version="3.0.0.4001" />
+      <dependency id="log4net" version="2.0.0" />
+    </dependencies>
   </metadata>
+  <files>
+    <file src="TestStack.White.dll" target="lib\net20" />
+  </files>
 </package>

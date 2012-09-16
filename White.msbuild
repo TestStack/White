@@ -22,7 +22,7 @@
   </Target>
   
   <Target Name="Build" DependsOnTargets="Cleanup">
-    <MSBuild Projects="$(Root)src\TestStack.ProjectWhite.sln" />
+    <MSBuild Projects="$(Root)src\TestStack.White.sln" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
@@ -31,8 +31,9 @@
 
   <Target Name="Publish" DependsOnTargets="Test">
     <PropertyGroup>
-      <Version Condition="'$(Version)' = ''">0.2.1.0</Version>
+      <Version Condition="'$(Version)' == ''">0.2.1.0</Version>
     </PropertyGroup>
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.csproj -Version $(Version) -OutputDir $(Root)build\Artifacts" />
+    <MakeDir Directories="$(Root)build\Artifacts" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\Debug" />
   </Target>
 </Project>
