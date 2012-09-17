@@ -223,14 +223,6 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Components\Core\Tests\WinFormsTestApp\WinFormsTestApp.csproj">
-      <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
-      <Name>WinFormsTestApp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Components\Core\Tests\WPFTestApp\ComponentWPFTestApp.csproj">
-      <Project>{eac2eaa3-9c17-4f59-bc5b-89c2601d38ac}</Project>
-      <Name>ComponentWPFTestApp</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
