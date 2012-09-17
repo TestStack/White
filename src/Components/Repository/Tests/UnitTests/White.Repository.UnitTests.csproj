@@ -126,9 +126,9 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Source\Repository.csproj">
+    <ProjectReference Include="..\..\Source\White.Repository.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
-      <Name>Repository</Name>
+      <Name>White.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

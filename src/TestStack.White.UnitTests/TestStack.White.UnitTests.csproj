@@ -143,7 +143,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
+    <ProjectReference Include="..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>

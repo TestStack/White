@@ -112,13 +112,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\TestStack.White.UITests\TestStack.White.UITests.csproj">
+      <Project>{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}</Project>
+      <Name>TestStack.White.UITests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Core\Tests\UITests\White.Core.UITests.csproj">
-      <Project>{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}</Project>
-      <Name>White.Core.UITests</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Core\Tests\WinFormsTestApp\WinFormsTestApp.csproj">
       <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
@@ -128,9 +128,9 @@
       <Project>{eac2eaa3-9c17-4f59-bc5b-89c2601d38ac}</Project>
       <Name>ComponentWPFTestApp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Source\Repository.csproj">
+    <ProjectReference Include="..\..\Source\White.Repository.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
-      <Name>Repository</Name>
+      <Name>White.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\UnitTests\White.Repository.UnitTests.csproj">
       <Project>{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}</Project>

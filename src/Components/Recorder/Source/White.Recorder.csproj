@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{67FDDCB4-FABC-4273-B8DD-25EA930D0ADF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Repository</RootNamespace>
-    <AssemblyName>White.Repository</AssemblyName>
+    <RootNamespace>White.Recorder</RootNamespace>
+    <AssemblyName>White.Recorder</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -18,6 +18,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -30,7 +31,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
@@ -76,80 +76,118 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\log4net.2.0.0\lib\net35-full\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="UIAutomationTypes, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Xstream.Core, Version=1.0.2902.37328, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Xstream.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppScreen.cs" />
-    <Compile Include="AppScreenComponent.cs" />
-    <Compile Include="AppScreenException.cs" />
-    <Compile Include="AppWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DummyWindow.cs" />
-    <Compile Include="ScreenAttributes\AutomationIdAttribute.cs" />
-    <Compile Include="ScreenAttributes\FrameworkIdAttribute.cs" />
-    <Compile Include="ScreenAttributes\IndexAttribute.cs" />
-    <Compile Include="Configuration\RepositoryAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\RepositoryConfiguration.cs" />
-    <Compile Include="EntityMapping\Entities.cs" />
-    <Compile Include="EntityMapping\Entity.cs" />
-    <Compile Include="EntityMapping\EntityField.cs" />
-    <Compile Include="EntityMapping\EntityFieldNotFoundException.cs" />
-    <Compile Include="EntityMapping\NestedEntities.cs" />
-    <Compile Include="FieldMap.cs" />
-    <Compile Include="Interceptors\ScreenInterceptors.cs" />
-    <Compile Include="Interceptors\ScreenObjectInterceptor.cs" />
-    <Compile Include="Interceptors\UIItemInterceptor.cs" />
-    <Compile Include="Interceptors\WindowInterceptor.cs" />
-    <Compile Include="ScreenAttributes\TextAttribute.cs" />
-    <Compile Include="RepositoryComponent.cs" />
-    <Compile Include="ScreenAttributes\SearchCriteriaAttribute.cs" />
-    <Compile Include="ScreenClass.cs" />
-    <Compile Include="ScreenAttributes\ScreenComponentAttribute.cs" />
-    <Compile Include="ScreenFlow\FlowWriter.cs" />
-    <Compile Include="ScreenFlow\WorkReport.cs" />
-    <Compile Include="ScreenFlow\GraphWriter.cs" />
-    <Compile Include="ScreenFlow\ScreenIdentity.cs" />
-    <Compile Include="ScreenFlow\StringGraphWriter.cs" />
-    <Compile Include="ScreenFlow\WorkFlow.cs" />
-    <Compile Include="ScreenRepository.cs" />
-    <Compile Include="ScreenRepositoryCacheKey.cs" />
-    <Compile Include="ScreenRepositoryListener.cs" />
-    <Compile Include="Services\LastServiceCallStatus.cs" />
-    <Compile Include="Services\NullExecutionHistory.cs" />
-    <Compile Include="Services\NullServiceExecution.cs" />
-    <Compile Include="Services\ServiceExecution.cs" />
-    <Compile Include="Services\WhiteExecution.cs" />
-    <Compile Include="Services\ServiceCall.cs" />
-    <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\ExecutionHistory.cs" />
-    <Compile Include="Services\ServiceInterceptor.cs" />
-    <Compile Include="Services\WorkEnvironment.cs" />
-    <Compile Include="Services\WorkSnapshotAttribute.cs" />
-    <Compile Include="Sessions\WorkConfiguration.cs" />
-    <Compile Include="Sessions\WorkSession.cs" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="CodeGeneration\CodeGenerationStrategy.cs" />
+    <Compile Include="CodeGeneration\CodeGenerationVisitor.cs" />
+    <Compile Include="CodeGeneration\DynamicScreenClass.cs" />
+    <Compile Include="CodeGeneration\ScreenClassField.cs" />
+    <Compile Include="CodeGeneration\WindowCodeGenerationStrategy.cs" />
+    <Compile Include="Configuration\RecorderConfiguration.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controls\ApplicationsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ApplicationsControl.Designer.cs">
+      <DependentUpon>ApplicationsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashBoard.Designer.cs">
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Applications.cs" />
+    <Compile Include="Domain\RecordingOptions.cs" />
+    <Compile Include="Domain\WhiteRecorder.cs" />
+    <Compile Include="Domain\ScreenObjectGenerator.cs" />
+    <Compile Include="Domain\ScreenObjectGeneratorOptions.cs" />
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="Controls\ApplicationsControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ApplicationsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashBoard.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\RecordOptionsView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RecordOptionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ScreenObjectGeneratorOptionsView.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ScreenObjectGeneratorOptionsView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\WindowBrowser.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WindowBrowser.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="white.snk" />
+    <Compile Include="Configuration\RecorderAppXmlConfiguration.cs" />
+    <Compile Include="RecorderForm.cs" />
+    <Compile Include="Recording\CoreCodeWriter.cs" />
+    <Compile Include="Recording\DuplicateEventFilter.cs" />
+    <Compile Include="Recording\EventFilter.cs" />
+    <Compile Include="Recording\RecorderVisitor.cs" />
+    <Compile Include="Recording\RepositoryCodeWriter.cs" />
+    <Compile Include="Recording\UnHookEventsVisitor.cs" />
+    <Compile Include="Recording\UserEventListener.cs" />
+    <Compile Include="View\RecordOptionsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\RecordOptionsView.Designer.cs">
+      <DependentUpon>RecordOptionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ScreenObjectGeneratorOptionsView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ScreenObjectGeneratorOptionsView.Designer.cs">
+      <DependentUpon>ScreenObjectGeneratorOptionsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\WindowBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\WindowBrowser.Designer.cs">
+      <DependentUpon>WindowBrowser.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -157,15 +195,21 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Reporting\Source\Reporting.csproj">
-      <Project>{19fc2a6e-1c39-4db8-aabf-a234fd6bc3fe}</Project>
-      <Name>Reporting</Name>
+    <ProjectReference Include="..\..\Repository\Source\White.Repository.csproj">
+      <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
+      <Name>White.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -149,9 +149,9 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Source\Recorder.csproj">
+    <ProjectReference Include="..\Source\White.Recorder.csproj">
       <Project>{67FDDCB4-FABC-4273-B8DD-25EA930D0ADF}</Project>
-      <Name>Recorder</Name>
+      <Name>White.Recorder</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
