@@ -1,11 +1,8 @@
 using System;
 using System.Drawing;
-using System.IO;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
-using White.Core.CustomCommands;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Recording;
@@ -371,37 +368,6 @@ namespace White.Core.UIItems
         internal virtual UIItemContainer AsContainer()
         {
             return new UIItemContainer(AutomationElement, actionListener);
-        }
-
-        internal virtual CustomCommandResponse Do(string assemblyFile, string typeName, MethodInfo method,
-                                                  object[] arguments)
-        {
-            var valuePattern = Pattern(ValuePattern.Pattern) as ValuePattern;
-            if (valuePattern == null)
-                throw new CustomCommandException(string.Format("{0} does not implement ValuePattern",
-                                                               automationElement.Display()));
-            CustomCommandResponse response = Execute(valuePattern, assemblyFile, typeName, method, arguments);
-            if (response.IsValidResponse) return response;
-
-            var commandSerializer = new CustomCommandSerializer();
-            string serializedAssemblyRequest = commandSerializer.SerializeAssembly(assemblyFile);
-            valuePattern.SetValue(serializedAssemblyRequest);
-
-            response = Execute(valuePattern, assemblyFile, typeName, method, arguments);
-            valuePattern.SetValue(commandSerializer.SerializeEndSession());
-            return response;
-        }
-
-        private CustomCommandResponse Execute(ValuePattern valuePattern, string assemblyFile, string typeName,
-                                              MethodInfo method, object[] arguments)
-        {
-            var commandSerializer = new CustomCommandSerializer();
-            string serializedCommand = commandSerializer.Serialize(new FileInfo(assemblyFile).Name, typeName,
-                                                                   method.Name, arguments);
-            valuePattern.SetValue(serializedCommand);
-            ActionPerformed(Action.WindowMessage);
-            string value = valuePattern.Current.Value;
-            return new CustomCommandResponse(commandSerializer.ToObject(value));
         }
 
         public virtual void RaiseClickEvent()

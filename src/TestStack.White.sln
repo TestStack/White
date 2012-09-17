@@ -25,31 +25,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder", "Components\Reco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.Recorder.Tests", "Components\Recorder\Tests\White.Recorder.Tests.csproj", "{910CC90B-31CD-4A13-8EAC-9B197395EE6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.Framework.Silverlight", "Components\CustomCommands\Framework\CustomCommands.Framework.Silverlight.csproj", "{11FBB4B6-E269-43E4-A335-F0AD1F848493}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.Framework.WPF", "Components\CustomCommands\Framework\CustomCommands.Framework.WPF.csproj", "{81A680B4-21B8-4AF4-8D6E-795376E6F855}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.UnitTests", "Components\CustomCommands\Tests\CustomCommands.UnitTests\CustomCommands.UnitTests.csproj", "{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.WPFTests", "Components\CustomCommands\Tests\CustomCommands.WPFTests\CustomCommands.WPFTests.csproj", "{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomCommands.SilverlightTests", "Components\CustomCommands\Tests\CustomCommands.SilverlightTests\CustomCommands.SilverlightTests.csproj", "{196A0B37-0824-4B54-A2A3-87D98B02CFA6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "Components\CustomControls\Source\CustomControls\CustomControls.csproj", "{8513D286-87D2-459D-A713-2E583FB797F8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls.Silverlight", "Components\CustomControls\Source\CustomControls\CustomControls.Silverlight.csproj", "{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlPeers", "Components\CustomControls\Source\CustomControlPeers\CustomControlPeers.csproj", "{E73299E0-35A0-4923-B0DD-93B6744EE75E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlPeers.Silverlight", "Components\CustomControls\Source\CustomControlPeers\CustomControlPeers.Silverlight.csproj", "{ED8E108C-4469-4D07-B60F-436178EB5E2C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBrowser", "Components\WebBrowser\Source\WebBrowser.csproj", "{31F10CBC-B77C-4B58-8706-E8800FFC1D20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.WebBrowser.UnitTests", "Components\WebBrowser\Tests\UnitTests\White.WebBrowser.UnitTests.csproj", "{1799B721-B2C1-41DE-9DD2-650A608A1D2B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.WebBrowser.UITests", "Components\WebBrowser\Tests\UITests\White.WebBrowser.UITests.csproj", "{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "White.CustomControls.UnitTests", "Components\CustomControls\Tests\UnitTests\White.CustomControls.UnitTests.csproj", "{9F509E89-5158-4095-B3D8-53FE00027363}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentWPFTestApp", "Components\Core\Tests\WPFTestApp\ComponentWPFTestApp.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
 EndProject
@@ -63,8 +43,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{87CF3A
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandsWPFTestApplication", "Components\CustomCommands\Tests\WPFTestApplication\CommandsWPFTestApplication.csproj", "{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{137D31B6-75D5-44A4-8015-1BAB82FB153B}"
 EndProject
@@ -112,42 +90,6 @@ Global
 		{910CC90B-31CD-4A13-8EAC-9B197395EE6E}.Debug|x86.Build.0 = Debug|x86
 		{910CC90B-31CD-4A13-8EAC-9B197395EE6E}.Release|x86.ActiveCfg = Release|x86
 		{910CC90B-31CD-4A13-8EAC-9B197395EE6E}.Release|x86.Build.0 = Release|x86
-		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Debug|x86.ActiveCfg = Debug|x86
-		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Debug|x86.Build.0 = Debug|x86
-		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Release|x86.ActiveCfg = Release|x86
-		{11FBB4B6-E269-43E4-A335-F0AD1F848493}.Release|x86.Build.0 = Release|x86
-		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Debug|x86.ActiveCfg = Debug|x86
-		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Debug|x86.Build.0 = Debug|x86
-		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Release|x86.ActiveCfg = Release|x86
-		{81A680B4-21B8-4AF4-8D6E-795376E6F855}.Release|x86.Build.0 = Release|x86
-		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Debug|x86.ActiveCfg = Debug|x86
-		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Debug|x86.Build.0 = Debug|x86
-		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Release|x86.ActiveCfg = Release|x86
-		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3}.Release|x86.Build.0 = Release|x86
-		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Debug|x86.ActiveCfg = Debug|x86
-		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Debug|x86.Build.0 = Debug|x86
-		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Release|x86.ActiveCfg = Release|x86
-		{1F954832-7AE6-4C22-AE05-1354C3BEB1A5}.Release|x86.Build.0 = Release|x86
-		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Debug|x86.ActiveCfg = Debug|x86
-		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Debug|x86.Build.0 = Debug|x86
-		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Release|x86.ActiveCfg = Release|x86
-		{196A0B37-0824-4B54-A2A3-87D98B02CFA6}.Release|x86.Build.0 = Release|x86
-		{8513D286-87D2-459D-A713-2E583FB797F8}.Debug|x86.ActiveCfg = Debug|x86
-		{8513D286-87D2-459D-A713-2E583FB797F8}.Debug|x86.Build.0 = Debug|x86
-		{8513D286-87D2-459D-A713-2E583FB797F8}.Release|x86.ActiveCfg = Release|x86
-		{8513D286-87D2-459D-A713-2E583FB797F8}.Release|x86.Build.0 = Release|x86
-		{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}.Debug|x86.ActiveCfg = Debug|x86
-		{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}.Debug|x86.Build.0 = Debug|x86
-		{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}.Release|x86.ActiveCfg = Release|x86
-		{683DEA2B-BE16-4643-B7E7-9AFF595B60C3}.Release|x86.Build.0 = Release|x86
-		{E73299E0-35A0-4923-B0DD-93B6744EE75E}.Debug|x86.ActiveCfg = Debug|x86
-		{E73299E0-35A0-4923-B0DD-93B6744EE75E}.Debug|x86.Build.0 = Debug|x86
-		{E73299E0-35A0-4923-B0DD-93B6744EE75E}.Release|x86.ActiveCfg = Release|x86
-		{E73299E0-35A0-4923-B0DD-93B6744EE75E}.Release|x86.Build.0 = Release|x86
-		{ED8E108C-4469-4D07-B60F-436178EB5E2C}.Debug|x86.ActiveCfg = Debug|x86
-		{ED8E108C-4469-4D07-B60F-436178EB5E2C}.Debug|x86.Build.0 = Debug|x86
-		{ED8E108C-4469-4D07-B60F-436178EB5E2C}.Release|x86.ActiveCfg = Release|x86
-		{ED8E108C-4469-4D07-B60F-436178EB5E2C}.Release|x86.Build.0 = Release|x86
 		{31F10CBC-B77C-4B58-8706-E8800FFC1D20}.Debug|x86.ActiveCfg = Debug|x86
 		{31F10CBC-B77C-4B58-8706-E8800FFC1D20}.Debug|x86.Build.0 = Debug|x86
 		{31F10CBC-B77C-4B58-8706-E8800FFC1D20}.Release|x86.ActiveCfg = Release|x86
@@ -160,10 +102,6 @@ Global
 		{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}.Debug|x86.Build.0 = Debug|x86
 		{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}.Release|x86.ActiveCfg = Release|x86
 		{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}.Release|x86.Build.0 = Release|x86
-		{9F509E89-5158-4095-B3D8-53FE00027363}.Debug|x86.ActiveCfg = Debug|x86
-		{9F509E89-5158-4095-B3D8-53FE00027363}.Debug|x86.Build.0 = Debug|x86
-		{9F509E89-5158-4095-B3D8-53FE00027363}.Release|x86.ActiveCfg = Release|x86
-		{9F509E89-5158-4095-B3D8-53FE00027363}.Release|x86.Build.0 = Release|x86
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}.Debug|x86.ActiveCfg = Debug|x86
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}.Debug|x86.Build.0 = Debug|x86
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}.Release|x86.ActiveCfg = Release|x86
@@ -172,10 +110,6 @@ Global
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Debug|x86.Build.0 = Debug|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Release|x86.ActiveCfg = Release|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Release|x86.Build.0 = Release|x86
-		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Debug|x86.ActiveCfg = Debug|x86
-		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Debug|x86.Build.0 = Debug|x86
-		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Release|x86.ActiveCfg = Release|x86
-		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3}.Release|x86.Build.0 = Release|x86
 		{12C59CE2-9CF7-44F4-B27C-90754609F979}.Debug|x86.ActiveCfg = Debug|x86
 		{12C59CE2-9CF7-44F4-B27C-90754609F979}.Debug|x86.Build.0 = Debug|x86
 		{12C59CE2-9CF7-44F4-B27C-90754609F979}.Release|x86.ActiveCfg = Release|x86
@@ -185,14 +119,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
-		{BDD325EF-D400-4A37-B4C6-D7BF150587C7} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
-		{3F9668F7-CB51-40A7-AEDA-39ED0990CAC3} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
-		{1799B721-B2C1-41DE-9DD2-650A608A1D2B} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
 		{CE81A52D-B39E-42C0-8B54-C67CF294B3FB} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
 		{2C48DDD5-11AD-4959-AA76-8D1D90484CD2} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
-		{9F509E89-5158-4095-B3D8-53FE00027363} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
+		{1799B721-B2C1-41DE-9DD2-650A608A1D2B} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
 		{7C7960B2-905D-409A-8068-B010A35BA151} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
-		{BEA9E881-AABD-4A59-B045-DE39BA3E21C3} = {137D31B6-75D5-44A4-8015-1BAB82FB153B}
+		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
+		{BDD325EF-D400-4A37-B4C6-D7BF150587C7} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
 	EndGlobalSection
 EndGlobal

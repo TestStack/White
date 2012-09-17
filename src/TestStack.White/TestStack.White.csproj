@@ -92,7 +92,6 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Bricks\AssemblyConfiguration.cs" />
-    <Compile Include="Bricks\Class1.cs" />
     <Compile Include="Bricks\IInterceptContext.cs" />
     <Compile Include="Bricks\DynamicProxyGenerator.cs" />
     <Compile Include="Bricks\DynamicProxyInterceptors.cs" />
@@ -117,11 +116,6 @@
     <Compile Include="Configuration\UIItemIdConfiguration.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CoreTestTemplate.cs" />
-    <Compile Include="CustomCommands\CustomCommandException.cs" />
-    <Compile Include="CustomCommands\CustomCommandFactory.cs" />
-    <Compile Include="CustomCommands\CustomCommandInterceptor.cs" />
-    <Compile Include="CustomCommands\CustomCommandResponse.cs" />
-    <Compile Include="CustomCommands\CustomCommandSerializer.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Desktop.cs" />
     <Compile Include="Drawing\DrawingPointX.cs" />
