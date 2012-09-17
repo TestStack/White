@@ -58,15 +58,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Bricks">
-      <HintPath>..\..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.dll</HintPath>
-    </Reference>
-    <Reference Include="Bricks.RuntimeFramework">
-      <HintPath>..\..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.RuntimeFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="Bricks.Testing">
-      <HintPath>..\..\..\..\packages\Bricks.Toolkit.1.0.0\lib\net35\Bricks.Testing.dll</HintPath>
-    </Reference>
     <Reference Include="Castle.Core">
       <HintPath>..\..\..\..\packages\Castle.Core.3.0.0.4001\lib\net35\Castle.Core.dll</HintPath>
     </Reference>
@@ -138,10 +129,7 @@
     <None Include="packages.config" />
     <None Include="white.snk" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interceptors\" />
-    <Folder Include="Testing\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>

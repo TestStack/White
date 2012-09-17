@@ -28,3 +28,6 @@ This project doesn't fit, also we think you should fast fail your tests to speed
 White.Core.CustomCommands is a complex feature with a lot of code. And with the newer versions of .net and the maturing of many other open source projects, we can do this in MUCH nicer ways. 
 
 If you use this feature, please let me know! I can put it in a compatibility pack or prioritise it.
+
+### Custom Controls
+Custom Controls is based on CustomCommands, so it also has gone. Once again, if you were using this, let me know your scenarios and we can prioritised putting it back in
