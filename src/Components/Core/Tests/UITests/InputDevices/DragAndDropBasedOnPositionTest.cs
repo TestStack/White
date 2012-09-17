@@ -20,7 +20,7 @@ namespace White.Core.UITests.InputDevices
         public void DragAndDrop()
         {
             var button = window.Get<Button>("buton");
-            Mouse.Instance.DragAndDrop(textBox, textBox.Bounds.ImmediateInteriorEast(), button, button.Bounds.ImmediateInteriorSouth());
+            Mouse.instance.DragAndDrop(textBox, textBox.Bounds.ImmediateInteriorEast(), button, button.Bounds.ImmediateInteriorSouth());
             AssertResultLabelText("TextBoxDraggedOnButton");
         }
     }

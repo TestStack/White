@@ -20,11 +20,11 @@ namespace White.Core.UITests.UIItems
         {
             var dateTimePicker = window.Get<DateTimePicker>("dateTimePicker");
             DateTime changedDate = DateTime.Today.AddDays(23);
-            dateTimePicker.SetDate(changedDate, DateFormat.MonthDayYear);
+            dateTimePicker.SetDate(changedDate, DateFormat.monthDayYear);
             Assert.AreEqual(changedDate, dateTimePicker.Date);
             
             changedDate = DateTime.Today.AddDays(23);
-            dateTimePicker.SetDate(changedDate, DateFormat.MonthDayYear);
+            dateTimePicker.SetDate(changedDate, DateFormat.monthDayYear);
             Assert.AreEqual(changedDate, dateTimePicker.Date);
         }
     }

@@ -1,4 +1,4 @@
-using Bricks.DynamicProxy;
+using White.Core.Bricks;
 using White.Core.Interceptors;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;

@@ -5,8 +5,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using Bricks.RuntimeFramework;
-using White.Core.Logging;
 using White.Core.UIItems.TableItems;
+using log4net;
 
 namespace Repository.EntityMapping
 {
@@ -17,6 +17,7 @@ namespace Repository.EntityMapping
     public class Entity
     {
         [ScreenIgnore, XmlIgnore] private NestedEntities nestedEntities;
+        private readonly ILog logger = LogManager.GetLogger(typeof(Entity));
 
         protected Entity() {}
 
@@ -61,7 +62,7 @@ namespace Repository.EntityMapping
         {
             string fieldName = HeaderFormatter.To_Field_Name(header[index]);
             EntityField entityField = Field(fieldName);
-            if (entityField == null) WhiteLogger.Instance.DebugFormat("Could not find field: {0} in {1}", fieldName, GetType());
+            if (entityField == null) logger.DebugFormat("Could not find field: {0} in {1}", fieldName, GetType());
             else
             {
                 entityField.SetValue(value);

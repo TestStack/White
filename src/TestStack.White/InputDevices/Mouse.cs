@@ -4,11 +4,11 @@ using System.Threading;
 using System.Windows;
 using White.Core.Configuration;
 using White.Core.Drawing;
-using White.Core.Logging;
 using White.Core.UIA;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 using White.Core.WindowsAPI;
+using log4net;
 using Action = White.Core.UIItems.Actions.Action;
 
 namespace White.Core.InputDevices
@@ -39,10 +39,11 @@ namespace White.Core.InputDevices
         [DllImport("user32.dll")]
         private static extern short GetDoubleClickTime();
 
-        public static Mouse Instance = new Mouse();
+        public static Mouse instance = new Mouse();
         private DateTime lastClickTime = DateTime.Now;
         private readonly short doubleClickTime = GetDoubleClickTime();
         private Point lastClickLocation;
+        private ILog logger = LogManager.GetLogger(typeof(Mouse));
         private const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
         private Mouse()
@@ -199,7 +200,7 @@ namespace White.Core.InputDevices
             HoldForDrag();
             draggedItem.ActionPerformed(Action.WindowMessage);
             var dragStepFraction = (float) (1.0/CoreAppXmlConfiguration.Instance.DragStepCount);
-            WhiteLogger.Instance.Info(CoreAppXmlConfiguration.Instance.DragStepCount + ":" + dragStepFraction);
+            logger.Info(CoreAppXmlConfiguration.Instance.DragStepCount + ":" + dragStepFraction);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
                 double newX = startPosition.X + (endPosition.X - startPosition.X)*(dragStepFraction*i);

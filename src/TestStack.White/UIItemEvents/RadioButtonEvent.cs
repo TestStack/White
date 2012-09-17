@@ -1,5 +1,5 @@
-using Bricks;
 using White.Core.UIItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItemEvents
 {
@@ -9,8 +9,7 @@ namespace White.Core.UIItemEvents
 
         protected override string ActionName(EventOption eventOption)
         {
-            CodePath.New<RadioButton>().Select();
-            return CodePath.Last;
+            return MethodNameResolver.NameFor<RadioButton>(r=>r.Select());
         }
     }
 }

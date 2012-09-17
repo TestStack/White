@@ -1,6 +1,5 @@
 using System;
 using System.Text;
-using Bricks.RuntimeFramework;
 
 namespace White.Core.UIItemEvents
 {
@@ -10,11 +9,10 @@ namespace White.Core.UIItemEvents
 
         public virtual void Write(Type uiItemType, string actionName, string identification, object[] parameters)
         {
-            StringBuilder builder = new StringBuilder(CodeForGettingUIItem(uiItemType, identification));
+            var builder = new StringBuilder(CodeForGettingUIItem(uiItemType, identification));
 
             builder.Append(".").Append(actionName);
-            Class uiItemClass = new Class(uiItemType);
-            if (uiItemClass.IsProperty(actionName))
+            if (uiItemType.GetProperty(actionName) != null)
             {
                 builder.Append(" = ");
                 if (parameters[0] is bool) builder.Append((bool) parameters[0] ? "true" : "false");

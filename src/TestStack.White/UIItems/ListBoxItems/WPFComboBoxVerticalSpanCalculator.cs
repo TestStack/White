@@ -1,5 +1,5 @@
 using System.Windows;
-using White.Core.Logging;
+using log4net;
 
 namespace White.Core.UIItems.ListBoxItems
 {
@@ -9,6 +9,7 @@ namespace White.Core.UIItems.ListBoxItems
         private readonly Rect lastItem;
         private readonly Rect combo;
         private readonly double percentVisible;
+        private readonly ILog logger = LogManager.GetLogger(typeof(WPFComboBoxVerticalSpanCalculator));
 
         public WPFComboBoxVerticalSpanCalculator(Rect combo, Rect firstItem, Rect lastItem, double percentVisible)
         {
@@ -29,7 +30,7 @@ namespace White.Core.UIItems.ListBoxItems
 
                 if (DropUp())
                 {
-                    WhiteLogger.Instance.Debug("ComboBox is dropping up");
+                    logger.Debug("ComboBox is dropping up");
                     return new VerticalSpan(listTop, listTop + VisibleHeight(listTop, listBottom));
                 }
                 return new VerticalSpan(comboBoxBottom, comboBoxBottom + VisibleHeight(listTop, listBottom));

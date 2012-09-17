@@ -1,13 +1,15 @@
 using System;
 using System.Windows.Forms;
 using Recorder;
-using White.Core.Logging;
 using Recorder.Controllers;
+using log4net;
 
 namespace White.Recorder
 {
     internal static class Program
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(Program));
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -23,13 +25,13 @@ namespace White.Recorder
             }
             catch (Exception e)
             {
-                WhiteLogger.Instance.Error("Exception in Main: ", e);
+                Logger.Error("Exception in Main: ", e);
             }
         }
 
         static void RecorderException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            WhiteLogger.Instance.Error("Thread exception: ", e.Exception);
+            Logger.Error("Thread exception: ", e.Exception);
         }
     }
 }

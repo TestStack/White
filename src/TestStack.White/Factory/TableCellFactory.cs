@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.UIItems.Actions;
@@ -25,12 +25,13 @@ namespace White.Core.Factory
         {
             if (customControlTypes == null)
                 customControlTypes = new AutomationElementFinder(tableElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.Custom));
-            int zeroBasedRowNumber = int.Parse(S.LastWords(rowElement.Current.Name, 1)[0]);
-            Predicate<AutomationElement> cellPredicate = delegate(AutomationElement element)
-                                                             {
-                                                                 string name = element.Current.Name;
-                                                                 return name.Contains(UIItemIdAppXmlConfiguration.Instance.TableCellPrefix) && zeroBasedRowNumber == int.Parse(S.LastWords(name, 2)[1]);
-                                                             };
+            int zeroBasedRowNumber = int.Parse(rowElement.Current.Name.Split(' ').Last());
+            Predicate<AutomationElement> cellPredicate = element =>
+            {
+                string name = element.Current.Name;
+                return name.Contains(UIItemIdAppXmlConfiguration.Instance.TableCellPrefix) &&
+                       zeroBasedRowNumber == int.Parse(name.Split(' ').Last());
+            };
             List<AutomationElement> tableCellElements = customControlTypes.FindAll(cellPredicate);
             return new TableCells(tableCellElements, tableHeader, actionListener);
         }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.UIItems;
@@ -9,6 +8,7 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowItems;
+using White.Core.Utility;
 
 namespace White.Core.Factory
 {
@@ -22,8 +22,7 @@ namespace White.Core.Factory
         {
             get
             {
-                Clock.Do perform = () => finder.Child(AutomationSearchCondition.ByControlType(ControlType.ToolTip));
-                return ToolTipFinder.FindToolTip(perform);
+                return ToolTipFinder.FindToolTip(() => finder.Child(AutomationSearchCondition.ByControlType(ControlType.ToolTip)));
             }
         }
 
@@ -54,10 +53,8 @@ namespace White.Core.Factory
 
         private bool TryGetPopupMenu(AutomationSearchCondition[] searchConditions, ActionListener actionListener, out PopUpMenu popUpMenu)
         {
-            var clock = new Clock(CoreAppXmlConfiguration.Instance.PopupTimeout, 100);
-            Clock.Do @do = () => finder.Child(searchConditions);
-            Clock.Matched matched = obj => obj != null;
-            var element = (AutomationElement) clock.Perform(@do, matched, () => null);
+            var element = Retry.For(() => finder.Child(searchConditions),
+                                      CoreAppXmlConfiguration.Instance.PopupTimeout, 100);
             if (element == null)
             {
                 popUpMenu = null;

@@ -1,5 +1,5 @@
 using System.IO;
-using Bricks.DynamicProxy;
+using White.Core.Bricks;
 using White.Core.UIItems;
 
 namespace White.Core.Configuration
@@ -7,7 +7,7 @@ namespace White.Core.Configuration
     /// <summary>
     /// Represents all the configuration at Core level. These configuration can be set from the configuration file as well as programmatically.
     /// </summary>
-    public interface CoreConfiguration
+    public interface ICoreConfiguration
     {
         int BusyTimeout { get; set; }
         bool WaitBasedOnHourGlass { get; set; }

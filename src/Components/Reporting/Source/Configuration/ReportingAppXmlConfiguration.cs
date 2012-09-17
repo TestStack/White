@@ -1,29 +1,29 @@
 using System.Collections.Generic;
 using Bricks;
 using Bricks.Core;
-using White.Core.Logging;
+using log4net;
 
 namespace Reporting.Configuration
 {
     public class ReportingAppXmlConfiguration : AssemblyConfiguration, ReportingConfiguration
     {
-        private static ReportingConfiguration instance;
+        private static ReportingConfiguration _instance;
 
-        private static readonly Dictionary<string, object> defaultValues = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
         static ReportingAppXmlConfiguration()
         {
-            defaultValues.Add("PublishTestReports", true);
+            DefaultValues.Add("PublishTestReports", true);
         }
 
-        private ReportingAppXmlConfiguration() : base("White", "Reporting", defaultValues, WhiteLogger.Instance) {}
+        private ReportingAppXmlConfiguration() : base("White", "Reporting", DefaultValues, LogManager.GetLogger(typeof(ReportingAppXmlConfiguration))) {}
 
         public static ReportingConfiguration Instance
         {
             get
             {
-                if (instance == null) instance = new ReportingAppXmlConfiguration();
-                return instance;
+                if (_instance == null) _instance = new ReportingAppXmlConfiguration();
+                return _instance;
             }
         }
 

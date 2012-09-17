@@ -1,5 +1,4 @@
 using System.Windows.Automation;
-using White.Core.Logging;
 using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
@@ -24,7 +23,7 @@ namespace White.Core.UIItems
         {
             if (!Bounds.IsEmpty) Click();
             
-            SelectionItemPattern selectionItemPattern = (SelectionItemPattern) Pattern(SelectionItemPattern.Pattern);
+            var selectionItemPattern = (SelectionItemPattern) Pattern(SelectionItemPattern.Pattern);
             if (selectionItemPattern == null)
             {
                 throw new UIActionException(string.Format("{0} cannot be selected as its position is unknown and doesn't support SelectionItemPattern", ToString()));

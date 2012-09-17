@@ -1,37 +1,35 @@
 using System.Collections.Generic;
-using Bricks;
-using White.Core.Logging;
+using White.Core.Bricks;
+using log4net;
 
 namespace White.Core.Configuration
 {
     public class UIItemIdAppXmlConfiguration : AssemblyConfiguration, UIItemIdConfiguration
     {
-        private static UIItemIdConfiguration instance;
-        private static readonly Dictionary<string, object> defaultValues = new Dictionary<string, object>();
+        private static UIItemIdConfiguration _instance;
+        private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
         static UIItemIdAppXmlConfiguration()
         {
-            defaultValues.Add("TableVerticalScrollBar", "Vertical Scroll Bar");
-            defaultValues.Add("TableHorizontalScrollBar", "Horizontal Scroll Bar");
-            defaultValues.Add("TableColumn", "Row ");
-            defaultValues.Add("TableTopLeftHeaderCell", "Top Left Header Cell");
-            defaultValues.Add("TableCellNullValue", "(null)");
-            defaultValues.Add("TableHeader", "Top Row");
-            defaultValues.Add("HorizontalScrollBar", "Horizontal ScrollBar");
-            defaultValues.Add("VerticalScrollBar", "Vertical ScrollBar");
-            defaultValues.Add("TableCellPrefix", " Row ");
+            DefaultValues.Add("TableVerticalScrollBar", "Vertical Scroll Bar");
+            DefaultValues.Add("TableHorizontalScrollBar", "Horizontal Scroll Bar");
+            DefaultValues.Add("TableColumn", "Row ");
+            DefaultValues.Add("TableTopLeftHeaderCell", "Top Left Header Cell");
+            DefaultValues.Add("TableCellNullValue", "(null)");
+            DefaultValues.Add("TableHeader", "Top Row");
+            DefaultValues.Add("HorizontalScrollBar", "Horizontal ScrollBar");
+            DefaultValues.Add("VerticalScrollBar", "Vertical ScrollBar");
+            DefaultValues.Add("TableCellPrefix", " Row ");
         }
 
         public static UIItemIdConfiguration Instance
         {
-            get
-            {
-                if (instance == null) instance = new UIItemIdAppXmlConfiguration();
-                return instance;
-            }
+            get { return _instance ?? (_instance = new UIItemIdAppXmlConfiguration()); }
         }
 
-        private UIItemIdAppXmlConfiguration() : base("White", "UIItemId", defaultValues, WhiteLogger.Instance) {}
+        private UIItemIdAppXmlConfiguration() : 
+            base("White", "UIItemId", DefaultValues, LogManager.GetLogger(typeof(UIItemIdAppXmlConfiguration)))
+        { }
 
         private void SetUsedValue(string key, object value)
         {

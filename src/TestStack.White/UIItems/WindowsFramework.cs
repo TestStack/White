@@ -1,5 +1,3 @@
-using Bricks.Core;
-
 namespace White.Core.UIItems
 {
     public class WindowsFramework
@@ -33,7 +31,7 @@ namespace White.Core.UIItems
 
         public virtual bool UIAutomationBug
         {
-            get { return S.IsEmpty(frameworkId); }
+            get { return string.IsNullOrEmpty(frameworkId) || frameworkId.Trim() == string.Empty; }
         }
 
         public virtual bool Silverlight

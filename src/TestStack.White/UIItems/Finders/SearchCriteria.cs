@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
@@ -247,7 +248,7 @@ namespace White.Core.UIItems.Finders
         {
             foreach (var searchCondition in other.conditions)
             {
-                if (!conditions.Contains(condition => condition.OfSameType(searchCondition)))
+                if (!conditions.Any(condition => condition.OfSameType(searchCondition)))
                 {
                     conditions.Add(searchCondition);
                 }

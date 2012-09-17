@@ -1,13 +1,14 @@
 using System;
 using System.Text;
 using System.Windows.Automation;
-using White.Core.Logging;
 using White.Core.UIItems;
+using log4net;
 
 namespace White.Core
 {
     public static class Debug
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(Debug));
         private const string Tab = "  ";
 
         public static void ProcessDetails(string processName)
@@ -20,7 +21,7 @@ namespace White.Core
             }
             catch (Exception)
             {
-                WhiteLogger.Instance.Warn("Error happened while creating error report");
+                Logger.Warn("Error happened while creating error report");
             }
         }
 
@@ -35,7 +36,7 @@ namespace White.Core
             }
             catch (Exception)
             {
-                WhiteLogger.Instance.Warn("Error happened while creating error report");
+                Logger.Warn("Error happened while creating error report");
                 return string.Empty;
             }
         }
@@ -79,7 +80,7 @@ namespace White.Core
             }
             catch (Exception)
             {
-                WhiteLogger.Instance.Warn("Error happened while creating error report");
+                Logger.Warn("Error happened while creating error report");
             }
             return string.Empty;
         }
@@ -122,7 +123,7 @@ namespace White.Core
             AutomationProperty[] automationProperties = element.GetSupportedProperties();
             foreach (AutomationProperty automationProperty in automationProperties)
             {
-                WhiteLogger.Instance.Info(automationProperty.ProgrammaticName + ":" + element.GetCurrentPropertyValue(automationProperty));
+                Logger.Info(automationProperty.ProgrammaticName + ":" + element.GetCurrentPropertyValue(automationProperty));
             }
         }
 
@@ -135,7 +136,7 @@ namespace White.Core
         {
             var builder = new StringBuilder();
             DisplayPattern(automationElement, builder, string.Empty);
-            WhiteLogger.Instance.Info(builder.ToString());
+            Logger.Info(builder.ToString());
         }
     }
 }

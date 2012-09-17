@@ -1,12 +1,12 @@
-using Bricks;
 using White.Core.UIItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItemEvents
 {
     public class CheckBoxEvent : UserEvent
     {
         private readonly bool checkState;
-        private static readonly string actionName = CodePath.Get(CodePath.New<CheckBox>().Checked);
+        private static readonly string CachedActionName = PropertyResolver.NameFor((CheckBox c) => c.Checked);
 
         public CheckBoxEvent(CheckBox checkBox) : base(checkBox)
         {
@@ -15,7 +15,7 @@ namespace White.Core.UIItemEvents
 
         protected override string ActionName(EventOption eventOption)
         {
-            return actionName;
+            return CachedActionName;
         }
 
         public override object[] ActionParameters

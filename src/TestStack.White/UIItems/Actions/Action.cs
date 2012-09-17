@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
-using Bricks.Core;
 using White.Core.Configuration;
 using White.Core.InputDevices;
 using White.Core.UIItems.WindowItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItems.Actions
 {
@@ -17,23 +18,28 @@ namespace White.Core.UIItems.Actions
 
         public virtual void Handle(Window window)
         {
+            //TODO WAIT handling is pretty busted. Should call custom hook in retry loop
             window.WaitWhileBusy();
             if (CoreAppXmlConfiguration.Instance.WaitBasedOnHourGlass)
             {
-                Clock.Do @do = () => Mouse.Instance.Cursor;
-                Clock.Matched matched = delegate(object obj)
-                                            {
-                                                var cursor = (MouseCursor) obj;
-                                                if (MouseCursor.WaitCursors.Contains(cursor) && CoreAppXmlConfiguration.Instance.MoveMouseToGetStatusOfHourGlass)
-                                                {
-                                                    Mouse.Instance.MoveOut();
-                                                    return false;
-                                                }
-                                                return true;
-                                            };
-                Clock.Expired expired =
-                    delegate { throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", Mouse.Instance.Cursor, Constants.BusyMessage)); };
-                new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout).Perform(@do, matched, expired);
+                try
+                {
+                    Retry.For(() => Mouse.instance.Cursor,
+                          cursor =>
+                          {
+                              if (MouseCursor.WaitCursors.Contains(cursor))
+                              {
+                                  if (CoreAppXmlConfiguration.Instance.MoveMouseToGetStatusOfHourGlass)
+                                    Mouse.instance.MoveOut();
+                                  return true;
+                              }
+                              return false;
+                          }, CoreAppXmlConfiguration.Instance.BusyTimeout);
+                }
+                catch (Exception)
+                {
+                    throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", Mouse.instance.Cursor, Constants.BusyMessage)); 
+                }
             }
             CustomWait(window);
             if (types.Contains(ActionType.NewControls)) window.ReloadIfCached();

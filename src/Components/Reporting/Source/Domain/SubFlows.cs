@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using White.Core.Logging;
-using Reporting.Utility;
+using log4net;
 
 namespace Reporting.Domain
 {
@@ -11,6 +10,7 @@ namespace Reporting.Domain
         private readonly string archiveLocation;
         private readonly string flowName;
         private int currentSubFlowIndex = -1;
+        private readonly ILog logger = LogManager.GetLogger(typeof(SubFlow));
 
         public SubFlows(string archiveLocation, string flowName)
         {
@@ -28,7 +28,7 @@ namespace Reporting.Domain
         {
             if (IsEmpty())
             {
-                SubFlow subFlow = new SubFlow(flowName + "[" + currentSubFlowIndex + "]", flowName, archiveLocation);
+                var subFlow = new SubFlow(flowName + "[" + currentSubFlowIndex + "]", flowName, archiveLocation);
                 subFlow.Next(type);
                 Add(subFlow);
                 currentSubFlowIndex++;
@@ -64,7 +64,7 @@ namespace Reporting.Domain
             string errorReport = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\ErrorReport.zip";
             if (File.Exists(errorReport))
             {
-                WhiteLogger.Instance.Info("An Error has occurred in the application. Refer " + archiveLocation + @"\ErrorReport.zip" + " for details");
+                logger.Info("An Error has occurred in the application. Refer " + archiveLocation + @"\ErrorReport.zip" + " for details");
                 File.Move(errorReport, archiveLocation + @"\ErrorReport.zip");
             }
         }

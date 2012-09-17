@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Automation;
-using White.Core.Logging;
 using White.Core.UIItemEvents;
 using White.Core.UIItems;
+using log4net;
 
 namespace White.Core.Recording
 {
@@ -11,6 +11,7 @@ namespace White.Core.Recording
         private readonly IUIItem uiItem;
         private readonly Create createUserEvent;
         private readonly UIItemEventListener eventListener;
+        private readonly ILog logger = LogManager.GetLogger(typeof(SafeAutomationEventHandler));
 
         public delegate UserEvent Create(object[] parameters);
 
@@ -31,7 +32,7 @@ namespace White.Core.Recording
             }
             catch (Exception exception)
             {
-                WhiteLogger.Instance.Error("", exception);
+                logger.Error("", exception);
             }
         }
 

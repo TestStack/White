@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Automation;
-using Bricks.Core;
 
 namespace White.Core.Mappings
 {
@@ -140,7 +139,8 @@ namespace White.Core.Mappings
 
         public virtual bool OfFramework(string id)
         {
-            return S.IsEmpty(id) || id.Equals(id);
+            //TODO id.Equals(id) will always return true.. figure out what this is doing
+            return string.IsNullOrEmpty(id) || id.Equals(id);
         }
 
         public virtual bool IsIdentifiedByName { set; get; }

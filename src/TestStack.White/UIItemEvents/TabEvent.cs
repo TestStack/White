@@ -1,17 +1,16 @@
-using Bricks;
 using White.Core.UIItems.TabItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItemEvents
 {
     public class TabEvent : UserEvent
     {
-        private static readonly string action;
+        private static readonly string Action;
         private readonly object[] parameters;
 
         static TabEvent()
         {
-            CodePath.New<Tab>().SelectTabPage(null);
-            action = CodePath.Last;
+            Action = MethodNameResolver.NameFor<Tab>(t => t.SelectTabPage(null));
         }
 
         public TabEvent(Tab tab) : base(tab)
@@ -21,7 +20,7 @@ namespace White.Core.UIItemEvents
 
         protected override string ActionName(EventOption eventOption)
         {
-            return action;
+            return Action;
         }
 
         public override object[] ActionParameters

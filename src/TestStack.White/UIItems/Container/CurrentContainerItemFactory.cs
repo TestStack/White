@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.Factory;
 using White.Core.Finder;
 using White.Core.Mappings;
@@ -60,7 +60,10 @@ namespace White.Core.UIItems.Container
 
         public virtual List<T> FindAll<T>()
         {
-            return new BricksCollection<T>(current.GetAll(SearchCriteria.ByControlType(ControlDictionary.Instance.GetControlType(typeof (T)))));
+            return current
+                .GetAll(SearchCriteria.ByControlType(ControlDictionary.Instance.GetControlType(typeof (T))))
+                .OfType<T>()
+                .ToList();
         }
 
         public virtual UIItemCollection FindAll()

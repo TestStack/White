@@ -1,11 +1,10 @@
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
-using White.Core.Logging;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
+using White.Core.Utility;
 
 namespace White.Core.UIItems.Scrolling {
     public class ScrollBar : UIItem, IScrollBar {
@@ -47,11 +46,19 @@ namespace White.Core.UIItems.Scrolling {
             get { return (double) Property(RangeValuePattern.ValueProperty); }
         }
 
-        public virtual void SetToMinimum() {
-            var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
-            clock.RunWhile(() => BackLargeChangeButton.PerformClick(), () => Value > 0,
-                delegate { throw new UIActionException(string.Format("Could not set the ScrollBar to minimum visible{0}", Constants.BusyMessage)); });
-            WhiteLogger.Instance.DebugFormat("ScrollBar position set to {0}", Value);
+        public virtual void SetToMinimum()
+        {
+            var value = Retry.For(() =>
+            {
+                BackLargeChangeButton.PerformClick();
+                return Value;
+            },
+                      v => v > 0,
+                      CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
+
+            if (value > 0)
+                throw new UIActionException(string.Format("Could not set the ScrollBar to minimum visible{0}", Constants.BusyMessage));
+            logger.DebugFormat("ScrollBar position set to {0}", Value);
         }
 
         public virtual void SetToMaximum() {

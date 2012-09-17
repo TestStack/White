@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using Bricks.Objects;
+using White.Core.Bricks;
 
 namespace White.Core.CustomCommands
 {
@@ -9,7 +9,7 @@ namespace White.Core.CustomCommands
     {
         private readonly BricksDataContractSerializer bricksDataContractSerializer = new BricksDataContractSerializer();
 
-        private static readonly List<Type> standardKnownTypes = new List<Type>
+        private static readonly List<Type> StandardKnownTypes = new List<Type>
                                                            {
                                                                typeof (object[]),
                                                                typeof (string[]),
@@ -26,7 +26,7 @@ namespace White.Core.CustomCommands
 
         public static void AddKnownTypes(params Type[] additionalKnownTypes)
         {
-            standardKnownTypes.AddRange(additionalKnownTypes);
+            StandardKnownTypes.AddRange(additionalKnownTypes);
         }
 
         public virtual string SerializeAssembly(string assemblyFile)
@@ -39,15 +39,15 @@ namespace White.Core.CustomCommands
         public virtual string Serialize(string assemblyName, string typeName, string method, object[] arguments)
         {
             var commandList = new object[] {typeName, method, @arguments};
-            string payload = bricksDataContractSerializer.ToString(commandList, standardKnownTypes);
+            string payload = bricksDataContractSerializer.ToString(commandList, StandardKnownTypes);
 
             var request = new object[] {assemblyName, payload};
-            return bricksDataContractSerializer.ToString(request, standardKnownTypes);
+            return bricksDataContractSerializer.ToString(request, StandardKnownTypes);
         }
 
         public virtual object[] ToObject(string @string)
         {
-            return bricksDataContractSerializer.ToObject<object[]>(@string, standardKnownTypes);
+            return bricksDataContractSerializer.ToObject<object[]>(@string, StandardKnownTypes);
         }
 
         public virtual string SerializeEndSession()

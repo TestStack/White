@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Bricks.RuntimeFramework;
-using White.Core.Logging;
 using White.Core.Mappings;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using Repository.EntityMapping;
+using log4net;
 
 namespace Repository
 {
@@ -13,6 +13,7 @@ namespace Repository
     //TODO: Take care of act kind of stuff by putting attribute
     public class AppScreen : RepositoryComponent
     {
+        private readonly ILog logger = LogManager.GetLogger(typeof(AppScreen));
         protected AppScreen() {}
 
         public AppScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository) {}
@@ -85,7 +86,7 @@ namespace Repository
             if (fieldsWithNoValueOnEntity.Count == 0) return;
             
             string message = string.Join(",", fieldsWithNoValueOnEntity.ToArray());
-            WhiteLogger.Instance.WarnFormat("Mapping to screen: {0} with {1}, No value specified for fields {2}", this, entity.GetType(), message);
+            logger.WarnFormat("Mapping to screen: {0} with {1}, No value specified for fields {2}", this, entity.GetType(), message);
         }
     }
 }

@@ -1,10 +1,9 @@
 using System.Threading;
-using System.Windows;
 using White.Core.UIA;
 using White.Core.Configuration;
 using White.Core.InputDevices;
-using White.Core.Logging;
 using White.Core.UIItems.Actions;
+using log4net;
 
 namespace White.Core.UIItems
 {
@@ -12,6 +11,7 @@ namespace White.Core.UIItems
     internal class TooltipSafeMouse
     {
         private readonly Mouse mouse;
+        private readonly ILog logger = LogManager.GetLogger(typeof(TooltipSafeMouse));
 
         public TooltipSafeMouse(Mouse mouse)
         {
@@ -29,7 +29,7 @@ namespace White.Core.UIItems
             }
             else
             {
-                WhiteLogger.Instance.Debug("Found tooltip RightClicking outside tooltip bounds");
+                logger.Debug("Found tooltip RightClicking outside tooltip bounds");
                 mouse.RightClick(toolTip.LeftOutside(uiItem.Bounds), actionListener);
             }
         }
@@ -42,7 +42,7 @@ namespace White.Core.UIItems
                 mouse.DoubleClick(uiItem.Bounds.Center(), actionListener);
             else
             {
-                WhiteLogger.Instance.Debug("Found tooltip DoubleClicking outside tooltip bounds");
+                logger.Debug("Found tooltip DoubleClicking outside tooltip bounds");
                 mouse.DoubleClick(toolTip.LeftOutside(uiItem.Bounds), actionListener);
             }
         }
@@ -55,7 +55,7 @@ namespace White.Core.UIItems
                 mouse.Click(uiItem.Bounds.Center(), actionListener);
             else
             {
-                WhiteLogger.Instance.Debug("Found tooltip Clicking outside tooltip bounds");
+                logger.Debug("Found tooltip Clicking outside tooltip bounds");
                 mouse.Click(toolTip.LeftOutside(uiItem.Bounds), actionListener);
             }
         }

@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Automation;
-using White.Core.Logging;
 using White.Core.Recording;
 using White.Core.UIA;
 using White.Core.UIItemEvents;
@@ -44,11 +43,12 @@ namespace White.Core.UIItems
                 }
                 catch (InvalidOperationException)
                 {
-                    WhiteLogger.Instance.Warn("BulkText failed, now trying Text on " + ToString());
+                    logger.Warn("BulkText failed, now trying Text on " + ToString());
                     Text = value;
                     actionListener.ActionPerformed(Action.WindowMessage);
                 }
             }
+            get { return Text; }
         }
 
         public virtual bool IsReadOnly

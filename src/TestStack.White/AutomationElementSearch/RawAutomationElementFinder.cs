@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 using White.Core.Configuration;
-using White.Core.Logging;
 using White.Core.UIA;
+using log4net;
 
 namespace White.Core.AutomationElementSearch
 {
     public class RawAutomationElementFinder : IDescendantFinder
     {
         private readonly AutomationElement automationElement;
-        private static readonly TreeWalker rawViewWalker = TreeWalker.RawViewWalker;
+        private static readonly TreeWalker RawViewWalker = TreeWalker.RawViewWalker;
+        private readonly ILog logger = LogManager.GetLogger(typeof(RawAutomationElementFinder));
 
         public RawAutomationElementFinder(AutomationElement automationElement)
         {
@@ -41,36 +42,36 @@ namespace White.Core.AutomationElementSearch
 
         private ElementSearchResult FindAll(AutomationSearchCondition automationSearchCondition, ElementSearchResult elementSearchResult, int depth)
         {
-            WhiteLogger.Instance.DebugFormat("[RawSearch] Finding in: ({0})", automationElement.Display());
+            logger.DebugFormat("[RawSearch] Finding in: ({0})", automationElement.Display());
             FindMatchingDescendants(automationElement, automationSearchCondition, elementSearchResult, depth);
             return elementSearchResult;
         }
 
-        private static void FindMatchingDescendants(AutomationElement element, AutomationSearchCondition automationSearchCondition,
+        private void FindMatchingDescendants(AutomationElement element, AutomationSearchCondition automationSearchCondition,
                                                     ElementSearchResult elementSearchResult, int depth)
         {
             if (depth == 0)
             {
                 return;
             }
-            WhiteLogger.Instance.DebugFormat("[RawSearch] Finding descendants of: ({0})", element.Display());
-            AutomationElement current = rawViewWalker.GetFirstChild(element);
+            logger.DebugFormat("[RawSearch] Finding descendants of: ({0})", element.Display());
+            AutomationElement current = RawViewWalker.GetFirstChild(element);
             while (current != null)
             {
                 MatchElement(current, automationSearchCondition, elementSearchResult);
                 if (elementSearchResult.AllResultsFound) return;
                 FindMatchingDescendants(current, automationSearchCondition, elementSearchResult, depth - 1);
                 if (elementSearchResult.AllResultsFound) return;
-                current = rawViewWalker.GetNextSibling(current);
+                current = RawViewWalker.GetNextSibling(current);
             }
         }
 
-        private static void MatchElement(AutomationElement current, AutomationSearchCondition automationSearchCondition, ElementSearchResult elementSearchResult)
+        private void MatchElement(AutomationElement current, AutomationSearchCondition automationSearchCondition, ElementSearchResult elementSearchResult)
         {
-            WhiteLogger.Instance.DebugFormat("[RawSearch] Matching: ({0})", current.Display());
+            logger.DebugFormat("[RawSearch] Matching: ({0})", current.Display());
             if (automationSearchCondition.Satisfies(current))
             {
-                WhiteLogger.Instance.DebugFormat("[RawSearch] Matched: ({0})", current.Display());
+                logger.DebugFormat("[RawSearch] Matched: ({0})", current.Display());
                 elementSearchResult.Add(current);
             }
         }

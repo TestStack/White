@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using Bricks;
-using White.Core.Logging;
+using log4net;
 
 namespace Recorder.Configuration
 {
     public class RecorderAppXmlConfiguration : AssemblyConfiguration, RecorderConfiguration
     {
         public static RecorderAppXmlConfiguration instance;
-        private static readonly Dictionary<string, object> defaultValues = new Dictionary<string, object>();
+        private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
         public static RecorderAppXmlConfiguration Instance
         {
@@ -19,7 +19,7 @@ namespace Recorder.Configuration
         }
 
         private RecorderAppXmlConfiguration()
-            : base("White", "Recorder", defaultValues, WhiteLogger.Instance)
+            : base("White", "Recorder", DefaultValues, LogManager.GetLogger(typeof(RecorderAppXmlConfiguration)))
         {
         }
     }

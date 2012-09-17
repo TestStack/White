@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.Mappings;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
@@ -25,7 +24,7 @@ namespace White.Core.Factory
         private IUIItem Create(AutomationElement automationElement, Type itemType, ActionListener actionListener)
         {
             if (itemType == null) return null;
-            return (IUIItem) new Class(itemType).New(automationElement, actionListener);
+            return (IUIItem) Activator.CreateInstance(itemType, automationElement, actionListener);
         }
     }
 }

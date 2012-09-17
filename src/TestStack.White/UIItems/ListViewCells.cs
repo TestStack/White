@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.Factory;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.ListViewItems;
@@ -21,7 +20,7 @@ namespace White.Core.UIItems
         {
             get
             {
-                if (header == null && S.IsEmpty(columnName)) return this[0];
+                if (header == null && string.IsNullOrEmpty(columnName)) return this[0];
                 if (header == null) throw new UIActionException("Cannot get cell for " + columnName);
                 return this[header.Column(columnName)];
             }

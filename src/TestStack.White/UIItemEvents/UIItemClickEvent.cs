@@ -1,23 +1,22 @@
-using Bricks;
 using White.Core.UIItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItemEvents
 {
     public class UIItemClickEvent : UserEvent
     {
-        private static readonly string actionName;
+        private static readonly string CachedActionName;
 
         static UIItemClickEvent()
         {
-            CodePath.New<UIItem>().Click();
-            actionName = CodePath.Last;
+            CachedActionName = MethodNameResolver.NameFor<UIItem>(i => i.Click());
         }
 
         public UIItemClickEvent(IUIItem uiItem) : base(uiItem) {}
 
         protected override string ActionName(EventOption eventOption)
         {
-            return actionName;
+            return CachedActionName;
         }
     }
 }

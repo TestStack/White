@@ -2,17 +2,18 @@ using System;
 using System.Windows.Forms;
 using Bricks.Core;
 using White.Core;
-using White.Core.Logging;
 using Lunar.Client.View.CommonControls;
 using Recorder.Controllers;
 using Recorder.Domain;
 using Recorder.Recording;
+using log4net;
 
 namespace Recorder
 {
     public partial class DashBoard : Form, UserEventListener
     {
         private readonly DashboardController controller;
+        private readonly ILog logger = LogManager.GetLogger(typeof(DashBoard));
 
         public DashBoard(DashboardController controller)
         {
@@ -53,7 +54,7 @@ namespace Recorder
             }
             catch (Exception exception)
             {
-                WhiteLogger.Instance.Error("Exception while closing Dashboard: ", exception);
+                logger.Error("Exception while closing Dashboard: ", exception);
             }
         }
 
@@ -80,7 +81,7 @@ namespace Recorder
             }
             catch (Exception e)
             {
-                WhiteLogger.Instance.Error("Exception while writing new event.\n", e);
+                logger.Error("Exception while writing new event.\n", e);
             }
         }
 
@@ -92,7 +93,7 @@ namespace Recorder
             }
             catch (Exception e)
             {
-                WhiteLogger.Instance.Error("Exception while updating event.\n", e);
+                logger.Error("Exception while updating event.\n", e);
             }
         }
 

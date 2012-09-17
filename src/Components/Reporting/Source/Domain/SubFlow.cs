@@ -6,7 +6,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using White.Core;
-using White.Core.Logging;
+using log4net;
 
 namespace Reporting.Domain
 {
@@ -18,6 +18,7 @@ namespace Reporting.Domain
         private readonly string directory;
         private DateTime screenCreationTime;
         private readonly string name;
+        private static readonly ILog logger = LogManager.GetLogger(typeof(SubFlow));
 
         public SubFlow(string subFlowName, string flowName, string archiveLocation)
         {
@@ -34,8 +35,7 @@ namespace Reporting.Domain
         public virtual void Next(Type type)
         {
             currentFlowStepSnapShot = 0;
-            SubFlowStep subFlowStep = new SubFlowStep();
-            subFlowStep.Label = type.Name;
+            var subFlowStep = new SubFlowStep {Label = type.Name};
             subFlowStep.AddScreenShot(TakeScreenShot(type.Name));
             flowSteps.Add(subFlowStep);
             screenCreationTime = DateTime.Now;
@@ -43,7 +43,7 @@ namespace Reporting.Domain
 
         public virtual void Act()
         {
-            if (!isEmpty)
+            if (!IsEmpty)
             {
                 SubFlowStep previousSubFlowStep = flowSteps[flowSteps.Count - 1];
                 previousSubFlowStep.AddScreenShot(TakeScreenShot(previousSubFlowStep.Label));
@@ -53,13 +53,13 @@ namespace Reporting.Domain
 
         public override string ToString()
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
             foreach (SubFlowStep node in flowSteps)
                 builder.AppendLine(node.ToString());
             return builder.ToString();
         }
 
-        private bool isEmpty
+        private bool IsEmpty
         {
             get { return flowSteps.Count == 0; }
         }
@@ -79,7 +79,7 @@ namespace Reporting.Domain
 
         private static void CaptureScreenTo(string fileName, string thumbNailName)
         {
-            using (Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format24bppRgb))
+            using (var bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format24bppRgb))
             {
                 using (Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot))
                 {
@@ -92,11 +92,11 @@ namespace Reporting.Domain
                     using (FileStream stream = File.Create(fileName))
                         bmpScreenshot.Save(stream, ImageFormat.Png);
                     using (FileStream stream = File.Create(thumbNailName))
-                        bmpScreenshot.GetThumbnailImage(50, 50, delegate { return true; }, IntPtr.Zero).Save(stream, ImageFormat.Png);
+                        bmpScreenshot.GetThumbnailImage(50, 50, () => true, IntPtr.Zero).Save(stream, ImageFormat.Png);
                 }
                 catch (Exception e)
                 {
-                    WhiteLogger.Instance.Error(string.Format("Error saving : {0}", fileName), e);
+                    logger.Error(string.Format("Error saving : {0}", fileName), e);
                     throw new WhiteException(string.Format("Error saving image {0}", fileName), e);
                 }
             }

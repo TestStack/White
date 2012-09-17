@@ -1,13 +1,15 @@
 using System;
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.Logging;
 using White.Core.Mappings;
+using log4net;
 
 namespace White.Core.UIA
 {
     public static class AutomationElementX
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(AutomationElementX));
+
         public static string Display(this AutomationElement automationElement)
         {
             try
@@ -31,11 +33,10 @@ namespace White.Core.UIA
 
         public static AutomationElement GetAutomationElementFromPoint(Point location)
         {
-            AutomationElement automationElement;
             try
             {
-                automationElement = AutomationElement.FromPoint(location);
-                WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] Found AutomationElement ({0}) at location ({1})", automationElement.Display(), location);
+                var automationElement = AutomationElement.FromPoint(location);
+                Logger.DebugFormat("[PositionBasedSearch] Found AutomationElement ({0}) at location ({1})", automationElement.Display(), location);
                 return automationElement;
             }
             catch

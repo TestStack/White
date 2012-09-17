@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.UIItems.Actions;
@@ -33,7 +33,7 @@ namespace White.Core.UIItems.TableItems
                 {
                     throw new UIItemSearchException(
                         string.Format("Cannot find column with text {0}. Found columns: {1}", text,
-                                      string.Join(",", StringCollection.FromToString(this).ToArray())));
+                                      string.Join(",", this.Select(i=>i.ToString()).ToArray())));
                 }
                 return column;
             }

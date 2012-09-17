@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using White.Core;
-using White.Core.Logging;
 using White.Core.Recording;
 using White.Core.UIItemEvents;
 using White.Core.UIItems;
 using Recorder.Domain;
+using log4net;
 
 namespace Recorder.Recording
 {
@@ -16,6 +16,7 @@ namespace Recorder.Recording
         private readonly List<EventFilter> filters = new List<EventFilter>();
         private readonly UserEventListener userEventListener;
         private readonly UserAction userAction = new UserAction();
+        private ILog logger = LogManager.GetLogger(typeof(RecorderVisitor));
 
         public RecorderVisitor(UserEventListener userEventListener, RecordingOptions recordingOptions)
         {
@@ -45,18 +46,18 @@ namespace Recorder.Recording
                 userAction.CurrentUserEvent.WriteTo(eventWriter, recordingOptions);
                 if (userAction.RepeatEvent)
                 {
-                    WhiteLogger.Instance.Debug("Updating last event with: " + userAction);
+                    logger.Debug("Updating last event with: " + userAction);
                     userEventListener.UpdateEvent(eventWriter.Code);
                 }
                 else
                 {
-                    WhiteLogger.Instance.Debug("Creating new event: " + userAction);
+                    logger.Debug("Creating new event: " + userAction);
                     userEventListener.NewEvent(eventWriter.Code);
                 }
             }
             catch (Exception e)
             {
-                WhiteLogger.Instance.Info("Error during event callback", e);
+                logger.Info("Error during event callback", e);
             }
         }
     }

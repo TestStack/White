@@ -1,23 +1,25 @@
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Xml.Serialization;
-using Bricks.RuntimeFramework;
 using White.Core.Configuration;
 using White.Core.Factory;
-using White.Core.Logging;
 using White.Core.UIA;
 using White.Core.UIItems.Finders;
 using Xstream.Core;
+using log4net;
 
 namespace White.Core.ScreenMap
 {
-    public class WindowItemsMap : BricksCollection<UIItemLocation>
+    public class WindowItemsMap : Collection<UIItemLocation>
     {
         private readonly string fileLocation;
         [XmlIgnore] private bool dirty;
         [XmlIgnore] private bool loadedFromFile;
         private Point lastWindowPosition = RectX.UnlikelyWindowPosition;
         [XmlIgnore] private Point currentWindowPosition;
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(WindowItemsMap));
 
         protected WindowItemsMap() {}
 
@@ -34,32 +36,32 @@ namespace White.Core.ScreenMap
             string fileLocation = FileLocation(initializeOption);
             if (File.Exists(fileLocation))
             {
-                WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] Loading WindowItemsMap for: {0}, from {1}", initializeOption.Identifier, fileLocation);
+                Logger.DebugFormat("[PositionBasedSearch] Loading WindowItemsMap for: {0}, from {1}", initializeOption.Identifier, fileLocation);
                 var windowItemsMap = (WindowItemsMap) CreateFileXStream(fileLocation).FromFile();
                 windowItemsMap.currentWindowPosition = currentWindowPosition;
                 windowItemsMap.loadedFromFile = true;
                 return windowItemsMap;
             }
 
-            WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] Creating new WindowItemsMap for: {0}", initializeOption.Identifier);
+            Logger.DebugFormat("[PositionBasedSearch] Creating new WindowItemsMap for: {0}", initializeOption.Identifier);
             return new WindowItemsMap(fileLocation, currentWindowPosition);
         }
 
         public virtual void Add(Point point, SearchCriteria searchCriteria)
         {
             var uiItemLocation = new UIItemLocation(point, searchCriteria);
-            int searchCriteriaIndex = FindIndex(obj => obj.Has(searchCriteria));
-            int pointIndex = FindIndex(obj => obj.Point.Equals(point));
+            var existingItem = this.FirstOrDefault(obj => obj.Has(searchCriteria));
+            var existingPoint = this.FirstOrDefault(obj => obj.Point.Equals(point));
 
-            if (searchCriteriaIndex >= 0)
+            if (existingItem != null)
             {
-                WhiteLogger.Instance.Debug(string.Format("[PositionBasedSearch] Found another UIItem {0} at {1}", searchCriteria, this[searchCriteriaIndex]));
-                RemoveAt(searchCriteriaIndex);
+                Logger.Debug(string.Format("[PositionBasedSearch] Found another UIItem {0} at {1}", searchCriteria, existingItem));
+                Remove(existingItem);
             }
-            else if (pointIndex >= 0)
+            else if (existingPoint != null)
             {
-                WhiteLogger.Instance.Debug(string.Format("[PositionBasedSearch] UIItem {0} at {1} changed", searchCriteria, point));
-                RemoveAt(pointIndex);
+                Logger.Debug(string.Format("[PositionBasedSearch] UIItem {0} at {1} changed", searchCriteria, point));
+                Remove(existingPoint);
             }
 
             Add(uiItemLocation);
@@ -82,7 +84,7 @@ namespace White.Core.ScreenMap
 
         public virtual Point GetItemLocation(SearchCriteria searchCriteria)
         {
-            UIItemLocation location = Find(obj => obj.Has(searchCriteria));
+            UIItemLocation location = this.SingleOrDefault(obj => obj.Has(searchCriteria));
             if (location == null) return RectX.UnlikelyWindowPosition;
             double xOffset = currentWindowPosition.X - lastWindowPosition.X;
             double yOffset = currentWindowPosition.Y - lastWindowPosition.Y;

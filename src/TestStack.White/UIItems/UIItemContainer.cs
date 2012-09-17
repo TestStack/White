@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Automation;
-using Bricks.Core;
-using Bricks.RuntimeFramework;
 using Castle.DynamicProxy;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
@@ -209,7 +208,7 @@ namespace White.Core.UIItems
 
         public virtual List<MenuBar> MenuBars
         {
-            get { return new BricksCollection<MenuBar>(GetMultiple(SearchCriteria.ForMenuBar(Framework))); }
+            get { return new List<MenuBar>(GetMultiple(SearchCriteria.ForMenuBar(Framework)).OfType<MenuBar>()); }
         }
 
         public virtual ToolTip ToolTip
@@ -221,8 +220,7 @@ namespace White.Core.UIItems
         {
             Mouse.Location = uiItem.Bounds.Center();
             var finder = new AutomationElementFinder(automationElement);
-            Clock.Do perform = () => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip));
-            return ToolTipFinder.FindToolTip(perform);
+            return ToolTipFinder.FindToolTip(() => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip)));
         }
 
         public virtual ToolStrip ToolStrip

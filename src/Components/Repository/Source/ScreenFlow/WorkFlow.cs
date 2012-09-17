@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using White.Core.Logging;
+using log4net;
 
 namespace Repository.ScreenFlow
 {
@@ -19,6 +19,7 @@ namespace Repository.ScreenFlow
         private readonly GraphWriter graph;
         private readonly FlowWriter flow;
         private readonly string directory;
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(WorkFlow));
 
         public WorkFlow(string name, string archiveLocation)
         {
@@ -30,7 +31,7 @@ namespace Repository.ScreenFlow
 
         private static void Log(string format, params object[] args)
         {
-            WhiteLogger.Instance.DebugFormat("± " + format, args);
+            Logger.DebugFormat("± " + format, args);
         }
 
         private void TakeSnapShot()
@@ -41,7 +42,7 @@ namespace Repository.ScreenFlow
 
         private static void CaptureScreenTo(string fileName)
         {
-            using (Bitmap bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format24bppRgb))
+            using (var bmpScreenshot = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height, PixelFormat.Format24bppRgb))
             {
                 using (Graphics gfxScreenshot = Graphics.FromImage(bmpScreenshot))
                 {

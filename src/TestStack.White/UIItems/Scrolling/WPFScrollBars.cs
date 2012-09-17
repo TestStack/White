@@ -1,5 +1,5 @@
+using System.Collections.ObjectModel;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.Scrolling {
@@ -14,7 +14,7 @@ namespace White.Core.UIItems.Scrolling {
 
         public override IHScrollBar Horizontal {
             get {
-                var patterns = new BricksCollection<AutomationPattern>(parentElement.GetSupportedPatterns());
+                var patterns = new Collection<AutomationPattern>(parentElement.GetSupportedPatterns());
                 return patterns.Contains(ScrollPattern.Pattern)
                            ? (IHScrollBar) new WPFHScrollBar(parentElement, actionListener)
                            : new NullHScrollBar();
@@ -23,7 +23,7 @@ namespace White.Core.UIItems.Scrolling {
 
         public override IVScrollBar Vertical {
             get {
-                var patterns = new BricksCollection<AutomationPattern>(parentElement.GetSupportedPatterns());
+                var patterns = new Collection<AutomationPattern>(parentElement.GetSupportedPatterns());
                 return patterns.Contains(ScrollPattern.Pattern)
                            ? (IVScrollBar) new WPFVScrollBar(parentElement, actionListener)
                            : new NullVScrollBar();

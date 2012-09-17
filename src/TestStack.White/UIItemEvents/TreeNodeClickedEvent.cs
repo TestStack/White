@@ -1,5 +1,5 @@
-using Bricks;
 using White.Core.UIItems.TreeItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItemEvents
 {
@@ -7,16 +7,14 @@ namespace White.Core.UIItemEvents
     {
         private readonly TreeNode clickedNode;
         private readonly bool isExpanded;
-        private static readonly string collapseEventName;
-        private static readonly string expandEventName;
+        private static readonly string CollapseEventName;
+        private static readonly string ExpandEventName;
 
         static TreeNodeClickedEvent()
         {
-            CodePath.New<TreeNode>().Collapse();
-            collapseEventName = CodePath.Last;
+            CollapseEventName = MethodNameResolver.NameFor<TreeNode>(n => n.Collapse());
 
-            CodePath.New<TreeNode>().Expand();
-            expandEventName = CodePath.Last;
+            ExpandEventName = MethodNameResolver.NameFor<TreeNode>(n => n.Expand());
         }
 
         public TreeNodeClickedEvent(Tree tree, TreeNode node, bool isExpanded) : base(tree)
@@ -28,7 +26,7 @@ namespace White.Core.UIItemEvents
         protected override string ActionName(EventOption eventOption)
         {
             string lookupNode = "Node(" + PathTo(clickedNode) + ").";
-            return isExpanded ? lookupNode + expandEventName : lookupNode + collapseEventName;
+            return isExpanded ? lookupNode + ExpandEventName : lookupNode + CollapseEventName;
         }
     }
 }

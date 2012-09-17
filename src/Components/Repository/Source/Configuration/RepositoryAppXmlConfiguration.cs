@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using Bricks;
 using Bricks.Core;
-using White.Core.Logging;
+using log4net;
 
 namespace Repository.Configuration
 {
@@ -10,42 +10,38 @@ namespace Repository.Configuration
     {
         public static RepositoryConfiguration instance;
 
-        private static readonly Dictionary<string, object> defaultValues = new Dictionary<string, object>();
-        private const string useHistoryKey = "UseHistory";
-        private const string serviceCallHistoryLocationKey = "ServiceCallHistoryLocation";
-        private const string recordFlowKey = "RecordFlow";
+        private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
+        private const string UseHistoryKey = "UseHistory";
+        private const string ServiceCallHistoryLocationKey = "ServiceCallHistoryLocation";
+        private const string RecordFlowKey = "RecordFlow";
 
         static RepositoryAppXmlConfiguration()
         {
-            defaultValues[recordFlowKey] = false;
-            defaultValues[serviceCallHistoryLocationKey] = ".";
-            defaultValues[useHistoryKey] = false;
+            DefaultValues[RecordFlowKey] = false;
+            DefaultValues[ServiceCallHistoryLocationKey] = ".";
+            DefaultValues[UseHistoryKey] = false;
         }
 
         public static RepositoryConfiguration Instance
         {
-            get
-            {
-                if (instance == null) instance = new RepositoryAppXmlConfiguration();
-                return instance;
-            }
+            get { return instance ?? (instance = new RepositoryAppXmlConfiguration()); }
         }
 
-        private RepositoryAppXmlConfiguration() : base("White", "Repository", defaultValues, WhiteLogger.Instance) {}
+        private RepositoryAppXmlConfiguration() : base("White", "Repository", DefaultValues, LogManager.GetLogger(typeof(RepositoryAppXmlConfiguration))) {}
 
         public virtual bool RecordFlow
         {
-            get { return S.ToBool(usedValues[recordFlowKey]); }
+            get { return S.ToBool(usedValues[RecordFlowKey]); }
         }
 
         public virtual DirectoryInfo ServiceCallHistoryLocation
         {
-            get { return new DirectoryInfo(usedValues[serviceCallHistoryLocationKey]); }
+            get { return new DirectoryInfo(usedValues[ServiceCallHistoryLocationKey]); }
         }
 
         public virtual bool UseHistory
         {
-            get { return S.ToBool(usedValues[useHistoryKey]); }
+            get { return S.ToBool(usedValues[UseHistoryKey]); }
         }
     }
 }

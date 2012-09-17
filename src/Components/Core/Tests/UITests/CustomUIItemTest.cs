@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.Factory;
@@ -37,7 +38,7 @@ namespace White.Core.UITests
         public void ItemsReturnsCustomUIItemToo()
         {
             UIItemCollection uiItemCollection = window.Items;
-            Assert.AreEqual(true, uiItemCollection.Contains(item => item is MyDateUIItem));
+            Assert.AreEqual(true, uiItemCollection.Any(item => item is MyDateUIItem));
         }
 
         [Test, ExpectedException(typeof (CustomUIItemException))]

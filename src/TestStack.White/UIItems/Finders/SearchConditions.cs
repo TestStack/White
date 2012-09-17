@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 
 namespace White.Core.UIItems.Finders
 {
-    public class SearchConditions : BricksCollection<SearchCondition>
+    public class SearchConditions : List<SearchCondition>
     {
         public virtual Condition AutomationCondition
         {
@@ -27,6 +27,11 @@ namespace White.Core.UIItems.Finders
             var list = new List<AutomationElement>(elements);
             ForEach(delegate(SearchCondition condition) { list = condition.Filter(list); });
             return list;
+        }
+
+        public override string ToString()
+        {
+            return string.Join(",", this.Select(i=>i.ToString()).ToArray());
         }
     }
 }

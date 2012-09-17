@@ -1,7 +1,6 @@
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
-using White.Core.Logging;
 using White.Core.Recording;
 using White.Core.UIItemEvents;
 using White.Core.UIItems.Actions;
@@ -72,7 +71,7 @@ namespace White.Core.UIItems.ListBoxItems
         {
             if (!Enabled)
             {
-                WhiteLogger.Instance.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
+                logger.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
                 return;
             }
             if (Equals(itemText, SelectedItemText)) return;
@@ -84,7 +83,7 @@ namespace White.Core.UIItems.ListBoxItems
         {
             if (!Enabled)
             {
-                WhiteLogger.Instance.Warn("Could not select " + index + "in " + Name + " since it is disabled");
+                logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
                 return;
             }
             ToggleDropDown();

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
 using White.Core.Mappings;
@@ -13,14 +12,14 @@ namespace White.Core.Finder
 {
     public class CachedUIItems
     {
-        private readonly BricksCollection<AutomationElement> list = new BricksCollection<AutomationElement>();
+        private readonly List<AutomationElement> list = new List<AutomationElement>();
         private readonly DictionaryMappedItemFactory dictionaryMappedItemFactory = new DictionaryMappedItemFactory();
         private UIItemCollection uiItemCollection;
         private CachedUIItems() {}
 
         public static CachedUIItems CreateAndCachePrimaryChildControls(AutomationElement parent, InitializeOption option)
         {
-            CachedUIItems cachedUIItems = new CachedUIItems();
+            var cachedUIItems = new CachedUIItems();
             cachedUIItems.FindAll(parent, option);
             cachedUIItems.list.Sort(new AutomationElementPositionComparer());
             return cachedUIItems;

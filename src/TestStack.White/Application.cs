@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
-using Bricks.Core;
 using White.Core.Configuration;
 using White.Core.Factory;
-using White.Core.Logging;
 using White.Core.Sessions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
+using log4net;
 
 namespace White.Core
 {
@@ -21,6 +20,7 @@ namespace White.Core
         private readonly Process process;
         private readonly ApplicationSession applicationSession;
         private readonly WindowFactory windowFactory;
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(Application));
 
         protected Application()
         {
@@ -54,7 +54,7 @@ namespace White.Core
         {
             if (string.IsNullOrEmpty(processStartInfo.WorkingDirectory)) processStartInfo.WorkingDirectory = ".";
 
-            WhiteLogger.Instance.DebugFormat("[Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
+            Logger.DebugFormat("[Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
                                              processStartInfo.FileName, 
                                              new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,
                                              new FileInfo(processStartInfo.FileName).FullName, 
@@ -64,8 +64,8 @@ namespace White.Core
             {
                 string output = process.StandardOutput.ReadToEnd();
                 string error = process.StandardError.ReadToEnd();
-                WhiteLogger.Instance.DebugFormat("[TestProcessOutput:{0}]", output);
-                WhiteLogger.Instance.DebugFormat("[TestProcessError:{0}]", error);
+                Logger.DebugFormat("[TestProcessOutput:{0}]", output);
+                Logger.DebugFormat("[TestProcessError:{0}]", error);
             }
             return Attach(process);
         }
@@ -111,10 +111,17 @@ namespace White.Core
         /// <returns></returns>
         public static Application AttachOrLaunch(ProcessStartInfo processStartInfo)
         {
-            string processName = S.ReplaceLast(processStartInfo.FileName, ".exe", string.Empty);
+            string processName = ReplaceLast(processStartInfo.FileName, ".exe", string.Empty);
             Process[] processes = Process.GetProcessesByName(processName);
             if (processes.Length == 0) return Launch(processStartInfo);
             return Attach(processes[0]);
+        }
+
+        private static string ReplaceLast(string replaceIn, string replace, string with)
+        {
+            int index = replaceIn.LastIndexOf(replace);
+            if (index == -1) return replaceIn;
+            return replaceIn.Substring(0, index) + with + replaceIn.Substring(index + replace.Length);
         }
 
         /// <summary>

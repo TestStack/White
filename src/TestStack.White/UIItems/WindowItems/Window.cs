@@ -2,14 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
-using White.Core.Logging;
 using White.Core.Recording;
 using White.Core.Sessions;
 using White.Core.UIA;
@@ -17,6 +14,8 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowStripControls;
+using White.Core.Utility;
+using log4net;
 using Action=White.Core.UIItems.Actions.Action;
 using Condition=System.Windows.Automation.Condition;
 
@@ -29,7 +28,7 @@ namespace White.Core.UIItems.WindowItems
     //TODO move window
     public abstract class Window : UIItemContainer, IDisposable
     {
-        private static readonly Dictionary<DisplayState, WindowVisualState> windowStates =
+        private static readonly Dictionary<DisplayState, WindowVisualState> WindowStates =
             new Dictionary<DisplayState, WindowVisualState>();
 
         private AutomationEventHandler handler;
@@ -38,9 +37,9 @@ namespace White.Core.UIItems.WindowItems
 
         static Window()
         {
-            windowStates.Add(DisplayState.Maximized, WindowVisualState.Maximized);
-            windowStates.Add(DisplayState.Minimized, WindowVisualState.Minimized);
-            windowStates.Add(DisplayState.Restored, WindowVisualState.Normal);
+            WindowStates.Add(DisplayState.Maximized, WindowVisualState.Maximized);
+            WindowStates.Add(DisplayState.Minimized, WindowVisualState.Minimized);
+            WindowStates.Add(DisplayState.Restored, WindowVisualState.Normal);
         }
 
         protected Window()
@@ -60,7 +59,7 @@ namespace White.Core.UIItems.WindowItems
             Rect bounds = Desktop.Instance.Bounds;
             if (!bounds.Contains(Bounds) && (TitleBar != null && TitleBar.MinimizeButton != null))
             {
-                WhiteLogger.Instance.WarnFormat(
+                logger.WarnFormat(
                     @"Window with title: {0} whose dimensions are: {1}, is not contained completely on the desktop {2}. 
 UI actions on window needing mouse would not work in area not falling under the desktop",
                     Title, Bounds, bounds);
@@ -150,17 +149,16 @@ UI actions on window needing mouse would not work in area not falling under the 
                      !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
                     throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
                 if (windowPattern == null) return;
-                var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
-                clock.RunWhile(() => Thread.Sleep(50),
-                               () =>
-                               windowPattern.Current.WindowInteractionState.Equals(WindowInteractionState.NotResponding),
-                               delegate
-                                   {
-                                       throw new UIActionException(
-                                           string.Format(
-                                               "Window didn't come out of WaitState{0} last state known was {1}",
-                                               Constants.BusyMessage, windowPattern.Current.WindowInteractionState));
-                                   });
+                var finalState = Retry.For(
+                    () => windowPattern.Current.WindowInteractionState,
+                    windowState => windowState == WindowInteractionState.NotResponding,
+                    CoreAppXmlConfiguration.Instance.BusyTimeout);
+                if (finalState == WindowInteractionState.NotResponding)
+                {
+                    const string format = "Window didn't come out of WaitState{0} last state known was {1}";
+                    var message = string.Format(format, Constants.BusyMessage, windowPattern.Current.WindowInteractionState);
+                    throw new UIActionException(message);
+                }
             }
             catch (Exception e)
             {
@@ -230,9 +228,8 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate)
         {
-            var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout);
-            clock.Perform(() => waitTillDelegate(), obj => obj.Equals(true),
-                          delegate { throw new UIActionException("Time out happened" + Constants.BusyMessage); });
+            if (!Retry.For(()=>waitTillDelegate(), CoreAppXmlConfiguration.Instance.BusyTimeout))
+                throw new UIActionException("Time out happened" + Constants.BusyMessage);
         }
 
         public virtual void ReloadIfCached()
@@ -244,7 +241,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             get
             {
-                foreach (var keyValuePair in windowStates)
+                foreach (var keyValuePair in WindowStates)
                     if (keyValuePair.Value.Equals(WinPattern.Current.WindowVisualState)) return keyValuePair.Key;
                 throw new WhiteException("Not in any of the possible states, may be it is closed");
             }
@@ -252,7 +249,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             {
                 if (AlreadyInAskedState(value)) return;
 
-                WinPattern.SetWindowVisualState(windowStates[value]);
+                WinPattern.SetWindowVisualState(WindowStates[value]);
                 ActionPerformed();
                 windowSession.LocationChanged(this);
                 if (AlreadyInAskedState(value) || TitleBar == null) return;

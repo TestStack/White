@@ -8,7 +8,6 @@ using White.Core.AutomationElementSearch;
 using White.Core.CustomCommands;
 using White.Core.Factory;
 using White.Core.InputDevices;
-using White.Core.Logging;
 using White.Core.Recording;
 using White.Core.UIA;
 using White.Core.UIItemEvents;
@@ -16,6 +15,7 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
 using White.Core.WindowsAPI;
+using log4net;
 using Action = White.Core.UIItems.Actions.Action;
 using Point = System.Windows.Point;
 using Window = White.Core.UIItems.WindowItems.Window;
@@ -28,11 +28,12 @@ namespace White.Core.UIItems
     {
         protected readonly AutomationElement automationElement;
         protected ActionListener actionListener;
-        internal static readonly Mouse mouse = Mouse.Instance;
+        internal static readonly Mouse mouse = Mouse.instance;
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
         protected IScrollBars scrollBars;
         private AutomationEventHandler handler;
+        protected readonly ILog logger = LogManager.GetLogger(typeof(UIItem));
 
         protected UIItem()
         {
@@ -156,7 +157,7 @@ namespace White.Core.UIItems
             }
             catch
             {
-                WhiteLogger.Instance.Debug("Could not set focus on " + automationElement.Display());
+                logger.Debug("Could not set focus on " + automationElement.Display());
             }
         }
 
@@ -218,7 +219,7 @@ namespace White.Core.UIItems
 
         internal virtual void PerformClick()
         {
-            if (!Enabled) WhiteLogger.Instance.WarnFormat("Clicked on disabled item: {0}", ToString());
+            if (!Enabled) logger.WarnFormat("Clicked on disabled item: {0}", ToString());
             mouse.Click(Bounds.Center(), actionListener);
         }
 
@@ -261,11 +262,7 @@ namespace White.Core.UIItems
 
         public virtual IScrollBars ScrollBars
         {
-            get
-            {
-                if (scrollBars == null) scrollBars = ScrollerFactory.CreateBars(automationElement, actionListener);
-                return scrollBars;
-            }
+            get { return scrollBars ?? (scrollBars = ScrollerFactory.CreateBars(automationElement, actionListener)); }
         }
 
         protected virtual void HookClickEvent(UIItemEventListener eventListener)
@@ -335,7 +332,7 @@ namespace White.Core.UIItems
 
         public virtual void LogStructure()
         {
-            WhiteLogger.Instance.Info(Debug.Details(automationElement));
+            logger.Info(Debug.Details(automationElement));
         }
 
         /// <summary>

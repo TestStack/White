@@ -1,13 +1,12 @@
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 
 namespace White.Core.UIA
 {
-    public class AutomationPatterns : BricksCollection<AutomationPattern>
+    public class AutomationPatterns : List<AutomationPattern>
     {
         public AutomationPatterns(params AutomationPattern[] collection) : base(collection) {}
-        public AutomationPatterns(IEnumerable entities) : base(entities) {}
 
         public AutomationPatterns(AutomationElement automationElement)
         {
@@ -16,7 +15,7 @@ namespace White.Core.UIA
 
         public virtual bool HasPattern(AutomationPattern automationPattern)
         {
-            return Contains(delegate(AutomationPattern pattern) { return pattern.Id.Equals(automationPattern.Id); });
+            return this.Any(pattern => pattern.Id.Equals(automationPattern.Id));
         }
     }
 }

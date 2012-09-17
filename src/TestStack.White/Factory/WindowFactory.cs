@@ -2,22 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Automation;
-using Bricks.Core;
-using Bricks.RuntimeFramework;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
-using White.Core.Logging;
 using White.Core.Sessions;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowItems;
+using White.Core.Utility;
+using log4net;
 
 namespace White.Core.Factory
 {
     public class WindowFactory : ChildWindowFactory
     {
+        private readonly ILog logger = LogManager.GetLogger(typeof(WindowFactory));
         private WindowFactory(AutomationElementFinder automationElementFinder) : base(automationElementFinder) {}
 
         public static WindowFactory Desktop
@@ -30,23 +30,22 @@ namespace White.Core.Factory
             return new PopUpMenu(finder.AutomationElement, actionListener);
         }
 
-        private static AutomationElement WaitTillFound(Clock.Do find, string message)
+        private static AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
         {
-            var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout);
-            Clock.Matched matched = obj => obj != null;
-            Clock.Expired expired = delegate { throw new UIActionException(message + Debug.GetAllWindows()); };
-            return (AutomationElement) clock.Perform(find, matched, expired);
+            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.BusyTimeout);
+            if (element == null)
+                throw new UIActionException(message + Debug.GetAllWindows());
+            return element;
         }
 
         private AutomationElement FindWindowElement(Process process, string title)
         {
-            Clock.Do find = () => finder.FindWindow(title, process.Id);
-            return WaitTillFound(find, string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, Constants.BusyMessage));
+            return WaitTillFound(() => finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, Constants.BusyMessage));
         }
 
         public virtual List<Window> DesktopWindows(Process process, ApplicationSession applicationSession)
         {
-            BricksCollection<AutomationElement> collection = FindAllWindowElements(process);
+            var collection = FindAllWindowElements(process);
             var list = new List<Window>();
             foreach (AutomationElement automationElement in collection)
             {
@@ -56,23 +55,22 @@ namespace White.Core.Factory
             return list;
         }
 
-        private BricksCollection<AutomationElement> FindAllWindowElements(Process process)
+        private List<AutomationElement> FindAllWindowElements(Process process)
         {
-            var clock = new Clock(CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout, 200);
-            Clock.Do @do = delegate
-                               {
-                                   var windowElements = new BricksCollection<AutomationElement>();
-                                   FindDescendantWindowElements(finder, process, windowElements);
-                                   if (windowElements.Count == 0) WhiteLogger.Instance.Warn("Could not find any windows for this application.");
-                                   return windowElements;
-                               };
-            Clock.Matched matched = obj => ((BricksCollection<AutomationElement>) obj).Count > 0;
-            Clock.Expired expired = () => new BricksCollection<AutomationElement>();
+            var items = Retry.For(() =>
+            {
+                var windowElements = new List<AutomationElement>();
+                FindDescendantWindowElements(finder, process, windowElements);
+                if (windowElements.Count == 0) logger.Warn("Could not find any windows for this application.");
+                return windowElements;
+            },
+                      list => list.Count == 0,
+                      CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout);
 
-            return (BricksCollection<AutomationElement>) clock.Perform(@do, matched, expired);
+            return items ?? new List<AutomationElement>();
         }
 
-        private void FindDescendantWindowElements(AutomationElementFinder windowFinder, Process process, BricksCollection<AutomationElement> windowElements)
+        private void FindDescendantWindowElements(AutomationElementFinder windowFinder, Process process, List<AutomationElement> windowElements)
         {
             List<AutomationElement> children =
                 windowFinder.Children(AutomationSearchCondition.ByControlType(ControlType.Window).WithProcessId(process.Id));
@@ -84,9 +82,8 @@ namespace White.Core.Factory
         public virtual Window SplashWindow(Process process)
         {
             AutomationSearchCondition automationSearchCondition = AutomationSearchCondition.ByControlType(ControlType.Pane).WithProcessId(process.Id);
-            Clock.Do find = () => finder.Child(automationSearchCondition);
             AutomationElement element =
-                WaitTillFound(find,
+                WaitTillFound(() => finder.Child(automationSearchCondition),
                               "No control found matching the condition " +
                               AutomationSearchCondition.ToString(new[] {automationSearchCondition}) + Constants.BusyMessage);
             return new SplashWindow(element, InitializeOption.NoCache);
@@ -99,10 +96,9 @@ namespace White.Core.Factory
 
         public virtual Window CreateWindow(SearchCriteria searchCriteria, Process process, InitializeOption option, WindowSession windowSession)
         {
-            Clock.Do find = () => finder.FindWindow(searchCriteria, process.Id);
             string message =
                 string.Format("Couldn't find window with SearchCriteria {0} in process {1}{2}", searchCriteria, process.Id, Constants.BusyMessage);
-            AutomationElement element = WaitTillFound(find, message);
+            AutomationElement element = WaitTillFound(() => finder.FindWindow(searchCriteria, process.Id), message);
             return Create(element, option, windowSession);
         }
 
@@ -115,7 +111,7 @@ namespace White.Core.Factory
 
         private AutomationElement FindWindowElement(Process process, Predicate<string> match)
         {
-            BricksCollection<AutomationElement> elements = FindAllWindowElements(process);
+            var elements = FindAllWindowElements(process);
             return elements.Find(delegate(AutomationElement obj)
                                      {
                                          if (match.Invoke(obj.Current.Name)) return true;
@@ -143,7 +139,7 @@ namespace White.Core.Factory
             }
             catch (UIActionException e)
             {
-                WhiteLogger.Instance.Debug(e.ToString());
+                logger.Debug(e.ToString());
                 return null;
             }
         }
@@ -163,7 +159,7 @@ namespace White.Core.Factory
             }
             catch (UIActionException e)
             {
-                WhiteLogger.Instance.Debug(e.ToString());
+                logger.Debug(e.ToString());
                 return null;
             }
         }
@@ -185,7 +181,7 @@ namespace White.Core.Factory
 
         public static void AddSpecializedWindowFactory(SpecializedWindowFactory specializedWindowFactory)
         {
-            specializedWindowFactories.Add(specializedWindowFactory);
+            SpecializedWindowFactories.Add(specializedWindowFactory);
         }
     }
 }

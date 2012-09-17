@@ -1,25 +1,24 @@
-using Bricks;
 using White.Core.UIItems;
+using White.Core.Utility;
 
 namespace White.Core.UIItemEvents
 {
     public class TextBoxEvent : UserEvent
     {
-        private static readonly string textAction;
-        private static readonly string bulkTextAction;
+        private static readonly string TextAction;
+        private static readonly string BulkTextAction;
 
         static TextBoxEvent()
         {
-            textAction = CodePath.Get(CodePath.New<TextBox>().Text);
-            CodePath.New<TextBox>().BulkText = null;
-            bulkTextAction = CodePath.Last;
+            TextAction = PropertyResolver.NameFor((TextBox t) => t.Text);
+            BulkTextAction = PropertyResolver.NameFor((TextBox t) => t.BulkText);
         }
 
         public TextBoxEvent(IUIItem textBox) : base(textBox) {}
 
         protected override string ActionName(EventOption eventOption)
         {
-            return eventOption.BulkText ? bulkTextAction : textAction;
+            return eventOption.BulkText ? BulkTextAction : TextAction;
         }
 
         public override object[] ActionParameters

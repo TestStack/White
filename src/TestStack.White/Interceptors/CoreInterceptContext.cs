@@ -1,11 +1,11 @@
 using System;
-using Bricks.DynamicProxy;
+using White.Core.Bricks;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 
 namespace White.Core.Interceptors
 {
-    public class CoreInterceptContext : InterceptContext
+    public class CoreInterceptContext : IInterceptContext
     {
         private readonly IUIItem uiItem;
         private readonly ActionListener actionListener;

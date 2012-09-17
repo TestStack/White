@@ -1,4 +1,4 @@
-﻿using Bricks.DynamicProxy;
+﻿using White.Core.Bricks;
 using White.Core.UIItems;
 
 namespace White.Core.CustomCommands

@@ -1,10 +1,12 @@
-using White.Core.Logging;
 using White.Core.UIItems.Finders;
+using log4net;
 
 namespace White.Core.UIItems.WPFUIItems
 {
     public static class WPFUIItem
     {
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(WPFUIItem));
+
         public static T Get<T>(this UIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
         {
             UIItemContainer uiItemContainer = GetUiItemContainer(uiItem);
@@ -13,7 +15,7 @@ namespace White.Core.UIItems.WPFUIItems
 
         private static UIItemContainer GetUiItemContainer(UIItem uiItem)
         {
-            if (!uiItem.Framework.WPF) WhiteLogger.Instance.Warn("Only WPF items should be treated as container items");
+            if (!uiItem.Framework.WPF) Logger.Warn("Only WPF items should be treated as container items");
             return uiItem.AsContainer();
         }
 

@@ -2,13 +2,13 @@ using System;
 using System.Windows;
 using System.Windows.Automation;
 using White.Core.Factory;
-using White.Core.Logging;
 using White.Core.ScreenMap;
 using White.Core.UIA;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Container;
 using White.Core.UIItems.Finders;
+using log4net;
 using Window=White.Core.UIItems.WindowItems.Window;
 
 namespace White.Core.Sessions
@@ -18,6 +18,7 @@ namespace White.Core.Sessions
         private readonly ApplicationSession applicationSession;
         private readonly WindowItemsMap windowItemsMap;
         private readonly InitializeOption initializeOption;
+        private readonly ILog logger = LogManager.GetLogger(typeof(WindowSession));
 
         public WindowSession(ApplicationSession applicationSession, InitializeOption initializeOption)
         {
@@ -36,11 +37,11 @@ namespace White.Core.Sessions
 
         public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
         {
-            WhiteLogger.Instance.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);
+            logger.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);
             Point location = windowItemsMap.GetItemLocation(searchCriteria);
             if (location.Equals(RectX.UnlikelyWindowPosition))
             {
-                WhiteLogger.Instance.Debug("[PositionBasedSearch] Could not find based on position, finding using search.");
+                logger.Debug("[PositionBasedSearch] Could not find based on position, finding using search.");
                 return Create(containerItemFactory, searchCriteria, actionListener);
             }
 
@@ -51,7 +52,7 @@ namespace White.Core.Sessions
                 return UIItemProxyFactory.Create(item, actionListener);
             }
 
-            WhiteLogger.Instance.DebugFormat("[PositionBasedSearch] UIItem {0} changed its position, finding using search.", searchCriteria);
+            logger.DebugFormat("[PositionBasedSearch] UIItem {0} changed its position, finding using search.", searchCriteria);
             return Create(containerItemFactory, searchCriteria, actionListener);
         }
 

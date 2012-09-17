@@ -2,9 +2,9 @@ using System;
 using NUnit.Framework;
 using White.Core.Factory;
 using White.Core.InputDevices;
-using White.Core.Logging;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
+using log4net;
 
 namespace White.Core.UITests.Testing
 {
@@ -14,6 +14,7 @@ namespace White.Core.UITests.Testing
         private readonly TestMode testMode = TestMode.Create(Environment.CommandLine);
         internal Keyboard keyboard;
         protected TestConfiguration testConfiguration;
+        private readonly ILog logger = LogManager.GetLogger(typeof(CoreTestTemplate));
 
         [TestFixtureSetUp]
         public virtual void LaunchApplication()
@@ -28,7 +29,7 @@ namespace White.Core.UITests.Testing
             }
             catch (Exception e)
             {
-                WhiteLogger.Instance.Error(e);
+                logger.Error(e);
                 TextFixtureTearDown();
                 throw;
             }

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.UIItems.Actions;
@@ -17,10 +16,10 @@ namespace White.Core.UIItems.TableItems
         {
             get
             {
-                List<AutomationElement> descendants =
-                    new AutomationElementFinder(automationElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.Header));
-                List<AutomationElement> columnElements =
-                    new BricksCollection<AutomationElement>(descendants).FindAll(obj => !obj.Current.Name.StartsWith(UIItemIdAppXmlConfiguration.Instance.TableColumn));
+                var descendants = new AutomationElementFinder(automationElement)
+                    .Descendants(AutomationSearchCondition.ByControlType(ControlType.Header));
+                var columnElements = new List<AutomationElement>(descendants)
+                    .FindAll(obj => !obj.Current.Name.StartsWith(UIItemIdAppXmlConfiguration.Instance.TableColumn));
                 return new TableColumns(columnElements, actionListener);
             }
         }

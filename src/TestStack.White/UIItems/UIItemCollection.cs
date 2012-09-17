@@ -1,31 +1,33 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.RuntimeFramework;
 using White.Core.UIA;
 using White.Core.Factory;
-using White.Core.Logging;
 using White.Core.Mappings;
 using White.Core.UIItems.Actions;
+using log4net;
 
 namespace White.Core.UIItems
 {
-    public class UIItemCollection : BricksCollection<IUIItem>
+    public class UIItemCollection : List<IUIItem>
     {
-        private static readonly DictionaryMappedItemFactory dictionaryMappedItemFactory = new DictionaryMappedItemFactory();
+        private static readonly DictionaryMappedItemFactory DictionaryMappedItemFactory = new DictionaryMappedItemFactory();
+        private readonly ILog logger = LogManager.GetLogger(typeof(UIItemCollection));
 
         public UIItemCollection(params UIItem[] uiItems)
         {
             AddRange(uiItems);
         }
 
-        public UIItemCollection(IEnumerable entities) : base(entities) {}
+        public UIItemCollection(IEnumerable entities) : base(entities.OfType<IUIItem>()) {}
 
-        public UIItemCollection(AutomationElement[] automationElements, ActionListener actionListener)
-            : this(automationElements, dictionaryMappedItemFactory, actionListener) {}
+        public UIItemCollection(IEnumerable<AutomationElement> automationElements, ActionListener actionListener)
+            : this(automationElements, DictionaryMappedItemFactory, actionListener) {}
 
         public UIItemCollection(IEnumerable automationElements, ActionListener actionListener)
-            : this(automationElements, dictionaryMappedItemFactory, actionListener) {}
+            : this(automationElements, DictionaryMappedItemFactory, actionListener) {}
 
         public UIItemCollection(IEnumerable automationElements, UIItemFactory uiItemFactory, ActionListener actionListener)
         {
@@ -43,12 +45,12 @@ namespace White.Core.UIItems
                 try
                 {
                     if (!automationElement.IsPrimaryControl()) continue;
-                    IUIItem uiItem = dictionaryMappedItemFactory.Create(automationElement, actionListener, customItemType);
+                    IUIItem uiItem = DictionaryMappedItemFactory.Create(automationElement, actionListener, customItemType);
                     if (uiItem != null) Add(uiItem);
                 }
                 catch (ControlDictionaryException)
                 {
-                    WhiteLogger.Instance.WarnFormat("Couldn't create UIItem for AutomationElement, {0}", automationElement.Display());
+                    logger.WarnFormat("Couldn't create UIItem for AutomationElement, {0}", automationElement.Display());
                 }
             }
         }

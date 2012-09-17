@@ -69,7 +69,7 @@ namespace White.WebBrowser.UITests.Silverlight
             var comboBox = document.Get<ComboBox>("combo");
             comboBox.Select("foo");
             comboBox.Select("foo");
-            Mouse.Instance.Click(button.Bounds.Center(), document);
+            Mouse.instance.Click(button.Bounds.Center(), document);
             Assert.AreNotEqual(label.Text, previousText);
         }
 

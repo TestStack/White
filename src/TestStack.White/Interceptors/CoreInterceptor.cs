@@ -1,16 +1,17 @@
 using System;
-using Bricks.DynamicProxy;
 using Castle.DynamicProxy;
+using White.Core.Bricks;
 using White.Core.Configuration;
-using White.Core.Logging;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
+using log4net;
 
 namespace White.Core.Interceptors
 {
     public class CoreInterceptor : IInterceptor
     {
         private readonly CoreInterceptContext coreInterceptContext;
+        private readonly ILog logger = LogManager.GetLogger(typeof(CoreInterceptor));
 
         public CoreInterceptor(IUIItem uiItem, ActionListener actionListener)
         {
@@ -26,7 +27,7 @@ namespace White.Core.Interceptors
             }
             catch (Exception)
             {
-                WhiteLogger.Instance.Error(DynamicProxyInterceptors.ToString(invocation));
+                logger.Error(DynamicProxyInterceptors.ToString(invocation));
                 throw;
             }
         }

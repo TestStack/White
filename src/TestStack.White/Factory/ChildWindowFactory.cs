@@ -1,19 +1,20 @@
+using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Sessions;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
+using White.Core.Utility;
 
 namespace White.Core.Factory
 {
     public abstract class ChildWindowFactory
     {
         protected readonly AutomationElementFinder finder;
-        protected static readonly List<SpecializedWindowFactory> specializedWindowFactories = new List<SpecializedWindowFactory>();
+        protected static readonly List<SpecializedWindowFactory> SpecializedWindowFactories = new List<SpecializedWindowFactory>();
 
         protected ChildWindowFactory(AutomationElementFinder finder)
         {
@@ -22,28 +23,23 @@ namespace White.Core.Factory
 
         public virtual Window ModalWindow(string title, InitializeOption option, WindowSession windowSession)
         {
-            Clock.Do @do = () => finder.FindWindow(title, 0);
-            return ModalWindow(@do, option, windowSession);
+            return ModalWindow(() => finder.FindWindow(title, 0), option, windowSession);
         }
 
-        private Window ModalWindow(Clock.Do find, InitializeOption option, WindowSession windowSession)
+        private static Window ModalWindow(Func<AutomationElement> find, InitializeOption option, WindowSession windowSession)
         {
-            var clock = new Clock(CoreAppXmlConfiguration.Instance.BusyTimeout);
-            Clock.Matched matched = obj => obj != null;
-            Clock.Expired expired = () => null;
-            var automationElement = (AutomationElement) clock.Perform(find, matched, expired);
+            var automationElement = Retry.For(find, e => e == null, CoreAppXmlConfiguration.Instance.BusyTimeout);
             return automationElement == null ? null: Create(automationElement, option, windowSession);
         }
 
         public virtual Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option, WindowSession windowSession)
         {
-            Clock.Do @do = () => finder.FindWindow(searchCriteria);
-            return ModalWindow(@do, option, windowSession);
+            return ModalWindow(() => finder.FindWindow(searchCriteria), option, windowSession);
         }
 
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
         {
-            SpecializedWindowFactory specializedWindowFactory = specializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
+            SpecializedWindowFactory specializedWindowFactory = SpecializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
             if (specializedWindowFactory != null)
             {
                 return specializedWindowFactory.Create(element, option, windowSession);

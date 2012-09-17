@@ -1,8 +1,9 @@
+using System;
 using System.Windows.Automation;
-using Bricks.Core;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.UIItems.Actions;
+using White.Core.Utility;
 
 namespace White.Core.UIItems.ListViewItems
 {
@@ -22,23 +23,24 @@ namespace White.Core.UIItems.ListViewItems
 
         public static void WaitTillNotPresent()
         {
-            Clock.Matched matched = obj => obj == null;
-            WaitTill(new NullActionListener(), "Took too long to select the item in SuggestionList", matched);
+            WaitTill(new NullActionListener(), "Took too long to select the item in SuggestionList", obj => obj == null);
         }
 
-        private static SuggestionList WaitTill(ActionListener actionListener, string failureMessage, Clock.Matched matched)
+        private static SuggestionList WaitTill(ActionListener actionListener, string failureMessage, Predicate<SuggestionList> matched)
         {
-            Clock.Do getSuggestionList = () => Find(actionListener);
-            Clock.Expired onExpiration = delegate { throw new UIActionException(failureMessage + Constants.BusyMessage); };
-
-            return
-                (SuggestionList) new Clock(CoreAppXmlConfiguration.Instance.SuggestionListTimeout).Perform(getSuggestionList, matched, onExpiration);
+            try
+            {
+                return Retry.For(() => Find(actionListener), matched, CoreAppXmlConfiguration.Instance.SuggestionListTimeout);
+            }
+            catch (Exception ex)
+            {
+                throw new UIActionException(failureMessage + Constants.BusyMessage, ex);
+            }
         }
 
         public static SuggestionList WaitAndFind(ActionListener actionListener)
         {
-            Clock.Matched matched = obj => obj != null;
-            return WaitTill(actionListener, "Took too long to find suggestion list", matched);
+            return WaitTill(actionListener, "Took too long to find suggestion list", obj => obj != null);
         }
     }
 }

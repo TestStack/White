@@ -9,8 +9,8 @@ namespace White.Core.UnitTests.UIItems
         [Test]
         public void DifferentDateFormats()
         {
-            Assert.AreEqual(DateFormat.DayMonthYear, DateFormat.Create("-", "dd-MM-yyyy"));
-            Assert.AreEqual(DateFormat.DayMonthYear, DateFormat.Create("-", "d-M-yyyy"));
+            Assert.AreEqual(DateFormat.dayMonthYear, DateFormat.Create("-", "dd-MM-yyyy"));
+            Assert.AreEqual(DateFormat.dayMonthYear, DateFormat.Create("-", "d-M-yyyy"));
         }
     }
 }

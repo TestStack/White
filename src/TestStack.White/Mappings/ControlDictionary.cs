@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
-using Bricks.Core;
-using Bricks.RuntimeFramework;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UIItems.MenuItems;
@@ -19,7 +18,7 @@ namespace White.Core.Mappings
     {
         public static readonly ControlDictionary Instance = new ControlDictionary();
         private readonly ControlDictionaryItems items = new ControlDictionaryItems();
-        private readonly Types editableControls = new Types();
+        private readonly List<Type> editableControls = new List<Type>();
 
         private ControlDictionary()
         {
@@ -140,7 +139,7 @@ namespace White.Core.Mappings
 
         public virtual Type GetTestControlType(string className)
         {
-            if (S.IsEmpty(className)) return null;
+            if (string.IsNullOrEmpty(className)) return null;
             ControlDictionaryItem dictionaryItem =
                 items.Find(
                     controlDictionaryItem => !string.IsNullOrEmpty(controlDictionaryItem.ClassName) && className.Contains(controlDictionaryItem.ClassName));
@@ -155,8 +154,8 @@ namespace White.Core.Mappings
                     controlDictionaryItem =>
                     (controlDictionaryItem.IsPrimary && controlDictionaryItem.ControlType.Equals(controlType) &&
                      !controlDictionaryItem.IsIdentifiedByClassName && !controlDictionaryItem.IsIdentifiedByName) ||
-                    (S.IsNotEmpty(className) && className.Contains(controlDictionaryItem.ClassName) && controlDictionaryItem.IsIdentifiedByClassName) ||
-                    (S.IsNotEmpty(name) && name.Equals("PropertyGrid") && controlDictionaryItem.IsIdentifiedByName));
+                    (!string.IsNullOrEmpty(className) && className.Contains(controlDictionaryItem.ClassName) && controlDictionaryItem.IsIdentifiedByClassName) ||
+                    (!string.IsNullOrEmpty(name) && name.Equals("PropertyGrid") && controlDictionaryItem.IsIdentifiedByName));
         }
 
         public virtual bool IsExcluded(ControlType controlType)
@@ -166,9 +165,7 @@ namespace White.Core.Mappings
 
         public virtual bool IsControlTypeSupported(ControlType controlType)
         {
-            foreach (ControlDictionaryItem controlDictionaryItem in items)
-                if (controlDictionaryItem.ControlType.Equals(controlType)) return true;
-            return false;
+            return items.Any(controlDictionaryItem => controlDictionaryItem.ControlType.Equals(controlType));
         }
 
         public virtual List<ControlType> PrimaryControlTypes(string frameworkId)
@@ -185,7 +182,7 @@ namespace White.Core.Mappings
 
         public virtual bool IsEditable(UIItem uiItem)
         {
-            return editableControls.IsAssignableFrom(uiItem.GetType());
+            return editableControls.All(t=>t.IsInstanceOfType(uiItem));
         }
 
         public virtual Type GetTestType(AutomationElement automationElement)
@@ -199,8 +196,7 @@ namespace White.Core.Mappings
             Type type = GetTestControlType(className);
             if (type == null && "PropertyGrid".Equals(name) && ControlType.Pane.Equals(controlType))
                 type = typeof (PropertyGrid);
-            if (type == null) type = GetTestControlType(controlType, frameworkId, isNativeControl);
-            return type;
+            return type ?? (GetTestControlType(controlType, frameworkId, isNativeControl));
         }
     }
 }
