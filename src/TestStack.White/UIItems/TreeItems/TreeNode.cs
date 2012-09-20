@@ -132,12 +132,13 @@ namespace White.Core.UIItems.TreeItems
         {
             get
             {
-                if (string.IsNullOrEmpty(Name))
+                var value = Name;
+                if (string.IsNullOrEmpty(value) || value.Contains("System.Windows.Controls.TreeViewItem"))
                 {
                     AutomationElement textElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Text));
                     return textElement == null ? string.Empty : textElement.Current.Name;
                 }
-                return Name;
+                return value;
             }
         }
     }

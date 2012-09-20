@@ -23,14 +23,14 @@ namespace White.Core.UIItems.ListViewItems
 
         public static void WaitTillNotPresent()
         {
-            WaitTill(new NullActionListener(), "Took too long to select the item in SuggestionList", obj => obj == null);
+            WaitTill(new NullActionListener(), "Took too long to select the item in SuggestionList", obj => obj != null);
         }
 
-        private static SuggestionList WaitTill(ActionListener actionListener, string failureMessage, Predicate<SuggestionList> matched)
+        private static SuggestionList WaitTill(ActionListener actionListener, string failureMessage, Predicate<SuggestionList> shouldRetry)
         {
             try
             {
-                return Retry.For(() => Find(actionListener), matched, CoreAppXmlConfiguration.Instance.SuggestionListTimeout);
+                return Retry.For(() => Find(actionListener), shouldRetry, CoreAppXmlConfiguration.Instance.SuggestionListTimeout);
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace White.Core.UIItems.ListViewItems
 
         public static SuggestionList WaitAndFind(ActionListener actionListener)
         {
-            return WaitTill(actionListener, "Took too long to find suggestion list", obj => obj != null);
+            return WaitTill(actionListener, "Took too long to find suggestion list", obj => obj == null);
         }
     }
 }

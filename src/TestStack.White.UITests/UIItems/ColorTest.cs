@@ -20,9 +20,9 @@ namespace White.Core.UITests.UIItems
         public void Backgroud()
         {
             Color color = textBox.BorderColor;
-            Assert.AreEqual(0, color.R);
-            Assert.AreEqual(0, color.G);
-            Assert.AreEqual(0, color.B);
+            Assert.AreEqual(100, color.R);
+            Assert.AreEqual(100, color.G);
+            Assert.AreEqual(100, color.B);
         }
 
         [Test]

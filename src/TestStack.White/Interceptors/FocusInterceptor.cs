@@ -1,3 +1,4 @@
+using System.Threading;
 using Castle.DynamicProxy;
 
 namespace White.Core.Interceptors

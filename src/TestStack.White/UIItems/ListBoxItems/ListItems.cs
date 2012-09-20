@@ -43,6 +43,7 @@ namespace White.Core.UIItems.ListBoxItems
 
         private void MakeLastItemReadyForPerformingAction()
         {
+            if (Count == 0) return;
             ListItem lastItem = Item(Count - 1);
             if (lastItem.Bounds.IsZeroSize() || string.IsNullOrEmpty(lastItem.Text))
             {

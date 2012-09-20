@@ -10,7 +10,7 @@ namespace White.Core.UITests.Testing
         [SetUp]
         public void SetUp()
         {
-            defaultApplicationClass = TestMode.DefaultAppClass;
+            defaultApplicationClass = TestMode.defaultAppClass;
         }
 
         [Test]
@@ -41,20 +41,20 @@ namespace White.Core.UITests.Testing
         {
             Assert.AreEqual(ApplicationClass.WinForm, TestMode.Create(string.Empty).ClassFor(new SampleWinFormsTest()));
             Assert.AreEqual(ApplicationClass.WPF, TestMode.Create(string.Empty).ClassFor(new SampleWPFTest()));
-            Assert.AreEqual(TestMode.DefaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleTest()));
+            Assert.AreEqual(TestMode.defaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleTest()));
 
-            TestMode.DefaultAppClass = ApplicationClass.WinForm;
-            Assert.AreEqual(TestMode.DefaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleMultiCategoryTest()));
-            TestMode.DefaultAppClass = ApplicationClass.WPF;
-            Assert.AreEqual(TestMode.DefaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleMultiCategoryTest()));
-            TestMode.DefaultAppClass = ApplicationClass.SWT;
-            Assert.AreNotEqual(TestMode.DefaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleMultiCategoryTest()));
+            TestMode.defaultAppClass = ApplicationClass.WinForm;
+            Assert.AreEqual(TestMode.defaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleMultiCategoryTest()));
+            TestMode.defaultAppClass = ApplicationClass.WPF;
+            Assert.AreEqual(TestMode.defaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleMultiCategoryTest()));
+            TestMode.defaultAppClass = ApplicationClass.SWT;
+            Assert.AreNotEqual(TestMode.defaultAppClass, TestMode.Create(string.Empty).ClassFor(new SampleMultiCategoryTest()));
         }
 
         [TearDown]
         public void TearDown()
         {
-            TestMode.DefaultAppClass = defaultApplicationClass;
+            TestMode.defaultAppClass = defaultApplicationClass;
         }
     }
 

@@ -16,7 +16,7 @@ namespace White.Core.UIItems.TreeItems
         {
             get
             {
-                return GetExpandCollapseButton().Bounds.ImmediateExteriorEast();
+                return GetExpandCollapseButton().Bounds.East(10);
             }
         }
 

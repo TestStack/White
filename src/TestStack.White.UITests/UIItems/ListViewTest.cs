@@ -1,3 +1,4 @@
+using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.ListViewItems;

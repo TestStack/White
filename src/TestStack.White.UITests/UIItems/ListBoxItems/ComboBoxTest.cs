@@ -1,3 +1,4 @@
+using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.Configuration;
 using White.Core.UIItems.ListBoxItems;
@@ -20,6 +21,9 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void GetItems()
         {
+            var expandCollapsePattern = ((ExpandCollapsePattern) comboBox.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern));
+            expandCollapsePattern.Expand();
+            expandCollapsePattern.Collapse();
             ListItems items = comboBox.Items;
             Assert.AreEqual(10, items.Count);
             Assert.AreEqual("Arundhati Roy", items[0].Name);

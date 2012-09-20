@@ -3,7 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Form1" Height="300" Width="300">
     <ListBox ItemsSource="{Binding}" IsSynchronizedWithCurrentItem="True" Height="100" Name="theListBox">
-        <ListBox.ItemTemplate>
+        <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+                <StackPanel />
+            </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>        <ListBox.ItemTemplate>
             <DataTemplate>
                 <TextBlock Text="{Binding Path=Name}" />
             </DataTemplate>

@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -12,7 +12,7 @@ using log4net;
 
 namespace White.Core.ScreenMap
 {
-    public class WindowItemsMap : Collection<UIItemLocation>
+    public class WindowItemsMap : List<UIItemLocation>
     {
         private readonly string fileLocation;
         [XmlIgnore] private bool dirty;
@@ -84,7 +84,7 @@ namespace White.Core.ScreenMap
 
         public virtual Point GetItemLocation(SearchCriteria searchCriteria)
         {
-            UIItemLocation location = this.SingleOrDefault(obj => obj.Has(searchCriteria));
+            UIItemLocation location = Find(obj => obj.Has(searchCriteria));
             if (location == null) return RectX.UnlikelyWindowPosition;
             double xOffset = currentWindowPosition.X - lastWindowPosition.X;
             double yOffset = currentWindowPosition.Y - lastWindowPosition.Y;

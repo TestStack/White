@@ -1,3 +1,4 @@
+using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.Configuration;
 using White.Core.UIItems.ListBoxItems;
@@ -41,6 +42,9 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         public void SelectItemInEditableComboBox()
         {
             var comboBox = window.Get<ComboBox>("editableComboBox");
+            var expandPatter = (ExpandCollapsePattern)comboBox.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
+            expandPatter.Expand();
+            expandPatter.Collapse();
             comboBox.Select("whatever");
             Assert.AreEqual("whatever", comboBox.EditableText);
             Assert.AreEqual("whatever", comboBox.SelectedItemText);

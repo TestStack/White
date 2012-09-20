@@ -1,5 +1,5 @@
 using System;
-using Bricks;
+using System.Reflection;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
@@ -28,7 +28,7 @@ namespace White.Core.UITests.Interceptors
             window = configuration.Launch().GetWindow("Form1", configuration.WindowInitializeOption);
         }
 
-        [Test, ExpectedException(typeof (BricksException))]
+        [Test, ExpectedException(typeof(TargetInvocationException))]
         public void DonotAllowActionOnDisabledControls()
         {
             var textBox = window.Get<TextBox>("textBox");

@@ -52,7 +52,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebBrowser", "WebBrowser", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsTestApp", "TestApplications\WinFormsTestApp\WinFormsTestApp.csproj", "{BDD325EF-D400-4A37-B4C6-D7BF150587C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentWPFTestApp", "TestApplications\WPFTestApp\ComponentWPFTestApp.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestApp", "TestApplications\WPFTestApp\WPFTestApp.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

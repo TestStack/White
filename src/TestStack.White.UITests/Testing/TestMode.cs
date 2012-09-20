@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using Bricks.RuntimeFramework;
+using System.Linq;
 using NUnit.Framework;
 
 namespace White.Core.UITests.Testing
@@ -9,15 +9,15 @@ namespace White.Core.UITests.Testing
     public class TestMode
     {
         private ApplicationClass applicationClass = ApplicationClass.None;
-        public static ApplicationClass DefaultAppClass =
+        public static ApplicationClass defaultAppClass =
             (ApplicationClass) Enum.Parse(typeof (ApplicationClass), ConfigurationManager.AppSettings["TestMode"]);
-        private static readonly Dictionary<string, ApplicationClass> categories = new Dictionary<string, ApplicationClass>();
+        private static readonly Dictionary<string, ApplicationClass> Categories = new Dictionary<string, ApplicationClass>();
 
         static TestMode()
         {
-            categories.Add(Constants.WinFormFrameworkId, ApplicationClass.WinForm);
-            categories.Add(Constants.WPFFrameworkId, ApplicationClass.WPF);
-            categories.Add(Constants.SWT, ApplicationClass.SWT);
+            Categories.Add(Constants.WinFormFrameworkId, ApplicationClass.WinForm);
+            Categories.Add(Constants.WPFFrameworkId, ApplicationClass.WPF);
+            Categories.Add(Constants.SWT, ApplicationClass.SWT);
         }
 
         public TestMode(ApplicationClass applicationClass)
@@ -57,16 +57,16 @@ namespace White.Core.UITests.Testing
 
         public virtual ApplicationClass ClassFor(object test)
         {
-            var @class = new Class(test.GetType());
-            if (@class.HasAttribute(typeof (CategoryAttribute)))
+            var attributes = test.GetType().GetCustomAttributes(typeof(CategoryAttribute), true);
+            if (attributes.Any())
             {
-                List<CategoryAttribute> categoryAttributes = @class.Attributes<CategoryAttribute>();
-                if (ContainsName(categoryAttributes, DefaultAppClass))
-                    return DefaultAppClass;
+                var categoryAttributes = attributes.OfType<CategoryAttribute>().ToList();
+                if (ContainsName(categoryAttributes, defaultAppClass))
+                    return defaultAppClass;
                 string category = categoryAttributes[0].Name;
-                if (categories.ContainsKey(category)) return categories[category];
+                if (Categories.ContainsKey(category)) return Categories[category];
             }
-            return applicationClass.Equals(ApplicationClass.None) ? DefaultAppClass : applicationClass;
+            return applicationClass.Equals(ApplicationClass.None) ? defaultAppClass : applicationClass;
         }
 
         private static bool ContainsName(List<CategoryAttribute> categoryAttributes, ApplicationClass defaultAppClass)

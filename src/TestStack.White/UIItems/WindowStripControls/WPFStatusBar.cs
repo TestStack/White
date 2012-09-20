@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Windows.Automation;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
@@ -11,7 +12,12 @@ namespace White.Core.UIItems.WindowStripControls
 
         public virtual UIItemCollection Items
         {
-            get { return factory.CreateAll(SearchCriteria.ByControlType(ControlType.Text), actionListener); }
+            get
+            {
+                var uiItemCollection = factory.CreateAll(SearchCriteria.All, actionListener)
+                    .Where(i=>i.AutomationElement.Current.ClassName == "StatusBarItem");
+                return new UIItemCollection(uiItemCollection);
+            }
         }
     }
 }

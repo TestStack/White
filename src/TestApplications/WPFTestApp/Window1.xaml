@@ -54,7 +54,12 @@
       <TabItem  Name="Winter" Header="Winter">Winter</TabItem>
     </TabControl>
     <ListBox Height="96" HorizontalAlignment="Left" Margin="228,0,0,51" Name="listBoxWithVScrollBar" VerticalAlignment="Bottom" Width="120" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
-      <ListBoxItem>1</ListBoxItem>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+                <ListBoxItem>1</ListBoxItem>
       <ListBoxItem>2</ListBoxItem>
       <ListBoxItem>3</ListBoxItem>
       <ListBoxItem>4</ListBoxItem>
@@ -156,8 +161,14 @@
     <ToolBar Height="25" HorizontalAlignment="Left" Margin="2,17,0,0" Name="toolBar1" VerticalAlignment="Top" Width="308">
       <Button Click="toolBarButton_Click" Name="toolBarButton">Toolbar Button</Button>
     </ToolBar>
-    <ListView Height="71" Margin="326,27,200,0" Name="listView" VerticalAlignment="Top" />
-    <Image x:Name="image" Source="horse.gif" Margin="248,231,140,0" Height="31" VerticalAlignment="Top" />
+        <ListView Height="71" Margin="326,27,200,0" Name="listView" VerticalAlignment="Top" ScrollViewer.IsDeferredScrollingEnabled="False">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        <Image x:Name="image" Source="horse.gif" Margin="248,231,140,0" Height="31" VerticalAlignment="Top" />
     <Button Height="23" HorizontalAlignment="Right" Margin="0,28,71,0" Name="disableControls" VerticalAlignment="Top" Width="101">Disable Controls</Button>
     <UserControl HorizontalAlignment="Right" Margin="0,270.723,195,218.277" Name="userControl1" Width="56.72">UserControl</UserControl>
     <GroupBox Height="75.277" HorizontalAlignment="Right" Margin="0,24.723,70,0" Name="groupBox1" VerticalAlignment="Top" Width="171.397" Grid.ColumnSpan="2">GroupBox</GroupBox>
@@ -169,7 +180,12 @@
     <ComboBox Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" Name="comboBox1" VerticalAlignment="Top" Width="120" />
     <ComboBox Height="23" HorizontalAlignment="Left" Margin="145,0,0,24" Name="ExampleComboBox" IsEnabled="True" ItemsSource="{Binding Source={StaticResource ExampleCollectionViewSource}}"  IsSynchronizedWithCurrentItem="True" Width="70" VerticalAlignment="Bottom" />
     <ListBox Margin="83,201.8,0,0" Name="listBoxWithDynamicItems" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="60.2" VerticalAlignment="Top" Grid.Column="1">
-      <ListBoxItem>One</ListBoxItem>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+                <ListBoxItem>One</ListBoxItem>
       <ListBoxItem>Two</ListBoxItem>
       <ListBoxItem>Three</ListBoxItem>
       <ListBoxItem>Four</ListBoxItem>

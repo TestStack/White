@@ -83,7 +83,7 @@ namespace White.Core.Utility
                     continue;
                 }
 
-                if (!typeof(T).IsValueType && element != null)
+                if (!typeof(T).IsValueType && element != null && !shouldRetry(element))
                     return element;
 
                 //Making it safe for bool and value types and reference types

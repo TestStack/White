@@ -16,6 +16,11 @@ namespace White.Core.UIA
             return new Point((int) (topLeftX + (topRightX - topLeftX)/2), (int) (rect.Top + (rect.Bottom - rect.Top)/2));
         }
 
+        public static Point East(this Rect rectangle, int by)
+        {
+            return new Point((int)(rectangle.Right + by), rectangle.Center().Y);
+        }
+
         public static Point ImmediateExteriorEast(this Rect rectangle)
         {
             return new Point((int) (rectangle.Right + 1), rectangle.Center().Y);

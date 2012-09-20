@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Recording;
@@ -6,6 +7,7 @@ using White.Core.UIItemEvents;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.ListViewItems;
 using White.Core.UIItems.Scrolling;
+using White.Core.Utility;
 
 namespace White.Core.UIItems
 {

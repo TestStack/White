@@ -1,3 +1,4 @@
+using System.Threading;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.ListViewItems;
@@ -28,7 +29,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void SelectFromSuggestionList()
         {
-            textBox.Text = "h";
+            textBox.Enter("h");
             SuggestionList suggestionList = textBox.SuggestionList;
             suggestionList.Select("hello");
             Assert.AreEqual("hello", textBox.Text);

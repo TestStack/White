@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
@@ -40,12 +41,7 @@ namespace White.Core.UIItems.MenuItems
 
         public virtual Menu Find(params string[] path)
         {
-            var searchCriterias = new List<SearchCriteria>();
-            foreach (string s in path)
-            {
-                searchCriterias.Add(SearchCriteria.ByText(s));
-            }
-            return Find(searchCriterias.ToArray());
+            return Find(path.Select(SearchCriteria.ByText).ToArray());
         }
 
         public virtual Menu Find(string text)

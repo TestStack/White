@@ -25,7 +25,17 @@ namespace White.Core.UIItems.ListBoxItems
         {
             if (IsSelected) return;
             actionListener.ActionPerforming(this);
-            mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+
+            //Bounds empty, fall back to automation element
+            if (Bounds.IsEmpty)
+            {
+                var selectionPattern = (SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
+                selectionPattern.Select();
+            }
+            else
+            {
+                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);                
+            }
             actionListener.ActionPerformed(Action.WindowMessage);
         }
 

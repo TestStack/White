@@ -95,7 +95,7 @@ namespace White.Core.UITests
 
         protected override string WorkingDir
         {
-            get { return @"..\..\..\Components\Core\Tests"; }
+            get { return @"..\..\..\TestApplications"; }
         }
     }
 }

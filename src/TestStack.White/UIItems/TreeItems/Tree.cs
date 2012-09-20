@@ -19,7 +19,7 @@ namespace White.Core.UIItems.TreeItems
 
         protected Tree() {}
 
-        internal Tree(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public Tree(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new AutomationElementFinder(automationElement);
         }
