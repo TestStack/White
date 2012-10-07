@@ -11,3 +11,5 @@ IF '%2'=='' (SET platform="x86") ELSE (SET platform=%2)
 %msbuild% White.msbuild /property:Platform=%platform% /property:Configuration=%configuration%
 
 IF NOT ERRORLEVEL 0 EXIT /B %ERRORLEVEL%
+
+pause
