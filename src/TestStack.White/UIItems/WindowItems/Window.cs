@@ -7,6 +7,7 @@ using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
+using White.Core.InputDevices;
 using White.Core.Recording;
 using White.Core.Sessions;
 using White.Core.UIA;
@@ -15,7 +16,6 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowStripControls;
 using White.Core.Utility;
-using log4net;
 using Action=White.Core.UIItems.Actions.Action;
 using Condition=System.Windows.Automation.Condition;
 
@@ -133,32 +133,12 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void WaitWhileBusy()
         {
-            WaitForProcess();
-            WaitForWindow();
-        }
-
-        private void WaitForWindow()
-        {
             try
             {
                 WaitForProcess();
-                var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
-                if (!CoreAppXmlConfiguration.Instance.InProc &&
-                    !("ConsoleWindowClass".Equals(automationElement.Current.ClassName)) &&
-                    (windowPattern != null &&
-                     !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
-                    throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
-                if (windowPattern == null) return;
-                var finalState = Retry.For(
-                    () => windowPattern.Current.WindowInteractionState,
-                    windowState => windowState == WindowInteractionState.NotResponding,
-                    CoreAppXmlConfiguration.Instance.BusyTimeout);
-                if (finalState == WindowInteractionState.NotResponding)
-                {
-                    const string format = "Window didn't come out of WaitState{0} last state known was {1}";
-                    var message = string.Format(format, Constants.BusyMessage, windowPattern.Current.WindowInteractionState);
-                    throw new UIActionException(message);
-                }
+                WaitForWindow();
+                HourGlassWait();
+                CustomWait();
             }
             catch (Exception e)
             {
@@ -167,15 +147,59 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        private void WaitForProcess()
+        private static void HourGlassWait()
         {
+            if (!CoreAppXmlConfiguration.Instance.WaitBasedOnHourGlass) return;
             try
             {
-                Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
+                Retry.For(() => InputDevices.Mouse.instance.Cursor,
+                          cursor =>
+                          {
+                              if (MouseCursor.WaitCursors.Contains(cursor))
+                              {
+                                  if (CoreAppXmlConfiguration.Instance.MoveMouseToGetStatusOfHourGlass)
+                                      InputDevices.Mouse.instance.MoveOut();
+                                  return true;
+                              }
+                              return false;
+                          }, CoreAppXmlConfiguration.Instance.BusyTimeout);
             }
-            catch
+            catch (Exception)
             {
+                throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}",
+                                                          InputDevices.Mouse.instance.Cursor, Constants.BusyMessage));
             }
+        }
+
+        private void WaitForWindow()
+        {
+            var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
+            if (!CoreAppXmlConfiguration.Instance.InProc && !IsConsole() &&
+                (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
+            {
+                throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
+            }
+            if (windowPattern == null) return;
+            var finalState = Retry.For(
+                () => windowPattern.Current.WindowInteractionState,
+                windowState => windowState == WindowInteractionState.NotResponding,
+                CoreAppXmlConfiguration.Instance.BusyTimeout);
+            if (finalState == WindowInteractionState.NotResponding)
+            {
+                const string format = "Window didn't come out of WaitState{0} last state known was {1}";
+                var message = string.Format(format, Constants.BusyMessage, windowPattern.Current.WindowInteractionState);
+                throw new UIActionException(message);
+            }
+        }
+
+        private bool IsConsole()
+        {
+            return ("ConsoleWindowClass".Equals(automationElement.Current.ClassName));
+        }
+
+        private void WaitForProcess()
+        {
+            Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
         }
 
         public override void ActionPerformed(Action action)

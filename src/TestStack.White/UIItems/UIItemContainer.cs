@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows.Automation;
 using Castle.DynamicProxy;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Interceptors;
@@ -253,10 +254,15 @@ namespace White.Core.UIItems
         public virtual List<UIItem> ItemsWithin(UIItem containingItem)
         {
             UIItemCollection itemsWithin = factory.ItemsWithin(containingItem.Bounds, this);
-            var items = new List<UIItem>();
-            foreach (var item in itemsWithin)
-                if (!item.Equals(containingItem)) items.Add((UIItem) item);
-            return items;
+            return itemsWithin.Where(item => !item.Equals(containingItem)).Cast<UIItem>().ToList();
+        }
+
+        protected void CustomWait()
+        {
+            if (CoreAppXmlConfiguration.Instance.AdditionalWaitHook != null)
+            {
+                CoreAppXmlConfiguration.Instance.AdditionalWaitHook.WaitFor(this);
+            }
         }
     }
 }

@@ -29,7 +29,7 @@ namespace White.WebBrowser.Silverlight
         public override void ActionPerformed(Action action)
         {
             if (action == Action.Scroll) Thread.Sleep(500);
-            action.CustomWait(this);
+            CustomWait();
             base.ActionPerformed();
         }
 
