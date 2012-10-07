@@ -175,6 +175,28 @@ namespace White.Core
         }
 
         /// <summary>
+        /// Tries to find the main window, then close it. If it hasn't closed in 5 seconds, kill the process
+        /// </summary>
+        public virtual void Close()
+        {
+            Logger.Info("Closing Application");
+            if (Process.HasExited)
+            {
+                Logger.Warn("Application has already exited (crashed?)");
+                Process.Dispose();
+                return;
+            }
+            Process.CloseMainWindow();
+            Process.WaitForExit(5000);
+            if (!Process.HasExited)
+            {
+                Logger.Info("Application Failed to exit, killing process");
+                Process.Kill();
+            }
+            Process.Dispose();
+        }
+
+        /// <summary>
         /// Kills the applications and waits till it is closed
         /// </summary>
         public virtual void Kill()
