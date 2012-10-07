@@ -1,8 +1,10 @@
 using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.Recording;
@@ -211,7 +213,29 @@ namespace White.Core.UIItems
         public virtual void Click()
         {
             actionListener.ActionPerforming(this);
-            PerformClick();
+            PerformIfValid(PerformClick);
+        }
+
+        private void PerformIfValid(System.Action action)
+        {
+            var startTime = DateTime.Now;
+            var busyTimeout = CoreAppXmlConfiguration.Instance.BusyTimeout;
+            while (DateTime.Now.Subtract(startTime).TotalSeconds < busyTimeout)
+            {
+                if (Enabled && !IsOffScreen)
+                {
+                    action();
+                    return;
+                }
+                Thread.Sleep(500);
+            }
+
+            string message = null;
+            if (!Enabled)
+                message = "element not enabled";
+            else if (IsOffScreen)
+                message = "element is offscreen";
+            throw new AutomationException(string.Format("Cannot perform action on {0}, {1}", this, message));
         }
 
         internal virtual void PerformClick()
@@ -226,7 +250,7 @@ namespace White.Core.UIItems
         public virtual void DoubleClick()
         {
             actionListener.ActionPerforming(this);
-            mouse.DoubleClick(Bounds.Center(), actionListener);
+            PerformIfValid(()=>mouse.DoubleClick(Bounds.Center(), actionListener));
         }
 
         /// <summary>
