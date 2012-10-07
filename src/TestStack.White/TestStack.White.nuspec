@@ -19,6 +19,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="TestStack.White.dll" target="lib\net20" />
+    <file src="TestStack.White.dll" target="lib\net40" />
   </files>
 </package>
