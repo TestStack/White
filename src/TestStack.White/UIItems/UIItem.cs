@@ -219,7 +219,7 @@ namespace White.Core.UIItems
         private void PerformIfValid(System.Action action)
         {
             var startTime = DateTime.Now;
-            var busyTimeout = CoreAppXmlConfiguration.Instance.BusyTimeout;
+            var busyTimeout = CoreAppXmlConfiguration.Instance.BusyTimeout / 1000;
             while (DateTime.Now.Subtract(startTime).TotalSeconds < busyTimeout)
             {
                 if (Enabled && !IsOffScreen)
