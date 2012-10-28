@@ -257,7 +257,7 @@ namespace White.Core.UIItems
             return itemsWithin.Where(item => !item.Equals(containingItem)).Cast<UIItem>().ToList();
         }
 
-        protected void CustomWait()
+        protected virtual void CustomWait()
         {
             if (CoreAppXmlConfiguration.Instance.AdditionalWaitHook != null)
             {
