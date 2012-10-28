@@ -19,6 +19,7 @@ Our aim is to bring project white up to date and make it an active open source p
  - First class screen pattern support
  - ~~Remove Bricks dependency~~
  - ~~Remove legacy projects/Cleanup repository~~
+ - Modern App (Xaml) Support
 
 There will obviously be more fixes/changes, but these are the major goals
 
