@@ -75,8 +75,9 @@ namespace White.Core.InputDevices
                 if (ShiftKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
                 Press(key, false);
                 if (ShiftKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
-                actionListener.ActionPerformed(Action.WindowMessage);
             }
+
+            actionListener.ActionPerformed(Action.WindowMessage);
         }
 
         public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key)

@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using White.Core.Configuration;
-using White.Core.InputDevices;
 using White.Core.UIItems.WindowItems;
-using White.Core.Utility;
 
 namespace White.Core.UIItems.Actions
 {
