@@ -104,7 +104,9 @@ namespace White.Core.UIItems
             }
             catch (Exception e)
             {
-                throw new WhiteException(Debug.Details(automationElement), e);
+                var debugDetails = Debug.Details(automationElement);
+                string message = "Unable to find control, view inner exception for error. UI Automation tree:\r\n\r\n" + debugDetails;
+                throw new WhiteException(message, e);
             }
         }
 
