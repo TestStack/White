@@ -39,7 +39,7 @@ namespace White.WebBrowser
                             };
                     var element = (AutomationElement) clock.Perform(perform, matched, expired);
 
-                    silverlightDocument = new SilverlightDocument(element, this, InitializeOption.NoCache, windowSession);
+                    silverlightDocument = new SilverlightDocument(element, this, InitializeOption.NoCache, WindowSession);
                 }
                 return silverlightDocument;
             }

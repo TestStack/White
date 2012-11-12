@@ -48,12 +48,12 @@ namespace White.Core.UIItems.WindowItems
 
         public override Window ModalWindow(string title, InitializeOption option)
         {
-            return factory.ModalWindow(title, option, windowSession.ModalWindowSession(option));
+            return factory.ModalWindow(title, option, WindowSession.ModalWindowSession(option));
         }
 
         public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
         {
-            return factory.ModalWindow(searchCriteria, option, windowSession.ModalWindowSession(option));            
+            return factory.ModalWindow(searchCriteria, option, WindowSession.ModalWindowSession(option));            
         }
 
         public override IScrollBars ScrollBars

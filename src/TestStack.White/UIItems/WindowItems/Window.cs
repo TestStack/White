@@ -64,7 +64,7 @@ namespace White.Core.UIItems.WindowItems
 UI actions on window needing mouse would not work in area not falling under the desktop",
                     Title, Bounds, bounds);
             }
-            windowSession.Register(this);
+            WindowSession.Register(this);
         }
 
         protected override ActionListener ChildrenActionListener
@@ -127,7 +127,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             var statusStrip = (StatusStrip) Get(SearchCriteria.ByControlType(ControlType.StatusBar));
             statusStrip.Cached = initializeOption;
-            statusStrip.Associate(windowSession);
+            statusStrip.Associate(WindowSession);
             return statusStrip;
         }
 
@@ -246,7 +246,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         public override void Visit(WindowControlVisitor windowControlVisitor)
         {
             windowControlVisitor.Accept(this);
-            currentContainerItemFactory.Visit(windowControlVisitor);
+            CurrentContainerItemFactory.Visit(windowControlVisitor);
         }
 
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate)
@@ -257,7 +257,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void ReloadIfCached()
         {
-            currentContainerItemFactory.ReloadIfCached();
+            CurrentContainerItemFactory.ReloadIfCached();
         }
 
         public virtual DisplayState DisplayState
@@ -274,11 +274,11 @@ UI actions on window needing mouse would not work in area not falling under the 
 
                 WinPattern.SetWindowVisualState(WindowStates[value]);
                 ActionPerformed();
-                windowSession.LocationChanged(this);
+                WindowSession.LocationChanged(this);
                 if (AlreadyInAskedState(value) || TitleBar == null) return;
 
                 TitleBar.SetDisplayState(value);
-                windowSession.LocationChanged(this);
+                WindowSession.LocationChanged(this);
             }
         }
 
@@ -318,7 +318,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual Window MessageBox(string title)
         {
             Window window = factory.ModalWindow(title, InitializeOption.NoCache,
-                                                windowSession.ModalWindowSession(InitializeOption.NoCache));
+                                                WindowSession.ModalWindowSession(InitializeOption.NoCache));
             if (window != null) window.actionListener = this;
             return window;
         }
@@ -355,7 +355,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             var finder = new AutomationElementFinder(automationElement);
             AutomationElement element = finder.Descendant(searchCriteria.AutomationCondition);
-            return element == null ? null : new UIItemContainer(element, this, InitializeOption.NoCache, windowSession);
+            return element == null ? null : new UIItemContainer(element, this, InitializeOption.NoCache, WindowSession);
         }
 
         public override VerticalSpan VerticalSpan
@@ -375,7 +375,7 @@ UI actions on window needing mouse would not work in area not falling under the 
                 finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Window));
             foreach (AutomationElement descendant in descendants)
                 modalWindows.Add(ChildWindowFactory.Create(descendant, InitializeOption.NoCache,
-                                                           windowSession.ModalWindowSession(InitializeOption.NoCache)));
+                                                           WindowSession.ModalWindowSession(InitializeOption.NoCache)));
             return modalWindows;
         }
 

@@ -28,13 +28,13 @@ namespace White.Core.UIItems.WindowItems
         {
             WindowFactory desktopWindowsFactory = WindowFactory.Desktop;
             return desktopWindowsFactory.FindModalWindow(title, Process.GetProcessById(automationElement.Current.ProcessId), option, automationElement,
-                                                         windowSession.ModalWindowSession(option));
+                                                         WindowSession.ModalWindowSession(option));
         }
 
         public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
         {
             WindowFactory desktopWindowsFactory = WindowFactory.Desktop;
-            return desktopWindowsFactory.FindModalWindow(searchCriteria, option, automationElement, windowSession.ModalWindowSession(option));
+            return desktopWindowsFactory.FindModalWindow(searchCriteria, option, automationElement, WindowSession.ModalWindowSession(option));
         }
     }
 }
