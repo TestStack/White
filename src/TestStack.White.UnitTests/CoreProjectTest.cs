@@ -21,7 +21,7 @@ namespace White.Core.UnitTests
                     Type = t,
                     NonVirtualMethods = NonVirtuals(t)
                 })
-                .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.Name + m.Name))
+                .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.Name + "." + m.Name))
                 .ToArray();
 
             Assert.IsEmpty(virtuals, "The following methods are not marked virtual: \r\n" +
