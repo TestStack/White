@@ -162,12 +162,11 @@ UI actions on window needing mouse would not work in area not falling under the 
                                   return true;
                               }
                               return false;
-                          }, CoreAppXmlConfiguration.Instance.BusyTimeout);
+                          }, CoreAppXmlConfiguration.Instance.BusyTimeout());
             }
             catch (Exception)
             {
-                throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}",
-                                                          InputDevices.Mouse.instance.Cursor, Constants.BusyMessage));
+                throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", InputDevices.Mouse.instance.Cursor, Constants.BusyMessage));
             }
         }
 
@@ -183,7 +182,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             var finalState = Retry.For(
                 () => windowPattern.Current.WindowInteractionState,
                 windowState => windowState == WindowInteractionState.NotResponding,
-                CoreAppXmlConfiguration.Instance.BusyTimeout);
+                CoreAppXmlConfiguration.Instance.BusyTimeout());
             if (finalState == WindowInteractionState.NotResponding)
             {
                 const string format = "Window didn't come out of WaitState{0} last state known was {1}";
@@ -252,7 +251,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate)
         {
-            if (!Retry.For(()=>waitTillDelegate(), CoreAppXmlConfiguration.Instance.BusyTimeout))
+            if (!Retry.For(()=>waitTillDelegate(), CoreAppXmlConfiguration.Instance.BusyTimeout()))
                 throw new UIActionException("Time out happened" + Constants.BusyMessage);
         }
 

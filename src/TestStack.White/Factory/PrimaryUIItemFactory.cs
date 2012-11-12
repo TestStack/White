@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Automation;
@@ -22,13 +23,13 @@ namespace White.Core.Factory
         {
             get
             {
-                return ToolTipFinder.FindToolTip(() => finder.Child(AutomationSearchCondition.ByControlType(ControlType.ToolTip)));
+                return ToolTipFinder.FindToolTip(() => Finder.Child(AutomationSearchCondition.ByControlType(ControlType.ToolTip)));
             }
         }
 
         public virtual TitleBar GetTitleBar(ActionListener actionListener)
         {
-            AutomationElement titleElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
+            AutomationElement titleElement = Finder.Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
             if (titleElement == null) return null;
             return new TitleBar(titleElement, actionListener);
         }
@@ -53,8 +54,7 @@ namespace White.Core.Factory
 
         private bool TryGetPopupMenu(AutomationSearchCondition[] searchConditions, ActionListener actionListener, out PopUpMenu popUpMenu)
         {
-            var element = Retry.For(() => finder.Child(searchConditions),
-                                      CoreAppXmlConfiguration.Instance.PopupTimeout, 100);
+            var element = Retry.For(() => Finder.Child(searchConditions), CoreAppXmlConfiguration.Instance.PopupTimeout(), TimeSpan.FromMilliseconds(100));
             if (element == null)
             {
                 popUpMenu = null;
@@ -71,25 +71,25 @@ namespace White.Core.Factory
                 UIItemCollection collection = CreateAll(searchCriteria, actionListener);
                 return searchCriteria.IndexedItem(collection);
             }
-            return dictionaryMappedItemFactory.Create(finder.Descendant(searchCriteria.AutomationCondition), actionListener,
+            return dictionaryMappedItemFactory.Create(Finder.Descendant(searchCriteria.AutomationCondition), actionListener,
                                                       searchCriteria.CustomItemType);
         }
 
         public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, ActionListener actionListener)
         {
-            return new UIItemCollection(finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
+            return new UIItemCollection(Finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
         }
 
         public virtual Image WinFormImage(string primaryIdentification, ActionListener actionListener)
         {
-            AutomationElement element = finder.Descendant(SearchCriteria.ByAutomationId(primaryIdentification).AutomationCondition);
+            AutomationElement element = Finder.Descendant(SearchCriteria.ByAutomationId(primaryIdentification).AutomationCondition);
             return new Image(element, actionListener);
         }
 
         public virtual UIItemCollection ItemsWithin(Rect bounds, ActionListener actionListener)
         {
             var collection = new UIItemCollection();
-            List<AutomationElement> descendants = finder.Descendants(AutomationSearchCondition.All);
+            List<AutomationElement> descendants = Finder.Descendants(AutomationSearchCondition.All);
             foreach (AutomationElement automationElement in descendants)
             {
                 if (!bounds.Contains(automationElement.Current.BoundingRectangle)) continue;

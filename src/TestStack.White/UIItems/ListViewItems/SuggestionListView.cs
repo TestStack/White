@@ -30,7 +30,7 @@ namespace White.Core.UIItems.ListViewItems
         {
             try
             {
-                return Retry.For(() => Find(actionListener), shouldRetry, CoreAppXmlConfiguration.Instance.SuggestionListTimeout);
+                return Retry.For(() => Find(actionListener), shouldRetry, CoreAppXmlConfiguration.Instance.SuggestionListTimeout());
             }
             catch (Exception ex)
             {

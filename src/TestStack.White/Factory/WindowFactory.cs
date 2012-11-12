@@ -27,12 +27,12 @@ namespace White.Core.Factory
 
         public virtual PopUpMenu PopUp(ActionListener actionListener)
         {
-            return new PopUpMenu(finder.AutomationElement, actionListener);
+            return new PopUpMenu(Finder.AutomationElement, actionListener);
         }
 
         private static AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
         {
-            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.BusyTimeout);
+            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.BusyTimeout());
             if (element == null)
                 throw new UIActionException(message + Debug.GetAllWindows());
             return element;
@@ -40,7 +40,7 @@ namespace White.Core.Factory
 
         private AutomationElement FindWindowElement(Process process, string title)
         {
-            return WaitTillFound(() => finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, Constants.BusyMessage));
+            return WaitTillFound(() => Finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, Constants.BusyMessage));
         }
 
         public virtual List<Window> DesktopWindows(Process process, ApplicationSession applicationSession)
@@ -60,12 +60,10 @@ namespace White.Core.Factory
             var items = Retry.For(() =>
             {
                 var windowElements = new List<AutomationElement>();
-                FindDescendantWindowElements(finder, process, windowElements);
+                FindDescendantWindowElements(Finder, process, windowElements);
                 if (windowElements.Count == 0) logger.Warn("Could not find any windows for this application.");
                 return windowElements;
-            },
-                      list => list.Count == 0,
-                      CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout);
+            }, list => list.Count == 0, CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout());
 
             return items ?? new List<AutomationElement>();
         }
@@ -83,7 +81,7 @@ namespace White.Core.Factory
         {
             AutomationSearchCondition automationSearchCondition = AutomationSearchCondition.ByControlType(ControlType.Pane).WithProcessId(process.Id);
             AutomationElement element =
-                WaitTillFound(() => finder.Child(automationSearchCondition),
+                WaitTillFound(() => Finder.Child(automationSearchCondition),
                               "No control found matching the condition " +
                               AutomationSearchCondition.ToString(new[] {automationSearchCondition}) + Constants.BusyMessage);
             return new SplashWindow(element, InitializeOption.NoCache);
@@ -98,7 +96,7 @@ namespace White.Core.Factory
         {
             string message =
                 string.Format("Couldn't find window with SearchCriteria {0} in process {1}{2}", searchCriteria, process.Id, Constants.BusyMessage);
-            AutomationElement element = WaitTillFound(() => finder.FindWindow(searchCriteria, process.Id), message);
+            AutomationElement element = WaitTillFound(() => Finder.FindWindow(searchCriteria, process.Id), message);
             return Create(element, option, windowSession);
         }
 
@@ -132,7 +130,7 @@ namespace White.Core.Factory
                 AutomationElement modalWindowElement = WaitTillFound(delegate
                                                                          {
                                                                              AutomationElement windowElement = windowFinder.FindWindow(title, process.Id) ??
-                                                                                                               finder.FindWindow(title, process.Id);
+                                                                                                               Finder.FindWindow(title, process.Id);
                                                                              return windowElement;
                                                                          }, "Could not find modal window with title: " + title);
                 return Create(modalWindowElement, option, windowSession);
@@ -152,7 +150,7 @@ namespace White.Core.Factory
                 AutomationElement modalWindowElement = WaitTillFound(delegate
                                                                          {
                                                                              AutomationElement windowElement = windowFinder.FindWindow(searchCriteria) ??
-                                                                                                               finder.FindWindow(searchCriteria);
+                                                                                                               Finder.FindWindow(searchCriteria);
                                                                              return windowElement;
                                                                          }, "Could not find modal window with SearchCriteria: " + searchCriteria);
                 return Create(modalWindowElement, option, windowSession);
@@ -174,7 +172,7 @@ namespace White.Core.Factory
 
         private void AddWindowsBy(List<Window> windows, ControlType controlType)
         {
-            List<AutomationElement> children = finder.Children(AutomationSearchCondition.ByControlType(controlType));
+            List<AutomationElement> children = Finder.Children(AutomationSearchCondition.ByControlType(controlType));
             foreach (AutomationElement childElement in children)
                 windows.Add(Create(childElement, InitializeOption.NoCache, new NullWindowSession()));
         }
