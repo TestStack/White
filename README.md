@@ -1,22 +1,35 @@
-# TestStack.ProjectWhite
+# TestStack.White
+White is a framework for automating rich client applications based on Win32, WinForms, WPF, Silverlight and SWT (Java) platforms. It is .NET based and does not require the use of any proprietary scripting languages. Tests/automation programs using White can be written with whatever .NET language, IDE and tools you are already using. White provides a consistent object-oriented API, hiding the complexity of Microsoft's UIAutomation library (on which White is based) and windows messages. 
+
+## Introduction
 Project white has been inactive for some time, but still has many users and is a great UI automation framework.
 
 TestStack has brought this project into it's offering to try and breathe some life into Project White.
 
-White will become a *rich client* UI automation framework, which makes it really easy to create maintainable and reliable UI automation tests. 
+We welcome pull requests and reported issues!
 
-## The Plan
-### NuGet
-First priority is to get Project White up on NuGet
+### Goals
+Our aim is to bring project white up to date and make it an active open source project again! My top priority goals are:
 
-### Documentation
-Get some guidance and documentation around many of the concepts in Project White, this will all end up in our GitHub wiki
+ - ~~Upgrade White to .net 4.0~~
+ - ~~Create NuGet packages~~
+ - Get tests working
+ - CI Build
+ - Clean up API (more generic overloads etc)
+ - First class screen pattern support
+ - ~~Remove Bricks dependency~~
+ - ~~Remove legacy projects/Cleanup repository~~
+ - Modern App (Xaml) Support
 
-### Cleanup
-We will be removing Bricks, and quite a few of the projects that are in white. We want to make it a lean and mean automation framework which helps you build **reliable, fast and easy to maintain UI automation tests!!**
+There will obviously be more fixes/changes, but these are the major goals
 
-### DotNet 4.0 Upgrade
-Project White will be upgraded to .net 4.0 so we can take advantage of some new language features and UIA improvements.
+## Credits
+Thanks to Thoughtworks and specifically [Vivek Singh](https://github.com/petmongrels) for starting this project. We have got permission from Vivek to continue this project.
+
+TestStack.White will supersede the following repositories:  
+[http://white.codeplex.com/](http://white.codeplex.com/)  
+[https://github.com/petmongrels/white](https://github.com/petmongrels/white)  
+[https://code.google.com/p/white-project/](https://code.google.com/p/white-project/)
 
 ## Legacy Features/Projects
 We will be removing some projects in an effort to make White easier to maintain going forward. Some of these things will be added back over time, just leave an issue for the things that you need. The obvious first step is providing a compatibility pack which adds these features back in if they are heavily used!

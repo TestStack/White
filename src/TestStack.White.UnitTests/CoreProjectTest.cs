@@ -14,7 +14,7 @@ namespace White.Core.UnitTests
         [Test]
         public void AllMethodsAreVirtual()
         {
-            var virtuals = typeof (UIItem).Assembly.GetTypes()
+            var virtuals = typeof(UIItem).Assembly.GetTypes()
                 .Where(t => t.IsClass)
                 .Select(t => new
                 {
@@ -41,7 +41,7 @@ namespace White.Core.UnitTests
 
         private void AllSubsclassesHaveEmptyConstructor(List<string> collection, Type type)
         {
-            var types = typeof (UIItem).Assembly.GetTypes();
+            var types = typeof(UIItem).Assembly.GetTypes();
             var classes = types.Where(item =>
             {
                 if (!item.IsClass || type == item) return false;
