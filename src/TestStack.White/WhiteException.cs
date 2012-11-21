@@ -16,6 +16,6 @@ namespace White.Core
             DebugDetails = debugDetails;
         }
 
-        public string DebugDetails { get; private set; }
+        public virtual string DebugDetails { get; private set; }
     }
 }

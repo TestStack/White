@@ -17,6 +17,6 @@ namespace White.Core
         /// <summary>
         /// Contains the current UI Automation tree
         /// </summary>
-        public string DebugDetails { get; private set; }
+        public virtual string DebugDetails { get; private set; }
     }
 }
