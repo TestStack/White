@@ -1,4 +1,3 @@
-using System.Windows.Automation;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
@@ -26,17 +25,11 @@ namespace White.Core.UITests.UIItems
         }
 
         [Test]
-        public void FindNonExistent()
+        public void ThrowsWhenNotFound()
         {
-            var box = button.Get<TextBox>(SearchCriteria.ByAutomationId("foo"));
-            Assert.AreEqual(null, box);
-        }
+            var exception = Assert.Throws<AutomationException>(()=>button.Get<Button>(SearchCriteria.ByAutomationId("foo")));
 
-        [Test]
-        public void FindViaNativeProperty()
-        {
-            var box = button.Get<TextBox>(SearchCriteria.ByNativeProperty(AutomationElement.AutomationIdProperty, "foo"));
-            Assert.AreEqual(null, box);
+            Assert.AreEqual("Failed to get ControlType=edit,AutomationId=foo", exception.Message);
         }
 
         [Test]

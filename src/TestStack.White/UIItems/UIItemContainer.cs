@@ -97,9 +97,10 @@ namespace White.Core.UIItems
         {
             try
             {
-                var uiItem = Retry.For(()=> 
-                    CurrentContainerItemFactory.Find(searchCriteria, WindowSession), 
-                    b => (bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false), // Wait until control is onscreen
+                var uiItem = Retry.For(() =>
+                    CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
+                    b =>(bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
+                    // Wait until control is onscreen
                     CoreAppXmlConfiguration.Instance.BusyTimeout());
 
                 if (uiItem == null)
@@ -111,6 +112,10 @@ namespace White.Core.UIItems
                 HandleIfCustomUIItem(uiItem);
                 HandleIfUIItemContainer(uiItem);
                 return uiItem;
+            }
+            catch (AutomationException)
+            {
+                throw;
             }
             catch (Exception e)
             {

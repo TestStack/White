@@ -26,8 +26,9 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         {
             var listBox = window.Get<ListBox>("listBox");
             var listItem = (WPFListItem)listBox.Items.Find(item => "Hrishikesh".Equals(item.Text));
-            var doesntExist = listItem.Get<TextBox>(SearchCriteria.ByAutomationId("foo"));
-            Assert.AreEqual(null, doesntExist);
+            var exception = Assert.Throws<AutomationException>(() => listItem.Get<TextBox>(SearchCriteria.ByAutomationId("foo")));
+
+            Assert.AreEqual("Failed to get ControlType=button,AutomationId=foo", exception.Message);
         }
 
         [Test]
