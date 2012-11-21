@@ -29,7 +29,7 @@ namespace White.Core.UITests.UIItems
         {
             var exception = Assert.Throws<AutomationException>(()=>button.Get<Button>(SearchCriteria.ByAutomationId("foo")));
 
-            Assert.AreEqual("Failed to get ControlType=edit,AutomationId=foo", exception.Message);
+            Assert.AreEqual("Failed to get ControlType=button,AutomationId=foo", exception.Message);
         }
 
         [Test]

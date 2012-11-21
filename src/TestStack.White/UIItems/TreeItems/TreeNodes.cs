@@ -27,7 +27,6 @@ namespace White.Core.UIItems.TreeItems
             nodePath.RemoveAt(0);
             if (nodePath.Count == 0) return node;
             if (node == null) throw new UIItemSearchException(string.Format("Could not find node {0}", nodeText));
-            node.Expand();
             return node.GetItem(nodePath.ToArray());
         }
 

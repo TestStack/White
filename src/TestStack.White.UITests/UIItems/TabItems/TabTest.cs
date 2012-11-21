@@ -54,7 +54,8 @@ namespace White.Core.UITests.UIItems.TabItems
             tab.SelectTabPage("Winter");
             var textBox2 = window.Get<TextBox>(GetSearchCriteria().AndIndex(1));
             var textBox1 = window.Get<TextBox>(GetSearchCriteria().AndIndex(0));
-            Assert.AreEqual(null, window.Get<TextBox>(GetSearchCriteria().AndIndex(2)));
+            var exception = Assert.Throws<AutomationException>(() => window.Get<TextBox>(GetSearchCriteria().AndIndex(2)));
+            Assert.AreEqual("Failed to get ControlType=edit,AutomationId=duplicateBox,Index=2", exception.Message);
 
             textBox1.Text = "1";
             Assert.AreEqual("1", textBox1.Text);

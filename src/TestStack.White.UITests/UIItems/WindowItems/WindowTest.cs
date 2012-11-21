@@ -25,7 +25,8 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void HandleDynamicallyAddedControls()
         {
-            Assert.AreEqual(null, window.Get<TextBox>("dynamicTextBox"));
+            Assert.Throws<AutomationException>(() => window.Get<TextBox>("dynamicTextBox"));
+
             window.Get<Button>("addDynamicControl").Click();
             Assert.AreNotEqual(null, window.Get<TextBox>(GetSearchCriteria()));
         }
@@ -96,8 +97,8 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void FindNonExistentItem()
         {
-            var button = window.Get<Button>("DoesntExist");
-            Assert.AreEqual(null, button);
+            var excepion = Assert.Throws<AutomationException>(() => window.Get<Button>("DoesntExist"));
+            Assert.AreEqual("Failed to get ControlType=button,AutomationId=DoesntExist", excepion.Message);
         }
     }
 }

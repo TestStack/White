@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="Bricks\AssemblyConfiguration.cs" />
+    <Compile Include="Bricks\DelegateInvoker.cs" />
     <Compile Include="Bricks\IInterceptContext.cs" />
     <Compile Include="Bricks\DynamicProxyGenerator.cs" />
     <Compile Include="Bricks\DynamicProxyInterceptors.cs" />

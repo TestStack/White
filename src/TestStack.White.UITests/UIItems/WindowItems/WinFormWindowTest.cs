@@ -11,7 +11,9 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void HandlesInvisibleControls()
         {
-            Assert.AreEqual(null, window.Get<Label>("dynamicControl"));
+            var exception = Assert.Throws<AutomationException>(() => window.Get<Label>("dynamicControl"));
+            Assert.AreEqual("Failed to get ControlType=text,AutomationId=dynamicControl", exception.Message);
+
             window.Get<Button>("invisibleControlShower").Click();
             Assert.AreNotEqual(null, window.Get<Label>(SearchCriteria.ByAutomationId("dynamicControl")));
         }

@@ -19,8 +19,15 @@ namespace White.Core.UITests.UIItems.WindowStripControls
         [Test]
         public void Find()
         {
-            Assert.AreEqual(null, window.Get<StatusStrip>("statusStrip1"));
             Assert.AreNotEqual(null, statusStrip);
+        }
+
+        [Test]
+        public void ThrowsWhenDoesNotExists()
+        {
+            var exception = Assert.Throws<AutomationException>(()=> window.Get<StatusStrip>("statusStrip1"));
+
+            Assert.AreEqual("Failed to get ControlType=status bar,AutomationId=statusStrip1", exception.Message);
         }
 
         [Test]
