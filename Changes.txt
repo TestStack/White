@@ -1,0 +1,5 @@
+Version 9.2.0
+ - BREAKING: UIItem.Get now throws an AutomationException when the UI Element is not found
+ - Change: UIItem.Get now auto retries to fetch the item
+ - FIX: Added small delay when fetching menu items (to compensate for menu animation in newer versions of windows)
+ - FIX: AttachOrLaunch method now can accept a full Path.
