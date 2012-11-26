@@ -21,5 +21,6 @@
   </metadata>
   <files>
     <file src="TestStack.White.dll" target="lib\net40" />
+    <file src="TestStack.White.pdb" target="lib\net40" />
   </files>
 </package>
