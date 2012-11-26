@@ -4,7 +4,7 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture, WinFormCategory, WPFCategory]
+    [TestFixture, WPFCategory]
     public class HorizontalThumbTest : ControlsActionTest
     {
         protected override string CommandLineArguments

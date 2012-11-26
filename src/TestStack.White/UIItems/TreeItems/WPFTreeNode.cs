@@ -22,7 +22,10 @@ namespace White.Core.UIItems.TreeItems
 
         protected override void DoExpand()
         {
-            GetExpandCollapseButton().Click();
+            var expandCollapseButton = GetExpandCollapseButton();
+            if (expandCollapseButton.IsOffScreen)
+                throw new AutomationException(string.Format("Cannot expand TreeNode {0}, expand button not visible", this), Debug.Details(AutomationElement));
+            expandCollapseButton.Click();
         }
 
         protected override void DoCollapse()

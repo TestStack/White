@@ -262,7 +262,7 @@ namespace WinFormsTestApp
             this.ped.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode4});
-            this.ped.Size = new System.Drawing.Size(199, 47);
+            this.ped.Size = new System.Drawing.Size(199, 96);
             this.ped.TabIndex = 8;
             // 
             // radioButton1

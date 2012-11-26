@@ -6,7 +6,16 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TreeItems
 {
-    [TestFixture]
+    [TestFixture, WPFCategory]
+    public class WpfTreeTest : TreeTest
+    {
+    }
+
+    [TestFixture, WinFormCategory]
+    public class WinformsTreeTest : TreeTest
+    {
+    }
+
     public class TreeTest : ControlsActionTest
     {
         protected Tree tree;
@@ -37,7 +46,12 @@ namespace White.Core.UITests.UIItems.TreeItems
             Assert.AreEqual(true, tree.HasNode("Main"));
             Assert.AreEqual(true, tree.HasNode("Root", "Child"));
             Assert.AreEqual(true, tree.HasNode("Root", "Child", "Grand Child"));
-            Assert.AreEqual(false, tree.HasNode("Root", "Child", "Grand Child", "Grand Child"));
+            var exception = Assert.Throws<AutomationException>(() => tree.HasNode("Root", "Child", "Grand Child", "Grand Child"));
+            Assert.AreEqual(
+                string.Format("Cannot expand TreeNode {0}TreeNode. AutomationId:, Name:Grand Child, ControlType:tree view item, FrameworkId:{1}, expand button not visible", 
+                        testConfiguration is WPFTestConfiguration ? "WPF" : "Win32",
+                        testConfiguration is WPFTestConfiguration ? "WPF" : "WinForm"),
+                exception.Message);
         }
 
         [Test]

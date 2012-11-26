@@ -44,6 +44,7 @@ namespace White.Core.UIItems.TreeItems
         public virtual TreeNode GetItem(params string[] path)
         {
             actionListener.ActionPerforming(this);
+            Expand();
             return Nodes.GetItem(path);
         }
 

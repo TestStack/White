@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
@@ -7,7 +8,32 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {
-    [TestFixture]
+    [TestFixture, WinFormCategory]
+    public class WinFormsWindowTest : WindowTest
+    {
+        [Test]
+        public void ItemsWithin()
+        {
+            var groupBox = window.Get<GroupBox>("groupBox1");
+            List<UIItem> uiItems = window.ItemsWithin(groupBox);
+            Assert.AreEqual(1, uiItems.Count);
+            Assert.AreEqual(1, uiItems.OfType<Button>().Count());
+        }
+    }
+
+    [TestFixture, WPFCategory]
+    public class WpfWindowTest : WindowTest
+    {
+        [Test]
+        public void ItemsWithin()
+        {
+            var groupBox = window.Get<GroupBox>("groupBox1");
+            List<UIItem> uiItems = window.ItemsWithin(groupBox);
+            Assert.AreEqual(3, uiItems.Count);
+            Assert.AreEqual(1, uiItems.OfType<Button>().Count());
+        }
+    }
+
     public class WindowTest : ControlsActionTest
     {
         [SetUp]
@@ -71,15 +97,6 @@ namespace White.Core.UITests.UIItems.WindowItems
         public void FindTabs()
         {
             Assert.AreEqual(1, window.Tabs.Count);
-        }
-
-        [Test, WinFormCategory, WPFCategory]
-        public void ItemsWithin()
-        {
-            var groupBox = window.Get<GroupBox>("groupBox1");
-            List<UIItem> uiItems = window.ItemsWithin(groupBox);
-            Assert.AreEqual(1, uiItems.Count);
-            Assert.AreEqual(true, uiItems[0] is Button);
         }
 
         [Test]

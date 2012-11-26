@@ -1,4 +1,3 @@
-using System.Reflection;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UITests.Testing;
@@ -13,12 +12,13 @@ namespace White.Core.UITests.UIItems.TextBoxes
             get { return "Password"; }
         }
 
-        [Test, ExpectedException(typeof(TargetInvocationException))]
+        [Test]
         public void CannotGetTextFromPassword()
         {
             var textBox = window.Get<TextBox>("textBox1");
             textBox.BulkText = "foobar";
-            string text = textBox.Text;
+            var exception = Assert.Throws<WhiteException>(() => { var text = textBox.Text; });
+            Assert.AreEqual("Text cannot be retrieved from textbox which has secret text (e.g. password) stored in it", exception.Message);
         }
 
         [Test]

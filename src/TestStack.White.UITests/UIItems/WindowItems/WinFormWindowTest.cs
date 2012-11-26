@@ -23,7 +23,8 @@ namespace White.Core.UITests.UIItems.WindowItems
         {
             Assert.AreNotEqual(null, window.GetToolStrip("toolStrip1"));
             Assert.AreNotEqual(null, window.GetToolStrip("toolStrip2"));
-            Assert.AreEqual(null, window.GetToolStrip("toolStrip3"));
+            var exception = Assert.Throws<AutomationException>(()=>window.GetToolStrip("toolStrip3"));
+            Assert.AreEqual("Failed to get AutomationId=toolStrip3", exception.Message);
         }
 
         [Test]

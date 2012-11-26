@@ -6,7 +6,7 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests
 {
-    [TestFixture, WinFormCategory, SWTCategory]
+    [TestFixture, WinFormCategory/*, SWTCategory*/] //TODO Get SWT working
     public class ModalWindowTest : ControlsActionTest
     {
         [TearDown]

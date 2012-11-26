@@ -21,7 +21,7 @@ namespace White.Core.UIItems.TreeItems
         {
             var nodePath = new List<string>(path);
             if (nodePath.Count == 0) return null;
-
+            
             string nodeText = nodePath[0];
             TreeNode node = MatchingNode(nodeText);
             nodePath.RemoveAt(0);
