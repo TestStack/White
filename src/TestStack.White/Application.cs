@@ -112,7 +112,7 @@ namespace White.Core
         public static Application AttachOrLaunch(ProcessStartInfo processStartInfo)
         {
             string processName = ReplaceLast(processStartInfo.FileName, ".exe", string.Empty);
-            processName = Path.GetFileName(processName);        // new line
+            processName = Path.GetFileName(processName);
             Process[] processes = Process.GetProcessesByName(processName);
             if (processes.Length == 0) return Launch(processStartInfo);
             return Attach(processes[0]);
