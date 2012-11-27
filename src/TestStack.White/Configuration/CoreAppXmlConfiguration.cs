@@ -32,6 +32,7 @@ namespace White.Core.Configuration
             DefaultValues.Add("MaxElementSearchDepth", 10);
             DefaultValues.Add("DoubleClickInterval", 0);
             DefaultValues.Add("MoveMouseToGetStatusOfHourGlass", true);
+            DefaultValues.Add("MouseRightBtnIsTrueOrLeftBtnIsFalse", true);
         }
 
         public static ICoreConfiguration Instance
@@ -125,6 +126,12 @@ namespace White.Core.Configuration
         {
             get { return Convert.ToBoolean(usedValues["MoveMouseToGetStatusOfHourGlass"]); }
             set { SetUsedValue("MoveMouseToGetStatusOfHourGlass", value); }
+        }
+
+        public virtual bool MouseRightBtnIsTrueOrLeftBtnIsFalse
+        {
+            get { return Convert.ToBoolean(usedValues["MouseRightBtnIsTrueOrLeftBtnIsFalse"]); }
+            set { SetUsedValue("MouseRightBtnIsTrueOrLeftBtnIsFalse", value); }
         }
 
         public virtual IWaitHook AdditionalWaitHook { get; set; }

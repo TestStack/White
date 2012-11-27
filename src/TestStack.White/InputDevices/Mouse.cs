@@ -79,10 +79,30 @@ namespace White.Core.InputDevices
             }
         }
 
+        private static int RightBtnDown
+        {
+            get { return (CoreAppXmlConfiguration.Instance.MouseRightBtnIsTrueOrLeftBtnIsFalse ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN); }
+        }
+        
+        private static int RightBtnUp
+        {
+            get { return (CoreAppXmlConfiguration.Instance.MouseRightBtnIsTrueOrLeftBtnIsFalse ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP); }
+        }
+
+        private static int LeftBtnDown
+        {
+            get { return (CoreAppXmlConfiguration.Instance.MouseRightBtnIsTrueOrLeftBtnIsFalse ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN); }
+        }
+
+        private static int LeftBtnUp
+        {
+            get { return (CoreAppXmlConfiguration.Instance.MouseRightBtnIsTrueOrLeftBtnIsFalse ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP); }
+        }
+
         public virtual void RightClick()
         {
-            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_RIGHTDOWN)));
-            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_RIGHTUP)));
+            SendInput(InputFactory.Mouse(MouseInput(RightBtnDown)));
+            SendInput(InputFactory.Mouse(MouseInput(RightBtnUp)));
         }
 
         public virtual void Click()
@@ -100,12 +120,12 @@ namespace White.Core.InputDevices
 
         public static void LeftUp()
         {
-            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_LEFTUP)));
+            SendInput(InputFactory.Mouse(MouseInput(LeftBtnUp)));
         }
 
         public static void LeftDown()
         {
-            SendInput(InputFactory.Mouse(MouseInput(WindowsConstants.MOUSEEVENTF_LEFTDOWN)));
+            SendInput(InputFactory.Mouse(MouseInput(LeftBtnDown)));
         }
 
         public virtual void DoubleClick(Point point)

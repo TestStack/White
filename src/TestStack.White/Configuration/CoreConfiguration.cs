@@ -26,5 +26,6 @@ namespace White.Core.Configuration
         bool RawElementBasedSearch { get; set; }
         int DoubleClickInterval { get; set; }
         bool MoveMouseToGetStatusOfHourGlass { get; set; }
+        bool MouseRightBtnIsTrueOrLeftBtnIsFalse { get; set; }
     }
 }
