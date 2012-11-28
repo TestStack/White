@@ -1,6 +1,7 @@
 <Project DefaultTargets="Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildProjectDirectory)\</Root>
+    <Platform Condition="$(Platform) == ''">x86</Platform>
     <Configuration Condition="$(Configuration) == ''">Release</Configuration>
   </PropertyGroup>
 
