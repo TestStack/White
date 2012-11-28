@@ -32,12 +32,12 @@ namespace White.Core.UIItems.WindowItems
 
         public override Window ModalWindow(string title, InitializeOption option)
         {
-            return windowFactory.ModalWindow(title, option, windowSession.ModalWindowSession(option));
+            return windowFactory.ModalWindow(title, option, WindowSession.ModalWindowSession(option));
         }
 
         public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
         {
-            return windowFactory.ModalWindow(searchCriteria, option, windowSession.ModalWindowSession(option));
+            return windowFactory.ModalWindow(searchCriteria, option, WindowSession.ModalWindowSession(option));
         }
     }
 }

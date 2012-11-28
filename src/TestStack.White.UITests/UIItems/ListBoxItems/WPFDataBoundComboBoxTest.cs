@@ -17,17 +17,22 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void Select()
         {
+            ListItems items;
             CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
             try
             {
-                ListItems items = window.Get<ComboBox>("dataBoundComboBox").Items;
-                Assert.AreEqual(1, items.Count);
-                Assert.AreEqual("S P Kumar", items[0].Text);
+                var comboBox = window.Get<ComboBox>("dataBoundComboBox");
+                items = comboBox.Items;
+                Assert.AreEqual(0, items.Count);
             }
             finally
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
+
+            items = window.Get<ComboBox>("dataBoundComboBox").Items;
+            Assert.AreEqual(1, items.Count);
+            Assert.AreEqual("S P Kumar", items[0].Text);
         }
 
         [Test]

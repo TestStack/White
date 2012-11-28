@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
@@ -7,7 +8,32 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {
-    [TestFixture]
+    [TestFixture, WinFormCategory]
+    public class WinFormsWindowTest : WindowTest
+    {
+        [Test]
+        public void ItemsWithin()
+        {
+            var groupBox = window.Get<GroupBox>("groupBox1");
+            List<UIItem> uiItems = window.ItemsWithin(groupBox);
+            Assert.AreEqual(1, uiItems.Count);
+            Assert.AreEqual(1, uiItems.OfType<Button>().Count());
+        }
+    }
+
+    [TestFixture, WPFCategory]
+    public class WpfWindowTest : WindowTest
+    {
+        [Test]
+        public void ItemsWithin()
+        {
+            var groupBox = window.Get<GroupBox>("groupBox1");
+            List<UIItem> uiItems = window.ItemsWithin(groupBox);
+            Assert.AreEqual(3, uiItems.Count);
+            Assert.AreEqual(1, uiItems.OfType<Button>().Count());
+        }
+    }
+
     public class WindowTest : ControlsActionTest
     {
         [SetUp]
@@ -25,7 +51,8 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void HandleDynamicallyAddedControls()
         {
-            Assert.AreEqual(null, window.Get<TextBox>("dynamicTextBox"));
+            Assert.Throws<AutomationException>(() => window.Get<TextBox>("dynamicTextBox"));
+
             window.Get<Button>("addDynamicControl").Click();
             Assert.AreNotEqual(null, window.Get<TextBox>(GetSearchCriteria()));
         }
@@ -72,15 +99,6 @@ namespace White.Core.UITests.UIItems.WindowItems
             Assert.AreEqual(1, window.Tabs.Count);
         }
 
-        [Test, WinFormCategory, WPFCategory]
-        public void ItemsWithin()
-        {
-            var groupBox = window.Get<GroupBox>("groupBox1");
-            List<UIItem> uiItems = window.ItemsWithin(groupBox);
-            Assert.AreEqual(1, uiItems.Count);
-            Assert.AreEqual(true, uiItems[0] is Button);
-        }
-
         [Test]
         public void GetAll()
         {
@@ -96,8 +114,8 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void FindNonExistentItem()
         {
-            var button = window.Get<Button>("DoesntExist");
-            Assert.AreEqual(null, button);
+            var excepion = Assert.Throws<AutomationException>(() => window.Get<Button>("DoesntExist"));
+            Assert.AreEqual("Failed to get ControlType=button,AutomationId=DoesntExist", excepion.Message);
         }
     }
 }

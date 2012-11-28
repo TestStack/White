@@ -123,7 +123,7 @@ namespace WinFormsTestApp
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBoxInsidePanel = new System.Windows.Forms.TextBox();
             this.listViewForScenarioTest = new System.Windows.Forms.ListView();
-            this.invisible = new System.Windows.Forms.ColumnHeader();
+            this.invisible = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonLaunchesMessageBox = new System.Windows.Forms.Button();
             this.panelWithText = new System.Windows.Forms.Panel();
             this.hiddenButton = new System.Windows.Forms.Button();
@@ -217,7 +217,7 @@ namespace WinFormsTestApp
             // 
             this.linkLabel.Location = new System.Drawing.Point(875, 83);
             this.linkLabel.Name = "linkLabel";
-            this.linkLabel.Size = new System.Drawing.Size(48, 38);
+            this.linkLabel.Size = new System.Drawing.Size(48, 18);
             this.linkLabel.TabIndex = 6;
             this.linkLabel.TabStop = true;
             this.linkLabel.Text = "Linque";
@@ -239,12 +239,12 @@ namespace WinFormsTestApp
             this.listBoxPopupMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showFilmsToolStripMenuItem});
             this.listBoxPopupMenu.Name = "listBoxPopupMenu";
-            this.listBoxPopupMenu.Size = new System.Drawing.Size(131, 26);
+            this.listBoxPopupMenu.Size = new System.Drawing.Size(135, 26);
             // 
             // showFilmsToolStripMenuItem
             // 
             this.showFilmsToolStripMenuItem.Name = "showFilmsToolStripMenuItem";
-            this.showFilmsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.showFilmsToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.showFilmsToolStripMenuItem.Text = "Show Films";
             // 
             // ped
@@ -262,7 +262,7 @@ namespace WinFormsTestApp
             this.ped.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
             treeNode4});
-            this.ped.Size = new System.Drawing.Size(199, 47);
+            this.ped.Size = new System.Drawing.Size(199, 96);
             this.ped.TabIndex = 8;
             // 
             // radioButton1
@@ -431,14 +431,14 @@ namespace WinFormsTestApp
             this.rootToolStripMenuItem,
             this.mainToolStripMenuItem});
             this.menuStripContainingMultilevelSubMenus.Name = "menuStripContainingMultilevelSubMenus";
-            this.menuStripContainingMultilevelSubMenus.Size = new System.Drawing.Size(101, 48);
+            this.menuStripContainingMultilevelSubMenus.Size = new System.Drawing.Size(102, 48);
             // 
             // rootToolStripMenuItem
             // 
             this.rootToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.level1ToolStripMenuItem});
             this.rootToolStripMenuItem.Name = "rootToolStripMenuItem";
-            this.rootToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.rootToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.rootToolStripMenuItem.Text = "Root";
             // 
             // level1ToolStripMenuItem
@@ -446,19 +446,19 @@ namespace WinFormsTestApp
             this.level1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.level2ToolStripMenuItem});
             this.level1ToolStripMenuItem.Name = "level1ToolStripMenuItem";
-            this.level1ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.level1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.level1ToolStripMenuItem.Text = "Level1";
             // 
             // level2ToolStripMenuItem
             // 
             this.level2ToolStripMenuItem.Name = "level2ToolStripMenuItem";
-            this.level2ToolStripMenuItem.Size = new System.Drawing.Size(109, 22);
+            this.level2ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.level2ToolStripMenuItem.Text = "Level2";
             // 
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.mainToolStripMenuItem.Text = "Main";
             // 
             // launchModal
@@ -479,7 +479,7 @@ namespace WinFormsTestApp
             this.textBox1.Size = new System.Drawing.Size(180, 40);
             this.textBox1.TabIndex = 12;
             this.textBox1.Text = "This control is used to test HScrollBar. It will display text long enought to dis" +
-                "play HScrollBar";
+    "play HScrollBar";
             this.textBox1.WordWrap = false;
             // 
             // seasons
@@ -695,7 +695,7 @@ namespace WinFormsTestApp
             // statusStripLabel
             // 
             this.statusStripLabel.Name = "statusStripLabel";
-            this.statusStripLabel.Size = new System.Drawing.Size(90, 17);
+            this.statusStripLabel.Size = new System.Drawing.Size(97, 17);
             this.statusStripLabel.Text = "Status Strip Label";
             // 
             // toolStripProgressBar
@@ -718,13 +718,13 @@ namespace WinFormsTestApp
             // twoToolStripMenuItem
             // 
             this.twoToolStripMenuItem.Name = "twoToolStripMenuItem";
-            this.twoToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.twoToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.twoToolStripMenuItem.Text = "Two";
             // 
             // oneToolStripMenuItem
             // 
             this.oneToolStripMenuItem.Name = "oneToolStripMenuItem";
-            this.oneToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.oneToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.oneToolStripMenuItem.Text = "One";
             // 
             // toolStripSplitButton
@@ -741,7 +741,7 @@ namespace WinFormsTestApp
             // splitButtonToolStripMenuItem
             // 
             this.splitButtonToolStripMenuItem.Name = "splitButtonToolStripMenuItem";
-            this.splitButtonToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.splitButtonToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.splitButtonToolStripMenuItem.Text = "Split Button";
             // 
             // toolStripProgressBar2
@@ -773,20 +773,20 @@ namespace WinFormsTestApp
             this.launchModalToolStripMenuItem,
             this.clickMeToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // launchModalToolStripMenuItem
             // 
             this.launchModalToolStripMenuItem.Name = "launchModalToolStripMenuItem";
             this.launchModalToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.launchModalToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.launchModalToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.launchModalToolStripMenuItem.Text = "LaunchModal";
             // 
             // clickMeToolStripMenuItem
             // 
             this.clickMeToolStripMenuItem.Name = "clickMeToolStripMenuItem";
-            this.clickMeToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
+            this.clickMeToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.clickMeToolStripMenuItem.Text = "Click Me";
             // 
             // editToolStripMenuItem
@@ -794,7 +794,7 @@ namespace WinFormsTestApp
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // selectToolStripMenuItem
@@ -802,13 +802,13 @@ namespace WinFormsTestApp
             this.selectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lineToolStripMenuItem});
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.selectToolStripMenuItem.Text = "Select";
             // 
             // lineToolStripMenuItem
             // 
             this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
-            this.lineToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.lineToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.lineToolStripMenuItem.Text = "Line";
             // 
             // toolStrip1
@@ -839,7 +839,7 @@ namespace WinFormsTestApp
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(77, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(86, 22);
             this.toolStripLabel1.Text = "toolStripLabel1";
             // 
             // toolStripSplitButton1
@@ -1021,7 +1021,7 @@ namespace WinFormsTestApp
             this.slider1.LargeChange = 4;
             this.slider1.Location = new System.Drawing.Point(31, 373);
             this.slider1.Name = "slider1";
-            this.slider1.Size = new System.Drawing.Size(104, 42);
+            this.slider1.Size = new System.Drawing.Size(104, 45);
             this.slider1.TabIndex = 40;
             this.slider1.Value = 4;
             // 

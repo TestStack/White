@@ -11,7 +11,7 @@ namespace White.Core.Factory
     {
         public static ToolTip FindToolTip(Func<AutomationElement> perform)
         {
-            var automationElement = Retry.For(perform, element => element == null, CoreAppXmlConfiguration.Instance.TooltipWaitTime);
+            var automationElement = Retry.For(perform, element => element == null, CoreAppXmlConfiguration.Instance.TooltipWaitTimeSpan());
             return new ToolTip(automationElement, new NullActionListener());
         }
     }

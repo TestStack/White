@@ -21,13 +21,12 @@ namespace White.Core.UIItems.TreeItems
         {
             var nodePath = new List<string>(path);
             if (nodePath.Count == 0) return null;
-
+            
             string nodeText = nodePath[0];
             TreeNode node = MatchingNode(nodeText);
             nodePath.RemoveAt(0);
             if (nodePath.Count == 0) return node;
             if (node == null) throw new UIItemSearchException(string.Format("Could not find node {0}", nodeText));
-            node.Expand();
             return node.GetItem(nodePath.ToArray());
         }
 

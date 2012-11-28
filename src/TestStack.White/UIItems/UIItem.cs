@@ -235,7 +235,8 @@ namespace White.Core.UIItems
                 message = "element not enabled";
             else if (IsOffScreen)
                 message = "element is offscreen";
-            throw new AutomationException(string.Format("Cannot perform action on {0}, {1}", this, message));
+
+            throw new AutomationException(string.Format("Cannot perform action on {0}, {1}", this, message), Debug.Details(AutomationElement));
         }
 
         internal virtual void PerformClick()

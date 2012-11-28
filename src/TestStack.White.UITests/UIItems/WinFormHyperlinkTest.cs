@@ -5,6 +5,6 @@ namespace White.Core.UITests.UIItems
     [TestFixture, WinFormCategory]
     public class WinFormHyperlinkTest : HyperlinkTest {}
 
-    [TestFixture, SWTCategory]
+    [TestFixture, SWTCategory, Ignore]
     public class SWTHyperlinkTest : HyperlinkTest {}
 }

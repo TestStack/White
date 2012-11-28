@@ -1,4 +1,4 @@
-using System.Windows;
+using System;
 using White.Core.Configuration;
 using White.Core.Utility;
 using log4net;
@@ -57,7 +57,7 @@ namespace White.Core.UIItems.Scrolling
                     const string messageFormat = "Trying to make {0} visible, item's bounds are {1} and parent's span is {2}";
                     logger.DebugFormat(messageFormat, uiItem, bounds, verticalSpan);
                     return verticalSpan.Contains(bounds);
-                }, CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
+                }, CoreAppXmlConfiguration.Instance.BusyTimeout(), TimeSpan.FromMilliseconds(0));
 
             if (!success)
             throw new UIActionException(string.Format("Could not make the {0} visible{1}", uiItem, Constants.BusyMessage));

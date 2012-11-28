@@ -88,12 +88,20 @@ namespace White.Core.UITests.UIItems.ListBoxItems
             try
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
-                Assert.AreEqual("e", window.Get<ComboBox>("ExampleComboBox").SelectedItemText);
+                var comboBox = window.Get<ComboBox>("ExampleComboBox");
+                Assert.AreEqual(0, comboBox.Items.Count);
             }
             finally
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
+        }
+
+        [Test]
+        public void ListItemInComboBoxWithTextAvailableInitially()
+        {
+            var comboBox = window.Get<ComboBox>("ExampleComboBox");
+            Assert.AreEqual(8, comboBox.Items.Count);
         }
     }
 

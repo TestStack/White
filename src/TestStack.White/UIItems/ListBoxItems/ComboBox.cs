@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
@@ -92,10 +93,14 @@ namespace White.Core.UIItems.ListBoxItems
 
         protected virtual void MakeActionReady()
         {
-            if (CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
+            if (!CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
 
-            ToggleDropDown();
-            ToggleDropDown();
+            var expandCollapse = AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
+            if (expandCollapse == null) return;
+                
+            expandCollapse.Expand();
+            Thread.Sleep(100);
+            expandCollapse.Collapse();
         }
 
         protected virtual void ToggleDropDown()

@@ -17,7 +17,8 @@ namespace White.Core.Bricks
         public virtual void Process(IInvocation invocation, CoreInterceptContext interceptedContext)
         {
             ForEach(obj => obj.PreProcess(invocation, interceptedContext));
-            invocation.ReturnValue = invocation.Method.Invoke(interceptedContext.Target, invocation.Arguments);
+            var invokeTargetDelegate =  DelegateInvoker.CreateInvoker(interceptedContext.Target, invocation.Method);
+            invocation.ReturnValue = invokeTargetDelegate.Call(invocation.Arguments);
             ForEach(obj => obj.PostProcess(invocation, interceptedContext));
         }
 

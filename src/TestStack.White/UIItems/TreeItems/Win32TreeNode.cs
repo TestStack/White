@@ -16,6 +16,8 @@ namespace White.Core.UIItems.TreeItems
         protected override void DoExpand()
         {
             DoubleClick();
+            if (Nodes.Count == 0)
+                throw new AutomationException(string.Format("Cannot expand TreeNode {0}, expand button not visible", this), Debug.Details(AutomationElement));
         }
 
         protected override void DoCollapse()

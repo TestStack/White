@@ -4,7 +4,7 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture, SWTCategory]
+    [TestFixture, SWTCategory, Ignore]
     public class SWTMenuTest : ControlsActionTest
     {
         [Test]

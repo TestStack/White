@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
@@ -52,9 +53,7 @@ namespace White.Core.UIItems.Scrolling {
             {
                 BackLargeChangeButton.PerformClick();
                 return Value;
-            },
-                      v => v > 0,
-                      CoreAppXmlConfiguration.Instance.BusyTimeout, 0);
+            }, v => v > 0, CoreAppXmlConfiguration.Instance.BusyTimeout(), TimeSpan.FromMilliseconds(0));
 
             if (value > 0)
                 throw new UIActionException(string.Format("Could not set the ScrollBar to minimum visible{0}", Constants.BusyMessage));

@@ -1,11 +1,11 @@
 ﻿<Window x:Class="WindowsPresentationFramework.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-    xmlns:WindowsPresentationFramework="clr-namespace:WindowsPresentationFramework"
-    Title="Form1" Height="595" Width="987">
+        xmlns:windowsPresentationFramework="clr-namespace:WindowsPresentationFramework"
+        xmlns:ComponentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        Title="Form1" Height="595" Width="987">
   <Window.Resources>
-    <WindowsPresentationFramework:ExampleCollection  x:Key="theExamples" />
+    <windowsPresentationFramework:ExampleCollection  x:Key="theExamples" />
 
     <CollectionViewSource  x:Key="ExampleCollectionViewSource" Source="{Binding Source={StaticResource theExamples}, Path=ExampleItemsCollection}"  >
       <CollectionViewSource.SortDescriptions>
@@ -49,8 +49,13 @@
     <Label Height="24" HorizontalAlignment="Left" Margin="17,0,0,166" Name="result" VerticalAlignment="Bottom" Width="86">Result</Label>
 
     <TabControl TabStripPlacement="Top" Margin="362,0,37,68" Name="seasons" Height="85" VerticalAlignment="Bottom" Grid.ColumnSpan="3">
-      <TabItem  Name="Spring"  Header="Spring">Spring</TabItem>
-      <TabItem  Name="Autumn" Header="Autumn">Autumn</TabItem>
+            <TabItem Name="Spring" Header="Spring">
+                <StackPanel>
+                    <Label>Spring</Label>
+                    <Button x:Name="springyButton" />
+                </StackPanel>
+            </TabItem>
+            <TabItem  Name="Autumn" Header="Autumn">Autumn</TabItem>
       <TabItem  Name="Winter" Header="Winter">Winter</TabItem>
     </TabControl>
     <ListBox Height="96" HorizontalAlignment="Left" Margin="228,0,0,51" Name="listBoxWithVScrollBar" VerticalAlignment="Bottom" Width="120" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">

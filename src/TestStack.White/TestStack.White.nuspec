@@ -4,15 +4,16 @@
     <id>TestStack.White</id>
     <version>$version$</version>
     <title>TestStack.White</title>
-    <authors>Thoughtworks</authors>
-    <owners>Thoughtworks</owners>
-    <licenseUrl>http://teststack.github.com/copy</licenseUrl>
-    <projectUrl>http://teststack.github.com/white</projectUrl>
-    <iconUrl>http://teststack.github.com/white/icon.png</iconUrl>
+    <description>White is a framework for automating rich client applications based on Win32, WinForms, WPF, Silverlight and SWT (Java) platforms. It is .NET based and does not require the use of any proprietary scripting languages. Tests/automation programs using White can be written with whatever .NET language, IDE and tools you are already using. White provides a consistent object-oriented API, hiding the complexity of Microsoft's UIAutomation library (on which White is based) and windows messages.
+
+* TestStack.White is the official replacement for White *</description>
+    <authors>Vivek Singh, Jake Ginnivan</authors>
+    <owners>Jake Ginnivan</owners>
+    <licenseUrl>https://github.com/TestStack/White/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>http://teststack.github.com/White/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>UI Automation Framework</description>
-    <copyright>Copyright 2012</copyright>
-    <tags>UIAutomation Testing</tags>
+    <copyright>Copyright Jake Ginnivan 2012</copyright>
+    <tags>White UIAutomation Testing UIA WPF Silverlight Win32 Automation</tags>
     <dependencies>
       <dependency id="Castle.Core" version="3.0.0.4001" />
       <dependency id="log4net" version="2.0.0" />
@@ -20,5 +21,6 @@
   </metadata>
   <files>
     <file src="TestStack.White.dll" target="lib\net40" />
+    <file src="TestStack.White.pdb" target="lib\net40" />
   </files>
 </package>

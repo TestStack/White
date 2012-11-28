@@ -13,28 +13,29 @@ namespace White.Core.Factory
 {
     public abstract class ChildWindowFactory
     {
-        protected readonly AutomationElementFinder finder;
+        protected readonly AutomationElementFinder Finder;
+
         protected static readonly List<SpecializedWindowFactory> SpecializedWindowFactories = new List<SpecializedWindowFactory>();
 
         protected ChildWindowFactory(AutomationElementFinder finder)
         {
-            this.finder = finder;
+            Finder = finder;
         }
 
         public virtual Window ModalWindow(string title, InitializeOption option, WindowSession windowSession)
         {
-            return ModalWindow(() => finder.FindWindow(title, 0), option, windowSession);
+            return ModalWindow(() => Finder.FindWindow(title, 0), option, windowSession);
         }
 
         private static Window ModalWindow(Func<AutomationElement> find, InitializeOption option, WindowSession windowSession)
         {
-            var automationElement = Retry.For(find, e => e == null, CoreAppXmlConfiguration.Instance.BusyTimeout);
+            var automationElement = Retry.For(find, e => e == null, CoreAppXmlConfiguration.Instance.BusyTimeout());
             return automationElement == null ? null: Create(automationElement, option, windowSession);
         }
 
         public virtual Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option, WindowSession windowSession)
         {
-            return ModalWindow(() => finder.FindWindow(searchCriteria), option, windowSession);
+            return ModalWindow(() => Finder.FindWindow(searchCriteria), option, windowSession);
         }
 
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)

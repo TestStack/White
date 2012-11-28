@@ -10,7 +10,7 @@ namespace White.Core.Configuration
 {
     public class CoreAppXmlConfiguration : AssemblyConfiguration, ICoreConfiguration
     {
-        private static ICoreConfiguration _instance;
+        private static ICoreConfiguration instance;
         private readonly DynamicProxyInterceptors interceptors = new DynamicProxyInterceptors();
 
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
@@ -36,7 +36,7 @@ namespace White.Core.Configuration
 
         public static ICoreConfiguration Instance
         {
-            get { return _instance ?? (_instance = new CoreAppXmlConfiguration()); }
+            get { return instance ?? (instance = new CoreAppXmlConfiguration()); }
         }
 
         private CoreAppXmlConfiguration() : base("White", "Core", DefaultValues, LogManager.GetLogger(typeof(CoreAppXmlConfiguration)))

@@ -7,9 +7,9 @@ namespace White.Core.Utility
     public static class Retry
     {
         //TODO Make this read configuration
-        public const int WindowWaitDefault = 30000;
-        public const int ElementWaitDefault = 10000;
-        private const int RetryIntervalInMs = 200;
+        public static TimeSpan WindowWaitDefault = TimeSpan.FromSeconds(30);
+        public static TimeSpan ElementWaitDefault = TimeSpan.FromSeconds(10);
+        private static readonly TimeSpan DefaultRetryInterval = TimeSpan.FromMilliseconds(200);
 
         public static Window ForDefault(Func<Window> getMethod)
         {
@@ -35,11 +35,11 @@ namespace White.Core.Utility
         /// Retries until action does not throw an exception
         /// </summary>
         /// <param name="action">The action.</param>
-        /// <param name="retryForSeconds">The retry for seconds.</param>
-        public static void For(Action action, int retryForSeconds)
+        /// <param name="retryFor">The retry for seconds.</param>
+        public static void For(Action action, TimeSpan retryFor)
         {
             var startTime = DateTime.Now;
-            while (DateTime.Now.Subtract(startTime).TotalSeconds < retryForSeconds)
+            while (DateTime.Now.Subtract(startTime).TotalMilliseconds < retryFor.TotalMilliseconds)
             {
                 try
                 {
@@ -48,30 +48,30 @@ namespace White.Core.Utility
                 }
                 catch (Exception)
                 {
-                    Thread.Sleep(RetryIntervalInMs);
+                    Thread.Sleep(DefaultRetryInterval);
                 }
             }
 
             action();
         }
 
-        public static bool For(Func<bool> getMethod, int retryForSeconds, int? retryIntervalInMs = null)
+        public static bool For(Func<bool> getMethod, TimeSpan retryFor, TimeSpan? retryInterval = null)
         {
-            return For(getMethod, g => !g, retryForSeconds, retryIntervalInMs);
+            return For(getMethod, g => !g, retryFor, retryInterval);
         }
 
-        public static T For<T>(Func<T> getMethod, int retryForSeconds, int? retryIntervalInMs = null)
+        public static T For<T>(Func<T> getMethod, TimeSpan retryFor, TimeSpan? retryInterval = null)
         {
             //If T is a value type, by default we should retry if the value is default
             //Reference types will return false, so our predicate will always pass
-            return For(getMethod, IsValueTypeAndDefault, retryForSeconds, retryIntervalInMs);
+            return For(getMethod, IsValueTypeAndDefault, retryFor, retryInterval);
         }
 
-        public static T For<T>(Func<T> getMethod, Predicate<T> shouldRetry, int retryForMiliseconds, int? retryIntervalInMs = null)
+        public static T For<T>(Func<T> getMethod, Predicate<T> shouldRetry, TimeSpan retryFor, TimeSpan? retryInterval = null)
         {
             var startTime = DateTime.Now;
             T element;
-            while (DateTime.Now.Subtract(startTime).TotalMilliseconds < retryForMiliseconds)
+            while (DateTime.Now.Subtract(startTime).TotalMilliseconds < retryFor.TotalMilliseconds)
             {
                 try
                 {
@@ -79,7 +79,7 @@ namespace White.Core.Utility
                 }
                 catch (Exception)
                 {
-                    Thread.Sleep(retryIntervalInMs ?? RetryIntervalInMs);
+                    Thread.Sleep(retryInterval ?? DefaultRetryInterval);
                     continue;
                 }
 
@@ -97,7 +97,7 @@ namespace White.Core.Utility
                     return element;
                 }
 
-                Thread.Sleep(retryIntervalInMs ?? RetryIntervalInMs);
+                Thread.Sleep(retryInterval ?? DefaultRetryInterval);
             }
 
             element = getMethod();

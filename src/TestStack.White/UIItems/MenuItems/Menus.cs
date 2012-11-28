@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Factory;
@@ -11,7 +12,7 @@ namespace White.Core.UIItems.MenuItems
 {
     public class Menus : UIItemList<Menu>
     {
-        private static readonly DictionaryMappedItemFactory factory = new DictionaryMappedItemFactory();
+        private static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();
 
         public Menus(AutomationElement parent, ActionListener actionListener)
         {
@@ -20,7 +21,7 @@ namespace White.Core.UIItems.MenuItems
             finder = PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent);
             List<AutomationElement> children = finder.Descendants(condition);
             foreach (AutomationElement child in children)
-                Add((Menu) factory.Create(child, actionListener));
+                Add((Menu) Factory.Create(child, actionListener));
         }
 
         private static AutomationElementFinder PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(AutomationElementFinder finder,
@@ -51,7 +52,11 @@ namespace White.Core.UIItems.MenuItems
 
         public virtual Menu Find(SearchCriteria searchCriteria)
         {
-            return Find(menuItem => searchCriteria.AppliesTo(menuItem.AutomationElement));
+            var find = Find(menuItem => searchCriteria.AppliesTo(menuItem.AutomationElement));
+
+            Thread.Sleep(200); // We need to sleep here because windows animates menu items which makes the click close the menu instead of clicking on it
+
+            return find;
         }
 
         public virtual Menu Find(params SearchCriteria[] path)
@@ -62,9 +67,11 @@ namespace White.Core.UIItems.MenuItems
             for (int i = 1; i < path.Length; i++)
             {
                 item.Click();
+
                 item = item.SubMenu(path[i]);
                 if (item == null) throw new UIItemSearchException("Could not find Menu " + path[i]);
             }
+
             return item;
         }
     }

@@ -7,7 +7,7 @@ using White.Core.UIItems.WindowItems;
 
 namespace White.Core.UITests
 {
-    [TestFixture, SWTCategory]
+    [TestFixture, SWTCategory, Ignore]
     public class DesktopTest
     {
         [Test, Ignore]

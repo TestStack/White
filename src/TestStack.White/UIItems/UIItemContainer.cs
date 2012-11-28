@@ -18,6 +18,7 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
 using White.Core.UIItems.TabItems;
 using White.Core.UIItems.WindowStripControls;
+using White.Core.Utility;
 
 namespace White.Core.UIItems
 {
@@ -25,8 +26,8 @@ namespace White.Core.UIItems
     //TODO: Dont let people compile code is they are trying to find UIItem which are secondary or window
     public class UIItemContainer : UIItem, IUIItemContainer, VerticalSpanProvider
     {
-        protected readonly CurrentContainerItemFactory currentContainerItemFactory;
-        protected WindowSession windowSession = new NullWindowSession();
+        protected readonly CurrentContainerItemFactory CurrentContainerItemFactory;
+        protected WindowSession WindowSession = new NullWindowSession();
 
         protected UIItemContainer()
         {
@@ -36,9 +37,8 @@ namespace White.Core.UIItems
                                InitializeOption initializeOption,
                                WindowSession windowSession) : base(automationElement, actionListener)
         {
-            this.windowSession = windowSession;
-            currentContainerItemFactory = new CurrentContainerItemFactory(factory, initializeOption, automationElement,
-                                                                          ChildrenActionListener);
+            WindowSession = windowSession;
+            CurrentContainerItemFactory = new CurrentContainerItemFactory(factory, initializeOption, automationElement, ChildrenActionListener);
         }
 
         public UIItemContainer(AutomationElement automationElement, ActionListener actionListener)
@@ -97,14 +97,31 @@ namespace White.Core.UIItems
         {
             try
             {
-                IUIItem uiItem = currentContainerItemFactory.Find(searchCriteria, windowSession);
+                var uiItem = Retry.For(() =>
+                    CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
+                    b =>(bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
+                    // Wait until control is onscreen
+                    CoreAppXmlConfiguration.Instance.BusyTimeout());
+
+                if (uiItem == null)
+                {
+                    var debugDetails = Debug.Details(automationElement);
+                    throw new AutomationException(string.Format("Failed to get {0}", searchCriteria), debugDetails);
+                }
+
                 HandleIfCustomUIItem(uiItem);
                 HandleIfUIItemContainer(uiItem);
                 return uiItem;
             }
+            catch (AutomationException)
+            {
+                throw;
+            }
             catch (Exception e)
             {
-                throw new WhiteException(Debug.Details(automationElement), e);
+                var debugDetails = Debug.Details(automationElement);
+
+                throw new WhiteException(string.Format("Error occured while geting {0}", searchCriteria), debugDetails, e);
             }
         }
 
@@ -112,7 +129,7 @@ namespace White.Core.UIItems
         {
             var uiItemContainer = uiItem as UIItemContainer;
             if (uiItemContainer == null) return;
-            uiItemContainer.Associate(windowSession);
+            uiItemContainer.Associate(WindowSession);
         }
 
         private void HandleIfCustomUIItem(IUIItem uiItem)
@@ -125,7 +142,7 @@ namespace White.Core.UIItems
             var interceptors = (IInterceptor[]) interceptorField.GetValue(customUIItem);
             var realCustomUIItem = (CustomUIItem) ((CoreInterceptor) interceptors[0]).Context.UiItem;
             realCustomUIItem.SetContainer(new UIItemContainer(customUIItem.AutomationElement, ChildrenActionListener,
-                                                              InitializeOption.NoCache, windowSession));
+                                                              InitializeOption.NoCache, WindowSession));
         }
 
         /// <summary>
@@ -134,7 +151,7 @@ namespace White.Core.UIItems
         /// <param name="option"></param>
         public virtual void ReInitialize(InitializeOption option)
         {
-            currentContainerItemFactory.ReInitialize(option);
+            CurrentContainerItemFactory.ReInitialize(option);
         }
 
         protected virtual ActionListener ChildrenActionListener
@@ -154,7 +171,7 @@ namespace White.Core.UIItems
         /// </summary>
         public virtual UIItemCollection Items
         {
-            get { return currentContainerItemFactory.FindAll(); }
+            get { return CurrentContainerItemFactory.FindAll(); }
         }
 
         /// <summary>
@@ -177,12 +194,12 @@ namespace White.Core.UIItems
 
         public virtual IUIItem[] GetMultiple(SearchCriteria criteria)
         {
-            return currentContainerItemFactory.FindAll(criteria).ToArray();
+            return CurrentContainerItemFactory.FindAll(criteria).ToArray();
         }
 
         internal virtual void Associate(WindowSession session)
         {
-            windowSession = session;
+            WindowSession = session;
         }
 
         public virtual VerticalSpan VerticalSpan
@@ -235,14 +252,14 @@ namespace White.Core.UIItems
 
         public virtual List<Tab> Tabs
         {
-            get { return currentContainerItemFactory.FindAll<Tab>(); }
+            get { return CurrentContainerItemFactory.FindAll<Tab>(); }
         }
 
         public virtual ToolStrip GetToolStrip(string primaryIdentification)
         {
             var toolStrip = (ToolStrip) Get(SearchCriteria.ByAutomationId(primaryIdentification));
             if (toolStrip == null) return null;
-            toolStrip.Associate(windowSession);
+            toolStrip.Associate(WindowSession);
             return toolStrip;
         }
 
