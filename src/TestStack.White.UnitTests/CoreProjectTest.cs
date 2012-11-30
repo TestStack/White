@@ -16,6 +16,7 @@ namespace White.Core.UnitTests
         {
             var virtuals = typeof(UIItem).Assembly.GetTypes()
                 .Where(t => t.IsClass)
+                .Where(t => !t.FullName.Contains("InvokerWrapper"))
                 .Select(t => new
                 {
                     Type = t,
