@@ -37,7 +37,7 @@
     <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UITests\bin\$(Configuration)\White.Core.UITests.dll /noshadow /apartment=STA" />
   </Target>
 
-  <Target Name="Publish" DependsOnTargets="Test">
+  <Target Name="Publish">
     <PropertyGroup>
       <Version Condition="'$(Version)' == ''">0.1.0.0</Version>
     </PropertyGroup>
