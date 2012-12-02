@@ -1,13 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildProjectDirectory)\</Root>
     <Platform Condition="$(Platform) == ''">x86</Platform>
     <Configuration Condition="$(Configuration) == ''">Release</Configuration>
+    <MSBuildCommunityTasksPath>$(Root)tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
   </PropertyGroup>
 
   <Target Name="Cleanup">
     <Error Condition="$(Root) == ''" Text="Root variable must be defined" />
-    
+
     <!-- Diagnostics -->
     <Message Text="Diagnostics:"/>
     <Message Text="Project root:    $(Root)" />
@@ -17,6 +19,7 @@
     <ItemGroup>
       <FilesToDelete Include="$(Root)**\bin\**\*.*" />
       <FilesToDelete Include="$(Root)**\obj\**\*.*" />
+      <FilesToDelete Include="$(Root)build\Artifacts\**\*.*" />
     </ItemGroup>
     <Delete Files="@(FilesToDelete)" />
     <Delete Files="$(Root)build\Artifacts" />
@@ -27,7 +30,11 @@
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
-    <!--Unit tests-->
+    <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UnitTests\bin\$(Configuration)\White.Core.UnitTests.dll /noshadow /apartment=STA" />
+  </Target>
+  
+  <Target Name="UITests" DependsOnTargets="Build">
+    <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UITests\bin\$(Configuration)\White.Core.UITests.dll /noshadow /apartment=STA" />
   </Target>
 
   <Target Name="Publish" DependsOnTargets="Test">
@@ -35,6 +42,6 @@
       <Version Condition="'$(Version)' == ''">0.9.2.0</Version>
     </PropertyGroup>
     <MakeDir Directories="$(Root)build\Artifacts" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\Debug" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
   </Target>
 </Project>
