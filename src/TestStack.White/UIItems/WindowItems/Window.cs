@@ -251,7 +251,12 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate)
         {
-            if (!Retry.For(()=>waitTillDelegate(), CoreAppXmlConfiguration.Instance.BusyTimeout()))
+            WaitTill(waitTillDelegate, CoreAppXmlConfiguration.Instance.BusyTimeout());
+        }
+
+        public virtual void WaitTill(WaitTillDelegate waitTillDelegate, TimeSpan timeout)
+        {
+            if (!Retry.For(() => waitTillDelegate(), timeout, new TimeSpan?()))
                 throw new UIActionException("Time out happened" + Constants.BusyMessage);
         }
 

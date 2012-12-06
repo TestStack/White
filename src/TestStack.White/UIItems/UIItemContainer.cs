@@ -89,19 +89,29 @@ namespace White.Core.UIItems
         }
 
         /// <summary>
-        /// Finds UIItem which matches specified type and searchCriteria. Look at documentation of SearchCriteria for details on it.
+        /// Finds UIItem which matches specified type and searchCriteria using the default BusyTimeout. Look at documentation of SearchCriteria for details on it.
         /// </summary>
         /// <param name="searchCriteria">Criteria provided to search UIItem</param>
         /// <returns>First items matching the criteria</returns>
         public virtual IUIItem Get(SearchCriteria searchCriteria)
+        {
+            return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
+        }
+
+        /// <summary>
+        /// Finds UIItem which matches specified type and searchCriteria. Look at documentation of SearchCriteria for details on it.
+        /// </summary>
+        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
+        /// <param name="timeout">Time to wait for item to come on-screen before returning off-screen element, if found.</param>
+        /// <returns>First items matching the criteria</returns>
+        public virtual IUIItem Get(SearchCriteria searchCriteria, TimeSpan timeout)
         {
             try
             {
                 var uiItem = Retry.For(() =>
                     CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
                     b =>(bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
-                    // Wait until control is onscreen
-                    CoreAppXmlConfiguration.Instance.BusyTimeout());
+                    timeout);
 
                 if (uiItem == null)
                 {
