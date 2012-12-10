@@ -78,30 +78,31 @@ namespace White.Core.InputDevices
                 return new MouseCursor(i);
             }
         }
-        private static int RightBtnDown
+
+        private static int RightMouseButtonDown
         {
             get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN); }
         }
 
-        private static int RightBtnUp
+        private static int RightMouseButtonUp
         {
             get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP); }
         }
 
-        private static int LeftBtnDown
+        private static int LeftMouseButtonDown
         {
             get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN); }
         }
 
-        private static int LeftBtnUp
+        private static int LeftMouseButtonUp
         {
             get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP); }
         }
 
         public virtual void RightClick()
         {
-            SendInput(InputFactory.Mouse(MouseInput(RightBtnDown)));
-            SendInput(InputFactory.Mouse(MouseInput(RightBtnUp)));
+            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
+            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
         }
 
         public virtual void Click()
@@ -119,12 +120,12 @@ namespace White.Core.InputDevices
 
         public static void LeftUp()
         {
-            SendInput(InputFactory.Mouse(MouseInput(LeftBtnUp)));
+            SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonUp)));
         }
 
         public static void LeftDown()
         {
-            SendInput(InputFactory.Mouse(MouseInput(LeftBtnDown)));
+            SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonDown)));
         }
 
         public virtual void DoubleClick(Point point)
