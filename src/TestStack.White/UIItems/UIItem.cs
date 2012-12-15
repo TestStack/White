@@ -374,15 +374,10 @@ namespace White.Core.UIItems
 
         public virtual void Enter(string value)
         {
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.HOME);
-            keyboard.HoldKey(KeyboardInput.SpecialKeys.SHIFT);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.END);
-            keyboard.LeaveKey(KeyboardInput.SpecialKeys.SHIFT);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.DELETE);
-            if (string.IsNullOrEmpty(value)) return;
-
             var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
             if (pattern != null) pattern.SetValue(string.Empty);
+            if (string.IsNullOrEmpty(value)) return;
+
             actionListener.ActionPerformed(Action.WindowMessage);
             EnterData(value);
         }
