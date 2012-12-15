@@ -23,6 +23,13 @@ Our aim is to bring project white up to date and make it an active open source p
 
 There will obviously be more fixes/changes, but these are the major goals
 
+## Getting Started
+Install White from NuGet
+
+    PM> Install-Package TestStack.White
+
+Download [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/) which is an ESSENTIAL tool when doing UI Automation work.
+
 ## Credits
 Thanks to Thoughtworks and specifically [Vivek Singh](https://github.com/petmongrels) for starting this project. We have got permission from Vivek to continue this project.
 
