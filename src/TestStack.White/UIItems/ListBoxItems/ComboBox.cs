@@ -94,10 +94,11 @@ namespace White.Core.UIItems.ListBoxItems
         protected virtual void MakeActionReady()
         {
             if (!CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
+            if (!Enabled) return;
 
             var expandCollapse = AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
             if (expandCollapse == null) return;
-                
+
             expandCollapse.Expand();
             Thread.Sleep(100);
             expandCollapse.Collapse();
