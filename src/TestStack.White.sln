@@ -40,8 +40,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White", "TestStac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.UnitTests", "TestStack.White.UnitTests\TestStack.White.UnitTests.csproj", "{7C7960B2-905D-409A-8068-B010A35BA151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.UITests", "TestStack.White.UITests\TestStack.White.UITests.csproj", "{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Recorder", "Recorder", "{C471561B-4437-4FD8-9695-56BE12CEA517}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{1D05C37A-2643-4333-A8BD-0BC75E75387C}"
@@ -50,11 +48,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reporting", "Reporting", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebBrowser", "WebBrowser", "{A13E1BE4-CA6B-4E82-9A91-AA42787AD94D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsTestApp", "TestApplications\WinFormsTestApp\WinFormsTestApp.csproj", "{BDD325EF-D400-4A37-B4C6-D7BF150587C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormsTestApp.Old", "TestApplications\WinFormsTestApp\WinFormsTestApp.Old.csproj", "{BDD325EF-D400-4A37-B4C6-D7BF150587C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestApp", "TestApplications\WPFTestApp\WPFTestApp.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTestApp.Old", "TestApplications\WPFTestApp\WPFTestApp.Old.csproj", "{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.xUnitQuickstart", "TestStack.White.xUnitQuickstart\TestStack.White.xUnitQuickstart.csproj", "{D91381BE-9CA6-482B-B524-8DF957ADD746}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsTestApplication", "TestApplications\WindowsFormsTestApplication\WindowsFormsTestApplication.csproj", "{24929CE3-4000-4600-8830-503BE6A2BA42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestApplication", "TestApplications\WpfTestApplication\WpfTestApplication.csproj", "{492E6340-32CC-4D03-A9C4-36FB4C40CF5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.UITests.Old", "TestStack.White.UITests.Old\TestStack.White.UITests.Old.csproj", "{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.UITests", "TestStack.White.UITests\TestStack.White.UITests.csproj", "{10A51741-09F8-47CA-AB94-965EE71342F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -110,10 +114,6 @@ Global
 		{7C7960B2-905D-409A-8068-B010A35BA151}.Debug|x86.Build.0 = Debug|x86
 		{7C7960B2-905D-409A-8068-B010A35BA151}.Release|x86.ActiveCfg = Release|x86
 		{7C7960B2-905D-409A-8068-B010A35BA151}.Release|x86.Build.0 = Release|x86
-		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Debug|x86.ActiveCfg = Debug|x86
-		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Debug|x86.Build.0 = Debug|x86
-		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Release|x86.ActiveCfg = Release|x86
-		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Release|x86.Build.0 = Release|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Debug|x86.ActiveCfg = Debug|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Debug|x86.Build.0 = Debug|x86
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7}.Release|x86.ActiveCfg = Release|x86
@@ -122,10 +122,22 @@ Global
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}.Debug|x86.Build.0 = Debug|x86
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}.Release|x86.ActiveCfg = Release|x86
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC}.Release|x86.Build.0 = Release|x86
-		{D91381BE-9CA6-482B-B524-8DF957ADD746}.Debug|x86.ActiveCfg = Debug|x86
-		{D91381BE-9CA6-482B-B524-8DF957ADD746}.Debug|x86.Build.0 = Debug|x86
-		{D91381BE-9CA6-482B-B524-8DF957ADD746}.Release|x86.ActiveCfg = Release|x86
-		{D91381BE-9CA6-482B-B524-8DF957ADD746}.Release|x86.Build.0 = Release|x86
+		{24929CE3-4000-4600-8830-503BE6A2BA42}.Debug|x86.ActiveCfg = Debug|x86
+		{24929CE3-4000-4600-8830-503BE6A2BA42}.Debug|x86.Build.0 = Debug|x86
+		{24929CE3-4000-4600-8830-503BE6A2BA42}.Release|x86.ActiveCfg = Release|x86
+		{24929CE3-4000-4600-8830-503BE6A2BA42}.Release|x86.Build.0 = Release|x86
+		{492E6340-32CC-4D03-A9C4-36FB4C40CF5C}.Debug|x86.ActiveCfg = Debug|x86
+		{492E6340-32CC-4D03-A9C4-36FB4C40CF5C}.Debug|x86.Build.0 = Debug|x86
+		{492E6340-32CC-4D03-A9C4-36FB4C40CF5C}.Release|x86.ActiveCfg = Release|x86
+		{492E6340-32CC-4D03-A9C4-36FB4C40CF5C}.Release|x86.Build.0 = Release|x86
+		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Debug|x86.ActiveCfg = Debug|x86
+		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Debug|x86.Build.0 = Debug|x86
+		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Release|x86.ActiveCfg = Release|x86
+		{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}.Release|x86.Build.0 = Release|x86
+		{10A51741-09F8-47CA-AB94-965EE71342F7}.Debug|x86.ActiveCfg = Debug|x86
+		{10A51741-09F8-47CA-AB94-965EE71342F7}.Debug|x86.Build.0 = Debug|x86
+		{10A51741-09F8-47CA-AB94-965EE71342F7}.Release|x86.ActiveCfg = Release|x86
+		{10A51741-09F8-47CA-AB94-965EE71342F7}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,5 +155,7 @@ Global
 		{31F10CBC-B77C-4B58-8706-E8800FFC1D20} = {A13E1BE4-CA6B-4E82-9A91-AA42787AD94D}
 		{BDD325EF-D400-4A37-B4C6-D7BF150587C7} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
 		{EAC2EAA3-9C17-4F59-BC5B-89C2601D38AC} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
+		{24929CE3-4000-4600-8830-503BE6A2BA42} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
+		{492E6340-32CC-4D03-A9C4-36FB4C40CF5C} = {1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}
 	EndGlobalSection
 EndGlobal

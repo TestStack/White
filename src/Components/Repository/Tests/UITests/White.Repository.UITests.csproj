@@ -113,9 +113,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\TestStack.White.UITests\TestStack.White.UITests.csproj">
-      <Project>{6D03B0F7-5FE2-45A0-996A-D0B45F6FB23B}</Project>
-      <Name>TestStack.White.UITests</Name>
+    <ProjectReference Include="..\..\..\..\TestStack.White.UITests.Old\TestStack.White.UITests.Old.csproj">
+      <Project>{6d03b0f7-5fe2-45a0-996a-d0b45f6fb23b}</Project>
+      <Name>TestStack.White.UITests.Old</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>

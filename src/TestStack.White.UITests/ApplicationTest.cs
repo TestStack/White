@@ -1,55 +1,15 @@
-using NUnit.Framework;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
-using White.Core.UITests.Testing;
+﻿using NUnit.Framework;
+using TestStack.White.UITests.Infrastructure;
 
-namespace White.Core.UITests
+namespace TestStack.White.UITests
 {
-    [TestFixture]
-    public class ApplicationTest : ControlsActionTest
+    public class ApplicationTest : WhiteTestBase
     {
-        [Test]
-        public void GetWindows()
+        [TestCase(FrameworkId.Wpf)]
+        [TestCase(FrameworkId.Winforms)]
+        public void Test(FrameworkId frameworkId)
         {
-            Assert.AreNotEqual(null, window);
-        }
-
-        [Test]
-        public void GetAllWindows()
-        {
-            window.Get<Button>("launchModal").Click();
-            int count = application.GetWindows().Count;
-            CloseModal(window);
-            Assert.AreEqual(2, count);
-        }
-
-        [Test]
-        public void FindWindow()
-        {
-            window.Get<Button>("launchModal").Click();
-            Window foundWindow = application.Find(obj => obj.Equals("ModalForm"), InitializeOption.NoCache);
-            CloseModal(window);
-            Assert.AreNotEqual(null, foundWindow);
-        }
-    }
-
-    [TestFixture, WinFormCategory]
-    public class WinFormApplicationTest : ControlsActionTest
-    {
-        [Test, WinFormCategory]
-        public void GetWindowBasedOnFrameworkId()
-        {
-            Window frameworkWindow =
-                application.GetWindow(SearchCriteria.ByText("Form1").AndOfFramework(ApplicationClass.WinForm.ToString()), InitializeOption.NoCache);
-            Assert.AreNotEqual(null, frameworkWindow);
-        }
-
-        [Test, WinFormCategory]
-        public void FindWindowBasedOnSearchCriteria()
-        {
-            Assert.AreNotEqual(null, application.GetWindow(SearchCriteria.ByAutomationId("Form1"), InitializeOption.NoCache));
+            var window = GetMainWindow(frameworkId);
         }
     }
 }
