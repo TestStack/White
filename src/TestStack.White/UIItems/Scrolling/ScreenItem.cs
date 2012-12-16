@@ -33,6 +33,13 @@ namespace White.Core.UIItems.Scrolling
             }
 
             VerticalSpan verticalSpan = verticalSpanProvider.VerticalSpan;
+
+            if (verticalSpan.Contains(uiItem.Bounds)) {
+                logger.DebugFormat("UIItem ({0}) whose bounds are ({1}) is within bounds of parent whose vertical span is {2}", uiItem,
+                                                 uiItem.Bounds, verticalSpan);
+                return;
+            }
+
             if (verticalScroll.IsNotMinimum)
             {
                 verticalScroll.SetToMinimum();
