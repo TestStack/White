@@ -73,8 +73,12 @@ namespace White.Core.InputDevices
                 if (c.Equals('\r')) continue;
 
                 if (ShiftKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
+                if (CtrlKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.CONTROL, false);
+                if (AltKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.ALT, false);
                 Press(key, false);
                 if (ShiftKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
+                if (CtrlKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
+                if (AltKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
             }
 
             actionListener.ActionPerformed(Action.WindowMessage);
@@ -129,6 +133,16 @@ namespace White.Core.InputDevices
         private static bool ShiftKeyIsNeeded(short key)
         {
             return ((key >> 8) & 1) == 1;
+        }
+
+        private static bool CtrlKeyIsNeeded(short key)
+        {
+            return ((key >> 8) & 2) == 2;
+        }
+
+        private static bool AltKeyIsNeeded(short key)
+        {
+            return ((key >> 8) & 4) == 4;
         }
 
         private void SendKeyUp(short b, bool specialKey)
