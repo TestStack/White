@@ -23,7 +23,7 @@ namespace White.Core.UITests.InputDevices
             keyboard.LeaveAllKeys();
         }
 
-        [Test, Ignore]
+        [Test]
         public void EnterAccentedChars()
         {
             textBox.BulkText = "דאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהב";
