@@ -19,9 +19,9 @@ namespace White.Core.UIItems.ListBoxItems
             set
             {
                 if (Checked == value) return;
-                Select();
+                Toggle();
                 if (Checked == value) return;
-                Select();
+                Toggle();
             }
         }
 
@@ -37,6 +37,11 @@ namespace White.Core.UIItems.ListBoxItems
                 var toggleState = (ToggleState) Property(TogglePattern.ToggleStateProperty);
                 return toggleState.Equals(ToggleState.On);
             }
+        }
+
+        private void Toggle()
+        {
+            ((TogglePattern)Pattern(TogglePattern.Pattern)).Toggle();
         }
     }
 }
