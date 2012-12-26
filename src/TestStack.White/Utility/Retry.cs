@@ -55,11 +55,23 @@ namespace White.Core.Utility
             action();
         }
 
+        /// <summary>
+        /// Retries until method returns true
+        /// </summary>
+        /// <param name="getMethod">The method.</param>
+        /// <param name="retryFor">The retry for seconds.</param>
+        /// <param name="retryInterval">The time to sleep betwen retries.</param>
         public static bool For(Func<bool> getMethod, TimeSpan retryFor, TimeSpan? retryInterval = null)
         {
             return For(getMethod, g => !g, retryFor, retryInterval);
         }
 
+        /// <summary>
+        /// Retries until method returns a non-default value
+        /// </summary>
+        /// <param name="getMethod">The method.</param>
+        /// <param name="retryFor">The retry for seconds.</param>
+        /// <param name="retryInterval">The time to sleep betwen retries.</param>
         public static T For<T>(Func<T> getMethod, TimeSpan retryFor, TimeSpan? retryInterval = null)
         {
             //If T is a value type, by default we should retry if the value is default
@@ -67,6 +79,13 @@ namespace White.Core.Utility
             return For(getMethod, IsValueTypeAndDefault, retryFor, retryInterval);
         }
 
+        /// <summary>
+        /// Retries as long as predicate is satisfied
+        /// </summary>
+        /// <param name="getMethod">The method.</param>
+        /// <param name="shouldRetry">The predicate used for retry.</param>
+        /// <param name="retryFor">The retry for seconds.</param>
+        /// <param name="retryInterval">The time to sleep betwen retries.</param>
         public static T For<T>(Func<T> getMethod, Predicate<T> shouldRetry, TimeSpan retryFor, TimeSpan? retryInterval = null)
         {
             var startTime = DateTime.Now;
