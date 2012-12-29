@@ -23,7 +23,7 @@ namespace White.Core.Utility
         /// <summary>
         /// Retries until method returns a non-default value using default element timeout
         /// </summary>
-        /// <param name="getMethod">The method.</param>
+        /// <param name="getMethod">The operation to perform.</param>
         public static T ForDefault<T>(Func<T> getMethod)
         {
             return For(getMethod, ElementWaitDefault);
@@ -87,7 +87,7 @@ namespace White.Core.Utility
         /// <summary>
         /// Retries until method returns a non-default value
         /// </summary>
-        /// <param name="getMethod">The method.</param>
+        /// <param name="getMethod">The operation to perform.</param>
         /// <param name="retryFor">The duration before timing out.</param>
         /// <param name="retryInterval">The time to sleep betwen retries.</param>
         public static T For<T>(Func<T> getMethod, TimeSpan retryFor, TimeSpan? retryInterval = null)
