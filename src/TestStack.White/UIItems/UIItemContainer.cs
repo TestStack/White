@@ -46,28 +46,23 @@ namespace White.Core.UIItems
         {
         }
 
+        /// <summary>
+        /// Finds a button matching the given identifier and clicks it
+        /// </summary>
+        /// <param name="primaryIdentification">For managed application this is the name provided in application code and unmanaged application this is 
+        /// the text or label next to it based identification</param>
         public virtual void Click(string primaryIdentification)
         {
-            var button = Get<Button>();
-            if (button == null)
-            {
-                // TODO: throw?
-                return;
-            }
-            
-            button.Click();
+            Get<Button>(primaryIdentification).Click();
         }
 
-        public virtual void Click(SearchCriteria searchCriteria) 
+        /// <summary>
+        /// Finds a button matching the given SearchCriteria and clicks it
+        /// </summary>
+        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
+        public virtual void Click(SearchCriteria searchCriteria)
         {
-            var button = Get(searchCriteria.AndControlType(typeof(Button)));
-            if (button == null)
-            {
-                // TODO: throw?
-                return;
-            }
-
-            button.Click();
+            Get(searchCriteria.AndControlType(typeof (Button))).Click();
         }
 
         /// <summary>
