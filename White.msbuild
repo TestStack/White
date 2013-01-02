@@ -34,7 +34,9 @@
   </Target>
   
   <Target Name="UITests" DependsOnTargets="Build">
-    <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UITests\bin\$(Configuration)\White.Core.UITests.dll /noshadow /apartment=STA" />
+    <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UITests.Old\bin\$(Configuration)\White.Core.UITests.dll /noshadow /apartment=STA /include=WinForm" />
+    <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UITests.Old\bin\$(Configuration)\White.Core.UITests.dll /noshadow /apartment=STA /include=WPF" />
+    <Exec Command="$(Root)tools\nunit\nunit-console-x86.exe $(Root)src\TestStack.White.UITests.Old\bin\$(Configuration)\White.Core.UITests.dll /noshadow /apartment=STA /include=SWT" />
   </Target>
 
   <Target Name="Publish">
