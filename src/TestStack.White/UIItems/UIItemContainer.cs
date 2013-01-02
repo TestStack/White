@@ -46,6 +46,30 @@ namespace White.Core.UIItems
         {
         }
 
+        public virtual void Click(string primaryIdentification)
+        {
+            var button = Get<Button>();
+            if (button == null)
+            {
+                // TODO: throw?
+                return;
+            }
+            
+            button.Click();
+        }
+
+        public virtual void Click(SearchCriteria searchCriteria) 
+        {
+            var button = Get(searchCriteria.AndControlType(typeof(Button)));
+            if (button == null)
+            {
+                // TODO: throw?
+                return;
+            }
+
+            button.Click();
+        }
+
         /// <summary>
         /// Finds UIItem which matches specified type. Useful for non managed applications where controls are not identified by AutomationId, like in 
         /// Managed applications. In case of multiple items of this type the first one found would be returned which cannot be guaranteed to be the same 
