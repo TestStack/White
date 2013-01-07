@@ -8,6 +8,8 @@ TestStack has brought this project into it's offering to try and breathe some li
 
 We welcome pull requests and reported issues!
 
+If you have any queries, please join our discussion group at https://groups.google.com/forum/#!forum/teststack_white  
+
 ### Goals
 Our aim is to bring project white up to date and make it an active open source project again! My top priority goals are:
 
