@@ -47,6 +47,25 @@ namespace White.Core.UIItems
         }
 
         /// <summary>
+        /// Finds a button matching the given identifier and clicks it
+        /// </summary>
+        /// <param name="primaryIdentification">For managed application this is the name provided in application code and unmanaged application this is 
+        /// the text or label next to it based identification</param>
+        public virtual void Click(string primaryIdentification)
+        {
+            Get<Button>(primaryIdentification).Click();
+        }
+
+        /// <summary>
+        /// Finds a button matching the given SearchCriteria and clicks it
+        /// </summary>
+        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
+        public virtual void Click(SearchCriteria searchCriteria)
+        {
+            Get(searchCriteria.AndControlType(typeof (Button))).Click();
+        }
+
+        /// <summary>
         /// Finds UIItem which matches specified type. Useful for non managed applications where controls are not identified by AutomationId, like in 
         /// Managed applications. In case of multiple items of this type the first one found would be returned which cannot be guaranteed to be the same 
         /// across multiple invocations.
