@@ -32,6 +32,8 @@ Install White from NuGet
 
 Download [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/) which is an ESSENTIAL tool when doing UI Automation work.
 
+I have created a sample app which uses the Screen pattern. It is available at https://github.com/TestStack/White/tree/master/src/Sample%20App
+
 ## Credits
 Thanks to Thoughtworks and specifically [Vivek Singh](https://github.com/petmongrels) for starting this project. We have got permission from Vivek to continue this project.
 
