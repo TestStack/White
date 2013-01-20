@@ -34,6 +34,8 @@ Download [http://uiautomationverify.codeplex.com/](http://uiautomationverify.cod
 
 I have created a sample app which uses the Screen pattern. It is available at https://github.com/TestStack/White/tree/master/src/Sample%20App
 
+**Note:** When White switched to build on CI servers, v9.2.0 was released to NuGet, it should have been v0.9.2. If you have installed v9.2, please uninstall then reinstall White.
+
 ## Credits
 Thanks to Thoughtworks and specifically [Vivek Singh](https://github.com/petmongrels) for starting this project. We have got permission from Vivek to continue this project.
 
