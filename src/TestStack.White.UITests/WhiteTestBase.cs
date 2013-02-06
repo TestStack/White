@@ -2,31 +2,74 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using TestStack.White.UITests.Infrastructure;
+using White.Core;
 using White.Core.InputDevices;
+using White.Core.UIItems.WindowItems;
 using log4net;
 
 namespace TestStack.White.UITests
 {
-    public class WhiteTestBase
+    [TestFixture]
+    public abstract class WhiteTestBase
     {
-        readonly Dictionary<FrameworkId, MainScreen> windows = new Dictionary<FrameworkId, MainScreen>();
         readonly ILog logger = LogManager.GetLogger(typeof(WhiteTestBase));
         internal Keyboard Keyboard;
+        private FrameworkId? currentFramework;
 
-        public MainScreen GetMainWindow(FrameworkId framework)
+        protected Window MainWindow { get; private set; }
+        protected Application Application { get; private set; }
+
+        [Test]
+        public void RunTest()
+        {
+            var frameworksToRun = SupportedFrameworks();
+
+            foreach (var framework in frameworksToRun)
+            {
+                currentFramework = framework;
+                using (SetMainWindow(framework))
+                {
+                    try
+                    {
+                        RunTest(framework);
+                    }
+                    catch (TestFailedException)
+                    {
+                        throw;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new TestFailedException(string.Format("Failed to run test for {0}", framework), ex);
+                    }
+                }
+            }
+            currentFramework = null;
+        }
+
+        protected void RunTest(Action testAction)
+        {
+            try
+            {
+                testAction();
+            }
+            catch (Exception ex)
+            {
+                throw new TestFailedException(string.Format("Failed to run {0} for {1}", testAction.Method.Name, currentFramework), ex);
+            }
+        }
+
+        protected abstract void RunTest(FrameworkId framework);
+
+        private IDisposable SetMainWindow(FrameworkId framework)
         {
             try
             {
                 Keyboard = Keyboard.Instance;
-                if (!windows.ContainsKey(framework))
-                {
-                    var configuration = TestConfigurationFactory.Create(framework);
-                    var application = configuration.LaunchApplication();
-                    var mainWindow = application.GetWindow(configuration.MainWindowTitle);
-                    windows.Add(framework, new MainScreen(application, mainWindow));
-                }
+                var configuration = TestConfigurationFactory.Create(framework);
+                Application = configuration.LaunchApplication();
+                MainWindow = Application.GetWindow(configuration.MainWindowTitle);
 
-                return windows[framework];
+                return new ShutdownApplicationDisposable(this);
             }
             catch (Exception e)
             {
@@ -35,12 +78,29 @@ namespace TestStack.White.UITests
             }
         }
 
-        [TestFixtureTearDown]
-        public void Teardown()
+        protected abstract IEnumerable<FrameworkId> SupportedFrameworks();
+
+        protected IEnumerable<FrameworkId> AllFrameworks()
         {
-            foreach (var mainScreen in windows)
+            yield return FrameworkId.Wpf;
+            yield return FrameworkId.Winforms;
+        }
+
+        private class ShutdownApplicationDisposable : IDisposable
+        {
+            private readonly WhiteTestBase testBase;
+
+            public ShutdownApplicationDisposable(WhiteTestBase testBase)
             {
-                mainScreen.Value.Application.Close();
+                this.testBase = testBase;
+            }
+
+            public void Dispose()
+            {
+                testBase.MainWindow.Close();
+                testBase.Application.Close();
+                testBase.Application = null;
+                testBase.MainWindow = null;
             }
         }
     }
