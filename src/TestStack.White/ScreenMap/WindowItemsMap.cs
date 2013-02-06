@@ -1,33 +1,44 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Windows;
-using System.Xml.Serialization;
 using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.UIA;
 using White.Core.UIItems.Finders;
-using Xstream.Core;
 using log4net;
 
 namespace White.Core.ScreenMap
 {
-    public class WindowItemsMap : List<UIItemLocation>
+    [DataContract]
+    public class WindowItemsMap
     {
+        [DataMember]
         private readonly string fileLocation;
-        [XmlIgnore] private bool dirty;
-        [XmlIgnore] private bool loadedFromFile;
+        [DataMember]
         private Point lastWindowPosition = RectX.UnlikelyWindowPosition;
-        [XmlIgnore] private Point currentWindowPosition;
+
+        private bool dirty;
+        private bool loadedFromFile;
+        private Point currentWindowPosition;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(WindowItemsMap));
 
-        protected WindowItemsMap() {}
+        protected WindowItemsMap()
+        {
+            UIItemLocations = new List<UIItemLocation>();
+        }
 
         private WindowItemsMap(string fileLocation, Point windowPosition)
         {
             this.fileLocation = fileLocation;
             currentWindowPosition = windowPosition;
+            UIItemLocations = new List<UIItemLocation>();
         }
+
+        [DataMember]
+        public virtual List<UIItemLocation> UIItemLocations { get; private set; }
 
         public static WindowItemsMap Create(InitializeOption initializeOption, Point currentWindowPosition)
         {
@@ -37,10 +48,28 @@ namespace White.Core.ScreenMap
             if (File.Exists(fileLocation))
             {
                 Logger.DebugFormat("[PositionBasedSearch] Loading WindowItemsMap for: {0}, from {1}", initializeOption.Identifier, fileLocation);
-                var windowItemsMap = (WindowItemsMap) CreateFileXStream(fileLocation).FromFile();
-                windowItemsMap.currentWindowPosition = currentWindowPosition;
-                windowItemsMap.loadedFromFile = true;
-                return windowItemsMap;
+                WindowItemsMap windowItemsMap = null;
+                try
+                {
+                    using (var fileStream = CreateFileStream(fileLocation))
+                    {
+                        windowItemsMap = (WindowItemsMap)CreateDataContractSerializer().ReadObject(fileStream);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.DebugFormat("[PositionBasedSearch] Loading WindowItemsMap FAILED for: {0}, Error: {1}", initializeOption.Identifier, ex.Message);
+                    Logger.DebugFormat("[PositionBasedSearch] Deleting WindowItemsMap for: {0}", initializeOption.Identifier);
+                    try { File.Delete(fileLocation); }
+                    catch (IOException) { }
+                }
+
+                if (windowItemsMap != null)
+                {
+                    windowItemsMap.currentWindowPosition = currentWindowPosition;
+                    windowItemsMap.loadedFromFile = true;
+                    return windowItemsMap;
+                }
             }
 
             Logger.DebugFormat("[PositionBasedSearch] Creating new WindowItemsMap for: {0}", initializeOption.Identifier);
@@ -50,21 +79,21 @@ namespace White.Core.ScreenMap
         public virtual void Add(Point point, SearchCriteria searchCriteria)
         {
             var uiItemLocation = new UIItemLocation(point, searchCriteria);
-            var existingItem = this.FirstOrDefault(obj => obj.Has(searchCriteria));
-            var existingPoint = this.FirstOrDefault(obj => obj.Point.Equals(point));
+            var existingItem = UIItemLocations.FirstOrDefault(obj => obj.Has(searchCriteria));
+            var existingPoint = UIItemLocations.FirstOrDefault(obj => obj.Point.Equals(point));
 
             if (existingItem != null)
             {
                 Logger.Debug(string.Format("[PositionBasedSearch] Found another UIItem {0} at {1}", searchCriteria, existingItem));
-                Remove(existingItem);
+                UIItemLocations.Remove(existingItem);
             }
             else if (existingPoint != null)
             {
                 Logger.Debug(string.Format("[PositionBasedSearch] UIItem {0} at {1} changed", searchCriteria, point));
-                Remove(existingPoint);
+                UIItemLocations.Remove(existingPoint);
             }
 
-            Add(uiItemLocation);
+            UIItemLocations.Add(uiItemLocation);
 
             dirty = true;
         }
@@ -84,7 +113,7 @@ namespace White.Core.ScreenMap
 
         public virtual Point GetItemLocation(SearchCriteria searchCriteria)
         {
-            UIItemLocation location = Find(obj => obj.Has(searchCriteria));
+            var location = UIItemLocations.Find(obj => obj.Has(searchCriteria));
             if (location == null) return RectX.UnlikelyWindowPosition;
             double xOffset = currentWindowPosition.X - lastWindowPosition.X;
             double yOffset = currentWindowPosition.Y - lastWindowPosition.Y;
@@ -106,16 +135,23 @@ namespace White.Core.ScreenMap
             if (dirty)
             {
                 lastWindowPosition = currentWindowPosition;
-                CreateFileXStream(fileLocation).ToXml(this);
+                using (var fileStream = CreateFileStream(fileLocation))
+                {
+                    var dataContractSerializer = CreateDataContractSerializer();
+                    dataContractSerializer.WriteObject(fileStream, this);
+                }
             }
         }
 
-        private static FileXStream CreateFileXStream(string fileLocation)
+        private static DataContractSerializer CreateDataContractSerializer()
         {
-            var fileXStream = new FileXStream(fileLocation);
-            fileXStream.AddConverter(new ControlTypeConverter());
-            fileXStream.AddIgnoreAttribute(typeof (XmlIgnoreAttribute));
-            return fileXStream;
+            return new DataContractSerializer(
+                typeof(WindowItemsMap), new[]{ typeof(ControlTypeSurrogate)}, int.MaxValue, false, false, new WindowsAutomationTypesSurrogates());
+        }
+
+        private static FileStream CreateFileStream(string fileLocation)
+        {
+            return new FileStream(fileLocation, FileMode.OpenOrCreate);
         }
     }
 }

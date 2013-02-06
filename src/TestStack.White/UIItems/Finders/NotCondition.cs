@@ -1,9 +1,12 @@
+using System.Runtime.Serialization;
 using System.Windows.Automation;
 
 namespace White.Core.UIItems.Finders
 {
+    [DataContract]
     public class NotCondition : SearchCondition
     {
+        [DataMember]
         private readonly SearchCondition condition;
 
         //required for xstream

@@ -85,10 +85,6 @@
     <Reference Include="WindowsBase, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="Xstream.Core, Version=1.0.2722.20556, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\Xstream.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
@@ -151,7 +147,10 @@
     <Compile Include="Interceptors\CoreInterceptContext.cs" />
     <Compile Include="Interceptors\ScrollInterceptor.cs" />
     <Compile Include="Mappings\ControlDictionaryItems.cs" />
+    <Compile Include="ScreenMap\AutomationPropertySurrogate.cs" />
+    <Compile Include="ScreenMap\ControlTypeSurrogate.cs" />
     <Compile Include="ScreenMap\NullWindowItemsMap.cs" />
+    <Compile Include="ScreenMap\WindowsAutomationTypesSurrogates.cs" />
     <Compile Include="Span.cs" />
     <Compile Include="SystemExtensions\DoubleX.cs" />
     <Compile Include="UIA\AutomationElementCollectionX.cs" />
@@ -211,7 +210,6 @@
     <Compile Include="Processes.cs" />
     <Compile Include="Recording\SafeAutomationEventHandler.cs" />
     <Compile Include="Recording\UIItemEventListener.cs" />
-    <Compile Include="ScreenMap\ControlTypeConverter.cs" />
     <Compile Include="ScreenMap\UIItemLocation.cs" />
     <Compile Include="ScreenMap\WindowItemsMap.cs" />
     <Compile Include="Sessions\ApplicationSession.cs" />
