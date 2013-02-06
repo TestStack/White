@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Finder;
 
 namespace White.Core.UIItems.Finders
 {
+    [DataContract]
     public class IndexCondition : SearchCondition
     {
+        [DataMember]
         private readonly int index;
         public static readonly IndexCondition NotSpecified = new IndexCondition(-1);
 

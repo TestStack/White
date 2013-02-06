@@ -1,11 +1,15 @@
+using System.Runtime.Serialization;
 using System.Windows.Automation;
 
 namespace White.Core.UIItems.Finders
 {
+    [DataContract]
+    [KnownType(typeof(ControlTypeProperty))]
     public class AutomationElementProperty
     {
-        protected readonly object value;
+        [DataMember]
         private readonly string displayName;
+        [DataMember]
         private readonly AutomationProperty propertyType;
 
         //required for xstream
@@ -15,19 +19,17 @@ namespace White.Core.UIItems.Finders
 
         public AutomationElementProperty(object value, string displayName, AutomationProperty propertyType)
         {
-            this.value = value;
+            Value = value;
             this.displayName = displayName;
             this.propertyType = propertyType;
         }
 
-        public virtual object Value
-        {
-            get { return value; }
-        }
+        [DataMember]
+        public virtual object Value { get; private set; }
 
         public virtual string DisplayValue
         {
-            get { return value.ToString(); }
+            get { return Value.ToString(); }
         }
 
         public virtual string DisplayName
@@ -37,12 +39,12 @@ namespace White.Core.UIItems.Finders
 
         public virtual Condition PropertyCondition
         {
-            get { return new PropertyCondition(propertyType, value); }
+            get { return new PropertyCondition(propertyType, Value); }
         }
 
         private bool Equals(AutomationElementProperty other)
         {
-            return Equals(other.value, value) && Equals(other.propertyType.Id, propertyType.Id) &&
+            return Equals(other.Value, Value) && Equals(other.propertyType.Id, propertyType.Id) &&
                    Equals(other.propertyType.ProgrammaticName, other.propertyType.ProgrammaticName);
         }
 
@@ -58,7 +60,7 @@ namespace White.Core.UIItems.Finders
         {
             unchecked
             {
-                return ((value != null ? value.GetHashCode() : 0)*397) ^ (propertyType != null ? propertyType.GetHashCode() : 0);
+                return ((Value != null ? Value.GetHashCode() : 0)*397) ^ (propertyType != null ? propertyType.GetHashCode() : 0);
             }
         }
     }

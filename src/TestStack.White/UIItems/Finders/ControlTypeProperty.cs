@@ -1,7 +1,9 @@
+using System.Runtime.Serialization;
 using System.Windows.Automation;
 
 namespace White.Core.UIItems.Finders
 {
+    [DataContract]
     public class ControlTypeProperty : AutomationElementProperty
     {
         protected ControlTypeProperty()
@@ -13,7 +15,7 @@ namespace White.Core.UIItems.Finders
 
         public override string DisplayValue
         {
-            get { return ((ControlType) value).LocalizedControlType; }
+            get { return ((ControlType) Value).LocalizedControlType; }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
@@ -15,10 +16,14 @@ namespace White.Core.UIItems.Finders
     /// AND condition
     /// e.g. SearchCriteria.ByAutomationId("foo").ByControlType(typeof(TextBox)).Indexed(1)
     /// </summary>
+    [DataContract]
     public class SearchCriteria
     {
+        [DataMember]
         private readonly SearchConditions conditions = new SearchConditions();
+        [DataMember]
         private IndexCondition indexCondition = IndexCondition.NotSpecified;
+        [DataMember]
         private Type customItemType;
 
         private SearchCriteria() {}
@@ -198,7 +203,7 @@ namespace White.Core.UIItems.Finders
         public override string ToString()
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.Append(conditions.ToString());
+            stringBuilder.Append(conditions);
             return stringBuilder.ToString();
         }
 
@@ -208,28 +213,18 @@ namespace White.Core.UIItems.Finders
             var other = obj as SearchCriteria;
             if (other == null) return false;
 
-            foreach (SearchCondition searchCondition in conditions)
-                if (!other.conditions.Contains(searchCondition)) return false;
-
-            return indexCondition.Equals(other.indexCondition);
+            return conditions.All(searchCondition => other.conditions.Contains(searchCondition)) && indexCondition.Equals(other.indexCondition);
         }
 
         public override int GetHashCode()
         {
-            int hashCode = 0;
-            foreach (SearchCondition condition in conditions)
-                hashCode += condition.GetHashCode();
+            int hashCode = conditions.Sum(condition => condition.GetHashCode());
             return indexCondition.GetHashCode() + hashCode;
         }
 
         public virtual bool AppliesTo(AutomationElement automationElement)
         {
-            foreach (SearchCondition condition in conditions)
-            {
-                if (!condition.AppliesTo(automationElement))
-                    return false;
-            }
-            return true;
+            return conditions.All(condition => condition.AppliesTo(automationElement));
         }
 
         private void InferCustomItemType(Type testControlType)
