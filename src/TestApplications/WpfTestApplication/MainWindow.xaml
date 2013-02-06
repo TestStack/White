@@ -3,6 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <ComboBox x:Name="AComboBox" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150">
+            <ComboBox.Items>
+                <ComboBoxItem>Test</ComboBoxItem>
+                <ComboBoxItem>Test2</ComboBoxItem>
+            </ComboBox.Items>
+        </ComboBox>
     </Grid>
 </Window>
