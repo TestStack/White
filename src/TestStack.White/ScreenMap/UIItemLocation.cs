@@ -1,11 +1,15 @@
+using System.Runtime.Serialization;
 using System.Windows;
 using White.Core.UIItems.Finders;
 
 namespace White.Core.ScreenMap
 {
+    [DataContract]
     public class UIItemLocation
     {
+        [DataMember]
         private readonly Point point;
+        [DataMember]
         private readonly SearchCriteria searchCriteria;
 
         private UIItemLocation() {}

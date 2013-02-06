@@ -1,10 +1,13 @@
+using System.Runtime.Serialization;
 using System.Windows.Automation;
 
 namespace White.Core.UIItems.Finders
 {
+    [DataContract]
     public class SimpleSearchCondition : SearchCondition
     {
         private readonly PropertyValue propertyValueDelegate;
+        [DataMember]
         private readonly AutomationElementProperty automationElementProperty;
 
         public delegate object PropertyValue(AutomationElement automationElement);

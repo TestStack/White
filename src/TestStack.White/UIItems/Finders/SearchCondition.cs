@@ -1,8 +1,13 @@
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Windows.Automation;
 
 namespace White.Core.UIItems.Finders
 {
+    [DataContract]
+    [KnownType(typeof(IndexCondition))]
+    [KnownType(typeof(NotCondition))]
+    [KnownType(typeof(SimpleSearchCondition))]
     public abstract class SearchCondition
     {
         public virtual List<AutomationElement> Filter(List<AutomationElement> automationElements)

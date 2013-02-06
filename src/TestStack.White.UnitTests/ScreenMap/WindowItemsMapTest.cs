@@ -24,13 +24,13 @@ namespace White.Core.UnitTests.ScreenMap
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByAutomationId("foo"));
             var newPoint = new Point(1, 2);
             windowItemsMap.Add(newPoint, SearchCriteria.ByAutomationId("foo"));
-            Assert.AreEqual(1, windowItemsMap.Count);
-            Assert.AreEqual(newPoint, windowItemsMap[0].Point);
+            Assert.AreEqual(1, windowItemsMap.UIItemLocations.Count);
+            Assert.AreEqual(newPoint, windowItemsMap.UIItemLocations[0].Point);
         }
 
         private InitializeOption InitializeOption()
         {
-            return White.Core.Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
+            return Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace White.Core.UnitTests.ScreenMap
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByAutomationId("foo"));
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByText("foo"));
 
-            Assert.AreEqual(1, windowItemsMap.Count);
+            Assert.AreEqual(1, windowItemsMap.UIItemLocations.Count);
         }
 
         [Test]
