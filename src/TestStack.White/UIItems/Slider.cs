@@ -11,7 +11,8 @@ namespace White.Core.UIItems
         private readonly UIItemContainer uiItemContainer;
 
         protected Slider() {}
-        public Slider(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+
+        protected Slider(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
             uiItemContainer = new UIItemContainer(automationElement, actionListener, InitializeOption.NoCache, new NullWindowSession());
         }

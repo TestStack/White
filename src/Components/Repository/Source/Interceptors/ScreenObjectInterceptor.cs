@@ -1,20 +1,19 @@
-using Bricks.RuntimeFramework;
 using Castle.DynamicProxy;
 
 namespace Repository.Interceptors
 {
     public class ScreenObjectInterceptor : IInterceptor
     {
-        private readonly ReflectedObject reflectedScreen;
+        private readonly AppScreen appScreen;
 
         public ScreenObjectInterceptor(AppScreen appScreen)
         {
-            reflectedScreen = new ReflectedObject(appScreen);
+            this.appScreen = appScreen;
         }
 
         public virtual void Intercept(IInvocation invocation)
         {
-            reflectedScreen.Invoke(invocation.Method, invocation.Arguments);
+            invocation.Method.Invoke(appScreen, invocation.Arguments);
         }
     }
 }

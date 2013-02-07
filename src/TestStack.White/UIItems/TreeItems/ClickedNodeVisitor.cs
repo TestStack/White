@@ -13,7 +13,7 @@ namespace White.Core.UIItems.TreeItems
 
         public virtual void Accept(TreeNode treeNode)
         {
-            if (treeNode.Bounds.Top <= Mouse.instance.Location.Y && treeNode.Bounds.Bottom >= Mouse.instance.Location.Y)
+            if (treeNode.Bounds.Top <= Mouse.Instance.Location.Y && treeNode.Bounds.Bottom >= Mouse.Instance.Location.Y)
                 clickedNode = treeNode;
         }
     }

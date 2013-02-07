@@ -16,7 +16,7 @@ namespace White.Core.UITests.Interceptors
         [Test]
         public void GetItemOutsideWindowButWithoutScroll()
         {
-            using (Window window = application.GetWindow("FormWithoutScrollAndItemOutside"))
+            using (Window window = Application.GetWindow("FormWithoutScrollAndItemOutside"))
             {
                 ListBox listBox = window.Get<ListBox>("listBox1");
                 Assert.AreNotEqual(null, listBox);

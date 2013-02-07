@@ -1,7 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using Bricks.RuntimeFramework;
+using Castle.Core.Internal;
 
 namespace Repository
 {
@@ -10,9 +11,9 @@ namespace Repository
         public AppScreenException(string message) : base(message) {}
         public AppScreenException(string message, Exception exception) : base(message, exception) {}
 
-        public static AppScreenException NonVirtualMethods(MethodInfos methodInfos)
+        public static AppScreenException NonVirtualMethods(IEnumerable<MethodInfo> methodInfos)
         {
-            StringBuilder messageBuilder = new StringBuilder();
+            var messageBuilder = new StringBuilder();
             methodInfos.ForEach(delegate(MethodInfo entity)
                                  {
                                      string message = string.Format("{0} method in class {1} is not virtual", entity.Name, entity.DeclaringType.Name);

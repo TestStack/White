@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Automation;
+using Castle.Core.Logging;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Sessions;
@@ -11,13 +13,12 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowItems;
 using White.Core.Utility;
-using log4net;
 
 namespace White.Core.Factory
 {
     public class WindowFactory : ChildWindowFactory
     {
-        private readonly ILog logger = LogManager.GetLogger(typeof(WindowFactory));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WindowFactory));
         private WindowFactory(AutomationElementFinder automationElementFinder) : base(automationElementFinder) {}
 
         public static WindowFactory Desktop

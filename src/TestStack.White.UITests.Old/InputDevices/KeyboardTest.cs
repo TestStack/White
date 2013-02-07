@@ -20,7 +20,7 @@ namespace White.Core.UITests.InputDevices
         [TearDown]
         public void TearDown()
         {
-            keyboard.LeaveAllKeys();
+            Keyboard.LeaveAllKeys();
         }
 
         [Test]
@@ -47,13 +47,13 @@ namespace White.Core.UITests.InputDevices
         {
             textBox.Text = "Textbox";
 
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, window);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, window);
             Assert.AreEqual("Textbo", textBox.Text);
 
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, window);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, window);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, window);
             Assert.AreEqual("Texbo", textBox.Text);
         }
 
@@ -66,18 +66,18 @@ namespace White.Core.UITests.InputDevices
         [Test]
         public void CapsLock()
         {
-            keyboard.CapsLockOn = false;
-            Assert.AreEqual(false, keyboard.CapsLockOn);
-            keyboard.CapsLockOn = true;
-            Assert.AreEqual(true, keyboard.CapsLockOn);
-            keyboard.CapsLockOn = false;
-            Assert.AreEqual(false, keyboard.CapsLockOn);
+            Keyboard.CapsLockOn = false;
+            Assert.AreEqual(false, Keyboard.CapsLockOn);
+            Keyboard.CapsLockOn = true;
+            Assert.AreEqual(true, Keyboard.CapsLockOn);
+            Keyboard.CapsLockOn = false;
+            Assert.AreEqual(false, Keyboard.CapsLockOn);
         }
 
         private void EnterAndAssertValueOfTextEntered(string stringToType)
         {
             ClearTextBox();
-            keyboard.Send(stringToType, window);
+            Keyboard.Send(stringToType, window);
             Assert.AreEqual(stringToType, textBox.Text);
             ClearTextBox();
         }
@@ -90,20 +90,20 @@ namespace White.Core.UITests.InputDevices
         [Test]
         public void LeaveAllKeys()
         {
-            keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
-            keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
-            Assert.AreEqual(2, keyboard.HeldKeys.Length);
-            keyboard.LeaveAllKeys();
-            Assert.AreEqual(0, keyboard.HeldKeys.Length);
+            Keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
+            Keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
+            Assert.AreEqual(2, Keyboard.HeldKeys.Length);
+            Keyboard.LeaveAllKeys();
+            Assert.AreEqual(0, Keyboard.HeldKeys.Length);
         }
 
         [Test]
         public void LeaveKey()
         {
-            keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
-            Assert.AreEqual(1, keyboard.HeldKeys.Length);
-            keyboard.LeaveKey(KeyboardInput.SpecialKeys.ALT);
-            Assert.AreEqual(0, keyboard.HeldKeys.Length);
+            Keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
+            Assert.AreEqual(1, Keyboard.HeldKeys.Length);
+            Keyboard.LeaveKey(KeyboardInput.SpecialKeys.ALT);
+            Assert.AreEqual(0, Keyboard.HeldKeys.Length);
         }
     }
 

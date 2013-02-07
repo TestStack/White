@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
+using Castle.Core.Logging;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
@@ -14,7 +15,6 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.Scrolling;
 using White.Core.WindowsAPI;
-using log4net;
 using Action = White.Core.UIItems.Actions.Action;
 using Point = System.Windows.Point;
 using Window = White.Core.UIItems.WindowItems.Window;
@@ -27,12 +27,12 @@ namespace White.Core.UIItems
     {
         protected readonly AutomationElement automationElement;
         protected ActionListener actionListener;
-        internal static readonly Mouse mouse = Mouse.instance;
+        internal static readonly Mouse mouse = Mouse.Instance;
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
         protected IScrollBars scrollBars;
         private AutomationEventHandler handler;
-        protected readonly ILog logger = LogManager.GetLogger(typeof(UIItem));
+        protected readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItem));
 
         protected UIItem()
         {
@@ -156,7 +156,7 @@ namespace White.Core.UIItems
             }
             catch
             {
-                logger.Debug("Could not set focus on " + automationElement.Display());
+                Logger.Debug("Could not set focus on " + AutomationElement.Display());
             }
         }
 
@@ -241,8 +241,8 @@ namespace White.Core.UIItems
 
         internal virtual void PerformClick()
         {
-            if (!Enabled) logger.WarnFormat("Clicked on disabled item: {0}", ToString());
             mouse.Click(Bounds.Center(), actionListener);
+            if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace White.Core.UIItems
 
         public virtual void LogStructure()
         {
-            logger.Info(Debug.Details(automationElement));
+            Logger.Info(Debug.Details(AutomationElement));
         }
 
         /// <summary>

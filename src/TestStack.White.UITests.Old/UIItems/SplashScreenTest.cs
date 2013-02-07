@@ -18,7 +18,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void FindWindowOnSplashScreen()
         {
-            Window splash = application.FindSplash();
+            Window splash = Application.FindSplash();
             Assert.IsNotNull(splash);
             Window modalWindow = splash.ModalWindow("Foo", InitializeOption.NoCache);
             Assert.AreNotEqual(null, modalWindow);

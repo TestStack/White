@@ -3,7 +3,6 @@ using NUnit.Framework;
 using White.Core.Configuration;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UITests.Testing;
-using log4net;
 
 namespace White.Core.UITests.UIItems.ListBoxItems
 {
@@ -49,7 +48,6 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         public void Select()
         {
             comboBox.Select("7");
-            LogManager.GetLogger(typeof(ComboBoxTest)).Debug("Selecting Arundhati Roy");
             comboBox.Select("Arundhati Roy");
             Assert.AreEqual("Arundhati Roy", comboBox.SelectedItemText);
             comboBox.Select("Noam Chomsky");

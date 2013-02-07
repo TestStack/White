@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using Castle.Core.Logging;
 using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.Sessions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
-using log4net;
 
 namespace White.Core
 {
@@ -20,7 +20,7 @@ namespace White.Core
         private readonly Process process;
         private readonly ApplicationSession applicationSession;
         private readonly WindowFactory windowFactory;
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(Application));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Application));
 
         protected Application()
         {
@@ -60,7 +60,7 @@ namespace White.Core
                                              new FileInfo(processStartInfo.FileName).FullName, 
                                              Environment.CurrentDirectory);
             Process process = Process.Start(processStartInfo);
-            if (ConfigurationManager.AppSettings["CaptureAUTOutput"] != null && process != null)
+            if (ConfigurationManager.AppSettings["CaptureAUTOutput"] != null)
             {
                 string output = process.StandardOutput.ReadToEnd();
                 string error = process.StandardError.ReadToEnd();
@@ -207,9 +207,7 @@ namespace White.Core
                 process.Kill();
                 process.WaitForExit();
             }
-            catch
-            {
-            }
+            catch { }
         }
 
         /// <summary>

@@ -1,14 +1,15 @@
 using System;
 using System.Windows;
 using System.Windows.Automation;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 using White.Core.Mappings;
-using log4net;
 
 namespace White.Core.UIA
 {
     public static class AutomationElementX
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(AutomationElementX));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(AutomationElementX));
 
         public static string Display(this AutomationElement automationElement)
         {

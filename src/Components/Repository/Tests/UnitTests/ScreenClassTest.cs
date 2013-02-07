@@ -1,4 +1,3 @@
-using Bricks.RuntimeFramework;
 using Repository;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -16,8 +15,7 @@ namespace White.Repository.UnitTests
             var window = mocks.StrictMock<Window>();
             var screenRepository = mocks.StrictMock<ScreenRepository>();
             mocks.ReplayAll();
-            var @class = new Class(typeof(ScreenClassContainingComponent));
-            new ScreenClass(@class).New(window, screenRepository);
+            new ScreenClass(typeof(ScreenClassContainingComponent)).New(window, screenRepository);
         }
     }
 

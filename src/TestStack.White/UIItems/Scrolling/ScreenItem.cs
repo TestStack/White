@@ -1,7 +1,7 @@
 using System;
+using Castle.Core.Logging;
 using White.Core.Configuration;
 using White.Core.Utility;
-using log4net;
 
 namespace White.Core.UIItems.Scrolling
 {
@@ -9,7 +9,7 @@ namespace White.Core.UIItems.Scrolling
     {
         private readonly UIItem uiItem;
         private readonly IVScrollBar verticalScroll;
-        private readonly ILog logger = LogManager.GetLogger(typeof(ScreenItem));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(ScreenItem));
 
         public ScreenItem(UIItem uiItem, IScrollBars scrollBars)
         {
