@@ -1,3 +1,8 @@
+Version 9.4.0
+ - BREAKING: Removed Log4net, now using Castle's logging abstractions.
+
+Version 9.3.0
+
 Version 9.2.0
  - BREAKING: UIItem.Get now throws an AutomationException when the UI Element is not found
  - Change: UIItem.Get now auto retries to fetch the item
