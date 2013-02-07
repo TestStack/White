@@ -1,4 +1,3 @@
-using Bricks.RuntimeFramework;
 using NUnit.Framework;
 using Repository.Services;
 
@@ -10,8 +9,8 @@ namespace White.Repository.UnitTests.Services
         [Test]
         public void ShouldStoreParameterTypeOfMethod()
         {
-            var @class = new Class(typeof(TestServiceForServiceCallTest));
-            var serviceCall = new ServiceCall(new TestServiceForServiceCallTest(), @class.GetMethod("Method").MethodInfo);
+            var type = typeof(TestServiceForServiceCallTest);
+            var serviceCall = new ServiceCall(new TestServiceForServiceCallTest(), type.GetMethod("Method"));
             Assert.AreEqual("System.String", serviceCall.ParameterTypes[0]);
         }
     }

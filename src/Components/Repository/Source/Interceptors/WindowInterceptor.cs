@@ -1,5 +1,4 @@
 using System;
-using Bricks.RuntimeFramework;
 using Castle.DynamicProxy;
 using White.Core.UIItems.WindowItems;
 
@@ -20,7 +19,7 @@ namespace Repository.Interceptors
         {
             try
             {
-                new ReflectedObject(window).Invoke(invocation.Method, invocation.Arguments);
+                invocation.Method.Invoke(window, invocation.Arguments);
             }
             catch (Exception)
             {

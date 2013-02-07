@@ -2,13 +2,13 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
+using Castle.Core.Logging;
 using White.Core.Configuration;
 using White.Core.Drawing;
 using White.Core.UIA;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
 using White.Core.WindowsAPI;
-using log4net;
 using Action = White.Core.UIItems.Actions.Action;
 
 namespace White.Core.InputDevices
@@ -39,11 +39,11 @@ namespace White.Core.InputDevices
         [DllImport("user32.dll")]
         private static extern short GetDoubleClickTime();
 
-        public static Mouse instance = new Mouse();
+        public static Mouse Instance = new Mouse();
         private DateTime lastClickTime = DateTime.Now;
         private readonly short doubleClickTime = GetDoubleClickTime();
         private Point lastClickLocation;
-        private ILog logger = LogManager.GetLogger(typeof(Mouse));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Mouse));
         private const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
         private Mouse()

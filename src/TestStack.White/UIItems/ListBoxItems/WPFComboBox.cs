@@ -14,11 +14,7 @@ namespace White.Core.UIItems.ListBoxItems
 
         public override IScrollBars ScrollBars
         {
-            get
-            {
-                if (scrollBars == null) scrollBars = new WPFScrollBars(automationElement, actionListener);
-                return scrollBars;
-            }
+            get { return scrollBars ?? (scrollBars = new WPFScrollBars(AutomationElement, ActionListener)); }
         }
 
         public override VerticalSpan VerticalSpan

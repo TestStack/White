@@ -1,4 +1,5 @@
 using System.IO;
+using Castle.Core.Logging;
 using White.Core.Bricks;
 using White.Core.UIItems;
 
@@ -27,5 +28,6 @@ namespace White.Core.Configuration
         int DoubleClickInterval { get; set; }
         bool MoveMouseToGetStatusOfHourGlass { get; set; }
         bool InvertMouseButtons { get; set; }
+        ILoggerFactory LoggerFactory { get; set; }
     }
 }

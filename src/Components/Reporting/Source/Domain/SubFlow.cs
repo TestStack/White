@@ -5,8 +5,9 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using Castle.Core.Logging;
 using White.Core;
-using log4net;
+using White.Core.Configuration;
 
 namespace Reporting.Domain
 {
@@ -18,7 +19,7 @@ namespace Reporting.Domain
         private readonly string directory;
         private DateTime screenCreationTime;
         private readonly string name;
-        private static readonly ILog logger = LogManager.GetLogger(typeof(SubFlow));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SubFlow));
 
         public SubFlow(string subFlowName, string flowName, string archiveLocation)
         {
@@ -96,7 +97,7 @@ namespace Reporting.Domain
                 }
                 catch (Exception e)
                 {
-                    logger.Error(string.Format("Error saving : {0}", fileName), e);
+                    Logger.Error(string.Format("Error saving : {0}", fileName), e);
                     throw new WhiteException(string.Format("Error saving image {0}", fileName), e);
                 }
             }

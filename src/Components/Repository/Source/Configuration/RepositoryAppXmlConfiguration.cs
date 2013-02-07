@@ -1,8 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Bricks;
-using Bricks.Core;
-using log4net;
+using White.Core.Bricks;
+using White.Core.Configuration;
 
 namespace Repository.Configuration
 {
@@ -27,21 +27,22 @@ namespace Repository.Configuration
             get { return instance ?? (instance = new RepositoryAppXmlConfiguration()); }
         }
 
-        private RepositoryAppXmlConfiguration() : base("White", "Repository", DefaultValues, LogManager.GetLogger(typeof(RepositoryAppXmlConfiguration))) {}
+        private RepositoryAppXmlConfiguration() : base("White", "Repository", DefaultValues, 
+            CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(RepositoryAppXmlConfiguration))) {}
 
         public virtual bool RecordFlow
         {
-            get { return S.ToBool(usedValues[RecordFlowKey]); }
+            get { return Convert.ToBoolean(UsedValues[RecordFlowKey]); }
         }
 
         public virtual DirectoryInfo ServiceCallHistoryLocation
         {
-            get { return new DirectoryInfo(usedValues[ServiceCallHistoryLocationKey]); }
+            get { return new DirectoryInfo(UsedValues[ServiceCallHistoryLocationKey]); }
         }
 
         public virtual bool UseHistory
         {
-            get { return S.ToBool(usedValues[UseHistoryKey]); }
+            get { return Convert.ToBoolean(UsedValues[UseHistoryKey]); }
         }
     }
 }

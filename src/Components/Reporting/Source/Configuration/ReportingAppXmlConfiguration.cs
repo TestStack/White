@@ -1,13 +1,13 @@
+using System;
 using System.Collections.Generic;
-using Bricks;
-using Bricks.Core;
-using log4net;
+using White.Core.Bricks;
+using White.Core.Configuration;
 
 namespace Reporting.Configuration
 {
     public class ReportingAppXmlConfiguration : AssemblyConfiguration, ReportingConfiguration
     {
-        private static ReportingConfiguration _instance;
+        private static ReportingConfiguration instance;
 
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
@@ -16,20 +16,17 @@ namespace Reporting.Configuration
             DefaultValues.Add("PublishTestReports", true);
         }
 
-        private ReportingAppXmlConfiguration() : base("White", "Reporting", DefaultValues, LogManager.GetLogger(typeof(ReportingAppXmlConfiguration))) {}
+        private ReportingAppXmlConfiguration() : base("White", "Reporting", DefaultValues, 
+            CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(ReportingAppXmlConfiguration))) {}
 
         public static ReportingConfiguration Instance
         {
-            get
-            {
-                if (_instance == null) _instance = new ReportingAppXmlConfiguration();
-                return _instance;
-            }
+            get { return instance ?? (instance = new ReportingAppXmlConfiguration()); }
         }
 
         public virtual bool PublishTestReports
         {
-            get { return S.ToBool(usedValues["PublishTestReports"]); }
+            get { return Convert.ToBoolean(UsedValues["PublishTestReports"]); }
         }
     }
 }

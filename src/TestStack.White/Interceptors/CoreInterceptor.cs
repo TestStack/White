@@ -1,17 +1,17 @@
 using System;
+using Castle.Core.Logging;
 using Castle.DynamicProxy;
 using White.Core.Bricks;
 using White.Core.Configuration;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
-using log4net;
 
 namespace White.Core.Interceptors
 {
     public class CoreInterceptor : IInterceptor
     {
         private readonly CoreInterceptContext coreInterceptContext;
-        private readonly ILog logger = LogManager.GetLogger(typeof(CoreInterceptor));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(CoreInterceptor));
 
         public CoreInterceptor(IUIItem uiItem, ActionListener actionListener)
         {

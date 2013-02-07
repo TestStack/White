@@ -1,7 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
-using Bricks.RuntimeFramework;
 using White.Core.Configuration;
 using Xstream.Core;
 
@@ -9,29 +10,28 @@ namespace Repository.Services
 {
     public class ExecutionHistory
     {
-        internal readonly ServiceCalls serviceCalls = new ServiceCalls();
-        private object data;
         private object lastSnapshotId;
         private bool hasError;
 
-        private static readonly string executionHistoryFile =
+        private static readonly string ExecutionHistoryFile =
     string.Format(@"{0}\{1}.xml", CoreAppXmlConfiguration.Instance.WorkSessionLocation, "ExecutionHistory");
+
+        public ExecutionHistory()
+        {
+            ServiceCalls = new ServiceCalls();
+        }
 
         public virtual void Add(ServiceCall serviceCall)
         {
-            serviceCalls.Add(serviceCall);
+            ServiceCalls.Add(serviceCall);
         }
 
         public virtual ServiceCalls FindCalls(ServiceCall match)
         {
-            return serviceCalls.Matching(match);
+            return ServiceCalls.Matching(match);
         }
 
-        public virtual object Data
-        {
-            get { return data; }
-            set { data = value; }
-        }
+        public virtual object Data { get; set; }
 
         public virtual object LastSnapshot
         {
@@ -47,8 +47,8 @@ namespace Repository.Services
 
         public static ExecutionHistory Create()
         {
-            if (File.Exists(executionHistoryFile))
-                return (ExecutionHistory)new FileXStream(executionHistoryFile).FromFile();
+            if (File.Exists(ExecutionHistoryFile))
+                return (ExecutionHistory)new FileXStream(ExecutionHistoryFile).FromFile();
             return new ExecutionHistory();
         }
 
@@ -61,14 +61,11 @@ namespace Repository.Services
             }
         }
 
-        public virtual ServiceCalls ServiceCalls
-        {
-            get { return serviceCalls; }
-        }
+        public virtual ServiceCalls ServiceCalls { get; private set; }
 
         public virtual void Save()
         {
-            var fileXStream = new FileXStream(executionHistoryFile);
+            var fileXStream = new FileXStream(ExecutionHistoryFile);
             fileXStream.AddIgnoreAttribute(typeof(XmlIgnoreAttribute));
             fileXStream.ToXml(this);
         }
@@ -79,14 +76,14 @@ namespace Repository.Services
         }
     }
 
-    public class ServiceCalls : BricksCollection<ServiceCall>
+    public class ServiceCalls : List<ServiceCall>
     {
-        public ServiceCalls(IEnumerable entities) : base(entities) {}
+        public ServiceCalls(IEnumerable entities) : base(entities.OfType<ServiceCall>()) {}
         public ServiceCalls() {}
 
         public virtual ServiceCalls Matching(ServiceCall match)
         {
-            return new ServiceCalls(FindAll(delegate(ServiceCall obj) { return obj.Equals(match); }));
+            return new ServiceCalls(FindAll(obj => obj.Equals(match)));
         }
     }
 }

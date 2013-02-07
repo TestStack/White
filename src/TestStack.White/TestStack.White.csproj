@@ -63,10 +63,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.1.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\log4net.2.0.0\lib\net35-full\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -153,6 +149,7 @@
     <Compile Include="ScreenMap\WindowsAutomationTypesSurrogates.cs" />
     <Compile Include="Span.cs" />
     <Compile Include="SystemExtensions\DoubleX.cs" />
+    <Compile Include="SystemExtensions\TypeExtensions.cs" />
     <Compile Include="UIA\AutomationElementCollectionX.cs" />
     <Compile Include="UIA\AutomationElementX.cs" />
     <Compile Include="UIA\AutomationPatterns.cs" />

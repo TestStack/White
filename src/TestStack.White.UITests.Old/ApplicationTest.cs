@@ -20,7 +20,7 @@ namespace White.Core.UITests
         public void GetAllWindows()
         {
             window.Get<Button>("launchModal").Click();
-            int count = application.GetWindows().Count;
+            int count = Application.GetWindows().Count;
             CloseModal(window);
             Assert.AreEqual(2, count);
         }
@@ -29,7 +29,7 @@ namespace White.Core.UITests
         public void FindWindow()
         {
             window.Get<Button>("launchModal").Click();
-            Window foundWindow = application.Find(obj => obj.Equals("ModalForm"), InitializeOption.NoCache);
+            Window foundWindow = Application.Find(obj => obj.Equals("ModalForm"), InitializeOption.NoCache);
             CloseModal(window);
             Assert.AreNotEqual(null, foundWindow);
         }
@@ -42,14 +42,14 @@ namespace White.Core.UITests
         public void GetWindowBasedOnFrameworkId()
         {
             Window frameworkWindow =
-                application.GetWindow(SearchCriteria.ByText("Form1").AndOfFramework(ApplicationClass.WinForm.ToString()), InitializeOption.NoCache);
+                Application.GetWindow(SearchCriteria.ByText("Form1").AndOfFramework(ApplicationClass.WinForm.ToString()), InitializeOption.NoCache);
             Assert.AreNotEqual(null, frameworkWindow);
         }
 
         [Test, WinFormCategory]
         public void FindWindowBasedOnSearchCriteria()
         {
-            Assert.AreNotEqual(null, application.GetWindow(SearchCriteria.ByAutomationId("Form1"), InitializeOption.NoCache));
+            Assert.AreNotEqual(null, Application.GetWindow(SearchCriteria.ByAutomationId("Form1"), InitializeOption.NoCache));
         }
     }
 }

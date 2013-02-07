@@ -1,7 +1,8 @@
 using System;
+using System.Linq;
 using System.Reflection;
-using Bricks.DynamicProxy;
-using Bricks.RuntimeFramework;
+using White.Core.Bricks;
+using White.Core.SystemExtensions;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
@@ -12,37 +13,38 @@ namespace Repository
 {
     public class ScreenClass
     {
-        private readonly Class @class;
-        private readonly Types nonInjectedTypes = new Types(typeof (Window), typeof (ScreenRepository));
+        private readonly Type type;
+        private readonly Type[] nonInjectedTypes = new []{typeof (Window), typeof (ScreenRepository)};
 
-        public ScreenClass(Class @class)
+        public ScreenClass(Type type)
         {
-            this.@class = @class;
-            if (@class.NonVirtuals.Count != 0) throw AppScreenException.NonVirtualMethods(@class.NonVirtuals);
+            this.type = type;
+            var nonVirtuals = type.NonVirtuals().ToList();
+            if (nonVirtuals.Count() != 0) throw AppScreenException.NonVirtualMethods(nonVirtuals);
         }
-
-        public ScreenClass(Type type) : this(new Class(type)){}
 
         public virtual object New(Window window, ScreenRepository screenRepository)
         {
-            object o = @class.New(window, screenRepository);
-            @class.EachField(delegate(FieldInfo fieldInfo)
-                                 {
-                                     if (nonInjectedTypes.IsAssignableFrom(fieldInfo.FieldType)) return;
-                                     object injectedObject = null;
-                                     if (typeof (IUIItem).IsAssignableFrom(fieldInfo.FieldType))
-                                     {
-                                         var interceptor = new UIItemInterceptor(SearchCondition(fieldInfo), window, screenRepository.SessionReport);
-                                         injectedObject = DynamicProxyGenerator.Instance.CreateProxy(interceptor, fieldInfo.FieldType);
-                                     }
-                                     else if (typeof (AppScreenComponent).IsAssignableFrom(fieldInfo.FieldType))
-                                     {
-                                         var componentScreenClass = new ScreenClass(new Class(fieldInfo.FieldType));
-                                         injectedObject = componentScreenClass.New(window, screenRepository);
-                                     }
+            var o = Activator.CreateInstance(type, window, screenRepository);
+            foreach (var fieldInfo in type.GetFields())
+            {
+                if (nonInjectedTypes.Any(t=>t.IsAssignableFrom(fieldInfo.FieldType))) continue;
 
-                                     if (injectedObject != null) fieldInfo.SetValue(o, injectedObject);
-                                 });
+                object injectedObject = null;
+                if (typeof(IUIItem).IsAssignableFrom(fieldInfo.FieldType))
+                {
+                    var interceptor = new UIItemInterceptor(SearchCondition(fieldInfo), window, screenRepository.SessionReport);
+                    injectedObject = DynamicProxyGenerator.Instance.CreateProxy(interceptor, fieldInfo.FieldType);
+                }
+                else if (typeof(AppScreenComponent).IsAssignableFrom(fieldInfo.FieldType))
+                {
+                    var componentScreenClass = new ScreenClass(fieldInfo.FieldType);
+                    injectedObject = componentScreenClass.New(window, screenRepository);
+                }
+
+                if (injectedObject != null) fieldInfo.SetValue(o, injectedObject);
+            }
+
             return o;
         }
 

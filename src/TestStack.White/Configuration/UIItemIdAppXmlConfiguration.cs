@@ -1,12 +1,11 @@
 using System.Collections.Generic;
 using White.Core.Bricks;
-using log4net;
 
 namespace White.Core.Configuration
 {
     public class UIItemIdAppXmlConfiguration : AssemblyConfiguration, UIItemIdConfiguration
     {
-        private static UIItemIdConfiguration _instance;
+        private static UIItemIdConfiguration instance;
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
         static UIItemIdAppXmlConfiguration()
@@ -24,69 +23,69 @@ namespace White.Core.Configuration
 
         public static UIItemIdConfiguration Instance
         {
-            get { return _instance ?? (_instance = new UIItemIdAppXmlConfiguration()); }
+            get { return instance ?? (instance = new UIItemIdAppXmlConfiguration()); }
         }
 
         private UIItemIdAppXmlConfiguration() : 
-            base("White", "UIItemId", DefaultValues, LogManager.GetLogger(typeof(UIItemIdAppXmlConfiguration)))
+            base("White", "UIItemId", DefaultValues, CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItemIdAppXmlConfiguration)))
         { }
 
         private void SetUsedValue(string key, object value)
         {
-            usedValues[key] = value.ToString();
+            UsedValues[key] = value.ToString();
         }
 
         public virtual string TableVerticalScrollBar
         {
-            get { return usedValues["TableVerticalScrollBar"]; }
+            get { return UsedValues["TableVerticalScrollBar"]; }
             set { SetUsedValue("TableVerticalScrollBar", value); }
         }
 
         public virtual string TableHorizontalScrollBar
         {
-            get { return usedValues["TableHorizontalScrollBar"]; }
+            get { return UsedValues["TableHorizontalScrollBar"]; }
             set { SetUsedValue("TableHorizontalScrollBar", value); }
         }
 
         public virtual string TableColumn
         {
-            get { return usedValues["TableColumn"]; }
+            get { return UsedValues["TableColumn"]; }
             set { SetUsedValue("TableColumn", value); }
         }
 
         public virtual string TableTopLeftHeaderCell
         {
-            get { return usedValues["TableTopLeftHeaderCell"]; }
+            get { return UsedValues["TableTopLeftHeaderCell"]; }
             set { SetUsedValue("TableTopLeftHeaderCell", value); }
         }
 
         public virtual string TableCellNullValue
         {
-            get { return usedValues["TableCellNullValue"]; }
+            get { return UsedValues["TableCellNullValue"]; }
             set { SetUsedValue("TableCellNullValue", value); }
         }
 
         public virtual string TableHeader
         {
-            get { return usedValues["TableHeader"]; }
+            get { return UsedValues["TableHeader"]; }
             set { SetUsedValue("TableHeader", value); }
         }
 
         public virtual string HorizontalScrollBar
         {
-            get { return usedValues["HorizontalScrollBar"]; }
+            get { return UsedValues["HorizontalScrollBar"]; }
             set { SetUsedValue("HorizontalScrollBar", value); }
         }
 
         public virtual string VerticalScrollBar
         {
-            get { return usedValues["VerticalScrollBar"]; }
+            get { return UsedValues["VerticalScrollBar"]; }
             set { SetUsedValue("VerticalScrollBar", value); }
         }
 
         public virtual string TableCellPrefix
         {
-            get { return usedValues["TableCellPrefix"]; }
+            get { return UsedValues["TableCellPrefix"]; }
             set { SetUsedValue("TableCellPrefix", value); }
         }
     }

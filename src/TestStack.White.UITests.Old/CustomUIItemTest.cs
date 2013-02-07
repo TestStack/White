@@ -23,7 +23,7 @@ namespace White.Core.UITests
 
         protected override void BaseTestFixtureSetup()
         {
-            window = application.GetWindow("FormContainingCustomControl", InitializeOption.NoCache);
+            window = Application.GetWindow("FormContainingCustomControl", InitializeOption.NoCache);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace White.Core.UITests
 
         public override void TextFixtureTearDown()
         {
-            application.Kill();
+            Application.Kill();
         }
     }
 

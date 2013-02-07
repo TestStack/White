@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Bricks.DynamicProxy;
-using Bricks.RuntimeFramework;
 using Reporting.Configuration;
 using Reporting.Domain;
 using Repository.Configuration;
+using White.Core.Bricks;
 
 namespace Repository.Services
 {
@@ -32,19 +31,12 @@ namespace Repository.Services
             serviceExecution.Dispose();
         }
 
-        public virtual void Create<T>(params object[] parameters)
-        {
-            if (RepositoryAppXmlConfiguration.Instance.UseHistory)
-                new Class(typeof (T)).New(parameters);
-        }
-
         public virtual T GetService<T>(params object[] objs) where T : Service
         {
             Service service;
             if (services.TryGetValue(typeof (T), out service)) return (T) service;
 
-            Class @class = new Class(typeof (T));
-            service = (T) @class.New(objs);
+            service = (T) Activator.CreateInstance(typeof(T), objs);
             if (RepositoryAppXmlConfiguration.Instance.UseHistory || ReportingAppXmlConfiguration.Instance.PublishTestReports)
             {
                 service = (Service) DynamicProxyGenerator.Instance.CreateProxy(new ServiceInterceptor(service, serviceExecution, sessionReport), typeof (T));

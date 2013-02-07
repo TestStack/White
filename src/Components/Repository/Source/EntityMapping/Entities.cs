@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using Bricks.RuntimeFramework;
 using White.Core.UIItems.TableItems;
 
 namespace Repository.EntityMapping
@@ -13,23 +13,20 @@ namespace Repository.EntityMapping
                                                                                                                                                                                                                                                                 
         public Entities(Table table)
         {
-            IList<string> header = GetHeader(table);
-            foreach (TableRow row in table.Rows)
-                Add((T) new Class(typeof (T)).New(row, header));
+            var header = GetHeader(table);
+            foreach (var row in table.Rows)
+                Add((T) Activator.CreateInstance(typeof (T), row, header));
         }
 
         public Entities(string [] header, IEnumerable<string[]> data)
         {
             foreach (string[] d in data)
-                Add((T)new Class(typeof(T)).New(d, header));
+                Add((T)Activator.CreateInstance(typeof(T), d, header));
         }
 
         private static IList<string> GetHeader(Table table)
         {
-            var header = new List<string>();
-            foreach (TableColumn column in table.Header.Columns)
-                header.Add(column.Name);
-            return header;
+            return table.Header.Columns.Select(column => column.Name).ToList();
         }
 
         public override string ToString()

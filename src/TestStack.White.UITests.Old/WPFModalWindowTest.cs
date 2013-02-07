@@ -25,7 +25,7 @@ namespace White.Core.UITests
         [Test]
         public void FindModalWindow()
         {
-            window = application.GetWindow("Form1", InitializeOption.NoCache);
+            window = Application.GetWindow("Form1", InitializeOption.NoCache);
             window.Get<Button>("launchModal").Click();
             Assert.AreEqual(false, window.IsModal);
         }
@@ -33,7 +33,7 @@ namespace White.Core.UITests
         [Test]
         public void FindModalWindowBasedOnSearchCriteria()
         {
-            window = application.GetWindow("Form1", InitializeOption.NoCache);
+            window = Application.GetWindow("Form1", InitializeOption.NoCache);
             window.Get<Button>("launchModal").Click();
             Window modalWindow = window.ModalWindow(SearchCriteria.ByText("ModalForm"), InitializeOption.NoCache);
             Assert.AreNotEqual(null, modalWindow);
@@ -42,7 +42,7 @@ namespace White.Core.UITests
         [Test]
         public void FindModalWindowBasedOnSearchCriteriaWhenThereIsNoWindow()
         {
-            window = application.GetWindow("Form1", InitializeOption.NoCache);
+            window = Application.GetWindow("Form1", InitializeOption.NoCache);
             window.Get<Button>("launchModal").Click();
             Window modalWindow = window.ModalWindow(SearchCriteria.ByText("ModalForm1"), InitializeOption.NoCache);
             Assert.AreEqual(null, modalWindow);
@@ -50,7 +50,7 @@ namespace White.Core.UITests
 
         public override void TextFixtureTearDown()
         {
-            application.Kill();
+            Application.Kill();
         }
     }
 }

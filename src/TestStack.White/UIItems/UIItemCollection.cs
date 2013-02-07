@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 using White.Core.UIA;
 using White.Core.Factory;
 using White.Core.Mappings;
 using White.Core.UIItems.Actions;
-using log4net;
 
 namespace White.Core.UIItems
 {
     public class UIItemCollection : List<IUIItem>
     {
         private static readonly DictionaryMappedItemFactory DictionaryMappedItemFactory = new DictionaryMappedItemFactory();
-        private readonly ILog logger = LogManager.GetLogger(typeof(UIItemCollection));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItemCollection));
 
         public UIItemCollection(params UIItem[] uiItems)
         {

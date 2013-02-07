@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
+using Castle.Core.Logging;
 using White.Core.Configuration;
 using White.Core.UIA;
-using log4net;
 
 namespace White.Core.AutomationElementSearch
 {
@@ -11,7 +11,7 @@ namespace White.Core.AutomationElementSearch
     {
         private readonly AutomationElement automationElement;
         private static readonly TreeWalker RawViewWalker = TreeWalker.RawViewWalker;
-        private readonly ILog logger = LogManager.GetLogger(typeof(RawAutomationElementFinder));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(RawAutomationElementFinder));
 
         public RawAutomationElementFinder(AutomationElement automationElement)
         {
