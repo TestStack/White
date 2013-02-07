@@ -58,3 +58,6 @@ If you use this feature, please let me know! I can put it in a compatibility pac
 
 ### Custom Controls
 Custom Controls is based on CustomCommands, so it also has gone. Once again, if you were using this, let me know your scenarios and we can prioritised putting it back in
+
+### White.Recorder
+The recorder project is not that pretty, is very confusing to use and is not compatible with many changes which are happening to white. Because of that, the recorder projects have been deleted. If you want them, they are available in commit https://github.com/TestStack/White/commit/2b0b41a44067746e633169c9b485390e46d466fb
