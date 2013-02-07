@@ -39,11 +39,10 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void CopyTest()
         {
-            textBox.Text = "userText";
-            textBox.DoubleClick();
-
             AttachedKeyboard attachedKeyboard = window.Keyboard;
+            textBox.Text = "userText";
             attachedKeyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
+            attachedKeyboard.Enter("a");
             attachedKeyboard.Enter("c");
             attachedKeyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);
 
