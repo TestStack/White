@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Bricks.RuntimeFramework;
 
 namespace Repository.EntityMapping
 {
@@ -18,15 +17,15 @@ namespace Repository.EntityMapping
             if (Contains(entity)) return;
 
             Add(entity);
-            Class @class = new Class(entity.GetType());
-            @class.EachField(delegate(FieldInfo fieldInfo)
-                                 {
-                                     if (typeof (Entity).IsAssignableFrom(fieldInfo.FieldType))
-                                     {
-                                         Entity nestedEntity = fieldInfo.GetValue(entity) as Entity;
-                                         if (nestedEntity != null) TraverseAndAdd(nestedEntity);
-                                     }
-                                 });
+            var entityType = entity.GetType();
+            foreach (var fieldInfo in entityType.GetFields())
+            {
+                if (typeof(Entity).IsAssignableFrom(fieldInfo.FieldType))
+                {
+                    var nestedEntity = fieldInfo.GetValue(entity) as Entity;
+                    if (nestedEntity != null) TraverseAndAdd(nestedEntity);
+                }
+            }
         }
     }
 }

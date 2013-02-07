@@ -3,7 +3,8 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
-using log4net;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 
 namespace Repository.ScreenFlow
 {
@@ -19,7 +20,7 @@ namespace Repository.ScreenFlow
         private readonly GraphWriter graph;
         private readonly FlowWriter flow;
         private readonly string directory;
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(WorkFlow));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WorkFlow));
 
         public WorkFlow(string name, string archiveLocation)
         {

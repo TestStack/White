@@ -72,7 +72,7 @@ namespace White.Core.UIItems.ListBoxItems
         {
             if (!Enabled)
             {
-                logger.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
+                Logger.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
                 return;
             }
             if (Equals(itemText, SelectedItemText)) return;
@@ -84,7 +84,7 @@ namespace White.Core.UIItems.ListBoxItems
         {
             if (!Enabled)
             {
-                logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
+                Logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
                 return;
             }
             ToggleDropDown();

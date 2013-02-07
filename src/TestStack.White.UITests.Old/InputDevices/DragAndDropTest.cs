@@ -20,7 +20,7 @@ namespace White.Core.UITests.InputDevices
         public void DragAndDrop()
         {
             var button = window.Get<Button>("buton");
-            Mouse.instance.DragAndDrop(textBox, button);
+            Mouse.Instance.DragAndDrop(textBox, button);
             AssertResultLabelText("TextBoxDraggedOnButton");
         }
 
@@ -28,7 +28,7 @@ namespace White.Core.UITests.InputDevices
         public void DragAndDropOnTab()
         {
             var tab = window.Get<Tab>("seasons");
-            Mouse.instance.DragAndDrop(textBox, tab);
+            Mouse.Instance.DragAndDrop(textBox, tab);
             AssertResultLabelText("TextBoxDraggedOnTab");
         }
     }

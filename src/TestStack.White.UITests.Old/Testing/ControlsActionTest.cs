@@ -25,15 +25,15 @@ namespace White.Core.UITests.Testing
 
         protected override void BaseTestFixtureSetup()
         {
-            window = application.GetWindow("Form1", testConfiguration.WindowInitializeOption);
-            if (testConfiguration is SWTTestConfiguration) resultLabel = window.Get<Label>("result");
+            window = Application.GetWindow("Form1", TestConfiguration.WindowInitializeOption);
+            if (TestConfiguration is SWTTestConfiguration) resultLabel = window.Get<Label>("result");
         }
 
         protected override void BaseTestFixtureTearDown()
         {
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE);
             if (window == null)
-                application.Kill();
+                Application.Kill();
             else
             {
                 try
@@ -45,7 +45,7 @@ namespace White.Core.UITests.Testing
                 {
                 }
             }
-            if (ConfigurationManager.AppSettings["SaveWindowItemsMap"] == "true") application.ApplicationSession.Save();
+            if (ConfigurationManager.AppSettings["SaveWindowItemsMap"] == "true") Application.ApplicationSession.Save();
             window = null;
             resultLabel = null;
         }

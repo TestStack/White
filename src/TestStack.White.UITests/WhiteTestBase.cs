@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using Castle.Core.Logging;
 using NUnit.Framework;
 using TestStack.White.UITests.Infrastructure;
 using White.Core;
+using White.Core.Configuration;
 using White.Core.InputDevices;
 using White.Core.UIItems.WindowItems;
-using log4net;
 
 namespace TestStack.White.UITests
 {
     [TestFixture]
     public abstract class WhiteTestBase
     {
-        readonly ILog logger = LogManager.GetLogger(typeof(WhiteTestBase));
+        readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteTestBase));
         internal Keyboard Keyboard;
         private FrameworkId? currentFramework;
 
@@ -73,7 +74,7 @@ namespace TestStack.White.UITests
             }
             catch (Exception e)
             {
-                logger.Error(e);
+                logger.Error("Failed to launch application and get main window", e);
                 throw;
             }
         }

@@ -57,7 +57,7 @@ namespace White.Core.UIItems.Scrolling {
 
             if (value > 0)
                 throw new UIActionException(string.Format("Could not set the ScrollBar to minimum visible{0}", Constants.BusyMessage));
-            logger.DebugFormat("ScrollBar position set to {0}", Value);
+            Logger.DebugFormat("ScrollBar position set to {0}", Value);
         }
 
         public virtual void SetToMaximum() {

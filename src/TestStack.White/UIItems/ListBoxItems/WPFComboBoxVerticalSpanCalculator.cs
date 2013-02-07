@@ -1,5 +1,6 @@
 using System.Windows;
-using log4net;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 
 namespace White.Core.UIItems.ListBoxItems
 {
@@ -9,7 +10,7 @@ namespace White.Core.UIItems.ListBoxItems
         private readonly Rect lastItem;
         private readonly Rect combo;
         private readonly double percentVisible;
-        private readonly ILog logger = LogManager.GetLogger(typeof(WPFComboBoxVerticalSpanCalculator));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFComboBoxVerticalSpanCalculator));
 
         public WPFComboBoxVerticalSpanCalculator(Rect combo, Rect firstItem, Rect lastItem, double percentVisible)
         {

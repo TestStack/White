@@ -59,7 +59,7 @@ namespace White.Core.UIItems.WindowItems
             Rect bounds = Desktop.Instance.Bounds;
             if (!bounds.Contains(Bounds) && (TitleBar != null && TitleBar.MinimizeButton != null))
             {
-                logger.WarnFormat(
+                Logger.WarnFormat(
                     @"Window with title: {0} whose dimensions are: {1}, is not contained completely on the desktop {2}. 
 UI actions on window needing mouse would not work in area not falling under the desktop",
                     Title, Bounds, bounds);
@@ -152,13 +152,13 @@ UI actions on window needing mouse would not work in area not falling under the 
             if (!CoreAppXmlConfiguration.Instance.WaitBasedOnHourGlass) return;
             try
             {
-                Retry.For(() => InputDevices.Mouse.instance.Cursor,
+                Retry.For(() => InputDevices.Mouse.Instance.Cursor,
                           cursor =>
                           {
                               if (MouseCursor.WaitCursors.Contains(cursor))
                               {
                                   if (CoreAppXmlConfiguration.Instance.MoveMouseToGetStatusOfHourGlass)
-                                      InputDevices.Mouse.instance.MoveOut();
+                                      InputDevices.Mouse.Instance.MoveOut();
                                   return true;
                               }
                               return false;
@@ -166,7 +166,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
             catch (Exception)
             {
-                throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", InputDevices.Mouse.instance.Cursor, Constants.BusyMessage));
+                throw new UIActionException(string.Format("Window in still wait mode. Cursor: {0}{1}", InputDevices.Mouse.Instance.Cursor, Constants.BusyMessage));
             }
         }
 

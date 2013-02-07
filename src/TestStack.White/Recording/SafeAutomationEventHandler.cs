@@ -1,8 +1,9 @@
 using System;
 using System.Windows.Automation;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 using White.Core.UIItemEvents;
 using White.Core.UIItems;
-using log4net;
 
 namespace White.Core.Recording
 {
@@ -11,7 +12,7 @@ namespace White.Core.Recording
         private readonly IUIItem uiItem;
         private readonly Create createUserEvent;
         private readonly UIItemEventListener eventListener;
-        private readonly ILog logger = LogManager.GetLogger(typeof(SafeAutomationEventHandler));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SafeAutomationEventHandler));
 
         public delegate UserEvent Create(object[] parameters);
 

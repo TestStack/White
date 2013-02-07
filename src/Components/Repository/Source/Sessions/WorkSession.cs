@@ -1,5 +1,5 @@
 using System;
-using Bricks.RuntimeFramework;
+using System.Collections.Generic;
 using White.Core;
 using Reporting.Domain;
 using Repository.Services;
@@ -11,7 +11,7 @@ namespace Repository.Sessions
     /// </summary>
     public class WorkSession : IDisposable
     {
-        private readonly BricksCollection<ScreenRepository> screenRepositories = new BricksCollection<ScreenRepository>();
+        private readonly List<ScreenRepository> screenRepositories = new List<ScreenRepository>();
         private readonly IReport sessionReport;
         private readonly WhiteExecution whiteExecution;
 
@@ -37,7 +37,7 @@ namespace Repository.Sessions
 
         public virtual ScreenRepository Repository(Application application)
         {
-            return screenRepositories.Find(delegate(ScreenRepository obj) { return obj.IsForApplication(application); });
+            return screenRepositories.Find(obj => obj.IsForApplication(application));
         }
 
         public virtual T GetService<T>(params object[] objs) where T : Service

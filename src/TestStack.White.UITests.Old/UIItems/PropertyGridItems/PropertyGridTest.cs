@@ -19,7 +19,7 @@ namespace White.Core.UITests.UIItems.PropertyGridItems
 
         protected override void TestFixtureSetUp()
         {
-            window = application.GetWindow("FormWithPropertyGrid");
+            window = Application.GetWindow("FormWithPropertyGrid");
             propertyGrid = window.Get<PropertyGrid>("propertyGrid1");
         }
 
@@ -46,7 +46,7 @@ namespace White.Core.UITests.UIItems.PropertyGridItems
             PropertyGridCategory propertyGridCategory = propertyGrid.Category("Input");
             PropertyGridProperty property = propertyGridCategory.GetProperty("FileName");
             property.BrowseForValue();
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE);
         }
 
         [Test, ExpectedException(typeof(WhiteException))]

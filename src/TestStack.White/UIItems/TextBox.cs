@@ -43,7 +43,7 @@ namespace White.Core.UIItems
                 }
                 catch (InvalidOperationException)
                 {
-                    logger.Warn("BulkText failed, now trying Text on " + ToString());
+                    Logger.Warn("BulkText failed, now trying Text on " + ToString());
                     Text = value;
                     actionListener.ActionPerformed(Action.WindowMessage);
                 }

@@ -13,8 +13,8 @@ namespace White.Core.UITests.UIItems.MenuItems
         [SetUp]
         public void SetUp()
         {
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, window);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, window);
         }
 
         [Test]

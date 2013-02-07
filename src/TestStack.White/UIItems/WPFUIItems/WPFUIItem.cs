@@ -1,11 +1,12 @@
+using Castle.Core.Logging;
+using White.Core.Configuration;
 using White.Core.UIItems.Finders;
-using log4net;
 
 namespace White.Core.UIItems.WPFUIItems
 {
     public static class WPFUIItem
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(WPFUIItem));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFUIItem));
 
         public static T Get<T>(this UIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
         {
