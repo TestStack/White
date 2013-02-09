@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Repository.EntityMapping;
 using White.Core.Bricks;
 using White.Core.SystemExtensions;
 using White.Core.UIItems;
@@ -26,7 +27,7 @@ namespace Repository
         public virtual object New(Window window, ScreenRepository screenRepository)
         {
             var o = Activator.CreateInstance(type, window, screenRepository);
-            foreach (var fieldInfo in type.GetFields())
+            foreach (var fieldInfo in type.GetFields(Entity.BindingFlag))
             {
                 if (nonInjectedTypes.Any(t=>t.IsAssignableFrom(fieldInfo.FieldType))) continue;
 
