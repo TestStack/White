@@ -241,8 +241,8 @@ namespace White.Core.UIItems
 
         internal virtual void PerformClick()
         {
-            mouse.Click(Bounds.Center(), actionListener);
             if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
+            mouse.Click(Bounds.Center(), actionListener);
         }
 
         /// <summary>

@@ -48,17 +48,4 @@ namespace White.Core.UITests.UIItems.ListBoxItems
             Assert.AreEqual(false, listBox.IsSelected("Bill Gates"));
         }
     }
-
-    [TestFixture]
-    public class ListBoxWithScrollBarTest : ControlsActionTest
-    {
-        [Test]
-        public void SelectItemNotVisibleBecauseOfScrollBar()
-        {
-            var listBox = window.Get<ListBox>("listBoxWithVScrollBar");
-            listBox.Select("0");
-            ListItem selectedItem = listBox.SelectedItem;
-            Assert.AreEqual("0", selectedItem.Text);
-        }
-    }
 }

@@ -123,6 +123,7 @@
     <Compile Include="UIItems\LabelTest.cs" />
     <Compile Include="UIItems\ListBoxItems\CheckedListBoxTest.cs" />
     <Compile Include="UIItems\ListBoxItems\ListBoxTest.cs" />
+    <Compile Include="UIItems\ListBoxItems\ListBoxWithScrollBarTest.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFListBoxTest.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFListBoxWithObjectBehindTest.cs" />
     <Compile Include="UIItems\ListViewInvisibleItemTest.cs" />
