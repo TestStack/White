@@ -26,7 +26,7 @@ namespace White.Repository.UITests
             mainScreen.EnterText();
             mainScreen.SelectComboBoxItem();
             mainScreen.SelectCheckbox();
-            mainScreen.SelectItemInChequedListBox();
+            //mainScreen.SelectItemInChequedListBox();
             mainScreen.SelectRadioButton();
             mainScreen.SelectItemInListBox();
             mainScreen.SelectDateTime();
