@@ -117,6 +117,7 @@
     <Compile Include="UIA\RectXTest.cs" />
     <Compile Include="UIA\WindowsPointXTest.cs" />
     <Compile Include="UIItemEvents\UserActionTest.cs" />
+    <Compile Include="UIItems\WpfComboBoxVerticalSpanCalculatorTest.cs" />
     <Compile Include="UIItems\DateFormatTest.cs" />
     <Compile Include="UIItems\Finders\ControlTypeConditionTest.cs" />
     <Compile Include="UIItems\Finders\IndexConditionTest.cs" />

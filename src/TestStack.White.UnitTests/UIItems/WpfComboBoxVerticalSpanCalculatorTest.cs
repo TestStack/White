@@ -1,11 +1,11 @@
-using System.Windows;
+﻿using System.Windows;
 using NUnit.Framework;
 using White.Core.UIItems.ListBoxItems;
 
-namespace White.Core.UITests.UIItems.ListBoxItems
+namespace White.Core.UnitTests.UIItems
 {
-    [TestFixture, WPFCategory]
-    public class WPFComboBoxVerticalSpanCalculatorTest
+    [TestFixture]
+    public class WpfComboBoxVerticalSpanCalculatorTest
     {
         [Test]
         public void Calculate()

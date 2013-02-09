@@ -1,6 +1,5 @@
-using System.Windows;
+using System.Linq;
 using System.Windows.Automation;
-using White.Core.UIA;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Scrolling;
 
@@ -22,15 +21,13 @@ namespace White.Core.UIItems.ListBoxItems
             get
             {
                 var scrollPattern = (ScrollPattern) Pattern(ScrollPattern.Pattern);
-                var calculator = new WPFComboBoxVerticalSpanCalculator(Bounds, Items[0].Bounds, Items[Items.Count - 1].Bounds, scrollPattern.Current.VerticalViewSize);
+                var bounds = Bounds;
+                var firstVisibleItem = Items.First(i=>!i.IsOffScreen).Bounds;
+                var lastItem = Items[Items.Count - 1].Bounds;
+                var verticalViewSize = scrollPattern.Current.VerticalViewSize;
+                var calculator = new WPFComboBoxVerticalSpanCalculator(bounds, firstVisibleItem, lastItem, verticalViewSize);
                 return calculator.VerticalSpan;
             }
-        }
-
-        protected override void ToggleDropDown()
-        {
-            Point point = IsEditable ? EditableItem.Bounds.ImmediateExteriorEast() : automationElement.Current.BoundingRectangle.Center();
-            mouse.Click(point, actionListener);
         }
     }
 }
