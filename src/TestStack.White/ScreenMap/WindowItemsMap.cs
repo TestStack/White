@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Windows;
+using Castle.Core.Logging;
 using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.UIA;
 using White.Core.UIItems.Finders;
-using log4net;
 
 namespace White.Core.ScreenMap
 {
@@ -23,7 +23,7 @@ namespace White.Core.ScreenMap
         private bool dirty;
         private bool loadedFromFile;
         private Point currentWindowPosition;
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(WindowItemsMap));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WindowItemsMap));
 
         protected WindowItemsMap()
         {

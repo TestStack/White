@@ -1,5 +1,4 @@
 using System;
-using Bricks.RuntimeFramework;
 using Castle.DynamicProxy;
 using White.Core;
 using White.Core.Factory;
@@ -19,8 +18,8 @@ namespace Repository.Interceptors
         private readonly SearchCriteria searchCriteria;
         private readonly Window window;
         private readonly IReport sessionReport;
-        private ReflectedObject reflectedUIItem;
-        
+        private IUIItem uiItem;
+
         public UIItemInterceptor(SearchCriteria searchCriteria, Window window,IReport sessionReport)
         {
             this.searchCriteria = searchCriteria;
@@ -30,20 +29,19 @@ namespace Repository.Interceptors
 
         public virtual void Intercept(IInvocation invocation)
         {
-            if (reflectedUIItem == null)
+            if (uiItem == null)
             {
-                IUIItem uiItem = window.Get(searchCriteria);
+                uiItem = window.Get(searchCriteria);
                 if (uiItem == null) throw new UIItemSearchException("Could not find UIItem with, " + searchCriteria);
-                reflectedUIItem = new ReflectedObject(uiItem);
             }
             try
             {
-                invocation.ReturnValue = reflectedUIItem.Invoke(invocation.Method, invocation.Arguments);
+                invocation.ReturnValue = invocation.Method.Invoke(uiItem, invocation.Arguments);
             }
             catch (Exception e)
             {
                 sessionReport.Act();
-                throw new WhiteException(string.Format("Error Invoking {0}.{1}", reflectedUIItem.Class.Name, invocation.Method.Name), e.InnerException);
+                throw new WhiteException(string.Format("Error Invoking {0}.{1}", uiItem.GetType().Name, invocation.Method.Name), e.InnerException);
             }
         }
     }

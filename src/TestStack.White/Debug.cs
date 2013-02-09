@@ -1,14 +1,15 @@
 using System;
 using System.Text;
 using System.Windows.Automation;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 using White.Core.UIItems;
-using log4net;
 
 namespace White.Core
 {
     public static class Debug
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(Debug));
+        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Debug));
         private const string Tab = "  ";
 
         public static void ProcessDetails(string processName)

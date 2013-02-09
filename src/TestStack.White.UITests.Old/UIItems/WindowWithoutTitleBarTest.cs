@@ -15,12 +15,12 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void FindWindowOnSplashScreen()
         {
-            Assert.AreNotEqual(null, application.GetWindow("Form1", InitializeOption.NoCache));
+            Assert.AreNotEqual(null, Application.GetWindow("Form1", InitializeOption.NoCache));
         }
 
         public override void TextFixtureTearDown()
         {
-            application.Kill();
+            Application.Kill();
         }
     }
 }

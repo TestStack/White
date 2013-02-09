@@ -18,13 +18,13 @@ namespace White.Core.UITests.InputDevices
         [Test]
         public void Cursor()
         {
-            MouseCursor cursor = Mouse.instance.Cursor;
+            MouseCursor cursor = Mouse.Instance.Cursor;
         }
 
         [Test]
         public void Location()
         {
-            Mouse mouse = Mouse.instance;
+            Mouse mouse = Mouse.Instance;
             var point = new Point(100, 100);
             Assert.AreNotEqual(point, mouse.Location);
             mouse.Location = point;
@@ -34,7 +34,7 @@ namespace White.Core.UITests.InputDevices
         [Test]
         public void RightClick()
         {
-            Mouse mouse = Mouse.instance;
+            Mouse mouse = Mouse.Instance;
             mouse.RightClick();
             mouse.Click();
         }

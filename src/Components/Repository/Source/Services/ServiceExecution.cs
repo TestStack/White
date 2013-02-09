@@ -1,5 +1,6 @@
+using System;
+using System.Linq;
 using System.Reflection;
-using Bricks.RuntimeFramework;
 using Repository.Configuration;
 
 namespace Repository.Services
@@ -28,18 +29,16 @@ namespace Repository.Services
 
             if (matchingHistoryCalls.Count > matchingCurrentServiceCalls.Count)
             {
-                matchingCurrentServiceCalls.Sort(delegate(ServiceCall x, ServiceCall y) { return x.CallNumber.CompareTo(y.CallNumber); });
-                int currentCallNumberForService = matchingHistoryCalls.Last.CallNumber;
+                matchingCurrentServiceCalls.Sort((x, y) => x.CallNumber.CompareTo(y.CallNumber));
+                int currentCallNumberForService = matchingHistoryCalls.Last().CallNumber;
                 ServiceCall matchingCall =
-                    matchingHistoryCalls.Find(delegate(ServiceCall obj) { return obj.CallNumber.Equals(currentCallNumberForService); });
+                    matchingHistoryCalls.Find(obj => obj.CallNumber.Equals(currentCallNumberForService));
                 currentServiceCalls.Add(matchingCall);
                 return new LastServiceCallStatus(matchingCall.ReturnValue);
             }
-            else
-            {
-                currentServiceCall.CallNumber = matchingCurrentServiceCalls.Count;
-                return new NullLastServiceCallStatus();
-            }
+            
+            currentServiceCall.CallNumber = matchingCurrentServiceCalls.Count;
+            return new NullLastServiceCallStatus();
         }
 
         public virtual void Invoked(object returnValue)
@@ -79,8 +78,7 @@ namespace Repository.Services
         {
             if (executionHistory.Data == null)
             {
-                Class @class = new Class(typeof (T));
-                o = @class.New(objs);
+                o = Activator.CreateInstance(typeof(T), objs);
                 executionHistory.Data = o;
             }
             return (T) executionHistory.Data;

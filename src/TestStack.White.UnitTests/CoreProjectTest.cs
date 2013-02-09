@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using White.Core.SystemExtensions;
 using White.Core.UIItems;
 using NUnit.Framework;
 using White.Core.UIItems.Finders;
@@ -16,13 +17,13 @@ namespace White.Core.UnitTests
         {
             var virtuals = typeof(UIItem).Assembly.GetTypes()
                 .Where(t => t.IsClass)
-                .Where(t => !t.FullName.Contains("InvokerWrapper"))
+                .Where(t => !t.FullName.Contains("InvokerWrapper") && !t.FullName.Contains("AnonymousType"))
                 .Select(t => new
                 {
                     Type = t,
-                    NonVirtualMethods = NonVirtuals(t)
+                    NonVirtualMethods = t.NonVirtuals()
                 })
-                .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.Name + "." + m.Name))
+                .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.FullName + "." + m.Name))
                 .ToArray();
 
             Assert.IsEmpty(virtuals, "The following methods are not marked virtual: \r\n" +
@@ -59,14 +60,6 @@ namespace White.Core.UnitTests
                 if (!hasDefaultConstructor && subClass.IsVisible && !subClass.Name.Equals("Desktop"))
                     if (subClass.FullName != null) collection.Add(subClass.FullName);
             }
-        }
-
-        public virtual IEnumerable<MethodInfo> NonVirtuals(Type type)
-        {
-            var methodInfos = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
-            return methodInfos
-                .Where(methodInfo => !methodInfo.IsPrivate && methodInfo.DeclaringType == type && !methodInfo.Name.StartsWith("<"))
-                .Where(methodInfo => !methodInfo.IsVirtual || methodInfo.IsFinal);
         }
     }
 }

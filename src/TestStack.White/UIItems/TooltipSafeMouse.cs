@@ -1,9 +1,9 @@
 using System.Threading;
+using Castle.Core.Logging;
 using White.Core.UIA;
 using White.Core.Configuration;
 using White.Core.InputDevices;
 using White.Core.UIItems.Actions;
-using log4net;
 
 namespace White.Core.UIItems
 {
@@ -11,7 +11,7 @@ namespace White.Core.UIItems
     internal class TooltipSafeMouse
     {
         private readonly Mouse mouse;
-        private readonly ILog logger = LogManager.GetLogger(typeof(TooltipSafeMouse));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(TooltipSafeMouse));
 
         public TooltipSafeMouse(Mouse mouse)
         {

@@ -1,5 +1,5 @@
+using System;
 using System.Reflection;
-using Bricks.RuntimeFramework;
 
 namespace Repository.Services
 {
@@ -28,7 +28,7 @@ namespace Repository.Services
 
         public override T CreateData<T>(params object[] objs)
         {
-            return (T) new Class(typeof(T)).New(objs);
+            return (T)Activator.CreateInstance(typeof(T), objs);
         }
 
         public override void RevertToSnapshot()

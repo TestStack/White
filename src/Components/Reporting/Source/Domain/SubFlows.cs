@@ -1,7 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using log4net;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 
 namespace Reporting.Domain
 {
@@ -10,7 +11,7 @@ namespace Reporting.Domain
         private readonly string archiveLocation;
         private readonly string flowName;
         private int currentSubFlowIndex = -1;
-        private readonly ILog logger = LogManager.GetLogger(typeof(SubFlow));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SubFlow));
 
         public SubFlows(string archiveLocation, string flowName)
         {

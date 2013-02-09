@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Bricks.RuntimeFramework;
+using System.Linq;
 using White.Core;
 using White.Core.Factory;
 using White.Core.Sessions;
@@ -68,14 +68,7 @@ namespace Repository
         public virtual T Get<T>(Predicate<string> match, InitializeOption option) where T : AppScreen
         {
             ClearClosedScreens();
-            T screen = null;
-            foreach (KeyValuePair<ScreenRepositoryCacheKey, AppScreen> pair in screenCache)
-            {
-                if (!pair.Key.Matches(typeof (T), match)) continue;
-                
-                screen = (T) pair.Value;
-                break;
-            }
+            T screen = (from pair in screenCache where pair.Key.Matches(typeof (T), match) select (T) pair.Value).FirstOrDefault();
             if (screen == null)
             {
                 screen = GetScreen<T>(applicationSession.Application.Find(match, IdentifiedOption<T>(option)));
@@ -95,9 +88,7 @@ namespace Repository
 
         private void ClearClosedScreens()
         {
-            var cacheKeys = new List<ScreenRepositoryCacheKey>();
-            foreach (KeyValuePair<ScreenRepositoryCacheKey, AppScreen> pair in screenCache)
-                if (screenCache[pair.Key].IsClosed) cacheKeys.Add(pair.Key);
+            var cacheKeys = (from pair in screenCache where screenCache[pair.Key].IsClosed select pair.Key).ToList();
 
             foreach (ScreenRepositoryCacheKey key in cacheKeys)
                 screenCache.Remove(key);
@@ -110,8 +101,7 @@ namespace Repository
 
         private T GetScreen<T>(Window window) where T : AppScreen
         {
-            var @class = new Class(typeof (T));
-            var screenClass = new ScreenClass(@class);
+            var screenClass = new ScreenClass(typeof(T));
             return (T) screenClass.New(window, this);
         }
 

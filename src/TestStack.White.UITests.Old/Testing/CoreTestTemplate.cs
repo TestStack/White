@@ -1,35 +1,36 @@
 using System;
+using Castle.Core.Logging;
 using NUnit.Framework;
+using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.InputDevices;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
-using log4net;
 
 namespace White.Core.UITests.Testing
 {
     public class CoreTestTemplate
     {
-        protected Application application;
+        protected TestConfiguration TestConfiguration;
+        protected Application Application;
+        internal Keyboard Keyboard;
         private readonly TestMode testMode = TestMode.Create(Environment.CommandLine);
-        internal Keyboard keyboard;
-        protected TestConfiguration testConfiguration;
-        private readonly ILog logger = LogManager.GetLogger(typeof(CoreTestTemplate));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(CoreTestTemplate));
 
         [TestFixtureSetUp]
         public virtual void LaunchApplication()
         {
             try
             {
-                keyboard = Keyboard.Instance;
-                testConfiguration = testMode.GetConfiguration(CommandLineArguments, this);
-                application = testConfiguration.Launch();
+                Keyboard = Keyboard.Instance;
+                TestConfiguration = testMode.GetConfiguration(CommandLineArguments, this);
+                Application = TestConfiguration.Launch();
                 BaseTestFixtureSetup();
                 TestFixtureSetUp();
             }
             catch (Exception e)
             {
-                logger.Error(e);
+                logger.Error("Failed to launch application", e);
                 TextFixtureTearDown();
                 throw;
             }
@@ -48,8 +49,8 @@ namespace White.Core.UITests.Testing
         public virtual void TextFixtureTearDown()
         {
             BaseTestFixtureTearDown();
-            application = null;
-            testConfiguration = null;
+            Application = null;
+            TestConfiguration = null;
         }
 
         protected void CloseModal(Window window)

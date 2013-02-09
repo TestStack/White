@@ -24,12 +24,7 @@ namespace White.Core.UIItems.TableItems
 
         public virtual TableRows Rows
         {
-            get
-            {
-                if (rows == null)
-                    rows = tableRowFactory.CreateRows(this, Header ?? new NullTableHeader());
-                return rows;
-            }
+            get { return rows ?? (rows = tableRowFactory.CreateRows(this, Header ?? new NullTableHeader())); }
         }
 
         public virtual TableHeader Header
@@ -69,11 +64,7 @@ namespace White.Core.UIItems.TableItems
 
         public override IScrollBars ScrollBars
         {
-            get
-            {
-                if (scrollBars == null) scrollBars = new TableScrollBars(finder, actionListener, this);
-                return scrollBars;
-            }
+            get { return scrollBars ?? (scrollBars = new TableScrollBars(finder, ActionListener, this)); }
         }
 
         public override void RightClick()

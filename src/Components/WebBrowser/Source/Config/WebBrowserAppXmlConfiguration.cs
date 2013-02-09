@@ -1,7 +1,7 @@
+using System;
 using System.Collections.Generic;
-using Bricks;
-using Bricks.Core;
-using log4net;
+using White.Core.Bricks;
+using White.Core.Configuration;
 
 namespace White.WebBrowser.Config
 {
@@ -15,7 +15,8 @@ namespace White.WebBrowser.Config
             DefaultValues.Add("FirefoxSingleWindowCheckWait", 2000);
         }
 
-        private WebBrowserAppXmlConfiguration() : base("White", "WebBrowser", DefaultValues, LogManager.GetLogger(typeof(WebBrowserAppXmlConfiguration))){}
+        private WebBrowserAppXmlConfiguration() : base("White", "WebBrowser", DefaultValues, 
+            CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WebBrowserAppXmlConfiguration))){}
 
         public static WebBrowserConfiguration Instance
         {
@@ -24,7 +25,7 @@ namespace White.WebBrowser.Config
 
         public virtual int FirefoxSingleWindowCheckWait
         {
-            get { return S.ToInt(usedValues["FirefoxSingleWindowCheckWait"]); }
+            get { return Convert.ToInt32(UsedValues["FirefoxSingleWindowCheckWait"]); }
         }
     }
 }

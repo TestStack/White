@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
-using Bricks.RuntimeFramework;
+using Castle.Core.Logging;
+using White.Core.Configuration;
 using White.Core.UIItems.TableItems;
-using log4net;
 
 namespace Repository.EntityMapping
 {
@@ -17,7 +18,7 @@ namespace Repository.EntityMapping
     public class Entity
     {
         [ScreenIgnore, XmlIgnore] private NestedEntities nestedEntities;
-        private readonly ILog logger = LogManager.GetLogger(typeof(Entity));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Entity));
 
         protected Entity() {}
 
@@ -30,22 +31,16 @@ namespace Repository.EntityMapping
 
         public virtual EntityField Field(string fieldName)
         {
-            foreach (Entity entity in NestedEntities)
-            {
-                Class @class = new Class(entity.GetType());
-                FieldInfo field = @class.GetField(fieldName);
-                if (null != field) return new EntityField(entity, field);
-            }
-            return null;
+            return (from entity in NestedEntities 
+                    let entityType = entity.GetType() 
+                    let field = entityType.GetField(fieldName) 
+                    where field != null
+                    select new EntityField(entity, field)).FirstOrDefault();
         }
 
-        private NestedEntities NestedEntities
+        private IEnumerable<Entity> NestedEntities
         {
-            get
-            {
-                if (nestedEntities == null) nestedEntities = new NestedEntities(this);
-                return nestedEntities;
-            }
+            get { return nestedEntities ?? (nestedEntities = new NestedEntities(this)); }
         }
 
         public override string ToString()
@@ -68,7 +63,8 @@ namespace Repository.EntityMapping
                 entityField.SetValue(value);
             }
         }
-
+        
+        // ReSharper disable ClassWithVirtualMembersNeverInherited.Local
         private class EntityTranslator
         {
             private readonly Entity entity;
@@ -80,11 +76,11 @@ namespace Repository.EntityMapping
 
             public virtual string ToString(FieldInfo fieldInfo)
             {
-                StringBuilder builder = new StringBuilder();
+                var builder = new StringBuilder();
                 builder.Append(fieldInfo.Name).Append("=");
                 if (IsAnEntity(fieldInfo))
                 {
-                    builder.Append(fieldInfo.GetValue(entity).ToString());
+                    builder.Append(fieldInfo.GetValue(entity));
                 }
                 else
                 {
@@ -103,18 +99,18 @@ namespace Repository.EntityMapping
                 return typeof (Entity).IsAssignableFrom(fieldInfo.FieldType);
             }
         }
+        // ReSharper restore ClassWithVirtualMembersNeverInherited.Local
 
         private delegate string Translate(FieldInfo fieldInfo);
 
         private string BuildStringRepresentation(Translate translate)
         {
-            StringBuilder builder = new StringBuilder();
-            Class @class = new Class(GetType());
-            @class.EachField(delegate(FieldInfo fieldInfo)
-                                 {
-                                     if (fieldInfo.GetCustomAttributes(typeof (ScreenIgnoreAttribute), false).Length != 1)
-                                         builder.Append(translate(fieldInfo));
-                                 });
+            var builder = new StringBuilder();
+            foreach (var fieldInfo in GetType().GetFields())
+            {
+                if (fieldInfo.GetCustomAttributes(typeof(ScreenIgnoreAttribute), false).Length != 1)
+                    builder.Append(translate(fieldInfo));
+            }
 
             return builder.ToString();
         }
