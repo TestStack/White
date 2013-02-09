@@ -9,7 +9,7 @@ namespace White.WebBrowser.UITests.Silverlight
         [Test]
         public void FindSilverlightDocument()
         {
-            SilverlightDocument document = browserWindow.SilverlightDocument;
+            SilverlightDocument document = BrowserWindow.SilverlightDocument;
             Assert.AreNotEqual(null, document);
         }
     }

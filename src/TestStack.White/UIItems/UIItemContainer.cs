@@ -248,7 +248,7 @@ namespace White.Core.UIItems
         {
             Mouse.Location = uiItem.Bounds.Center();
             var finder = new AutomationElementFinder(automationElement);
-            return ToolTipFinder.FindToolTip(() => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip)));
+            return ToolTipFinder.FindToolTip(() => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip)), automationElement);
         }
 
         public virtual ToolStrip ToolStrip
