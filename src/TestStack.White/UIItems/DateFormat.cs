@@ -19,7 +19,7 @@ namespace White.Core.UIItems
 
         private readonly List<DateUnit> dateUnits = new List<DateUnit>();
 
-        protected DateFormat() {}
+        protected DateFormat() { }
 
         private DateFormat(params DateUnit[] unitsInOrder)
         {
@@ -55,7 +55,7 @@ namespace White.Core.UIItems
             var newDateFormat = new DateFormat();
             foreach (string part in parts)
             {
-                var dateUnit = (DateUnit) Enum.Parse(typeof (DateUnit), part);
+                var dateUnit = (DateUnit)Enum.Parse(typeof(DateUnit), part);
                 newDateFormat.dateUnits.Add(dateUnit);
             }
             return newDateFormat;
@@ -78,7 +78,12 @@ namespace White.Core.UIItems
 
         public override string ToString()
         {
-            return dateUnits.ToString();
+            var strings = new string[dateUnits.Count];
+            for (var i = 0; i < dateUnits.Count; i++)
+            {
+                strings[i] = dateUnits[i].ToString();
+            }
+            return string.Join(",", strings);
         }
 
         public override bool Equals(object other)
@@ -94,10 +99,9 @@ namespace White.Core.UIItems
             return !list.Where((t, i) => !other[i].Equals(t)).Any();
         }
 
-
         public override int GetHashCode()
         {
-            return dateUnits[0].GetHashCode() + 3*dateUnits[1].GetHashCode() + 5*dateUnits[2].GetHashCode();
+            return dateUnits[0].GetHashCode() + 3 * dateUnits[1].GetHashCode() + 5 * dateUnits[2].GetHashCode();
         }
     }
 }

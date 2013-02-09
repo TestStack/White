@@ -97,6 +97,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\TestApplications\WinFormsTestApp\WinFormsTestApp.Old.csproj">
+      <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
+      <Name>WinFormsTestApp.Old</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\TestStack.White.UITests.Old\TestStack.White.UITests.Old.csproj">
       <Project>{6d03b0f7-5fe2-45a0-996a-d0b45f6fb23b}</Project>
       <Name>TestStack.White.UITests.Old</Name>
