@@ -38,15 +38,15 @@ namespace White.Core.UIItems.ListBoxItems
             if (!CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
             if (!Enabled) return;
 
-            var expandCollapse =
-                AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
-            if (expandCollapse == null) return;
+            object expandCollapse;
 
-            var state = (ExpandCollapseState)
-                    automationElement.GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
+            if (!AutomationElement.TryGetCurrentPattern(ExpandCollapsePattern.Pattern, out expandCollapse)) return;
+
+            var state = (ExpandCollapseState) automationElement
+                .GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
             if (state == ExpandCollapseState.Collapsed)
             {
-                expandCollapse.Expand();
+                ((ExpandCollapsePattern)expandCollapse).Expand();
                 Thread.Sleep(50);
             }
         }
