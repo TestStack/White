@@ -9,9 +9,12 @@ namespace White.Core.Factory
 {
     public static class ToolTipFinder
     {
-        public static ToolTip FindToolTip(Func<AutomationElement> perform)
+        public static ToolTip FindToolTip(Func<AutomationElement> perform, AutomationElement parentAutomationElement)
         {
-            var automationElement = Retry.For(perform, element => element == null, CoreAppXmlConfiguration.Instance.TooltipWaitTimeSpan());
+            var automationElement = Retry.For(perform, CoreAppXmlConfiguration.Instance.TooltipWaitTimeSpan());
+            if (automationElement == null)
+                throw new AutomationException("Unable to find tooltip", Debug.Details(parentAutomationElement));
+
             return new ToolTip(automationElement, new NullActionListener());
         }
     }
