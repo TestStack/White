@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>White.Core.UITests</RootNamespace>
-    <AssemblyName>White.Core.UITests</AssemblyName>
+    <AssemblyName>White.Core.UITests.Old</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
