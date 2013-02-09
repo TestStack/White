@@ -154,6 +154,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ExampleCollection.cs" />
+    <Compile Include="ExampleItem.cs" />
+    <Compile Include="ListViewData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>

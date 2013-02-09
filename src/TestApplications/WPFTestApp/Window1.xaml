@@ -148,10 +148,6 @@
         <Run>Launch Modal</Run>
       </Hyperlink>
     </TextBlock>
-    <ListBox Margin="245,215,345,236" Name="chequedListBox">
-      <CheckBox>Bill Gates</CheckBox>
-      <CheckBox>Narayan Murthy</CheckBox>
-    </ListBox>
     <TreeView HorizontalAlignment="Left" Margin="20,247,0,205" Name="treeViewLaunchesModal" Width="120"  >
       <TreeViewItem Visibility="Visible" Header="Root" Name="rootNodeModal">
         <TreeViewItem Visibility="Visible" Header="Child" Name="childNodeModal" />

@@ -156,8 +156,7 @@ namespace WinFormsTestApp
 
         private void addDynamicControl_Click(object sender, EventArgs e)
         {
-            var box = new TextBox();
-            box.Name = "dynamicTextBox";
+            var box = new TextBox {Name = "dynamicTextBox"};
             hasDynamicControl.Controls.Add(box);
         }
 
@@ -192,8 +191,7 @@ namespace WinFormsTestApp
 
         private void SetError(object sender, EventArgs e)
         {
-            var provider = new ErrorProvider();
-            provider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            var provider = new ErrorProvider {BlinkStyle = ErrorBlinkStyle.NeverBlink};
             provider.SetError(komboBox, "The name is wrong");
         }
 

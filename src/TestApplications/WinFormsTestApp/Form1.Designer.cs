@@ -42,7 +42,6 @@ namespace WinFormsTestApp
             this.buton = new System.Windows.Forms.Button();
             this.result = new System.Windows.Forms.Label();
             this.chequeBox = new System.Windows.Forms.CheckBox();
-            this.chequedListBox = new System.Windows.Forms.CheckedListBox();
             this.komboBox = new System.Windows.Forms.ComboBox();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.linkLabel = new System.Windows.Forms.LinkLabel();
@@ -84,7 +83,6 @@ namespace WinFormsTestApp
             this.linkLaunchesModalWindow = new System.Windows.Forms.LinkLabel();
             this.treeViewLaunchesModal = new System.Windows.Forms.TreeView();
             this.comboBoxLaunchingModalWindow = new System.Windows.Forms.ComboBox();
-            this.checkedListBoxLaunchingModalWindow = new System.Windows.Forms.CheckedListBox();
             this.addDynamicControl = new System.Windows.Forms.Button();
             this.hasDynamicControl = new System.Windows.Forms.Panel();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
@@ -173,17 +171,6 @@ namespace WinFormsTestApp
             this.chequeBox.TabIndex = 2;
             this.chequeBox.Text = "Cheque Box";
             this.chequeBox.UseVisualStyleBackColor = true;
-            // 
-            // chequedListBox
-            // 
-            this.chequedListBox.FormattingEnabled = true;
-            this.chequedListBox.Items.AddRange(new object[] {
-            "Bill Gates",
-            "Narayan Murthy"});
-            this.chequedListBox.Location = new System.Drawing.Point(218, 81);
-            this.chequedListBox.Name = "chequedListBox";
-            this.chequedListBox.Size = new System.Drawing.Size(120, 94);
-            this.chequedListBox.TabIndex = 3;
             // 
             // komboBox
             // 
@@ -651,16 +638,6 @@ namespace WinFormsTestApp
             this.comboBoxLaunchingModalWindow.Size = new System.Drawing.Size(121, 21);
             this.comboBoxLaunchingModalWindow.TabIndex = 19;
             // 
-            // checkedListBoxLaunchingModalWindow
-            // 
-            this.checkedListBoxLaunchingModalWindow.FormattingEnabled = true;
-            this.checkedListBoxLaunchingModalWindow.Items.AddRange(new object[] {
-            "Bill Gates",
-            "Narayan Murthy"});
-            this.checkedListBoxLaunchingModalWindow.Location = new System.Drawing.Point(16, 565);
-            this.checkedListBoxLaunchingModalWindow.Name = "checkedListBoxLaunchingModalWindow";
-            this.checkedListBoxLaunchingModalWindow.Size = new System.Drawing.Size(120, 94);
-            this.checkedListBoxLaunchingModalWindow.TabIndex = 20;
             // 
             // addDynamicControl
             // 
@@ -1051,7 +1028,6 @@ namespace WinFormsTestApp
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.hasDynamicControl);
             this.Controls.Add(this.addDynamicControl);
-            this.Controls.Add(this.checkedListBoxLaunchingModalWindow);
             this.Controls.Add(this.comboBoxLaunchingModalWindow);
             this.Controls.Add(this.treeViewLaunchesModal);
             this.Controls.Add(this.linkLaunchesModalWindow);
@@ -1071,7 +1047,6 @@ namespace WinFormsTestApp
             this.Controls.Add(this.seasons);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.komboBox);
-            this.Controls.Add(this.chequedListBox);
             this.Controls.Add(this.linkLabel);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.chequeBox);
@@ -1111,7 +1086,6 @@ namespace WinFormsTestApp
         private System.Windows.Forms.Button buton;
         private System.Windows.Forms.Label result;
         private System.Windows.Forms.CheckBox chequeBox;
-        private System.Windows.Forms.CheckedListBox chequedListBox;
         private System.Windows.Forms.ComboBox komboBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
         private System.Windows.Forms.LinkLabel linkLabel;
@@ -1153,7 +1127,6 @@ namespace WinFormsTestApp
         private System.Windows.Forms.LinkLabel linkLaunchesModalWindow;
         private System.Windows.Forms.TreeView treeViewLaunchesModal;
         private System.Windows.Forms.ComboBox comboBoxLaunchingModalWindow;
-        private System.Windows.Forms.CheckedListBox checkedListBoxLaunchingModalWindow;
         private System.Windows.Forms.Button addDynamicControl;
         private System.Windows.Forms.Panel hasDynamicControl;
         private System.Windows.Forms.StatusStrip statusStrip;

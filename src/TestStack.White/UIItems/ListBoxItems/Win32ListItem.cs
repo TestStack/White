@@ -11,23 +11,18 @@ namespace White.Core.UIItems.ListBoxItems
 
         public override void Check()
         {
-            DoCheck = true;
-        }
-
-        private bool DoCheck
-        {
-            set
-            {
-                if (Checked == value) return;
-                Select();
-                if (Checked == value) return;
-                Select();
-            }
+            if (Checked) return;
+            Select(!Checked);
+            if (Checked) return;
+            Select(!Checked);
         }
 
         public override void UnCheck()
         {
-            DoCheck = false;
+            if (!Checked) return;
+            Select(Checked);
+            if (!Checked) return;
+            Select(Checked);
         }
 
         public override bool Checked
