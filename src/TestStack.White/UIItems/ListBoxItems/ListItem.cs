@@ -23,7 +23,12 @@ namespace White.Core.UIItems.ListBoxItems
 
         public virtual void Select()
         {
-            if (IsSelected) return;
+            Select(!IsSelected);
+        }
+
+        public virtual void Select(bool shouldSelect)
+        {
+            if (!shouldSelect) return;
 
             actionListener.ActionPerforming(this);
 

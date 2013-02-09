@@ -42,8 +42,11 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlTests\CheckedListBoxTest.cs" />
     <Compile Include="ControlTests\ComboBoxTests.cs" />
     <Compile Include="ControlTests\DataBoundComboBoxTests.cs" />
     <Compile Include="ControlTests\EditableComboBoxTests.cs" />
