@@ -59,6 +59,19 @@ namespace TestStack.White.UITests
             }
         }
 
+        protected void RunTest(Action testAction, FrameworkId runFor)
+        {
+            if ((runFor & currentFramework) != currentFramework) return;
+            try
+            {
+                testAction();
+            }
+            catch (Exception ex)
+            {
+                throw new TestFailedException(string.Format("Failed to run {0} for {1}", testAction.Method.Name, currentFramework), ex);
+            }
+        }
+
         protected abstract void RunTest(FrameworkId framework);
 
         private IDisposable SetMainWindow(FrameworkId framework)

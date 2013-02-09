@@ -122,12 +122,7 @@
     <Compile Include="UIItems\ImageTest.cs" />
     <Compile Include="UIItems\LabelTest.cs" />
     <Compile Include="UIItems\ListBoxItems\CheckedListBoxTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\ComboBoxItemSelectTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\ComboBoxOpeningUpTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\ComboBoxTest.cs" />
     <Compile Include="UIItems\ListBoxItems\ListBoxTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\WPFComboBoxVerticalSpanCalculatorTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\WPFDataBoundComboBoxTest.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFListBoxTest.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFListBoxWithObjectBehindTest.cs" />
     <Compile Include="UIItems\ListViewInvisibleItemTest.cs" />

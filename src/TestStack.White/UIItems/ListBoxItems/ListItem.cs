@@ -24,18 +24,21 @@ namespace White.Core.UIItems.ListBoxItems
         public virtual void Select()
         {
             if (IsSelected) return;
+
             actionListener.ActionPerforming(this);
 
-            //Bounds empty, fall back to automation element
             if (Bounds.IsEmpty)
             {
-                var selectionPattern = (SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
-                selectionPattern.Select();
+                Logger.Debug("Bounds empty, falling back to automation patterns");
+                var selectionItemPattern = (SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
+                selectionItemPattern.Select();
             }
             else
             {
+                Logger.Debug("Selecting item with Click");
                 mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);                
             }
+
             actionListener.ActionPerformed(Action.WindowMessage);
         }
 
