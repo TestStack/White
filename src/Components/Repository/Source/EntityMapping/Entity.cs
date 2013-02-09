@@ -19,6 +19,7 @@ namespace Repository.EntityMapping
     {
         [ScreenIgnore, XmlIgnore] private NestedEntities nestedEntities;
         private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Entity));
+        internal const BindingFlags BindingFlag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly | BindingFlags.IgnoreCase;
 
         protected Entity() {}
 
@@ -33,9 +34,10 @@ namespace Repository.EntityMapping
         {
             return (from entity in NestedEntities 
                     let entityType = entity.GetType() 
-                    let field = entityType.GetField(fieldName) 
-                    where field != null
-                    select new EntityField(entity, field)).FirstOrDefault();
+                    let field = entityType.GetField(fieldName, BindingFlag) 
+                    where field != null 
+                    select new EntityField(entity, field))
+                    .FirstOrDefault();
         }
 
         private IEnumerable<Entity> NestedEntities
@@ -106,7 +108,7 @@ namespace Repository.EntityMapping
         private string BuildStringRepresentation(Translate translate)
         {
             var builder = new StringBuilder();
-            foreach (var fieldInfo in GetType().GetFields())
+            foreach (var fieldInfo in GetType().GetFields(BindingFlag))
             {
                 if (fieldInfo.GetCustomAttributes(typeof(ScreenIgnoreAttribute), false).Length != 1)
                     builder.Append(translate(fieldInfo));
