@@ -1,5 +1,6 @@
 Version 9.4.0
  - BREAKING: Removed Log4net, now using Castle's logging abstractions.
+ - FIX: Lots of combobox updates
 
 Version 9.3.0
 
