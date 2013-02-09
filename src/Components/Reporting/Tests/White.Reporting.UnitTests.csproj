@@ -77,9 +77,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportingCodebaseTest.cs" />
-    <Compile Include="SessionReportTest.cs" />
-    <Compile Include="SubFlowsTest.cs" />
-    <Compile Include="SubFlowTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using Reporting.Domain;
 
-namespace White.Reporting.UnitTests
+namespace White.Reporting.UITests
 {
     [TestFixture]
     public class SubFlowTest
@@ -47,7 +47,4 @@ namespace White.Reporting.UnitTests
         }
 
     }
-
-    internal class One {}
-    internal class Two {}
 }

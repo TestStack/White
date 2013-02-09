@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Reporting.Domain;
 
-namespace White.Reporting.UnitTests
+namespace White.Reporting.UITests
 {
     [TestFixture]
     public class SessionReportTest
