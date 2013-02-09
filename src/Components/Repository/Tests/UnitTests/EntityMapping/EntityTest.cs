@@ -49,6 +49,7 @@ namespace White.Repository.UnitTests.EntityMapping
         }
     }
 
+    // ReSharper disable ConvertToAutoProperty
     internal class NestedEntity : Entity
     {
         private string yo;
@@ -59,4 +60,5 @@ namespace White.Repository.UnitTests.EntityMapping
             set { yo = value; }
         }
     }
+    // ReSharper restore ConvertToAutoProperty
 }

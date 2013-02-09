@@ -9,7 +9,7 @@ namespace White.Repository.UnitTests.EntityMapping
         [Test]
         public void Create()
         {
-            TestEntity testEntity = new TestEntity(new NestedEntity());
+            var testEntity = new TestEntity(new NestedEntity());
             Assert.AreEqual(2, new NestedEntities(testEntity).Count);
         }
     }

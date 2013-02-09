@@ -18,7 +18,7 @@ namespace Repository.EntityMapping
 
             Add(entity);
             var entityType = entity.GetType();
-            foreach (var fieldInfo in entityType.GetFields())
+            foreach (var fieldInfo in entityType.GetFields(Entity.BindingFlag))
             {
                 if (typeof(Entity).IsAssignableFrom(fieldInfo.FieldType))
                 {
