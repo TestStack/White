@@ -1,5 +1,7 @@
+using System.Threading;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
+using White.Core.Configuration;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.Scrolling;
 
@@ -11,12 +13,12 @@ namespace White.Core.UIItems.ListBoxItems
     /// </summary>
     public class ListControl : UIItem, ListItemContainer, VerticalSpanProvider
     {
-        protected AutomationElementFinder finder;
+        protected AutomationElementFinder Finder;
         protected ListControl() {}
 
         public ListControl(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
-            finder = new AutomationElementFinder(automationElement);
+            Finder = new AutomationElementFinder(automationElement);
         }
 
         /// <summary>
@@ -24,7 +26,29 @@ namespace White.Core.UIItems.ListBoxItems
         /// </summary>
         public virtual ListItems Items
         {
-            get { return new ListItems(finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.ListItem)), this); }
+            get
+            {
+                ExpandListIfNeeded();
+                return new ListItems(Finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.ListItem)), this);
+            }
+        }
+
+        internal virtual void ExpandListIfNeeded()
+        {
+            if (!CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
+            if (!Enabled) return;
+
+            var expandCollapse =
+                AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
+            if (expandCollapse == null) return;
+
+            var state = (ExpandCollapseState)
+                    automationElement.GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
+            if (state == ExpandCollapseState.Collapsed)
+            {
+                expandCollapse.Expand();
+                Thread.Sleep(50);
+            }
         }
 
         public virtual ListItem Item(string itemText)

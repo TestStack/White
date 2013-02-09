@@ -44,7 +44,7 @@ namespace White.Core.Configuration
         {
             interceptors.Add(new FocusInterceptor());
             interceptors.Add(new ScrollInterceptor());
-            LoggerFactory = new TraceLoggerFactory();
+            LoggerFactory = new ConsoleFactory(LoggerLevel.Info);
         }
 
         private void SetUsedValue(string key, object value)

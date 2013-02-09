@@ -1,7 +1,5 @@
-using System.Threading;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
 using White.Core.Recording;
 using White.Core.UIItemEvents;
 using White.Core.UIItems.Actions;
@@ -21,14 +19,13 @@ namespace White.Core.UIItems.ListBoxItems
         public ComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
             this.actionListener = actionListener;
-            MakeActionReady();
         }
 
         public override VerticalSpan VerticalSpan
         {
             get
             {
-                AutomationElement listElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.List));
+                AutomationElement listElement = Finder.Child(AutomationSearchCondition.ByControlType(ControlType.List));
                 var listContainerItem = new UIItem(listElement, new NullActionListener());
                 return new VerticalSpan(listContainerItem.Bounds).Union(listContainerItem.Bounds);
             }
@@ -65,7 +62,7 @@ namespace White.Core.UIItems.ListBoxItems
 
         private AutomationElement EditableElement()
         {
-            return finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit));
+            return Finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit));
         }
 
         public override void Select(string itemText)
@@ -76,7 +73,6 @@ namespace White.Core.UIItems.ListBoxItems
                 return;
             }
             if (Equals(itemText, SelectedItemText)) return;
-            ToggleDropDown();
             base.Select(itemText);
         }
 
@@ -87,27 +83,7 @@ namespace White.Core.UIItems.ListBoxItems
                 Logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
                 return;
             }
-            ToggleDropDown();
             base.Select(index);
-        }
-
-        protected virtual void MakeActionReady()
-        {
-            if (!CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
-            if (!Enabled) return;
-
-            var expandCollapse = AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern) as ExpandCollapsePattern;
-            if (expandCollapse == null) return;
-
-            expandCollapse.Expand();
-            Thread.Sleep(100);
-            expandCollapse.Collapse();
-        }
-
-        protected virtual void ToggleDropDown()
-        {
-            var button = new Button(finder.Child(AutomationSearchCondition.ByControlType(ControlType.Button)), actionListener);
-            button.PerformClick();
         }
 
         public override void HookEvents(UIItemEventListener eventListener)

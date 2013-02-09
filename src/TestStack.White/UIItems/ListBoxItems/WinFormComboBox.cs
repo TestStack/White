@@ -24,7 +24,7 @@ namespace White.Core.UIItems.ListBoxItems
 
         private TextBox GetTextBox()
         {
-            return new TextBox(finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit)), actionListener);
+            return new TextBox(Finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit)), actionListener);
         }
     }
 }
