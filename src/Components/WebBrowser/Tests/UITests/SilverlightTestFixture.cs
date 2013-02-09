@@ -3,9 +3,9 @@ using NUnit.Framework;
 
 namespace White.WebBrowser.UITests
 {
-    public class SilverlightTestFixture
+    public abstract class SilverlightTestFixture
     {
-        protected InternetExplorerWindow browserWindow;
+        protected InternetExplorerWindow BrowserWindow;
 
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
@@ -21,7 +21,7 @@ namespace White.WebBrowser.UITests
                 {
                 }
             }
-            browserWindow = InternetExplorer.Launch("http://localhost/white.testsilverlight/TestSilverlightApplicationTestPage.aspx",
+            BrowserWindow = InternetExplorer.Launch("http://localhost/TestSilverlightApplication.Web/TestSilverlightApplicationTestPage.aspx",
                                                     "TestSilverlightApplication - Windows Internet Explorer");
             PostSetup();
         }
@@ -33,7 +33,7 @@ namespace White.WebBrowser.UITests
         [TestFixtureTearDown]
         public void TestFixtureTearDown()
         {
-            browserWindow.Dispose();
+            BrowserWindow.Dispose();
         }
     }
 }
