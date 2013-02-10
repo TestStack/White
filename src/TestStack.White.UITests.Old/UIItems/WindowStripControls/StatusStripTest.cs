@@ -62,7 +62,7 @@ namespace White.Core.UITests.UIItems.WindowStripControls
             Assert.AreEqual(100, progressBar.Maximum);
         }
 
-        [Test]
+        [Test, Ignore("Doesnt work on build server")]
         public void ProgressBar2()
         {
             ProgressBar progressBar = statusStrip.GetProgressBar(1);
