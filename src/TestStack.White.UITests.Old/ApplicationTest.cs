@@ -13,24 +13,24 @@ namespace White.Core.UITests
         [Test]
         public void GetWindows()
         {
-            Assert.AreNotEqual(null, window);
+            Assert.AreNotEqual(null, Window);
         }
 
         [Test]
         public void GetAllWindows()
         {
-            window.Get<Button>("launchModal").Click();
+            Window.Get<Button>("launchModal").Click();
             int count = Application.GetWindows().Count;
-            CloseModal(window);
+            CloseModal(Window);
             Assert.AreEqual(2, count);
         }
 
         [Test]
         public void FindWindow()
         {
-            window.Get<Button>("launchModal").Click();
+            Window.Get<Button>("launchModal").Click();
             Window foundWindow = Application.Find(obj => obj.Equals("ModalForm"), InitializeOption.NoCache);
-            CloseModal(window);
+            CloseModal(Window);
             Assert.AreNotEqual(null, foundWindow);
         }
     }

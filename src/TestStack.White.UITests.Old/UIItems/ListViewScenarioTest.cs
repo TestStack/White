@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Select()
         {
-            ListView listView = window.Get<ListView>("listViewForScenarioTest");
+            ListView listView = Window.Get<ListView>("listViewForScenarioTest");
             listView.Select("", "foo");
             ListViewRows rows = listView.SelectedRows;
             Assert.AreEqual(1, rows.Count);

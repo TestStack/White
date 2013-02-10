@@ -11,7 +11,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            spinner = window.Get<Spinner>("numericUpDown1");
+            spinner = Window.Get<Spinner>("numericUpDown1");
         }
 
         [SetUp]

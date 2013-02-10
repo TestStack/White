@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems
         [SetUp]
         public void SetUp()
         {
-            listView = window.Get<ListView>("listView");
+            listView = Window.Get<ListView>("listView");
         }
 
         [Test]

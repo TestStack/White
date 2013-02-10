@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems.TabItems
 
         protected override void TestFixtureSetUp()
         {
-            tab = window.Get<Tab>("seasons");
+            tab = Window.Get<Tab>("seasons");
         }
 
         [Test]
@@ -52,9 +52,9 @@ namespace White.Core.UITests.UIItems.TabItems
         public void FindControlsWithSameAutomationIdBasedOnTheirLocation()
         {
             tab.SelectTabPage("Winter");
-            var textBox2 = window.Get<TextBox>(GetSearchCriteria().AndIndex(1));
-            var textBox1 = window.Get<TextBox>(GetSearchCriteria().AndIndex(0));
-            var exception = Assert.Throws<AutomationException>(() => window.Get<TextBox>(GetSearchCriteria().AndIndex(2)));
+            var textBox2 = Window.Get<TextBox>(GetSearchCriteria().AndIndex(1));
+            var textBox1 = Window.Get<TextBox>(GetSearchCriteria().AndIndex(0));
+            var exception = Assert.Throws<AutomationException>(() => Window.Get<TextBox>(GetSearchCriteria().AndIndex(2)));
             Assert.AreEqual("Failed to get ControlType=edit,AutomationId=duplicateBox,Index=2", exception.Message);
 
             textBox1.Text = "1";
@@ -70,13 +70,13 @@ namespace White.Core.UITests.UIItems.TabItems
         public void FindUIItemsBasedOnControlTypeAndSearchCriteria()
         {
             tab.SelectTabPage("Winter");
-            var box = window.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndIndex(1));
+            var box = Window.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndIndex(1));
             Assert.AreNotEqual(null, box);
         }
 
         private SearchCriteria GetSearchCriteria()
         {
-            if (window is Win32Window)
+            if (Window is Win32Window)
                 return SearchCriteria.ByText("duplicateBox");
             return SearchCriteria.ByAutomationId("duplicateBox");
         }

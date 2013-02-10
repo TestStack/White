@@ -15,14 +15,14 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Find()
         {
-            var thumb = window.Get<Thumb>("splitter");
+            var thumb = Window.Get<Thumb>("splitter");
             Assert.AreNotEqual(null, thumb);
         }
 
         [Test]
         public void Slide()
         {
-            var thumb = window.Get<Thumb>("splitter");
+            var thumb = Window.Get<Thumb>("splitter");
             double originalY = thumb.Location.Y;
             thumb.SlideVertically(50);
             Assert.AreEqual(originalY + 50, thumb.Location.Y);

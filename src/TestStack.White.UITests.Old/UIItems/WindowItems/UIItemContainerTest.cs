@@ -27,7 +27,7 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void GetMultiple()
         {
-            IUIItem[] buttons = window.GetMultiple(SearchCriteria.ByControlType(typeof(Button)));
+            IUIItem[] buttons = Window.GetMultiple(SearchCriteria.ByControlType(typeof(Button)));
             Assert.AreEqual(true, buttons.Length > 10);
         }
     }
@@ -38,9 +38,9 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void GetMultiplePanes()
         {
-            IUIItem pane = window.Get(SearchCriteria.ByControlType(ControlType.Pane).AndAutomationId("panelWithText"));
+            IUIItem pane = Window.Get(SearchCriteria.ByControlType(ControlType.Pane).AndAutomationId("panelWithText"));
             Assert.AreNotEqual(null, pane);
-            IUIItem[] multiple = window.GetMultiple(SearchCriteria.ByControlType(ControlType.Pane).AndAutomationId("panelWithText"));
+            IUIItem[] multiple = Window.GetMultiple(SearchCriteria.ByControlType(ControlType.Pane).AndAutomationId("panelWithText"));
             Assert.AreNotEqual(0, multiple.Length);
         }
     }

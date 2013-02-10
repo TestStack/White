@@ -13,7 +13,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            var textBox = window.Get<MultilineTextBox>("textBox1");
+            var textBox = Window.Get<MultilineTextBox>("textBox1");
             hScrollBar = textBox.ScrollBars.Horizontal;
             hScrollBar.ScrollRightLarge();
             largeChange = hScrollBar.Value;

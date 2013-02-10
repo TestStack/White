@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void SelectInvisible()
         {
-            var listBox = window.Get<ListBox>("theListBox");
+            var listBox = Window.Get<ListBox>("theListBox");
             listBox.Select("Tammy");
         }
     }

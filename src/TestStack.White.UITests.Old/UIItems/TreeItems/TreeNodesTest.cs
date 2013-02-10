@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems.TreeItems
         [Test]
         public void GetItem()
         {
-            var tree = window.Get<Tree>("ped");
+            var tree = Window.Get<Tree>("ped");
             TreeNode treeNode = tree.Nodes.GetItem("Root", "Child");
             Assert.AreNotEqual(null, treeNode);
         }

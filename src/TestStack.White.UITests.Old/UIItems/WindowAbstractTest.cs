@@ -9,10 +9,10 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void IsCurrentlyActive()
         {
-            window.Focus();
-            Assert.AreEqual(true, window.IsCurrentlyActive);
-            window.Get<Button>("buton").Click();
-            Assert.AreEqual(true, window.IsCurrentlyActive);
+            Window.Focus();
+            Assert.AreEqual(true, Window.IsCurrentlyActive);
+            Window.Get<Button>("buton").Click();
+            Assert.AreEqual(true, Window.IsCurrentlyActive);
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace White.Core.UITests.UIItems
             using (otherApplication)
             {
                 otherApplication.GetWindow("Form1").Focus();
-                Assert.AreEqual(false, window.IsCurrentlyActive);
+                Assert.AreEqual(false, Window.IsCurrentlyActive);
             }
         }
 

@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Find()
         {
-            GroupBox groupBox = window.Get<GroupBox>("groupBox1");
+            GroupBox groupBox = Window.Get<GroupBox>("groupBox1");
             Assert.AreNotEqual(null, groupBox);
         }
     }
@@ -21,7 +21,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void GetItem()
         {
-            GroupBox groupBox = window.Get<GroupBox>("groupBox1");
+            GroupBox groupBox = Window.Get<GroupBox>("groupBox1");
             Button button = groupBox.Get<Button>("buttonInGroupBox");
             Assert.AreNotEqual(null, button);
         }

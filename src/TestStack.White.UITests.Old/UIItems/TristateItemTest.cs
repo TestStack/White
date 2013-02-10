@@ -8,15 +8,10 @@ namespace White.Core.UITests.UIItems
     [TestFixture, WPFCategory]
     public class TristateItemTest : ControlsActionTest
     {
-        protected override string CommandLineArguments
-        {
-            get { return "TristateControlWindow"; }
-        }
-
         [Test]
         public void TristateCheckbox()
         {
-            var checkBox = window.Get<CheckBox>("checkBox");
+            var checkBox = Window.Get<CheckBox>("checkBox");
             checkBox.State = ToggleState.Indeterminate;
             Assert.AreEqual(ToggleState.Indeterminate, checkBox.State);
         }
@@ -24,7 +19,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void TristateButton()
         {
-            var button = window.Get<Button>("button");
+            var button = Window.Get<Button>("button");
         }
     }
 }

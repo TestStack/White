@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            listBox = window.Get<ListBox>("listBoxWithVScrollBar");
+            listBox = Window.Get<ListBox>("listBoxWithVScrollBar");
             vScrollBar = listBox.ScrollBars.Vertical;
             vScrollBar.ScrollDown();
             smallChange = vScrollBar.Value;

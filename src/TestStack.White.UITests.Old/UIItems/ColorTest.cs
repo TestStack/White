@@ -13,7 +13,7 @@ namespace White.Core.UITests.UIItems
         [SetUp]
         public void SetUp()
         {
-            textBox = window.Get<TextBox>("textBox");            
+            textBox = Window.Get<TextBox>("textBox");            
         }
 
         [Test]

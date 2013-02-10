@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void Find()
         {
-            TitleBar titleBar = window.TitleBar;
+            TitleBar titleBar = Window.TitleBar;
             Assert.AreNotEqual(null, titleBar.MinimizeButton);
             Assert.AreNotEqual(null, titleBar.MaximizeButton);
             Assert.AreNotEqual(null, titleBar.CloseButton);

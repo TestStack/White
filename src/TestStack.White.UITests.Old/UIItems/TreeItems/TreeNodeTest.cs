@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems.TreeItems
 
         protected override void TestFixtureSetUp()
         {
-            tree = window.Get<Tree>("ped");
+            tree = Window.Get<Tree>("ped");
         }
 
         [SetUp]

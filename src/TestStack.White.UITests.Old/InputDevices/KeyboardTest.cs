@@ -14,7 +14,7 @@ namespace White.Core.UITests.InputDevices
 
         protected override void TestFixtureSetUp()
         {
-            textBox = window.Get<TextBox>("textBox");
+            textBox = Window.Get<TextBox>("textBox");
         }
 
         [TearDown]
@@ -47,20 +47,20 @@ namespace White.Core.UITests.InputDevices
         {
             textBox.Text = "Textbox";
 
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, window);
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, Window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, Window);
             Assert.AreEqual("Textbo", textBox.Text);
 
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, window);
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, window);
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, Window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, Window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, Window);
             Assert.AreEqual("Texbo", textBox.Text);
         }
 
         [Test, ExpectedException(typeof (InputDeviceException))]
         public void DonotAllowToLeaveKeyWhichIsNotHeld()
         {
-            Keyboard.Instance.LeaveKey(KeyboardInput.SpecialKeys.LEFT, window);
+            Keyboard.Instance.LeaveKey(KeyboardInput.SpecialKeys.LEFT, Window);
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace White.Core.UITests.InputDevices
         private void EnterAndAssertValueOfTextEntered(string stringToType)
         {
             ClearTextBox();
-            Keyboard.Send(stringToType, window);
+            Keyboard.Send(stringToType, Window);
             Assert.AreEqual(stringToType, textBox.Text);
             ClearTextBox();
         }
@@ -116,7 +116,7 @@ namespace White.Core.UITests.InputDevices
             var builder = new StringBuilder();
             builder.Append("abcd").AppendLine();
             builder.Append("efgh").AppendLine();
-            var multilineTextBox = window.Get<MultilineTextBox>("multilineTextBox");
+            var multilineTextBox = Window.Get<MultilineTextBox>("multilineTextBox");
             multilineTextBox.Text = builder.ToString();
             Assert.AreEqual(builder.ToString(), multilineTextBox.Text);
         }

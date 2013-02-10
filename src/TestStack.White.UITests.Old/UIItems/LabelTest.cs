@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Text()
         {
-            label = window.Get<Label>("result");
+            label = Window.Get<Label>("result");
             Assert.AreNotEqual(null, label.Text);
         }
     }

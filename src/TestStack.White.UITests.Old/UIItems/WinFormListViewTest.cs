@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void TryUnSelectAll()
         {
-            var listView = window.Get<ListView>("listView");
+            var listView = Window.Get<ListView>("listView");
             listView.Rows[0].Select();
             Assert.AreEqual(1, listView.SelectedRows.Count);
             listView.TryUnSelectAll();

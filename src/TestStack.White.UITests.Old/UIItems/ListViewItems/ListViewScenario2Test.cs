@@ -19,7 +19,7 @@ namespace White.Core.UITests.UIItems.ListViewItems
         [Test]
         public void ScrollAndSelectInAComboBox()
         {
-            var listView = window.Get<ListView>("listView");
+            var listView = Window.Get<ListView>("listView");
             ListViewRow row = listView.Rows[0];
             var comboBox = (ComboBox) row.Get(SearchCriteria.ByControlType(ControlType.ComboBox));
             Assert.AreNotEqual(null, comboBox);

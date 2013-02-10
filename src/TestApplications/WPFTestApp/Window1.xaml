@@ -19,7 +19,9 @@
       <ColumnDefinition Width="183*" />
       <ColumnDefinition Width="39*" />
     </Grid.ColumnDefinitions>
-    <Button Height="23" Click="button_Click" Margin="0,0,175,184" Name="buton" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="161">Buton</Button>
+        <CheckBox IsThreeState="True" Name="checkBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="113" Height="20" Grid.Column="1" Margin="53,148,0,0">Tristate Checkbox</CheckBox>
+        <ToggleButton IsThreeState="True" Name="button" Width="86" Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,105,0,0" Grid.Column="1">Tristate Button</ToggleButton>
+        <Button Height="23" Click="button_Click" Margin="0,0,175,184" Name="buton" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="161">Buton</Button>
     <CheckBox Height="15.277" HorizontalAlignment="Right" Margin="0,0,55,186" Name="chequeBox" VerticalAlignment="Bottom" Width="83.99">Cheque Box</CheckBox>
     <ComboBox Height="26" Margin="171,0,0,182" Name="komboBox" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="160" MaxDropDownHeight="100">
       <ComboBoxItem Name="Arundhati">Arundhati Roy</ComboBoxItem>

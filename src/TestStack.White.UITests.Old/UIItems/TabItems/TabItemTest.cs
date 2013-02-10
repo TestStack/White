@@ -11,9 +11,9 @@ namespace White.Core.UITests.UIItems.TabItems
         [Test]
         public void FindControlsInsideTab()
         {
-            ITabPage springTab = window.Get<Tab>("seasons").SelectedTab;
+            ITabPage springTab = Window.Get<Tab>("seasons").SelectedTab;
             Assert.AreNotEqual(null, springTab);
-            window.Get<Button>("springyButton");
+            Window.Get<Button>("springyButton");
         }
     }
 }

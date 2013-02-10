@@ -10,13 +10,13 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void GetButton()
         {
-            Assert.AreNotEqual(null, window.Get<Button>("buton"));
+            Assert.AreNotEqual(null, Window.Get<Button>("buton"));
         }
 
         [Test]
         public void GetLabel()
         {
-            Assert.AreNotEqual(null, window.Get<Label>("result"));
+            Assert.AreNotEqual(null, Window.Get<Label>("result"));
         }
     }
 }

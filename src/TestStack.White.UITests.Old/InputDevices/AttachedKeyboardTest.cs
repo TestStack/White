@@ -11,9 +11,9 @@ namespace White.Core.UITests.InputDevices
         [Test]
         public void Enter()
         {
-            var textBox = window.Get<TextBox>("textBox");
+            var textBox = Window.Get<TextBox>("textBox");
             textBox.Focus();
-            AttachedKeyboard attachedKeyboard = window.Keyboard;
+            AttachedKeyboard attachedKeyboard = Window.Keyboard;
             attachedKeyboard.Enter("a");
             Assert.AreEqual("a", textBox.Text);
         }

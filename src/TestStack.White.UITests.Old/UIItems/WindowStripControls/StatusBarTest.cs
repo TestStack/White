@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems.WindowStripControls
 
         protected override void TestFixtureSetUp()
         {
-            statusBar = window.Get<WPFStatusBar>("statusBar1");
+            statusBar = Window.Get<WPFStatusBar>("statusBar1");
         }
 
         [Test]

@@ -14,7 +14,7 @@ namespace White.Core.UITests.UIItems
         [SetUp]
         public void SetUp()
         {
-            button = window.Get<Button>("buton");            
+            button = Window.Get<Button>("buton");            
         }
 
         [Test]

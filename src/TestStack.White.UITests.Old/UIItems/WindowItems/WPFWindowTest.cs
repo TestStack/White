@@ -9,9 +9,9 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void HandlesInvisibleControls()
         {
-            var label = window.Get<Label>("dynamicControl");
+            var label = Window.Get<Label>("dynamicControl");
             Assert.AreEqual(false, label.Visible);
-            window.Get<Button>("invisibleControlShower").Click();
+            Window.Get<Button>("invisibleControlShower").Click();
             Assert.AreEqual(true, label.Visible);
         }
 

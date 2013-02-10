@@ -13,13 +13,13 @@ namespace White.Core.UITests.InputDevices
 
         protected override void TestFixtureSetUp()
         {
-            textBox = window.Get<TextBox>("textBox");
+            textBox = Window.Get<TextBox>("textBox");
         }
 
         [Test]
         public void DragAndDrop()
         {
-            var button = window.Get<Button>("buton");
+            var button = Window.Get<Button>("buton");
             Mouse.Instance.DragAndDrop(textBox, button);
             AssertResultLabelText("TextBoxDraggedOnButton");
         }
@@ -27,7 +27,7 @@ namespace White.Core.UITests.InputDevices
         [Test]
         public void DragAndDropOnTab()
         {
-            var tab = window.Get<Tab>("seasons");
+            var tab = Window.Get<Tab>("seasons");
             Mouse.Instance.DragAndDrop(textBox, tab);
             AssertResultLabelText("TextBoxDraggedOnTab");
         }

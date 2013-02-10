@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void SelectSingleRadioButton()
         {
-            var radioButton = window.Get<RadioButton>("radioButton1");
+            var radioButton = Window.Get<RadioButton>("radioButton1");
             Assert.AreEqual(false, radioButton.IsSelected);
             radioButton.Select();
             Assert.AreEqual(true, radioButton.IsSelected);
@@ -19,8 +19,8 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void SelectRadioButtonGroup()
         {
-            var radioButton1 = window.Get<RadioButton>("radioButton1");
-            var radioButton2 = window.Get<RadioButton>("radioButton2");
+            var radioButton1 = Window.Get<RadioButton>("radioButton1");
+            var radioButton2 = Window.Get<RadioButton>("radioButton2");
 
             Assert.AreEqual(false, radioButton1.IsSelected && radioButton2.IsSelected);
 

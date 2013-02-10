@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems.ListViewItems
         [Test]
         public void SelectWhenHorizontalScrollIsPresent()
         {
-            ListView listView = window.Get<ListView>("listViewWithHorizontalScroll");
+            ListView listView = Window.Get<ListView>("listViewWithHorizontalScroll");
             listView.Row("Key", "bardfgreerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre").Select();
         }
     }

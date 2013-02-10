@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Click()
         {
-            var image = window.Get<Image>("image");
+            var image = Window.Get<Image>("image");
             Assert.AreNotEqual(null, image);
         }
     }

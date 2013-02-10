@@ -13,40 +13,36 @@ namespace White.Core.UITests.Testing
         protected const string VerticalGridSplitter = "VerticalGridSplitter";
 
         private Label resultLabel;
-        protected Window window;
+        protected Window Window;
         private Label ResultLabel
         {
-            get
-            {
-                if (resultLabel == null) resultLabel = window.Get<Label>("result");
-                return resultLabel;
-            }
+            get { return resultLabel ?? (resultLabel = Window.Get<Label>("result")); }
         }
 
         protected override void BaseTestFixtureSetup()
         {
-            window = Application.GetWindow("Form1", TestConfiguration.WindowInitializeOption);
-            if (TestConfiguration is SWTTestConfiguration) resultLabel = window.Get<Label>("result");
+            Window = Application.GetWindow("Form1", TestConfiguration.WindowInitializeOption);
+            if (TestConfiguration is SWTTestConfiguration) resultLabel = Window.Get<Label>("result");
         }
 
         protected override void BaseTestFixtureTearDown()
         {
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE);
-            if (window == null)
+            if (Window == null)
                 Application.Kill();
             else
             {
                 try
                 {
-                    window.Focus();
-                    window.Close();
+                    Window.Focus();
+                    Window.Close();
                 }
                 catch
                 {
                 }
             }
             if (ConfigurationManager.AppSettings["SaveWindowItemsMap"] == "true") Application.ApplicationSession.Save();
-            window = null;
+            Window = null;
             resultLabel = null;
         }
 

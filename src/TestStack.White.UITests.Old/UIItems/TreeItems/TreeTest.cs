@@ -22,7 +22,7 @@ namespace White.Core.UITests.UIItems.TreeItems
 
         protected override void TestFixtureSetUp()
         {
-            tree = window.Get<Tree>("ped");
+            tree = Window.Get<Tree>("ped");
         }
 
         [SetUp]
@@ -78,7 +78,7 @@ namespace White.Core.UITests.UIItems.TreeItems
         [Test]
         public void DynamicallyAddedNodeCanBeFound()
         {
-            window.Get<Button>("addNode").Click();
+            Window.Get<Button>("addNode").Click();
             Assert.AreEqual(true, tree.HasNode("DynamicNode"));
         }
 

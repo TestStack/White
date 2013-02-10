@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void SelectUnSelect()
         {
-            var checkBox = window.Get<CheckBox>("chequeBox");
+            var checkBox = Window.Get<CheckBox>("chequeBox");
             Assert.AreEqual(false, checkBox.IsSelected);
             checkBox.Select();
             Assert.AreEqual(true, checkBox.IsSelected);
@@ -21,8 +21,8 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void ClickOnCheckBoxWhichLaunchesModalWindow()
         {
-            window.Get<CheckBox>("checkBoxLaunchedModalWindow").Checked = true;
-            CloseModal(window);
+            Window.Get<CheckBox>("checkBoxLaunchedModalWindow").Checked = true;
+            CloseModal(Window);
         }
     }
 }

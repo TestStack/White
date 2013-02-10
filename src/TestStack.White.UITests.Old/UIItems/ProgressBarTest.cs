@@ -11,7 +11,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            bar = window.Get<ProgressBar>("progressBar");
+            bar = Window.Get<ProgressBar>("progressBar");
         }
 
         [Test]

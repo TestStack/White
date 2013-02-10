@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void SelectItemNotVisibleBecauseOfScrollBar()
         {
-            var listBox = window.Get<ListBox>("listBoxWithVScrollBar");
+            var listBox = Window.Get<ListBox>("listBoxWithVScrollBar");
             listBox.Select("0");
             ListItem selectedItem = listBox.SelectedItem;
             Assert.AreEqual("0", selectedItem.Text);

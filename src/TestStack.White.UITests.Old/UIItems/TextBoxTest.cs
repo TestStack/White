@@ -14,7 +14,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            textBox = window.Get<TextBox>("textBox");
+            textBox = Window.Get<TextBox>("textBox");
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void CopyTest()
         {
-            AttachedKeyboard attachedKeyboard = window.Keyboard;
+            AttachedKeyboard attachedKeyboard = Window.Keyboard;
             textBox.Text = "userText";
             attachedKeyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
             attachedKeyboard.Enter("ac");

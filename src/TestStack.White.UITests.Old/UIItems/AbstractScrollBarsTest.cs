@@ -12,16 +12,16 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void CanScroll()
         {
-            var controlWithVScrollBar = window.Get<ListBox>("listBoxWithVScrollBar");
+            var controlWithVScrollBar = Window.Get<ListBox>("listBoxWithVScrollBar");
             Assert.AreEqual(true, controlWithVScrollBar.ScrollBars.CanScroll);
-            var controlWithHorizontalScrollBar = window.Get<MultilineTextBox>("textBox1");
+            var controlWithHorizontalScrollBar = Window.Get<MultilineTextBox>("textBox1");
             Assert.AreEqual(true, controlWithHorizontalScrollBar.ScrollBars.CanScroll);
         }
 
         [Test]
         public void CannotScroll()
         {
-            var controlWithScrollBar = window.Get<Tree>("treeViewLaunchesModal");
+            var controlWithScrollBar = Window.Get<Tree>("treeViewLaunchesModal");
             Assert.AreEqual(false, controlWithScrollBar.ScrollBars.CanScroll);
         }
     }

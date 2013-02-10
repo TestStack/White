@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems.TextBoxes
         [Test]
         public void CannotGetTextFromPassword()
         {
-            var textBox = window.Get<TextBox>("textBox1");
+            var textBox = Window.Get<TextBox>("textBox1");
             textBox.BulkText = "foobar";
             var exception = Assert.Throws<WhiteException>(() => { var text = textBox.Text; });
             Assert.AreEqual("Text cannot be retrieved from textbox which has secret text (e.g. password) stored in it", exception.Message);
@@ -24,10 +24,10 @@ namespace White.Core.UITests.UIItems.TextBoxes
         [Test]
         public void GetPasswordValueWhenTextBoxIsNotPasswordField()
         {
-            var textBox = window.Get<TextBox>("textBox1");
+            var textBox = Window.Get<TextBox>("textBox1");
             textBox.BulkText = "foobar";
-            window.Get<Button>("button1").Click();
-            textBox = window.Get<TextBox>("textBox1");
+            Window.Get<Button>("button1").Click();
+            textBox = Window.Get<TextBox>("textBox1");
             string text = textBox.Text;
             Assert.AreEqual("foobar", text);
         }

@@ -12,9 +12,9 @@ namespace White.Core.UITests
         [Test]
         public void CloseMessageBoxTest()
         {
-            window.Get<Button>("buttonLaunchesMessageBox").Click();
-            Window messageBox = window.MessageBox("Close Me");
-            var label = window.Get<Label>("65535");
+            Window.Get<Button>("buttonLaunchesMessageBox").Click();
+            Window messageBox = Window.MessageBox("Close Me");
+            var label = Window.Get<Label>("65535");
             Assert.AreEqual("Close Me", label.Text);
             messageBox.Close();
         }
@@ -22,8 +22,8 @@ namespace White.Core.UITests
         [Test]
         public void ClickButtonOnMessageBox()
         {
-            window.Get<Button>("buttonLaunchesMessageBox").Click();
-            Window messageBox = window.MessageBox("Close Me");
+            Window.Get<Button>("buttonLaunchesMessageBox").Click();
+            Window messageBox = Window.MessageBox("Close Me");
             messageBox.Get<Button>(SearchCriteria.ByText("OK")).Click();
         }
     }

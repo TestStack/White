@@ -11,7 +11,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            slider = window.Get<Slider>("slider1");
+            slider = Window.Get<Slider>("slider1");
         }
 
         [SetUp]

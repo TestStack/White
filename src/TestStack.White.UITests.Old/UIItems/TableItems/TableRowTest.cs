@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems.TableItems
 
         protected override void TestFixtureSetUp()
         {
-            table = window.Get<Table>("people");
+            table = Window.Get<Table>("people");
             rows = table.Rows;
         }
 

@@ -10,10 +10,10 @@ namespace White.Core.UITests.UIItems.TreeItems
         [Test]
         public void ModalOnExpand()
         {
-            TreeNode node = window.Get<Tree>("treeViewLaunchesModal").Node("Root");
+            TreeNode node = Window.Get<Tree>("treeViewLaunchesModal").Node("Root");
             node.Select();
             node.Expand();
-            CloseModal(window);
+            CloseModal(Window);
         }
     }
 }

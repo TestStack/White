@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Click()
         {
-            var hyperlink = window.Get<Hyperlink>("linkLabel");
+            var hyperlink = Window.Get<Hyperlink>("linkLabel");
             hyperlink.Click(10, 10);
             AssertResultLabelText("Link label clicked");
         }
@@ -18,15 +18,15 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void ClickLaunchesModalWindow()
         {
-            var hyperlink = window.Get<Hyperlink>("linkLaunchesModalWindow");
+            var hyperlink = Window.Get<Hyperlink>("linkLaunchesModalWindow");
             hyperlink.Click();
-            CloseModal(window);
+            CloseModal(Window);
         }
 
         [Test]
         public void ClickablePoint()
         {
-            var hyperlink = window.Get<Hyperlink>("linkLabel");
+            var hyperlink = Window.Get<Hyperlink>("linkLabel");
             var clickablePoint = hyperlink.ClickablePoint;
 
             Assert.AreNotEqual(new Point(0, 0), clickablePoint);

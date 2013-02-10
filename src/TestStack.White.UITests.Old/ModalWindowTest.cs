@@ -12,13 +12,13 @@ namespace White.Core.UITests
         [TearDown]
         public void TearDown()
         {
-            CloseModal(window);
+            CloseModal(Window);
         }
 
         [Test]
         public void NoModalWindowExists()
         {
-            Window modalWindow = window.ModalWindow("foo");
+            Window modalWindow = Window.ModalWindow("foo");
             Assert.AreEqual(null, modalWindow);
         }
 
@@ -26,20 +26,20 @@ namespace White.Core.UITests
         public void GetModalWindow()
         {
             LaunchModalWindow();
-            Window modalWindow = window.ModalWindow("ModalForm");
+            Window modalWindow = Window.ModalWindow("ModalForm");
             Assert.AreNotEqual(null, modalWindow);
         }
 
         private void LaunchModalWindow()
         {
-            window.Get<Button>("launchModal").Click();
+            Window.Get<Button>("launchModal").Click();
         }
 
         [Test]
         public void GetModalWindowBasedOnSearchCriteria()
         {
             LaunchModalWindow();
-            Window modalWindow = window.ModalWindow(SearchCriteria.ByText("ModalForm"));
+            Window modalWindow = Window.ModalWindow(SearchCriteria.ByText("ModalForm"));
             Assert.AreNotEqual(null, modalWindow);
         }
     }

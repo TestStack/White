@@ -13,29 +13,29 @@ namespace White.Core.UITests.UIItems.MenuItems
         [SetUp]
         public void SetUp()
         {
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, window);
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, Window);
+            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, Window);
         }
 
         [Test]
         public void FindMenuBar()
         {
-            Assert.AreNotEqual(null, window.MenuBar);
-            Assert.AreNotEqual(null, window.MenuBar.MenuItem("File"));
-            Assert.AreEqual(1, window.MenuBars.Count);
+            Assert.AreNotEqual(null, Window.MenuBar);
+            Assert.AreNotEqual(null, Window.MenuBar.MenuItem("File"));
+            Assert.AreEqual(1, Window.MenuBars.Count);
         }
 
         [Test]
         public void FindSubMenu()
         {
-            Menu menu = window.MenuBar.MenuItem("File", "Click Me");
+            Menu menu = Window.MenuBar.MenuItem("File", "Click Me");
             Assert.AreNotEqual(null, menu);
         }
 
         [Test]
         public void Click()
         {
-            Menu menu = window.MenuBar.MenuItem("File", "Click Me");
+            Menu menu = Window.MenuBar.MenuItem("File", "Click Me");
             menu.Click();
             AssertResultLabelText("Click Me Clicked");
         }
@@ -43,7 +43,7 @@ namespace White.Core.UITests.UIItems.MenuItems
         [Test]
         public void RaiseClickEvent()
         {
-            Menu menu = window.MenuBar.MenuItem("File", "Click Me");
+            Menu menu = Window.MenuBar.MenuItem("File", "Click Me");
             menu.Click();
             AssertResultLabelText("Click Me Clicked");
         }
@@ -55,7 +55,7 @@ namespace White.Core.UITests.UIItems.MenuItems
         [Test]
         public void FindByAutomationId()
         {
-            MenuBar menuBar = window.MenuBar;
+            MenuBar menuBar = Window.MenuBar;
             Assert.AreNotEqual(null, menuBar.MenuItemBy(SearchCriteria.ByAutomationId("FileId")));
         }
     }

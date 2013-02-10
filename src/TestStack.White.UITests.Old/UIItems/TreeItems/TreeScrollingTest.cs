@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems.TreeItems
         [Test]
         public void ScrollAndSelect()
         {
-            var tree = window.Get<Tree>("treeView1");
+            var tree = Window.Get<Tree>("treeView1");
             TreeNode treeNode = tree.Node("Root", "Child40");
             Assert.AreNotEqual(null, treeNode);
             treeNode.Select();

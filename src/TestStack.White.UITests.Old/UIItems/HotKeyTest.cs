@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void AccessKey()
         {
-            Assert.AreEqual("Alt+B", window.Get<Button>("buton").AccessKey);
+            Assert.AreEqual("Alt+B", Window.Get<Button>("buton").AccessKey);
         }
     }
 }

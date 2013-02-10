@@ -12,8 +12,8 @@ namespace White.Core.UITests
         [Test]
         public void GetControlFromModalWindow()
         {
-            window.Get<Button>("launchModal").Click();
-            Window modalWindow = window.ModalWindow("ModalForm", InitializeOption.NoCache.AndIdentifiedBy("ModalForm"));
+            Window.Get<Button>("launchModal").Click();
+            Window modalWindow = Window.ModalWindow("ModalForm", InitializeOption.NoCache.AndIdentifiedBy("ModalForm"));
             modalWindow.Get<Button>("ok").Click();
         }
     }

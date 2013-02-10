@@ -14,8 +14,8 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void CloseWhenModalWindowIsLaunchedAtClose()
         {
-            window.Close();
-            CloseModal(window);
+            Window.Close();
+            CloseModal(Window);
         }
 
         protected override void BaseTestFixtureTearDown() {}
@@ -27,10 +27,10 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void IsClosed()
         {
-            Assert.AreEqual(false, window.IsClosed);
-            window.Close();
-            window.WaitTill(() => window.IsClosed);
-            Assert.AreEqual(true, window.IsClosed);
+            Assert.AreEqual(false, Window.IsClosed);
+            Window.Close();
+            Window.WaitTill(() => Window.IsClosed);
+            Assert.AreEqual(true, Window.IsClosed);
         }
     }
 }

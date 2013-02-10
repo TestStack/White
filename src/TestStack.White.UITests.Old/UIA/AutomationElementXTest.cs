@@ -11,7 +11,7 @@ namespace White.Core.UITests.UIA
         [Test]
         public void TestToString()
         {
-            var button = window.Get<Button>("buton");
+            var button = Window.Get<Button>("buton");
             string s = button.AutomationElement.Display();
             Assert.AreEqual(string.Format("AutomationId:buton, Name:Buton, ControlType:button, FrameworkId:WPF"), s);
         }

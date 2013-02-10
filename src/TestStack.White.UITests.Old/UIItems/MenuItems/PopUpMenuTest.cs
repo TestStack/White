@@ -12,17 +12,17 @@ namespace White.Core.UITests.UIItems.MenuItems
         [Test]
         public void GetPopupMenuItems()
         {
-            window.Get<ListBox>("listBox").RightClick();
-            PopUpMenu popup = window.Popup;
+            Window.Get<ListBox>("listBox").RightClick();
+            PopUpMenu popup = Window.Popup;
             Assert.AreEqual(1, popup.Items.Count);
         }
 
         [Test]
         public void ClickOnPopupMenu()
         {
-            window.Get<ListBox>("listBox").RightClick();
-            Assert.AreEqual(true, window.HasPopup());
-            Menu menu = window.PopupMenu("Show Films");
+            Window.Get<ListBox>("listBox").RightClick();
+            Assert.AreEqual(true, Window.HasPopup());
+            Menu menu = Window.PopupMenu("Show Films");
             menu.Click();
             AssertResultLabelText("All good films");
         }
@@ -30,8 +30,8 @@ namespace White.Core.UITests.UIItems.MenuItems
         [Test]
         public void ClickOnNestedMenu()
         {
-            window.Get<ListBox>("listBoxWithVScrollBar").RightClick();
-            window.PopupMenu("Root", "Level1", "Level2").Click();
+            Window.Get<ListBox>("listBoxWithVScrollBar").RightClick();
+            Window.PopupMenu("Root", "Level1", "Level2").Click();
             AssertResultLabelText("Level2Click");
         }
     }

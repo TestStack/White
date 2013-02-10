@@ -13,7 +13,7 @@ namespace White.Core.UITests.UIItems.WindowStripControls
 
         protected override void TestFixtureSetUp()
         {
-            statusStrip = window.StatusBar(InitializeOption.NoCache);
+            statusStrip = Window.StatusBar(InitializeOption.NoCache);
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace White.Core.UITests.UIItems.WindowStripControls
         [Test]
         public void ThrowsWhenDoesNotExists()
         {
-            var exception = Assert.Throws<AutomationException>(()=> window.Get<StatusStrip>("statusStrip1"));
+            var exception = Assert.Throws<AutomationException>(()=> Window.Get<StatusStrip>("statusStrip1"));
 
             Assert.AreEqual("Failed to get ControlType=status bar,AutomationId=statusStrip1", exception.Message);
         }

@@ -11,7 +11,7 @@ namespace White.Core.UITests.AutomationElementSearch
         [Test]
         public void FindTextBlock()
         {
-            AutomationElement element = window.GetElement(SearchCriteria.ByAutomationId("newBlock"));
+            AutomationElement element = Window.GetElement(SearchCriteria.ByAutomationId("newBlock"));
             Assert.AreNotEqual(null, element);
         }        
     }

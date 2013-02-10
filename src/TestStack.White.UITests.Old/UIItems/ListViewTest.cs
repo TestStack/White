@@ -13,7 +13,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            listView = window.Get<ListView>("listView");
+            listView = Window.Get<ListView>("listView");
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace White.Core.UITests.UIItems
             listView.Select(0);
             ListViewRow firstRow = listView.Rows[0];
             Assert.AreEqual(true, firstRow.IsSelected);
-            Assert.AreEqual("listView item selected - " + 0, window.Get<Label>("result").Text);
+            Assert.AreEqual("listView item selected - " + 0, Window.Get<Label>("result").Text);
             listView.Select(1);
             ListViewRow secondRow = listView.Rows[1];
             Assert.AreEqual(true, secondRow.IsSelected);
@@ -98,7 +98,7 @@ namespace White.Core.UITests.UIItems
         {
             ListViewRows rows = listView.Rows;
             rows[0].DoubleClick();
-            CloseModal(window);
+            CloseModal(Window);
         }
     }
 }

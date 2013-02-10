@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Find()
         {
-            Label label = window.Get<Label>("textBlock1");
+            Label label = Window.Get<Label>("textBlock1");
             Assert.AreNotEqual(null, label);
         }
     }

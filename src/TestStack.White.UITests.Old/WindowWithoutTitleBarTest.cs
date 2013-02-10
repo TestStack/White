@@ -14,8 +14,8 @@ namespace White.Core.UITests
         [Test]
         public void FindWindow()
         {
-            Assert.AreNotEqual(null, window);
-            Assert.AreEqual("Form1", window.Title);
+            Assert.AreNotEqual(null, Window);
+            Assert.AreEqual("Form1", Window.Title);
         }
     }
 }

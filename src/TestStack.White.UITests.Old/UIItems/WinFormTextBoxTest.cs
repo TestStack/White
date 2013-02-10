@@ -13,7 +13,7 @@ namespace White.Core.UITests.UIItems
 
         protected override void TestFixtureSetUp()
         {
-            textBox = (WinFormTextBox) window.Get<TextBox>("textBox");
+            textBox = (WinFormTextBox) Window.Get<TextBox>("textBox");
         }
 
         [Test]

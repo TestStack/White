@@ -13,7 +13,7 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void ListItemContainingTextbox()
         {
-            var listBox = window.Get<ListBox>("listBox");
+            var listBox = Window.Get<ListBox>("listBox");
             var listItem = (WPFListItem) listBox.Items.Find(item => "Hrishikesh".Equals(item.Text));
             var textBox = listItem.Get<TextBox>(SearchCriteria.All);
             Assert.AreNotEqual(null, textBox);
@@ -24,7 +24,7 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void FindNonExistentObject()
         {
-            var listBox = window.Get<ListBox>("listBox");
+            var listBox = Window.Get<ListBox>("listBox");
             var listItem = (WPFListItem)listBox.Items.Find(item => "Hrishikesh".Equals(item.Text));
             var exception = Assert.Throws<AutomationException>(() => listItem.Get<TextBox>(SearchCriteria.ByAutomationId("foo")));
 
@@ -34,10 +34,10 @@ namespace White.Core.UITests.UIItems.ListBoxItems
         [Test]
         public void ListBoxWithScrollBarWithChangingItems()
         {
-            var listBox = window.Get<ListBox>("listBoxWithDynamicItems");
+            var listBox = Window.Get<ListBox>("listBoxWithDynamicItems");
             listBox.Select("One");
             listBox.Select("17");
-            window.Get<Button>("changeLanguage").Click();
+            Window.Get<Button>("changeLanguage").Click();
             listBox.Select("Teen");
         }
     }

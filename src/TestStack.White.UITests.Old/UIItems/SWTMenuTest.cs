@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void SubMenu()
         {
-            Menu menu = window.MenuBar.MenuItem("File", "Click Me Too", "Leaf");
+            Menu menu = Window.MenuBar.MenuItem("File", "Click Me Too", "Leaf");
             Assert.AreNotEqual(null, menu);
         }
     }

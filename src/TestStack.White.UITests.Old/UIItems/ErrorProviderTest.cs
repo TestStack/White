@@ -11,9 +11,9 @@ namespace White.Core.UITests.UIItems
         [Test, Ignore]
         public void HasError()
         {
-            window.Get<Button>("showError").Click();
-            var comboBox = window.Get<ComboBox>("komboBox");
-            Assert.AreEqual("The name is wrong", comboBox.ErrorProviderMessage(window));
+            Window.Get<Button>("showError").Click();
+            var comboBox = Window.Get<ComboBox>("komboBox");
+            Assert.AreEqual("The name is wrong", comboBox.ErrorProviderMessage(Window));
         }
     }
 }

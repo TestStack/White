@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems.TabItems
         [Test]
         public void SelectTab()
         {
-            Tab tab = window.Get<Tab>("tabControl1");
+            Tab tab = Window.Get<Tab>("tabControl1");
             tab.SelectTabPage("tabPage2");
             Assert.AreEqual("tabPage2", tab.SelectedTab.ToString());
             tab.SelectTabPage("tabPage1");

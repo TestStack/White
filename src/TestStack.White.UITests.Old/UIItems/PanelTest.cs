@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void Text()
         {
-            Panel panel = window.Get<Panel>("panelWithText");
+            Panel panel = Window.Get<Panel>("panelWithText");
             Assert.AreEqual("PanelText", panel.Text);
         }
     }

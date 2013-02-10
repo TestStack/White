@@ -10,7 +10,7 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void ClickHyperlink()
         {
-            WPFLabel labelContainingHyperlink = window.Get<WPFLabel>("linkLabel");
+            WPFLabel labelContainingHyperlink = Window.Get<WPFLabel>("linkLabel");
             labelContainingHyperlink.Hyperlink("Link Text").Click();
             AssertResultLabelText("Link label clicked");
         }
@@ -18,9 +18,9 @@ namespace White.Core.UITests.UIItems
         [Test]
         public void ClickHyperlinkLlaunchedModal()
         {
-            WPFLabel labelContainingHyperlink = window.Get<WPFLabel>("hyperlinkLaunchesModal");
+            WPFLabel labelContainingHyperlink = Window.Get<WPFLabel>("hyperlinkLaunchesModal");
             labelContainingHyperlink.Hyperlink("Launch Modal").Click();
-            CloseModal(window);
+            CloseModal(Window);
         }
     }
 }
