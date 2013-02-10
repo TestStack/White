@@ -75,8 +75,8 @@ namespace White.Core
             try
             {
                 var stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine(); 
-                stringBuilder.AppendLine("All windows:")
+                stringBuilder.AppendLine();
+                stringBuilder.AppendLine("All windows:");
                 stringBuilder.AppendLine();
                 GetAllWindows(stringBuilder, 0, AutomationElement.RootElement);
                 return stringBuilder.ToString();
