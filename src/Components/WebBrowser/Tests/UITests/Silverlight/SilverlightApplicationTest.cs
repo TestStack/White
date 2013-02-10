@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using White.WebBrowser.Silverlight;
 
 namespace White.WebBrowser.UITests.Silverlight
 {
@@ -9,7 +8,7 @@ namespace White.WebBrowser.UITests.Silverlight
         [Test]
         public void FindSilverlightDocument()
         {
-            SilverlightDocument document = BrowserWindow.SilverlightDocument;
+            var document = BrowserWindow.SilverlightDocument;
             Assert.AreNotEqual(null, document);
         }
     }

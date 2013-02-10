@@ -13,25 +13,36 @@ namespace White.WebBrowser.UITests
         [TestFixtureSetUp]
         public void TestFixtureSetUp()
         {
-            var fullPath = Path.GetFullPath(Path.Combine(
-                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                @"..\..\..\..\..\..\TestApplications\TestSilverlightApplication.Web"));
+            string fullPath;
+            var checkoutDir = Environment.GetEnvironmentVariable("checkoutDir");
+            if (string.IsNullOrEmpty(checkoutDir))
+            {
+                fullPath = Path.GetFullPath
+                    (
+                        Path.Combine
+                            (
+                                Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                                @"..\..\..\..\..\..\TestApplications\TestSilverlightApplication.Web"
+                            )
+                    );
+            }
+            else
+            {
+                var pathToApp = @"src\TestApplications\TestSilverlightApplication.Web";
+                fullPath = Path.GetFullPath(Path.Combine(checkoutDir, pathToApp));
+            }
             var appcmd = string.Format(@"{0}\system32\inetsrv\AppCmd.exe", Environment.GetEnvironmentVariable("windir"));
-            Process.Start(
-                appcmd,
-                string.Format("add app /site.name:\"Default Web Site\" /path:/TestSilverlightApplication.Web /physicalPath:\"{0}\"", fullPath));
-             
+            var args = string.Format("add app /site.name:\"Default Web Site\" /path:/TestSilverlightApplication.Web /physicalPath:\"{0}\"", fullPath);
+            Process.Start(appcmd, args).WaitForExit();
 
-            Process[] processes = Process.GetProcessesByName("iexplore");
+            var processes = Process.GetProcessesByName("iexplore");
             foreach (var process in processes)
             {
                 try
                 {
                     process.Kill();
                 }
-                catch
-                {
-                }
+                catch { }
             }
             BrowserWindow = InternetExplorer.Launch("http://localhost/TestSilverlightApplication.Web/TestSilverlightApplicationTestPage.aspx",
                                                     "TestSilverlightApplication - Windows Internet Explorer");
