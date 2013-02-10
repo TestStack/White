@@ -33,7 +33,7 @@ namespace White.Core.Factory
 
         private static AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
         {
-            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            var element = Retry.For(find, TimeSpan.FromSeconds(30));
             if (element == null)
                 throw new UIActionException(message + Debug.GetAllWindows());
             return element;
@@ -41,7 +41,7 @@ namespace White.Core.Factory
 
         private AutomationElement FindWindowElement(Process process, string title)
         {
-            return WaitTillFound(() => Finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, Constants.BusyMessage));
+            return WaitTillFound(() => Finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, ", after waiting for 30 seconds"));
         }
 
         public virtual List<Window> DesktopWindows(Process process, ApplicationSession applicationSession)
