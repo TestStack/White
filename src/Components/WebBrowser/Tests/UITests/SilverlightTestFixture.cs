@@ -28,7 +28,7 @@ namespace White.WebBrowser.UITests
             }
             else
             {
-                var pathToApp = @"src\TestApplications\TestSilverlightApplication.Web";
+                const string pathToApp = @"SilverlightTestApplication";
                 fullPath = Path.GetFullPath(Path.Combine(checkoutDir, pathToApp));
             }
             var appcmd = string.Format(@"{0}\system32\inetsrv\AppCmd.exe", Environment.GetEnvironmentVariable("windir"));
@@ -56,7 +56,18 @@ namespace White.WebBrowser.UITests
         [TestFixtureTearDown]
         public void TestFixtureTearDown()
         {
-            BrowserWindow.Dispose();
+            if (BrowserWindow != null)
+                BrowserWindow.Dispose();
+
+            var processes = Process.GetProcessesByName("iexplore");
+            foreach (var process in processes)
+            {
+                try
+                {
+                    process.Kill();
+                }
+                catch { }
+            }
         }
     }
 }
