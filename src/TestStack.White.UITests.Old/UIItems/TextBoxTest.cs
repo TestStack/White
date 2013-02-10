@@ -42,8 +42,7 @@ namespace White.Core.UITests.UIItems
             AttachedKeyboard attachedKeyboard = window.Keyboard;
             textBox.Text = "userText";
             attachedKeyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
-            attachedKeyboard.Enter("a");
-            attachedKeyboard.Enter("c");
+            attachedKeyboard.Enter("ac");
             attachedKeyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);
 
             //check the text is the same as that on the clipboard
