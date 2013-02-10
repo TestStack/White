@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using NUnit.Framework;
+using White.Core.Configuration;
 
 namespace White.WebBrowser.UITests
 {
@@ -33,6 +34,8 @@ namespace White.WebBrowser.UITests
             }
             var appcmd = string.Format(@"{0}\system32\inetsrv\AppCmd.exe", Environment.GetEnvironmentVariable("windir"));
             var args = string.Format("add app /site.name:\"Default Web Site\" /path:/TestSilverlightApplication.Web /physicalPath:\"{0}\"", fullPath);
+
+            CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SilverlightTestFixture)).Info(string.Format("Running {0} {1}", appcmd, args));
             Process.Start(appcmd, args).WaitForExit();
 
             var processes = Process.GetProcessesByName("iexplore");
