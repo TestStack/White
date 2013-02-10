@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Windows.Forms;
 using NUnit.Framework;
 using White.Core.InputDevices;
@@ -44,6 +45,7 @@ namespace White.Core.UITests.UIItems
             attachedKeyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
             attachedKeyboard.Enter("ac");
             attachedKeyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);
+            Thread.Sleep(100);
 
             //check the text is the same as that on the clipboard
             string clipbrdText = Clipboard.GetText();
