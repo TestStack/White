@@ -132,14 +132,12 @@ namespace White.Core.ScreenMap
 
         public virtual void Save()
         {
-            if (dirty)
+            if (!dirty) return;
+            lastWindowPosition = currentWindowPosition;
+            using (var fileStream = CreateFileStream(fileLocation))
             {
-                lastWindowPosition = currentWindowPosition;
-                using (var fileStream = CreateFileStream(fileLocation))
-                {
-                    var dataContractSerializer = CreateDataContractSerializer();
-                    dataContractSerializer.WriteObject(fileStream, this);
-                }
+                var dataContractSerializer = CreateDataContractSerializer();
+                dataContractSerializer.WriteObject(fileStream, this);
             }
         }
 

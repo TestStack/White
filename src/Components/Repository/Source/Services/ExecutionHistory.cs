@@ -1,20 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Xml.Serialization;
+using System.Runtime.Serialization;
 using White.Core.Configuration;
-using Xstream.Core;
 
 namespace Repository.Services
 {
+    [DataContract]
     public class ExecutionHistory
     {
+        [DataMember]
         private object lastSnapshotId;
+        [DataMember]
         private bool hasError;
 
-        private static readonly string ExecutionHistoryFile =
-    string.Format(@"{0}\{1}.xml", CoreAppXmlConfiguration.Instance.WorkSessionLocation, "ExecutionHistory");
+        private static readonly string ExecutionHistoryFile = 
+            string.Format(@"{0}\{1}.xml", CoreAppXmlConfiguration.Instance.WorkSessionLocation, "ExecutionHistory");
 
         public ExecutionHistory()
         {
@@ -31,6 +30,7 @@ namespace Repository.Services
             return ServiceCalls.Matching(match);
         }
 
+        [DataMember]
         public virtual object Data { get; set; }
 
         public virtual object LastSnapshot
@@ -48,7 +48,13 @@ namespace Repository.Services
         public static ExecutionHistory Create()
         {
             if (File.Exists(ExecutionHistoryFile))
-                return (ExecutionHistory)new FileXStream(ExecutionHistoryFile).FromFile();
+            {
+                using (var fs = CreateFileStream(ExecutionHistoryFile))
+                {
+                    var dcs = new DataContractSerializer(typeof (ExecutionHistory));
+                    return (ExecutionHistory)dcs.ReadObject(fs);
+                }
+            }
             return new ExecutionHistory();
         }
 
@@ -65,25 +71,21 @@ namespace Repository.Services
 
         public virtual void Save()
         {
-            var fileXStream = new FileXStream(ExecutionHistoryFile);
-            fileXStream.AddIgnoreAttribute(typeof(XmlIgnoreAttribute));
-            fileXStream.ToXml(this);
+            using (var fs = CreateFileStream(ExecutionHistoryFile))
+            {
+                var dcs = new DataContractSerializer(typeof(ExecutionHistory));
+                dcs.WriteObject(fs, this);
+            }
+        }
+
+        private static FileStream CreateFileStream(string fileLocation)
+        {
+            return new FileStream(fileLocation, FileMode.OpenOrCreate);
         }
 
         public virtual bool DropSnapshot()
         {
             return !(hasError || lastSnapshotId == null);
-        }
-    }
-
-    public class ServiceCalls : List<ServiceCall>
-    {
-        public ServiceCalls(IEnumerable entities) : base(entities.OfType<ServiceCall>()) {}
-        public ServiceCalls() {}
-
-        public virtual ServiceCalls Matching(ServiceCall match)
-        {
-            return new ServiceCalls(FindAll(obj => obj.Equals(match)));
         }
     }
 }
