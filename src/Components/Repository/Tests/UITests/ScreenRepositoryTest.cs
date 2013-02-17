@@ -1,4 +1,3 @@
-using Repository;
 using Rhino.Mocks;
 using White.Core;
 using White.Core.Factory;

@@ -4,7 +4,7 @@ using Castle.DynamicProxy;
 using White.Core;
 using Reporting.Domain;
 
-namespace Repository.Services
+namespace White.Repository.Services
 {
     public class ServiceInterceptor : IInterceptor
     {

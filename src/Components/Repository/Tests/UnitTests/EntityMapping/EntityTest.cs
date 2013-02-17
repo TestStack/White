@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Repository.EntityMapping;
+using White.Repository.EntityMapping;
 
 namespace White.Repository.UnitTests.EntityMapping
 {

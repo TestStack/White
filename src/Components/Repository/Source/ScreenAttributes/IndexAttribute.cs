@@ -1,8 +1,7 @@
 using System;
 using White.Core.UIItems.Finders;
-using Repository.ScreenAttributes;
 
-namespace Repository.ScreenAttributes
+namespace White.Repository.ScreenAttributes
 {
     [AttributeUsage(AttributeTargets.Field)]
     public class IndexAttribute : SearchCriteriaAttribute

@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using Reporting.Configuration;
 using Reporting.Domain;
-using Repository.Configuration;
 using White.Core.Bricks;
+using White.Repository.Configuration;
 
-namespace Repository.Services
+namespace White.Repository.Services
 {
     public class WhiteExecution : IDisposable
     {

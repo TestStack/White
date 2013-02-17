@@ -1,4 +1,3 @@
-using Repository;
 using NUnit.Framework;
 using Rhino.Mocks;
 using White.Core.UIItems.WindowItems;

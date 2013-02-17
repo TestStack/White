@@ -7,7 +7,7 @@ using White.Core.Sessions;
 using White.Core.UIItems.WindowItems;
 using Reporting.Domain;
 
-namespace Repository
+namespace White.Repository
 {
     //TODO: When the window is not found the exception from screen repository should be clear enough.
     //TODO: Provide Live and FileTemplates

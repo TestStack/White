@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using White.Core.UIItems.TableItems;
 
-namespace Repository.EntityMapping
+namespace White.Repository.EntityMapping
 {
     [Serializable]
     public class Entities<T> : List<T> where T : Entity

@@ -1,8 +1,7 @@
-using Repository;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
-using Repository.ScreenFieldAttributes;
+using White.Repository.ScreenAttributes;
 
 namespace White.Repository.UITests.Testing
 {

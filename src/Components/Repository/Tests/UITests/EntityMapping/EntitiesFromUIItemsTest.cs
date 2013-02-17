@@ -1,9 +1,9 @@
 using NUnit.Framework;
-using Repository.EntityMapping;
 using White.Core;
 using White.Core.UIItems.TableItems;
 using White.Core.UIItems.WindowItems;
 using White.Core.UITests;
+using White.Repository.EntityMapping;
 using White.Repository.UnitTests.EntityMapping;
 
 namespace White.Repository.UITests.EntityMapping

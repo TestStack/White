@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Repository.Services;
+using White.Repository.Services;
 
 namespace White.Repository.UnitTests.Services
 {

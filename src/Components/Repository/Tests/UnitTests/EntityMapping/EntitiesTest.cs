@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Text;
-using Repository.EntityMapping;
 using White.Core.UIItems.TableItems;
 using NUnit.Framework;
+using White.Repository.EntityMapping;
 
 namespace White.Repository.UnitTests.EntityMapping
 {

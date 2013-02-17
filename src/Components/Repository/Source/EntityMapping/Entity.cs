@@ -9,7 +9,7 @@ using Castle.Core.Logging;
 using White.Core.Configuration;
 using White.Core.UIItems.TableItems;
 
-namespace Repository.EntityMapping
+namespace White.Repository.EntityMapping
 {
     /// <summary>
     /// Represents an entity which can be mapped to the screen objects.
