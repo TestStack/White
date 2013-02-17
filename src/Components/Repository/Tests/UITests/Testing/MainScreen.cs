@@ -39,8 +39,6 @@ namespace White.Repository.UITests.Testing
 
         private MainProgressBars mainProgressBars = null;
 
-        protected MainScreen() {}
-
         public MainScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {
         }

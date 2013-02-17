@@ -8,7 +8,7 @@
     <ProjectGuid>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Repository</RootNamespace>
+    <RootNamespace>White.Repository</RootNamespace>
     <AssemblyName>White.Repository</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>

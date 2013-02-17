@@ -14,7 +14,6 @@ namespace Repository
     public class AppScreen : RepositoryComponent
     {
         private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(AppScreen));
-        protected AppScreen() {}
 
         public AppScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository) {}
 

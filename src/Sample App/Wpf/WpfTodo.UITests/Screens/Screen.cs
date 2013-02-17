@@ -1,30 +1,25 @@
 ﻿using System;
 using System.Windows.Automation;
-using White.Core;
+using Repository;
 using White.Core.UIItems.WindowItems;
 using White.Core.Utility;
 
 namespace WpfTodo.UITests.Screens
 {
-    public class Screen
+    public class Screen : AppScreen
     {
-        protected Screen(Application application, Window whiteWindow)
+        public Screen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {
-            Application = application;
-            WhiteWindow = whiteWindow;
         }
 
-        public Application Application { get; set; }
-        public Window WhiteWindow { get; set; }
-
-        public void WaitWhileBusy()
+        public virtual void WaitWhileBusy()
         {
             Retry.For(ShellIsBusy, isBusy => isBusy, TimeSpan.FromSeconds(30));
         }
 
         bool ShellIsBusy()
         {
-            var currentPropertyValue = WhiteWindow.AutomationElement.GetCurrentPropertyValue(AutomationElement.HelpTextProperty);
+            var currentPropertyValue = window.AutomationElement.GetCurrentPropertyValue(AutomationElement.HelpTextProperty);
             return currentPropertyValue != null && ((string)currentPropertyValue).Contains("Busy");
         }
     }

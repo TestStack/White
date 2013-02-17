@@ -56,7 +56,7 @@ namespace Repository
             object[] customAttributes = fieldInfo.GetCustomAttributes(false);
             foreach (Attribute customAttribute in customAttributes)
             {
-                SearchCriteriaAttribute searchCriteriaAttribute = customAttribute as SearchCriteriaAttribute;
+                var searchCriteriaAttribute = customAttribute as SearchCriteriaAttribute;
                 if (searchCriteriaAttribute != null)
                 {
                     if (searchCriteria == null) searchCriteria = SearchCriteria.ByControlType(fieldInfo.FieldType);
