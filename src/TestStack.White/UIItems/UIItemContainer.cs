@@ -85,7 +85,7 @@ namespace White.Core.UIItems
         /// <returns>First items matching the type and criteria</returns>
         public virtual T Get<T>(SearchCriteria searchCriteria) where T : UIItem
         {
-            return (T) Get(searchCriteria.AndControlType(typeof (T)));
+            return (T) Get(searchCriteria.AndControlType(typeof (T), Framework));
         }
 
         /// <summary>

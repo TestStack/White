@@ -16,32 +16,37 @@ namespace White.Core.UIItems
 
         public virtual bool WinForm
         {
-            get { return frameworkId.Equals(Constants.WinFormFrameworkId); }
+            get { return FrameworkId.Equals(Constants.WinFormFrameworkId); }
         }
 
         public virtual bool WPF
         {
-            get { return frameworkId.Equals(Constants.WPFFrameworkId); }
+            get { return FrameworkId.Equals(Constants.WPFFrameworkId); }
         }
 
         public virtual bool Win32
         {
-            get { return frameworkId.Equals(Constants.Win32FrameworkId); }
+            get { return FrameworkId.Equals(Constants.Win32FrameworkId); }
         }
 
         public virtual bool UIAutomationBug
         {
-            get { return string.IsNullOrEmpty(frameworkId) || frameworkId.Trim() == string.Empty; }
+            get { return string.IsNullOrEmpty(FrameworkId) || FrameworkId.Trim() == string.Empty; }
         }
 
         public virtual bool Silverlight
         {
-            get { return frameworkId.Equals(Constants.SilverlightFrameworkId); }
+            get { return FrameworkId.Equals(Constants.SilverlightFrameworkId); }
+        }
+
+        public virtual string FrameworkId
+        {
+            get { return frameworkId; }
         }
 
         public override string ToString()
         {
-            return frameworkId;
+            return FrameworkId;
         }
     }
 }

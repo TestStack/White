@@ -11,7 +11,7 @@ namespace White.Core.UIItems.WPFUIItems
         public static T Get<T>(this UIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
         {
             UIItemContainer uiItemContainer = GetUiItemContainer(uiItem);
-            return (T)uiItemContainer.Get(searchCriteria.AndControlType(typeof(T)));
+            return (T)uiItemContainer.Get(searchCriteria.AndControlType(typeof(T), uiItem.Framework));
         }
 
         private static UIItemContainer GetUiItemContainer(UIItem uiItem)

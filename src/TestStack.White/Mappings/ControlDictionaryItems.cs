@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Automation;
 
 namespace White.Core.Mappings
@@ -53,7 +54,8 @@ namespace White.Core.Mappings
 
         public virtual ControlDictionaryItem FindBy(Type testControlType, string frameworkId)
         {
-            return Find(controlDictionaryItem => testControlType.IsAssignableFrom(controlDictionaryItem.TestControlType) && (frameworkId == null || Equals(controlDictionaryItem.FrameworkId, frameworkId)));
+            var frameworkSpecificMatch = this.FirstOrDefault(c => testControlType.IsAssignableFrom(c.TestControlType) && Equals(c.FrameworkId, frameworkId));
+            return frameworkSpecificMatch ?? this.FirstOrDefault(c => testControlType.IsAssignableFrom(c.TestControlType) && string.IsNullOrEmpty(c.FrameworkId));
         }
 
         public virtual void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType, Type silverlightType)

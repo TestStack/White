@@ -82,7 +82,8 @@ namespace White.Core.Mappings
             items.Add(ControlDictionaryItem.WPFSecondary(typeof (WPFTreeNode), ControlType.TreeItem));
             items.Add(ControlDictionaryItem.Win32Secondary(typeof (Win32TreeNode), ControlType.TreeItem));
 
-            items.Add(new ControlDictionaryItem(typeof (DateTimePicker), ControlType.Pane, "SysDateTimePick32", true, true, false, null, false));
+            items.Add(new ControlDictionaryItem(typeof(DateTimePicker), ControlType.Pane, "SysDateTimePick32", true, false, false, Constants.WinFormFrameworkId, false));
+            items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Custom, "DatePicker", true, false, false, Constants.WPFFrameworkId, false));
             items.Add(new ControlDictionaryItem(typeof (GroupBox), ControlType.Group, string.Empty, false, true, false, null, true));
             items.Add(new ControlDictionaryItem(null, ControlType.TitleBar, string.Empty, false, false, true, null, false));
             items.Add(new ControlDictionaryItem(null, ControlType.Pane, string.Empty, false, false, false, null, true));
@@ -103,12 +104,10 @@ namespace White.Core.Mappings
 
         public virtual ControlType GetControlType(Type testControlType, string frameworkId)
         {
-            return items.FindBy(testControlType, frameworkId).ControlType;
-        }
-
-        public virtual ControlType GetControlType(Type testControlType)
-        {
-            return items.FindBy(testControlType, null).ControlType;
+            var controlDictionaryItem = items.FindBy(testControlType, frameworkId);
+            if (controlDictionaryItem == null)
+                throw new WhiteException(string.Format("Cannot find {0} for {1}", testControlType.Name, frameworkId));
+            return controlDictionaryItem.ControlType;
         }
 
         public virtual Type GetTestControlType(ControlType controlType, string frameWorkId, bool isNativeControl)

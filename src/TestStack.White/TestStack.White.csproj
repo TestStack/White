@@ -186,6 +186,7 @@
     <Compile Include="UIItems\Scrolling\ComboBoxScrollBars.cs" />
     <Compile Include="UIItems\Scrolling\WinFormScrollBars.cs" />
     <Compile Include="UIItems\WPFButton.cs" />
+    <Compile Include="UIItems\WpfDatePicker.cs" />
     <Compile Include="UIItems\WPFUIItems\WPFUIItem.cs" />
     <Compile Include="Utility\MethodNameResolver.cs" />
     <Compile Include="Utility\MonitorForm.cs">

@@ -27,7 +27,7 @@ namespace White.Core.UITests.UIItems.WindowItems
         [Test]
         public void GetMultiple()
         {
-            IUIItem[] buttons = Window.GetMultiple(SearchCriteria.ByControlType(typeof(Button)));
+            IUIItem[] buttons = Window.GetMultiple(SearchCriteria.ByControlType(typeof(Button), Constants.WPFFrameworkId));
             Assert.AreEqual(true, buttons.Length > 10);
         }
     }
