@@ -6,7 +6,7 @@
         Width="525" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
     <Grid>
         <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
-                  Height="299" Width="297">
+                  Height="299" Width="297" Name="AGroupBox">
             <StackPanel>
                 <TextBlock Text="ComboBoxTests" />
                 <ComboBox x:Name="AComboBox" Width="150" HorizontalAlignment="Left">
