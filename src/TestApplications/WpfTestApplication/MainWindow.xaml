@@ -8,7 +8,7 @@
         <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                   Height="299" Width="297" Name="AGroupBox">
             <StackPanel>
-                <TextBlock Text="ComboBoxTests" Name="AComboboxTestsLabel" />
+                <TextBlock Text="ComboBoxTests" />
                 <ComboBox x:Name="AComboBox" Width="150" HorizontalAlignment="Left">
                     <ComboBox.Items>
                         <ComboBoxItem>Test</ComboBoxItem>
