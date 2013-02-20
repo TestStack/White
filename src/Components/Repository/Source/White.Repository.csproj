@@ -8,7 +8,7 @@
     <ProjectGuid>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Repository</RootNamespace>
+    <RootNamespace>White.Repository</RootNamespace>
     <AssemblyName>White.Repository</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -67,6 +67,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient" />
@@ -82,7 +83,6 @@
     <Compile Include="AppScreenException.cs" />
     <Compile Include="AppWindow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DummyWindow.cs" />
     <Compile Include="ScreenAttributes\AutomationIdAttribute.cs" />
     <Compile Include="ScreenAttributes\FrameworkIdAttribute.cs" />
     <Compile Include="ScreenAttributes\IndexAttribute.cs" />
@@ -115,6 +115,7 @@
     <Compile Include="Services\LastServiceCallStatus.cs" />
     <Compile Include="Services\NullExecutionHistory.cs" />
     <Compile Include="Services\NullServiceExecution.cs" />
+    <Compile Include="Services\ServiceCalls.cs" />
     <Compile Include="Services\ServiceExecution.cs" />
     <Compile Include="Services\WhiteExecution.cs" />
     <Compile Include="Services\ServiceCall.cs" />

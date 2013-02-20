@@ -83,19 +83,9 @@
     <Compile Include="Domain\SessionReport.cs" />
     <Compile Include="Domain\SubFlow.cs" />
     <Compile Include="Domain\SubFlows.cs" />
-    <EmbeddedResource Include="ReportControl.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>ReportControl.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="white.snk" />
-    <Compile Include="ReportControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ReportControl.Designer.cs">
-      <DependentUpon>ReportControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utility\HtmlGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

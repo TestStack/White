@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
+using White.Core.Factory;
+using White.Repository;
 using WpfTodo.UITests.Screens;
 
 namespace WpfTodo.UITests
@@ -8,9 +10,10 @@ namespace WpfTodo.UITests
     public class TodoAppTests : UITestBase
     {
         [Test]
-        public void CodedUITestMethod1()
+        public void TestMethod1()
         {
-            var newTaskScreen = MainWindow.NewTask();
+            var mainWindow = new ScreenRepository(Application).Get<TodoWindow>("Wpf Todo", InitializeOption.NoCache);
+            var newTaskScreen = mainWindow.NewTask();
 
             const string title = "Write some tests";
             newTaskScreen.Title = title;
@@ -19,7 +22,7 @@ namespace WpfTodo.UITests
 
             newTaskScreen.Create();
 
-            var tasks = MainWindow.Tasks.ToList();
+            var tasks = mainWindow.Tasks.ToList();
             Assert.AreEqual(1, tasks.Count);
             Assert.AreEqual(title, tasks[0].Title);
         }

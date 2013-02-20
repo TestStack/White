@@ -1,4 +1,4 @@
-namespace Repository.Interceptors
+namespace White.Repository.Interceptors
 {
     public class ScreenInterceptors
     {

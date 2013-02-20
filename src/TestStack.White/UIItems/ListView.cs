@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Threading;
+using System.Linq;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.Recording;
@@ -7,7 +7,6 @@ using White.Core.UIItemEvents;
 using White.Core.UIItems.Actions;
 using White.Core.UIItems.ListViewItems;
 using White.Core.UIItems.Scrolling;
-using White.Core.Utility;
 
 namespace White.Core.UIItems
 {
@@ -138,19 +137,15 @@ namespace White.Core.UIItems
             Automation.RemoveAutomationPropertyChangedEventHandler(automationElement, handler);
         }
 
-        List<string> SuggestionList.Items
+        public virtual List<string> Items
         {
             get
             {
-                var items = new List<string>();
-                ListViewRows rows = Rows;
-                foreach (ListViewRow listViewRow in rows)
-                    items.Add(listViewRow.Cells[0].Text);
-                return items;
+                return Rows.Select(listViewRow => listViewRow.Cells[0].Text).ToList();
             }
         }
 
-        void SuggestionList.Select(string text)
+        public virtual void Select(string text)
         {
             ListViewRows rows = Rows;
             ListViewRow row = rows.Find(obj => obj.Cells[0].Text.Equals(text));

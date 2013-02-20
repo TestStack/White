@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using Todo.Core;
-using White.Core;
+using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.WindowItems;
 using White.Core.UIItems.WPFUIItems;
+using White.Core.UIItems.WindowItems;
+using White.Repository;
 
 namespace WpfTodo.UITests.Screens
 {
     public class TodoWindow : Screen
     {
-        public TodoWindow(Application application, Window whiteWindow) : base(application, whiteWindow)
-        { }
+        protected ListBox TasksList;
+        protected Button AddTaskButton;
 
-        public IEnumerable<TodoItem> Tasks
+        public TodoWindow(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
+        {
+        }
+
+        public virtual IEnumerable<TodoItem> Tasks
         {
             get
             {
                 WaitWhileBusy();
-                var tasks = WhiteWindow.Get<ListBox>("TasksList");
-                return from ListItem item in tasks.Items
+                return from ListItem item in TasksList.Items
                        select new TodoItem
                        {
                            Title = item.Get<Label>(SearchCriteria.ByAutomationId("Title")).Text,
@@ -32,12 +36,11 @@ namespace WpfTodo.UITests.Screens
             }
         }
 
-        public NewTaskScreen NewTask()
+        public virtual NewTaskScreen NewTask()
         {
-            var addTaskButton = WhiteWindow.Get<Button>("AddTaskButton");
-            addTaskButton.Click();
+            AddTaskButton.Click();
 
-            return new NewTaskScreen(Application, WhiteWindow.ModalWindow("New Task"));
+            return screenRepository.GetModal<NewTaskScreen>("New Task", window, InitializeOption.NoCache);
         }
     }
 }

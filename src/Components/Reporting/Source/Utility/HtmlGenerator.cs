@@ -47,7 +47,6 @@ namespace Reporting.Utility
                 builder.AppendLine("<a href=\"#\" onclick=\"openScreen('" + path.SnapShotPath.Replace("\\", "/") + "')\"><img height=\"50\" width=\"50\" src=\"" +
                                    path.ThumbNailPath.Replace("\\", "/") + "\"></img></a>");
             }
-            ;
         }
 
         private static void AddTimeStamp(StringBuilder builder, SubFlowStep step)

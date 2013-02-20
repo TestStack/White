@@ -1,12 +1,12 @@
 using System.IO;
-using Repository.Sessions;
 using White.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
-using Repository.Services;
 using White.Core.UITests;
+using White.Repository.Services;
+using White.Repository.Sessions;
 
 namespace White.Repository.UITests.Sessions
 {

@@ -1,6 +1,5 @@
 using System.Linq;
 using NUnit.Framework;
-using Repository;
 using White.Core.SystemExtensions;
 
 namespace White.Repository.UnitTests

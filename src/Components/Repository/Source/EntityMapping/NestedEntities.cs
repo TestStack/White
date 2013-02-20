@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
-namespace Repository.EntityMapping
+namespace White.Repository.EntityMapping
 {
     [Serializable]
     public class NestedEntities : List<Entity>

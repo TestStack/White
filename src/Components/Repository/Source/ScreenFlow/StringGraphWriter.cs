@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace Repository.ScreenFlow
+namespace White.Repository.ScreenFlow
 {
     public class StringGraphWriter
     {

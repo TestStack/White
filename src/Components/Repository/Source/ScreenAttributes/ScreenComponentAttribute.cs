@@ -1,6 +1,6 @@
 using System;
 
-namespace Repository.ScreenFieldAttributes
+namespace White.Repository.ScreenAttributes
 {
     public class ScreenComponentAttribute : Attribute {}
 }

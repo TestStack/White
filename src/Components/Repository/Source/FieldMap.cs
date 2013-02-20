@@ -1,6 +1,6 @@
 using System;
 
-namespace Repository
+namespace White.Repository
 {
     public interface FieldMap
     {

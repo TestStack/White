@@ -1,7 +1,7 @@
 using System;
 using White.Core.UIItems.Finders;
 
-namespace Repository.ScreenAttributes
+namespace White.Repository.ScreenAttributes
 {
     [AttributeUsage(AttributeTargets.Field)]
     public class AutomationIdAttribute : SearchCriteriaAttribute

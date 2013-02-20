@@ -1,5 +1,4 @@
 using System;
-using Repository;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
@@ -7,7 +6,7 @@ using White.Core.UIItems.TabItems;
 using White.Core.UIItems.TreeItems;
 using White.Core.UIItems.WindowItems;
 using NUnit.Framework;
-using Repository.ScreenAttributes;
+using White.Repository.ScreenAttributes;
 
 namespace White.Repository.UITests.Testing
 {
@@ -38,8 +37,6 @@ namespace White.Repository.UITests.Testing
         private TextBox iAmDuplicateBox = null;
 
         private MainProgressBars mainProgressBars = null;
-
-        protected MainScreen() {}
 
         public MainScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {

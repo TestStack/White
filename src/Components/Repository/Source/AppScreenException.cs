@@ -4,7 +4,7 @@ using System.Reflection;
 using System.Text;
 using Castle.Core.Internal;
 
-namespace Repository
+namespace White.Repository
 {
     public class AppScreenException : Exception
     {
