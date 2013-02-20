@@ -15,8 +15,8 @@ Our aim is to bring project white up to date and make it an active open source p
 
  - ~~Upgrade White to .net 4.0~~
  - ~~Create NuGet packages~~
- - Get tests working
- - CI Build
+ - ~~Get tests working~~
+ - ~~CI Build~~ (CI Available at http://teamcity.ginnivan.net, nightly builds can be downloaded from TeamCity)
  - Clean up API (more generic overloads etc)
  - First class screen pattern support
  - ~~Remove Bricks dependency~~
@@ -33,6 +33,18 @@ Install White from NuGet
 Download [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/) which is an ESSENTIAL tool when doing UI Automation work.
 
 I have created a sample app which uses the Screen pattern. It is available at https://github.com/TestStack/White/tree/master/src/Sample%20App
+
+## Contributing to White
+Pull Requests for White are welcome, please include either Unit or UI Tests covering your changes if possible. 
+
+## Reporting Issues
+If possible, please add a failing test to TestStack.White.UITests when you report an issue, this will allow me to fix it, and ensure there is no regression later.
+
+Also include the following information:
+
+ - Operating System
+ - Target Framework (WPF, Winforms etc)
+ - Optionally but prefered, a failing test or a repro solution.
 
 ### Note:
 When White switched to build on CI servers, **v9.2.0 was released to NuGet**, it should have been **v0.9.2**. If you have installed v9.2, please uninstall then reinstall White.
