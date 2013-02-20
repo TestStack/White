@@ -1,4 +1,3 @@
-using Repository;
 using White.Core;
 using White.Core.Factory;
 using White.Core.UITests;

@@ -4,7 +4,7 @@ using System.IO;
 using White.Core.Bricks;
 using White.Core.Configuration;
 
-namespace Repository.Configuration
+namespace White.Repository.Configuration
 {
     public class RepositoryAppXmlConfiguration : AssemblyConfiguration, RepositoryConfiguration
     {

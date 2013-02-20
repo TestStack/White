@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using White.Core.UIItems;
 
-namespace Repository.EntityMapping
+namespace White.Repository.EntityMapping
 {
     public class EntityField
     {

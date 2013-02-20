@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Repository.EntityMapping;
 using White.Core.UIItems.TableItems;
+using White.Repository.EntityMapping;
 
 namespace White.Repository.UnitTests.EntityMapping
 {

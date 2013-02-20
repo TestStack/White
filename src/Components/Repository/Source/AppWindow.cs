@@ -1,4 +1,4 @@
-namespace Repository
+namespace White.Repository
 {
     public class AppWindow
     {        

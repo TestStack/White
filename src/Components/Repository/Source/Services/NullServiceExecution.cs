@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace Repository.Services
+namespace White.Repository.Services
 {
     public class NullServiceExecution : ServiceExecution
     {

@@ -1,6 +1,6 @@
 using White.Core.UIItems.WindowItems;
 
-namespace Repository
+namespace White.Repository
 {
     public class AppScreenComponent : RepositoryComponent
     {

@@ -7,7 +7,7 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
 using Reporting.Domain;
 
-namespace Repository.Interceptors
+namespace White.Repository.Interceptors
 {
     /// <summary>
     /// Lazily initializes the UIItem.

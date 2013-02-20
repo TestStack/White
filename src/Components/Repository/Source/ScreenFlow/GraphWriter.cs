@@ -1,7 +1,7 @@
 using System;
 
 //TODO: Programmatically change the csproj file to make jpeg and designer.cs or visual studio plugin should do this
-namespace Repository.ScreenFlow
+namespace White.Repository.ScreenFlow
 {
     public class GraphWriter
     {

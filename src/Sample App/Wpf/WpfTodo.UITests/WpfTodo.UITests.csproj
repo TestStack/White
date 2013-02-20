@@ -43,13 +43,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Screens\MarkpadFixture.cs" />
-    <Compile Include="Screens\NewTaskScreen.cs" />
     <Compile Include="Screens\Screen.cs" />
+    <Compile Include="Screens\UITestBase.cs" />
+    <Compile Include="Screens\NewTaskScreen.cs" />
     <Compile Include="Screens\TodoWindow.cs" />
     <Compile Include="TodoAppTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Components\Repository\Source\White.Repository.csproj">
+      <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
+      <Name>White.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>

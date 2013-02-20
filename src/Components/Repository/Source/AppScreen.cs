@@ -5,16 +5,15 @@ using White.Core.Configuration;
 using White.Core.Mappings;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
-using Repository.EntityMapping;
+using White.Repository.EntityMapping;
 
-namespace Repository
+namespace White.Repository
 {
     //TODO: Provider some mechanism to log/inform about whether there are any errors on the screen or not.
     //TODO: Take care of act kind of stuff by putting attribute
     public class AppScreen : RepositoryComponent
     {
         private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(AppScreen));
-        protected AppScreen() {}
 
         public AppScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository) {}
 

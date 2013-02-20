@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using White.Core;
 using Reporting.Domain;
-using Repository.Services;
+using White.Repository.Services;
 
-namespace Repository.Sessions
+namespace White.Repository.Sessions
 {
     /// <summary>
     /// Represents white session for test/automation. There should be only one instance of this.

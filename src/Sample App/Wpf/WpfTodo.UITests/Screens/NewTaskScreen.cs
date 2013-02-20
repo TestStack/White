@@ -1,48 +1,50 @@
 ﻿using System;
 using System.Windows.Automation;
-using White.Core;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
+using White.Repository;
 
 namespace WpfTodo.UITests.Screens
 {
     public class NewTaskScreen : Screen
     {
-        public NewTaskScreen(Application application, Window whiteWindow) : base(application, whiteWindow)
+        protected Button CreateButton;
+
+        public NewTaskScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {
         }
 
-        public string Title
+        public virtual string Title
         {
-            get { return WhiteWindow.Get<TextBox>("Title").Text; }
-            set { WhiteWindow.Get<TextBox>("Title").Text = value; }
+            get { return window.Get<TextBox>("Title").Text; }
+            set { window.Get<TextBox>("Title").Text = value; }
         }
 
-        public string Description
+        public virtual string Description
         {
-            get { return WhiteWindow.Get<TextBox>("Description").Text; }
-            set { WhiteWindow.Get<TextBox>("Description").Text = value; }
+            get { return window.Get<TextBox>("Description").Text; }
+            set { window.Get<TextBox>("Description").Text = value; }
         }
 
-        public DateTime DueDate
+        public virtual DateTime DueDate
         {
             get
             {
-                var uiItem = WhiteWindow.Get(SearchCriteria.ByAutomationId("DueDate"));
+                var uiItem = window.Get(SearchCriteria.ByAutomationId("DueDate"));
                 var currentPropertyValue = uiItem.AutomationElement.GetCurrentPropertyValue(ValuePattern.ValueProperty);
                 return (DateTime)currentPropertyValue;
             }
             set
             {
-                var uiItem = WhiteWindow.Get(SearchCriteria.ByAutomationId("DueDate"));
+                var uiItem = window.Get(SearchCriteria.ByAutomationId("DueDate"));
                 uiItem.Enter(value.ToShortDateString());
             }
         }
 
-        public void Create()
+        public virtual void Create()
         {
-            WhiteWindow.Get<Button>("CreateButton").Click();
+            CreateButton.Click();
             WaitWhileBusy();
         }
     }

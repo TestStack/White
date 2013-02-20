@@ -1,7 +1,7 @@
 using Reporting.Configuration;
 using Reporting.Domain;
 
-namespace Repository.Sessions
+namespace White.Repository.Sessions
 {
     public class WorkConfiguration
     {

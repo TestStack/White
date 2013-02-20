@@ -1,6 +1,6 @@
 using System;
 
-namespace Repository.EntityMapping
+namespace White.Repository.EntityMapping
 {
     public class EntityFieldNotFoundException : Exception
     {
