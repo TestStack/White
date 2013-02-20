@@ -2,9 +2,9 @@
 
 namespace WindowsFormsTestApplication
 {
-    public partial class Form1 : Form
+    public partial class InputControls : UserControl
     {
-        public Form1()
+        public InputControls()
         {
             InitializeComponent();
         }

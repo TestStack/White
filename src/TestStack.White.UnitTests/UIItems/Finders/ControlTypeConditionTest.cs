@@ -12,8 +12,8 @@ namespace White.Core.UnitTests.UIItems.Finders
         [Test]
         public void ControlTypeCondition()
         {
-            Assert.AreEqual("ControlType=button", SearchConditionFactory.CreateForControlType(typeof (Button)).ToString());
-            Assert.AreEqual("ControlType=pane", SearchConditionFactory.CreateForControlType(typeof (TestCustomUIItem)).ToString());
+            Assert.AreEqual("ControlType=button", SearchConditionFactory.CreateForControlType(typeof (Button), Constants.WPFFrameworkId).ToString());
+            Assert.AreEqual("ControlType=pane", SearchConditionFactory.CreateForControlType(typeof(TestCustomUIItem), Constants.WPFFrameworkId).ToString());
             Assert.AreEqual("ControlType=menu bar", SearchConditionFactory.CreateForControlType(typeof (MenuBar), Constants.WinFormFrameworkId).ToString());
             Assert.AreEqual("ControlType=menu", SearchConditionFactory.CreateForControlType(typeof (MenuBar), Constants.WPFFrameworkId).ToString());
         }

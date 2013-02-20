@@ -49,10 +49,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InputControls.Designer.cs">
+      <DependentUpon>InputControls.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ListControls.Designer.cs">
+      <DependentUpon>ListControls.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InputControls.resx">
+      <DependentUpon>InputControls.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListControls.resx">
+      <DependentUpon>ListControls.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -34,7 +34,7 @@ namespace White.Repository
                 object injectedObject = null;
                 if (typeof(IUIItem).IsAssignableFrom(fieldInfo.FieldType))
                 {
-                    var interceptor = new UIItemInterceptor(SearchCondition(fieldInfo), window, screenRepository.SessionReport);
+                    var interceptor = new UIItemInterceptor(SearchCondition(fieldInfo, window.Framework), window, screenRepository.SessionReport);
                     injectedObject = DynamicProxyGenerator.Instance.CreateProxy(interceptor, fieldInfo.FieldType);
                 }
                 else if (typeof(AppScreenComponent).IsAssignableFrom(fieldInfo.FieldType))
@@ -49,9 +49,9 @@ namespace White.Repository
             return o;
         }
 
-        private static SearchCriteria SearchCondition(FieldInfo fieldInfo)
+        private static SearchCriteria SearchCondition(FieldInfo fieldInfo, WindowsFramework framework)
         {
-            SearchCriteria defaultCriteria = SearchCriteria.ByAutomationId(fieldInfo.Name).AndControlType(fieldInfo.FieldType);
+            SearchCriteria defaultCriteria = SearchCriteria.ByAutomationId(fieldInfo.Name).AndControlType(fieldInfo.FieldType, framework);
             SearchCriteria searchCriteria = null;
             object[] customAttributes = fieldInfo.GetCustomAttributes(false);
             foreach (Attribute customAttribute in customAttributes)
@@ -59,7 +59,7 @@ namespace White.Repository
                 var searchCriteriaAttribute = customAttribute as SearchCriteriaAttribute;
                 if (searchCriteriaAttribute != null)
                 {
-                    if (searchCriteria == null) searchCriteria = SearchCriteria.ByControlType(fieldInfo.FieldType);
+                    if (searchCriteria == null) searchCriteria = SearchCriteria.ByControlType(fieldInfo.FieldType, framework.FrameworkId);
                     searchCriteriaAttribute.Apply(searchCriteria);
                 }
             }

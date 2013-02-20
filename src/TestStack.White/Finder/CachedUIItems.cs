@@ -20,12 +20,12 @@ namespace White.Core.Finder
         public static CachedUIItems CreateAndCachePrimaryChildControls(AutomationElement parent, InitializeOption option)
         {
             var cachedUIItems = new CachedUIItems();
-            cachedUIItems.FindAll(parent, option);
+            cachedUIItems.FindAll(parent);
             cachedUIItems.list.Sort(new AutomationElementPositionComparer());
             return cachedUIItems;
         }
 
-        private void FindAll(AutomationElement automationElement, InitializeOption option)
+        private void FindAll(AutomationElement automationElement)
         {
             var finder = new AutomationElementFinder(automationElement);
             List<AutomationElement> children = finder.Children(AutomationSearchCondition.All);
@@ -35,7 +35,7 @@ namespace White.Core.Finder
                 if (!controlDictionary.IsControlTypeSupported(child.Current.ControlType)) continue;
                 if (controlDictionary.IsPrimaryControl(child.Current.ControlType, child.Current.ClassName, null)) list.Add(child);
                 if (!controlDictionary.HasPrimaryChildren(child.Current.ControlType)) continue;
-                if (!controlDictionary.IsExcluded(child.Current.ControlType)) FindAll(child, option);
+                if (!controlDictionary.IsExcluded(child.Current.ControlType)) FindAll(child);
             }
         }
 
@@ -83,7 +83,7 @@ namespace White.Core.Finder
 
         public virtual T Get<T>(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory) where T : UIItem
         {
-            return (T) Get(searchCriteria.AndControlType(typeof (T)), actionListener, factory);
+            return (T) Get(searchCriteria.AndControlType(typeof (T), new WindowsFramework(Constants.MissingFrameworkId)), actionListener, factory);
         }
 
         private UIItemCollection GetAll(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory)

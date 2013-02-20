@@ -50,6 +50,7 @@
     <Compile Include="ControlTests\ComboBoxTests.cs" />
     <Compile Include="ControlTests\DataBoundComboBoxTests.cs" />
     <Compile Include="ControlTests\EditableComboBoxTests.cs" />
+    <Compile Include="ControlTests\InputControls\DatePickerTests.cs" />
     <Compile Include="Infrastructure\FrameworkId.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\TestConfiguration.cs" />
