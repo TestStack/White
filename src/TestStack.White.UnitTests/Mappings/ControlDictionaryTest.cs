@@ -53,17 +53,17 @@ namespace White.Core.UnitTests.Mappings
         [Test]
         public void GetControlType()
         {
-            Assert.AreEqual(ControlType.Edit, controlDictionary.GetControlType(typeof (TextBox)));
-            Assert.AreEqual(ControlType.Pane, controlDictionary.GetControlType(typeof (DateTimePicker)));
-            Assert.AreEqual(ControlType.Button, controlDictionary.GetControlType(typeof (Button)));
-            Assert.AreEqual(ControlType.Group, controlDictionary.GetControlType(typeof (GroupBox)));
-            Assert.AreEqual(ControlType.Pane, controlDictionary.GetControlType(typeof (Panel)));
+            Assert.AreEqual(ControlType.Edit, controlDictionary.GetControlType(typeof (TextBox), Constants.WPFFrameworkId));
+            Assert.AreEqual(ControlType.Pane, controlDictionary.GetControlType(typeof(DateTimePicker), Constants.WinFormFrameworkId));
+            Assert.AreEqual(ControlType.Button, controlDictionary.GetControlType(typeof(Button), Constants.WPFFrameworkId));
+            Assert.AreEqual(ControlType.Group, controlDictionary.GetControlType(typeof(GroupBox), Constants.WPFFrameworkId));
+            Assert.AreEqual(ControlType.Pane, controlDictionary.GetControlType(typeof(Panel), Constants.WPFFrameworkId));
         }
 
         [Test]
         public void GetControlTypeForAFramework()
         {
-            Assert.AreEqual(ControlType.Edit, controlDictionary.GetControlType(typeof (TextBox)));
+            Assert.AreEqual(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), Constants.WPFFrameworkId));
             Assert.AreEqual(ControlType.Menu, controlDictionary.GetControlType(typeof (MenuBar), Constants.WPFFrameworkId));
             Assert.AreEqual(ControlType.MenuBar, controlDictionary.GetControlType(typeof(MenuBar), Constants.WinFormFrameworkId));
         }
@@ -104,6 +104,13 @@ namespace White.Core.UnitTests.Mappings
             Assert.AreEqual(typeof(Button), controlDictionary.GetTestType(string.Empty, ControlType.Button, Constants.WinFormFrameworkId, "foo", false));
             Assert.AreEqual(typeof(Panel), controlDictionary.GetTestType(string.Empty, ControlType.Pane, Constants.WinFormFrameworkId, "foo", false));
             Assert.AreEqual(typeof(PropertyGrid), controlDictionary.GetTestType(string.Empty, ControlType.Pane, Constants.WinFormFrameworkId, "PropertyGrid", false));
+        }
+
+        [Test]
+        public void ControlTypeCanChangeBasedOnFramework()
+        {
+            Assert.AreEqual(ControlType.Pane.ProgrammaticName, controlDictionary.GetControlType(typeof(DateTimePicker), Constants.WinFormFrameworkId).ProgrammaticName);
+            Assert.AreEqual(ControlType.Custom.ProgrammaticName, controlDictionary.GetControlType(typeof(DateTimePicker), Constants.WPFFrameworkId).ProgrammaticName);
         }
     }
 }

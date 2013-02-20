@@ -3,58 +3,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="350"
-        Width="525" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
+        Width="800" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
     <Grid>
-        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
-                  Height="299" Width="297">
-            <StackPanel>
-                <TextBlock Text="ComboBoxTests" />
-                <ComboBox x:Name="AComboBox" Width="150" HorizontalAlignment="Left">
-                    <ComboBox.Items>
-                        <ComboBoxItem>Test</ComboBoxItem>
-                        <ComboBoxItem>Test2</ComboBoxItem>
-                        <ComboBoxItem>Test3</ComboBoxItem>
-                        <ComboBoxItem>Test4</ComboBoxItem>
-                        <ComboBoxItem>Test5</ComboBoxItem>
-                        <ComboBoxItem>Test6</ComboBoxItem>
-                        <ComboBoxItem>Test7</ComboBoxItem>
-                        <ComboBoxItem>Test8</ComboBoxItem>
-                        <ComboBoxItem>Test9</ComboBoxItem>
-                        <ComboBoxItem>Test10</ComboBoxItem>
-                        <ComboBoxItem>Test11</ComboBoxItem>
-                        <ComboBoxItem>Test12</ComboBoxItem>
-                        <ComboBoxItem>Test13</ComboBoxItem>
-                        <ComboBoxItem>Test14</ComboBoxItem>
-                        <ComboBoxItem>Test15</ComboBoxItem>
-                        <ComboBoxItem>Test16</ComboBoxItem>
-                        <ComboBoxItem>Test17</ComboBoxItem>
-                        <ComboBoxItem>Test18</ComboBoxItem>
-                        <ComboBoxItem>Test19</ComboBoxItem>
-                        <ComboBoxItem>Test20</ComboBoxItem>
-                        <ComboBoxItem>ReallyReallyReallyLongTextHere</ComboBoxItem>
-                    </ComboBox.Items>
-                </ComboBox>
-                <TextBlock Text="EditableComboBoxTests" />
-                <ComboBox Width="120" IsEditable="True" x:Name="EditableComboBox" HorizontalAlignment="Left">
-                    <ComboBox.Items>
-                        <ComboBoxItem>Test</ComboBoxItem>
-                        <ComboBoxItem>Test2</ComboBoxItem>
-                        <ComboBoxItem>Test3</ComboBoxItem>
-                        <ComboBoxItem>Test4</ComboBoxItem>
-                    </ComboBox.Items>
-                </ComboBox>
-                <TextBlock Text="CheckedListBoxTests" />
-                <ComboBox Width="120" IsEditable="True" x:Name="DataBoundComboBox" HorizontalAlignment="Left"
-                          ItemsSource="{Binding ListItems}" />
-
-                <TextBlock Text="CheckedListBoxTests" />
-                <ListBox Name="CheckedListBox">
-                    <CheckBox>Item1</CheckBox>
-                    <CheckBox>Item2</CheckBox>
-                    <CheckBox>Item3</CheckBox>
-                    <CheckBox>Item4</CheckBox>
-                </ListBox>
-            </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            <wpfTestApplication:ListControls />
+        </GroupBox>
+        <GroupBox Header="Input controls" Grid.Column="1" Width="150">
+            <DatePicker x:Name="DatePicker" />
         </GroupBox>
     </Grid>
 </Window>

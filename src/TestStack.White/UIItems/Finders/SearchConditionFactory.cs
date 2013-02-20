@@ -12,14 +12,6 @@ namespace White.Core.UIItems.Finders
             return new SimpleSearchCondition(automationElement => automationElement.Current.ControlType, new ControlTypeProperty(controlType, "ControlType"));
         }
 
-        public static SimpleSearchCondition CreateForControlType(Type testControlType)
-        {
-            ControlType controlType = testControlType.IsCustomType()
-                                          ? CustomControlTypeMapping.ControlType(testControlType)
-                                          : ControlDictionary.Instance.GetControlType(testControlType);
-            return CreateForControlType(controlType);
-        }
-
         public static SimpleSearchCondition CreateForControlType(Type testControlType, string frameworkId)
         {
             ControlType controlType = testControlType.IsCustomType()
