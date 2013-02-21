@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Windows;
 using NUnit.Framework;
 using White.Core.InputDevices;
@@ -30,6 +31,7 @@ namespace White.Core.UITests.InputDevices
             var point = new Point(100, 100);
             Assert.AreNotEqual(point, mouse.Location);
             mouse.Location = point;
+            Thread.Sleep(100);
             Assert.AreEqual(point, mouse.Location);
         }
 
