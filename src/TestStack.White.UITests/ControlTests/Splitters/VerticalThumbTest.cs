@@ -6,7 +6,6 @@ using White.Core.UIItems.WindowItems;
 
 namespace TestStack.White.UITests.ControlTests.Splitters
 {
-    [TestFixture]
     public class VerticalThumbTest : WhiteTestBase
     {
         protected override void RunTest(FrameworkId framework)

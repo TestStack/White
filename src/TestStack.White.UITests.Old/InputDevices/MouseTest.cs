@@ -19,6 +19,8 @@ namespace White.Core.UITests.InputDevices
         public void Cursor()
         {
             MouseCursor cursor = Mouse.Instance.Cursor;
+
+            Assert.NotNull(cursor);
         }
 
         [Test]
