@@ -52,6 +52,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="VerticalGridSplitter.xaml.cs">
+      <DependentUpon>VerticalGridSplitter.xaml</DependentUpon>
+    </Compile>
+    <Page Include="HorizontalGridSplitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ListControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -64,6 +71,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HorizontalGridSplitter.xaml.cs">
+      <DependentUpon>HorizontalGridSplitter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListControls.xaml.cs">
       <DependentUpon>ListControls.xaml</DependentUpon>
     </Compile>
@@ -71,6 +81,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="VerticalGridSplitter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

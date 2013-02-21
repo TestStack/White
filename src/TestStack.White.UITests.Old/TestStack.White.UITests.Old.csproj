@@ -115,7 +115,6 @@
     <Compile Include="UIItems\DateTimePickerTest.cs" />
     <Compile Include="UIItems\ErrorProviderTest.cs" />
     <Compile Include="UIItems\GroupBoxTest.cs" />
-    <Compile Include="UIItems\HorizontalThumbTest.cs" />
     <Compile Include="UIItems\HotKeyTest.cs" />
     <Compile Include="UIItems\HScrollBarTest.cs" />
     <Compile Include="UIItems\HyperlinkTest.cs" />
@@ -158,7 +157,6 @@
     <Compile Include="UIItems\TreeItems\TreeTest.cs" />
     <Compile Include="UIItems\TreeItems\TreeWithModalLaunchedOnTreeNodeClickTest.cs" />
     <Compile Include="UIItems\TristateItemTest.cs" />
-    <Compile Include="UIItems\VerticalThumbTest.cs" />
     <Compile Include="UIItems\VScrollBarTest.cs" />
     <Compile Include="UIItems\WindowAbstractTest.cs" />
     <Compile Include="UIItems\WindowItems\TitleBarTest.cs" />

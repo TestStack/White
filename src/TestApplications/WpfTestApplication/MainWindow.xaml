@@ -8,12 +8,19 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
             <wpfTestApplication:ListControls />
         </GroupBox>
         <GroupBox Header="Input controls" Grid.Column="1" Width="150">
             <DatePicker x:Name="DatePicker" />
+        </GroupBox>
+        <GroupBox Header="Scenarios" Grid.Column="2">
+            <StackPanel>
+                <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
+                <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
+            </StackPanel>
         </GroupBox>
     </Grid>
 </Window>
