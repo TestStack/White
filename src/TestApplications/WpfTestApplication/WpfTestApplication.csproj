@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HelpClasses.cs" />
     <Compile Include="ListControls.xaml.cs">
       <DependentUpon>ListControls.xaml</DependentUpon>
     </Compile>

@@ -8,12 +8,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
             <wpfTestApplication:ListControls />
         </GroupBox>
         <GroupBox Header="Input controls" Grid.Column="1" Width="150">
             <DatePicker x:Name="DatePicker" />
+        </GroupBox>
+        <GroupBox Header="Data grid" Grid.Column="2">
+            <DataGrid x:Name="DataGridControl" AutoGenerateColumns="True" ItemsSource="{Binding Path = TestItems}"/>
         </GroupBox>
     </Grid>
 </Window>

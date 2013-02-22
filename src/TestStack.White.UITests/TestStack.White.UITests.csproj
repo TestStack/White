@@ -49,6 +49,7 @@
     <Compile Include="ControlTests\CheckedListBoxTest.cs" />
     <Compile Include="ControlTests\ComboBoxTests.cs" />
     <Compile Include="ControlTests\DataBoundComboBoxTests.cs" />
+    <Compile Include="ControlTests\DataGridTests.cs" />
     <Compile Include="ControlTests\EditableComboBoxTests.cs" />
     <Compile Include="ControlTests\InputControls\DatePickerTests.cs" />
     <Compile Include="Infrastructure\FrameworkId.cs" />
