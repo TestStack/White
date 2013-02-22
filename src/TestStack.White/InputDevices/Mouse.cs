@@ -145,7 +145,6 @@ namespace White.Core.InputDevices
         private static void SendInput(Input input)
         {
             SendInput(1, ref input, Marshal.SizeOf(input));
-//            SendInput(1, new[] {input}, Marshal.SizeOf(input));
         }
 
         private static MouseInput MouseInput(int command)

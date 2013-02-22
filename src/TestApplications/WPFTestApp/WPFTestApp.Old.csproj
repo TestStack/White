@@ -114,12 +114,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="HorizontalGridSplitter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="ModalWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,12 +121,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ScenarioSet1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="VerticalGridSplitter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <Generator>MSBuild:Compile</Generator>
@@ -170,9 +158,6 @@
     <Compile Include="TreeViewItemWithoutHeader.xaml.cs">
       <DependentUpon>TreeViewItemWithoutHeader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HorizontalGridSplitter.xaml.cs">
-      <DependentUpon>HorizontalGridSplitter.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ModalWindow.xaml.cs">
       <SubType>Code</SubType>
       <DependentUpon>ModalWindow.xaml</DependentUpon>
@@ -207,9 +192,6 @@
     </Compile>
     <Compile Include="SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VerticalGridSplitter.xaml.cs">
-      <DependentUpon>VerticalGridSplitter.xaml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
   </ItemGroup>

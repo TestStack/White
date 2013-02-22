@@ -2,21 +2,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="350"
+        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="400"
         Width="800" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
-            <wpfTestApplication:ListControls />
-        </GroupBox>
-        <GroupBox Header="Input controls" Grid.Column="1" Width="150">
-            <DatePicker x:Name="DatePicker" />
-        </GroupBox>
-        <GroupBox Header="Data grid" Grid.Column="2">
+            <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+                <wpfTestApplication:ListControls />
+            </GroupBox>
+            <GroupBox Header="Input controls" Grid.Column="1" Width="150">
+                <DatePicker x:Name="DatePicker" />
+            </GroupBox>
+            <GroupBox Header="Scenarios" Grid.Column="2">
+                <StackPanel>
+                    <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
+                    <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+        <GroupBox Header="Data grid" Grid.Row="1">
             <DataGrid x:Name="DataGridControl" AutoGenerateColumns="True" ItemsSource="{Binding Path = TestItems}"/>
         </GroupBox>
     </Grid>
