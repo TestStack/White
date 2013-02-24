@@ -88,6 +88,8 @@ namespace TestStack.White.UITests
             catch (Exception e)
             {
                 logger.Error("Failed to launch application and get main window", e);
+                if (Application != null)
+                    Application.Close();
                 throw;
             }
         }
