@@ -14,7 +14,7 @@ namespace White.Core.UIItems
         {
             double x = automationElement.Current.BoundingRectangle.X + xOffset;
             double y = automationElement.Current.BoundingRectangle.Y + yOffset;
-            mouse.Click(new Point((int) x, (int) y), actionListener);
+            mouse.Click(new Point((int) x, (int) y), ActionListener);
         }
 
         public override void HookEvents(UIItemEventListener eventListener)

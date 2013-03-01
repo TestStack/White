@@ -120,7 +120,7 @@ namespace White.Core.UIItems
             if (rows.Count == 0 || Header.Columns.Count < 2) return;
 
             rows[0].Cells[Header.Columns[1].Text].Click();
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
         }
 
         //TODO While recording you get exception when clicking at the corner of the cell
@@ -152,7 +152,7 @@ namespace White.Core.UIItems
             if (row == null) throw new UIActionException("Could not find suggestion " + text);
             row.Select();
             SuggestionListView.WaitTillNotPresent();
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
         }
 
         public override void ActionPerforming(UIItem uiItem)
