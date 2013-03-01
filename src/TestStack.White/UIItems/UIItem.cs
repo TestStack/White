@@ -76,6 +76,9 @@ namespace TestStack.White.UIItems
             get { return automationElement.Current.BoundingRectangle.TopLeft; }
         }
 
+        /// <summary>
+        /// Perform window message action.
+        /// </summary>
         protected virtual void ActionPerformed()
         {
             ActionPerformed(Action.WindowMessage);
