@@ -17,7 +17,7 @@ namespace TestStack.White.UIItems.TreeItems
 
         public virtual TreeNodes Nodes
         {
-            get { return new TreeNodes(finder, actionListener); }
+            get { return new TreeNodes(finder, ActionListener); }
         }
 
         public virtual bool IsSelected
@@ -43,7 +43,7 @@ namespace TestStack.White.UIItems.TreeItems
         /// <returns>TreeNode object when found, null if otherwise</returns>
         public virtual TreeNode GetItem(params string[] path)
         {
-            actionListener.ActionPerforming(this);
+            ActionPerforming(this);
             Expand();
             return Nodes.GetItem(path);
         }
@@ -53,8 +53,8 @@ namespace TestStack.White.UIItems.TreeItems
         /// </summary>
         public virtual void Select()
         {
-            actionListener.ActionPerforming(this);
-            mouse.Click(SelectPoint, actionListener);
+            ActionPerforming(this);
+            mouse.Click(SelectPoint, ActionListener);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace TestStack.White.UIItems.TreeItems
         {
             if (!IsExpanded())
             {
-                actionListener.ActionPerforming(this);
+                ActionPerforming(this);
                 DoExpand();
             }
         }
@@ -92,7 +92,7 @@ namespace TestStack.White.UIItems.TreeItems
         {
             if (IsExpanded())
             {
-                actionListener.ActionPerforming(this);
+                ActionPerforming(this);
                 DoCollapse();
             }
         }
@@ -119,14 +119,14 @@ namespace TestStack.White.UIItems.TreeItems
 
         public override void DoubleClick()
         {
-            actionListener.ActionPerforming(this);
-            mouse.DoubleClick(SelectPoint, actionListener);
+            ActionPerforming(this);
+            mouse.DoubleClick(SelectPoint, ActionListener);
         }
 
         public override void RightClick()
         {
-            actionListener.ActionPerforming(this);
-            mouse.RightClick(SelectPoint, actionListener);
+            ActionPerforming(this);
+            mouse.RightClick(SelectPoint, ActionListener);
         }
 
         public virtual string Text

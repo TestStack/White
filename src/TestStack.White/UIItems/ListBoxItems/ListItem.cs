@@ -34,7 +34,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         {
             if (!shouldSelect) return;
 
-            actionListener.ActionPerforming(this);
+            ActionPerforming(this);
 
             if (Bounds.IsEmpty)
             {
@@ -47,7 +47,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             {
                 Logger.Debug("Selecting item with Click");
                 WaitForBoundsToStabilise(this);
-                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+                mouse.Click(Bounds.ImmediateInteriorEast(), ActionListener);
                 if (!IsSelected)
                 {
                     Logger.Debug("Failed to select list item via click. Falling back to automation patterns");
@@ -55,7 +55,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                 }
             }
 
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
         }
 
         /// <summary>

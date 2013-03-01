@@ -15,7 +15,7 @@ namespace TestStack.White.UIItems
         public virtual void SlideHorizontally(int distance)
         {
             mouse.DragHorizontally(this, distance);
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace TestStack.White.UIItems
         public virtual void SlideVertically(int distance)
         {
             mouse.DragVertically(this, distance);
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
         }
     }
 }

@@ -39,12 +39,12 @@ namespace TestStack.White.UIItems
                 return;
             }
 
-            keyboard.Send(dateFormat.DisplayValue(dateTime.Value, 0).ToString(), actionListener);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, actionListener);
-            keyboard.Send(dateFormat.DisplayValue(dateTime.Value, 1).ToString(), actionListener);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, actionListener);
-            keyboard.Send(dateFormat.DisplayValue(dateTime.Value, 2).ToString(), actionListener);
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, actionListener);
+            keyboard.Send(dateFormat.DisplayValue(dateTime.Value, 0).ToString(), ActionListener);
+            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, ActionListener);
+            keyboard.Send(dateFormat.DisplayValue(dateTime.Value, 1).ToString(), ActionListener);
+            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, ActionListener);
+            keyboard.Send(dateFormat.DisplayValue(dateTime.Value, 2).ToString(), ActionListener);
+            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, ActionListener);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.UIItems.Actions;
@@ -24,7 +23,8 @@ namespace TestStack.White.UIItems
         {
             get
             {
-                actionListener.ActionPerforming(this);
+
+                ActionPerforming(this);
                 return IsSelectedValue;
             }
         }
@@ -38,9 +38,10 @@ namespace TestStack.White.UIItems
         {
             get
             {
-                actionListener.ActionPerforming(this);
-                List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.Text));
-                return new ListViewCells(collection, actionListener, header);
+
+                ActionPerforming(this);
+                var collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Text));
+                return new ListViewCells(collection, ActionListener, header);
             }
         }
 
@@ -49,13 +50,13 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void Select()
         {
-            actionListener.ActionPerforming(this);
+            ActionPerforming(this);
             var clickablePoint = ClickablePoint;
             if (clickablePoint.X == 0 && clickablePoint.Y == 0)
             {
                 throw new WhiteException(string.Format("Failed to select {0}, clickable point empty", ToString()));
             }
-            mouse.Click(clickablePoint, actionListener);
+            mouse.Click(clickablePoint, ActionListener);
         }
 
         /// <summary>
@@ -63,11 +64,14 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void MultiSelect()
         {
-            actionListener.ActionPerforming(this);
 
-            keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL, actionListener);
+            ActionPerforming(this);
+
+
+            keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
             Select();
-            keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL, actionListener);
+
+            keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
         }
     }
 }

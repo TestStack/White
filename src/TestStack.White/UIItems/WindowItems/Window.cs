@@ -34,6 +34,8 @@ namespace TestStack.White.UIItems.WindowItems
             new Dictionary<DisplayState, WindowVisualState>();
 
         private AutomationEventHandler handler;
+        private ActionListener parentActionListener;
+        
         /// <summary>
         /// If a window is opened then you try and close it straight away, the window can fail to close
         /// 
@@ -245,7 +247,6 @@ UI actions on window needing mouse would not work in area not falling under the 
         public override void ActionPerformed(Action action)
         {
             action.Handle(this);
-            ActionPerformed();
         }
 
         /// <summary>
@@ -364,13 +365,13 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual Window MessageBox(string title)
         {
             Window window = factory.ModalWindow(title, InitializeOption.NoCache, WindowSession.ModalWindowSession(InitializeOption.NoCache));
-            window.actionListener = this;
+            if (window != null) window.parentActionListener = this;
             return window;
         }
 
         public override ActionListener ActionListener
         {
-            get { return this; }
+            get { return parentActionListener ?? this; }
         }
 
         public virtual void Focus(DisplayState displayState)

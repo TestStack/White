@@ -26,7 +26,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        internal virtual ListViewCell this[ListViewColumn column]
+        public virtual ListViewCell this[ListViewColumn column]
         {
             get
             {

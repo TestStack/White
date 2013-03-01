@@ -42,7 +42,7 @@ namespace TestStack.White.UIItems.TreeItems
             set
             {
                 AutomationElement element = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit));
-                new TextBox(element, actionListener).Text = value;
+                new TextBox(element, ActionListener).Text = value;
             }
         }
 
@@ -81,7 +81,7 @@ namespace TestStack.White.UIItems.TreeItems
             get
             {
                 if (Framework == WindowsFramework.Wpf)
-                    return new WpfTreeViewScrollBars(AutomationElement, actionListener);
+                    return new WpfTreeViewScrollBars(AutomationElement, ActionListener);
                 return base.ScrollBars;
             }
         }
@@ -140,11 +140,6 @@ namespace TestStack.White.UIItems.TreeItems
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds).Minus(ScrollBars.Horizontal.Bounds); }
-        }
-
-        public override void ActionPerformed(Action action)
-        {
-            actionListener.ActionPerformed(action);
         }
     }
 }

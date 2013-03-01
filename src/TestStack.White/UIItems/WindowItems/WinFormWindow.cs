@@ -59,7 +59,7 @@ namespace TestStack.White.UIItems.WindowItems
         {
             get
             {
-                if (winFormScrollBars == null) winFormScrollBars = new WinFormScrollBars(automationElement, actionListener);
+                if (winFormScrollBars == null) winFormScrollBars = new WinFormScrollBars(automationElement, ActionListener);
                 return winFormScrollBars;
             }
         }

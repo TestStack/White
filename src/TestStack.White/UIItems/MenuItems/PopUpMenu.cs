@@ -11,7 +11,6 @@ namespace TestStack.White.UIItems.MenuItems
 
         public PopUpMenu(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
-            this.actionListener = actionListener;
             topLevelMenus = new Menus(automationElement, actionListener);
         }
 

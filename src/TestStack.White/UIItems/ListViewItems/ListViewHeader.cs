@@ -21,7 +21,7 @@ namespace TestStack.White.UIItems.ListViewItems
             get
             {
                 List<AutomationElement> collection = automationElementFinder.Children(AutomationSearchCondition.ByControlType(ControlType.HeaderItem));
-                return new ListViewColumns(collection, actionListener);
+                return new ListViewColumns(collection, ActionListener);
             }
         }
 

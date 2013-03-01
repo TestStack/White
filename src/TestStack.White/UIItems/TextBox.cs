@@ -47,14 +47,14 @@ namespace TestStack.White.UIItems
                     {
                         Logger.WarnFormat("BulkText failed, {0} does not support ValuePattern. Trying Text", ToString());
                         Text = value;
-                        actionListener.ActionPerformed(Action.WindowMessage);
+                        ActionListener.ActionPerformed(Action.WindowMessage);
                     }
                 }
                 catch (System.InvalidOperationException)
                 {
                     Logger.Warn("BulkText failed, now trying Text on " + ToString());
                     Text = value;
-                    actionListener.ActionPerformed(Action.WindowMessage);
+                    ActionPerformed();
                 }
             }
             get { return Text; }
@@ -67,12 +67,12 @@ namespace TestStack.White.UIItems
 
         public virtual void ClickAtRightEdge()
         {
-            mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+            mouse.Click(Bounds.ImmediateInteriorEast(), ActionListener);
         }
 
         public virtual void ClickAtCenter()
         {
-            mouse.Click(Bounds.Center(), actionListener);
+            mouse.Click(Bounds.Center(), ActionListener);
         }
 
         public override void HookEvents(UIItemEventListener eventListener)

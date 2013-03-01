@@ -20,7 +20,7 @@ namespace TestStack.White.UIItems.TableItems
                     .Descendants(AutomationSearchCondition.ByControlType(ControlType.Header));
                 var columnElements = new List<AutomationElement>(descendants)
                     .FindAll(obj => !obj.Current.Name.StartsWith(UIItemIdAppXmlConfiguration.Instance.TableColumn));
-                return new TableColumns(columnElements, actionListener);
+                return new TableColumns(columnElements, ActionListener);
             }
         }
     }
