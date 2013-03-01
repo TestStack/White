@@ -42,7 +42,7 @@ namespace White.Core.UIItems.TreeItems
             set
             {
                 AutomationElement element = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit));
-                new TextBox(element, actionListener).Text = value;
+                new TextBox(element, ActionListener).Text = value;
             }
         }
 
@@ -130,11 +130,6 @@ namespace White.Core.UIItems.TreeItems
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds).Minus(ScrollBars.Horizontal.Bounds); }
-        }
-
-        public override void ActionPerformed(Action action)
-        {
-            actionListener.ActionPerformed(action);
         }
     }
 }

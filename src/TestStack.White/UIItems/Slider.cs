@@ -59,12 +59,12 @@ namespace White.Core.UIItems
 
         public virtual void SmallIncrement()
         {
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, actionListener);
+            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, ActionListener);
         }
 
         public virtual void SmallDecrement()
         {
-            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, actionListener);
+            keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, ActionListener);
         }
     }
 }

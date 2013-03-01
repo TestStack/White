@@ -36,7 +36,7 @@ namespace White.Core.UIItems.PropertyGridItems
                     var automationPatterns = new AutomationPatterns(rowElement);
                     if (automationPatterns.HasPattern(ValuePattern.Pattern))
                     {
-                        properties.Add(new PropertyGridProperty(rowElement, gridElementFinder, actionListener));
+                        properties.Add(new PropertyGridProperty(rowElement, gridElementFinder, ActionListener));
                     }
                     else
                     {

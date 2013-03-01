@@ -30,7 +30,7 @@ namespace White.Core.UIItems.ListBoxItems
         {
             if (!shouldSelect) return;
 
-            actionListener.ActionPerforming(this);
+            ActionPerforming(this);
 
             if (Bounds.IsEmpty)
             {
@@ -41,10 +41,10 @@ namespace White.Core.UIItems.ListBoxItems
             else
             {
                 Logger.Debug("Selecting item with Click");
-                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);                
+                mouse.Click(Bounds.ImmediateInteriorEast(), ActionListener);                
             }
 
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
         }
 
         public abstract void Check();

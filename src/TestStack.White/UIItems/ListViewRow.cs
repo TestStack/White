@@ -24,7 +24,8 @@ namespace White.Core.UIItems
         {
             get
             {
-                actionListener.ActionPerforming(this);
+
+                ActionPerforming(this);
                 return IsSelectedValue;
             }
         }
@@ -38,9 +39,12 @@ namespace White.Core.UIItems
         {
             get
             {
-                actionListener.ActionPerforming(this);
+
+                ActionPerforming(this);
+                var collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Text));
                 List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.Text));
-                return new ListViewCells(collection, actionListener, header);
+
+                return new ListViewCells(collection, ActionListener, header);
             }
         }
 
@@ -49,8 +53,9 @@ namespace White.Core.UIItems
         /// </summary>
         public virtual void Select()
         {
-            actionListener.ActionPerforming(this);
             mouse.Click(ClickablePoint, actionListener);
+            ActionPerforming(this);
+            mouse.Click(ClickablePoint, ActionListener);
         }
 
         /// <summary>
@@ -58,11 +63,14 @@ namespace White.Core.UIItems
         /// </summary>
         public virtual void MultiSelect()
         {
-            actionListener.ActionPerforming(this);
 
-            keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL, actionListener);
+            ActionPerforming(this);
+
+
+            keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
             Select();
-            keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL, actionListener);
+
+            keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
         }
     }
 }
