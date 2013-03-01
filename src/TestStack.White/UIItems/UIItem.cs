@@ -74,7 +74,11 @@ namespace White.Core.UIItems
             get { return automationElement.Current.BoundingRectangle.TopLeft; }
         }
 
-        protected void ActionPerformed()
+        /// <summary>
+        /// Perform window message action.
+        /// </summary>
+        // todo: left to be virtual but will we ever use it in over role than that one ?
+        protected virtual void ActionPerformed()
         {
             ActionPerformed(Action.WindowMessage);
         }
