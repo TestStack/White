@@ -10,11 +10,10 @@ namespace TestStack.White.UITests.Infrastructure
             {
                 case FrameworkId.Wpf:
                     return new WpfTestConfiguration();
-                    break;
                 case FrameworkId.Winforms:
                     return new WinformsTestConfiguration();
-                    break;
                 case FrameworkId.Silverlight:
+                    return new SilverlightTestConfiguration();
                 case FrameworkId.Win32:
                 case FrameworkId.Swt:
                 case FrameworkId.WinRT:

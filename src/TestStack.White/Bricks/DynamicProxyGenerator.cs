@@ -13,15 +13,9 @@ namespace White.Core.Bricks
             get { return ProxyGenerator; }
         }
 
-        public virtual object CreateProxy(IInterceptor interceptor, Type type)
+        public virtual object CreateProxy(Type type, IInterceptor interceptor)
         {
-            object proxy;
-            if (type.IsInterface)
-                proxy = generator.CreateInterfaceProxyWithoutTarget(type, interceptor);
-            else
-                proxy = generator.CreateClassProxy(type, interceptor);
-            return proxy;
+            return type.IsInterface ? generator.CreateInterfaceProxyWithoutTarget(type, interceptor) : generator.CreateClassProxy(type, interceptor);
         }
     }
-
 }

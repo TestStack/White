@@ -10,6 +10,7 @@ using White.Core.UIItems.Scrolling;
 using White.Core.UIItems.TabItems;
 using White.Core.UIItems.TableItems;
 using White.Core.UIItems.TreeItems;
+using White.Core.UIItems.WindowItems;
 using White.Core.UIItems.WindowStripControls;
 
 namespace White.Core.Mappings
@@ -56,12 +57,14 @@ namespace White.Core.Mappings
             items.Add(dictionaryItem);
 
             items.AddFrameworkSpecificPrimary(ControlType.Text, typeof(Label), typeof(Label), typeof(WPFLabel), typeof(WPFLabel));
-            items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox), typeof(WPFComboBox));
+            items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox), typeof(SilverlightComboBox));
             items.AddFrameworkSpecificPrimary(ControlType.StatusBar, typeof(StatusStrip), typeof(StatusStrip), typeof(WPFStatusBar), typeof(WPFStatusBar));
 
             items.AddWPFPrimary(typeof (Image), ControlType.Image);
             items.AddSilverlightPrimary(typeof (Image), ControlType.Image);
             items.AddWin32Primary(typeof (Image), ControlType.Image);
+
+            items.AddSilverlightPrimary(typeof(SilverlightChildWindow), ControlType.Window);
 
             items.AddSecondary(typeof (TableRowHeader), ControlType.Header);
             items.AddSecondary(typeof (TabPage), ControlType.TabItem, true);
@@ -84,6 +87,7 @@ namespace White.Core.Mappings
 
             items.Add(new ControlDictionaryItem(typeof(DateTimePicker), ControlType.Pane, "SysDateTimePick32", true, false, false, Constants.WinFormFrameworkId, false));
             items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Custom, "DatePicker", true, false, false, Constants.WPFFrameworkId, false));
+            items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.ComboBox, "DatePicker", true, false, false, Constants.SilverlightFrameworkId, false));
             items.Add(new ControlDictionaryItem(typeof (GroupBox), ControlType.Group, string.Empty, false, true, false, null, true));
             items.Add(new ControlDictionaryItem(null, ControlType.TitleBar, string.Empty, false, false, true, null, false));
             items.Add(new ControlDictionaryItem(null, ControlType.Pane, string.Empty, false, false, false, null, true));
@@ -113,21 +117,21 @@ namespace White.Core.Mappings
         public virtual Type GetTestControlType(ControlType controlType, string frameWorkId, bool isNativeControl)
         {
             ControlDictionaryItem dictionaryItem = items.Find(controlDictionaryItem =>
-                                                                  {
-                                                                      string itemFrameworkId = controlDictionaryItem.FrameworkId;
-                                                                      bool controlTypeMatched = controlDictionaryItem.ControlType.Equals(controlType);
+            {
+                string itemFrameworkId = controlDictionaryItem.FrameworkId;
+                bool controlTypeMatched = controlDictionaryItem.ControlType.Equals(controlType);
 
-                                                                      if (!controlTypeMatched) return false;
-                                                                      if (itemFrameworkId == null) return true;
-                                                                      if (string.IsNullOrEmpty(frameWorkId))
-                                                                      {
-                                                                          if (Equals(itemFrameworkId, Constants.Win32FrameworkId) && isNativeControl)
-                                                                              return true;
-                                                                          if (Equals(itemFrameworkId, Constants.WPFFrameworkId) && !isNativeControl)
-                                                                              return true;
-                                                                      }
-                                                                      return Equals(frameWorkId, itemFrameworkId);
-                                                                  });
+                if (!controlTypeMatched) return false;
+                if (itemFrameworkId == null) return true;
+                if (string.IsNullOrEmpty(frameWorkId))
+                {
+                    if (Equals(itemFrameworkId, Constants.Win32FrameworkId) && isNativeControl)
+                        return true;
+                    if (Equals(itemFrameworkId, Constants.WPFFrameworkId) && !isNativeControl)
+                        return true;
+                }
+                return Equals(frameWorkId, itemFrameworkId);
+            });
             if (dictionaryItem == null)
             {
                 throw new ControlDictionaryException(string.Format("Could not find TestControl for ControlType={0} and FrameworkId:{1}",
