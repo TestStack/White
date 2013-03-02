@@ -55,8 +55,11 @@
     <Compile Include="ControlTests\Splitters\DelegateDisposable.cs" />
     <Compile Include="ControlTests\Splitters\HorizontalThumbTest.cs" />
     <Compile Include="ControlTests\Splitters\VerticalThumbTest.cs" />
+    <Compile Include="IMainWindow.cs" />
+    <Compile Include="Infrastructure\ForwardIfExistsInterceptor.cs" />
     <Compile Include="Infrastructure\FrameworkId.cs" />
     <Compile Include="Infrastructure\SilverlightTestConfiguration.cs" />
+    <Compile Include="Infrastructure\WindowsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\TestConfiguration.cs" />
     <Compile Include="Infrastructure\TestConfigurationFactory.cs" />

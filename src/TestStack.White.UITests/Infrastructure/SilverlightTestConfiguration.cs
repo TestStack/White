@@ -2,9 +2,11 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Castle.DynamicProxy;
 using White.Core;
 using White.Core.Configuration;
 using White.WebBrowser;
+using White.WebBrowser.Silverlight;
 
 namespace TestStack.White.UITests.Infrastructure
 {
@@ -12,6 +14,16 @@ namespace TestStack.White.UITests.Infrastructure
     {
         public override Application LaunchApplication()
         {
+            var processes = Process.GetProcessesByName("iexplore");
+            foreach (var process in processes)
+            {
+                try
+                {
+                    process.Kill();
+                }
+                catch { }
+            }
+
             string fullPath;
             var checkoutDir = Environment.GetEnvironmentVariable("checkoutDir");
             if (string.IsNullOrEmpty(checkoutDir))
@@ -49,14 +61,45 @@ namespace TestStack.White.UITests.Infrastructure
             return Application.Launch(processStartInfo);
         }
 
-        protected override string ApplicationExe
+        public override IMainWindow GetMainWindow(Application application)
         {
-            get { return null; }
+            var ieWindow = (InternetExplorerWindow)application.GetWindow("TestSilverlightApplication - Windows Internet Explorer");
+            var mainWindowAdapter = new ProxyGenerator()
+                .CreateInterfaceProxyWithoutTarget<IMainWindow>(new SilverlightAdditionalCallsInterceptor(ieWindow.SilverlightDocument),
+                                                                new ForwardIfExistsInterceptor(ieWindow.SilverlightDocument));
+            return mainWindowAdapter;
         }
 
-        public override string MainWindowTitle
+        public class SilverlightAdditionalCallsInterceptor : IInterceptor
         {
-            get { return "TestSilverlightApplication - Windows Internet Explorer"; }
+            private readonly SilverlightDocument silverlightDocument;
+
+            public SilverlightAdditionalCallsInterceptor(SilverlightDocument silverlightDocument)
+            {
+                this.silverlightDocument = silverlightDocument;
+            }
+
+            public void Intercept(IInvocation invocation)
+            {
+                if (invocation.Method.Name == "ModalWindow")
+                {
+                    invocation.ReturnValue = silverlightDocument.ChildWindow((string) invocation.Arguments[0]);
+                }
+                else if (invocation.Method.Name == "Close")
+                {
+                    var processes = Process.GetProcessesByName("iexplore");
+                    foreach (var process in processes)
+                    {
+                        try
+                        {
+                            process.Kill();
+                        }
+                        catch { }
+                    }
+                }
+                else
+                    invocation.Proceed();
+            }
         }
     }
 }

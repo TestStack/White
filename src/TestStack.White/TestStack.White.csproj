@@ -161,6 +161,8 @@
     <Compile Include="UIItems\Finders\SearchConditionFactory.cs" />
     <Compile Include="UIItems\Finders\SimpleSearchCondition.cs" />
     <Compile Include="UIItems\Finders\TestControlTypeX.cs" />
+    <Compile Include="UIItems\ListBoxItems\SilverlightComboBox.cs" />
+    <Compile Include="UIItems\ListBoxItems\SilverlightComboBoxVerticalSpanCalculator.cs" />
     <Compile Include="UIItems\ListBoxItems\WinFormComboBox.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFComboBoxVerticalSpanCalculator.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGrid.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="UIItems\TableItems\TableVerticalScrollOffset.cs" />
     <Compile Include="UIItems\Thumb.cs" />
     <Compile Include="UIItems\ToggleableItem.cs" />
+    <Compile Include="UIItems\WindowItems\SilverlightChildWindow.cs" />
     <Compile Include="UIItems\WinFormSlider.cs" />
     <Compile Include="UIItems\Spinner.cs" />
     <Compile Include="UIItems\Panel.cs" />

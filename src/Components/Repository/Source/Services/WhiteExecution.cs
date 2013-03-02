@@ -39,7 +39,7 @@ namespace White.Repository.Services
             service = (T) Activator.CreateInstance(typeof(T), objs);
             if (RepositoryAppXmlConfiguration.Instance.UseHistory || ReportingAppXmlConfiguration.Instance.PublishTestReports)
             {
-                service = (Service) DynamicProxyGenerator.Instance.CreateProxy(new ServiceInterceptor(service, serviceExecution, sessionReport), typeof (T));
+                service = (Service) DynamicProxyGenerator.Instance.CreateProxy(typeof (T), new ServiceInterceptor(service, serviceExecution, sessionReport));
                 services.Add(typeof (T), service);
             }
             return (T) service;

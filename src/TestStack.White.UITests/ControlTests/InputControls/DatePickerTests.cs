@@ -11,7 +11,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         protected override void RunTest(FrameworkId framework)
         {
             RunTest(() => GetDate(DateTime.Today), FrameworkId.Winforms);
-            RunTest(() => GetDate(null), FrameworkId.Wpf);
+            RunTest(() => GetDate(null), FrameworkId.Wpf & FrameworkId.Silverlight);
             RunTest(SetDate); 
         }
 
@@ -37,6 +37,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         {
             yield return FrameworkId.Wpf;
             yield return FrameworkId.Winforms;
+            yield return FrameworkId.Silverlight;
         }
     }
 }

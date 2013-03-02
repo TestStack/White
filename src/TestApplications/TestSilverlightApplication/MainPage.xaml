@@ -47,7 +47,9 @@
             </sdk:TabControl>
             <sdk:TabControl Grid.Column="1" Width="150">
                 <sdk:TabItem Header="Input controls">
-                    <sdk:DatePicker x:Name="DatePicker" />
+                    <StackPanel>
+                        <sdk:DatePicker x:Name="DatePicker" />
+                    </StackPanel>
                 </sdk:TabItem>
             </sdk:TabControl>
             <sdk:TabControl  Grid.Column="2">
