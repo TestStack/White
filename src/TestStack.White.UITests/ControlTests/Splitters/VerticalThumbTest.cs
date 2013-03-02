@@ -40,12 +40,14 @@ namespace TestStack.White.UITests.ControlTests.Splitters
         private Window OpenVerticalSliderWindow()
         {
             MainWindow.Get<Button>("OpenVerticalSplitterButton").Click();
-            return MainWindow.ModalWindow("VerticalGridSplitter");
+            var openVerticalSliderWindow = MainWindow.ModalWindow("VerticalGridSplitter");
+            return openVerticalSliderWindow;
         }
 
         protected override IEnumerable<FrameworkId> SupportedFrameworks()
         {
             yield return FrameworkId.Wpf;
+            yield return FrameworkId.Silverlight;
         }
     }
 }

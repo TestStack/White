@@ -85,7 +85,7 @@ namespace White.Core.UnitTests.Mappings
             Assert.AreEqual(typeof (WinFormComboBox), controlDictionary.GetTestControlType(ControlType.ComboBox, Constants.WinFormFrameworkId, true));
             Assert.AreEqual(typeof (WPFComboBox), controlDictionary.GetTestControlType(ControlType.ComboBox, Constants.WPFFrameworkId, false));
             Assert.AreEqual(typeof (WPFComboBox), controlDictionary.GetTestControlType(ControlType.ComboBox, Constants.MissingFrameworkId, false));
-            Assert.AreEqual(typeof (WPFComboBox), controlDictionary.GetTestControlType(ControlType.ComboBox, Constants.SilverlightFrameworkId, false));
+            Assert.AreEqual(typeof (SilverlightComboBox), controlDictionary.GetTestControlType(ControlType.ComboBox, Constants.SilverlightFrameworkId, false));
             Assert.AreEqual(typeof (WPFLabel), controlDictionary.GetTestControlType(ControlType.Text, Constants.SilverlightFrameworkId, false));
             Assert.AreEqual(typeof (GroupBox), controlDictionary.GetTestControlType(ControlType.Group, Constants.WPFFrameworkId, false));
             Assert.AreEqual(null, controlDictionary.GetTestControlType(string.Empty));

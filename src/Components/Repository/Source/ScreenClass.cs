@@ -35,7 +35,7 @@ namespace White.Repository
                 if (typeof(IUIItem).IsAssignableFrom(fieldInfo.FieldType))
                 {
                     var interceptor = new UIItemInterceptor(SearchCondition(fieldInfo, window.Framework), window, screenRepository.SessionReport);
-                    injectedObject = DynamicProxyGenerator.Instance.CreateProxy(interceptor, fieldInfo.FieldType);
+                    injectedObject = DynamicProxyGenerator.Instance.CreateProxy(fieldInfo.FieldType, interceptor);
                 }
                 else if (typeof(AppScreenComponent).IsAssignableFrom(fieldInfo.FieldType))
                 {

@@ -4,15 +4,15 @@ using White.Core.Configuration;
 
 namespace White.Core.UIItems.ListBoxItems
 {
-    public class WPFComboBoxVerticalSpanCalculator
+    public class SilverlightComboBoxVerticalSpanCalculator
     {
         private readonly Rect firstItem;
         private readonly Rect lastItem;
         private readonly Rect combo;
         private readonly double percentVisible;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFComboBoxVerticalSpanCalculator));
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SilverlightComboBoxVerticalSpanCalculator));
 
-        public WPFComboBoxVerticalSpanCalculator(Rect combo, Rect firstItem, Rect lastItem, double percentVisible)
+        public SilverlightComboBoxVerticalSpanCalculator(Rect combo, Rect firstItem, Rect lastItem, double percentVisible)
         {
             this.firstItem = firstItem;
             this.lastItem = lastItem;
@@ -26,7 +26,6 @@ namespace White.Core.UIItems.ListBoxItems
             {
                 double listTop = firstItem.Top;
                 double listBottom = lastItem.Bottom;
-
                 double comboBoxBottom = combo.Bottom;
 
                 var visibleHeight = VisibleHeight(listTop, listBottom);
@@ -35,7 +34,9 @@ namespace White.Core.UIItems.ListBoxItems
                     logger.Debug("ComboBox is dropping up");
                     return new VerticalSpan(listTop, listTop + visibleHeight);
                 }
-                return new VerticalSpan(comboBoxBottom, comboBoxBottom + visibleHeight);
+
+                var nonVisibleHeight = visibleHeight*((100 - percentVisible) / 100);
+                return new VerticalSpan(comboBoxBottom, visibleHeight + nonVisibleHeight);
             }
         }
 

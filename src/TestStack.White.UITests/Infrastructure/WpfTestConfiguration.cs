@@ -1,21 +1,17 @@
-﻿using System.IO;
-using System.Reflection;
-
-namespace TestStack.White.UITests.Infrastructure
+﻿namespace TestStack.White.UITests.Infrastructure
 {
-    public class WpfTestConfiguration : TestConfiguration
+    public class WpfTestConfiguration : WindowsConfiguration
     {
-        protected override string ApplicationExe
+        protected override string ApplicationExePath()
         {
-            get
-            {
-                return Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "WpfTestApplication.exe");
-            }
+            return "WpfTestApplication.exe";
         }
 
-        public override string MainWindowTitle
+        protected override string MainWindowTitle()
         {
-            get { return "MainWindow"; }
+            return "MainWindow";
         }
     }
+
+    
 }
