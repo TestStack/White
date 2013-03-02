@@ -45,7 +45,7 @@ namespace White.WebBrowser.Silverlight
             get { return new WindowsFramework(Constants.SilverlightFrameworkId); }
         }
 
-        public Window ChildWindow(string title)
+        public virtual Window ChildWindow(string title)
         {
             var childWindow = Get<Window>(SearchCriteria.ByText(title));
             return childWindow;
