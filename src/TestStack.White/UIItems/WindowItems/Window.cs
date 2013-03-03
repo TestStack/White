@@ -148,7 +148,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        private static void HourGlassWait()
+        protected static void HourGlassWait()
         {
             if (!CoreAppXmlConfiguration.Instance.WaitBasedOnHourGlass) return;
             try
@@ -197,7 +197,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             return ("ConsoleWindowClass".Equals(automationElement.Current.ClassName));
         }
 
-        private void WaitForProcess()
+        protected virtual void WaitForProcess()
         {
             Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
         }

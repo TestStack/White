@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,12 +11,29 @@ namespace TestSilverlightApplication
 
         public MainPage()
         {
+            DataContext = this;
             InitializeComponent();
             AddItemToComboBox(Combo, "foo", "bar");
             AddItemToComboBox(CustomCombo, "Baz", "Quux");
 
             Button.Click += ButtonClick;
         }
+
+        public ObservableCollection<string> ListItems
+        {
+            get
+            {
+                return new ObservableCollection<string>
+                    {
+                        "Test",
+                        "Test2",
+                        "Test3",
+                        "Test4",
+                        "Test5"
+                    };
+            }
+        }
+
 
         private static void AddItemToComboBox(ComboBox comboBox, params string[] texts)
         {

@@ -5,6 +5,8 @@ using White.Core.Factory;
 using White.Core.Sessions;
 using White.Core.UIItems;
 using White.Core.UIItems.Actions;
+using White.Core.UIItems.Finders;
+using White.Core.UIItems.WindowItems;
 
 namespace White.WebBrowser.Silverlight
 {
@@ -30,7 +32,6 @@ namespace White.WebBrowser.Silverlight
         {
             if (action == Action.Scroll) Thread.Sleep(500);
             CustomWait();
-            base.ActionPerformed();
         }
 
         protected override ActionListener ChildrenActionListener
@@ -41,6 +42,12 @@ namespace White.WebBrowser.Silverlight
         public override WindowsFramework Framework
         {
             get { return new WindowsFramework(Constants.SilverlightFrameworkId); }
+        }
+
+        public virtual Window ChildWindow(string title)
+        {
+            var childWindow = Get<Window>(SearchCriteria.ByText(title));
+            return childWindow;
         }
     }
 }

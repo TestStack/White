@@ -49,6 +49,7 @@ namespace TestStack.White.UITests.ControlTests
         {
             yield return FrameworkId.Wpf;
             yield return FrameworkId.Winforms;
+            yield return FrameworkId.Silverlight;
         }
     }
 }

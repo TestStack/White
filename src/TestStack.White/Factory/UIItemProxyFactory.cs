@@ -9,7 +9,7 @@ namespace White.Core.Factory
     {
         public static IUIItem Create(IUIItem item, ActionListener actionListener)
         {
-            return (IUIItem) DynamicProxyGenerator.Instance.CreateProxy(new CoreInterceptor(item, actionListener), item.GetType());
+            return (IUIItem) DynamicProxyGenerator.Instance.CreateProxy(item.GetType(), new CoreInterceptor(item, actionListener));
         }
     }
 }

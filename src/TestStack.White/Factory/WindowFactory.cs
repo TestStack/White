@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Automation;
 using Castle.Core.Logging;
 using White.Core.AutomationElementSearch;

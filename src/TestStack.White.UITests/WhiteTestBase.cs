@@ -6,7 +6,6 @@ using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Configuration;
 using White.Core.InputDevices;
-using White.Core.UIItems.WindowItems;
 
 namespace TestStack.White.UITests
 {
@@ -17,7 +16,7 @@ namespace TestStack.White.UITests
         internal Keyboard Keyboard;
         private FrameworkId? currentFramework;
 
-        protected Window MainWindow { get; private set; }
+        protected IMainWindow MainWindow { get; private set; }
         protected Application Application { get; private set; }
 
         [Test]
@@ -81,13 +80,15 @@ namespace TestStack.White.UITests
                 Keyboard = Keyboard.Instance;
                 var configuration = TestConfigurationFactory.Create(framework);
                 Application = configuration.LaunchApplication();
-                MainWindow = Application.GetWindow(configuration.MainWindowTitle);
+                MainWindow = configuration.GetMainWindow(Application);
 
                 return new ShutdownApplicationDisposable(this);
             }
             catch (Exception e)
             {
                 logger.Error("Failed to launch application and get main window", e);
+                if (Application != null)
+                    Application.Close();
                 throw;
             }
         }
@@ -98,6 +99,7 @@ namespace TestStack.White.UITests
         {
             yield return FrameworkId.Wpf;
             yield return FrameworkId.Winforms;
+            yield return FrameworkId.Silverlight;
         }
 
         private class ShutdownApplicationDisposable : IDisposable
@@ -112,7 +114,17 @@ namespace TestStack.White.UITests
             public void Dispose()
             {
                 testBase.MainWindow.Close();
-                testBase.Application.Close();
+                if (!testBase.Application.HasExited)
+                {
+                    // ReSharper disable EmptyGeneralCatchClause
+                    try
+                    {
+                        testBase.Application.Close();
+                    }
+                    catch (Exception)
+                    {}
+                    // ReSharper restore EmptyGeneralCatchClause
+                }
                 testBase.Application = null;
                 testBase.MainWindow = null;
             }

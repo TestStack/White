@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Castle.Core.Logging;
 using NUnit.Framework;
 using TestStack.White.UITests.Infrastructure;
 using White.Core.Configuration;
+using White.Core.UIItems.Finders;
 using White.Core.UIItems.ListBoxItems;
 
 namespace TestStack.White.UITests.ControlTests
@@ -12,7 +14,8 @@ namespace TestStack.White.UITests.ControlTests
 
         protected override void RunTest(FrameworkId framework)
         {
-            ComboBoxUnderTest = MainWindow.Get<ComboBox>("AComboBox");
+            CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug); ;
+            ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
             RunTest(ListItemInComboBoxWithoutTextAvailableInitially, FrameworkId.Wpf);
             RunTest(CanSelectItemAtTopOfList);
             RunTest(CanGetAllItems);
@@ -76,7 +79,8 @@ namespace TestStack.White.UITests.ControlTests
 
         protected override IEnumerable<FrameworkId> SupportedFrameworks()
         {
-            return AllFrameworks();
+            yield return FrameworkId.Wpf;
+            yield return FrameworkId.Winforms;
         }
     }
 }

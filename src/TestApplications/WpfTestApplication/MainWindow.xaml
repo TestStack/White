@@ -22,7 +22,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top">
+            <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="AGroupBox">
                 <wpfTestApplication:ListControls />
             </GroupBox>
             <GroupBox Header="Input controls" Grid.Column="1" Width="150">
