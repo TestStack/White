@@ -126,7 +126,6 @@ namespace White.Core.InputDevices
         public static void LeftDown()
         {
             SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonDown)));
-            Thread.Sleep(100);
         }
 
         public virtual void DoubleClick(Point point)
