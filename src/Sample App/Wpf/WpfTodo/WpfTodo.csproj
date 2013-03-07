@@ -38,8 +38,10 @@
     <Reference Include="MahApps.Metro">
       <HintPath>..\..\..\packages\MahApps.Metro.0.10.1.9-ALPHA\lib\net40\MahApps.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="PropertyChanged">
-      <HintPath>..\..\..\packages\PropertyChanged.Fody.1.32.2.0\lib\NET40\PropertyChanged.dll</HintPath>
+    <Reference Include="PropertyChanged, Version=1.33.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\PropertyChanged.Fody.1.33.1.0\Lib\NET40\PropertyChanged.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
