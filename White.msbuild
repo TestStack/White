@@ -21,7 +21,7 @@
       <FilesToDelete Include="$(Root)**\obj\**\*.*" />
       <FilesToDelete Include="$(Root)build\Artifacts\**\*.*" />
     </ItemGroup>
-    <Delete Files="@(FilesToDelete)" />
+    <Delete Files="@(FilesToDelete)" ContinueOnError="true" />
     <Delete Files="$(Root)build\Artifacts" />
   </Target>
   
@@ -41,7 +41,7 @@
 
   <Target Name="Publish">
     <PropertyGroup>
-      <Version Condition="'$(Version)' == ''">0.1.0.0</Version>
+      <Version Condition="'$(Version)' == ''">0.0.0.0</Version>
     </PropertyGroup>
     <MakeDir Directories="$(Root)build\Artifacts" />
     <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
