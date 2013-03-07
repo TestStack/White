@@ -26,7 +26,6 @@ namespace White.Core.UIItems
     public class UIItem : IUIItem
     {
         protected readonly AutomationElement automationElement;
-        protected ActionListener actionListener;
         internal static readonly Mouse mouse = Mouse.Instance;
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
@@ -42,7 +41,7 @@ namespace White.Core.UIItems
         {
             if (null == automationElement) throw new NullReferenceException();
             this.automationElement = automationElement;
-            this.actionListener = actionListener;
+            this.ActionListener = actionListener;
             factory = new PrimaryUIItemFactory(new AutomationElementFinder(automationElement));
         }
 
@@ -75,9 +74,13 @@ namespace White.Core.UIItems
             get { return automationElement.Current.BoundingRectangle.TopLeft; }
         }
 
+        /// <summary>
+        /// Perform window message action.
+        /// </summary>
+        // todo: left to be virtual but will we ever use it in over role than that one ?
         protected virtual void ActionPerformed()
         {
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed(Action.WindowMessage);
         }
 
         public virtual Rect Bounds
@@ -132,8 +135,7 @@ namespace White.Core.UIItems
 
         public virtual void RightClickAt(Point point)
         {
-            actionListener.ActionPerforming(this);
-            mouse.RightClick(point, actionListener);
+            mouse.RightClick(point, ActionListener);
         }
 
         public virtual void RightClick()
@@ -148,7 +150,6 @@ namespace White.Core.UIItems
 
         public virtual void Focus()
         {
-            actionListener.ActionPerforming(this);
             try
             {
                 automationElement.SetFocus();
@@ -188,7 +189,7 @@ namespace White.Core.UIItems
             Rect errorProviderBounds = element.Current.BoundingRectangle;
             if (automationElement.Current.BoundingRectangle.Right != errorProviderBounds.Left) return null;
             mouse.Location = errorProviderBounds.Center();
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
             return window.ToolTip.Text;
         }
 
@@ -202,17 +203,13 @@ namespace White.Core.UIItems
             get { return automationElement.Current.FrameworkId.Equals(Constants.Win32FrameworkId) ? Name : Id; }
         }
 
-        public virtual ActionListener ActionListener
-        {
-            get { return actionListener; }
-        }
+        public virtual ActionListener ActionListener {  get; private set; }
 
         /// <summary>
         /// Performs mouse click at the center of this item
         /// </summary>
         public virtual void Click()
         {
-            actionListener.ActionPerforming(this);
             PerformIfValid(PerformClick);
         }
 
@@ -242,7 +239,7 @@ namespace White.Core.UIItems
         internal virtual void PerformClick()
         {
             if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
-            mouse.Click(Bounds.Center(), actionListener);
+            mouse.Click(Bounds.Center(), ActionListener);
         }
 
         /// <summary>
@@ -250,8 +247,7 @@ namespace White.Core.UIItems
         /// </summary>
         public virtual void DoubleClick()
         {
-            actionListener.ActionPerforming(this);
-            PerformIfValid(()=>mouse.DoubleClick(Bounds.Center(), actionListener));
+            PerformIfValid(()=>mouse.DoubleClick(Bounds.Center(), ActionListener));
         }
 
         /// <summary>
@@ -260,8 +256,7 @@ namespace White.Core.UIItems
         /// <param name="key"></param>
         public virtual void KeyIn(KeyboardInput.SpecialKeys key)
         {
-            actionListener.ActionPerforming(this);
-            keyboard.PressSpecialKey(key, actionListener);
+            keyboard.PressSpecialKey(key, ActionListener);
         }
 
         public override bool Equals(object obj)
@@ -284,7 +279,7 @@ namespace White.Core.UIItems
 
         public virtual IScrollBars ScrollBars
         {
-            get { return scrollBars ?? (scrollBars = ScrollerFactory.CreateBars(automationElement, actionListener)); }
+            get { return scrollBars ?? (scrollBars = ScrollerFactory.CreateBars(automationElement, ActionListener)); }
         }
 
         protected virtual void HookClickEvent(UIItemEventListener eventListener)
@@ -345,11 +340,12 @@ namespace White.Core.UIItems
 
         public virtual void ActionPerforming(UIItem uiItem)
         {
+            ActionListener.ActionPerforming(uiItem);
         }
 
         public virtual void ActionPerformed(Action action)
         {
-            actionListener.ActionPerformed(action);
+            ActionListener.ActionPerformed(action);
         }
 
         public virtual void LogStructure()
@@ -378,13 +374,13 @@ namespace White.Core.UIItems
             if (pattern != null) pattern.SetValue(string.Empty);
             if (string.IsNullOrEmpty(value)) return;
 
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
             EnterData(value);
         }
 
         protected virtual void EnterData(string value)
         {
-            keyboard.Send(value, actionListener);
+            keyboard.Send(value, ActionListener);
         }
 
         internal virtual UIItemContainer AsContainer()

@@ -22,14 +22,14 @@ namespace White.Core.UIItems.TableItems
             }
             set
             {
-                actionListener.ActionPerforming(this);
+                ActionPerforming(this);
                 var valuePattern = (ValuePattern) Pattern(ValuePattern.Pattern);
                 if (value is string)
                 {
                     Click();
                     valuePattern.SetValue(string.Empty);
-                    keyboard.Send((string) value, actionListener);
-                    keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.TAB, actionListener);
+                    keyboard.Send((string) value, ActionListener);
+                    keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.TAB, ActionListener);
                 }
                 else
                 {
@@ -49,12 +49,12 @@ namespace White.Core.UIItems.TableItems
 
         public override void RightClick()
         {
-            new TooltipSafeMouse(mouse).RightClickOutsideToolTip(this, actionListener);
+            new TooltipSafeMouse(mouse).RightClickOutsideToolTip(this, ActionListener);
         }
 
         public override void DoubleClick()
         {
-            new TooltipSafeMouse(mouse).DoubleClickOutsideToolTip(this, actionListener);
+            new TooltipSafeMouse(mouse).DoubleClickOutsideToolTip(this, ActionListener);
         }
     }
 }

@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.DataGridControl = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -46,6 +48,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List Controls";
             // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(6, 19);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.inputControls1);
@@ -56,13 +65,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input Controls";
             // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(6, 19);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
             // inputControls1
             // 
             this.inputControls1.Location = new System.Drawing.Point(7, 19);
@@ -70,11 +72,20 @@
             this.inputControls1.Size = new System.Drawing.Size(217, 181);
             this.inputControls1.TabIndex = 0;
             // 
+            // DataGridControl
+            // 
+            this.DataGridControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridControl.Location = new System.Drawing.Point(12, 294);
+            this.DataGridControl.Name = "DataGridControl";
+            this.DataGridControl.Size = new System.Drawing.Size(514, 177);
+            this.DataGridControl.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 405);
+            this.ClientSize = new System.Drawing.Size(535, 483);
+            this.Controls.Add(this.DataGridControl);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -82,6 +93,7 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -92,6 +104,7 @@
         private ListControls listControls1;
         private System.Windows.Forms.GroupBox groupBox2;
         private InputControls inputControls1;
+        private System.Windows.Forms.DataGridView DataGridControl;
     }
 }
 

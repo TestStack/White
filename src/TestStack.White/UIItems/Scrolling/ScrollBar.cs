@@ -13,19 +13,19 @@ namespace White.Core.UIItems.Scrolling {
         private readonly PrimaryUIItemFactory primaryUIItemFactory;
 
         protected virtual Button BackSmallChangeButton {
-            get { return FindButton(actionListener, automationIds.BackwardSmall); }
+            get { return FindButton(ActionListener, automationIds.BackwardSmall); }
         }
 
         protected virtual Button ForwardSmallChangeButton {
-            get { return FindButton(actionListener, automationIds.ForwardSmall); }
+            get { return FindButton(ActionListener, automationIds.ForwardSmall); }
         }
 
         protected virtual Button BackLargeChangeButton {
-            get { return FindButton(actionListener, automationIds.BackwardLarge); }
+            get { return FindButton(ActionListener, automationIds.BackwardLarge); }
         }
 
         protected virtual Button ForwardLargeChangeButton {
-            get { return FindButton(actionListener, automationIds.ForwardLarge); }
+            get { return FindButton(ActionListener, automationIds.ForwardLarge); }
         }
 
         protected ScrollBar() {}

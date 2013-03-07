@@ -41,7 +41,7 @@ namespace White.Core.UIItems.MenuItems
             get
             {
                 if (childMenus != null) return childMenus;
-                childMenus = new Menus(automationElement, actionListener);
+                childMenus = new Menus(automationElement, ActionListener);
                 return childMenus;
             }
         }

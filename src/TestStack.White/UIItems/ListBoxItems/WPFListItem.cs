@@ -18,7 +18,7 @@ namespace White.Core.UIItems.ListBoxItems
 
         private CheckBox CheckBox
         {
-            get { return (CheckBox) factory.Create(SearchCriteria.ByControlType(ControlType.CheckBox), actionListener); }
+            get { return (CheckBox) factory.Create(SearchCriteria.ByControlType(ControlType.CheckBox), ActionListener); }
         }
 
         public override bool Checked

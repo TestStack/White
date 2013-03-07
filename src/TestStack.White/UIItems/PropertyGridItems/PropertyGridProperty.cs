@@ -44,7 +44,7 @@ namespace White.Core.UIItems.PropertyGridItems
             Click();
             AutomationElement browseButtonElement = gridElementFinder.FindBrowseButton();
             if (browseButtonElement == null) throw new WhiteException(string.Format("Property {0} isn't browsable.", Text));
-            var button = new Button(browseButtonElement, actionListener);
+            var button = new Button(browseButtonElement, ActionListener);
             button.Click();
         }
     }

@@ -11,10 +11,10 @@ namespace TestStack.White.UITests.ControlTests
     {
         protected override void RunTest(FrameworkId framework)
         {
-            RunTest(can_click_on_elements_located_by_searching_through_several_containers);
+            RunTest(CanClickOnElementsLocatedBySearchingThroughSeveralContainers);
         }
 
-        void can_click_on_elements_located_by_searching_through_several_containers()
+        void CanClickOnElementsLocatedBySearchingThroughSeveralContainers()
         {
             var groupBox = MainWindow.Get<GroupBox>(SearchCriteria.ByAutomationId("AGroupBox"));
             var listbox = groupBox.Get<ListBox>(SearchCriteria.ByAutomationId("CheckedListBox"));
