@@ -1,10 +1,17 @@
-Version 9.4.0
- - BREAKING: Removed Log4net, now using Castle's logging abstractions.
- - FIX: Lots of combobox updates
+Version 0.10.0
+ - BREAKING: Removed Log4net, now using Castle's logging abstractions. See https://github.com/TestStack/White/wiki/log4net-Removal
+ - Fix: Lots of combobox updates/fixes
+ - Fix: AsContainer() could throw a NullReferenceException
+ - Fix: Checkbox fixes
+ - Fix: Added support for WPF DatePicker
+ - All exceptions are now serialisable
 
-Version 9.3.0
+Version 0.9.3
+ - BREAKING: White is now compiled as x86 (fixes issues when run in x64 process)
+ - White will no longer throw TargetInvocationExceptions in some cases. 
+ - Added support for swapping mouse buttons (for left handed users/system setup) - See FAQ for details
 
-Version 9.2.0
+Version 0.9.2
  - BREAKING: UIItem.Get now throws an AutomationException when the UI Element is not found
  - Change: UIItem.Get now auto retries to fetch the item
  - FIX: Added small delay when fetching menu items (to compensate for menu animation in newer versions of windows)
