@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TestStack.White.UITests.Infrastructure;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.ListBoxItems;
@@ -9,7 +8,7 @@ namespace TestStack.White.UITests.ControlTests
 {
     public class UIItemTests : WhiteTestBase
     {
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
             RunTest(can_click_on_elements_located_by_searching_through_several_containers);
         }
@@ -23,9 +22,9 @@ namespace TestStack.White.UITests.ControlTests
             listboxItem.Click();
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
+            yield return WindowsFramework.Wpf;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Automation;
 using Castle.Core.Logging;
 using White.Core.AutomationElementSearch;
@@ -38,21 +39,12 @@ namespace White.Core.Factory
             return element;
         }
 
-        private AutomationElement FindWindowElement(Process process, string title)
-        {
-            return WaitTillFound(() => Finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, ", after waiting for 30 seconds"));
-        }
-
         public virtual List<Window> DesktopWindows(Process process, ApplicationSession applicationSession)
         {
-            var collection = FindAllWindowElements(process);
-            var list = new List<Window>();
-            foreach (AutomationElement automationElement in collection)
-            {
-                InitializeOption initializeOption = InitializeOption.NoCache;
-                list.Add(Create(automationElement, initializeOption, applicationSession.WindowSession(initializeOption)));
-            }
-            return list;
+            return (from automationElement in FindAllWindowElements(process) 
+                    let initializeOption = InitializeOption.NoCache 
+                    select Create(automationElement, initializeOption, applicationSession.WindowSession(initializeOption)))
+                    .ToList();
         }
 
         private List<AutomationElement> FindAllWindowElements(Process process)
@@ -70,20 +62,17 @@ namespace White.Core.Factory
 
         private void FindDescendantWindowElements(AutomationElementFinder windowFinder, Process process, List<AutomationElement> windowElements)
         {
-            List<AutomationElement> children =
-                windowFinder.Children(AutomationSearchCondition.ByControlType(ControlType.Window).WithProcessId(process.Id));
+            var children = windowFinder.Children(AutomationSearchCondition.ByControlType(ControlType.Window).WithProcessId(process.Id));
             windowElements.AddRange(children);
-            foreach (AutomationElement automationElement in children)
+            foreach (var automationElement in children)
                 FindDescendantWindowElements(new AutomationElementFinder(automationElement), process, windowElements);
         }
 
         public virtual Window SplashWindow(Process process)
         {
-            AutomationSearchCondition automationSearchCondition = AutomationSearchCondition.ByControlType(ControlType.Pane).WithProcessId(process.Id);
-            AutomationElement element =
-                WaitTillFound(() => Finder.Child(automationSearchCondition),
-                              "No control found matching the condition " +
-                              AutomationSearchCondition.ToString(new[] {automationSearchCondition}) + Constants.BusyMessage);
+            var automationSearchCondition = AutomationSearchCondition.ByControlType(ControlType.Pane).WithProcessId(process.Id);
+            var message = "No control found matching the condition " + AutomationSearchCondition.ToString(new[] {automationSearchCondition}) + Constants.BusyMessage;
+            var element = WaitTillFound(() => Finder.Child(automationSearchCondition), message);
             return new SplashWindow(element, InitializeOption.NoCache);
         }
 
@@ -94,31 +83,35 @@ namespace White.Core.Factory
 
         public virtual Window CreateWindow(SearchCriteria searchCriteria, Process process, InitializeOption option, WindowSession windowSession)
         {
-            string message =
-                string.Format("Couldn't find window with SearchCriteria {0} in process {1}{2}", searchCriteria, process.Id, Constants.BusyMessage);
-            AutomationElement element = WaitTillFound(() => Finder.FindWindow(searchCriteria, process.Id), message);
+            var message = string.Format("Couldn't find window with SearchCriteria {0} in process {1}{2}", searchCriteria, process.Id, Constants.BusyMessage);
+            var element = WaitTillFound(() => Finder.FindWindow(searchCriteria, process.Id), message);
             return Create(element, option, windowSession);
         }
 
         public virtual Window FindWindow(Process process, Predicate<string> match, InitializeOption initializeOption, WindowSession windowSession)
         {
             string message = string.Format("Could not find window matching condition. ProcessName: {0}, ProcessId: {1}, MatchingConditionMethod: {2}, MatchingConditionTarget: {3}", process.ProcessName, process.Id, match.Method, match.Target);
-            AutomationElement foundElement = WaitTillFound(() => FindWindowElement(process, match), message);
+            var foundElement = WaitTillFound(() => FindWindowElement(process, match), message);
             return Create(foundElement, initializeOption, windowSession);
+        }
+
+        private AutomationElement FindWindowElement(Process process, string title)
+        {
+            return WaitTillFound(() => Finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, ", after waiting for 30 seconds"));
         }
 
         private AutomationElement FindWindowElement(Process process, Predicate<string> match)
         {
             var elements = FindAllWindowElements(process);
-            return elements.Find(delegate(AutomationElement obj)
-                                     {
-                                         if (match.Invoke(obj.Current.Name)) return true;
+            return elements.Find(automationElement =>
+            {
+                if (match.Invoke(automationElement.Current.Name)) return true;
 
-                                         AutomationElement titleBarElement =
-                                             new AutomationElementFinder(obj).Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
-                                         if (titleBarElement == null) return false;
-                                         return match.Invoke(titleBarElement.Current.Name);
-                                     });
+                AutomationElement titleBarElement =
+                    new AutomationElementFinder(automationElement).Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
+                if (titleBarElement == null) return false;
+                return match.Invoke(titleBarElement.Current.Name);
+            });
         }
 
         public virtual Window FindModalWindow(string title, Process process, InitializeOption option, AutomationElement parentWindowElement,

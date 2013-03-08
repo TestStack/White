@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using TestStack.White.UITests.Infrastructure;
+using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 
 namespace TestStack.White.UITests.ControlTests
@@ -9,7 +9,7 @@ namespace TestStack.White.UITests.ControlTests
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
 
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
             ComboBoxUnderTest = MainWindow.Get<ComboBox>("EditableComboBox");
             RunTest(SetValueInEditableComboBox);
@@ -29,10 +29,10 @@ namespace TestStack.White.UITests.ControlTests
             Assert.AreEqual("Test3", ComboBoxUnderTest.SelectedItemText);
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
-            yield return FrameworkId.Winforms;
+            yield return WindowsFramework.Wpf;
+            yield return WindowsFramework.WinForms;
         }
     }
 }

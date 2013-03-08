@@ -1,22 +1,24 @@
 ﻿using System;
+using White.Core;
+using White.Core.UIItems;
 
 namespace TestStack.White.UITests.Infrastructure
 {
     public static class TestConfigurationFactory
     {
-        public static TestConfiguration Create(FrameworkId framework)
+        public static TestConfiguration Create(WindowsFramework framework)
         {
-            switch (framework)
+            switch (framework.FrameworkId)
             {
-                case FrameworkId.Wpf:
+                case Constants.WPFFrameworkId:
                     return new WpfTestConfiguration();
-                case FrameworkId.Winforms:
+                case Constants.WinFormFrameworkId:
                     return new WinformsTestConfiguration();
-                case FrameworkId.Silverlight:
+                case Constants.SilverlightFrameworkId:
                     return new SilverlightTestConfiguration();
-                case FrameworkId.Win32:
-                case FrameworkId.Swt:
-                case FrameworkId.WinRT:
+                case Constants.Win32FrameworkId:
+                case Constants.SWT:
+                //case Constants.WinRT:
                 default:
                     throw new ArgumentOutOfRangeException("framework");
             }

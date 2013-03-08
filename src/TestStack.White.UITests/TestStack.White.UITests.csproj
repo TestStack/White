@@ -58,7 +58,6 @@
     <Compile Include="ControlTests\Splitters\VerticalThumbTest.cs" />
     <Compile Include="IMainWindow.cs" />
     <Compile Include="Infrastructure\ForwardIfExistsInterceptor.cs" />
-    <Compile Include="Infrastructure\FrameworkId.cs" />
     <Compile Include="Infrastructure\SilverlightTestConfiguration.cs" />
     <Compile Include="Infrastructure\WindowsConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

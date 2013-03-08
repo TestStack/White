@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Automation;
 using NUnit.Framework;
-using TestStack.White.UITests.Infrastructure;
+using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 
 namespace TestStack.White.UITests.ControlTests
@@ -10,7 +10,7 @@ namespace TestStack.White.UITests.ControlTests
     {
         private ListBox listBoxUnderTest;
 
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
             listBoxUnderTest = MainWindow.Get<ListBox>("CheckedListBox");
             RunTest(CanCheckItem);
@@ -45,11 +45,11 @@ namespace TestStack.White.UITests.ControlTests
             Assert.AreEqual(false, listBoxUnderTest.IsChecked("Item3"));
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
-            yield return FrameworkId.Winforms;
-            yield return FrameworkId.Silverlight;
+            yield return WindowsFramework.Wpf;
+            yield return WindowsFramework.WinForms;
+            yield return WindowsFramework.Silverlight;
         }
     }
 }

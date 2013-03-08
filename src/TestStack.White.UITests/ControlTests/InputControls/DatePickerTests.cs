@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using NUnit.Framework;
-using TestStack.White.UITests.Infrastructure;
 using White.Core.UIItems;
 
 namespace TestStack.White.UITests.ControlTests.InputControls
 {
     public class DatePickerTests : WhiteTestBase
     {
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
-            RunTest(() => GetDate(DateTime.Today), FrameworkId.Winforms);
-            RunTest(() => GetDate(null), FrameworkId.Wpf & FrameworkId.Silverlight);
+            RunTest(() => GetDate(DateTime.Today), WindowsFramework.WinForms);
+            RunTest(() => GetDate(null), WindowsFramework.Wpf, WindowsFramework.Silverlight);
             RunTest(SetDate); 
         }
 
@@ -33,11 +32,11 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             Assert.AreEqual(changedDate, dateTimePicker.Date);
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
-            yield return FrameworkId.Winforms;
-            yield return FrameworkId.Silverlight;
+            yield return WindowsFramework.Wpf;
+            yield return WindowsFramework.WinForms;
+            yield return WindowsFramework.Silverlight;
         }
     }
 }

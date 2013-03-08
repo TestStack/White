@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Threading;
 using NUnit.Framework;
-using TestStack.White.UITests.Infrastructure;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 
@@ -9,7 +7,7 @@ namespace TestStack.White.UITests.ControlTests.Splitters
 {
     public class HorizontalThumbTest : WhiteTestBase
     {
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
             var window = OpenHorizontalSliderWindow();
             using (new DelegateDisposable(() => CloseSliderWindow(window)))
@@ -44,9 +42,9 @@ namespace TestStack.White.UITests.ControlTests.Splitters
             return MainWindow.ModalWindow("HorizontalGridSplitter");
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
+            yield return WindowsFramework.Wpf;
             // yield return FrameworkId.Silverlight; Has some timing issues
         }
     }

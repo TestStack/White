@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Automation;
 using White.Core.Factory;
 using White.Core.Sessions;

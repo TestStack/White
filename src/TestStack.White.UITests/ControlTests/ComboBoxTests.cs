@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Castle.Core.Logging;
 using NUnit.Framework;
-using TestStack.White.UITests.Infrastructure;
 using White.Core.Configuration;
+using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.ListBoxItems;
 
@@ -12,11 +12,11 @@ namespace TestStack.White.UITests.ControlTests
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
 
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
-            CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug); ;
+            CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
             ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
-            RunTest(ListItemInComboBoxWithoutTextAvailableInitially, FrameworkId.Wpf);
+            RunTest(ListItemInComboBoxWithoutTextAvailableInitially, WindowsFramework.Wpf);
             RunTest(CanSelectItemAtTopOfList);
             RunTest(CanGetAllItems);
             RunTest(CanSelectItemAtBottomOfList);
@@ -77,10 +77,10 @@ namespace TestStack.White.UITests.ControlTests
             Assert.AreEqual("Test4", ComboBoxUnderTest.SelectedItem.Text);
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
-            yield return FrameworkId.Winforms;
+            yield return WindowsFramework.Wpf;
+            yield return WindowsFramework.WinForms;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using NUnit.Framework;
-using TestStack.White.UITests.Infrastructure;
 using White.Core.Configuration;
+using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 
 namespace TestStack.White.UITests.ControlTests
@@ -10,7 +10,7 @@ namespace TestStack.White.UITests.ControlTests
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
 
-        protected override void RunTest(FrameworkId framework)
+        protected override void RunTest(WindowsFramework framework)
         {
             ComboBoxUnderTest = MainWindow.Get<ComboBox>("DataBoundComboBox");
             RunTest(CanSelectDataboundItems);
@@ -35,9 +35,9 @@ namespace TestStack.White.UITests.ControlTests
             Assert.AreEqual("Test", items[0].Text);
         }
 
-        protected override IEnumerable<FrameworkId> SupportedFrameworks()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return FrameworkId.Wpf;
+            yield return WindowsFramework.Wpf;
         }
     }
 }

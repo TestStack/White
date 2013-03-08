@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Castle.Core.Logging;
 using NUnit.Framework;
 using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Configuration;
 using White.Core.InputDevices;
+using White.Core.UIItems;
 
 namespace TestStack.White.UITests
 {
@@ -14,7 +16,7 @@ namespace TestStack.White.UITests
     {
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteTestBase));
         internal Keyboard Keyboard;
-        private FrameworkId? currentFramework;
+        private WindowsFramework currentFramework;
 
         protected IMainWindow MainWindow { get; private set; }
         protected Application Application { get; private set; }
@@ -46,34 +48,25 @@ namespace TestStack.White.UITests
             currentFramework = null;
         }
 
-        protected void RunTest(Action testAction)
+        protected void RunTest(Action testAction, params WindowsFramework[] runFor)
         {
-            try
+            if (runFor.Any(r => r.FrameworkId == currentFramework.FrameworkId))
             {
-                testAction();
-            }
-            catch (Exception ex)
-            {
-                throw new TestFailedException(string.Format("Failed to run {0} for {1}", testAction.Method.Name, currentFramework), ex);
+                try
+                {
+                    testAction();
+                }
+                catch (Exception ex)
+                {
+                    throw new TestFailedException(
+                        string.Format("Failed to run {0} for {1}", testAction.Method.Name, currentFramework), ex);
+                }
             }
         }
 
-        protected void RunTest(Action testAction, FrameworkId runFor)
-        {
-            if ((runFor & currentFramework) != currentFramework) return;
-            try
-            {
-                testAction();
-            }
-            catch (Exception ex)
-            {
-                throw new TestFailedException(string.Format("Failed to run {0} for {1}", testAction.Method.Name, currentFramework), ex);
-            }
-        }
+        protected abstract void RunTest(WindowsFramework framework);
 
-        protected abstract void RunTest(FrameworkId framework);
-
-        private IDisposable SetMainWindow(FrameworkId framework)
+        private IDisposable SetMainWindow(WindowsFramework framework)
         {
             try
             {
@@ -93,13 +86,13 @@ namespace TestStack.White.UITests
             }
         }
 
-        protected abstract IEnumerable<FrameworkId> SupportedFrameworks();
+        protected abstract IEnumerable<WindowsFramework> SupportedFrameworks();
 
-        protected IEnumerable<FrameworkId> AllFrameworks()
+        protected IEnumerable<WindowsFramework> AllFrameworks()
         {
-            yield return FrameworkId.Wpf;
-            yield return FrameworkId.Winforms;
-            yield return FrameworkId.Silverlight;
+            yield return WindowsFramework.Wpf;
+            yield return WindowsFramework.WinForms;
+            yield return WindowsFramework.Silverlight;
         }
 
         private class ShutdownApplicationDisposable : IDisposable
