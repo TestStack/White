@@ -12,14 +12,19 @@ namespace White.Core.UIItems.Finders
             return new SimpleSearchCondition(automationElement => automationElement.Current.ControlType, new ControlTypeProperty(controlType, "ControlType"));
         }
 
-        public static SimpleSearchCondition CreateForControlType(Type testControlType, string frameworkId)
+        public static SimpleSearchCondition CreateForControlType(Type testControlType, WindowsFramework framework)
         {
             ControlType controlType = testControlType.IsCustomType()
                                           ? CustomControlTypeMapping.ControlType(testControlType)
-                                          : ControlDictionary.Instance.GetControlType(testControlType, frameworkId);
+                                          : ControlDictionary.Instance.GetControlType(testControlType, framework);
             return CreateForControlType(controlType);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="frameworkId">List available from WindowsFramework class or Constants class</param>
+        /// <returns></returns>
         public static SearchCondition CreateForFrameworkId(string frameworkId)
         {
             return new SimpleSearchCondition(automationElement => automationElement.Current.FrameworkId,

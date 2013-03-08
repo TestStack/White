@@ -92,9 +92,9 @@ namespace White.Core.UIItems.Finders
             return new SearchCriteria(SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
         }
 
-        public static SearchCriteria ByControlType(Type testControlType, string frameworkId)
+        public static SearchCriteria ByControlType(Type testControlType, WindowsFramework framework)
         {
-            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(testControlType, frameworkId));
+            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(testControlType, framework));
             searchCriteria.InferCustomItemType(testControlType);
             return searchCriteria;
         }
@@ -147,9 +147,9 @@ namespace White.Core.UIItems.Finders
             return this;
         }
 
-        public virtual SearchCriteria AndOfFramework(string frameworkId)
+        public virtual SearchCriteria AndOfFramework(WindowsFramework framework)
         {
-            conditions.Insert(0, SearchConditionFactory.CreateForFrameworkId(frameworkId));
+            conditions.Insert(0, SearchConditionFactory.CreateForFrameworkId(framework));
             return this;
         }
 
@@ -162,7 +162,7 @@ namespace White.Core.UIItems.Finders
         public virtual SearchCriteria AndControlType(Type testControlType, WindowsFramework framework)
         {
             InferCustomItemType(testControlType);
-            conditions.Insert(0, SearchConditionFactory.CreateForControlType(testControlType, framework.FrameworkId));
+            conditions.Insert(0, SearchConditionFactory.CreateForControlType(testControlType, framework));
             return this;
         }
 
@@ -234,8 +234,7 @@ namespace White.Core.UIItems.Finders
 
         internal static SearchCriteria ForMenuBar(WindowsFramework framework)
         {
-            var searchCriteria =
-                new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof (MenuBar), framework.ToString()));
+            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof (MenuBar), framework));
             return searchCriteria.NotIdentifiedByText("System Menu Bar");
         }
 

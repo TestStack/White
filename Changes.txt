@@ -1,5 +1,7 @@
 Version 0.10.0
  - BREAKING: Removed Log4net, now using Castle's logging abstractions. See https://github.com/TestStack/White/wiki/log4net-Removal
+ - BREAKING: SearchCriteria.ByControlType now takes WindowsFramework rather than string
+ - BREAKING: WindowsFramework members renamed to Is[Framework] from [Framework]
  - Fix: Lots of combobox updates/fixes
  - Fix: AsContainer() could throw a NullReferenceException
  - Fix: Checkbox fixes

@@ -59,7 +59,7 @@ namespace White.Repository
                 var searchCriteriaAttribute = customAttribute as SearchCriteriaAttribute;
                 if (searchCriteriaAttribute != null)
                 {
-                    if (searchCriteria == null) searchCriteria = SearchCriteria.ByControlType(fieldInfo.FieldType, framework.FrameworkId);
+                    if (searchCriteria == null) searchCriteria = SearchCriteria.ByControlType(fieldInfo.FieldType, framework);
                     searchCriteriaAttribute.Apply(searchCriteria);
                 }
             }

@@ -16,7 +16,7 @@ namespace White.Core.UIItems.WPFUIItems
 
         private static UIItemContainer GetUiItemContainer(UIItem uiItem)
         {
-            if (!uiItem.Framework.WPF) Logger.Warn("Only WPF items should be treated as container items");
+            if (!uiItem.Framework.IsWpf) Logger.Warn("Only WPF items should be treated as container items");
             return uiItem.AsContainer();
         }
 

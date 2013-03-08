@@ -47,9 +47,9 @@ namespace White.Core.Factory
             }
 
             var windowsFramework = new WindowsFramework(element.Current.FrameworkId);
-            if (windowsFramework.WinForm) return new WinFormWindow(element, option, windowSession);
-            if (windowsFramework.WPF) return new WPFWindow(element, WindowFactory.Desktop, option, windowSession);
-            if (windowsFramework.Win32) return new Win32Window(element, WindowFactory.Desktop, option, windowSession);
+            if (windowsFramework.IsWinForms) return new WinFormWindow(element, option, windowSession);
+            if (windowsFramework.IsWpf) return new WPFWindow(element, WindowFactory.Desktop, option, windowSession);
+            if (windowsFramework.IsWin32) return new Win32Window(element, WindowFactory.Desktop, option, windowSession);
             if (windowsFramework.UIAutomationBug) return null;
             throw new UIItemSearchException(string.Format("{0} is not supported yet.", windowsFramework));
         }
