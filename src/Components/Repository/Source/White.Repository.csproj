@@ -72,10 +72,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationClient" />
     <Reference Include="UIAutomationTypes" />
-    <Reference Include="Xstream.Core, Version=1.0.2902.37328, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\lib\Xstream.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppScreen.cs" />
