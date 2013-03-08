@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using Castle.Core.Internal;
 
 namespace White.Repository
 {
+    [Serializable]
     public class AppScreenException : Exception
     {
-        public AppScreenException(string message) : base(message) {}
-        public AppScreenException(string message, Exception exception) : base(message, exception) {}
+        public AppScreenException(string message) : base(message) { }
+        public AppScreenException(string message, Exception exception) : base(message, exception) { }
+        protected AppScreenException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         public static AppScreenException NonVirtualMethods(IEnumerable<MethodInfo> methodInfos)
         {

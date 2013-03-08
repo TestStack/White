@@ -1,7 +1,9 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace White.Core
 {
+    [Serializable]
     public class WhiteException : Exception
     {
         public WhiteException(string message) : base(message) {}
@@ -15,6 +17,8 @@ namespace White.Core
         {
             DebugDetails = debugDetails;
         }
+
+        protected WhiteException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         public virtual string DebugDetails { get; private set; }
     }

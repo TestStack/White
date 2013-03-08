@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 
 namespace White.Core.UIItems
 {
@@ -6,8 +7,8 @@ namespace White.Core.UIItems
     [Serializable]
     public class UIActionException : Exception
     {
-        public UIActionException(string message) : base(message) {}
-
-        public UIActionException(string message, Exception innerException) : base(message, innerException) {}
+        public UIActionException(string message) : base(message) { }
+        public UIActionException(string message, Exception innerException) : base(message, innerException) { }
+        protected UIActionException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
