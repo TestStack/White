@@ -9,6 +9,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="AGroupBox">
             <wpfTestApplication:ListControls />
@@ -21,6 +22,9 @@
                 <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
                 <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
             </StackPanel>
+        </GroupBox>
+        <GroupBox Header="Data grid" Grid.Column="3">
+            <DataGrid x:Name="DataGridControl" AutoGenerateColumns="True" ItemsSource="{Binding Path = TestItems}"/>
         </GroupBox>
     </Grid>
 </Window>

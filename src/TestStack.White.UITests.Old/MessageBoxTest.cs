@@ -24,7 +24,9 @@ namespace White.Core.UITests
         {
             Window.Get<Button>("buttonLaunchesMessageBox").Click();
             Window messageBox = Window.MessageBox("Close Me");
-            messageBox.Get<Button>(SearchCriteria.ByText("OK")).Click();
+            // the same problem with default text localization, so in regular message box
+            // we have Close (x) button with "Close" id and OK button with "2" id
+            messageBox.Get<Button>(SearchCriteria.ByAutomationId("2")).Click();
         }
     }
 }
