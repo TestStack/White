@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
@@ -25,12 +24,11 @@ namespace TestStack.White.Factory
         {
             if (customControlTypes == null)
                 customControlTypes = new AutomationElementFinder(tableElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.Custom));
-            int zeroBasedRowNumber = int.Parse(rowElement.Current.Name.Split(' ').Last());
+            string rowNameSuffix = " " + rowElement.Current.Name;
             Predicate<AutomationElement> cellPredicate = element =>
             {
                 string name = element.Current.Name;
-                return name.Contains(UIItemIdAppXmlConfiguration.Instance.TableCellPrefix) &&
-                       zeroBasedRowNumber == int.Parse(name.Split(' ').Last());
+                return name.EndsWith(rowNameSuffix);
             };
             List<AutomationElement> tableCellElements = customControlTypes.FindAll(cellPredicate);
             return new TableCells(tableCellElements, tableHeader, actionListener);
