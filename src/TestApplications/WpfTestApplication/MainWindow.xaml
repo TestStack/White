@@ -5,26 +5,22 @@
         xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="350"
         Width="800" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="AGroupBox">
-            <wpfTestApplication:ListControls />
-        </GroupBox>
-        <GroupBox Header="Input controls" Grid.Column="1" Width="150">
-            <DatePicker x:Name="DatePicker" />
-        </GroupBox>
-        <GroupBox Header="Scenarios" Grid.Column="2">
-            <StackPanel>
-                <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
-                <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Data grid" Grid.Column="3">
-            <DataGrid x:Name="DataGridControl" AutoGenerateColumns="True" ItemsSource="{Binding Path = TestItems}"/>
+
+        <Menu x:Name="MenuBar">
+            <MenuItem x:Name="MenuItem1" Header="MenuItem 1">
+                <MenuItem Header="ClickMe" Click="OnSubmenuItemClick" x:Name="ClickMeMenuItem"></MenuItem>
+            </MenuItem>
+            <MenuItem x:Name="MenuItem2" Header="MenuItem 2"/>
+        </Menu>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <GroupBox Header="Data grid" Grid.Row="2">
+            <wpfTestApplication:CustomDataGrid x:Name="CustomDataGridControl"/>
         </GroupBox>
     </Grid>
 </Window>
