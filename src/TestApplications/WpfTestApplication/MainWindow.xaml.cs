@@ -5,6 +5,8 @@ namespace WpfTestApplication
 {
     public partial class MainWindow
     {
+        private int _clickedCount = 0;
+
         public MainWindow()
         {
             DataContext = this;
@@ -36,9 +38,15 @@ namespace WpfTestApplication
             new VerticalGridSplitter().Show();
         }
 
-        public TestItem[] TestItems        
+        private void OnSubmenuItemClick(object sender, RoutedEventArgs e)
         {
-            get            
+            _clickedCount++;
+            ClickMeMenuItem.Header = "Clicked " + _clickedCount;
+        }
+
+        public TestItem[] TestItems
+        {
+            get
             {
                 return new[]{
                                new TestItem {Id = 1, Contents = "Item1", Description = "Simple item 1"}, 
