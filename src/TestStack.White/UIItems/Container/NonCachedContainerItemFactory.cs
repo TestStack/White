@@ -15,6 +15,10 @@ namespace White.Core.UIItems.Container
             this.actionListener = actionListener;
         }
 
+        /// <summary>
+        /// Not supported. Use cached approach instead.
+        /// </summary>
+        /// <exception cref="NotSupportedException"> always</exception>
         public override void Visit(WindowControlVisitor windowControlVisitor)
         {
             throw new NotSupportedException("Use Cached approach");

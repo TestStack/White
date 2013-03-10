@@ -5,7 +5,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.ListViewItems
 {
-    public class ListViewHeader : UIItem
+    public class ListViewHeader : UIItem, IMappableUIItem
     {
         private readonly AutomationElementFinder automationElementFinder;
 

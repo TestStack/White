@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class Thumb : UIItem
+    public class Thumb : UIItem, IMappableUIItem
     {
         protected Thumb() {}
         public Thumb(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

@@ -10,7 +10,7 @@ using White.Core.UIItems.WindowItems;
 
 namespace White.Core
 {
-    public class Desktop : UIItemContainer
+    public class Desktop : UIItemContainer, IMappableUIItem
     {
         public static readonly Desktop Instance = Create();
         private readonly AutomationElementFinder finder;

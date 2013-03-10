@@ -8,7 +8,8 @@ using White.Core.UIItems.Finders;
 using White.Core.Utility;
 
 namespace White.Core.UIItems.Scrolling {
-    public class ScrollBar : UIItem, IScrollBar {
+    public class ScrollBar : UIItem, IScrollBar, IMappableUIItem
+    {
         private readonly ScrollBarButtonAutomationIds automationIds;
         private readonly PrimaryUIItemFactory primaryUIItemFactory;
 

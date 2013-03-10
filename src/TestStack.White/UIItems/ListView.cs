@@ -17,7 +17,7 @@ namespace White.Core.UIItems
     /// A ListView consists of ListViewHeader and ListViewRows. ListViewHeader contains ListViewColumns. ListViewRows is collection of all the visible
     /// rows. A ListViewRow consists of ListViewCells.
     /// </summary>
-    public class ListView : UIItem, SuggestionList, VerticalSpanProvider
+    public class ListView : UIItem, SuggestionList, IVerticalSpanProvider, IMappableUIItem
     {
         private readonly ListViewFactory listViewFactory;
         private AutomationPropertyChangedEventHandler handler;

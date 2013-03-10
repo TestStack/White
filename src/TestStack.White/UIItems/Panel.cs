@@ -6,7 +6,7 @@ namespace White.Core.UIItems
     /// <summary>
     /// Represents ControlType.Pane object. Child UIItems can be found from it.
     /// </summary>
-    public class Panel : UIItemContainer
+    public class Panel : UIItemContainer, IMappableUIItem
     {
         protected Panel() {}
         public Panel(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

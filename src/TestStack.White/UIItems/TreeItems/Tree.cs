@@ -11,7 +11,7 @@ namespace White.Core.UIItems.TreeItems
     /// <summary>
     /// Tree consists of TreeNodes. TreeNodes is a collection of TreeNode. Each TreeNode in turn consists of TreeNodes.
     /// </summary>
-    public class Tree : UIItem, VerticalSpanProvider
+    public class Tree : UIItem, IVerticalSpanProvider, IMappableUIItem
     {
         private readonly AutomationElementFinder finder;
         private AutomationPropertyChangedEventHandler clickedTreeNodeHandler;

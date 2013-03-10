@@ -4,7 +4,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.ListBoxItems
 {
-    public abstract class ListItem : UIItem
+    public abstract class ListItem : UIItem, IMappableUIItem
     {
         protected ListItem() {}
         protected ListItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

@@ -60,7 +60,7 @@ namespace White.Core.UIItems.WindowItems
         {
             get
             {
-                if (winFormScrollBars == null) winFormScrollBars = new WinFormScrollBars(automationElement, actionListener);
+                if (winFormScrollBars == null) winFormScrollBars = new WinFormScrollBars(automationElement, ActionListener);
                 return winFormScrollBars;
             }
         }

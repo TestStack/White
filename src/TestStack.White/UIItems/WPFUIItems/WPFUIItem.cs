@@ -8,7 +8,7 @@ namespace White.Core.UIItems.WPFUIItems
     {
         private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFUIItem));
 
-        public static T Get<T>(this UIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
+        public static T Get<T>(this UIItem uiItem, SearchCriteria searchCriteria) where T : UIItem, IMappableUIItem
         {
             UIItemContainer uiItemContainer = GetUiItemContainer(uiItem);
             return (T)uiItemContainer.Get(searchCriteria.AndControlType(typeof(T), uiItem.Framework));

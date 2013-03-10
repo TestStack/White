@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.TableItems
 {
-    public class TableColumn : UIItem
+    public class TableColumn : UIItem, IMappableUIItem
     {
         private readonly int index;
         protected TableColumn() {}

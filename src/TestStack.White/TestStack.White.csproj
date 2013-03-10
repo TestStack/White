@@ -235,7 +235,6 @@
     <Compile Include="UIItemEvents\UserAction.cs" />
     <Compile Include="UIItemEvents\UserEvent.cs" />
     <Compile Include="UIItemList.cs" />
-    <Compile Include="UIItems\ActionDetails.cs" />
     <Compile Include="UIItems\Actions\Action.cs" />
     <Compile Include="UIItems\Actions\ActionListener.cs" />
     <Compile Include="UIItems\Actions\ActionType.cs" />
@@ -255,7 +254,6 @@
     <Compile Include="UIItems\Finders\SearchCondition.cs" />
     <Compile Include="UIItems\Finders\SearchConditions.cs" />
     <Compile Include="UIItems\Finders\SearchCriteria.cs" />
-    <Compile Include="UIItems\FormSection.cs" />
     <Compile Include="UIItems\GroupBox.cs" />
     <Compile Include="UIItems\Hyperlink.cs" />
     <Compile Include="UIItems\Image.cs" />

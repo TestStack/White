@@ -1,6 +1,6 @@
 namespace White.Core.UIItems.Scrolling
 {
-    public interface VerticalSpanProvider
+    public interface IVerticalSpanProvider
     {
         VerticalSpan VerticalSpan { get; }
     }

@@ -4,7 +4,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class ToolTip : UIItem
+    public class ToolTip : UIItem, IMappableUIItem
     {
         protected ToolTip() {}
         public ToolTip(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

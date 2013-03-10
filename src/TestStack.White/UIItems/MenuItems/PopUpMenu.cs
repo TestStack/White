@@ -4,7 +4,7 @@ using White.Core.UIItems.Finders;
 
 namespace White.Core.UIItems.MenuItems
 {
-    public class PopUpMenu : UIItem
+    public class PopUpMenu : UIItem, IMappableUIItem
     {
         private readonly Menus topLevelMenus;
         protected PopUpMenu() {}

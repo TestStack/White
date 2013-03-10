@@ -6,7 +6,7 @@ using White.Core.WindowsAPI;
 namespace White.Core.UIItems.TableItems
 {
     //BUG There is better support for ComboBox cells, try it out
-    public class TableCell : UIItem
+    public class TableCell : UIItem, IMappableUIItem
     {
         protected TableCell() {}
         public TableCell(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

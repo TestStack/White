@@ -8,7 +8,7 @@ using White.Core.UIItems.Scrolling;
 
 namespace White.Core.UIItems.TableItems
 {
-    public class Table : UIItem, VerticalSpanProvider, TableVerticalScrollOffset
+    public class Table : UIItem, IVerticalSpanProvider, TableVerticalScrollOffset, IMappableUIItem
     {
         private TableRows rows;
         private TableHeader header;

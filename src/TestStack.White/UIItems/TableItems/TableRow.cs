@@ -5,7 +5,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.TableItems
 {
-    public class TableRow : UIItem
+    public class TableRow : UIItem, IMappableUIItem
     {
         private readonly TableHeader tableHeader;
         private readonly TableCellFactory tableCellFactory;

@@ -5,7 +5,7 @@ using White.Core.UIItems.MenuItems;
 
 namespace White.Core.UIItems.WindowStripControls
 {
-    public class MenuBar : UIItem, MenuContainer
+    public class MenuBar : UIItem, MenuContainer, IMappableUIItem
     {
         private readonly Menus topLevelMenu;
         protected MenuBar() {}

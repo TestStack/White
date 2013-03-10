@@ -38,6 +38,7 @@ namespace White.Core.Factory
             return ModalWindow(() => Finder.FindWindow(searchCriteria), option, windowSession);
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
         {
             SpecializedWindowFactory specializedWindowFactory = SpecializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));

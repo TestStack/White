@@ -10,7 +10,7 @@ using White.Core.UIItems.WindowItems;
 
 namespace White.WebBrowser.Silverlight
 {
-    public class SilverlightDocument : UIItemContainer
+    public class SilverlightDocument : UIItemContainer, IMappableUIItem
     {
         protected SilverlightDocument()
         {
@@ -32,7 +32,6 @@ namespace White.WebBrowser.Silverlight
         {
             if (action == Action.Scroll) Thread.Sleep(500);
             CustomWait();
-            base.ActionPerformed();
         }
 
         protected override ActionListener ChildrenActionListener
