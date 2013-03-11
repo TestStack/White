@@ -38,7 +38,6 @@ namespace TestStack.White.UIItems
         {
             get
             {
-
                 ActionPerforming(this);
                 var collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Text));
                 return new ListViewCells(collection, ActionListener, header);
@@ -66,11 +65,8 @@ namespace TestStack.White.UIItems
         {
 
             ActionPerforming(this);
-
-
             keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
             Select();
-
             keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
         }
     }
