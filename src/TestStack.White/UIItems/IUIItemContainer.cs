@@ -7,5 +7,6 @@ namespace White.Core.UIItems
         T Get<T>() where T : UIItem;
         T Get<T>(string primaryIdentification) where T : UIItem;
         T Get<T>(SearchCriteria searchCriteria) where T : UIItem;
+        IUIItem Get(SearchCriteria searchCriteria);
     }
 }
