@@ -20,6 +20,9 @@ Visit https://github.com/TestStack/White/wiki for more help and common FAQ.
 Breaking Changes
 ----------------
  - log4net dependency removed, read more at https://github.com/TestStack/White/wiki/log4net-Removal
+ - SearchCriteria.ByControlType now takes WindowsFramework rather than string
+ - WindowsFramework members renamed to Is[Framework] from [Framework]
+
 
 Common Resources
 ----------------
@@ -27,7 +30,7 @@ Github site:
 https://github.com/TestStack/White
 
 Report Issues at (Please read Reporting Issues at https://github.com/TestStack/White/wiki/Reporting-Issues):
-https://github.com/TestStack/White/issues?state=open
+https://github.com/TestStack/White/issues
 
 Discussion Group:
 https://groups.google.com/forum/#!forum/teststack_white
