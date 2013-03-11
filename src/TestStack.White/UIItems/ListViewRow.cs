@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using White.Core.UIItems.Actions;
@@ -39,11 +38,8 @@ namespace White.Core.UIItems
         {
             get
             {
-
                 ActionPerforming(this);
                 var collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Text));
-                List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.Text));
-
                 return new ListViewCells(collection, ActionListener, header);
             }
         }
@@ -53,7 +49,6 @@ namespace White.Core.UIItems
         /// </summary>
         public virtual void Select()
         {
-            mouse.Click(ClickablePoint, actionListener);
             ActionPerforming(this);
             mouse.Click(ClickablePoint, ActionListener);
         }
@@ -65,11 +60,8 @@ namespace White.Core.UIItems
         {
 
             ActionPerforming(this);
-
-
             keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
             Select();
-
             keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL, ActionListener);
         }
     }
