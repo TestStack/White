@@ -11,7 +11,7 @@ namespace White.Core.UIItems.ListBoxItems
     /// <summary>
     /// ListControl is made of up ListItems and scroll bars.
     /// </summary>
-    public class ListControl : UIItem, ListItemContainer, VerticalSpanProvider
+    public class ListControl : UIItem, ListItemContainer, IVerticalSpanProvider, IMappableUIItem
     {
         protected AutomationElementFinder Finder;
         protected ListControl() {}

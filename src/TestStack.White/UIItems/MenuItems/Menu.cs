@@ -7,7 +7,7 @@ namespace White.Core.UIItems.MenuItems
     /// <summary>
     /// Models Menu items (root or leaf). SubMenus can be retrieved from it which by themselves are Menu(s).
     /// </summary>
-    public class Menu : UIItem
+    public class Menu : UIItem, IMappableUIItem
     {
         private Menus childMenus;
         protected Menu() {}

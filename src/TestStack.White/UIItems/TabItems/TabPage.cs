@@ -6,7 +6,7 @@ namespace White.Core.UIItems.TabItems
     /// <summary>
     /// Access tab page by first finding a Tab and then getting hold of the TabPage inside it.
     /// </summary>
-    public class TabPage : UIItem, ITabPage
+    public class TabPage : UIItem, ITabPage, IMappableUIItem
     {
         private readonly SelectionItem selectionItem;
 

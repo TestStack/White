@@ -6,7 +6,7 @@ using White.Core.WindowsAPI;
 
 namespace White.Core.UIItems
 {
-    public class MultilineTextBox : TextBox, Scrollable
+    public class MultilineTextBox : TextBox, IScrollable
     {
         private AutomationEventHandler handler;
         protected MultilineTextBox() {}

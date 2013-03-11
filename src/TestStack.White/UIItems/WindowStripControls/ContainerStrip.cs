@@ -7,7 +7,7 @@ using White.Core.UIItems.Finders;
 namespace White.Core.UIItems.WindowStripControls
 {
     //bug: eliminate this class to reduce code.....user can get the controls using the same API as UIItemContainer
-    public class ContainerStrip : UIItemContainer
+    public class ContainerStrip : UIItemContainer, IMappableUIItem
     {
         protected ContainerStrip() {}
 

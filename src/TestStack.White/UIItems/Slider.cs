@@ -6,7 +6,7 @@ using White.Core.WindowsAPI;
 
 namespace White.Core.UIItems
 {
-    public abstract class Slider : UIItem
+    public abstract class Slider : UIItem, IMappableUIItem
     {
         private readonly UIItemContainer uiItemContainer;
 

@@ -8,7 +8,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.TabItems
 {
-    public class Tab : UIItem
+    public class Tab : UIItem, IMappableUIItem
     {
         private TabPages pages;
         private AutomationPropertyChangedEventHandler handler;

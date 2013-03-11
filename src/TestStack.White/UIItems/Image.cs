@@ -4,7 +4,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class Image : UIItem
+    public class Image : UIItem, IMappableUIItem
     {
         protected Image() {}
         public Image(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

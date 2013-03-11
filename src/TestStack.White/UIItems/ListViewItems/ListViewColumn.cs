@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.ListViewItems
 {
-    public class ListViewColumn : UIItem
+    public class ListViewColumn : UIItem, IMappableUIItem
     {
         private readonly int index;
         public ListViewColumn() {}

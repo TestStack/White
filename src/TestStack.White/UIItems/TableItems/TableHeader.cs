@@ -6,7 +6,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.TableItems
 {
-    public class TableHeader : UIItem
+    public class TableHeader : UIItem, IMappableUIItem
     {
         protected TableHeader() {}
 

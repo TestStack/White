@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class Label : UIItem
+    public class Label : UIItem, IMappableUIItem
     {
         protected Label() {}
         public Label(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

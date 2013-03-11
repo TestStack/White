@@ -6,7 +6,7 @@ using White.Core.UIItems.Scrolling;
 namespace White.Core.UIItems.TableItems
 {
     //TODO Table in scrolled position is not supported
-    public class TableVerticalScrollBar : UIItem, IVScrollBar
+    public class TableVerticalScrollBar : UIItem, IVScrollBar, IMappableUIItem
     {
         private readonly TableVerticalScrollOffset offset;
         protected TableVerticalScrollBar() {}

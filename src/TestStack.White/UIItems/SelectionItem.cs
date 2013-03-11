@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class SelectionItem : UIItem
+    public class SelectionItem : UIItem, IMappableUIItem
     {
         protected SelectionItem() {}
         public SelectionItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
@@ -19,6 +19,7 @@ namespace White.Core.UIItems
             }
         }
 
+        /// <exception cref="UIActionException"></exception>
         public virtual void Select()
         {
             if (!Bounds.IsEmpty) Click();

@@ -23,8 +23,7 @@ using White.Core.Utility;
 namespace White.Core.UIItems
 {
     //BUG: Allow finding more than one item, also ability to do this within a container
-    //TODO: Dont let people compile code is they are trying to find UIItem which are secondary or window
-    public class UIItemContainer : UIItem, IUIItemContainer, VerticalSpanProvider
+    public class UIItemContainer : UIItem, IUIItemContainer, IVerticalSpanProvider
     {
         protected readonly CurrentContainerItemFactory CurrentContainerItemFactory;
         protected WindowSession WindowSession = new NullWindowSession();
@@ -46,53 +45,21 @@ namespace White.Core.UIItems
         {
         }
 
-        /// <summary>
-        /// Finds UIItem which matches specified type. Useful for non managed applications where controls are not identified by AutomationId, like in 
-        /// Managed applications. In case of multiple items of this type the first one found would be returned which cannot be guaranteed to be the same 
-        /// across multiple invocations.
-        /// </summary>
-        /// <typeparam name="T">UIItem type e.g. Button, TextBox</typeparam>
-        /// <returns>First item of supplied type</returns>
-        public virtual T Get<T>() where T : UIItem
+        public virtual T Get<T>() where T : IUIItem, IMappableUIItem
         {
             return Get<T>(SearchCriteria.All);
         }
 
-        /// <summary>
-        /// Finds UIItem which matches specified type and identification. 
-        /// In case of multiple items of this type the first one found would be returned which cannot be guaranteed to be the same across multiple 
-        /// invocations. For managed applications this is name given to controls in the application code.
-        /// For unmanaged applications this is text of the control or label next to it if it doesn't have well defined text.
-        /// e.g. TextBox doesn't have any predefined text of its own as it can be changed at runtime by user, hence is identified by the label next to it.
-        /// If there is no label then Get<T> or Get<T>(SearchCriteria) method can be used.
-        /// </summary>
-        /// <typeparam name="T">UIItem type</typeparam>
-        /// <param name="primaryIdentification">For managed application this is the name provided in application code and unmanaged application this is 
-        /// the text or label next to it based identification</param>
-        /// <returns>First item of supplied type and identification</returns>
-        public virtual T Get<T>(string primaryIdentification) where T : UIItem
+        public virtual T Get<T>(string primaryIdentification) where T : IUIItem, IMappableUIItem
         {
             return Get<T>(SearchCriteria.ByAutomationId(primaryIdentification));
         }
 
-        /// <summary>
-        /// Finds UIItem which matches specified type and searchCriteria. Type supplied need not be supplied again in SearchCondition.
-        /// e.g. in Get<Button>(SearchCriteria.ByAutomationId("OK").ByControlType(typeof(Button)).Indexed(1) the ByControlType(typeof(Button)) part 
-        /// is redundant. Look at documentation of SearchCriteria for details on it.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
-        /// <returns>First items matching the type and criteria</returns>
-        public virtual T Get<T>(SearchCriteria searchCriteria) where T : UIItem
+        public virtual T Get<T>(SearchCriteria searchCriteria) where T : IUIItem, IMappableUIItem
         {
             return (T) Get(searchCriteria.AndControlType(typeof (T), Framework));
         }
 
-        /// <summary>
-        /// Finds UIItem which matches specified type and searchCriteria using the default BusyTimeout. Look at documentation of SearchCriteria for details on it.
-        /// </summary>
-        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
-        /// <returns>First items matching the criteria</returns>
         public virtual IUIItem Get(SearchCriteria searchCriteria)
         {
             return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
@@ -101,9 +68,11 @@ namespace White.Core.UIItems
         /// <summary>
         /// Finds UIItem which matches specified type and searchCriteria. Look at documentation of SearchCriteria for details on it.
         /// </summary>
-        /// <param name="searchCriteria">Criteria provided to search UIItem</param>
+        /// <param name="searchCriteria">Criteria provided to search IUIItem</param>
         /// <param name="timeout">Time to wait for item to come on-screen before returning off-screen element, if found.</param>
         /// <returns>First items matching the criteria</returns>
+        /// <exception cref="AutomationException">when item not found</exception>
+        /// <exception cref="WhiteException">when any errors occured during search</exception>
         public virtual IUIItem Get(SearchCriteria searchCriteria, TimeSpan timeout)
         {
             try

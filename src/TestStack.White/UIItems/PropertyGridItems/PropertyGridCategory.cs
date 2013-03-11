@@ -6,7 +6,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.PropertyGridItems
 {
-    public class PropertyGridCategory : UIItem
+    public class PropertyGridCategory : UIItem, IMappableUIItem
     {
         private readonly PropertyGridElementFinder gridElementFinder;
         protected PropertyGridCategory() {}

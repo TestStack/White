@@ -5,7 +5,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class Hyperlink : UIItem
+    public class Hyperlink : UIItem, IMappableUIItem
     {
         protected Hyperlink() {}
         public Hyperlink(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

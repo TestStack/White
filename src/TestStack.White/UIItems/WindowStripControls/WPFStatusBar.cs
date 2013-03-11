@@ -5,7 +5,7 @@ using White.Core.UIItems.Finders;
 
 namespace White.Core.UIItems.WindowStripControls
 {
-    public class WPFStatusBar : UIItem
+    public class WPFStatusBar : UIItem, IMappableUIItem
     {
         protected WPFStatusBar() {}
         public WPFStatusBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

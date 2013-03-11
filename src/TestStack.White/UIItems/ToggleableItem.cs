@@ -3,7 +3,7 @@ using System.Windows.Automation;
 
 namespace White.Core.UIItems
 {
-    public class ToggleableItem : UIItem
+    public class ToggleableItem : UIItem, IMappableUIItem
     {
         public ToggleableItem(UIItem uiItem) : base(uiItem.AutomationElement, uiItem.ActionListener)
         {

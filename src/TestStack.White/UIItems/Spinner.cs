@@ -4,7 +4,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class Spinner : UIItem
+    public class Spinner : UIItem, IMappableUIItem
     {
         private readonly AutomationElementFinder finder;
         protected Spinner() {}

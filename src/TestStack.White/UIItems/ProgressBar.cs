@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems
 {
-    public class ProgressBar : UIItem
+    public class ProgressBar : UIItem, IMappableUIItem
     {
         protected ProgressBar() {}
         public ProgressBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

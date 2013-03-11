@@ -3,7 +3,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.PropertyGridItems
 {
-    public class PropertyGridProperty : UIItem
+    public class PropertyGridProperty : UIItem, IMappableUIItem
     {
         private readonly PropertyGridElementFinder gridElementFinder;
 

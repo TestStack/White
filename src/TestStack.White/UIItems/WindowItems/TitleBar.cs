@@ -4,7 +4,7 @@ using White.Core.UIItems.Actions;
 
 namespace White.Core.UIItems.WindowItems
 {
-    public class TitleBar : UIItem
+    public class TitleBar : UIItem, IMappableUIItem
     {
         private readonly AutomationElementFinder automationElementFinder;
 
@@ -62,7 +62,7 @@ namespace White.Core.UIItems.WindowItems
             AutomationElement element =
                 automationElementFinder.Child(AutomationSearchCondition.ByControlType(ControlType.Button).WithAutomationId(automationId));
             if (element == null) return null;
-            return new Button(element, actionListener);
+            return new Button(element, ActionListener);
         }
     }
 }

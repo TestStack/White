@@ -7,7 +7,7 @@ using White.Core.WindowsAPI;
 
 namespace White.Core.UIItems
 {
-    public class ListViewRow : UIItem
+    public class ListViewRow : UIItem, IMappableUIItem
     {
         private readonly ListViewHeader header;
         private readonly AutomationElementFinder finder;

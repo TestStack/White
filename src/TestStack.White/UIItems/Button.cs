@@ -5,7 +5,7 @@ using White.Core.UIItems.Actions;
 namespace White.Core.UIItems
 {
     //TODO Implement standard controls library like OpenDialog
-    public class Button : UIItem
+    public class Button : UIItem, IMappableUIItem
     {
         private readonly ToggleableItem toggleableItem;
         protected Button() {}

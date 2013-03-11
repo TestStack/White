@@ -6,7 +6,7 @@ using White.Core.WindowsAPI;
 
 namespace White.Core.UIItems
 {
-    public class DateTimePicker : UIItem
+    public class DateTimePicker : UIItem, IMappableUIItem
     {
         protected DateTimePicker() {}
         public DateTimePicker(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}

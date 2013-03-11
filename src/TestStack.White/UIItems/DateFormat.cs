@@ -49,6 +49,9 @@ namespace White.Core.UIItems
             return dateFormat;
         }
 
+        /// <summary>
+        /// Use ',' as separator.
+        /// </summary>
         public static DateFormat Parse(string @string)
         {
             string[] parts = @string.Split(',');

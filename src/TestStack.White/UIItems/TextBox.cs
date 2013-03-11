@@ -9,7 +9,7 @@ using Action=White.Core.UIItems.Actions.Action;
 
 namespace White.Core.UIItems
 {
-    public class TextBox : UIItem
+    public class TextBox : UIItem, IMappableUIItem
     {
         private AutomationPropertyChangedEventHandler handler;
         protected TextBox() {}
@@ -17,7 +17,8 @@ namespace White.Core.UIItems
 
         /// <summary>
         /// Enters the text in the textbox. The text would be cleared first. This is not as good performing as the BulkText method. 
-        /// This does raise all keyboard events.
+        /// This does raise all keyboard events - that means that your string will consist of letters that match the letters
+        /// of your string but in current input language.
         /// </summary>
         public virtual string Text
         {
@@ -32,6 +33,7 @@ namespace White.Core.UIItems
 
         /// <summary>
         /// Sets the text in the textbox. The text would be cleared first. This is a better performing than the Text method. This doesn't raise all keyboard events.
+        /// The string will be set exactly as it is in your code.
         /// </summary>
         public virtual string BulkText
         {
