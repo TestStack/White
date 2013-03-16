@@ -9,5 +9,6 @@ namespace White.Core.UIItems
         T Get<T>(SearchCriteria searchCriteria) where T : UIItem;
         ToolTip ToolTip { get; }
         ToolTip GetToolTipOn(UIItem uiItem);
+        IUIItem[] GetMultiple(SearchCriteria criteria);
     }
 }

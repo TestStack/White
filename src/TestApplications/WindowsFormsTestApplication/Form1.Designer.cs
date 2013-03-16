@@ -34,6 +34,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.GetMultipleButton = new System.Windows.Forms.Button();
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
@@ -77,6 +78,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.GetMultipleButton);
             this.groupBox3.Controls.Add(this.ButtonWithTooltip);
             this.groupBox3.Location = new System.Drawing.Point(532, 12);
             this.groupBox3.Name = "groupBox3";
@@ -84,6 +86,16 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Scenarios";
+            // 
+            // GetMultipleButton
+            // 
+            this.GetMultipleButton.Location = new System.Drawing.Point(7, 49);
+            this.GetMultipleButton.Name = "GetMultipleButton";
+            this.GetMultipleButton.Size = new System.Drawing.Size(194, 23);
+            this.GetMultipleButton.TabIndex = 1;
+            this.GetMultipleButton.Text = "Get Multiple";
+            this.GetMultipleButton.UseVisualStyleBackColor = true;
+            this.GetMultipleButton.Click += new System.EventHandler(this.GetMultiple_Click);
             // 
             // ButtonWithTooltip
             // 
@@ -122,6 +134,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button ButtonWithTooltip;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button GetMultipleButton;
     }
 }
 

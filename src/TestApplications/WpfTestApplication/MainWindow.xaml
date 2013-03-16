@@ -16,11 +16,12 @@
         <GroupBox Header="Input controls" Grid.Column="1" Width="150">
             <DatePicker x:Name="DatePicker" />
         </GroupBox>
-        <GroupBox Header="Scenarios" Grid.Column="2">
+        <GroupBox Header="Scenarios" Grid.Column="2" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>
                 <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
                 <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
                 <Button Content="Button with tooltip" ToolTip="I have a tooltip" AutomationProperties.AutomationId="ButtonWithTooltip" />
+                <Button Content="Get Multiple" Click="GetMultiple" AutomationProperties.AutomationId="GetMultipleButton" />
             </StackPanel>
         </GroupBox>
     </Grid>

@@ -8,5 +8,10 @@ namespace WindowsFormsTestApplication
         {
             InitializeComponent();
         }
+
+        private void GetMultiple_Click(object sender, System.EventArgs e)
+        {
+            new GetMultiple().ShowDialog();
+        }
     }
 }

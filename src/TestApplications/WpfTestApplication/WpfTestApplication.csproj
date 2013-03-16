@@ -52,12 +52,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GetMultiple.xaml.cs">
+      <DependentUpon>GetMultiple.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VerticalGridSplitter.xaml.cs">
       <DependentUpon>VerticalGridSplitter.xaml</DependentUpon>
     </Compile>
     <Compile Include="WindowLaunchers.xaml.cs">
       <DependentUpon>WindowLaunchers.xaml</DependentUpon>
     </Compile>
+    <Page Include="GetMultiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HorizontalGridSplitter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

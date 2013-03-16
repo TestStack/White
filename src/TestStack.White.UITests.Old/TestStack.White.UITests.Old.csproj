@@ -161,11 +161,9 @@
     <Compile Include="UIItems\WindowAbstractTest.cs" />
     <Compile Include="UIItems\WindowItems\TitleBarTest.cs" />
     <Compile Include="UIItems\WindowItems\UIItemContainerScenarioTest.cs" />
-    <Compile Include="UIItems\WindowItems\UIItemContainerTest.cs" />
     <Compile Include="UIItems\WindowItems\WindowCloseTest.cs" />
     <Compile Include="UIItems\WindowItems\WindowControlsTest.cs" />
     <Compile Include="UIItems\WindowItems\WindowTest.cs" />
-    <Compile Include="UIItems\WindowItems\WinFormScenarioTest.cs" />
     <Compile Include="UIItems\WindowItems\WinFormWindowTest.cs" />
     <Compile Include="UIItems\WindowItems\WPFWindowTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />

@@ -49,6 +49,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetMultiple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetMultiple.Designer.cs">
+      <DependentUpon>GetMultiple.cs</DependentUpon>
+    </Compile>
     <Compile Include="InputControls.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -65,6 +71,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetMultiple.resx">
+      <DependentUpon>GetMultiple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InputControls.resx">
       <DependentUpon>InputControls.cs</DependentUpon>

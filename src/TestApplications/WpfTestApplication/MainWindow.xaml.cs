@@ -28,12 +28,17 @@ namespace WpfTestApplication
 
         private void LaunchHorizontalGridSplitter(object sender, RoutedEventArgs e)
         {
-            new HorizontalGridSplitter().Show();
+            new HorizontalGridSplitter().ShowDialog();
         }
 
         private void LaunchVerticalGridSplitter(object sender, RoutedEventArgs e)
         {
-            new VerticalGridSplitter().Show();
+            new VerticalGridSplitter().ShowDialog();
+        }
+
+        private void GetMultiple(object sender, RoutedEventArgs e)
+        {
+            new GetMultiple().ShowDialog();
         }
     }
 }
