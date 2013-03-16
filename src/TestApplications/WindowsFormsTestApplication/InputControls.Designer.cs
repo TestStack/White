@@ -30,6 +30,7 @@
         {
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.CheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // DatePicker
@@ -48,10 +49,21 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "DateTimePicker";
             // 
+            // CheckBox
+            // 
+            this.CheckBox.AutoSize = true;
+            this.CheckBox.Location = new System.Drawing.Point(4, 56);
+            this.CheckBox.Name = "CheckBox";
+            this.CheckBox.Size = new System.Drawing.Size(80, 17);
+            this.CheckBox.TabIndex = 2;
+            this.CheckBox.Text = "checkBox1";
+            this.CheckBox.UseVisualStyleBackColor = true;
+            // 
             // InputControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.CheckBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DatePicker);
             this.Name = "InputControls";
@@ -65,5 +77,6 @@
 
         private System.Windows.Forms.DateTimePicker DatePicker;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox CheckBox;
     }
 }

@@ -110,7 +110,6 @@
     <Compile Include="UIA\AutomationElementXTest.cs" />
     <Compile Include="UIItems\AbstractScrollBarsTest.cs" />
     <Compile Include="UIItems\ButtonTest.cs" />
-    <Compile Include="UIItems\CheckBoxTest.cs" />
     <Compile Include="UIItems\ColorTest.cs" />
     <Compile Include="UIItems\DateTimePickerTest.cs" />
     <Compile Include="UIItems\ErrorProviderTest.cs" />

@@ -47,6 +47,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlTests\CheckboxTest.cs" />
     <Compile Include="ControlTests\CheckedListBoxTest.cs" />
     <Compile Include="ControlTests\TooltipTests.cs" />
     <Compile Include="ControlTests\UIItemTests.cs" />

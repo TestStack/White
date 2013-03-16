@@ -14,7 +14,10 @@
             <wpfTestApplication:ListControls />
         </GroupBox>
         <GroupBox Header="Input controls" Grid.Column="1" Width="150">
-            <DatePicker x:Name="DatePicker" />
+            <StackPanel>
+                <DatePicker x:Name="DatePicker" />
+                <CheckBox x:Name="CheckBox" Content="A checkbox" />
+            </StackPanel>
         </GroupBox>
         <GroupBox Header="Scenarios" Grid.Column="2" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>
