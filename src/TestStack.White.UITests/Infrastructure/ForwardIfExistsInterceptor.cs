@@ -22,7 +22,7 @@ namespace TestStack.White.UITests.Infrastructure
                 
                 return m.Name == targetMethod.Name && 
                     argumentTypes.Length == parameterInfos.Length &&
-                    parameterInfos.Select((p, i)=>new {p.ParameterType, Index = i}).All(p=>argumentTypes[p.Index] == p.ParameterType);
+                    parameterInfos.Select((p, i) => new { p.ParameterType, Index = i }).All(p => p.ParameterType.IsAssignableFrom(argumentTypes[p.Index]));
             })
                 .ToList();
             if (!matchingTypeMethods.Any())

@@ -22,7 +22,7 @@ namespace White.Core.Configuration
             DefaultValues.Add("WorkSessionLocation", ".");
             DefaultValues.Add("UIAutomationZeroWindowBugTimeout", 5000);
             DefaultValues.Add("PopupTimeout", 5000);
-            DefaultValues.Add("TooltipWaitTime", 0);
+            DefaultValues.Add("TooltipWaitTime", 3000);
             DefaultValues.Add("SuggestionListTimeout", 3000);
             DefaultValues.Add("DefaultDateFormat", DateFormat.CultureDefault.ToString());
             DefaultValues.Add("DragStepCount", 1);

@@ -23,7 +23,7 @@ namespace White.Core.Factory
         {
             get
             {
-                return ToolTipFinder.FindToolTip(() => Finder.Child(AutomationSearchCondition.ByControlType(ControlType.ToolTip)), Finder.AutomationElement);
+                return ToolTipFinder.FindToolTip(() => Finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip)), Finder.AutomationElement);
             }
         }
 

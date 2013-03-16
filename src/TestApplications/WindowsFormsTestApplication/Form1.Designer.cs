@@ -28,12 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ButtonWithTooltip = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -46,6 +51,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List Controls";
             // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(6, 19);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.inputControls1);
@@ -56,13 +68,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input Controls";
             // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(6, 19);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
             // inputControls1
             // 
             this.inputControls1.Location = new System.Drawing.Point(7, 19);
@@ -70,11 +75,32 @@
             this.inputControls1.Size = new System.Drawing.Size(217, 181);
             this.inputControls1.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.ButtonWithTooltip);
+            this.groupBox3.Location = new System.Drawing.Point(532, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(207, 276);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Scenarios";
+            // 
+            // ButtonWithTooltip
+            // 
+            this.ButtonWithTooltip.Location = new System.Drawing.Point(6, 19);
+            this.ButtonWithTooltip.Name = "ButtonWithTooltip";
+            this.ButtonWithTooltip.Size = new System.Drawing.Size(195, 23);
+            this.ButtonWithTooltip.TabIndex = 0;
+            this.ButtonWithTooltip.Text = "Button with Tooltip";
+            this.toolTip1.SetToolTip(this.ButtonWithTooltip, "I have a tooltip");
+            this.ButtonWithTooltip.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 405);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -82,6 +108,7 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -92,6 +119,9 @@
         private ListControls listControls1;
         private System.Windows.Forms.GroupBox groupBox2;
         private InputControls inputControls1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button ButtonWithTooltip;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

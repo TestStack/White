@@ -50,7 +50,7 @@ namespace TestStack.White.UITests
 
         protected void RunTest(Action testAction, params WindowsFramework[] runFor)
         {
-            if (runFor.Any(r => r.FrameworkId == currentFramework.FrameworkId))
+            if (!runFor.Any() || runFor.Any(r => r.FrameworkId == currentFramework.FrameworkId))
             {
                 try
                 {

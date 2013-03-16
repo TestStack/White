@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Automation;
 using Castle.DynamicProxy;
-using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.InputDevices;
@@ -247,8 +246,7 @@ namespace White.Core.UIItems
         public virtual ToolTip GetToolTipOn(UIItem uiItem)
         {
             Mouse.Location = uiItem.Bounds.Center();
-            var finder = new AutomationElementFinder(automationElement);
-            return ToolTipFinder.FindToolTip(() => finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.ToolTip)), automationElement);
+            return ToolTip;
         }
 
         public virtual ToolStrip ToolStrip

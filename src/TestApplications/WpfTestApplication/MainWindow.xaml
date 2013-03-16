@@ -20,6 +20,7 @@
             <StackPanel>
                 <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
                 <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
+                <Button Content="Button with tooltip" ToolTip="I have a tooltip" AutomationProperties.AutomationId="ButtonWithTooltip" />
             </StackPanel>
         </GroupBox>
     </Grid>
