@@ -143,6 +143,7 @@
     <Compile Include="Interceptors\CoreInterceptContext.cs" />
     <Compile Include="Interceptors\ScrollInterceptor.cs" />
     <Compile Include="Mappings\ControlDictionaryItems.cs" />
+    <Compile Include="ScreenCapture.cs" />
     <Compile Include="ScreenMap\AutomationPropertySurrogate.cs" />
     <Compile Include="ScreenMap\ControlTypeSurrogate.cs" />
     <Compile Include="ScreenMap\NullWindowItemsMap.cs" />

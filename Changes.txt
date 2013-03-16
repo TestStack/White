@@ -2,6 +2,9 @@ Version 0.10.1
  - Fix: Tooltips can now be found as expected
  - Retry.ForDefault method now reads it's default timeout from White's configuration
  - New Configuration value 'FindWindowTimeout' which is defaulted to 30 seconds
+ - Added ability to take screenshots of the desktop:
+    - `Desktop.CaptureScreenshot()` returns a Bitmap
+    - `Desktop.TakeScreenshot(string filename, ImageFormat imageFormat)` saves the screenshot to file
 
 Version 0.10.0
  - BREAKING: Removed Log4net, now using Castle's logging abstractions. See https://github.com/TestStack/White/wiki/log4net-Removal
