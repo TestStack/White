@@ -30,7 +30,7 @@ namespace White.Core
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindowDC(IntPtr ptr);
 
-        public Bitmap CaptureScreenShot()
+        public virtual Bitmap CaptureScreenShot()
         {
             var sz = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
             var hDesk = GetDesktopWindow();
