@@ -17,6 +17,11 @@ namespace White.Core.Configuration
             return TimeSpan.FromMilliseconds(coreConfiguration.BusyTimeout);
         }
 
+        public static TimeSpan FindWindowTimeout(this ICoreConfiguration coreConfiguration)
+        {
+            return TimeSpan.FromMilliseconds(coreConfiguration.FindWindowTimeout);
+        }
+
         public static TimeSpan SuggestionListTimeout(this ICoreConfiguration coreConfiguration)
         {
             return TimeSpan.FromMilliseconds(coreConfiguration.SuggestionListTimeout);

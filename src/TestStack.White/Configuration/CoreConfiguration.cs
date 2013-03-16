@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Castle.Core.Logging;
 using White.Core.Bricks;
@@ -11,6 +12,7 @@ namespace White.Core.Configuration
     public interface ICoreConfiguration
     {
         int BusyTimeout { get; set; }
+        int FindWindowTimeout { get; set; }
         bool WaitBasedOnHourGlass { get; set; }
         DynamicProxyInterceptors Interceptors { get; }
         DirectoryInfo WorkSessionLocation { get; set; }

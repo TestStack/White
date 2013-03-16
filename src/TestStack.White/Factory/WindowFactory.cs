@@ -33,7 +33,7 @@ namespace White.Core.Factory
 
         private static AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
         {
-            var element = Retry.For(find, TimeSpan.FromSeconds(30));
+            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
             if (element == null)
                 throw new UIActionException(message + Debug.GetAllWindows());
             return element;
@@ -120,12 +120,12 @@ namespace White.Core.Factory
             var windowFinder = new AutomationElementFinder(parentWindowElement);
             try
             {
-                AutomationElement modalWindowElement = WaitTillFound(delegate
-                                                                         {
-                                                                             AutomationElement windowElement = windowFinder.FindWindow(title, process.Id) ??
-                                                                                                               Finder.FindWindow(title, process.Id);
-                                                                             return windowElement;
-                                                                         }, "Could not find modal window with title: " + title);
+                AutomationElement modalWindowElement = WaitTillFound(() =>
+                {
+                    AutomationElement windowElement = windowFinder.FindWindow(title, process.Id) ??
+                        Finder.FindWindow(title, process.Id);
+                    return windowElement;
+                }, "Could not find modal window with title: " + title);
                 return Create(modalWindowElement, option, windowSession);
             }
             catch (UIActionException e)
@@ -140,12 +140,12 @@ namespace White.Core.Factory
             var windowFinder = new AutomationElementFinder(parentWindowElement);
             try
             {
-                AutomationElement modalWindowElement = WaitTillFound(delegate
-                                                                         {
-                                                                             AutomationElement windowElement = windowFinder.FindWindow(searchCriteria) ??
-                                                                                                               Finder.FindWindow(searchCriteria);
-                                                                             return windowElement;
-                                                                         }, "Could not find modal window with SearchCriteria: " + searchCriteria);
+                AutomationElement modalWindowElement = WaitTillFound(() =>
+                {
+                    AutomationElement windowElement = windowFinder.FindWindow(searchCriteria) ??
+                        Finder.FindWindow(searchCriteria);
+                    return windowElement;
+                }, "Could not find modal window with SearchCriteria: " + searchCriteria);
                 return Create(modalWindowElement, option, windowSession);
             }
             catch (UIActionException e)
@@ -165,9 +165,8 @@ namespace White.Core.Factory
 
         private void AddWindowsBy(List<Window> windows, ControlType controlType)
         {
-            List<AutomationElement> children = Finder.Children(AutomationSearchCondition.ByControlType(controlType));
-            foreach (AutomationElement childElement in children)
-                windows.Add(Create(childElement, InitializeOption.NoCache, new NullWindowSession()));
+            var children = Finder.Children(AutomationSearchCondition.ByControlType(controlType));
+            windows.AddRange(children.Select(childElement => Create(childElement, InitializeOption.NoCache, new NullWindowSession())));
         }
 
         public static void AddSpecializedWindowFactory(SpecializedWindowFactory specializedWindowFactory)

@@ -15,16 +15,7 @@ namespace White.Core.Utility
         /// <param name="getMethod">The operation to perform.</param>
         public static Window ForDefault(Func<Window> getMethod)
         {
-            return For(getMethod, CoreAppXmlConfiguration.Instance.BusyTimeout());
-        }
-
-        /// <summary>
-        /// Retries until method returns a non-default value using default element timeout
-        /// </summary>
-        /// <param name="getMethod">The operation to perform.</param>
-        public static T ForDefault<T>(Func<T> getMethod)
-        {
-            return For(getMethod, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            return For(getMethod, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
         }
 
         /// <summary>
@@ -34,7 +25,16 @@ namespace White.Core.Utility
         /// <param name="shouldRetry">The predicate used for retry.</param>
         public static Window ForDefault(Func<Window> getMethod, Predicate<Window> shouldRetry)
         {
-            return For(getMethod, shouldRetry, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            return For(getMethod, shouldRetry, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
+        }
+
+        /// <summary>
+        /// Retries until method returns a non-default value using default element timeout
+        /// </summary>
+        /// <param name="getMethod">The operation to perform.</param>
+        public static T ForDefault<T>(Func<T> getMethod)
+        {
+            return For(getMethod, CoreAppXmlConfiguration.Instance.BusyTimeout());
         }
 
         /// <summary>
