@@ -62,7 +62,7 @@ namespace White.Core.UIItems.WindowItems
             AutomationElement element =
                 automationElementFinder.Child(AutomationSearchCondition.ByControlType(ControlType.Button).WithAutomationId(automationId));
             if (element == null) return null;
-            return new Button(element, actionListener);
+            return new Button(element, ActionListener);
         }
     }
 }

@@ -45,7 +45,7 @@ namespace White.Core.UIItems
                 {
                     Logger.Warn("BulkText failed, now trying Text on " + ToString());
                     Text = value;
-                    actionListener.ActionPerformed(Action.WindowMessage);
+                    ActionPerformed();
                 }
             }
             get { return Text; }
@@ -58,12 +58,12 @@ namespace White.Core.UIItems
 
         public virtual void ClickAtRightEdge()
         {
-            mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+            mouse.Click(Bounds.ImmediateInteriorEast(), ActionListener);
         }
 
         public virtual void ClickAtCenter()
         {
-            mouse.Click(Bounds.Center(), actionListener);
+            mouse.Click(Bounds.Center(), ActionListener);
         }
 
         public override void HookEvents(UIItemEventListener eventListener)
@@ -92,7 +92,7 @@ namespace White.Core.UIItems
 
         public virtual SuggestionList SuggestionList
         {
-            get { return SuggestionListView.WaitAndFind(actionListener); }
+            get { return SuggestionListView.WaitAndFind(ActionListener); }
         }
     }
 }

@@ -34,28 +34,28 @@ namespace White.Core.UIItems.TableItems
             get
             {
                 AutomationElement headerElement = new AutomationElementFinder(automationElement).Child(AutomationSearchCondition.ByControlType(ControlType.Header));
-                return headerElement == null ? null : new TableRowHeader(headerElement, actionListener);
+                return headerElement == null ? null : new TableRowHeader(headerElement, ActionListener);
             }
         }
 
         public override void Click()
         {
-            new TooltipSafeMouse(mouse).ClickOutsideToolTip(this, actionListener);
+            new TooltipSafeMouse(mouse).ClickOutsideToolTip(this, ActionListener);
         }
 
         public override void DoubleClick()
         {
-            new TooltipSafeMouse(mouse).DoubleClickOutsideToolTip(this, actionListener);
+            new TooltipSafeMouse(mouse).DoubleClickOutsideToolTip(this, ActionListener);
         }
 
         public override void RightClick()
         {
-            new TooltipSafeMouse(mouse).RightClickOutsideToolTip(this, actionListener);
+            new TooltipSafeMouse(mouse).RightClickOutsideToolTip(this, ActionListener);
         }
 
         public virtual bool Select()
         {
-            actionListener.ActionPerforming(this);
+            ActionPerforming(this);
             TableRowHeader header = Header;
             if (header != null)
             {

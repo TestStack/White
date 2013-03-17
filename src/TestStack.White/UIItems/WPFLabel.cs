@@ -12,7 +12,7 @@ namespace White.Core.UIItems
 
         public virtual Hyperlink Hyperlink(string text)
         {
-            return (Hyperlink) factory.Create(SearchCriteria.ByText(text).AndControlType(typeof (Hyperlink), Framework), actionListener);
+            return (Hyperlink) factory.Create(SearchCriteria.ByText(text).AndControlType(typeof (Hyperlink), Framework), ActionListener);
         }
     }
 }

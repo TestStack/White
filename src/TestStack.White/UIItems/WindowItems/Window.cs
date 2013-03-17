@@ -32,6 +32,7 @@ namespace White.Core.UIItems.WindowItems
             new Dictionary<DisplayState, WindowVisualState>();
 
         private AutomationEventHandler handler;
+        private ActionListener parentActionListener;
 
         public delegate bool WaitTillDelegate();
 
@@ -204,7 +205,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         public override void ActionPerformed(Action action)
         {
             action.Handle(this);
-            ActionPerformed();
+            ActionListener.ActionPerformed(action);
         }
 
         /// <summary>
@@ -324,13 +325,13 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             Window window = factory.ModalWindow(title, InitializeOption.NoCache,
                                                 WindowSession.ModalWindowSession(InitializeOption.NoCache));
-            if (window != null) window.actionListener = this;
+            if (window != null) window.parentActionListener = this;
             return window;
         }
 
         public override ActionListener ActionListener
         {
-            get { return this; }
+            get { return parentActionListener ?? this; }
         }
 
         public virtual void Focus(DisplayState displayState)

@@ -23,9 +23,9 @@ namespace White.Core.UIItems
             {
                 var pattern = (TextPattern) Pattern(TextPattern.Pattern);
                 pattern.DocumentRange.Select();
-                actionListener.ActionPerformed(Action.WindowMessage);
-                keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.DELETE, actionListener);
-                actionListener.ActionPerformed(Action.WindowMessage);
+                ActionPerformed();
+                keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.DELETE, ActionListener);
+                ActionPerformed();
                 EnterData(value);
             }
         }

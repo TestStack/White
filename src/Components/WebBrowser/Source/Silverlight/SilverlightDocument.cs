@@ -32,7 +32,7 @@ namespace White.WebBrowser.Silverlight
         {
             if (action == Action.Scroll) Thread.Sleep(500);
             CustomWait();
-            base.ActionPerformed();
+            ActionListener.ActionPerformed(action);
         }
 
         protected override ActionListener ChildrenActionListener
