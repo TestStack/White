@@ -205,6 +205,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         public override void ActionPerformed(Action action)
         {
             action.Handle(this);
+            ActionListener.ActionPerformed(action);
         }
 
         /// <summary>
