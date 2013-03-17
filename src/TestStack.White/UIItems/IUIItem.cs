@@ -95,4 +95,13 @@ namespace White.Core.UIItems
 
         void Enter(string value);
     }
+
+    /// <summary>
+    /// Class which inherits this interface has a mapping to it's Automation type.
+    /// Used for search constraints.
+    /// </summary>
+    public interface IMappableUIItem
+    {
+        
+    }
 }

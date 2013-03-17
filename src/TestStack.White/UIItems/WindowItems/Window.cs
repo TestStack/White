@@ -82,6 +82,10 @@ UI actions on window needing mouse would not work in area not falling under the 
             get { return (WindowPattern) Pattern(WindowPattern.Pattern); }
         }
 
+        /// <summary>
+        /// Returns true if window available and is on screen. Otherwise 
+        /// or if there were errors it returns false.
+        /// </summary>
         public virtual bool IsClosed
         {
             get
@@ -170,6 +174,8 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
+        /// <exception cref="Exception"></exception>
+        /// <exception cref="UIActionException">when window is not responding</exception>
         private void WaitForWindow()
         {
             var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
@@ -196,6 +202,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             return ("ConsoleWindowClass".Equals(automationElement.Current.ClassName));
         }
 
+        /// <exception cref="System.ArgumentException">when current process is not available any more (id expired)</exception>
         protected virtual void WaitForProcess()
         {
             Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
@@ -249,11 +256,16 @@ UI actions on window needing mouse would not work in area not falling under the 
             CurrentContainerItemFactory.Visit(windowControlVisitor);
         }
 
+        /// <summary>
+        /// Execute WaitTill with the default timeout from CoreConfiguration (BusyTimeout)
+        /// </summary>
+        /// <exception cref="UIActionException">when methods reached the timeout</exception>
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate)
         {
             WaitTill(waitTillDelegate, CoreAppXmlConfiguration.Instance.BusyTimeout());
         }
 
+        /// <exception cref="UIActionException">when methods reached the timeout</exception>
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate, TimeSpan timeout)
         {
             if (!Retry.For(() => waitTillDelegate(), timeout, new TimeSpan?()))
@@ -372,6 +384,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// Recursively gets all the descendant windows.
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception> // from ChildWindowFactory.Create
         public virtual List<Window> ModalWindows()
         {
             var modalWindows = new List<Window>();
