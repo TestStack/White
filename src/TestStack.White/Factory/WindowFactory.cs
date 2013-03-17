@@ -68,6 +68,7 @@ namespace TestStack.White.Factory
             return new SplashWindow(element, InitializeOption.NoCache);
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         public virtual Window CreateWindow(string title, Process process, InitializeOption option, WindowSession windowSession)
         {
             var message = string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, ", after waiting for 30 seconds");
@@ -75,6 +76,7 @@ namespace TestStack.White.Factory
             return Create(element, option, windowSession);
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         public virtual Window CreateWindow(SearchCriteria searchCriteria, Process process, InitializeOption option, WindowSession windowSession)
         {
             var message = string.Format("Couldn't find window with SearchCriteria {0} in process {1}{2}", searchCriteria, process.Id, Constants.BusyMessage);
@@ -82,6 +84,7 @@ namespace TestStack.White.Factory
             return Create(element, option, windowSession);
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         public virtual Window FindWindow(Process process, Predicate<string> match, InitializeOption initializeOption, WindowSession windowSession)
         {
             string message = string.Format("Could not find window matching condition. ProcessName: {0}, ProcessId: {1}, MatchingConditionMethod: {2}, MatchingConditionTarget: {3}", process.ProcessName, process.Id, match.Method, match.Target);
@@ -89,6 +92,7 @@ namespace TestStack.White.Factory
             return Create(foundElement, initializeOption, windowSession);
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         public virtual Window FindModalWindow(string title, Process process, InitializeOption option, AutomationElement parentWindowElement,
                                               WindowSession windowSession)
         {
@@ -98,6 +102,7 @@ namespace TestStack.White.Factory
             return Create(modalWindowElement, option, windowSession);
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         public virtual Window FindModalWindow(SearchCriteria searchCriteria, InitializeOption option, AutomationElement parentWindowElement, WindowSession windowSession)
         {
             var windowFinder = new AutomationElementFinder(parentWindowElement);
@@ -132,6 +137,7 @@ namespace TestStack.White.Factory
             });
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         public virtual List<Window> DesktopWindows()
         {
             var windows = new List<Window>();

@@ -44,6 +44,7 @@ namespace TestStack.White.Factory
             return element;
         }
 
+        /// <exception cref="UIItemSearchException">if your framework is not supported</exception>
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
         {
             SpecializedWindowFactory specializedWindowFactory = SpecializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
