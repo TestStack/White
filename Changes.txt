@@ -1,3 +1,6 @@
+Version 0.10.2
+ - Made ListItem selection more reliable
+
 Version 0.10.1
  - Fix: Tooltips can now be found as expected
  - Retry.ForDefault method now reads it's default timeout from White's configuration

@@ -1,6 +1,10 @@
+using System;
+using System.Threading;
 using System.Windows.Automation;
 using White.Core.UIA;
 using White.Core.UIItems.Actions;
+using White.Core.Utility;
+using Action = White.Core.UIItems.Actions.Action;
 
 namespace White.Core.UIItems.ListBoxItems
 {
@@ -35,16 +39,37 @@ namespace White.Core.UIItems.ListBoxItems
             if (Bounds.IsEmpty)
             {
                 Logger.Debug("Bounds empty, falling back to automation patterns");
-                var selectionItemPattern = (SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
+                var selectionItemPattern =
+                    (SelectionItemPattern) automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
                 selectionItemPattern.Select();
             }
             else
             {
                 Logger.Debug("Selecting item with Click");
-                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);                
+                WaitForBoundsToStabilise(this);
+                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+                if (!IsSelected)
+                {
+                    Logger.Debug("Failed to select list item via click. Falling back to automation patterns");
+                    ((SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern)).Select();
+                }
             }
 
             actionListener.ActionPerformed(Action.WindowMessage);
+        }
+
+        /// <summary>
+        /// When the dropdown is animating, this can stop White from clicking too soon and not selecting properly
+        /// </summary>
+        /// <param name="item"></param>
+        private static void WaitForBoundsToStabilise(IUIItem item)
+        {
+            Retry.For(() =>
+            {
+                var oldBounds = item.Bounds;
+                Thread.Sleep(10);
+                return oldBounds.Equals(item.Bounds);
+            }, TimeSpan.FromSeconds(1), TimeSpan.FromMilliseconds(10));
         }
 
         public abstract void Check();
