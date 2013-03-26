@@ -8,28 +8,34 @@ namespace White.Core.UIItems.WPFUIItems
     {
         private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFUIItem));
 
-        public static T Get<T>(this UIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
+        public static T Get<T>(this IUIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
         {
-            UIItemContainer uiItemContainer = GetUiItemContainer(uiItem);
-            return (T)uiItemContainer.Get(searchCriteria.AndControlType(typeof(T), uiItem.Framework));
+            var uiItemContainer = GetUiItemContainer(uiItem);
+            return uiItemContainer.Get<T>(searchCriteria);
         }
 
-        private static UIItemContainer GetUiItemContainer(UIItem uiItem)
+        public static T Get<T>(this IUIItem uiItem, string primaryIdentification) where T : UIItem
         {
+            var uiItemContainer = GetUiItemContainer(uiItem);
+            return uiItemContainer.Get<T>(primaryIdentification);
+        }
+
+        private static UIItemContainer GetUiItemContainer(IUIItem uiItem)
+        {
+            if (!(uiItem is UIItem))
+                throw new WhiteException("Cannot get UI Item container, uiItem must be an instance of UIItem");
             if (!uiItem.Framework.IsWpf) Logger.Warn("Only WPF items should be treated as container items");
-            return uiItem.AsContainer();
+            return ((UIItem)uiItem).AsContainer();
         }
 
-        public static IUIItem[] GetMultiple(this UIItem uiItem, SearchCriteria criteria)
+        public static IUIItem[] GetMultiple(this IUIItem uiItem, SearchCriteria criteria)
         {
-            UIItemContainer uiItemContainer = GetUiItemContainer(uiItem);
-            return uiItemContainer.GetMultiple(criteria);
+            return GetUiItemContainer(uiItem).GetMultiple(criteria);
         }
 
-        public static IUIItem Get(this UIItem uiItem, SearchCriteria searchCriteria)
+        public static IUIItem Get(this IUIItem uiItem, SearchCriteria searchCriteria)
         {
-            UIItemContainer uiItemContainer = GetUiItemContainer(uiItem);
-            return uiItemContainer.Get(searchCriteria);            
+            return GetUiItemContainer(uiItem).Get(searchCriteria);            
         }
     }
 }
