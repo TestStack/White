@@ -66,6 +66,7 @@
     <Compile Include="Infrastructure\TestConfiguration.cs" />
     <Compile Include="Infrastructure\TestConfigurationFactory.cs" />
     <Compile Include="Scenarios\GetMultipleTest.cs" />
+    <Compile Include="Scenarios\Win32CalculatorTest.cs" />
     <Compile Include="TestFailedException.cs" />
     <Compile Include="WhiteTestBase.cs" />
     <Compile Include="Infrastructure\WinformsTestConfiguration.cs" />
