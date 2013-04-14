@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using White.Core.Bricks;
@@ -27,7 +28,9 @@ namespace White.Repository
         public virtual object New(Window window, ScreenRepository screenRepository)
         {
             var o = Activator.CreateInstance(type, window, screenRepository);
-            foreach (var fieldInfo in type.GetFields(Entity.BindingFlag))
+            //Get all fields, even from base types
+            var fieldInfos = AllTypes(type).SelectMany(t=>t.GetFields(Entity.BindingFlag));
+            foreach (var fieldInfo in fieldInfos)
             {
                 if (nonInjectedTypes.Any(t=>t.IsAssignableFrom(fieldInfo.FieldType))) continue;
 
@@ -47,6 +50,17 @@ namespace White.Repository
             }
 
             return o;
+        }
+
+        public static IEnumerable<Type> AllTypes(Type type)
+        {
+            yield return type;
+            var baseType = type.BaseType;
+            while (baseType != null)
+            {
+                yield return baseType;
+                baseType = baseType.BaseType;
+            }
         }
 
         private static SearchCriteria SearchCondition(FieldInfo fieldInfo, WindowsFramework framework)

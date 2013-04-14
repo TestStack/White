@@ -12,9 +12,8 @@ namespace White.Repository.UITests.Testing
 {
     //TODO: Why do the tests continue running even after it has finished
     // ReSharper disable FieldCanBeMadeReadOnly.Local
-    public class MainScreen : AppScreen
+    public class MainScreen : BaseScreen
     {
-        private Button buton = null;
         private Button launchModal = null;
         private Button addNode = null;
         private Label result = null;

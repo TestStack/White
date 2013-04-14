@@ -80,6 +80,7 @@
     <Compile Include="ScreenRepositoryTest.cs" />
     <Compile Include="ScreenRepositoryTester.cs" />
     <Compile Include="Sessions\WorkSessionTest.cs" />
+    <Compile Include="Testing\BaseScreen.cs" />
     <Compile Include="Testing\MainProgressBars.cs" />
     <Compile Include="Testing\MainScreen.cs" />
     <Compile Include="Testing\ModalScreen.cs" />
