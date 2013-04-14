@@ -1,3 +1,7 @@
+Version 0.10.3
+ - Some small updates to WPF Get extension methods
+ - Further tooltip fixes
+
 Version 0.10.2
  - Made ListItem selection more reliable
 
