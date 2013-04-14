@@ -246,6 +246,7 @@ namespace White.Core.UIItems
         public virtual ToolTip GetToolTipOn(UIItem uiItem)
         {
             Mouse.Location = uiItem.Bounds.Center();
+            uiItem.Focus(); 
             return ToolTip;
         }
 
