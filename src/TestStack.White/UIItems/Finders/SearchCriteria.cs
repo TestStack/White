@@ -99,6 +99,11 @@ namespace White.Core.UIItems.Finders
             return searchCriteria;
         }
 
+        public static SearchCriteria ByClassName(string className)
+        {
+            return new SearchCriteria(SearchConditionFactory.CreateForClassName(className));
+        }
+
         internal virtual Condition AutomationCondition
         {
             get { return conditions.AutomationCondition; }
@@ -144,6 +149,12 @@ namespace White.Core.UIItems.Finders
         public virtual SearchCriteria AndByText(string text)
         {
             conditions.Insert(0, SearchConditionFactory.CreateForName(text));
+            return this;
+        }
+
+        public virtual SearchCriteria AndByClassName(string className)
+        {
+            conditions.Insert(0, SearchConditionFactory.CreateForClassName(className));
             return this;
         }
 

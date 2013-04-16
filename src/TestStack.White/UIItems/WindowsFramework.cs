@@ -69,6 +69,34 @@ namespace White.Core.UIItems
             return framework.FrameworkId;
         }
 
+        protected bool Equals(WindowsFramework other)
+        {
+            return string.Equals(frameworkId, other.frameworkId);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((WindowsFramework) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return (frameworkId != null ? frameworkId.GetHashCode() : 0);
+        }
+
+        public static bool operator ==(WindowsFramework left, WindowsFramework right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(WindowsFramework left, WindowsFramework right)
+        {
+            return !Equals(left, right);
+        }
+
         public override string ToString()
         {
             return FrameworkId;

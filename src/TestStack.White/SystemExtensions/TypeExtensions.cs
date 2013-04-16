@@ -11,7 +11,7 @@ namespace White.Core.SystemExtensions
         {
             var methodInfos = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
             return methodInfos
-                .Where(methodInfo => !methodInfo.IsPrivate && methodInfo.DeclaringType == type && !methodInfo.Name.StartsWith("<"))
+                .Where(methodInfo => !methodInfo.IsPrivate && methodInfo.DeclaringType == type && !methodInfo.Name.StartsWith("<") && methodInfo.Name != "Equals")
                 .Where(methodInfo => !methodInfo.IsVirtual || methodInfo.IsFinal);
         }  
     }

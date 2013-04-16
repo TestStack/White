@@ -41,6 +41,13 @@ namespace TestStack.White.UITests.Scenarios
                     checkboxes = window.GetMultiple(SearchCriteria.ByAutomationId("Test2")).OfType<CheckBox>();
                     Assert.AreEqual(3, checkboxes.Count());
                 }
+
+                if (framework == WindowsFramework.Wpf)
+                {
+                    var customControls = window.GetMultiple(SearchCriteria.ByClassName("CustomItem"));
+
+                    Assert.AreEqual(3, customControls.Length);
+                }
             }
             finally
             {

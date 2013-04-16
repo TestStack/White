@@ -28,6 +28,7 @@ namespace White.Core.UnitTests.Mappings
         [Test]
         public void IsPrimaryControl()
         {
+            Assert.AreEqual(true, controlDictionary.IsPrimaryControl(ControlType.Custom, "CustomItem", null));
             Assert.AreEqual(true, controlDictionary.IsPrimaryControl(ControlType.Button, string.Empty, null));
             Assert.AreEqual(true, controlDictionary.IsPrimaryControl(ControlType.Menu, string.Empty, null));
             Assert.AreEqual(true, controlDictionary.IsPrimaryControl(ControlType.Pane, "fsdfhsdfjSysDateTimePick32ffdgdg", null));

@@ -52,6 +52,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Custom controls\CustomItem.cs" />
+    <Compile Include="Custom controls\CustomItemAutiomationPeer.cs" />
     <Compile Include="GetMultiple.xaml.cs">
       <DependentUpon>GetMultiple.xaml</DependentUpon>
     </Compile>

@@ -8,7 +8,7 @@ namespace White.Core.UIItems.Custom
     {
         private UIItemContainer container;
 
-        protected CustomUIItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public CustomUIItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
 
         protected CustomUIItem() {}
 
