@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Automation;
 using Castle.Core.Logging;
 using NUnit.Framework;
 using White.Core.Configuration;
@@ -17,6 +18,7 @@ namespace TestStack.White.UITests.ControlTests
             CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
             ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
             RunTest(ListItemInComboBoxWithoutTextAvailableInitially, WindowsFramework.Wpf);
+            RunTest(ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved);
             RunTest(CanSelectItemAtTopOfList);
             RunTest(CanGetAllItems);
             RunTest(CanSelectItemAtBottomOfList);
@@ -37,6 +39,32 @@ namespace TestStack.White.UITests.ControlTests
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
+        }
+
+        void ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved()
+        {
+
+            // Arrange
+            var config = CoreAppXmlConfiguration.Instance;
+            var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
+            config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+            try
+            {
+                // Act
+#pragma warning disable 168
+                // Required to force the expansion of the combobox
+                var items = ComboBoxUnderTest.Items;
+#pragma warning restore 168
+
+                // Assert
+                var expansionState = (ExpandCollapseState)ComboBoxUnderTest.AutomationElement.GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
+                Assert.AreEqual(ExpandCollapseState.Collapsed, expansionState, "The combobox should have been collapsed after the items were retrieved");
+            }
+            finally
+            {
+                config.ComboBoxItemsPopulatedWithoutDropDownOpen = originalVal;
+            }
+
         }
 
         void CanSelectByIndex()
