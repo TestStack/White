@@ -19,6 +19,7 @@ namespace TestStack.White.UITests.ControlTests
             ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
             RunTest(ListItemInComboBoxWithoutTextAvailableInitially, WindowsFramework.Wpf);
             RunTest(ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved);
+            RunTest(ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrieval);
             RunTest(CanSelectItemAtTopOfList);
             RunTest(CanGetAllItems);
             RunTest(CanSelectItemAtBottomOfList);
@@ -41,9 +42,36 @@ namespace TestStack.White.UITests.ControlTests
             }
         }
 
+        void ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrieval()
+        {
+            // Arrange
+            var expandCollapsePattern = (ExpandCollapsePattern)ComboBoxUnderTest.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
+            var config = CoreAppXmlConfiguration.Instance;
+            var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
+            config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+
+            try
+            {
+                expandCollapsePattern.Expand();
+
+                // Act
+#pragma warning disable 168
+                var items = ComboBoxUnderTest.Items;
+#pragma warning restore 168
+
+                // Assert
+                var expansionState = expandCollapsePattern.Current.ExpandCollapseState;
+                Assert.AreEqual(ExpandCollapseState.Expanded, expansionState);
+            }
+            finally
+            {
+                config.ComboBoxItemsPopulatedWithoutDropDownOpen = originalVal;
+                expandCollapsePattern.Collapse();
+            }
+        }
+
         void ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved()
         {
-
             // Arrange
             var config = CoreAppXmlConfiguration.Instance;
             var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
