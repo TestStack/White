@@ -23,6 +23,16 @@ namespace White.Core.UIItems
             set { RangePattern().SetValue(value); }
         }
 
+        public virtual double Maximum
+        {
+            get { return RangePattern().Current.Maximum; }
+        }
+
+        public virtual double Minimum
+        {
+            get { return RangePattern().Current.Minimum; }
+        }
+
         private RangeValuePattern RangePattern()
         {
             return ((RangeValuePattern)Pattern(RangeValuePattern.Pattern));
