@@ -1,3 +1,6 @@
+vNext
+ - Fix: Expandable lists now restore their previous expansion (after the items have been retrieved), if `ComboBoxItemsPopulatedWithoutDropDownOpen` is set to false
+
 Version 0.10.3
  - Some small updates to WPF Get extension methods
  - Further tooltip fixes
