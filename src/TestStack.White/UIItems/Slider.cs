@@ -118,7 +118,7 @@ namespace White.Core.UIItems
         /// <summary>
         /// Decrements the slider
         /// </summary>
-        public void Decrement()
+        public virtual void Decrement()
         {
             SmallDecrement();
         }
