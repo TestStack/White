@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ControlTests\CheckboxTest.cs" />
     <Compile Include="ControlTests\CheckedListBoxTest.cs" />
+    <Compile Include="ControlTests\ToolbarCloseTest.cs" />
     <Compile Include="ControlTests\TooltipTests.cs" />
     <Compile Include="ControlTests\UIItemTests.cs" />
     <Compile Include="ControlTests\ComboBoxTests.cs" />

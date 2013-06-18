@@ -7,5 +7,6 @@ namespace TestStack.White.UITests
     {
         void Close();
         Window ModalWindow(string title);
+        TitleBar TitleBar { get; }
     }
 }
