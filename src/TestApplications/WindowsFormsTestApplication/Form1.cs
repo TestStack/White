@@ -55,5 +55,10 @@ namespace WindowsFormsTestApplication
         {
             new FormWithoutScrollAndItemOutside().ShowDialog();
         }
+
+        private void DragDropScenario_Click(object sender, System.EventArgs e)
+        {
+            new DragAndDropTestWindow().ShowDialog();
+        }
     }
 }

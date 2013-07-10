@@ -49,7 +49,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         {
             yield return WindowsFramework.Wpf;
             yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Silverlight;
         }
     }
 }

@@ -22,7 +22,6 @@ namespace WinFormsTestApp
                                      {"PropertyGrid", new FormWithPropertyGrid()},
                                      {"LargeTree", new FormContainingLargeTree()},
                                      {"ReverseTab", new TabControlsWithSpecialProperties()},
-                                     {"Password", new PasswordForm()},
                                      {"ListView", new ListViewScenarios()},
                                  };
 

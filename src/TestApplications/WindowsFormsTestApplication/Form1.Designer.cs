@@ -38,6 +38,7 @@
             this.GetMultipleButton = new System.Windows.Forms.Button();
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.DragDropScenario = new System.Windows.Forms.Button();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.groupBox1.SuspendLayout();
@@ -67,6 +68,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.DragDropScenario);
             this.groupBox3.Controls.Add(this.OpenFormWithoutScrollAndItemOutside);
             this.groupBox3.Controls.Add(this.DisableControls);
             this.groupBox3.Controls.Add(this.OpenListView);
@@ -132,6 +134,16 @@
             this.ButtonWithTooltip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseClick);
             this.ButtonWithTooltip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseUp);
             // 
+            // DragDropScenario
+            // 
+            this.DragDropScenario.Location = new System.Drawing.Point(7, 169);
+            this.DragDropScenario.Name = "DragDropScenario";
+            this.DragDropScenario.Size = new System.Drawing.Size(194, 23);
+            this.DragDropScenario.TabIndex = 5;
+            this.DragDropScenario.Text = "Drag Drop Scenario";
+            this.DragDropScenario.UseVisualStyleBackColor = true;
+            this.DragDropScenario.Click += new System.EventHandler(this.DragDropScenario_Click);
+            // 
             // inputControls1
             // 
             this.inputControls1.Location = new System.Drawing.Point(7, 19);
@@ -177,6 +189,7 @@
         private System.Windows.Forms.Button OpenListView;
         private System.Windows.Forms.Button DisableControls;
         private System.Windows.Forms.Button OpenFormWithoutScrollAndItemOutside;
+        private System.Windows.Forms.Button DragDropScenario;
     }
 }
 

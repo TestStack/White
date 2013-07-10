@@ -36,6 +36,8 @@
                         AutomationProperties.AutomationId="GetMultipleButton" />
                 <Button Content="ListView Control" Click="OpenListView"
                         AutomationProperties.AutomationId="OpenListView" />
+                <Button Content="DragDropScenario" Click="OpenDragDropScenario"
+                        AutomationProperties.AutomationId="DragDropScenario" />
                 <Button Content="Disable Controls" Click="DisableControlsClick" x:Name="DisableControls" />
                 <Button Content="FormWithoutScrollAndItemOutside" Click="OpenFormWithoutScrollAndItemOutside"
                         AutomationProperties.AutomationId="OpenFormWithoutScrollAndItemOutside" />

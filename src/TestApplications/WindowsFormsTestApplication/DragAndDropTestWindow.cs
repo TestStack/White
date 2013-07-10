@@ -9,9 +9,14 @@ namespace WindowsFormsTestApplication
             InitializeComponent();
         }
 
-        private void Button_DragDrop(object sender, DragEventArgs e)
+        private void TextBox_MouseDown(object sender, MouseEventArgs e)
         {
-            DragDropResults.Text = "TextBoxDraggedOntoButton";            
+            TextBox.DoDragDrop("Foo", DragDropEffects.Move);
+        }
+
+        private void Button_DragEnter(object sender, DragEventArgs e)
+        {
+            DragDropResults.Text = "TextBoxDraggedOntoButton";
         }
     }
 }

@@ -104,5 +104,10 @@ namespace WpfTestApplication
         {
             AutomationProperties.SetHelpText(TextBox, "Text Changed");
         }
+
+        private void OpenDragDropScenario(object sender, RoutedEventArgs e)
+        {
+            new DragAndDropTestWindow().ShowDialog();
+        }
     }
 }

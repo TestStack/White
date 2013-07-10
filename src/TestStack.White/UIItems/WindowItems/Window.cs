@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Automation;
@@ -16,8 +17,8 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowStripControls;
 using White.Core.Utility;
-using Action=White.Core.UIItems.Actions.Action;
-using Condition=System.Windows.Automation.Condition;
+using Action = White.Core.UIItems.Actions.Action;
+using Condition = System.Windows.Automation.Condition;
 
 namespace White.Core.UIItems.WindowItems
 {
@@ -79,7 +80,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         private WindowPattern WinPattern
         {
-            get { return (WindowPattern) Pattern(WindowPattern.Pattern); }
+            get { return (WindowPattern)Pattern(WindowPattern.Pattern); }
         }
 
         public virtual bool IsClosed
@@ -107,10 +108,10 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Close()
         {
-            var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
+            var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
             try
             {
-                if (windowPattern == null && TitleBar != null && TitleBar.CloseButton != null)
+                if (TitleBar != null && TitleBar.CloseButton != null)
                     TitleBar.CloseButton.Click();
                 else if (windowPattern != null)
                 {
@@ -118,14 +119,27 @@ UI actions on window needing mouse would not work in area not falling under the 
                     ActionPerformed();
                 }
             }
+            catch (AutomationException)
+            {
+                if (windowPattern != null)
+                {
+                    windowPattern.Close();
+                    ActionPerformed();
+                }
+            }
             catch (ElementNotAvailableException)
             {
+                if (windowPattern != null)
+                {
+                    windowPattern.Close();
+                    ActionPerformed();
+                }
             }
         }
 
         public virtual StatusStrip StatusBar(InitializeOption initializeOption)
         {
-            var statusStrip = (StatusStrip) Get(SearchCriteria.ByControlType(ControlType.StatusBar));
+            var statusStrip = (StatusStrip)Get(SearchCriteria.ByControlType(ControlType.StatusBar));
             statusStrip.Cached = initializeOption;
             statusStrip.Associate(WindowSession);
             return statusStrip;

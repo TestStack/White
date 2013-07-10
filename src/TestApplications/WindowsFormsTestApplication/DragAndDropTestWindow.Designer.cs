@@ -35,20 +35,23 @@
             // 
             // TextBox
             // 
+            this.TextBox.AllowDrop = true;
             this.TextBox.Location = new System.Drawing.Point(13, 13);
             this.TextBox.Name = "TextBox";
             this.TextBox.Size = new System.Drawing.Size(259, 20);
             this.TextBox.TabIndex = 0;
+            this.TextBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TextBox_MouseDown);
             // 
             // Button
             // 
+            this.Button.AllowDrop = true;
             this.Button.Location = new System.Drawing.Point(13, 40);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(259, 23);
             this.Button.TabIndex = 1;
             this.Button.Text = "button";
             this.Button.UseVisualStyleBackColor = true;
-            this.Button.DragDrop += new System.Windows.Forms.DragEventHandler(this.Button_DragDrop);
+            this.Button.DragEnter += new System.Windows.Forms.DragEventHandler(this.Button_DragEnter);
             // 
             // DragDropResults
             // 
@@ -61,6 +64,7 @@
             // 
             // DragAndDropTestWindow
             // 
+            this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);

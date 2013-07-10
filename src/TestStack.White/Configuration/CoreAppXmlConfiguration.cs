@@ -41,11 +41,12 @@ namespace White.Core.Configuration
             get { return instance ?? (instance = new CoreAppXmlConfiguration()); }
         }
 
-        private CoreAppXmlConfiguration() : base("White", "Core", DefaultValues, new TraceLogger(typeof(CoreAppXmlConfiguration).Name))
+        private CoreAppXmlConfiguration()
+            : base("White", "Core", DefaultValues, new TraceLogger(typeof(CoreAppXmlConfiguration).Name))
         {
             interceptors.Add(new FocusInterceptor());
             interceptors.Add(new ScrollInterceptor());
-            LoggerFactory = new ConsoleFactory(LoggerLevel.Info);
+            LoggerFactory = new WhiteDefaultLoggerFactory(LoggerLevel.Info);
         }
 
         private void SetUsedValue(string key, object value)

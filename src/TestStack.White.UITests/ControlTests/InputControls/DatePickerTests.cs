@@ -36,7 +36,6 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         {
             yield return WindowsFramework.Wpf;
             yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Silverlight;
         }
     }
 }

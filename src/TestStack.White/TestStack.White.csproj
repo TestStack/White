@@ -90,6 +90,8 @@
     <Compile Include="Bricks\DynamicProxyGenerator.cs" />
     <Compile Include="Bricks\DynamicProxyInterceptors.cs" />
     <Compile Include="Configuration\ConfigurationExtensions.cs" />
+    <Compile Include="Configuration\WhiteDefaultLogger.cs" />
+    <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
     <Compile Include="Interceptors\IWhiteInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AutomationElementSearch\AutomationElementFinder.cs" />

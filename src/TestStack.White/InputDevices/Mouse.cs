@@ -217,7 +217,6 @@ namespace White.Core.InputDevices
         {
             Location = startPosition;
             HoldForDrag();
-            draggedItem.ActionPerformed(Action.WindowMessage);
             var dragStepFraction = (float) (1.0/CoreAppXmlConfiguration.Instance.DragStepCount);
             logger.Info(CoreAppXmlConfiguration.Instance.DragStepCount + ":" + dragStepFraction);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
@@ -226,7 +225,6 @@ namespace White.Core.InputDevices
                 double newY = startPosition.Y + (endPosition.Y - startPosition.Y)*(dragStepFraction*i);
                 var newPoint = new Point((int) newX, (int) newY);
                 Location = newPoint;
-                draggedItem.ActionPerformed(Action.WindowMessage);
             }
             LeftUp();
             dropItem.ActionPerformed(Action.WindowMessage);
@@ -234,8 +232,6 @@ namespace White.Core.InputDevices
 
         private void HoldForDrag()
         {
-            MouseLeftButtonUpAndDown();
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
             LeftDown();
         }
 
