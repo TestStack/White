@@ -5,7 +5,6 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture]
     public class HScrollBarTest : ControlsActionTest
     {
         private IHScrollBar hScrollBar;
@@ -20,35 +19,35 @@ namespace White.Core.UITests.UIItems
             hScrollBar.ScrollLeftLarge();
         }
 
-        [Test]
+        [Fact]
         public void ShouldGetHScrollBar()
         {
             Assert.IsNotNull(hScrollBar);
         }
 
-        [Test]
+        [Fact]
         public void ShouldScrollRight()
         {
             double initialValue = hScrollBar.Value;
             hScrollBar.ScrollRight();
-            Assert.AreEqual(true, hScrollBar.Value > initialValue);
+            Assert.Equal(true, hScrollBar.Value > initialValue);
         }
 
-        [Test]
+        [Fact]
         public void ShouldScrollRightLarge()
         {
             double initialValue = hScrollBar.Value;
             hScrollBar.ScrollRightLarge();
-            Assert.AreEqual(true, hScrollBar.Value > initialValue);
+            Assert.Equal(true, hScrollBar.Value > initialValue);
         }
 
-        [Test]
+        [Fact]
         public void ShouldScrollLeft()
         {
             hScrollBar.ScrollRightLarge();
             double valueBeforeScrollLeft = hScrollBar.Value;
             hScrollBar.ScrollLeft();
-            Assert.AreEqual(true, valueBeforeScrollLeft > hScrollBar.Value, hScrollBar.Value.ToString());
+            Assert.Equal(true, valueBeforeScrollLeft > hScrollBar.Value, hScrollBar.Value.ToString());
         }
 
         [Ignore("This causes visual studio to crash")]
@@ -58,7 +57,7 @@ namespace White.Core.UITests.UIItems
             hScrollBar.ScrollLeftLarge();
             hScrollBar.ScrollLeftLarge();
             hScrollBar.ScrollLeftLarge();
-            Assert.AreEqual(50 - (largeChange*3), hScrollBar.Value);
+            Assert.Equal(50 - (largeChange*3), hScrollBar.Value);
         }
     }
 }

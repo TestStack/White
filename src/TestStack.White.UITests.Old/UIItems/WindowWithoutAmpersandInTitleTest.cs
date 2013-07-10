@@ -12,10 +12,10 @@ namespace White.Core.UITests.UIItems
             get { return "ampersand"; }
         }
 
-        [Test]
+        [Fact]
         public void FindWindowOnSplashScreen()
         {
-            Assert.AreNotEqual(null, Application.GetWindow("Form&1", InitializeOption.NoCache));
+            Assert.NotEqual(null, Application.GetWindow("Form&1", InitializeOption.NoCache));
         }
 
         public override void TextFixtureTearDown()

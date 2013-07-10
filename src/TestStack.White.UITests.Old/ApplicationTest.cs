@@ -6,31 +6,30 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests
 {
-    [TestFixture]
     public class ApplicationTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void GetWindows()
         {
-            Assert.AreNotEqual(null, Window);
+            Assert.NotEqual(null, Window);
         }
 
-        [Test]
+        [Fact]
         public void GetAllWindows()
         {
             Window.Get<Button>("launchModal").Click();
             int count = Application.GetWindows().Count;
             CloseModal(Window);
-            Assert.AreEqual(2, count);
+            Assert.Equal(2, count);
         }
 
-        [Test]
+        [Fact]
         public void FindWindow()
         {
             Window.Get<Button>("launchModal").Click();
             Window foundWindow = Application.Find(obj => obj.Equals("ModalForm"), InitializeOption.NoCache);
             CloseModal(Window);
-            Assert.AreNotEqual(null, foundWindow);
+            Assert.NotEqual(null, foundWindow);
         }
     }
 }

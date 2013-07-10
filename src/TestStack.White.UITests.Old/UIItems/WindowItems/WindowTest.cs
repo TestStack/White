@@ -11,26 +11,26 @@ namespace White.Core.UITests.UIItems.WindowItems
     [TestFixture, WinFormCategory]
     public class WinFormsWindowTest : WindowTest
     {
-        [Test]
+        [Fact]
         public void ItemsWithin()
         {
             var groupBox = Window.Get<GroupBox>("groupBox1");
             List<UIItem> uiItems = Window.ItemsWithin(groupBox);
-            Assert.AreEqual(1, uiItems.Count);
-            Assert.AreEqual(1, uiItems.OfType<Button>().Count());
+            Assert.Equal(1, uiItems.Count);
+            Assert.Equal(1, uiItems.OfType<Button>().Count());
         }
     }
 
     [TestFixture, WPFCategory]
     public class WpfWindowTest : WindowTest
     {
-        [Test]
+        [Fact]
         public void ItemsWithin()
         {
             var groupBox = Window.Get<GroupBox>("groupBox1");
             List<UIItem> uiItems = Window.ItemsWithin(groupBox);
-            Assert.AreEqual(3, uiItems.Count);
-            Assert.AreEqual(1, uiItems.OfType<Button>().Count());
+            Assert.Equal(3, uiItems.Count);
+            Assert.Equal(1, uiItems.OfType<Button>().Count());
         }
     }
 
@@ -42,19 +42,19 @@ namespace White.Core.UITests.UIItems.WindowItems
             Window.DisplayState = DisplayState.Restored;
         }
 
-        [Test]
+        [Fact]
         public void GetTitle()
         {
-            Assert.AreNotEqual(null, Window.Title);
+            Assert.NotEqual(null, Window.Title);
         }
 
-        [Test]
+        [Fact]
         public void HandleDynamicallyAddedControls()
         {
             Assert.Throws<AutomationException>(() => Window.Get<TextBox>("dynamicTextBox"));
 
             Window.Get<Button>("addDynamicControl").Click();
-            Assert.AreNotEqual(null, Window.Get<TextBox>(GetSearchCriteria()));
+            Assert.NotEqual(null, Window.Get<TextBox>(GetSearchCriteria()));
         }
 
         private SearchCriteria GetSearchCriteria()
@@ -64,24 +64,24 @@ namespace White.Core.UITests.UIItems.WindowItems
             return SearchCriteria.ByAutomationId("dynamicTextBox");
         }
 
-        [Test]
+        [Fact]
         public void SetWindowState()
         {
             Window.DisplayState = DisplayState.Maximized;
-            Assert.AreEqual(DisplayState.Maximized, Window.DisplayState);
+            Assert.Equal(DisplayState.Maximized, Window.DisplayState);
 
             Window.DisplayState = DisplayState.Restored;
-            Assert.AreEqual(DisplayState.Restored, Window.DisplayState);
+            Assert.Equal(DisplayState.Restored, Window.DisplayState);
 
             Window.DisplayState = DisplayState.Minimized;
-            Assert.AreEqual(DisplayState.Minimized, Window.DisplayState);
+            Assert.Equal(DisplayState.Minimized, Window.DisplayState);
         }
 
         [Test, WinFormCategory, WPFCategory]
         public void FindControlsInsideAGroupBox()
         {
             var button = Window.Get<Button>("buttonInGroupBox");
-            Assert.AreNotEqual(null, button);
+            Assert.NotEqual(null, button);
             button.Click();
             AssertResultLabelText("Button In GroupBox Clicked");
         }
@@ -90,32 +90,32 @@ namespace White.Core.UITests.UIItems.WindowItems
         public void FindControlsInsideAPanel()
         {
             var textBox = Window.Get<TextBox>("textBoxInsidePanel");
-            Assert.AreNotEqual(null, textBox);
+            Assert.NotEqual(null, textBox);
         }
 
-        [Test]
+        [Fact]
         public void FindTabs()
         {
-            Assert.AreEqual(1, Window.Tabs.Count);
+            Assert.Equal(1, Window.Tabs.Count);
         }
 
-        [Test]
+        [Fact]
         public void GetAll()
         {
-            Assert.AreNotEqual(0, Window.Items.Count);
+            Assert.NotEqual(0, Window.Items.Count);
         }
 
-        [Test]
+        [Fact]
         public void HasAttachedMouse()
         {
-            Assert.AreNotEqual(null, Window.Mouse);
+            Assert.NotEqual(null, Window.Mouse);
         }
 
-        [Test]
+        [Fact]
         public void FindNonExistentItem()
         {
             var excepion = Assert.Throws<AutomationException>(() => Window.Get<Button>("DoesntExist"));
-            Assert.AreEqual("Failed to get ControlType=button,AutomationId=DoesntExist", excepion.Message);
+            Assert.Equal("Failed to get ControlType=button,AutomationId=DoesntExist", excepion.Message);
         }
     }
 }

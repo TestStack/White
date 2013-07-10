@@ -20,45 +20,45 @@ namespace White.Core.UITests.UIItems
             slider.Value = 4;
         }
 
-        [Test]
+        [Fact]
         public void Value()
         {
-            Assert.AreEqual(4, slider.Value);
+            Assert.Equal(4, slider.Value);
         }
 
-        [Test]
+        [Fact]
         public void SetValue()
         {
             slider.Value = 5;
-            Assert.AreEqual(5, slider.Value);
+            Assert.Equal(5, slider.Value);
         }
 
-        [Test]
+        [Fact]
         public void LargeIncrement()
         {
             slider.LargeIncrementButton.Click();
-            Assert.AreEqual(4 + slider.LargeChangeAmount, slider.Value);
+            Assert.Equal(4 + slider.LargeChangeAmount, slider.Value);
         }
 
-        [Test]
+        [Fact]
         public void LargeDecrement()
         {
             slider.LargeDecrementButton.Click();
-            Assert.AreEqual(4 - slider.LargeChangeAmount, slider.Value);
+            Assert.Equal(4 - slider.LargeChangeAmount, slider.Value);
         }
 
-        [Test]
+        [Fact]
         public void SmallIncrement()
         {
             slider.SmallIncrement();
-            Assert.AreEqual(4 + slider.SmallChangeAmount, slider.Value);
+            Assert.Equal(4 + slider.SmallChangeAmount, slider.Value);
         }
 
-        [Test]
+        [Fact]
         public void SmallDecrement()
         {
             slider.SmallDecrement();
-            Assert.AreEqual(4 - slider.SmallChangeAmount, slider.Value);
+            Assert.Equal(4 - slider.SmallChangeAmount, slider.Value);
         }
     }
 }

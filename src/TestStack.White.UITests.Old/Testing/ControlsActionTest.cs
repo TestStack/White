@@ -48,7 +48,7 @@ namespace White.Core.UITests.Testing
 
         protected virtual void AssertResultLabelText(string text)
         {
-            Assert.AreEqual(text, ResultLabel.Text);
+            Assert.Equal(text, ResultLabel.Text);
         }
     }
 }

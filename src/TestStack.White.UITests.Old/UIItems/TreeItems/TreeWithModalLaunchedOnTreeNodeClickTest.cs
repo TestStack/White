@@ -4,10 +4,9 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TreeItems
 {
-    [TestFixture]
     public class TreeWithModalLaunchedOnTreeNodeClickTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void ModalOnExpand()
         {
             TreeNode node = Window.Get<Tree>("treeViewLaunchesModal").Node("Root");

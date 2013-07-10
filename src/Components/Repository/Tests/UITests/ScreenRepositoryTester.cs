@@ -1,19 +1,19 @@
+using System;
+using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Factory;
-using White.Core.UITests;
 using White.Repository.UITests.Testing;
 
 namespace White.Repository.UITests
 {
-    public class ScreenRepositoryTester
+    public class ScreenRepositoryTester : IDisposable
     {
         private Application application;
         private MainScreen mainScreen;
 
         public virtual MainScreen SetUp(InitializeOption initializeOption)
         {
-            var configuration = new WinFormTestConfiguration(string.Empty);
-            application = configuration.Launch();
+            application = new WinformsTestConfiguration().LaunchApplication();
             var screenRepository = new ScreenRepository(application.ApplicationSession);
             mainScreen = screenRepository.Get<MainScreen>("Form1", initializeOption);
             return mainScreen;
@@ -45,7 +45,7 @@ namespace White.Repository.UITests
             mainScreen.CheckProgress();
         }
 
-        public virtual void TearDown()
+        public virtual void Dispose()
         {
             application.Kill();
         }

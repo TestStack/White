@@ -1,0 +1,8 @@
+﻿<Window x:Class="WpfTestApplication.FormWithoutScrollAndControlOutside"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FormWithoutScrollAndItemOutside" Height="300" Width="300">
+    <Canvas>
+        <ListBox Width="200" Height="150" Canvas.Left="46" Canvas.Top="219" x:Name="ListBox"></ListBox>
+    </Canvas>
+</Window>

@@ -1,15 +1,14 @@
-using NUnit.Framework;
+using Xunit;
 
 namespace White.WebBrowser.UITests.Silverlight
 {
-    [TestFixture]
     public class SilverlightApplicationTest : SilverlightTestFixture
     {
-        [Test]
+        [Fact]
         public void FindSilverlightDocument()
         {
             var document = BrowserWindow.SilverlightDocument;
-            Assert.AreNotEqual(null, document);
+            Assert.NotEqual(null, document);
         }
     }
 }

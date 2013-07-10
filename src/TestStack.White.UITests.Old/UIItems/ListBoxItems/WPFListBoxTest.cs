@@ -10,28 +10,28 @@ namespace White.Core.UITests.UIItems.ListBoxItems
     [TestFixture, WPFCategory]
     public class WPFListBoxTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void ListItemContainingTextbox()
         {
             var listBox = Window.Get<ListBox>("listBox");
             var listItem = (WPFListItem) listBox.Items.Find(item => "Hrishikesh".Equals(item.Text));
             var textBox = listItem.Get<TextBox>(SearchCriteria.All);
-            Assert.AreNotEqual(null, textBox);
+            Assert.NotEqual(null, textBox);
             textBox.Text = "Hrishikesh M";
-            Assert.AreEqual("Hrishikesh M", listItem.Text);
+            Assert.Equal("Hrishikesh M", listItem.Text);
         }
 
-        [Test]
+        [Fact]
         public void FindNonExistentObject()
         {
             var listBox = Window.Get<ListBox>("listBox");
             var listItem = (WPFListItem)listBox.Items.Find(item => "Hrishikesh".Equals(item.Text));
             var exception = Assert.Throws<AutomationException>(() => listItem.Get<TextBox>(SearchCriteria.ByAutomationId("foo")));
 
-            Assert.AreEqual("Failed to get ControlType=edit,AutomationId=foo", exception.Message);
+            Assert.Equal("Failed to get ControlType=edit,AutomationId=foo", exception.Message);
         }
 
-        [Test]
+        [Fact]
         public void ListBoxWithScrollBarWithChangingItems()
         {
             var listBox = Window.Get<ListBox>("listBoxWithDynamicItems");

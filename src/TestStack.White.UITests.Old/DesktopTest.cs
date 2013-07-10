@@ -4,6 +4,7 @@ using System.Diagnostics;
 using NUnit.Framework;
 using White.Core.Configuration;
 using White.Core.UIItems.WindowItems;
+using Xunit;
 
 namespace White.Core.UITests
 {
@@ -16,23 +17,23 @@ namespace White.Core.UITests
             Console.WriteLine(CoreAppXmlConfiguration.Instance.WorkSessionLocation);
         }
 
-        [Test]
+        [Fact]
         public void GetDesktopWindows()
         {
             List<Window> windows = Desktop.Instance.Windows();
-            Assert.AreEqual(true, windows.Count > 0);
+            Assert.Equal(true, windows.Count > 0);
             bool panelTreatedAsWindow = windows.Exists(window => window.Title == "Program Manager");
-            Assert.AreEqual(true, panelTreatedAsWindow);
+            Assert.Equal(true, panelTreatedAsWindow);
         }
 
-        [Test]
+        [Fact]
         public void GetWindowsWhenConsoleWindowIsPresent()
         {
             Process process = Process.Start("cmd.exe");
             try
             {
                 List<Window> windows = Desktop.Instance.Windows();
-                Assert.AreEqual(true, windows.Count > 0);
+                Assert.Equal(true, windows.Count > 0);
             }
             finally
             {
@@ -40,10 +41,10 @@ namespace White.Core.UITests
             }
         }
 
-        [Test]
+        [Fact]
         public void Icons()
         {
-            Assert.AreNotEqual(0, Desktop.Instance.Icons);
+            Assert.NotEqual(0, Desktop.Instance.Icons);
         }
     }
 }

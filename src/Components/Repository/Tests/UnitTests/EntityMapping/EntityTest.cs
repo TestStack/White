@@ -1,64 +1,50 @@
-using NUnit.Framework;
 using White.Repository.EntityMapping;
+using Xunit;
 
 namespace White.Repository.UnitTests.EntityMapping
 {
-    [TestFixture]
     public class EntityTest
     {
-        [Test]
+        [Fact]
         public void SetFieldValue()
         {
             var testEntity = new TestEntity(new NestedEntity());
             testEntity.Field("yo").SetValue("5");
-            Assert.AreEqual("5", testEntity.NestedEntity.Yo);
+            Assert.Equal("5", testEntity.NestedEntity.Yo);
 
-            Assert.AreEqual(null, testEntity.Field("bo"));
+            Assert.Equal(null, testEntity.Field("bo"));
         }
 
-        [Test]
+        [Fact]
         public void Should_Format_To_Field()
         {
-            Assert.AreEqual("one_two", Entity.HeaderFormatter.To_Field_Name("One Two"));
-            Assert.AreEqual("two_or_one", Entity.HeaderFormatter.To_Field_Name("Two /One"));
-            Assert.AreEqual("two_or_one_three", Entity.HeaderFormatter.To_Field_Name("Two / One Three"));
+            Assert.Equal("one_two", Entity.HeaderFormatter.To_Field_Name("One Two"));
+            Assert.Equal("two_or_one", Entity.HeaderFormatter.To_Field_Name("Two /One"));
+            Assert.Equal("two_or_one_three", Entity.HeaderFormatter.To_Field_Name("Two / One Three"));
         }
 
-        [Test]
+        [Fact]
         public void Should_Format_To_Header_Column()
         {
-            Assert.AreEqual("ONE TWO", Entity.HeaderFormatter.To_Header_Column("one_two"));
-            Assert.AreEqual("TWO/ONE", Entity.HeaderFormatter.To_Header_Column("two_or_one"));
-            Assert.AreEqual("TWO/ONE THREE", Entity.HeaderFormatter.To_Header_Column("two_or_one_three"));
+            Assert.Equal("ONE TWO", Entity.HeaderFormatter.To_Header_Column("one_two"));
+            Assert.Equal("TWO/ONE", Entity.HeaderFormatter.To_Header_Column("two_or_one"));
+            Assert.Equal("TWO/ONE THREE", Entity.HeaderFormatter.To_Header_Column("two_or_one_three"));
         }
 
-        [Test]
+        [Fact]
         public void To_String()
         {
             var nestedEntity = new NestedEntity {Yo = "7"};
             var testEntity = new TestEntity(nestedEntity) {Zo = "8"};
-            Assert.AreEqual("zo=8, nestedEntity=yo=7, ", testEntity.ToString());
+            Assert.Equal("zo=8, nestedEntity=yo=7, ", testEntity.ToString());
         }
 
-        [Test]
+        [Fact]
         public void Header()
         {
             var nestedEntity = new NestedEntity();
             var testEntity = new TestEntity(nestedEntity);
-            Assert.AreEqual("ZO, YO, ", testEntity.Header);
+            Assert.Equal("ZO, YO, ", testEntity.Header);
         }
     }
-
-    // ReSharper disable ConvertToAutoProperty
-    internal class NestedEntity : Entity
-    {
-        private string yo;
-
-        public virtual string Yo
-        {
-            get { return yo; }
-            set { yo = value; }
-        }
-    }
-    // ReSharper restore ConvertToAutoProperty
 }

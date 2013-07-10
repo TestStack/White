@@ -3,7 +3,6 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {
-    [TestFixture]
     public class WindowCloseTest : ControlsActionTest
     {
         protected override string CommandLineArguments
@@ -11,7 +10,7 @@ namespace White.Core.UITests.UIItems.WindowItems
             get { return "ModalAtClose"; }
         }
 
-        [Test]
+        [Fact]
         public void CloseWhenModalWindowIsLaunchedAtClose()
         {
             Window.Close();
@@ -21,16 +20,15 @@ namespace White.Core.UITests.UIItems.WindowItems
         protected override void BaseTestFixtureTearDown() {}
     }
 
-    [TestFixture]
     public class WindowIsClosedTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void IsClosed()
         {
-            Assert.AreEqual(false, Window.IsClosed);
+            Assert.Equal(false, Window.IsClosed);
             Window.Close();
             Window.WaitTill(() => Window.IsClosed);
-            Assert.AreEqual(true, Window.IsClosed);
+            Assert.Equal(true, Window.IsClosed);
         }
     }
 }

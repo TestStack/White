@@ -6,13 +6,13 @@ namespace White.Core.UITests.UIItems.WindowItems
     [TestFixture, WPFCategory]
     public class WPFWindowTest : WindowAbstractTest
     {
-        [Test]
+        [Fact]
         public void HandlesInvisibleControls()
         {
             var label = Window.Get<Label>("dynamicControl");
-            Assert.AreEqual(false, label.Visible);
+            Assert.Equal(false, label.Visible);
             Window.Get<Button>("invisibleControlShower").Click();
-            Assert.AreEqual(true, label.Visible);
+            Assert.Equal(true, label.Visible);
         }
 
         protected override TestConfiguration OtherConfiguration()

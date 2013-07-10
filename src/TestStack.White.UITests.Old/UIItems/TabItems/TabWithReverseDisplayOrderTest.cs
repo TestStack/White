@@ -12,14 +12,14 @@ namespace White.Core.UITests.UIItems.TabItems
             get { return "ReverseTab"; }
         }
 
-        [Test]
+        [Fact]
         public void SelectTab()
         {
             Tab tab = Window.Get<Tab>("tabControl1");
             tab.SelectTabPage("tabPage2");
-            Assert.AreEqual("tabPage2", tab.SelectedTab.ToString());
+            Assert.Equal("tabPage2", tab.SelectedTab.ToString());
             tab.SelectTabPage("tabPage1");
-            Assert.AreEqual("tabPage1", tab.SelectedTab.ToString());
+            Assert.Equal("tabPage1", tab.SelectedTab.ToString());
         }
     }
 }

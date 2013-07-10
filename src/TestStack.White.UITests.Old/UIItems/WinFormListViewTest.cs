@@ -7,14 +7,14 @@ namespace White.Core.UITests.UIItems
     [TestFixture, WinFormCategory]
     public class WinFormListViewTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void TryUnSelectAll()
         {
             var listView = Window.Get<ListView>("listView");
             listView.Rows[0].Select();
-            Assert.AreEqual(1, listView.SelectedRows.Count);
+            Assert.Equal(1, listView.SelectedRows.Count);
             listView.TryUnSelectAll();
-            Assert.AreEqual(0, listView.SelectedRows.Count);
+            Assert.Equal(0, listView.SelectedRows.Count);
         }
     }
 }

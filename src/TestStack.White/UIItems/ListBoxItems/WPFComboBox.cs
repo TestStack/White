@@ -22,7 +22,7 @@ namespace White.Core.UIItems.ListBoxItems
             {
                 var scrollPattern = (ScrollPattern) Pattern(ScrollPattern.Pattern);
                 var bounds = Bounds;
-                var firstVisibleItem = Items.First(i=>!i.IsOffScreen).Bounds;
+                var firstVisibleItem = (Items.FirstOrDefault(i=>!i.IsOffScreen) ?? Items[0]).Bounds;
                 var lastItem = Items[Items.Count - 1].Bounds;
                 var verticalViewSize = scrollPattern.Current.VerticalViewSize;
                 var calculator = new WPFComboBoxVerticalSpanCalculator(bounds, firstVisibleItem, lastItem, verticalViewSize);

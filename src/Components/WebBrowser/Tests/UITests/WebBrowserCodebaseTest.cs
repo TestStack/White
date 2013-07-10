@@ -1,13 +1,13 @@
+using System;
 using System.Linq;
-using NUnit.Framework;
 using White.Core.SystemExtensions;
+using Xunit;
 
 namespace White.WebBrowser.UITests
 {
-    [TestFixture]
     public class WebBrowserCodebaseTest
     {
-        [Test]
+        [Fact]
         public void AllMethodsAreVirtual()
         {
             var virtuals = typeof(Firefox).Assembly.GetTypes()
@@ -21,7 +21,8 @@ namespace White.WebBrowser.UITests
                 .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.FullName + "." + m.Name))
                 .ToArray();
 
-            Assert.IsEmpty(virtuals, "The following methods are not marked virtual: \r\n" +
+            if (virtuals.Any())
+                throw new Exception("The following methods are not marked virtual: \r\n" +
                 string.Join("\r\n", virtuals));
         }
     }

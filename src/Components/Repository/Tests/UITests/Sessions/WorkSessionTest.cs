@@ -1,38 +1,37 @@
 using System.IO;
+using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
-using NUnit.Framework;
-using White.Core.UITests;
 using White.Repository.Services;
 using White.Repository.Sessions;
+using Xunit;
 
 namespace White.Repository.UITests.Sessions
 {
-    [TestFixture]
     public class WorkSessionTest
     {
-        [Test]
+        [Fact]
         public void ShouldNotSaveAnyWindowInformationToFileWhenNoWindowsAreLaunched()
         {
             int numberOfFilesBeforeSessionStart = NumberOfFiles();
             using (WorkSession()){}
-            Assert.AreEqual(numberOfFilesBeforeSessionStart, NumberOfFiles());
+            Assert.Equal(numberOfFilesBeforeSessionStart, NumberOfFiles());
         }
 
-        [Test]
+        [Fact]
         public void ShouldSaveWindowInformationInFile()
         {
             File.Delete("foo.xml");
             using (WorkSession workSession = WorkSession())
             {
-                Application application = Application.Launch(TestConfiguration.WinFormsTestAppLocation);
+                Application application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
                 Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("buton");
             }
-            Assert.AreEqual(true, File.Exists("foo.xml"));
+            Assert.Equal(true, File.Exists("foo.xml"));
         }
 
         private static WorkSession WorkSession()
@@ -40,13 +39,13 @@ namespace White.Repository.UITests.Sessions
             return new WorkSession(new WorkConfiguration(), new NullWorkEnvironment());
         }
 
-        [Test]
-        public void ShouldFindCONTROLBasedLocation()
+        [Fact]
+        public void ShouldFindControlBasedLocation()
         {
             File.Delete("foo.xml");
             using (WorkSession workSession = WorkSession())
             {
-                Application application = Application.Launch(TestConfiguration.WinFormsTestAppLocation);
+                Application application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
                 Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("buton");
@@ -54,7 +53,7 @@ namespace White.Repository.UITests.Sessions
             }
             using (WorkSession workSession = WorkSession())
             {
-                Application application = Application.Launch(TestConfiguration.WinFormsTestAppLocation);
+                Application application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
                 Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("buton");

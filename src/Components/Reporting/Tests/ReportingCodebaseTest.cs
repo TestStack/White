@@ -1,14 +1,14 @@
+using System;
 using System.Linq;
-using NUnit.Framework;
 using Reporting.Domain;
 using White.Core.SystemExtensions;
+using Xunit;
 
 namespace White.Reporting.UnitTests
 {
-    [TestFixture]
     public class ReportingCodebaseTest
     {
-        [Test]
+        [Fact]
         public void AllMethodsAreVirtual()
         {
             var virtuals = typeof(IReport).Assembly.GetTypes()
@@ -22,7 +22,8 @@ namespace White.Reporting.UnitTests
                 .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.FullName + "." + m.Name))
                 .ToArray();
 
-            Assert.IsEmpty(virtuals, "The following methods are not marked virtual: \r\n" +
+            if (virtuals.Any())
+            throw new Exception("The following methods are not marked virtual: \r\n" +
                 string.Join("\r\n", virtuals));
         }
     }

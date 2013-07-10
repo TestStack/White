@@ -15,20 +15,20 @@ namespace White.Core.UITests.UIItems
             listView = Window.Get<ListView>("listView");
         }
 
-        [Test]
+        [Fact]
         public void SelectItemAfterScroll()
         {
             listView.Select("Key", "Video");
-            Assert.AreEqual(1, listView.SelectedRows.Count);
-            Assert.AreEqual("Video", listView.SelectedRows[0].Cells["Key"].Text);
+            Assert.Equal(1, listView.SelectedRows.Count);
+            Assert.Equal("Video", listView.SelectedRows[0].Cells["Key"].Text);
         }
 
-        [Test]
+        [Fact]
         public void SelectItemAndThenSelectInvisibleRow()
         {
             listView.Select("Key", "Mail");
             listView.MultiSelect("Key", "Video");
-            Assert.AreEqual(2, listView.SelectedRows.Count);
+            Assert.Equal(2, listView.SelectedRows.Count);
         }
     }
 }

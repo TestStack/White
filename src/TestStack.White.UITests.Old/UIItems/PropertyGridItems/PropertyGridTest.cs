@@ -23,24 +23,24 @@ namespace White.Core.UITests.UIItems.PropertyGridItems
             propertyGrid = window.Get<PropertyGrid>("propertyGrid1");
         }
 
-        [Test]
+        [Fact]
         public void Get()
         {
-            Assert.AreNotEqual(null, propertyGrid);
+            Assert.NotEqual(null, propertyGrid);
         }
 
-        [Test]
+        [Fact]
         public void Categories()
         {
             List<PropertyGridCategory> categories = propertyGrid.Categories;
-            Assert.AreEqual(4, categories.Count);
-            Assert.AreEqual("General", categories[0].Text);
-            Assert.AreEqual("Input", categories[1].Text);
-            Assert.AreEqual("Misc", categories[2].Text);
-            Assert.AreEqual("Number", categories[3].Text);
+            Assert.Equal(4, categories.Count);
+            Assert.Equal("General", categories[0].Text);
+            Assert.Equal("Input", categories[1].Text);
+            Assert.Equal("Misc", categories[2].Text);
+            Assert.Equal("Number", categories[3].Text);
         }
 
-        [Test]
+        [Fact]
         public void BrowseForValue()
         {
             PropertyGridCategory propertyGridCategory = propertyGrid.Category("Input");
@@ -56,23 +56,23 @@ namespace White.Core.UITests.UIItems.PropertyGridItems
             propertyWithoutBrowseButton.BrowseForValue();
         }
 
-        [Test]
+        [Fact]
         public void Properties()
         {
-            Assert.AreEqual(3, propertyGrid.Category("General").Properties.Count);
-            Assert.AreEqual(2, propertyGrid.Category("Misc").Properties.Count);
-            Assert.AreEqual(2, propertyGrid.Category("Number").Properties.Count);
+            Assert.Equal(3, propertyGrid.Category("General").Properties.Count);
+            Assert.Equal(2, propertyGrid.Category("Misc").Properties.Count);
+            Assert.Equal(2, propertyGrid.Category("Number").Properties.Count);
         }
 
-        [Test]
+        [Fact]
         public void Property()
         {
             PropertyGridProperty gridProperty = propertyGrid.Category("General").Properties[0];
-            Assert.AreEqual("ToolbarColor", gridProperty.Name);
-            Assert.AreEqual("Control", gridProperty.Value);
+            Assert.Equal("ToolbarColor", gridProperty.Name);
+            Assert.Equal("Control", gridProperty.Value);
             gridProperty.Value = "ControlDark";
-            Assert.AreEqual("ControlDark", gridProperty.Value);
-            Assert.AreEqual(false, gridProperty.IsReadOnly);
+            Assert.Equal("ControlDark", gridProperty.Value);
+            Assert.Equal(false, gridProperty.IsReadOnly);
         }
 
         public override void TextFixtureTearDown()

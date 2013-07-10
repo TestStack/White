@@ -4,15 +4,14 @@ using System.Linq;
 using System.Reflection;
 using White.Core.SystemExtensions;
 using White.Core.UIItems;
-using NUnit.Framework;
 using White.Core.UIItems.Finders;
+using Xunit;
 
 namespace White.Core.UnitTests
 {
-    [TestFixture]
     public class CoreProjectTest
     {
-        [Test]
+        [Fact]
         public void AllMethodsAreVirtual()
         {
             var virtuals = typeof(UIItem).Assembly.GetTypes()
@@ -26,11 +25,12 @@ namespace White.Core.UnitTests
                 .SelectMany(r => r.NonVirtualMethods.Select(m => r.Type.FullName + "." + m.Name))
                 .ToArray();
 
-            Assert.IsEmpty(virtuals, "The following methods are not marked virtual: \r\n" +
+            if (virtuals.Any())
+                throw new Exception("The following methods are not marked virtual: \r\n" +
                 string.Join("\r\n", virtuals));
         }
 
-        [Test]
+        [Fact]
         public void AllUIItemsHaveDefaultConstructor()
         {
             var collection = new List<string>();
@@ -38,7 +38,8 @@ namespace White.Core.UnitTests
             AllSubsclassesHaveEmptyConstructor(collection, typeof(SearchCondition));
             AllSubsclassesHaveEmptyConstructor(collection, typeof(SearchCriteria));
             AllSubsclassesHaveEmptyConstructor(collection, typeof(AutomationElementProperty));
-            Assert.AreEqual(0, collection.Count, collection.ToString());
+            if (collection.Any())
+                throw new Exception(collection.ToString());
         }
 
         private void AllSubsclassesHaveEmptyConstructor(List<string> collection, Type type)

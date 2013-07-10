@@ -5,7 +5,6 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TreeItems
 {
-    [TestFixture]
     public class TreeNodeTest : ControlsActionTest
     {
         private Tree tree;
@@ -21,59 +20,59 @@ namespace White.Core.UITests.UIItems.TreeItems
             tree.Node("Root").Collapse();
         }
 
-        [Test]
+        [Fact]
         public void NodeIsExpanded()
         {
             TreeNode treeNode = tree.Node("Root");
-            Assert.AreEqual(false, treeNode.IsExpanded());
+            Assert.Equal(false, treeNode.IsExpanded());
         }
 
-        [Test]
+        [Fact]
         public void Expand()
         {
             TreeNode treeNode = tree.Node("Root");
             treeNode.Expand();
-            Assert.AreEqual(true, treeNode.IsExpanded());
+            Assert.Equal(true, treeNode.IsExpanded());
         }
 
-        [Test]
+        [Fact]
         public void Collapse()
         {
             TreeNode treeNode = tree.Node("Root");
             treeNode.Expand();
             treeNode.Collapse();
-            Assert.AreEqual(false, treeNode.IsExpanded());
+            Assert.Equal(false, treeNode.IsExpanded());
         }
 
-        [Test]
+        [Fact]
         public void DisplayState()
         {
             TreeNode treeNode = tree.Node("Root");
             treeNode.Expand();
-            Assert.AreEqual(ExpandCollapseState.Expanded, treeNode.DisplayState);
+            Assert.Equal(ExpandCollapseState.Expanded, treeNode.DisplayState);
             treeNode.Collapse();
-            Assert.AreEqual(ExpandCollapseState.Collapsed, treeNode.DisplayState);
+            Assert.Equal(ExpandCollapseState.Collapsed, treeNode.DisplayState);
         }
 
-        [Test]
+        [Fact]
         public void DoubleClick()
         {
             TreeNode treeNode = tree.Node("Root");
             bool state = treeNode.IsExpanded();
             treeNode.DoubleClick();
-            Assert.AreNotEqual(state, treeNode.IsExpanded());
+            Assert.NotEqual(state, treeNode.IsExpanded());
             treeNode.DoubleClick();
-            Assert.AreEqual(state, treeNode.IsExpanded());
+            Assert.Equal(state, treeNode.IsExpanded());
         }
 
-        [Test]
+        [Fact]
         public void UnSelect()
         {
             TreeNode treeNode = tree.Node("Root", "Child");
             treeNode.Select();
-            Assert.AreEqual("Child", tree.SelectedNode.Name);
+            Assert.Equal("Child", tree.SelectedNode.Name);
             treeNode.UnSelect();
-            Assert.AreEqual(null, tree.SelectedNode);
+            Assert.Equal(null, tree.SelectedNode);
         }
     }
 }

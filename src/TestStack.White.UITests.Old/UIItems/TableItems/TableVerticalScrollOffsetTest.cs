@@ -7,13 +7,13 @@ namespace White.Core.UITests.UIItems.TableItems
     [TestFixture, WinFormCategory]
     public class TableVerticalScrollOffsetTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void IsInTop()
         {
             var table = Window.Get<Table>("people");
-            Assert.AreEqual(true, ((TableVerticalScrollOffset) table).IsOnTop);
+            Assert.Equal(true, ((TableVerticalScrollOffset) table).IsOnTop);
             table.Rows[table.Rows.Count - 1].Select();
-            Assert.AreEqual(false, ((TableVerticalScrollOffset)table).IsOnTop);
+            Assert.Equal(false, ((TableVerticalScrollOffset)table).IsOnTop);
         }
     }
 }

@@ -7,11 +7,11 @@ namespace White.Core.UITests.UIItems
     [TestFixture, WinFormCategory, WPFCategory]
     public class ImageTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void Click()
         {
             var image = Window.Get<Image>("image");
-            Assert.AreNotEqual(null, image);
+            Assert.NotEqual(null, image);
         }
     }
 }

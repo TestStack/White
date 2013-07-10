@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
 using White.Core.UIItems;
+using Xunit;
 
 namespace TestStack.White.UITests.ControlTests
 {
     public class TooltipTests : WhiteTestBase
     {
-        protected override void RunTest(WindowsFramework framework)
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(CanGetTooltip);
         }
@@ -14,7 +14,7 @@ namespace TestStack.White.UITests.ControlTests
         private void CanGetTooltip()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
-            Assert.AreEqual("I have a tooltip", MainWindow.GetToolTipOn(button).Text);
+            Assert.Equal("I have a tooltip", MainWindow.GetToolTipOn(button).Text);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

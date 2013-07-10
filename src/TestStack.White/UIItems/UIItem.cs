@@ -324,6 +324,8 @@ namespace White.Core.UIItems
             }
         }
 
+        public virtual string HelpText { get { return automationElement.Current.HelpText; } }
+
         /// <summary>
         /// Internal to white and intended to be used for white recording
         /// </summary>

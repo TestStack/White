@@ -5,8 +5,8 @@ using White.Core.UIItems.ListBoxItems;
 using White.Core.UIItems.TabItems;
 using White.Core.UIItems.TreeItems;
 using White.Core.UIItems.WindowItems;
-using NUnit.Framework;
 using White.Repository.ScreenAttributes;
+using Xunit;
 
 namespace White.Repository.UITests.Testing
 {
@@ -44,30 +44,30 @@ namespace White.Repository.UITests.Testing
         public virtual void ClickButton()
         {
             buton.Click();
-            Assert.AreEqual("Button Clicked", result.Text);
+            Assert.Equal("Button Clicked", result.Text);
         }
 
         public virtual void EnterText()
         {
             textBox.Text = "abcd";
-            Assert.AreEqual("abcd", textBox.Text);
-            Assert.AreEqual("Text changed", result.Text);
+            Assert.Equal("abcd", textBox.Text);
+            Assert.Equal("Text changed", result.Text);
         }
 
         public virtual void SelectComboBoxItem()
         {
             komboBox.Select("Arundhati Roy");
-            Assert.AreEqual("Arundhati Roy", komboBox.SelectedItemText);
+            Assert.Equal("Arundhati Roy", komboBox.SelectedItemText);
             komboBox.Select("Noam Chomsky");
-            Assert.AreEqual("Noam Chomsky", komboBox.SelectedItemText);
+            Assert.Equal("Noam Chomsky", komboBox.SelectedItemText);
         }
 
         public virtual void EnterTextInTheTextBoxesWithSameNameUsingIndex()
         {
             myNameIsDuplicateBox.Text = "one";
-            Assert.AreEqual("one", myNameIsDuplicateBox.Text);
+            Assert.Equal("one", myNameIsDuplicateBox.Text);
             iAmDuplicateBox.Text = "two";
-            Assert.AreEqual("two", iAmDuplicateBox.Text);
+            Assert.Equal("two", iAmDuplicateBox.Text);
         }
 
         public virtual void SelectTab()
@@ -78,49 +78,49 @@ namespace White.Repository.UITests.Testing
         public virtual void SelectCheckbox()
         {
             chequeBox.Checked = true;
-            Assert.AreEqual(true, chequeBox.Checked);
+            Assert.Equal(true, chequeBox.Checked);
             chequeBox.Checked = false;
-            Assert.AreEqual(false, chequeBox.Checked);
+            Assert.Equal(false, chequeBox.Checked);
         }
 
         public virtual void SelectItemInChequedListBox()
         {
             chequedListBox.Check("Bill Gates");
-            Assert.AreEqual(true,chequedListBox.IsChecked("Bill Gates"));
+            Assert.Equal(true,chequedListBox.IsChecked("Bill Gates"));
         }
 
         public virtual void SelectRadioButton()
         {
-            Assert.AreEqual(false,radioButton1.IsSelected);
-            Assert.AreEqual(false,radioButton2.IsSelected);
+            Assert.Equal(false,radioButton1.IsSelected);
+            Assert.Equal(false,radioButton2.IsSelected);
             radioButton1.Select();
-            Assert.AreEqual(true, radioButton1.IsSelected);
+            Assert.Equal(true, radioButton1.IsSelected);
             radioButton2.Select();
-            Assert.AreEqual(true, radioButton2.IsSelected);
+            Assert.Equal(true, radioButton2.IsSelected);
         }
 
         public virtual void SelectItemInListBox()
         {
             listBox.Select("Speilberg");
-            Assert.AreEqual(true,listBox.IsSelected("Speilberg"));
+            Assert.Equal(true,listBox.IsSelected("Speilberg"));
             listBox.Select("Nagesh");
-            Assert.AreEqual(true,listBox.IsSelected("Nagesh"));
+            Assert.Equal(true,listBox.IsSelected("Nagesh"));
         }
 
         public virtual void SelectDateTime()
         {
-            Assert.AreEqual(DateTime.Today, dateTimePicker.Date);
+            Assert.Equal(DateTime.Today, dateTimePicker.Date);
             DateTime tenDaysFromToday = DateTime.Today.AddDays(10);
             dateTimePicker.Date = tenDaysFromToday;
-            Assert.AreEqual(tenDaysFromToday, dateTimePicker.Date);
+            Assert.Equal(tenDaysFromToday, dateTimePicker.Date);
         }
 
         public virtual void SelectItemInListView()
         {
             listView.Select(0);
-            Assert.AreEqual(true,listView.Rows[0].IsSelected);
+            Assert.Equal(true,listView.Rows[0].IsSelected);
             listView.Select(1);
-            Assert.AreEqual(true,listView.Rows[1].IsSelected);
+            Assert.Equal(true,listView.Rows[1].IsSelected);
         }
 
         public virtual void LaunchModalWindow()
@@ -137,9 +137,9 @@ namespace White.Repository.UITests.Testing
         {
             ped.Node("Root").Expand();
             ped.Node("Root", "Child").Expand();
-            Assert.AreEqual(2, ped.Nodes.Count);
+            Assert.Equal(2, ped.Nodes.Count);
             addNode.Click();
-            Assert.AreEqual(true, ped.HasNode("DynamicNode"));
+            Assert.Equal(true, ped.HasNode("DynamicNode"));
         }
 
         public virtual void CheckProgress()

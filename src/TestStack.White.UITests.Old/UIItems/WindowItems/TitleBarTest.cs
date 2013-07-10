@@ -4,16 +4,15 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {
-    [TestFixture]
     public class TitleBarTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void Find()
         {
             TitleBar titleBar = Window.TitleBar;
-            Assert.AreNotEqual(null, titleBar.MinimizeButton);
-            Assert.AreNotEqual(null, titleBar.MaximizeButton);
-            Assert.AreNotEqual(null, titleBar.CloseButton);
+            Assert.NotEqual(null, titleBar.MinimizeButton);
+            Assert.NotEqual(null, titleBar.MaximizeButton);
+            Assert.NotEqual(null, titleBar.CloseButton);
         }
     }
 }

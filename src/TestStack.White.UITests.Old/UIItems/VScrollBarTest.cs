@@ -5,7 +5,6 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture]
     public class VScrollBarTest : ControlsActionTest
     {
         private ListBox listBox;
@@ -31,13 +30,13 @@ namespace White.Core.UITests.UIItems
             vScrollBar.SetToMinimum();
         }
 
-        [Test]
+        [Fact]
         public void ShouldGetVerticalScrollBar()
         {
             Assert.IsNotNull(vScrollBar);
         }
 
-        [Test]
+        [Fact]
         public void ShouldScrollDown()
         {
             double currentValue = vScrollBar.Value;
@@ -46,20 +45,20 @@ namespace White.Core.UITests.UIItems
             vScrollBar.ScrollDown();
             vScrollBar.ScrollDown();
             vScrollBar.ScrollDown();
-            Assert.AreEqual(currentValue + (smallChange*5), vScrollBar.Value, 0.001d);
+            Assert.Equal(currentValue + (smallChange*5), vScrollBar.Value, 0.001d);
         }
 
-        [Test]
+        [Fact]
         public void ShouldScrollDownLarge()
         {
             double currentValue = vScrollBar.Value;
             vScrollBar.ScrollDownLarge();
             vScrollBar.ScrollDownLarge();
             vScrollBar.ScrollDownLarge();
-            Assert.AreEqual(currentValue + (largeChange*3), vScrollBar.Value, 0.001d);
+            Assert.Equal(currentValue + (largeChange*3), vScrollBar.Value, 0.001d);
         }
 
-        [Test]
+        [Fact]
         public void ShouldScrollUp()
         {
             vScrollBar.SetToMaximum();
@@ -69,7 +68,7 @@ namespace White.Core.UITests.UIItems
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
-            Assert.AreEqual(maxValue - (smallChange*5), vScrollBar.Value);
+            Assert.Equal(maxValue - (smallChange*5), vScrollBar.Value);
         }
 
         [Ignore("Causing Visual Studio to crash")]
@@ -78,7 +77,7 @@ namespace White.Core.UITests.UIItems
             vScrollBar.ScrollUpLarge();
             vScrollBar.ScrollUpLarge();
             vScrollBar.ScrollUpLarge();
-            Assert.AreEqual(50 - (largeChange*3), vScrollBar.Value - 3);
+            Assert.Equal(50 - (largeChange*3), vScrollBar.Value - 3);
         }
     }
 }

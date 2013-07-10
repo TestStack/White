@@ -8,7 +8,7 @@ namespace TestStack.White.UITests.ControlTests
 {
     public class UIItemTests : WhiteTestBase
     {
-        protected override void RunTest(WindowsFramework framework)
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(can_click_on_elements_located_by_searching_through_several_containers);
         }

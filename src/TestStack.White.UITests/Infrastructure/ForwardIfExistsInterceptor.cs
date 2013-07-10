@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Reflection;
 using Castle.DynamicProxy;
 
 namespace TestStack.White.UITests.Infrastructure
@@ -33,9 +35,16 @@ namespace TestStack.White.UITests.Infrastructure
             object result;
             if (targetMethod.IsGenericMethod)
             {
-                result = matchingTypeMethods.Single(m=>m.IsGenericMethodDefinition)
+                try
+                {
+                    result = matchingTypeMethods.Single(m => m.IsGenericMethodDefinition)
                     .MakeGenericMethod(targetMethod.GetGenericArguments())
                     .Invoke(target, invocation.Arguments);
+                }
+                catch (TargetInvocationException ex)
+                {
+                    throw ex.InnerException;
+                }
             }
             else
                 result = matchingTypeMethods.Single(m => !m.IsGenericMethodDefinition).Invoke(target, invocation.Arguments);

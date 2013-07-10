@@ -11,11 +11,11 @@ namespace White.Core.UITests
             get { return "NoTitleBar"; }
         }
 
-        [Test]
+        [Fact]
         public void FindWindow()
         {
-            Assert.AreNotEqual(null, Window);
-            Assert.AreEqual("Form1", Window.Title);
+            Assert.NotEqual(null, Window);
+            Assert.Equal("Form1", Window.Title);
         }
     }
 }

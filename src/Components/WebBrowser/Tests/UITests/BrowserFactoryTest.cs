@@ -1,21 +1,24 @@
-using NUnit.Framework;
+using System;
+using Xunit;
 
 namespace White.WebBrowser.UITests
 {
-    [TestFixture]
-    public class BrowserFactoryTest
+    public class BrowserFactoryTest : IDisposable
     {
         private FirefoxWindow firefoxWindow;
 
-        [Test, Ignore("UIAutomation not supported in firefox")]
+        [Fact(Skip = "UIAutomation not supported in firefox")]
         public void FirefoxTest()
         {
             firefoxWindow = Firefox.Launch("about:blank");
-            Assert.AreNotEqual(null, firefoxWindow);
+            Assert.NotEqual(null, firefoxWindow);
         }
 
-        [TearDown]
         public void TearDown()
+        {
+        }
+
+        public void Dispose()
         {
             firefoxWindow.Dispose();
         }

@@ -7,7 +7,6 @@ using White.Core.WindowsAPI;
 
 namespace White.Core.UITests.UIItems.MenuItems
 {
-    [TestFixture]
     public class MenuTest : ControlsActionTest
     {
         [SetUp]
@@ -17,22 +16,22 @@ namespace White.Core.UITests.UIItems.MenuItems
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE, Window);
         }
 
-        [Test]
+        [Fact]
         public void FindMenuBar()
         {
-            Assert.AreNotEqual(null, Window.MenuBar);
-            Assert.AreNotEqual(null, Window.MenuBar.MenuItem("File"));
-            Assert.AreEqual(1, Window.MenuBars.Count);
+            Assert.NotEqual(null, Window.MenuBar);
+            Assert.NotEqual(null, Window.MenuBar.MenuItem("File"));
+            Assert.Equal(1, Window.MenuBars.Count);
         }
 
-        [Test]
+        [Fact]
         public void FindSubMenu()
         {
             Menu menu = Window.MenuBar.MenuItem("File", "Click Me");
-            Assert.AreNotEqual(null, menu);
+            Assert.NotEqual(null, menu);
         }
 
-        [Test]
+        [Fact]
         public void Click()
         {
             Menu menu = Window.MenuBar.MenuItem("File", "Click Me");
@@ -40,7 +39,7 @@ namespace White.Core.UITests.UIItems.MenuItems
             AssertResultLabelText("Click Me Clicked");
         }
 
-        [Test]
+        [Fact]
         public void RaiseClickEvent()
         {
             Menu menu = Window.MenuBar.MenuItem("File", "Click Me");
@@ -52,11 +51,11 @@ namespace White.Core.UITests.UIItems.MenuItems
     [TestFixture, WPFCategory]
     public class WinFormMenuTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void FindByAutomationId()
         {
             MenuBar menuBar = Window.MenuBar;
-            Assert.AreNotEqual(null, menuBar.MenuItemBy(SearchCriteria.ByAutomationId("FileId")));
+            Assert.NotEqual(null, menuBar.MenuItemBy(SearchCriteria.ByAutomationId("FileId")));
         }
     }
 }

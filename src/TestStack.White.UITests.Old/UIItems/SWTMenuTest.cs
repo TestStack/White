@@ -7,11 +7,11 @@ namespace White.Core.UITests.UIItems
     [TestFixture, SWTCategory, Ignore]
     public class SWTMenuTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void SubMenu()
         {
             Menu menu = Window.MenuBar.MenuItem("File", "Click Me Too", "Leaf");
-            Assert.AreNotEqual(null, menu);
+            Assert.NotEqual(null, menu);
         }
     }
 }

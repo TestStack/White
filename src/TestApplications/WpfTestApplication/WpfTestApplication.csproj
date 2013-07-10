@@ -54,8 +54,18 @@
     </ApplicationDefinition>
     <Compile Include="Custom controls\CustomItem.cs" />
     <Compile Include="Custom controls\CustomItemAutiomationPeer.cs" />
+    <Compile Include="DragAndDropTestWindow.xaml.cs">
+      <DependentUpon>DragAndDropTestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormWithoutScrollAndItemOutside.xaml.cs">
+      <DependentUpon>FormWithoutScrollAndItemOutside.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GetMultiple.xaml.cs">
       <DependentUpon>GetMultiple.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListViewData.cs" />
+    <Compile Include="ListViewWindow.xaml.cs">
+      <DependentUpon>ListViewWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="VerticalGridSplitter.xaml.cs">
       <DependentUpon>VerticalGridSplitter.xaml</DependentUpon>
@@ -63,6 +73,14 @@
     <Compile Include="WindowLaunchers.xaml.cs">
       <DependentUpon>WindowLaunchers.xaml</DependentUpon>
     </Compile>
+    <Page Include="DragAndDropTestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FormWithoutScrollAndItemOutside.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GetMultiple.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -72,6 +90,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ListControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListViewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

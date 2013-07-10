@@ -16,15 +16,15 @@ namespace White.Core.UITests.UIItems.ListViewItems
             get { return "ListViewScenarios"; }
         }
 
-        [Test]
+        [Fact]
         public void ScrollAndSelectInAComboBox()
         {
             var listView = Window.Get<ListView>("listView");
             ListViewRow row = listView.Rows[0];
             var comboBox = (ComboBox) row.Get(SearchCriteria.ByControlType(ControlType.ComboBox));
-            Assert.AreNotEqual(null, comboBox);
+            Assert.NotEqual(null, comboBox);
             comboBox.Select("%");
-            Assert.AreEqual("%", comboBox.SelectedItem.Text);
+            Assert.Equal("%", comboBox.SelectedItem.Text);
         }
     }
 }

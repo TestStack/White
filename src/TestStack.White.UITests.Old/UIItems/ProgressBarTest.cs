@@ -4,7 +4,6 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture]
     public class ProgressBarTest : ControlsActionTest
     {
         private ProgressBar bar;
@@ -14,22 +13,22 @@ namespace White.Core.UITests.UIItems
             bar = Window.Get<ProgressBar>("progressBar");
         }
 
-        [Test]
+        [Fact]
         public void MinimumValue()
         {
-            Assert.AreEqual(0, bar.Minimum);
+            Assert.Equal(0, bar.Minimum);
         }
 
-        [Test]
+        [Fact]
         public void MaximumValue()
         {
-            Assert.AreEqual(100, bar.Maximum);
+            Assert.Equal(100, bar.Maximum);
         }
 
-        [Test]
+        [Fact]
         public void Value()
         {
-            Assert.AreEqual(50, bar.Value);
+            Assert.Equal(50, bar.Value);
         }
     }
 }

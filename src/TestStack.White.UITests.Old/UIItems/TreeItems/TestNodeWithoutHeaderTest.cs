@@ -12,12 +12,12 @@ namespace White.Core.UITests.UIItems.TreeItems
             get { return "TreeViewItemWithoutHeader"; }
         }
 
-        [Test]
+        [Fact]
         public void GetNode()
         {
             var tree = Window.Get<Tree>("ped");
             TreeNode childNode = tree.Node("Root", "Child");
-            Assert.AreNotEqual(null, childNode);
+            Assert.NotEqual(null, childNode);
         }
     }
 }

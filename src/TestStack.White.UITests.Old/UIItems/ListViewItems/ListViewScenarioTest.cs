@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems.ListViewItems
             get { return "ListView"; }
         }
 
-        [Test]
+        [Fact]
         public void SelectWhenHorizontalScrollIsPresent()
         {
             ListView listView = Window.Get<ListView>("listViewWithHorizontalScroll");

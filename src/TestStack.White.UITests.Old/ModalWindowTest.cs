@@ -1,33 +1,28 @@
-using NUnit.Framework;
+using System;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
 using White.Core.UITests.Testing;
+using Xunit;
 
 namespace White.Core.UITests
 {
     [TestFixture, WinFormCategory/*, SWTCategory*/] //TODO Get SWT working
-    public class ModalWindowTest : ControlsActionTest
+    public class ModalWindowTest : ControlsActionTest, IDisposable
     {
-        [TearDown]
-        public void TearDown()
-        {
-            CloseModal(Window);
-        }
-
-        [Test]
+        [Fact]
         public void NoModalWindowExists()
         {
             Window modalWindow = Window.ModalWindow("foo");
-            Assert.AreEqual(null, modalWindow);
+            Assert.Equal(null, modalWindow);
         }
 
-        [Test]
+        [Fact]
         public void GetModalWindow()
         {
             LaunchModalWindow();
             Window modalWindow = Window.ModalWindow("ModalForm");
-            Assert.AreNotEqual(null, modalWindow);
+            Assert.NotEqual(null, modalWindow);
         }
 
         private void LaunchModalWindow()
@@ -35,12 +30,17 @@ namespace White.Core.UITests
             Window.Get<Button>("launchModal").Click();
         }
 
-        [Test]
+        [Fact]
         public void GetModalWindowBasedOnSearchCriteria()
         {
             LaunchModalWindow();
             Window modalWindow = Window.ModalWindow(SearchCriteria.ByText("ModalForm"));
-            Assert.AreNotEqual(null, modalWindow);
+            Assert.NotEqual(null, modalWindow);
+        }
+
+        public void Dispose()
+        {
+            CloseModal(Window);
         }
     }
 }

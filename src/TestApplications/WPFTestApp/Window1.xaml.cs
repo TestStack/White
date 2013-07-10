@@ -172,12 +172,12 @@ namespace WindowsPresentationFramework
             column = new GridViewColumn {Header = "Value", DisplayMemberBinding = new Binding("Value")};
             viewBase.Columns.Add(column);
 
-            listView.Items.Add(new ListViewData("Search", "Google", string.Empty));
-            listView.Items.Add(new ListViewData("Mail", "GMail", string.Empty));
-            listView.Items.Add(new ListViewData("Picture", "Piccasa", string.Empty));
-            listView.Items.Add(new ListViewData("Open", "Code", string.Empty));
-            listView.Items.Add(new ListViewData("HomePage", "Pages", string.Empty));
-            listView.Items.Add(new ListViewData("YouTube", "YouTube", string.Empty));
+            listView.Items.Add(new ListViewData("Search", "Google"));
+            listView.Items.Add(new ListViewData("Mail", "GMail"));
+            listView.Items.Add(new ListViewData("Picture", "Piccasa"));
+            listView.Items.Add(new ListViewData("Open", "Code"));
+            listView.Items.Add(new ListViewData("HomePage", "Pages"));
+            listView.Items.Add(new ListViewData("YouTube", "YouTube"));
             listView.MouseDoubleClick += ListViewDoubleClicked;
             listView.SelectionChanged += ListViewSelectionChanged;
         }

@@ -6,23 +6,23 @@ namespace White.Core.UITests.UIItems
 {
     public abstract class WindowAbstractTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void IsCurrentlyActive()
         {
             Window.Focus();
-            Assert.AreEqual(true, Window.IsCurrentlyActive);
+            Assert.Equal(true, Window.IsCurrentlyActive);
             Window.Get<Button>("buton").Click();
-            Assert.AreEqual(true, Window.IsCurrentlyActive);
+            Assert.Equal(true, Window.IsCurrentlyActive);
         }
 
-        [Test]
+        [Fact]
         public void IsCurrentlyNotActive()
         {
             Application otherApplication = OtherConfiguration().Launch();
             using (otherApplication)
             {
                 otherApplication.GetWindow("Form1").Focus();
-                Assert.AreEqual(false, Window.IsCurrentlyActive);
+                Assert.Equal(false, Window.IsCurrentlyActive);
             }
         }
 

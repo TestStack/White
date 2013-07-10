@@ -15,13 +15,13 @@ namespace White.Core.UITests.UIItems
             get { return "splash"; }
         }
 
-        [Test]
+        [Fact]
         public void FindWindowOnSplashScreen()
         {
             Window splash = Application.FindSplash();
             Assert.IsNotNull(splash);
             Window modalWindow = splash.ModalWindow("Foo", InitializeOption.NoCache);
-            Assert.AreNotEqual(null, modalWindow);
+            Assert.NotEqual(null, modalWindow);
             var okButton = modalWindow.Get<Button>(SearchCriteria.ByText("OK"));
             okButton.Click();
         }

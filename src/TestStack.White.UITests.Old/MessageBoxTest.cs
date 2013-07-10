@@ -9,17 +9,17 @@ namespace White.Core.UITests
     [TestFixture, WinFormCategory, WPFCategory]
     public class MessageBoxTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void CloseMessageBoxTest()
         {
             Window.Get<Button>("buttonLaunchesMessageBox").Click();
             Window messageBox = Window.MessageBox("Close Me");
             var label = Window.Get<Label>("65535");
-            Assert.AreEqual("Close Me", label.Text);
+            Assert.Equal("Close Me", label.Text);
             messageBox.Close();
         }
 
-        [Test]
+        [Fact]
         public void ClickButtonOnMessageBox()
         {
             Window.Get<Button>("buttonLaunchesMessageBox").Click();

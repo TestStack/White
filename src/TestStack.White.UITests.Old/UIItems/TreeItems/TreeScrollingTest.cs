@@ -12,14 +12,14 @@ namespace White.Core.UITests.UIItems.TreeItems
             get { return "LargeTree"; }
         }
 
-        [Test]
+        [Fact]
         public void ScrollAndSelect()
         {
             var tree = Window.Get<Tree>("treeView1");
             TreeNode treeNode = tree.Node("Root", "Child40");
-            Assert.AreNotEqual(null, treeNode);
+            Assert.NotEqual(null, treeNode);
             treeNode.Select();
-            Assert.AreEqual(treeNode, tree.SelectedNode);
+            Assert.Equal(treeNode, tree.SelectedNode);
         }
     }
 }

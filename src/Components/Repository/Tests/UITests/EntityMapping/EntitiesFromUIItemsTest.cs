@@ -1,38 +1,35 @@
-using NUnit.Framework;
+using System;
+using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.UIItems.TableItems;
 using White.Core.UIItems.WindowItems;
-using White.Core.UITests;
 using White.Repository.EntityMapping;
 using White.Repository.UnitTests.EntityMapping;
+using Xunit;
 
 namespace White.Repository.UITests.EntityMapping
 {
-    [TestFixture]
-    public class EntitiesFromUIItemsTest
+    public class EntitiesFromUIItemsTest : IDisposable
     {
-        private Application application;
-        private Window window;
+        private readonly Application application;
+        private readonly Window window;
 
-        [TestFixtureSetUp]
-        public void FixtureSetup()
+        public EntitiesFromUIItemsTest()
         {
-            var configuration = new WinFormTestConfiguration(string.Empty);
-            application = configuration.Launch();
+            application = new WinformsTestConfiguration().LaunchApplication();
             window = application.GetWindow("Form1");
         }
 
-        [Test]
+        [Fact]
         public void FromTable()
         {
             var table = window.Get<Table>("people");
             var entities = new Entities<Cricketer>(table);
-            Assert.AreEqual(entities.Count, table.Rows.Count);
-            Assert.AreEqual("Imran", entities[0].Name);
+            Assert.Equal(entities.Count, table.Rows.Count);
+            Assert.Equal("Imran", entities[0].Name);
         }
 
-        [TearDown]
-        public void TearDown()
+        public void Dispose()
         {
             if (application != null) application.Kill();
         }

@@ -32,78 +32,78 @@ namespace White.Core.UITests.UIItems.TreeItems
             tree.Node("Root", "Child").Expand();
         }
 
-        [Test]
+        [Fact]
         public void Nodes()
         {
-            Assert.AreEqual(true, tree.Nodes.Count >= 2);
+            Assert.Equal(true, tree.Nodes.Count >= 2);
         }
 
-        [Test]
+        [Fact]
         public void FindNode()
         {
-            Assert.AreEqual(true, tree.HasNode("Root"));
-            Assert.AreEqual(false, tree.HasNode("Roo"));
-            Assert.AreEqual(true, tree.HasNode("Main"));
-            Assert.AreEqual(true, tree.HasNode("Root", "Child"));
-            Assert.AreEqual(true, tree.HasNode("Root", "Child", "Grand Child"));
+            Assert.Equal(true, tree.HasNode("Root"));
+            Assert.Equal(false, tree.HasNode("Roo"));
+            Assert.Equal(true, tree.HasNode("Main"));
+            Assert.Equal(true, tree.HasNode("Root", "Child"));
+            Assert.Equal(true, tree.HasNode("Root", "Child", "Grand Child"));
             var exception = Assert.Throws<AutomationException>(() => tree.HasNode("Root", "Child", "Grand Child", "Grand Child"));
-            Assert.AreEqual(
+            Assert.Equal(
                 string.Format("Cannot expand TreeNode {0}TreeNode. AutomationId:, Name:Grand Child, ControlType:tree view item, FrameworkId:{1}, expand button not visible", 
                         TestConfiguration is WPFTestConfiguration ? "WPF" : "Win32",
                         TestConfiguration is WPFTestConfiguration ? "WPF" : "WinForm"),
                 exception.Message);
         }
 
-        [Test]
+        [Fact]
         public void SelectNodeWhichNeedsScrolling()
         {
             tree.Node("Root").Select();
-            Assert.AreEqual("Root", tree.SelectedNode.Text);
+            Assert.Equal("Root", tree.SelectedNode.Text);
             tree.Node("Main").Select();
-            Assert.AreEqual("Main", tree.SelectedNode.Text);
+            Assert.Equal("Main", tree.SelectedNode.Text);
             tree.Node("Root").Select();
-            Assert.AreEqual("Root", tree.SelectedNode.Text);
+            Assert.Equal("Root", tree.SelectedNode.Text);
             tree.Node("Main").Select();
-            Assert.AreEqual("Main", tree.SelectedNode.Text);
+            Assert.Equal("Main", tree.SelectedNode.Text);
         }
 
-        [Test]
+        [Fact]
         public void SelectNode()
         {
             TreeNode treeNode = tree.Node("Root", "Child");
             treeNode.Select();
-            Assert.AreEqual("Child", tree.SelectedNode.Name);
+            Assert.Equal("Child", tree.SelectedNode.Name);
         }
 
-        [Test]
+        [Fact]
         public void DynamicallyAddedNodeCanBeFound()
         {
             Window.Get<Button>("addNode").Click();
-            Assert.AreEqual(true, tree.HasNode("DynamicNode"));
+            Assert.Equal(true, tree.HasNode("DynamicNode"));
         }
 
-        [Test]
+        [Fact]
         public void GetPathTo()
         {
             TreeNode treeNode = tree.Node("Root", "Child");
             List<TreeNode> path = tree.GetPathTo(treeNode);
-            Assert.AreEqual(2, path.Count);
+            Assert.Equal(2, path.Count);
         }
 
-        [Test]
+        [Fact]
         public void GetClickedNodePathForGrandChild()
         {
             TreeNode treeNode = tree.Node("Root", "Child", "Grand Child");
             List<TreeNode> path = tree.GetPathTo(treeNode);
-            Assert.AreEqual(3, path.Count);
+            Assert.Equal(3, path.Count);
         }
 
-        [Test]
+        [Fact]
         public void GetClickedNodePathForRoot()
         {
             TreeNode treeNode = tree.Node("Root");
             List<TreeNode> path = tree.GetPathTo(treeNode);
-            Assert.AreEqual(1, path.Count);
+            Assert.Equal(1, path.Count);
         }
     }
 }

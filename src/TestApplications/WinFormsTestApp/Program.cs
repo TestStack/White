@@ -19,7 +19,6 @@ namespace WinFormsTestApp
                                  {
                                      {"customcontrol", GetFormContainingCustomControl()},
                                      {"NoTitleBar", GetFormWithNoTitleBar()},
-                                     {"ControlOutside", new FormWithoutScrollAndItemOutside()},
                                      {"PropertyGrid", new FormWithPropertyGrid()},
                                      {"LargeTree", new FormContainingLargeTree()},
                                      {"ReverseTab", new TabControlsWithSpecialProperties()},

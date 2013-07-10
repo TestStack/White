@@ -8,7 +8,6 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TabItems
 {
-    [TestFixture]
     public class TabTest : ControlsActionTest
     {
         protected Tab tab;
@@ -18,60 +17,60 @@ namespace White.Core.UITests.UIItems.TabItems
             tab = Window.Get<Tab>("seasons");
         }
 
-        [Test]
+        [Fact]
         public void Find()
         {
-            Assert.AreNotEqual(null, tab);
+            Assert.NotEqual(null, tab);
         }
 
-        [Test]
+        [Fact]
         public void AssertChildrenCount()
         {
-            Assert.AreEqual(3, tab.TabCount);
+            Assert.Equal(3, tab.TabCount);
         }
 
-        [Test]
+        [Fact]
         public void ShouldSelectTabPage()
         {
             tab.SelectTabPage(0);
-            Assert.AreEqual("Spring", tab.SelectedTab.Name);
+            Assert.Equal("Spring", tab.SelectedTab.Name);
             tab.SelectTabPage(1);
-            Assert.AreEqual("Autumn", tab.SelectedTab.Name);
+            Assert.Equal("Autumn", tab.SelectedTab.Name);
         }
 
-        [Test]
+        [Fact]
         public void ShouldSelectTabPageWithName()
         {
             tab.SelectTabPage("Spring");
-            Assert.AreEqual("Spring", tab.SelectedTab.Name);
+            Assert.Equal("Spring", tab.SelectedTab.Name);
             tab.SelectTabPage("Autumn");
-            Assert.AreEqual("Autumn", tab.SelectedTab.Name);
+            Assert.Equal("Autumn", tab.SelectedTab.Name);
         }
 
-        [Test]
+        [Fact]
         public void FindControlsWithSameAutomationIdBasedOnTheirLocation()
         {
             tab.SelectTabPage("Winter");
             var textBox2 = Window.Get<TextBox>(GetSearchCriteria().AndIndex(1));
             var textBox1 = Window.Get<TextBox>(GetSearchCriteria().AndIndex(0));
             var exception = Assert.Throws<AutomationException>(() => Window.Get<TextBox>(GetSearchCriteria().AndIndex(2)));
-            Assert.AreEqual("Failed to get ControlType=edit,AutomationId=duplicateBox,Index=2", exception.Message);
+            Assert.Equal("Failed to get ControlType=edit,AutomationId=duplicateBox,Index=2", exception.Message);
 
             textBox1.Text = "1";
-            Assert.AreEqual("1", textBox1.Text);
+            Assert.Equal("1", textBox1.Text);
 
-            Assert.AreEqual(string.Empty, textBox2.Text);
+            Assert.Equal(string.Empty, textBox2.Text);
             textBox2.Text = "2";
-            Assert.AreEqual("2", textBox2.Text);
+            Assert.Equal("2", textBox2.Text);
             textBox1.Text = textBox2.Text = string.Empty;
         }
 
-        [Test]
+        [Fact]
         public void FindUIItemsBasedOnControlTypeAndSearchCriteria()
         {
             tab.SelectTabPage("Winter");
             var box = Window.Get<TextBox>(SearchCriteria.ByControlType(ControlType.Edit).AndIndex(1));
-            Assert.AreNotEqual(null, box);
+            Assert.NotEqual(null, box);
         }
 
         private SearchCriteria GetSearchCriteria()

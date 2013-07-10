@@ -14,13 +14,13 @@ namespace White.Core.UITests
         public void GetWindowBasedOnFrameworkId()
         {
             Window frameworkWindow = Application.GetWindow(SearchCriteria.ByText("Form1").AndOfFramework(WindowsFramework.WinForms), InitializeOption.NoCache);
-            Assert.AreNotEqual(null, frameworkWindow);
+            Assert.NotEqual(null, frameworkWindow);
         }
 
         [Test, WinFormCategory]
         public void FindWindowBasedOnSearchCriteria()
         {
-            Assert.AreNotEqual(null, Application.GetWindow(SearchCriteria.ByAutomationId("Form1"), InitializeOption.NoCache));
+            Assert.NotEqual(null, Application.GetWindow(SearchCriteria.ByAutomationId("Form1"), InitializeOption.NoCache));
         }
     }
 }

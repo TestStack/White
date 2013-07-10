@@ -1,62 +1,60 @@
-using NUnit.Framework;
 using Reporting.Domain;
+using Xunit;
 
 namespace White.Reporting.UITests
 {
-    [TestFixture]
     public class SessionReportTest
     {
-        private SessionReport report;
+        readonly SessionReport report;
 
-        [SetUp]
-        public void Setup()
+        public SessionReportTest()
         {
             report = new SessionReport("archiveLocation", "testName");
         }
 
-        [Test]
+        [Fact]
         public void ShouldBeEmptyWhenFirstCreated()
         {
-            Assert.AreEqual(true, report.IsEmpty);
+            Assert.Equal(true, report.IsEmpty);
         }
 
-        [Test]
+        [Fact]
         public void Next()
         {
             report.Next(typeof(object));
             report.Next(typeof(object));
-            Assert.AreEqual(1, report.SubFlows.Count);
-            Assert.AreEqual(2, report.SubFlows[0].FlowSteps.Count);
+            Assert.Equal(1, report.SubFlows.Count);
+            Assert.Equal(2, report.SubFlows[0].FlowSteps.Count);
         }
 
-        [Test]
+        [Fact]
         public void Start()
         {
             report.Begin("subFlow1");
             report.Next(typeof(object));
             report.Begin("subFlow2");
             report.Next(typeof(object));
-            Assert.AreEqual(2, report.SubFlows.Count);
+            Assert.Equal(2, report.SubFlows.Count);
 
             report.Begin("subFlow3");
             report.Next(typeof(object));
-            Assert.AreEqual(3, report.SubFlows.Count);
+            Assert.Equal(3, report.SubFlows.Count);
         }
 
-        [Test]
+        [Fact]
         public void ShouldAddANodeToTheCurrentSubFlow()
         {
             report.Begin("subFlow1");
             report.Next(typeof(object));
             report.Next(typeof(object));
-            Assert.AreEqual(1, report.SubFlows.Count);
-            Assert.AreEqual(2, report.SubFlows[0].FlowSteps.Count);
+            Assert.Equal(1, report.SubFlows.Count);
+            Assert.Equal(2, report.SubFlows[0].FlowSteps.Count);
 
             report.Begin("subFlow2");
             report.Next(typeof(object));
-            Assert.AreEqual(2, report.SubFlows.Count);
-            Assert.AreEqual(2, report.SubFlows[0].FlowSteps.Count);
-            Assert.AreEqual(1, report.SubFlows[1].FlowSteps.Count);
+            Assert.Equal(2, report.SubFlows.Count);
+            Assert.Equal(2, report.SubFlows[0].FlowSteps.Count);
+            Assert.Equal(1, report.SubFlows[1].FlowSteps.Count);
         }
     }
 }

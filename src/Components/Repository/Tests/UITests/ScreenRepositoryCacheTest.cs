@@ -1,71 +1,60 @@
-using NUnit.Framework;
-using Rhino.Mocks;
+using NSubstitute;
 using White.Core;
 using White.Core.Factory;
 using White.Core.Sessions;
+using Xunit;
 
 namespace White.Repository.UITests
 {
-    [TestFixture]
     public class ScreenRepositoryCacheTest
     {
-        [Test]
+        [Fact]
         public void ScreensShouldBeCached()
         {
-            var mocks = new MockRepository();
-            var mockApplication = mocks.StrictMock<Application>();
-            var window = mocks.StrictMock<DummyWindow>();
-            SetupResult.For(window.IsClosed).Return(false);
-            Expect.Call(mockApplication.GetWindow("dummy", InitializeOption.NoCache)).Return(window).IgnoreArguments();
-            var applicationSession = mocks.StrictMock<ApplicationSession>();
-            SetupResult.For(applicationSession.Application).Return(mockApplication);
-            mocks.ReplayAll();
+            var application = Substitute.For<Application>();
+            var window = Substitute.For<DummyWindow>();
+            window.IsClosed.Returns(false);
+            application.GetWindow("dummy", InitializeOption.NoCache).ReturnsForAnyArgs(window);
+            var applicationSession = Substitute.For<ApplicationSession>();
+            applicationSession.Application.Returns(application);
 
             var screenRepository = new ScreenRepository(applicationSession);
-            Assert.AreSame(GetScreen(screenRepository), GetScreen(screenRepository));
-
-            mocks.VerifyAll();
+            Assert.Same(GetScreen(screenRepository), GetScreen(screenRepository));
         }
 
-        [Test]
+        [Fact]
         public void ScreenShouldRemovedFromCacheWhenClosed()
         {
-            var mocks = new MockRepository();
-            var mockApplication = mocks.StrictMock<Application>();
-            var window = mocks.StrictMock<DummyWindow>();
-            Expect.Call(window.Title).Return("dummy");
-            SetupResult.For(window.IsClosed).Return(false);
+            var application = Substitute.For<Application>();
+            var window = Substitute.For<DummyWindow>();
+            window.Title.Returns("dummy");
+            window.IsClosed.Returns(false);
             window.Close();
-            Expect.Call(mockApplication.GetWindow("dummy", InitializeOption.NoCache)).Return(window).IgnoreArguments().Repeat.Twice();
-            var applicationSession = mocks.StrictMock<ApplicationSession>();
-            SetupResult.For(applicationSession.Application).Return(mockApplication);
-            mocks.ReplayAll();
+            application.GetWindow("dummy", InitializeOption.NoCache).ReturnsForAnyArgs(window);
+            var applicationSession = Substitute.For<ApplicationSession>();
+            applicationSession.Application.Returns(application);
 
             var screenRepository = new ScreenRepository(applicationSession);
             DummyScreen screen = GetScreen(screenRepository);
-            Assert.AreSame(screen, GetScreen(screenRepository));
+            Assert.Same(screen, GetScreen(screenRepository));
             screen.Close();
             GetScreen(screenRepository);
-            mocks.VerifyAll();
+            application.ReceivedWithAnyArgs(2).GetWindow("dummy", InitializeOption.NoCache);
         }
 
-        [Test]
+        [Fact]
         public void ScreenCachingWithMatches()
         {
-            var mocks = new MockRepository();
-            var mockApplication = mocks.StrictMock<Application>();
-            var window = mocks.StrictMock<DummyWindow>();
-            SetupResult.For(window.Title).Return("whatever");
-            SetupResult.For(window.IsClosed).Return(false);
-            Expect.Call(mockApplication.Find(t => true, InitializeOption.NoCache)).Return(window).IgnoreArguments();
-            var applicationSession = mocks.StrictMock<ApplicationSession>();
-            SetupResult.For(applicationSession.Application).Return(mockApplication);
-            mocks.ReplayAll();
+            var application = Substitute.For<Application>();
+            var window = Substitute.For<DummyWindow>();
+            window.Title.Returns("whatever");
+            window.IsClosed.Returns(false);
+            application.Find(t => true, InitializeOption.NoCache).ReturnsForAnyArgs(window);
+            var applicationSession = Substitute.For<ApplicationSession>();
+            applicationSession.Application.Returns(application);
 
             var screenRepository = new ScreenRepository(applicationSession);
-            Assert.AreSame(FindScreen(screenRepository), FindScreen(screenRepository));
-
-            mocks.VerifyAll();
+            Assert.Same(FindScreen(screenRepository), FindScreen(screenRepository));
         }
 
         private static DummyScreen FindScreen(ScreenRepository screenRepository) {

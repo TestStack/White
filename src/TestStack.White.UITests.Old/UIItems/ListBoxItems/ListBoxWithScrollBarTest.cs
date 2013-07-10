@@ -4,16 +4,15 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.ListBoxItems
 {
-    [TestFixture]
     public class ListBoxWithScrollBarTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void SelectItemNotVisibleBecauseOfScrollBar()
         {
             var listBox = Window.Get<ListBox>("listBoxWithVScrollBar");
             listBox.Select("0");
             ListItem selectedItem = listBox.SelectedItem;
-            Assert.AreEqual("0", selectedItem.Text);
+            Assert.Equal("0", selectedItem.Text);
         }
     }
 }

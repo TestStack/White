@@ -59,10 +59,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -79,21 +75,14 @@
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationTest.cs" />
-    <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
-    <Compile Include="AutomationElementSearch\RawAutomationElementFinderWPFTest.cs" />
     <Compile Include="CustomUIItemTest.cs" />
     <Compile Include="DesktopTest.cs" />
-    <Compile Include="Factory\InitializeOptionTest.cs" />
-    <Compile Include="InputDevices\AttachedKeyboardTest.cs" />
-    <Compile Include="InputDevices\DragAndDropBasedOnPositionTest.cs" />
-    <Compile Include="InputDevices\DragAndDropTest.cs" />
-    <Compile Include="InputDevices\KeyboardTest.cs" />
-    <Compile Include="InputDevices\MouseTest.cs" />
-    <Compile Include="Interceptors\DisabledControlsTest.cs" />
-    <Compile Include="Interceptors\ScrollInterceptorTest.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowSessionTest.cs" />
     <Compile Include="ModalWindowTest.cs" />
@@ -107,14 +96,10 @@
     <Compile Include="Testing\TestMode.cs" />
     <Compile Include="Testing\TestModeTest.cs" />
     <Compile Include="UIAutomationTest.cs" />
-    <Compile Include="UIA\AutomationElementXTest.cs" />
     <Compile Include="UIItems\AbstractScrollBarsTest.cs" />
-    <Compile Include="UIItems\ButtonTest.cs" />
     <Compile Include="UIItems\ColorTest.cs" />
-    <Compile Include="UIItems\DateTimePickerTest.cs" />
     <Compile Include="UIItems\ErrorProviderTest.cs" />
     <Compile Include="UIItems\GroupBoxTest.cs" />
-    <Compile Include="UIItems\HotKeyTest.cs" />
     <Compile Include="UIItems\HScrollBarTest.cs" />
     <Compile Include="UIItems\HyperlinkTest.cs" />
     <Compile Include="UIItems\ImageTest.cs" />
@@ -147,7 +132,6 @@
     <Compile Include="UIItems\TableItems\TableRowTest.cs" />
     <Compile Include="UIItems\TableItems\TableTest.cs" />
     <Compile Include="UIItems\TableItems\TableVerticalScrollOffsetTest.cs" />
-    <Compile Include="UIItems\TextBoxes\PasswordTextBoxTest.cs" />
     <Compile Include="UIItems\TextBoxTest.cs" />
     <Compile Include="UIItems\TreeItems\TestNodeWithoutHeaderTest.cs" />
     <Compile Include="UIItems\TreeItems\TreeNodesTest.cs" />

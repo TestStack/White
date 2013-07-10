@@ -30,13 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.OpenFormWithoutScrollAndItemOutside = new System.Windows.Forms.Button();
+            this.DisableControls = new System.Windows.Forms.Button();
+            this.OpenListView = new System.Windows.Forms.Button();
             this.GetMultipleButton = new System.Windows.Forms.Button();
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -52,13 +55,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List Controls";
             // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(6, 19);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.inputControls1);
@@ -69,15 +65,11 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input Controls";
             // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(7, 19);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(217, 181);
-            this.inputControls1.TabIndex = 0;
-            // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OpenFormWithoutScrollAndItemOutside);
+            this.groupBox3.Controls.Add(this.DisableControls);
+            this.groupBox3.Controls.Add(this.OpenListView);
             this.groupBox3.Controls.Add(this.GetMultipleButton);
             this.groupBox3.Controls.Add(this.ButtonWithTooltip);
             this.groupBox3.Location = new System.Drawing.Point(532, 12);
@@ -86,6 +78,36 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Scenarios";
+            // 
+            // OpenFormWithoutScrollAndItemOutside
+            // 
+            this.OpenFormWithoutScrollAndItemOutside.Location = new System.Drawing.Point(7, 139);
+            this.OpenFormWithoutScrollAndItemOutside.Name = "OpenFormWithoutScrollAndItemOutside";
+            this.OpenFormWithoutScrollAndItemOutside.Size = new System.Drawing.Size(194, 23);
+            this.OpenFormWithoutScrollAndItemOutside.TabIndex = 4;
+            this.OpenFormWithoutScrollAndItemOutside.Text = "FormWithoutScrollAndControlOutside";
+            this.OpenFormWithoutScrollAndItemOutside.UseVisualStyleBackColor = true;
+            this.OpenFormWithoutScrollAndItemOutside.Click += new System.EventHandler(this.OpenFormWithoutScrollAndControlOutside_Click);
+            // 
+            // DisableControls
+            // 
+            this.DisableControls.Location = new System.Drawing.Point(7, 109);
+            this.DisableControls.Name = "DisableControls";
+            this.DisableControls.Size = new System.Drawing.Size(194, 23);
+            this.DisableControls.TabIndex = 3;
+            this.DisableControls.Text = "Disable Controls";
+            this.DisableControls.UseVisualStyleBackColor = true;
+            this.DisableControls.Click += new System.EventHandler(this.DisableControls_Click);
+            // 
+            // OpenListView
+            // 
+            this.OpenListView.Location = new System.Drawing.Point(7, 79);
+            this.OpenListView.Name = "OpenListView";
+            this.OpenListView.Size = new System.Drawing.Size(194, 23);
+            this.OpenListView.TabIndex = 2;
+            this.OpenListView.Text = "ListView Control";
+            this.OpenListView.UseVisualStyleBackColor = true;
+            this.OpenListView.Click += new System.EventHandler(this.OpenListView_Click);
             // 
             // GetMultipleButton
             // 
@@ -103,9 +125,26 @@
             this.ButtonWithTooltip.Name = "ButtonWithTooltip";
             this.ButtonWithTooltip.Size = new System.Drawing.Size(195, 23);
             this.ButtonWithTooltip.TabIndex = 0;
-            this.ButtonWithTooltip.Text = "Button with Tooltip";
+            this.ButtonWithTooltip.Text = "&Button with Tooltip";
             this.toolTip1.SetToolTip(this.ButtonWithTooltip, "I have a tooltip");
             this.ButtonWithTooltip.UseVisualStyleBackColor = true;
+            this.ButtonWithTooltip.Click += new System.EventHandler(this.ButtonWithTooltip_Click);
+            this.ButtonWithTooltip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseClick);
+            this.ButtonWithTooltip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseUp);
+            // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(7, 19);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(217, 251);
+            this.inputControls1.TabIndex = 0;
+            // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(6, 19);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -117,7 +156,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "MainWindow";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -135,6 +174,9 @@
         private System.Windows.Forms.Button ButtonWithTooltip;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button GetMultipleButton;
+        private System.Windows.Forms.Button OpenListView;
+        private System.Windows.Forms.Button DisableControls;
+        private System.Windows.Forms.Button OpenFormWithoutScrollAndItemOutside;
     }
 }
 

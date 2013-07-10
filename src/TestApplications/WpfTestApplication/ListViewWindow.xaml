@@ -1,0 +1,19 @@
+﻿<Window x:Class="WpfTestApplication.ListViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication"
+        mc:Ignorable="d" Title="ListViewWindow" Height="300" Width="300"
+        d:DataContext="{d:DesignInstance wpfTestApplication:ListViewWindow}">
+    <Grid>
+        <ListView ItemsSource="{Binding ListViewItems}" x:Name="ListView">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
+                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

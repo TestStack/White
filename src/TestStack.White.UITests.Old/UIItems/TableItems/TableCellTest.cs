@@ -23,49 +23,49 @@ namespace White.Core.UITests.UIItems.TableItems
             row.Cells[0].Value = "Imran";
         }
 
-        [Test]
+        [Fact]
         public void SetTextCellValue()
         {
             TableCell cell = row.Cells[0];
-            Assert.AreEqual("Imran", cell.Value);
+            Assert.Equal("Imran", cell.Value);
             cell.Value = "Mudassar";
-            Assert.AreEqual("Mudassar", cell.Value);
+            Assert.Equal("Mudassar", cell.Value);
         }
 
-        [Test]
+        [Fact]
         public void GetEmptyValue()
         {
             TableCell cell = table.Rows[3].Cells[0];
             cell.Value = string.Empty;
-            Assert.AreEqual(string.Empty, cell.Value);
+            Assert.Equal(string.Empty, cell.Value);
         }
 
-        [Test]
+        [Fact]
         public void SetCheckBoxCellValue()
         {
-            Assert.AreEqual(true.ToString(), row.Cells[2].Value);
+            Assert.Equal(true.ToString(), row.Cells[2].Value);
             row.Cells[2].Value = true;
-            Assert.AreEqual(true.ToString(), row.Cells[2].Value);
+            Assert.Equal(true.ToString(), row.Cells[2].Value);
             row.Cells[2].Value = false;
-            Assert.AreEqual(false.ToString(), row.Cells[2].Value);
+            Assert.Equal(false.ToString(), row.Cells[2].Value);
         }
 
-        [Test]
+        [Fact]
         public void SetComboBoxCellValue()
         {
-            Assert.AreEqual("Pakistan", row.Cells[1].Value);
+            Assert.Equal("Pakistan", row.Cells[1].Value);
             row.Cells[1].Value = "India";
-            Assert.AreEqual("India", row.Cells[1].Value);
+            Assert.Equal("India", row.Cells[1].Value);
         }
 
-        [Test]
+        [Fact]
         public void TextOnButtonCell()
         {
-            Assert.AreEqual("Show", row.Cells[3].Value);
+            Assert.Equal("Show", row.Cells[3].Value);
         }
 
         //TODO: Why does clicking on cell number 3 clicks on cell number 1
-        [Test]
+        [Fact]
         public void Click()
         {
             row.Cells[1].Click();

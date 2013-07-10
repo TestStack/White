@@ -5,14 +5,13 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TabItems
 {
-    [TestFixture]
     public class TabItemTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void FindControlsInsideTab()
         {
             ITabPage springTab = Window.Get<Tab>("seasons").SelectedTab;
-            Assert.AreNotEqual(null, springTab);
+            Assert.NotEqual(null, springTab);
             Window.Get<Button>("springyButton");
         }
     }

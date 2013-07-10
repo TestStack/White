@@ -7,7 +7,7 @@ namespace White.Core.UITests.UIItems
 {
     public abstract class HyperlinkTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void Click()
         {
             var hyperlink = Window.Get<Hyperlink>("linkLabel");
@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems
             AssertResultLabelText("Link label clicked");
         }
 
-        [Test]
+        [Fact]
         public void ClickLaunchesModalWindow()
         {
             var hyperlink = Window.Get<Hyperlink>("linkLaunchesModalWindow");
@@ -23,13 +23,13 @@ namespace White.Core.UITests.UIItems
             CloseModal(Window);
         }
 
-        [Test]
+        [Fact]
         public void ClickablePoint()
         {
             var hyperlink = Window.Get<Hyperlink>("linkLabel");
             var clickablePoint = hyperlink.ClickablePoint;
 
-            Assert.AreNotEqual(new Point(0, 0), clickablePoint);
+            Assert.NotEqual(new Point(0, 0), clickablePoint);
             hyperlink.Click();
             AssertResultLabelText("Link label clicked");
         }

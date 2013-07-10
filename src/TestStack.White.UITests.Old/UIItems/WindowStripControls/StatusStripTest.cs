@@ -16,59 +16,59 @@ namespace White.Core.UITests.UIItems.WindowStripControls
             statusStrip = Window.StatusBar(InitializeOption.NoCache);
         }
 
-        [Test]
+        [Fact]
         public void Find()
         {
-            Assert.AreNotEqual(null, statusStrip);
+            Assert.NotEqual(null, statusStrip);
         }
 
-        [Test]
+        [Fact]
         public void ThrowsWhenDoesNotExists()
         {
             var exception = Assert.Throws<AutomationException>(()=> Window.Get<StatusStrip>("statusStrip1"));
 
-            Assert.AreEqual("Failed to get ControlType=status bar,AutomationId=statusStrip1", exception.Message);
+            Assert.Equal("Failed to get ControlType=status bar,AutomationId=statusStrip1", exception.Message);
         }
 
-        [Test]
+        [Fact]
         public void FindLabelInsideStatusBar()
         {
             UIItem uiItem = statusStrip.GetLabel("Status Strip Label");
-            Assert.AreNotEqual(null, uiItem);
+            Assert.NotEqual(null, uiItem);
         }
 
-        [Test]
+        [Fact]
         public void ClickOnButtonAndFindPopupMenu()
         {
             StatusStripSplitButton statusStripSplitButton = statusStrip.GetSplitButton("toolStripSplitButtonText");
-            Assert.AreNotEqual(null, statusStripSplitButton);
+            Assert.NotEqual(null, statusStripSplitButton);
             statusStripSplitButton.Click();
         }
 
-        [Test]
+        [Fact]
         public void FindDropDown()
         {
             StatusStripDropDownButton button = statusStrip.GetDropDownButton("toolStripDropDownButton");
-            Assert.AreNotEqual(null, button);
+            Assert.NotEqual(null, button);
             button.Click();
         }
 
-        [Test]
+        [Fact]
         public void ProgressBar()
         {
             ProgressBar progressBar = statusStrip.GetProgressBar();
-            Assert.AreEqual(0, progressBar.Minimum);
-            Assert.AreEqual(33, progressBar.Value);
-            Assert.AreEqual(100, progressBar.Maximum);
+            Assert.Equal(0, progressBar.Minimum);
+            Assert.Equal(33, progressBar.Value);
+            Assert.Equal(100, progressBar.Maximum);
         }
 
-        [Test, Ignore("Doesnt work on build server")]
+        [Fact(Skip = "Doesnt work on build server")]
         public void ProgressBar2()
         {
             ProgressBar progressBar = statusStrip.GetProgressBar(1);
-            Assert.AreEqual(0, progressBar.Minimum);
-            Assert.AreEqual(67, progressBar.Value);
-            Assert.AreEqual(100, progressBar.Maximum);
+            Assert.Equal(0, progressBar.Minimum);
+            Assert.Equal(67, progressBar.Value);
+            Assert.Equal(100, progressBar.Maximum);
         }
     }
 }

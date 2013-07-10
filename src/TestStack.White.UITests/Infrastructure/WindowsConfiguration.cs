@@ -34,12 +34,11 @@ namespace TestStack.White.UITests.Infrastructure
 
         public override IMainWindow GetMainWindow(Application application)
         {
-            var window = application.GetWindow(SearchCriteria.ByFramework(framework.FrameworkId).AndByText(MainWindowTitle()), InitializeOption.NoCache);
+            var window = application.GetWindow(SearchCriteria.ByFramework(framework.FrameworkId).AndByText("MainWindow"), InitializeOption.NoCache);
             var mainWindowAdapter = new ProxyGenerator().CreateInterfaceProxyWithoutTarget<IMainWindow>(new ForwardIfExistsInterceptor(window));
             return mainWindowAdapter;
         }
 
         protected abstract string ApplicationExePath();
-        protected abstract string MainWindowTitle();
     }
 }

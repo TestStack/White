@@ -6,28 +6,27 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.MenuItems
 {
-    [TestFixture]
     public class PopUpMenuTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void GetPopupMenuItems()
         {
             Window.Get<ListBox>("listBox").RightClick();
             PopUpMenu popup = Window.Popup;
-            Assert.AreEqual(1, popup.Items.Count);
+            Assert.Equal(1, popup.Items.Count);
         }
 
-        [Test]
+        [Fact]
         public void ClickOnPopupMenu()
         {
             Window.Get<ListBox>("listBox").RightClick();
-            Assert.AreEqual(true, Window.HasPopup());
+            Assert.Equal(true, Window.HasPopup());
             Menu menu = Window.PopupMenu("Show Films");
             menu.Click();
             AssertResultLabelText("All good films");
         }
 
-        [Test]
+        [Fact]
         public void ClickOnNestedMenu()
         {
             Window.Get<ListBox>("listBoxWithVScrollBar").RightClick();

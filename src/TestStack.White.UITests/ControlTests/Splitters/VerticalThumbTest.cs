@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
+using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.Splitters
 {
     public class VerticalThumbTest : WhiteTestBase
     {
-        protected override void RunTest(WindowsFramework framework)
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
             var window = OpenVerticalSliderWindow();
             using (new DelegateDisposable(() => CloseSliderWindow(window)))
@@ -20,7 +20,7 @@ namespace TestStack.White.UITests.ControlTests.Splitters
         public void Find(Window window)
         {
             var thumb = window.Get<Thumb>("Splitter");
-            Assert.AreNotEqual(null, thumb);
+            Assert.NotEqual(null, thumb);
         }
 
         public void Slide(Window window)
@@ -28,7 +28,7 @@ namespace TestStack.White.UITests.ControlTests.Splitters
             var thumb = window.Get<Thumb>("Splitter");
             var originalY = thumb.Location.Y;
             thumb.SlideVertically(50);
-            Assert.AreEqual(originalY + 50, thumb.Location.Y);
+            Assert.Equal(originalY + 50, thumb.Location.Y);
         }
 
         private void CloseSliderWindow(Window window)

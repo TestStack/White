@@ -1,32 +1,31 @@
 using System.Windows;
-using NUnit.Framework;
+using Xunit;
 
 namespace White.Core.UnitTests
 {
-    [TestFixture]
     public class SpanTest
     {
-        [Test]
+        [Fact]
         public void Union()
         {
             VerticalSpan verticalSpan = new VerticalSpan(new Rect(10, 10, 0, 10)).Union(new Rect(10, 5, 0, 10));
-            Assert.AreEqual(false, verticalSpan.DoesntContain(new Rect(10, 10, 0, 5)));
-            Assert.AreEqual(false, verticalSpan.DoesntContain(new Rect(10, 10, 0, 10)));
+            Assert.Equal(false, verticalSpan.DoesntContain(new Rect(10, 10, 0, 5)));
+            Assert.Equal(false, verticalSpan.DoesntContain(new Rect(10, 10, 0, 10)));
         }
 
-        [Test]
+        [Fact]
         public void Cut()
         {
             VerticalSpan verticalSpan = new VerticalSpan(new Rect(10, 10, 10, 10)).Minus(new Rect(10, 15, 5, 5));
-            Assert.AreEqual(true, verticalSpan.DoesntContain(new Rect(10, 10, 10, 12)));
-            Assert.AreEqual(false, verticalSpan.DoesntContain(new Rect(10, 10, 10, 4)));
+            Assert.Equal(true, verticalSpan.DoesntContain(new Rect(10, 10, 10, 12)));
+            Assert.Equal(false, verticalSpan.DoesntContain(new Rect(10, 10, 10, 4)));
         }
 
-        [Test]
+        [Fact]
         public void EmptyIsOutside()
         {
             var verticalSpan = new VerticalSpan(new Rect(10, 10, 10, 10));
-            Assert.AreEqual(true, verticalSpan.DoesntContain(Rect.Empty));
+            Assert.Equal(true, verticalSpan.DoesntContain(Rect.Empty));
         }
     }
 }

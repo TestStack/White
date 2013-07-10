@@ -7,7 +7,7 @@ namespace White.Core.UITests.UIItems
     [TestFixture, WPFCategory]
     public class WPFHyperlinkTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void ClickHyperlink()
         {
             WPFLabel labelContainingHyperlink = Window.Get<WPFLabel>("linkLabel");
@@ -15,7 +15,7 @@ namespace White.Core.UITests.UIItems
             AssertResultLabelText("Link label clicked");
         }
 
-        [Test]
+        [Fact]
         public void ClickHyperlinkLlaunchedModal()
         {
             WPFLabel labelContainingHyperlink = Window.Get<WPFLabel>("hyperlinkLaunchesModal");

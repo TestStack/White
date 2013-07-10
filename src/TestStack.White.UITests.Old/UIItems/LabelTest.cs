@@ -4,16 +4,15 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture]
     public class LabelTest : ControlsActionTest
     {
         private Label label;
 
-        [Test]
+        [Fact]
         public void Text()
         {
             label = Window.Get<Label>("result");
-            Assert.AreNotEqual(null, label.Text);
+            Assert.NotEqual(null, label.Text);
         }
     }
 }

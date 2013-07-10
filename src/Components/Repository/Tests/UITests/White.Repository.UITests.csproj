@@ -59,20 +59,20 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework, Version=2.6.2.12296, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="Rhino.Mocks">
-      <HintPath>..\..\..\..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\..\..\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationClient" />
+    <Reference Include="xunit">
+      <HintPath>..\..\..\..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyScreen.cs" />
     <Compile Include="DummyWindow.cs" />
     <Compile Include="EntityMapping\EntitiesFromUIItemsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,9 +105,9 @@
       <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
       <Name>WinFormsTestApp.Old</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\TestStack.White.UITests.Old\TestStack.White.UITests.Old.csproj">
-      <Project>{6d03b0f7-5fe2-45a0-996a-d0b45f6fb23b}</Project>
-      <Name>TestStack.White.UITests.Old</Name>
+    <ProjectReference Include="..\..\..\..\TestStack.White.UITests\TestStack.White.UITests.csproj">
+      <Project>{10A51741-09F8-47CA-AB94-965EE71342F7}</Project>
+      <Name>TestStack.White.UITests</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>

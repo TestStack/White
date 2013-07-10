@@ -10,21 +10,35 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Name="AGroupBox">
-            <wpfTestApplication:ListControls />
+        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
+                  Name="AGroupBox">
+            <wpfTestApplication:ListControls x:Name="ListControls" />
         </GroupBox>
         <GroupBox Header="Input controls" Grid.Column="1" Width="150">
             <StackPanel>
                 <DatePicker x:Name="DatePicker" />
                 <CheckBox x:Name="CheckBox" Content="A checkbox" />
+                <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
+                <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" />
+                <PasswordBox x:Name="PasswordBox" />
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Scenarios" Grid.Column="2" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>
-                <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter" AutomationProperties.AutomationId ="OpenHorizontalSplitterButton" />
-                <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter" AutomationProperties.AutomationId ="OpenVerticalSplitterButton"/>
-                <Button Content="Button with tooltip" ToolTip="I have a tooltip" AutomationProperties.AutomationId="ButtonWithTooltip" />
-                <Button Content="Get Multiple" Click="GetMultiple" AutomationProperties.AutomationId="GetMultipleButton" />
+                <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter"
+                        AutomationProperties.AutomationId="OpenHorizontalSplitterButton" />
+                <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter"
+                        AutomationProperties.AutomationId="OpenVerticalSplitterButton" />
+                <Button Content="_Button with Tooltip" ToolTip="I have a tooltip" x:Name="ButtonWithTooltip"
+                        PreviewMouseUp="ButtonWithTooltip_OnPreviewMouseUp" Click="ButtonWithTooltip_OnClick"
+                        MouseRightButtonUp="RightClickOnButtonWithTooltip" />
+                <Button Content="Get Multiple" Click="GetMultiple"
+                        AutomationProperties.AutomationId="GetMultipleButton" />
+                <Button Content="ListView Control" Click="OpenListView"
+                        AutomationProperties.AutomationId="OpenListView" />
+                <Button Content="Disable Controls" Click="DisableControlsClick" x:Name="DisableControls" />
+                <Button Content="FormWithoutScrollAndItemOutside" Click="OpenFormWithoutScrollAndItemOutside"
+                        AutomationProperties.AutomationId="OpenFormWithoutScrollAndItemOutside" />
             </StackPanel>
         </GroupBox>
     </Grid>

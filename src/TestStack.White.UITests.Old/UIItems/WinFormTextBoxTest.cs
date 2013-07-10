@@ -16,23 +16,23 @@ namespace White.Core.UITests.UIItems
             textBox = (WinFormTextBox) Window.Get<TextBox>("textBox");
         }
 
-        [Test]
+        [Fact]
         public void SuggestionList()
         {
             textBox.Text = "h";
             SuggestionList suggestionList = textBox.SuggestionList;
-            Assert.AreEqual(2, suggestionList.Items.Count);
-            Assert.AreEqual("hello", suggestionList.Items[0]);
-            Assert.AreEqual("hi", suggestionList.Items[1]);
+            Assert.Equal(2, suggestionList.Items.Count);
+            Assert.Equal("hello", suggestionList.Items[0]);
+            Assert.Equal("hi", suggestionList.Items[1]);
         }
 
-        [Test]
+        [Fact]
         public void SelectFromSuggestionList()
         {
             textBox.Enter("h");
             SuggestionList suggestionList = textBox.SuggestionList;
             suggestionList.Select("hello");
-            Assert.AreEqual("hello", textBox.Text);
+            Assert.Equal("hello", textBox.Text);
         }
     }
 }

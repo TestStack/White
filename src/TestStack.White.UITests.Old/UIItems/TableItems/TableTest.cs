@@ -6,25 +6,25 @@ namespace White.Core.UITests.UIItems.TableItems
     [WinFormCategory]
     public class TableTest : AbstractTableTest
     {
-        [Test]
+        [Fact]
         public void Columns()
         {
-            Assert.AreEqual(5, table.Header.Columns.Count);
+            Assert.Equal(5, table.Header.Columns.Count);
         }
 
-        [Test]
+        [Fact]
         public void GetRow()
         {
-            Assert.AreEqual("Imran", table.Row("Name", "Imran").Cells[0].Value);
+            Assert.Equal("Imran", table.Row("Name", "Imran").Cells[0].Value);
         }
 
-        [Test]
+        [Fact]
         public void FindAllTest()
         {
             TableRows rows = table.Rows;
             rows[1].Cells[0].Value = "Imran";
-            Assert.AreEqual("Imran", table.FindAll("Name", "Imran")[0].Cells[0].Value);
-            Assert.AreEqual("Imran", table.FindAll("Name", "Imran")[1].Cells[0].Value);
+            Assert.Equal("Imran", table.FindAll("Name", "Imran")[0].Cells[0].Value);
+            Assert.Equal("Imran", table.FindAll("Name", "Imran")[1].Cells[0].Value);
         }
     }
 }

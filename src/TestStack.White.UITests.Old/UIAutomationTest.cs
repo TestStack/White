@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 namespace White.Core.UITests
 {
-    [TestFixture]
     public class UIAutomationTest
     {
         private Application application;
@@ -31,7 +30,7 @@ namespace White.Core.UITests
                 }
                 catch (InvalidOperationException) {}
             }
-            Assert.AreNotEqual(0, cachedChildrenFoundFor, "Cached children not found for even one AutomationElement out of " + collection.Count + " elements");
+            Assert.NotEqual(0, cachedChildrenFoundFor, "Cached children not found for even one AutomationElement out of " + collection.Count + " elements");
         }
 
         [TearDown]

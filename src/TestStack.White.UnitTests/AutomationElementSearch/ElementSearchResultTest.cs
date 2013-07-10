@@ -1,28 +1,27 @@
 using System.Windows.Automation;
-using NUnit.Framework;
 using White.Core.AutomationElementSearch;
+using Xunit;
 
 namespace White.Core.UnitTests.AutomationElementSearch
 {
-    [TestFixture]
     public class ElementSearchResultTest
     {
-        [Test]
+        [Fact]
         public void AllResultsFoundForMany()
         {
             var result = ElementSearchResult.ForMany();
-            Assert.AreEqual(false, result.AllResultsFound);
+            Assert.Equal(false, result.AllResultsFound);
             result.Add(AutomationElement.FocusedElement);
-            Assert.AreEqual(false, result.AllResultsFound);
+            Assert.Equal(false, result.AllResultsFound);
         }
 
-        [Test]
+        [Fact]
         public void AllResultsFoundForOne()
         {
             var result = ElementSearchResult.ForOne();
-            Assert.AreEqual(false, result.AllResultsFound);
+            Assert.Equal(false, result.AllResultsFound);
             result.Add(AutomationElement.FocusedElement);
-            Assert.AreEqual(true, result.AllResultsFound);
+            Assert.Equal(true, result.AllResultsFound);
         }
     }
 }

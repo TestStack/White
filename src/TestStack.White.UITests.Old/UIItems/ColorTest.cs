@@ -16,23 +16,23 @@ namespace White.Core.UITests.UIItems
             textBox = Window.Get<TextBox>("textBox");            
         }
 
-        [Test]
+        [Fact]
         public void Backgroud()
         {
             Color color = textBox.BorderColor;
-            Assert.AreEqual(100, color.R);
-            Assert.AreEqual(100, color.G);
-            Assert.AreEqual(100, color.B);
+            Assert.Equal(100, color.R);
+            Assert.Equal(100, color.G);
+            Assert.Equal(100, color.B);
         }
 
-        [Test]
+        [Fact]
         public void DisplayAsImage()
         {
             Bitmap bitmap = textBox.VisibleImage;
             Color color = bitmap.GetPixel(3, 3);
-            Assert.AreEqual(Color.Blue.R, color.R);
-            Assert.AreEqual(Color.Blue.G, color.G);
-            Assert.AreEqual(Color.Blue.B, color.B);
+            Assert.Equal(Color.Blue.R, color.R);
+            Assert.Equal(Color.Blue.G, color.G);
+            Assert.Equal(Color.Blue.B, color.B);
         }
     }
 }

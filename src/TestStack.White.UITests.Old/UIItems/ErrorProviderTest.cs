@@ -2,6 +2,7 @@ using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UITests.Testing;
+using Xunit;
 
 namespace White.Core.UITests.UIItems
 {
@@ -13,7 +14,7 @@ namespace White.Core.UITests.UIItems
         {
             Window.Get<Button>("showError").Click();
             var comboBox = Window.Get<ComboBox>("komboBox");
-            Assert.AreEqual("The name is wrong", comboBox.ErrorProviderMessage(Window));
+            Assert.Equal("The name is wrong", comboBox.ErrorProviderMessage(Window));
         }
     }
 }

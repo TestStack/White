@@ -8,7 +8,6 @@ using TextBox = White.Core.UIItems.TextBox;
 
 namespace White.Core.UITests.UIItems
 {
-    [TestFixture]
     public class TextBoxTest : ControlsActionTest
     {
         private TextBox textBox;
@@ -18,26 +17,26 @@ namespace White.Core.UITests.UIItems
             textBox = Window.Get<TextBox>("textBox");
         }
 
-        [Test]
+        [Fact]
         public void EnterText()
         {
             textBox.Text = "somethingElse";
-            Assert.AreEqual("somethingElse", textBox.Text);
+            Assert.Equal("somethingElse", textBox.Text);
             AssertResultLabelText("Text changed");
             textBox.Text = "";
-            Assert.AreEqual("", textBox.Text);
+            Assert.Equal("", textBox.Text);
             textBox.Text = "againSomethingElse";
-            Assert.AreEqual("againSomethingElse", textBox.Text);
+            Assert.Equal("againSomethingElse", textBox.Text);
         }
 
-        [Test]
+        [Fact]
         public void EnterBulkText()
         {
             textBox.BulkText = "somethingElse";
-            Assert.AreEqual("somethingElse", textBox.Text);
+            Assert.Equal("somethingElse", textBox.Text);
         }
 
-        [Test, Ignore("Not working on the build server for some reason...")]
+        [Fact(Skip = "Not working on the build server for some reason...")]
         public void CopyTest()
         {
             AttachedKeyboard attachedKeyboard = Window.Keyboard;
@@ -49,13 +48,13 @@ namespace White.Core.UITests.UIItems
 
             //check the text is the same as that on the clipboard
             string clipbrdText = Clipboard.GetText();
-            Assert.AreEqual(textBox.Text, clipbrdText, "Text on clipboard does not match expected");
+            Assert.Equal(textBox.Text, clipbrdText, "Text on clipboard does not match expected");
         }
 
-        [Test]
+        [Fact]
         public void IsReadOnly()
         {
-            Assert.AreEqual(false, textBox.IsReadOnly);
+            Assert.Equal(false, textBox.IsReadOnly);
         }
     }
 }

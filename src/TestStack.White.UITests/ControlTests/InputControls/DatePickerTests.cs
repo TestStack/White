@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
 using White.Core.UIItems;
+using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.InputControls
 {
     public class DatePickerTests : WhiteTestBase
     {
-        protected override void RunTest(WindowsFramework framework)
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(() => GetDate(DateTime.Today), WindowsFramework.WinForms);
             RunTest(() => GetDate(null), WindowsFramework.Wpf, WindowsFramework.Silverlight);
@@ -17,7 +17,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         private void GetDate(DateTime? defaultTime)
         {
             var dateTimePicker = MainWindow.Get<DateTimePicker>("DatePicker");
-            Assert.AreEqual(defaultTime, dateTimePicker.Date);
+            Assert.Equal(defaultTime, dateTimePicker.Date);
         }
 
         private void SetDate()
@@ -25,11 +25,11 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             var dateTimePicker = MainWindow.Get<DateTimePicker>("DatePicker");
             DateTime changedDate = DateTime.Today.AddDays(23);
             dateTimePicker.Date = changedDate;
-            Assert.AreEqual(changedDate, dateTimePicker.Date);
+            Assert.Equal(changedDate, dateTimePicker.Date);
 
             changedDate = DateTime.Today.AddDays(23);
             dateTimePicker.Date = changedDate;
-            Assert.AreEqual(changedDate, dateTimePicker.Date);
+            Assert.Equal(changedDate, dateTimePicker.Date);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

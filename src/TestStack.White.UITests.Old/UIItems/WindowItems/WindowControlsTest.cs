@@ -4,19 +4,18 @@ using White.Core.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {
-    [TestFixture]
     public class WindowControlsTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void GetButton()
         {
-            Assert.AreNotEqual(null, Window.Get<Button>("buton"));
+            Assert.NotEqual(null, Window.Get<Button>("buton"));
         }
 
-        [Test]
+        [Fact]
         public void GetLabel()
         {
-            Assert.AreNotEqual(null, Window.Get<Label>("result"));
+            Assert.NotEqual(null, Window.Get<Label>("result"));
         }
     }
 }

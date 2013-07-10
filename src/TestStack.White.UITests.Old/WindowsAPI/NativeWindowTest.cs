@@ -10,7 +10,7 @@ namespace White.Core.UITests.WindowsAPI
     [TestFixture, NormalCategory]
     public class NativeWindowTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void BackgroundColor()
         {
             var colorref = new COLORREF {R = 200};

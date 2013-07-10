@@ -20,24 +20,24 @@ namespace White.Core.UITests.UIItems
             spinner.Value = 4.0;
         }
 
-        [Test]
+        [Fact]
         public void Increment()
         {
             spinner.Increment();
-            Assert.AreEqual(4.2, spinner.Value);
+            Assert.Equal(4.2, spinner.Value);
         }
 
-        [Test]
+        [Fact]
         public void Value()
         {
-            Assert.AreEqual(4, spinner.Value);
+            Assert.Equal(4, spinner.Value);
         }
 
-        [Test]
+        [Fact]
         public void Decrement()
         {
             spinner.Decrement();
-            Assert.AreEqual(3.8, spinner.Value);
+            Assert.Equal(3.8, spinner.Value);
         }
     }
 }

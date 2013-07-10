@@ -1,51 +1,47 @@
-using NUnit.Framework;
-using Rhino.Mocks;
+using NSubstitute;
 using White.Core.UIItemEvents;
 using White.Core.UIItems;
+using Xunit;
 
 namespace White.Core.UnitTests.UIItemEvents
 {
-    [TestFixture, Category("Normal")]
     public class UserActionTest
     {
-        private UserAction userAction;
+        private readonly UserAction userAction;
 
-        [SetUp]
-        public void SetUp()
+        public UserActionTest()
         {
             userAction = new UserAction();
         }
 
-        private static T UIItem<T>(string id) where T : IUIItem
+        private static T UIItem<T>(string id) where T : class, IUIItem
         {
-            var mocks = new MockRepository();
-            var t = mocks.StrictMock<T>();
-            SetupResult.For(t.PrimaryIdentification).Return(id);
-            mocks.ReplayAll();
+            var t = Substitute.For<T>();
+            t.PrimaryIdentification.Returns(id);
             return t;
         }
 
-        [Test]
+        [Fact]
         public void IsNotRepeatEventWhenRegisteringFirstEvent()
         {
             userAction.Register(new UIItemClickEvent(UIItem<Button>("cb")));
-            Assert.AreEqual(false, userAction.RepeatEvent);
+            Assert.Equal(false, userAction.RepeatEvent);
         }
 
-        [Test]
+        [Fact]
         public void IsNotRepeatEventWhenRegisteringDifferentEvent()
         {
             userAction.Register(new UIItemClickEvent(UIItem<Button>("cb")));
             userAction.Register(new UIItemClickEvent(UIItem<Button>("cb")));
-            Assert.AreEqual(false, userAction.RepeatEvent);
+            Assert.Equal(false, userAction.RepeatEvent);
         }
 
-        [Test]
+        [Fact]
         public void RepeatEventWhenRegisteringSameEvent()
         {
             userAction.Register(new TextBoxEvent(UIItem<TextBox>("cb")));
             userAction.Register(new TextBoxEvent(UIItem<TextBox>("cb")));
-            Assert.AreEqual(true, userAction.RepeatEvent);
+            Assert.Equal(true, userAction.RepeatEvent);
         }
     }
 }

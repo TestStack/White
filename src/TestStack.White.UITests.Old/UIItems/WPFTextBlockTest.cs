@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using White.Core.UIItems;
 using White.Core.UITests.Testing;
+using Xunit;
 
 namespace White.Core.UITests.UIItems
 {
@@ -12,11 +13,11 @@ namespace White.Core.UITests.UIItems
             get { return WPFScenarioSet1; }
         }
 
-        [Test]
+        [Fact]
         public void Find()
         {
             Label label = Window.Get<Label>("textBlock1");
-            Assert.AreNotEqual(null, label);
+            Assert.NotEqual(null, label);
         }
     }
 }

@@ -1,16 +1,15 @@
-using NUnit.Framework;
 using White.Core.UIItems;
+using Xunit;
 
 namespace White.Core.UnitTests.UIItems
 {
-    [TestFixture]
     public class DateFormatTest
     {
-        [Test]
+        [Fact]
         public void DifferentDateFormats()
         {
-            Assert.AreEqual(DateFormat.dayMonthYear, DateFormat.Create("-", "dd-MM-yyyy"));
-            Assert.AreEqual(DateFormat.dayMonthYear, DateFormat.Create("-", "d-M-yyyy"));
+            Assert.Equal(DateFormat.dayMonthYear, DateFormat.Create("-", "dd-MM-yyyy"));
+            Assert.Equal(DateFormat.dayMonthYear, DateFormat.Create("-", "d-M-yyyy"));
         }
     }
 }

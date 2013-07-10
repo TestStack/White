@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics;
-using NUnit.Framework;
 using White.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
@@ -7,15 +6,15 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UIItems.MenuItems;
 using White.Core.WindowsAPI;
+using Xunit;
 
 namespace TestStack.White.UITests.Scenarios
 {
-    [TestFixture]
     public class Win32CalculatorTest
     {
         private const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
 
-        [Test]
+        [Fact]
         public void CalculatorTests()
         {
             //strat process for the above exe file location
@@ -68,7 +67,7 @@ namespace TestStack.White.UITests.Scenarios
             //Get the result
             var resultLable = mainWindow.Get<Label>(SearchCriteria.ByAutomationId("150"));
             string result = resultLable.Text;
-            Assert.AreEqual("6912", result);
+            Assert.Equal("6912", result);
         }
     }
 }

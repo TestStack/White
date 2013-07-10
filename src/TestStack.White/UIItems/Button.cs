@@ -8,8 +8,9 @@ namespace White.Core.UIItems
     public class Button : UIItem
     {
         private readonly ToggleableItem toggleableItem;
-        protected Button() {}
-        public Button(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        protected Button() { }
+        public Button(AutomationElement automationElement, ActionListener actionListener)
+            : base(automationElement, actionListener)
         {
             toggleableItem = new ToggleableItem(this);
         }
@@ -28,6 +29,11 @@ namespace White.Core.UIItems
         {
             get { return toggleableItem.State; }
             set { toggleableItem.State = value; }
+        }
+
+        public virtual string Text
+        {
+            get { return Name; }
         }
 
         public virtual void Toggle()

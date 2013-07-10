@@ -2,17 +2,15 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using NUnit.Framework;
 using White.Core.Configuration;
 
 namespace White.WebBrowser.UITests
 {
-    public abstract class SilverlightTestFixture
+    public abstract class SilverlightTestFixture : IDisposable
     {
         protected InternetExplorerWindow BrowserWindow;
 
-        [TestFixtureSetUp]
-        public void TestFixtureSetUp()
+        protected SilverlightTestFixture()
         {
             string fullPath;
             var checkoutDir = Environment.GetEnvironmentVariable("checkoutDir");
@@ -60,8 +58,7 @@ namespace White.WebBrowser.UITests
         {
         }
 
-        [TestFixtureTearDown]
-        public void TestFixtureTearDown()
+        public void Dispose()
         {
             if (BrowserWindow != null)
                 BrowserWindow.Dispose();

@@ -15,19 +15,19 @@ namespace White.Core.UITests.UIItems.WindowStripControls
             statusBar = Window.Get<WPFStatusBar>("statusBar1");
         }
 
-        [Test]
+        [Fact]
         public void StatusBar()
         {
-            Assert.AreNotEqual(null, statusBar);
+            Assert.NotEqual(null, statusBar);
         }
 
-        [Test]
+        [Fact]
         public void StatusBarItem()
         {
             UIItemCollection collection = statusBar.Items;
-            Assert.AreEqual(2, collection.Count);
+            Assert.Equal(2, collection.Count);
             var label = (Label) collection[0];
-            Assert.AreEqual("Status Item 1", label.Text);
+            Assert.Equal("Status Item 1", label.Text);
         }
     }
 }

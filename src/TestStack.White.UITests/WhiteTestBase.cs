@@ -2,27 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using Castle.Core.Logging;
-using NUnit.Framework;
 using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Configuration;
 using White.Core.InputDevices;
 using White.Core.UIItems;
+using White.Core.UIItems.WindowItems;
+using Xunit;
 
 namespace TestStack.White.UITests
 {
-    [TestFixture]
-    public abstract class WhiteTestBase
+    public abstract class WhiteTestBase : IDisposable
     {
+        private readonly List<Window> windowsToClose = new List<Window>();
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteTestBase));
-        internal Keyboard Keyboard;
-        private WindowsFramework currentFramework;
+        WindowsFramework currentFramework;
 
+        internal Keyboard Keyboard;
         protected IMainWindow MainWindow { get; private set; }
         protected Application Application { get; private set; }
 
-        [Test]
-        public void RunTest()
+        [Fact]
+        public void Automate()
         {
             var frameworksToRun = SupportedFrameworks();
 
@@ -33,7 +34,7 @@ namespace TestStack.White.UITests
                 {
                     try
                     {
-                        RunTest(framework);
+                        ExecuteTestRun(framework);
                     }
                     catch (TestFailedException)
                     {
@@ -58,13 +59,13 @@ namespace TestStack.White.UITests
                 }
                 catch (Exception ex)
                 {
-                    throw new TestFailedException(
-                        string.Format("Failed to run {0} for {1}", testAction.Method.Name, currentFramework), ex);
+                    throw new TestFailedException(string.Format("Failed to run {0} for {1}. Details:\r\n\r\n{2}", 
+                        testAction.Method.Name, currentFramework, ex), ex);
                 }
             }
         }
 
-        protected abstract void RunTest(WindowsFramework framework);
+        protected abstract void ExecuteTestRun(WindowsFramework framework);
 
         private IDisposable SetMainWindow(WindowsFramework framework)
         {
@@ -115,12 +116,30 @@ namespace TestStack.White.UITests
                         testBase.Application.Close();
                     }
                     catch (Exception)
-                    {}
+                    { }
                     // ReSharper restore EmptyGeneralCatchClause
                 }
                 testBase.Application = null;
                 testBase.MainWindow = null;
             }
+        }
+
+        protected Window StartScenario(string scenarioButtonId, string windowTitle)
+        {
+            MainWindow.Get<Button>(scenarioButtonId).Click();
+            var window = MainWindow.ModalWindow(windowTitle);
+            windowsToClose.Add(window);
+            return window;
+        }
+
+        public virtual void Dispose()
+        {
+            foreach (var window in windowsToClose)
+            {
+                if (!window.IsClosed)
+                    window.Close();
+            }
+            windowsToClose.Clear();
         }
     }
 }

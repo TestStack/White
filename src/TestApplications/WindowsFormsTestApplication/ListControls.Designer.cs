@@ -132,6 +132,7 @@
             this.Controls.Add(this.EditableComboBox);
             this.Name = "ListControls";
             this.Size = new System.Drawing.Size(260, 204);
+            this.EnabledChanged += new System.EventHandler(this.ListControls_EnabledChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
 

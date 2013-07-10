@@ -26,11 +26,11 @@ namespace White.Core.UITests
             window = Application.GetWindow("FormContainingCustomControl", InitializeOption.NoCache);
         }
 
-        [Test]
+        [Fact]
         public void FindCustomItem()
         {
             var myDateUIItem = window.Get<MyDateUIItem>("dateOfBirth");
-            Assert.AreNotEqual(null, myDateUIItem);
+            Assert.NotEqual(null, myDateUIItem);
             myDateUIItem.EnterDate(DateTime.Today);
         }
 
@@ -38,7 +38,7 @@ namespace White.Core.UITests
         public void ItemsReturnsCustomUIItemToo()
         {
             UIItemCollection uiItemCollection = window.Items;
-            Assert.AreEqual(true, uiItemCollection.Any(item => item is MyDateUIItem));
+            Assert.Equal(true, uiItemCollection.Any(item => item is MyDateUIItem));
         }
 
         [Test, ExpectedException(typeof (CustomUIItemException))]

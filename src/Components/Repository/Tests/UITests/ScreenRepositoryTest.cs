@@ -1,50 +1,41 @@
 using White.Core.Factory;
-using White.Core.UIItems.WindowItems;
-using NUnit.Framework;
+using Xunit;
 
 namespace White.Repository.UITests
 {
-    [TestFixture]
     public class ScreenRepositoryTest
     {
-        private ScreenRepositoryTester screenRepositoryTester;
+        readonly ScreenRepositoryTester screenRepositoryTester;
 
-        [SetUp]
-        public void SetUp()
+        public ScreenRepositoryTest()
         {
             screenRepositoryTester = new ScreenRepositoryTester();
         }
 
-        [Test]
+        [Fact]
         public void TestGetForCachedMode()
         {
             screenRepositoryTester.SetUp(InitializeOption.NoCache);
             screenRepositoryTester.Get();
         }
 
-        [Test]
+        [Fact]
         public void ControlsWithSameNameAreResolvedUsingIndex()
         {
             screenRepositoryTester.SetUp(InitializeOption.NoCache);
             screenRepositoryTester.ControlsWithSameNameAreResolvedUsingIndex();
         }
 
-        [Test]
+        [Fact]
         public void ComponentsAreInjected()
         {
             screenRepositoryTester.SetUp(InitializeOption.NoCache);
             screenRepositoryTester.ComponentsAreInjected();
         }
 
-        [TearDown]
-        public void TearDown()
+        public void Dispose()
         {
-            screenRepositoryTester.TearDown();
+            screenRepositoryTester.Dispose();
         }
-    }
-
-    public class DummyScreen : AppScreen
-    {
-        public DummyScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository) {}
     }
 }

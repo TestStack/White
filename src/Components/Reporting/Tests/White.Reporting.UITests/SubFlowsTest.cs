@@ -1,20 +1,18 @@
-using NUnit.Framework;
 using Reporting.Domain;
+using Xunit;
 
 namespace White.Reporting.UITests
 {
-    [TestFixture]
     public class SubFlowsTest
     {
-        private SubFlows flows;
+        private readonly SubFlows flows;
 
-        [SetUp]
-        public void SetUp()
+        public SubFlowsTest()
         {
             flows = new SubFlows("archiveLocation", "flowName");
         }
 
-        [Test]
+        [Fact]
         public void Start()
         {
             flows.Begin("subflow1");
@@ -25,9 +23,9 @@ namespace White.Reporting.UITests
             flows.Begin("subflow2");
             flows.Next(typeof (One));
             flows.Finish();
-            Assert.AreEqual(2, flows.Count);
-            Assert.AreEqual(2, flows[0].FlowSteps.Count);
-            Assert.AreEqual(1, flows[1].FlowSteps.Count);
+            Assert.Equal(2, flows.Count);
+            Assert.Equal(2, flows[0].FlowSteps.Count);
+            Assert.Equal(1, flows[1].FlowSteps.Count);
         }
     }
 }

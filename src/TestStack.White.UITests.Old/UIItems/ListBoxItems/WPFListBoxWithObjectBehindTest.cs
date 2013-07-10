@@ -12,7 +12,7 @@ namespace White.Core.UITests.UIItems.ListBoxItems
             get { return "ComboBoxWithObjectWindow"; }
         }
 
-        [Test]
+        [Fact]
         public void SelectInvisible()
         {
             var listBox = Window.Get<ListBox>("theListBox");

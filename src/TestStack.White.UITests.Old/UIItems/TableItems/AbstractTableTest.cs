@@ -14,37 +14,37 @@ namespace White.Core.UITests.UIItems.TableItems
             table = Window.Get<Table>("people");
         }
 
-        [Test]
+        [Fact]
         public void Find()
         {
-            Assert.AreNotEqual(null, table);
+            Assert.NotEqual(null, table);
         }
 
-        [Test]
+        [Fact]
         public void TableRows()
         {
             table.LogStructure();
             TableRows tableRows = table.Rows;
-            Assert.AreEqual(true, tableRows.Count >= 13, tableRows.Count.ToString());
+            Assert.Equal(true, tableRows.Count >= 13, tableRows.Count.ToString());
         }
 
-        [Test]
+        [Fact]
         public void SelectRowNotVisibleInitially()
         {
             TableRows rows = table.Rows;
             TableRow row = rows[rows.Count - 1];
             row.Select();
-            Assert.AreEqual(false, row.IsOffScreen);
+            Assert.Equal(false, row.IsOffScreen);
             row = rows[0];
-            Assert.AreEqual(true, row.IsOffScreen);
+            Assert.Equal(true, row.IsOffScreen);
             row.Select();
-            Assert.AreEqual(false, row.IsOffScreen);
+            Assert.Equal(false, row.IsOffScreen);
         }
 
-        [Test]
+        [Fact]
         public void TableHasScrollBars()
         {
-            Assert.AreNotEqual(null, table.ScrollBars);
+            Assert.NotEqual(null, table.ScrollBars);
         }
     }
 }

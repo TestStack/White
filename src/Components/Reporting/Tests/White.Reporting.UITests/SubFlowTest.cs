@@ -1,31 +1,29 @@
 using System;
-using NUnit.Framework;
 using Reporting.Domain;
+using Xunit;
 
 namespace White.Reporting.UITests
 {
-    [TestFixture]
     public class SubFlowTest
     {
-        private SubFlow subFlow;
+        readonly SubFlow subFlow;
 
-        [SetUp]
-        public void SetUp()
+        public SubFlowTest()
         {
             subFlow = new SubFlow("subFlow", "flow", "archiveLocation");
         }
 
-        [Test]
+        [Fact]
         public void NextOnSameNode()
         {
             subFlow.Next(One());
             subFlow.Act();
             subFlow.Act();
-            Assert.AreEqual(1, subFlow.FlowSteps.Count);
-            Assert.AreEqual(3, subFlow.FlowSteps[0].ScreenShots.Count);
+            Assert.Equal(1, subFlow.FlowSteps.Count);
+            Assert.Equal(3, subFlow.FlowSteps[0].ScreenShots.Count);
         }
 
-        [Test]
+        [Fact]
         public void Flow()
         {
             subFlow.Next(One());           
@@ -33,9 +31,9 @@ namespace White.Reporting.UITests
             subFlow.Act();           
             subFlow.Next(Two());           
             subFlow.Act();
-            Assert.AreEqual(2, subFlow.FlowSteps.Count);
-            Assert.AreEqual(3, subFlow.FlowSteps[0].ScreenShots.Count);
-            Assert.AreEqual(2, subFlow.FlowSteps[1].ScreenShots.Count);
+            Assert.Equal(2, subFlow.FlowSteps.Count);
+            Assert.Equal(3, subFlow.FlowSteps[0].ScreenShots.Count);
+            Assert.Equal(2, subFlow.FlowSteps[1].ScreenShots.Count);
         }
 
         private static Type One() {

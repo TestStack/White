@@ -1,4 +1,5 @@
-﻿using White.Core.UIItems;
+﻿using White.Core.InputDevices;
+using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 
 namespace TestStack.White.UITests
@@ -7,5 +8,6 @@ namespace TestStack.White.UITests
     {
         void Close();
         Window ModalWindow(string title);
+        AttachedKeyboard Keyboard { get; }
     }
 }

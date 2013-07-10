@@ -9,7 +9,7 @@ namespace White.Core.UITests
     [TestFixture, WinFormCategory]
     public class ModalWindowSessionTest : ControlsActionTest
     {
-        [Test]
+        [Fact]
         public void GetControlFromModalWindow()
         {
             Window.Get<Button>("launchModal").Click();

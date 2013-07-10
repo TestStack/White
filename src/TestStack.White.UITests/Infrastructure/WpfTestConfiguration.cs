@@ -13,10 +13,5 @@ namespace TestStack.White.UITests.Infrastructure
         {
             return "WpfTestApplication.exe";
         }
-
-        protected override string MainWindowTitle()
-        {
-            return "MainWindow";
-        }
     }
 }
