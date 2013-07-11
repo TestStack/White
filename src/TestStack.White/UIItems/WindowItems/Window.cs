@@ -111,8 +111,14 @@ UI actions on window needing mouse would not work in area not falling under the 
             var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
             try
             {
-                if (TitleBar != null && TitleBar.CloseButton != null)
-                    TitleBar.CloseButton.Click();
+                Logger.DebugFormat("Closing window {0}", Title);
+                TitleBar titleBar = TitleBar;
+                if (titleBar != null && titleBar.CloseButton != null)
+                {
+                    Logger.Debug("Using Close Button");
+                    titleBar.CloseButton.Click();
+                    Logger.Debug("Clicked");
+                }
                 else if (windowPattern != null)
                 {
                     windowPattern.Close();
@@ -121,6 +127,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
             catch (AutomationException)
             {
+                Logger.Debug("Failed, falling back to windowPattern");
                 if (windowPattern != null)
                 {
                     windowPattern.Close();
@@ -129,6 +136,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
             catch (ElementNotAvailableException)
             {
+                Logger.Debug("Failed, falling back to windowPattern");
                 if (windowPattern != null)
                 {
                     windowPattern.Close();

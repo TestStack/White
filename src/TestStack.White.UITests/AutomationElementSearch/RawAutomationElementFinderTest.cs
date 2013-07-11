@@ -35,10 +35,9 @@ namespace TestStack.White.UITests.AutomationElementSearch
             yield return WindowsFramework.Wpf;
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             CoreAppXmlConfiguration.Instance.RawElementBasedSearch = false;
-            base.Dispose();
         }
     }
 }

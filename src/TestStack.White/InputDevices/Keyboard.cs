@@ -147,7 +147,7 @@ namespace White.Core.InputDevices
 
         private void SendKeyUp(short b, bool specialKey)
         {
-            if (!keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
+            if (!keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
             keysHeld.Remove(b);
             KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
             SendInput(GetInputFor(b, keyUpDown));

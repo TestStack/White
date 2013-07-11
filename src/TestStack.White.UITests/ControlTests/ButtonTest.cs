@@ -20,7 +20,7 @@ namespace TestStack.White.UITests.ControlTests
         {
             var exception = Assert.Throws<AutomationException>(()=>MainWindow.Get<Button>(SearchCriteria.ByAutomationId("foo")));
 
-            Assert.Equal("Failed to get ControlType=button,AutomationId=foo", exception.Message);
+            Assert.Equal("Failed to get (ControlType=button or ControlType=check box),AutomationId=foo", exception.Message);
         }
 
         public void RaiseClickEvent()

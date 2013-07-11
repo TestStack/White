@@ -26,7 +26,7 @@ namespace White.Core.UIItems.Finders
         [DataMember]
         private Type customItemType;
 
-        private SearchCriteria() {}
+        private SearchCriteria() { }
 
         private SearchCriteria(SearchCondition searchCondition)
         {
@@ -240,12 +240,12 @@ namespace White.Core.UIItems.Finders
 
         private void InferCustomItemType(Type testControlType)
         {
-            customItemType = typeof (CustomUIItem).IsAssignableFrom(testControlType) ? testControlType : null;
+            customItemType = typeof(CustomUIItem).IsAssignableFrom(testControlType) ? testControlType : null;
         }
 
         internal static SearchCriteria ForMenuBar(WindowsFramework framework)
         {
-            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof (MenuBar), framework));
+            var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(typeof(MenuBar), framework));
             return searchCriteria.NotIdentifiedByText("System Menu Bar");
         }
 

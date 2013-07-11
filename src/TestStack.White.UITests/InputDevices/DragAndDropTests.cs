@@ -12,8 +12,6 @@ namespace TestStack.White.UITests.InputDevices
 {
     public class DragAndDropTests : WhiteTestBase
     {
-        {
-
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(DragAndDrop);

@@ -24,9 +24,8 @@ namespace TestStack.White.UITests.Factory
             Assert.Equal(true, File.Exists("foo.xml"));
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
-            base.Dispose();
             File.Delete("foo.xml");
         }
 

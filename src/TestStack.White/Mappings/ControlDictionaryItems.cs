@@ -17,6 +17,11 @@ namespace White.Core.Mappings
             Add(ControlDictionaryItem.WPFPrimary(testControlType, controlType));
         }
 
+        public virtual void AddWPFSecondary(Type testControlType, ControlType controlType)
+        {
+            Add(ControlDictionaryItem.WPFSecondary(testControlType, controlType));
+        }
+
         public virtual void AddWinFormPrimary(Type testControlType, ControlType controlType)
         {
             Add(ControlDictionaryItem.WinFormPrimary(testControlType, controlType));
@@ -47,15 +52,23 @@ namespace White.Core.Mappings
             Add(ControlDictionaryItem.Secondary(testControlType, controlType, hasPrimaryChildren));
         }
 
-        public virtual ControlDictionaryItem FindBy(ControlType controlType)
+        public virtual ControlDictionaryItem[] FindBy(ControlType controlType)
         {
-            return Find(obj => controlType.Equals(obj.ControlType) && !obj.IsIdentifiedByClassName && !obj.IsIdentifiedByName);
+            return this
+                .Where(obj => controlType.Equals(obj.ControlType) && !obj.IsIdentifiedByClassName && !obj.IsIdentifiedByName)
+                .ToArray();
         }
 
-        public virtual ControlDictionaryItem FindBy(Type testControlType, string frameworkId)
+        public virtual ControlDictionaryItem[] FindBy(Type testControlType, string frameworkId)
         {
-            var frameworkSpecificMatch = this.FirstOrDefault(c => testControlType.IsAssignableFrom(c.TestControlType) && Equals(c.FrameworkId, frameworkId));
-            return frameworkSpecificMatch ?? this.FirstOrDefault(c => testControlType.IsAssignableFrom(c.TestControlType) && string.IsNullOrEmpty(c.FrameworkId));
+            var frameworkSpecificMatch = this
+                .Where(c => testControlType.IsAssignableFrom(c.TestControlType) && Equals(c.FrameworkId, frameworkId))
+                .ToArray();
+            return frameworkSpecificMatch.Any()
+                ? frameworkSpecificMatch
+                : this
+                    .Where(c => testControlType.IsAssignableFrom(c.TestControlType) && string.IsNullOrEmpty(c.FrameworkId))
+                    .ToArray();
         }
 
         public virtual void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType, Type silverlightType)

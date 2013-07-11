@@ -60,9 +60,11 @@ namespace White.Core.UIItems.Container
 
         public virtual List<T> FindAll<T>()
         {
-            return current
-                .GetAll(SearchCriteria.ByControlType(ControlDictionary.Instance.GetControlType(typeof(T), automationElement.Current.FrameworkId)))
-                .OfType<T>()
+            return ControlDictionary.Instance
+                .GetControlType(typeof (T), automationElement.Current.FrameworkId)
+                .SelectMany(ct => current
+                    .GetAll(SearchCriteria.ByControlType(ct))
+                    .OfType<T>())
                 .ToList();
         }
 

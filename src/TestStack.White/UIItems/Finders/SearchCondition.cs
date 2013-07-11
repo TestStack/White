@@ -8,6 +8,7 @@ namespace White.Core.UIItems.Finders
     [KnownType(typeof(IndexCondition))]
     [KnownType(typeof(NotCondition))]
     [KnownType(typeof(SimpleSearchCondition))]
+    [KnownType(typeof(OrSearchCondition))]
     public abstract class SearchCondition
     {
         public virtual List<AutomationElement> Filter(List<AutomationElement> automationElements)

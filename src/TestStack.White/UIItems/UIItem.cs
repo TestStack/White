@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
@@ -386,7 +387,13 @@ namespace White.Core.UIItems
 
         protected virtual void EnterData(string value)
         {
-            keyboard.Send(value, actionListener);
+            var lines = value.Replace("\r\n", "\n").Split('\n');
+            keyboard.Send(lines[0], actionListener);
+            foreach (var line in lines.Skip(1))
+            {
+                keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
+                keyboard.Send(line, actionListener); 
+            }
         }
 
         internal virtual UIItemContainer AsContainer()

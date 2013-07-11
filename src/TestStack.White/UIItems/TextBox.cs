@@ -1,15 +1,12 @@
-using System;
 using System.Windows.Automation;
 using White.Core.Recording;
 using White.Core.UIA;
 using White.Core.UIItemEvents;
 using White.Core.UIItems.Actions;
-using White.Core.UIItems.ListViewItems;
-using Action=White.Core.UIItems.Actions.Action;
 
 namespace White.Core.UIItems
 {
-    public class TextBox : UIItem
+    public class TextBox : UIItem, Scrollable
     {
         private AutomationPropertyChangedEventHandler handler;
         protected TextBox() {}
@@ -25,7 +22,12 @@ namespace White.Core.UIItems
             {
                 if (automationElement.Current.IsPassword)
                     throw new WhiteException("Text cannot be retrieved from textbox which has secret text (e.g. password) stored in it");
-                return ((ValuePattern) Pattern(ValuePattern.Pattern)).Current.Value;
+                var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+                if (pattern != null) return pattern.Current.Value;
+                var textPattern = Pattern(TextPattern.Pattern) as TextPattern;
+                if (textPattern != null) return textPattern.DocumentRange.GetText(int.MaxValue);
+
+                throw new WhiteException(string.Format("AutomationElement for {0} supports neither ValuePattern or TextPattern", ToString()));
             }
             set { Enter(value); }
         }
@@ -39,9 +41,16 @@ namespace White.Core.UIItems
             {
                 try
                 {
-                    ((ValuePattern) Pattern(ValuePattern.Pattern)).SetValue(value);
+                    var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+                    if (pattern != null) pattern.SetValue(value);
+                    else
+                    {
+                        Logger.WarnFormat("BulkText failed, {0} does not support ValuePattern. Trying Text", ToString());
+                        Text = value;
+                        actionListener.ActionPerformed(Action.WindowMessage);
+                    }
                 }
-                catch (InvalidOperationException)
+                catch (System.InvalidOperationException)
                 {
                     Logger.Warn("BulkText failed, now trying Text on " + ToString());
                     Text = value;
@@ -81,18 +90,6 @@ namespace White.Core.UIItems
         public override void SetValue(object value)
         {
             BulkText = value.ToString();
-        }
-    }
-
-    [PlatformSpecificItem]
-    public class WinFormTextBox : TextBox
-    {
-        public WinFormTextBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
-        public WinFormTextBox() {}
-
-        public virtual SuggestionList SuggestionList
-        {
-            get { return SuggestionListView.WaitAndFind(actionListener); }
         }
     }
 }

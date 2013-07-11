@@ -161,6 +161,7 @@
     <Compile Include="UIItems\Custom\CustomUIItemType.cs" />
     <Compile Include="UIItems\Finders\AutomationElementProperty.cs" />
     <Compile Include="UIItems\Finders\ControlTypeProperty.cs" />
+    <Compile Include="UIItems\Finders\OrSearchCondition.cs" />
     <Compile Include="UIItems\Finders\SearchConditionFactory.cs" />
     <Compile Include="UIItems\Finders\SimpleSearchCondition.cs" />
     <Compile Include="UIItems\Finders\TestControlTypeX.cs" />
@@ -191,7 +192,7 @@
     <Compile Include="UIItems\Panel.cs" />
     <Compile Include="UIItems\Scrolling\ComboBoxScrollBars.cs" />
     <Compile Include="UIItems\Scrolling\WinFormScrollBars.cs" />
-    <Compile Include="UIItems\WPFButton.cs" />
+    <Compile Include="UIItems\WinFormTextBox.cs" />
     <Compile Include="UIItems\WpfDatePicker.cs" />
     <Compile Include="UIItems\WPFUIItems\WPFUIItem.cs" />
     <Compile Include="Utility\MethodNameResolver.cs" />
@@ -287,7 +288,6 @@
     <Compile Include="UIItems\MenuItems\Menu.cs" />
     <Compile Include="UIItems\MenuItems\Menus.cs" />
     <Compile Include="UIItems\MenuItems\PopUpMenu.cs" />
-    <Compile Include="UIItems\MultilineTextBox.cs" />
     <Compile Include="UIItems\Container\NonCachedContainerItemFactory.cs" />
     <Compile Include="UIItems\PlatformSpecificItemAttribute.cs" />
     <Compile Include="UIItems\ProgressBar.cs" />

@@ -12,7 +12,7 @@ using Xunit;
 
 namespace TestStack.White.UITests
 {
-    public abstract class WhiteTestBase : IDisposable
+    public abstract class WhiteTestBase
     {
         private readonly List<Window> windowsToClose = new List<Window>();
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteTestBase));
@@ -107,6 +107,12 @@ namespace TestStack.White.UITests
 
             public void Dispose()
             {
+                foreach (var window in testBase.windowsToClose)
+                {
+                    if (!window.IsClosed)
+                        window.Close();
+                }
+                testBase.windowsToClose.Clear();
                 testBase.MainWindow.Close();
                 if (!testBase.Application.HasExited)
                 {
@@ -130,16 +136,6 @@ namespace TestStack.White.UITests
             var window = MainWindow.ModalWindow(windowTitle);
             windowsToClose.Add(window);
             return window;
-        }
-
-        public virtual void Dispose()
-        {
-            foreach (var window in windowsToClose)
-            {
-                if (!window.IsClosed)
-                    window.Close();
-            }
-            windowsToClose.Clear();
         }
     }
 }

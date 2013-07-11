@@ -11,7 +11,7 @@ namespace White.Core.Factory
         public virtual IUIItem Create(AutomationElement automationElement, ActionListener actionListener)
         {
             if (automationElement == null) return null;
-            return Create(automationElement, ControlDictionary.Instance.GetTestType(automationElement), actionListener);
+            return Create(automationElement, ControlDictionary.Instance.GetTestControlType(automationElement), actionListener);
         }
 
         public virtual IUIItem Create(AutomationElement automationElement, ActionListener actionListener, Type customItemType)

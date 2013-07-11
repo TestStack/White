@@ -34,8 +34,8 @@ namespace TestStack.White.UITests.ControlTests.InputControls
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            yield return WindowsFramework.Wpf;
             yield return WindowsFramework.WinForms;
+            yield return WindowsFramework.Wpf;
         }
     }
 }

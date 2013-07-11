@@ -218,7 +218,6 @@ namespace White.Core.InputDevices
             Location = startPosition;
             HoldForDrag();
             var dragStepFraction = (float) (1.0/CoreAppXmlConfiguration.Instance.DragStepCount);
-            logger.Info(CoreAppXmlConfiguration.Instance.DragStepCount + ":" + dragStepFraction);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
                 double newX = startPosition.X + (endPosition.X - startPosition.X)*(dragStepFraction*i);

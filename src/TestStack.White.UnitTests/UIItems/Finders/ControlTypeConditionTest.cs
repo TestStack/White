@@ -10,7 +10,7 @@ namespace White.Core.UnitTests.UIItems.Finders
         [Fact]
         public void ControlTypeCondition()
         {
-            Assert.Equal("ControlType=button", SearchConditionFactory.CreateForControlType(typeof (Button), WindowsFramework.Wpf).ToString());
+            Assert.Equal("(ControlType=button or ControlType=check box)", SearchConditionFactory.CreateForControlType(typeof (Button), WindowsFramework.Wpf).ToString());
             Assert.Equal("ControlType=pane", SearchConditionFactory.CreateForControlType(typeof(TestCustomUIItem), WindowsFramework.Wpf).ToString());
             Assert.Equal("ControlType=menu bar", SearchConditionFactory.CreateForControlType(typeof(MenuBar), WindowsFramework.WinForms).ToString());
             Assert.Equal("ControlType=menu", SearchConditionFactory.CreateForControlType(typeof (MenuBar), WindowsFramework.Wpf).ToString());

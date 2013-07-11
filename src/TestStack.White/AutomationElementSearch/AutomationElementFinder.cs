@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
+using White.Core.Configuration;
 using White.Core.UIItems.Finders;
 using System.Linq;
 

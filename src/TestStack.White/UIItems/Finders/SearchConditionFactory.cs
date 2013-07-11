@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Windows.Automation;
 using White.Core.Mappings;
 using White.Core.UIItems.Custom;
@@ -12,12 +13,15 @@ namespace White.Core.UIItems.Finders
             return new SimpleSearchCondition(automationElement => automationElement.Current.ControlType, new ControlTypeProperty(controlType, "ControlType"));
         }
 
-        public static SimpleSearchCondition CreateForControlType(Type testControlType, WindowsFramework framework)
+        public static SearchCondition CreateForControlType(Type testControlType, WindowsFramework framework)
         {
-            ControlType controlType = testControlType.IsCustomType()
-                                          ? CustomControlTypeMapping.ControlType(testControlType)
-                                          : ControlDictionary.Instance.GetControlType(testControlType, framework);
-            return CreateForControlType(controlType);
+            if (testControlType.IsCustomType())
+                return CreateForControlType(CustomControlTypeMapping.ControlType(testControlType));
+            var controlTypes = ControlDictionary.Instance.GetControlType(testControlType, framework);
+            if (controlTypes.Length == 1)
+                return CreateForControlType(controlTypes[0]);
+
+            return new OrSearchCondition(controlTypes.Select(CreateForControlType).ToArray());
         }
 
         /// <summary>
