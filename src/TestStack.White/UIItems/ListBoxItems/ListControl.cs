@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
@@ -15,10 +14,9 @@ namespace White.Core.UIItems.ListBoxItems
     public class ListControl : UIItem, ListItemContainer, VerticalSpanProvider
     {
         protected AutomationElementFinder Finder;
-        protected ListControl() { }
+        protected ListControl() {}
 
-        public ListControl(AutomationElement automationElement, ActionListener actionListener)
-            : base(automationElement, actionListener)
+        public ListControl(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
             Finder = new AutomationElementFinder(automationElement);
         }
@@ -30,68 +28,27 @@ namespace White.Core.UIItems.ListBoxItems
         {
             get
             {
-                var children = GetChildren();
-                return new ListItems(children, this);
+                ExpandListIfNeeded();
+                return new ListItems(Finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.ListItem)), this);
             }
         }
 
-        private List<AutomationElement> GetChildren()
+        internal virtual void ExpandListIfNeeded()
         {
-            ExpandCollapsePattern expandCollapsePattern;
-            var expanded = ExpandListIfNeeded(out expandCollapsePattern);
+            if (!CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return;
+            if (!Enabled) return;
 
-            var children = Finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.ListItem));
+            object expandCollapse;
 
-            if (expanded)
+            if (!AutomationElement.TryGetCurrentPattern(ExpandCollapsePattern.Pattern, out expandCollapse)) return;
+
+            var state = (ExpandCollapseState) automationElement
+                .GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
+            if (state == ExpandCollapseState.Collapsed)
             {
-                CollapseList(expandCollapsePattern);
+                ((ExpandCollapsePattern)expandCollapse).Expand();
+                Thread.Sleep(50);
             }
-            return children;
-        }
-
-        private static void CollapseList(ExpandCollapsePattern expandCollapsePattern)
-        {
-            expandCollapsePattern.Collapse();
-            Thread.Sleep(50);
-        }
-
-        private bool TryGetExpandCollapsePattern(out ExpandCollapsePattern expandCollapsePattern)
-        {
-            object pattern;
-            if (!AutomationElement.TryGetCurrentPattern(ExpandCollapsePattern.Pattern, out pattern))
-            {
-                expandCollapsePattern = null;
-                return false;
-            }
-
-            expandCollapsePattern = (ExpandCollapsePattern)pattern;
-            return true;
-        }
-
-        private static bool IsExpansionRequired
-        {
-            get { return CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen; }
-        }
-
-        private bool ExpandListIfNeeded(out ExpandCollapsePattern expandCollapsePattern)
-        {
-            if (!IsExpansionRequired || !Enabled)
-            {
-                expandCollapsePattern = null;
-                return false;
-            }
-
-            if (!TryGetExpandCollapsePattern(out expandCollapsePattern))
-                return false;
-
-            var expansionState = expandCollapsePattern.Current.ExpandCollapseState;
-            if (expansionState != ExpandCollapseState.Collapsed)
-                return false;
-
-            expandCollapsePattern.Expand();
-            Thread.Sleep(50);
-
-            return true;
         }
 
         public virtual ListItem Item(string itemText)
