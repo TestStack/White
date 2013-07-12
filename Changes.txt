@@ -1,4 +1,5 @@
 vNext
+ - BREAKING: White Namespace changed from White.Core to TestStack.White
  - Fix: Expandable lists now restore their previous expansion (after the items have been retrieved), if `ComboBoxItemsPopulatedWithoutDropDownOpen` is set to false
 
 Version 0.10.3
