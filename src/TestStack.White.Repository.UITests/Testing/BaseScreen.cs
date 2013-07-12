@@ -1,7 +1,7 @@
 ﻿using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Repository.UITests.Testing
+namespace TestStack.White.Repository.UITests.Testing
 {
     public class BaseScreen : AppScreen
     {

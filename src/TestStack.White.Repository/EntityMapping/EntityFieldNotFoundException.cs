@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Repository.EntityMapping
+namespace TestStack.White.Repository.EntityMapping
 {
     [Serializable]
     public class EntityFieldNotFoundException : Exception

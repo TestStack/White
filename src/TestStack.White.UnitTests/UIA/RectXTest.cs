@@ -2,7 +2,7 @@ using System.Windows;
 using White.Core.UIA;
 using Xunit;
 
-namespace White.Core.UnitTests.UIA
+namespace TestStack.White.Core.UnitTests.UIA
 {
     public class RectXTest
     {

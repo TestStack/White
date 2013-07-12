@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Windows.Automation;
+using White.Core;
 using White.Core.Mappings;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
@@ -7,7 +8,7 @@ using White.Core.UIItems.PropertyGridItems;
 using White.Core.UIItems.WindowStripControls;
 using Xunit;
 
-namespace White.Core.UnitTests.Mappings
+namespace TestStack.White.Core.UnitTests.Mappings
 {
     public class ControlDictionaryTest
     {

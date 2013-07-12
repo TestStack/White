@@ -1,8 +1,9 @@
 using System.Windows.Automation;
+using White.Core;
 using White.Core.UIItems.Finders;
 using Xunit;
 
-namespace White.Core.UnitTests.UIItems.Finders
+namespace TestStack.White.Core.UnitTests.UIItems.Finders
 {
     public class SearchCriteriaTest
     {

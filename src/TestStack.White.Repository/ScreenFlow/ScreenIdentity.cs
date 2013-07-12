@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Repository.ScreenFlow
+namespace TestStack.White.Repository.ScreenFlow
 {
     public class ScreenIdentity
     {

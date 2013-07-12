@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using TestStack.White.Repository.EntityMapping;
+using TestStack.White.Repository.Interceptors;
+using TestStack.White.Repository.ScreenAttributes;
 using White.Core.Bricks;
 using White.Core.SystemExtensions;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
-using White.Repository.EntityMapping;
-using White.Repository.Interceptors;
-using White.Repository.ScreenAttributes;
 
-namespace White.Repository
+namespace TestStack.White.Repository
 {
     public class ScreenClass
     {

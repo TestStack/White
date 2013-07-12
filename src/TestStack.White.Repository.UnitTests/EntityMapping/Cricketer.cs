@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using TestStack.White.Repository.EntityMapping;
 using White.Core.UIItems.TableItems;
-using White.Repository.EntityMapping;
 
-namespace White.Repository.UnitTests.EntityMapping
+namespace TestStack.White.Repository.UnitTests.EntityMapping
 {
     public class Cricketer : Entity
     {

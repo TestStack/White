@@ -1,4 +1,4 @@
-namespace Reporting.Configuration
+namespace TestStack.White.Reporting.Configuration
 {
     public interface ReportingConfiguration
     {

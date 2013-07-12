@@ -1,14 +1,14 @@
 using System;
+using TestStack.White.Repository.ScreenAttributes;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UIItems.TabItems;
 using White.Core.UIItems.TreeItems;
 using White.Core.UIItems.WindowItems;
-using White.Repository.ScreenAttributes;
 using Xunit;
 
-namespace White.Repository.UITests.Testing
+namespace TestStack.White.Repository.UITests.Testing
 {
     //TODO: Why do the tests continue running even after it has finished
     // ReSharper disable FieldCanBeMadeReadOnly.Local

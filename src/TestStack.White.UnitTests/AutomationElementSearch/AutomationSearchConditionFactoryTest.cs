@@ -3,7 +3,7 @@ using System.Windows.Automation;
 using White.Core.AutomationElementSearch;
 using Xunit;
 
-namespace White.Core.UnitTests.AutomationElementSearch
+namespace TestStack.White.Core.UnitTests.AutomationElementSearch
 {
     public class AutomationSearchConditionFactoryTest
     {

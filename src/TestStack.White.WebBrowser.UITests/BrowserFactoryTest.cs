@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace White.WebBrowser.UITests
+namespace TestStack.White.WebBrowser.UITests
 {
     public class BrowserFactoryTest : IDisposable
     {

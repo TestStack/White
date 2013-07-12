@@ -3,7 +3,7 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowStripControls;
 using Xunit;
 
-namespace White.Core.UnitTests.UIItems.Finders
+namespace TestStack.White.Core.UnitTests.UIItems.Finders
 {
     public class ControlTypeConditionTest
     {

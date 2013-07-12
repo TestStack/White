@@ -3,7 +3,7 @@ using White.Core.Factory;
 using White.Core.Sessions;
 using White.Core.UIItems.WindowItems;
 
-namespace White.WebBrowser
+namespace TestStack.White.WebBrowser
 {
     public class InternetExplorerFactory : SpecializedWindowFactory
     {

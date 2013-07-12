@@ -8,8 +8,8 @@
     <ProjectGuid>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.WebBrowser</RootNamespace>
-    <AssemblyName>White.WebBrowser</AssemblyName>
+    <RootNamespace>TestStack.White.WebBrowser</RootNamespace>
+    <AssemblyName>TestStack.White.WebBrowser</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>

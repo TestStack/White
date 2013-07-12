@@ -1,13 +1,13 @@
 using System;
 using Castle.DynamicProxy;
+using TestStack.White.Reporting.Domain;
 using White.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
-using Reporting.Domain;
 
-namespace White.Repository.Interceptors
+namespace TestStack.White.Repository.Interceptors
 {
     /// <summary>
     /// Lazily initializes the UIItem.

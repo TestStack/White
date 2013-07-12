@@ -8,8 +8,8 @@
     <ProjectGuid>{FF4C5653-D6B8-4E17-82B1-E23D52F1C49F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.WebBrowser.UITests</RootNamespace>
-    <AssemblyName>White.WebBrowser.UITests</AssemblyName>
+    <RootNamespace>TestStack.White.WebBrowser.UITests</RootNamespace>
+    <AssemblyName>TestStack.White.WebBrowser.UITests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SignAssembly>true</SignAssembly>

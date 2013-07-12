@@ -1,7 +1,7 @@
 using System;
 using White.Core.UIItems.Finders;
 
-namespace White.Repository.ScreenAttributes
+namespace TestStack.White.Repository.ScreenAttributes
 {
     public abstract class SearchCriteriaAttribute : Attribute
     {

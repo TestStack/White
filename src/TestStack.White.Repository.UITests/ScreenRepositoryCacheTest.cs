@@ -4,7 +4,7 @@ using White.Core.Factory;
 using White.Core.Sessions;
 using Xunit;
 
-namespace White.Repository.UITests
+namespace TestStack.White.Repository.UITests
 {
     public class ScreenRepositoryCacheTest
     {

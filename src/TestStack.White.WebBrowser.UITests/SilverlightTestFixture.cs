@@ -4,7 +4,7 @@ using System.IO;
 using System.Reflection;
 using White.Core.Configuration;
 
-namespace White.WebBrowser.UITests
+namespace TestStack.White.WebBrowser.UITests
 {
     public abstract class SilverlightTestFixture : IDisposable
     {

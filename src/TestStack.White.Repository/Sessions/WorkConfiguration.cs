@@ -1,7 +1,7 @@
-using Reporting.Configuration;
-using Reporting.Domain;
+using TestStack.White.Reporting.Configuration;
+using TestStack.White.Reporting.Domain;
 
-namespace White.Repository.Sessions
+namespace TestStack.White.Repository.Sessions
 {
     public class WorkConfiguration
     {

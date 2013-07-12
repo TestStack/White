@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TestStack.White.Repository;
 using Todo.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
@@ -8,7 +9,6 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.ListBoxItems;
 using White.Core.UIItems.WPFUIItems;
 using White.Core.UIItems.WindowItems;
-using White.Repository;
 
 namespace WpfTodo.UITests.Screens
 {

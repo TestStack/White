@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
-using Reporting.Configuration;
-using Reporting.Domain;
+using TestStack.White.Reporting.Configuration;
+using TestStack.White.Reporting.Domain;
+using TestStack.White.Repository.Configuration;
 using White.Core.Bricks;
-using White.Repository.Configuration;
 
-namespace White.Repository.Services
+namespace TestStack.White.Repository.Services
 {
     public class WhiteExecution : IDisposable
     {

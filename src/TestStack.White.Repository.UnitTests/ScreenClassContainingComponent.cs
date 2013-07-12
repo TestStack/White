@@ -1,6 +1,6 @@
 using White.Core.UIItems.WindowItems;
 
-namespace White.Repository.UnitTests
+namespace TestStack.White.Repository.UnitTests
 {
     public class ScreenClassContainingComponent : AppScreen
     {

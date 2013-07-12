@@ -1,7 +1,7 @@
 using White.Core.SystemExtensions;
 using Xunit;
 
-namespace White.Core.UnitTests.SystemExtensions
+namespace TestStack.White.Core.UnitTests.SystemExtensions
 {
     public class DoubleXTest
     {

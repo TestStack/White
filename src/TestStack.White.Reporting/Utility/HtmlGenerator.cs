@@ -1,7 +1,7 @@
 using System.Text;
-using Reporting.Domain;
+using TestStack.White.Reporting.Domain;
 
-namespace Reporting.Utility
+namespace TestStack.White.Reporting.Utility
 {
     public class HtmlGenerator
     {

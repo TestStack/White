@@ -8,8 +8,8 @@
     <ProjectGuid>{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.Repository.UnitTests</RootNamespace>
-    <AssemblyName>White.Repository.UnitTests</AssemblyName>
+    <RootNamespace>TestStack.White.Repository.UnitTests</RootNamespace>
+    <AssemblyName>TestStack.White.Repository.UnitTests</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>

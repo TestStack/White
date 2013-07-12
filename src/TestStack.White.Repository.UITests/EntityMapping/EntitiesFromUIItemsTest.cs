@@ -1,13 +1,13 @@
 using System;
+using TestStack.White.Repository.EntityMapping;
+using TestStack.White.Repository.UnitTests.EntityMapping;
 using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.UIItems.TableItems;
 using White.Core.UIItems.WindowItems;
-using White.Repository.EntityMapping;
-using White.Repository.UnitTests.EntityMapping;
 using Xunit;
 
-namespace White.Repository.UITests.EntityMapping
+namespace TestStack.White.Repository.UITests.EntityMapping
 {
     public class EntitiesFromUIItemsTest : IDisposable
     {

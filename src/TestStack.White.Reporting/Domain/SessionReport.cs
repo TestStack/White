@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Reporting.Domain
+namespace TestStack.White.Reporting.Domain
 {
     public class SessionReport : IReport
     {

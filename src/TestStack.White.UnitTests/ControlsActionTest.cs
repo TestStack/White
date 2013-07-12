@@ -1,3 +1,3 @@
-namespace Testing
+namespace TestStack.White.Core.UnitTests
 {
 }

@@ -1,9 +1,9 @@
+using TestStack.White.Repository.ScreenAttributes;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
-using White.Repository.ScreenAttributes;
 using Xunit;
 
-namespace White.Repository.UITests.Testing
+namespace TestStack.White.Repository.UITests.Testing
 {
     [ScreenComponent]
     public class MainProgressBars : AppScreenComponent

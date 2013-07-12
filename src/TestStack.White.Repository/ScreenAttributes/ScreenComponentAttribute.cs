@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Repository.ScreenAttributes
+namespace TestStack.White.Repository.ScreenAttributes
 {
     public class ScreenComponentAttribute : Attribute {}
 }

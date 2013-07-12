@@ -2,7 +2,7 @@ using System;
 using Castle.DynamicProxy;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Repository.Interceptors
+namespace TestStack.White.Repository.Interceptors
 {
     public class WindowInterceptor : IInterceptor
     {

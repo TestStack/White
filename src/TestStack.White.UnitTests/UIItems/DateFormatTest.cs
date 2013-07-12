@@ -1,7 +1,7 @@
 using White.Core.UIItems;
 using Xunit;
 
-namespace White.Core.UnitTests.UIItems
+namespace TestStack.White.Core.UnitTests.UIItems
 {
     public class DateFormatTest
     {

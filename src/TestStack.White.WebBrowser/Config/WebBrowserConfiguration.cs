@@ -1,4 +1,4 @@
-namespace White.WebBrowser.Config
+namespace TestStack.White.WebBrowser.Config
 {
     public interface WebBrowserConfiguration
     {

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using TestStack.White.WebBrowser.Config;
 using White.Core;
 using White.Core.UIItems.WindowItems;
-using White.WebBrowser.Config;
 
-namespace White.WebBrowser
+namespace TestStack.White.WebBrowser
 {
     public class Firefox
     {

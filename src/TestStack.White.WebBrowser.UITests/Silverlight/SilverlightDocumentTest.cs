@@ -1,12 +1,12 @@
+using TestStack.White.WebBrowser.Silverlight;
 using White.Core;
 using White.Core.InputDevices;
+using White.Core.UIA;
 using White.Core.UIItems;
 using White.Core.UIItems.ListBoxItems;
-using White.WebBrowser.Silverlight;
-using White.Core.UIA;
 using Xunit;
 
-namespace White.WebBrowser.UITests.Silverlight
+namespace TestStack.White.WebBrowser.UITests.Silverlight
 {
     public class SilverlightDocumentTest : SilverlightTestFixture
     {

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using Castle.Core.Logging;
 using White.Core.Configuration;
 
-namespace White.Repository.ScreenFlow
+namespace TestStack.White.Repository.ScreenFlow
 {
     //TODO: Add the ability to run the tests at different speeds
     //TODO: Dump of the screen shot when the test fails

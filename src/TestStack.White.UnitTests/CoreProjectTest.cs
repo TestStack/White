@@ -7,7 +7,7 @@ using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 using Xunit;
 
-namespace White.Core.UnitTests
+namespace TestStack.White.Core.UnitTests
 {
     public class CoreProjectTest
     {

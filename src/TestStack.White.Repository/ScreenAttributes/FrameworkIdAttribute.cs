@@ -2,7 +2,7 @@ using System;
 using White.Core.UIItems;
 using White.Core.UIItems.Finders;
 
-namespace White.Repository.ScreenAttributes
+namespace TestStack.White.Repository.ScreenAttributes
 {
     [AttributeUsage(AttributeTargets.Field)]
     public class FrameworkIdAttribute : SearchCriteriaAttribute

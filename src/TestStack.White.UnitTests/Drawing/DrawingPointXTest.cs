@@ -2,7 +2,7 @@ using System.Drawing;
 using White.Core.Drawing;
 using Xunit;
 
-namespace White.Core.UnitTests.Drawing
+namespace TestStack.White.Core.UnitTests.Drawing
 {
     public class DrawingPointXTest
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Reporting.Domain
+namespace TestStack.White.Reporting.Domain
 {
     public class SubFlowStep
     {

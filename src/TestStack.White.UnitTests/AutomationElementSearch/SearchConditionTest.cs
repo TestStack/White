@@ -2,7 +2,7 @@ using White.Core.AutomationElementSearch;
 using White.Core.UIItems.Finders;
 using Xunit;
 
-namespace White.Core.UnitTests.AutomationElementSearch
+namespace TestStack.White.Core.UnitTests.AutomationElementSearch
 {
     public class SearchConditionTest
     {

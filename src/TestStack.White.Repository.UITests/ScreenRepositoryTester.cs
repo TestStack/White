@@ -1,10 +1,10 @@
 using System;
+using TestStack.White.Repository.UITests.Testing;
 using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Factory;
-using White.Repository.UITests.Testing;
 
-namespace White.Repository.UITests
+namespace TestStack.White.Repository.UITests
 {
     public class ScreenRepositoryTester : IDisposable
     {

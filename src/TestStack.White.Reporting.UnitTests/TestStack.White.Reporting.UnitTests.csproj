@@ -8,8 +8,8 @@
     <ProjectGuid>{2C48DDD5-11AD-4959-AA76-8D1D90484CD2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.Reporting.UnitTests</RootNamespace>
-    <AssemblyName>White.Reporting.UnitTests</AssemblyName>
+    <RootNamespace>TestStack.White.Reporting.UnitTests</RootNamespace>
+    <AssemblyName>TestStack.White.Reporting.UnitTests</AssemblyName>
     <StartupObject>
     </StartupObject>
     <FileUpgradeFlags>

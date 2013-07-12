@@ -1,4 +1,4 @@
-namespace Reporting.Domain
+namespace TestStack.White.Reporting.Domain
 {
     public class ScreenShot
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using Reporting.Domain;
+using TestStack.White.Reporting.Domain;
 using White.Core.SystemExtensions;
 using Xunit;
 
-namespace White.Reporting.UnitTests
+namespace TestStack.White.Reporting.UnitTests
 {
     public class ReportingCodebaseTest
     {

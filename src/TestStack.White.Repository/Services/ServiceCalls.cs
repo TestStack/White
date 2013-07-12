@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace White.Repository.Services
+namespace TestStack.White.Repository.Services
 {
     public class ServiceCalls : List<ServiceCall>
     {

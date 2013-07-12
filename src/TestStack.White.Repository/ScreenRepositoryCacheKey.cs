@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Repository
+namespace TestStack.White.Repository
 {
     public class ScreenRepositoryCacheKey
     {

@@ -1,4 +1,4 @@
-namespace White.Repository.Services
+namespace TestStack.White.Repository.Services
 {
     public class NullExecutionHistory : ExecutionHistory
     {

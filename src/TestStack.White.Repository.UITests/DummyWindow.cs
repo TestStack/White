@@ -5,7 +5,7 @@ using White.Core.UIItems.Finders;
 using White.Core.UIItems.MenuItems;
 using White.Core.UIItems.WindowItems;
 
-namespace White.Repository.UITests
+namespace TestStack.White.Repository.UITests
 {
     public class DummyWindow : Window
     {

@@ -1,6 +1,6 @@
-using White.Repository.EntityMapping;
+using TestStack.White.Repository.EntityMapping;
 
-namespace White.Repository.UnitTests.EntityMapping
+namespace TestStack.White.Repository.UnitTests.EntityMapping
 {
     internal class NestedEntity : Entity
     {

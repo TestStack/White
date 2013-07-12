@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Repository.ScreenFlow
+namespace TestStack.White.Repository.ScreenFlow
 {
     //TODO: Reporting of graph can be done on web
     public class WorkReport : ScreenRepositoryListener

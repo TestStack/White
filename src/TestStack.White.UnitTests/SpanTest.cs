@@ -1,7 +1,8 @@
 using System.Windows;
+using White.Core;
 using Xunit;
 
-namespace White.Core.UnitTests
+namespace TestStack.White.Core.UnitTests
 {
     public class SpanTest
     {

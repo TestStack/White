@@ -1,7 +1,7 @@
 using White.Core.Configuration;
 using Xunit;
 
-namespace White.Core.UnitTests.Configuration
+namespace TestStack.White.Core.UnitTests.Configuration
 {
     public class UIItemIdAppXmlConfigurationTest
     {

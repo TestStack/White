@@ -1,6 +1,6 @@
 using White.Core.UIItems.WindowItems;
 
-namespace White.Repository
+namespace TestStack.White.Repository
 {
     public class RepositoryComponent
     {

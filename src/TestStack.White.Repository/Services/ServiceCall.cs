@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace White.Repository.Services
+namespace TestStack.White.Repository.Services
 {
     public class ServiceCall : IEquatable<ServiceCall>
     {

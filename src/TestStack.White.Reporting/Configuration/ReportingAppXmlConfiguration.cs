@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using White.Core.Bricks;
 using White.Core.Configuration;
 
-namespace Reporting.Configuration
+namespace TestStack.White.Reporting.Configuration
 {
     public class ReportingAppXmlConfiguration : AssemblyConfiguration, ReportingConfiguration
     {

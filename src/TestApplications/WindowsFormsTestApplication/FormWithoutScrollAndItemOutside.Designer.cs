@@ -1,4 +1,4 @@
-namespace WinFormsTestApp
+namespace WindowsFormsTestApplication
 {
     partial class FormWithoutScrollAndItemOutside
     {

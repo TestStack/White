@@ -6,7 +6,7 @@ using White.Core.UIA;
 using White.Core.UIItems.Finders;
 using Xunit;
 
-namespace White.Core.UnitTests.ScreenMap
+namespace TestStack.White.Core.UnitTests.ScreenMap
 {
     public class WindowItemsMapTest
     {
@@ -28,7 +28,7 @@ namespace White.Core.UnitTests.ScreenMap
 
         private InitializeOption InitializeOption()
         {
-            return Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
+            return global::White.Core.Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
         }
 
         [Fact]

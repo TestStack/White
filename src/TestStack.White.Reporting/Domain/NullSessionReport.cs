@@ -1,6 +1,6 @@
 using System;
 
-namespace Reporting.Domain
+namespace TestStack.White.Reporting.Domain
 {
     public class NullSessionReport : IReport
     {

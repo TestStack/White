@@ -1,7 +1,7 @@
-using White.Repository.Services;
+using TestStack.White.Repository.Services;
 using Xunit;
 
-namespace White.Repository.UnitTests.Services
+namespace TestStack.White.Repository.UnitTests.Services
 {
     public class ServiceCallTest
     {

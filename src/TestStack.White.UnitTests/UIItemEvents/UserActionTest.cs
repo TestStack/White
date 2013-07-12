@@ -3,7 +3,7 @@ using White.Core.UIItemEvents;
 using White.Core.UIItems;
 using Xunit;
 
-namespace White.Core.UnitTests.UIItemEvents
+namespace TestStack.White.Core.UnitTests.UIItemEvents
 {
     public class UserActionTest
     {

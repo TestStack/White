@@ -3,7 +3,7 @@ using System.Linq;
 using White.Core.SystemExtensions;
 using Xunit;
 
-namespace White.Repository.UnitTests
+namespace TestStack.White.Repository.UnitTests
 {
     public class RepositoryCodebaseTest
     {

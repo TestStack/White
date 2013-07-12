@@ -8,7 +8,7 @@ using White.Core.UIItems.Actions;
 using White.Core.UIItems.Finders;
 using White.Core.UIItems.WindowItems;
 
-namespace White.WebBrowser.Silverlight
+namespace TestStack.White.WebBrowser.Silverlight
 {
     public class SilverlightDocument : UIItemContainer
     {

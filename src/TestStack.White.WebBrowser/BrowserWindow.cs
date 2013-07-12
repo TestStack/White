@@ -1,13 +1,13 @@
 using System.Windows.Automation;
+using TestStack.White.WebBrowser.Silverlight;
 using White.Core.AutomationElementSearch;
 using White.Core.Configuration;
 using White.Core.Factory;
 using White.Core.Sessions;
 using White.Core.UIItems.WindowItems;
 using White.Core.Utility;
-using White.WebBrowser.Silverlight;
 
-namespace White.WebBrowser
+namespace TestStack.White.WebBrowser
 {
     public class BrowserWindow : Win32Window
     {

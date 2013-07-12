@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace White.WebBrowser.UITests.Silverlight
+namespace TestStack.White.WebBrowser.UITests.Silverlight
 {
     public class SilverlightApplicationTest : SilverlightTestFixture
     {

@@ -4,7 +4,7 @@ using System.IO;
 using Castle.Core.Logging;
 using White.Core.Configuration;
 
-namespace Reporting.Domain
+namespace TestStack.White.Reporting.Domain
 {
     public class SubFlows : List<SubFlow>
     {

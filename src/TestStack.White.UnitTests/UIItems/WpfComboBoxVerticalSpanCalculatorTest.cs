@@ -1,8 +1,9 @@
 ﻿using System.Windows;
+using White.Core;
 using White.Core.UIItems.ListBoxItems;
 using Xunit;
 
-namespace White.Core.UnitTests.UIItems
+namespace TestStack.White.Core.UnitTests.UIItems
 {
     public class WpfComboBoxVerticalSpanCalculatorTest
     {

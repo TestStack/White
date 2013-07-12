@@ -2,7 +2,7 @@ using NSubstitute;
 using White.Core.UIItems.WindowItems;
 using Xunit;
 
-namespace White.Repository.UnitTests
+namespace TestStack.White.Repository.UnitTests
 {
     public class ScreenClassTest
     {

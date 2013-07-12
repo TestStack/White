@@ -2,7 +2,7 @@ using System.Windows.Automation;
 using White.Core.Factory;
 using White.Core.Sessions;
 
-namespace White.WebBrowser
+namespace TestStack.White.WebBrowser
 {
     public class InternetExplorerWindow : BrowserWindow
     {

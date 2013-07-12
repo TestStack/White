@@ -1,14 +1,14 @@
 using System.IO;
+using TestStack.White.Repository.Services;
+using TestStack.White.Repository.Sessions;
 using TestStack.White.UITests.Infrastructure;
 using White.Core;
 using White.Core.Factory;
 using White.Core.UIItems;
 using White.Core.UIItems.WindowItems;
-using White.Repository.Services;
-using White.Repository.Sessions;
 using Xunit;
 
-namespace White.Repository.UITests.Sessions
+namespace TestStack.White.Repository.UITests.Sessions
 {
     public class WorkSessionTest
     {

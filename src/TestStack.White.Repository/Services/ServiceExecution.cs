@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using White.Repository.Configuration;
+using TestStack.White.Repository.Configuration;
 
-namespace White.Repository.Services
+namespace TestStack.White.Repository.Services
 {
     public class ServiceExecution
     {

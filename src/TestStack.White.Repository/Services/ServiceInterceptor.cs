@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using Castle.DynamicProxy;
+using TestStack.White.Reporting.Domain;
 using White.Core;
-using Reporting.Domain;
 
-namespace White.Repository.Services
+namespace TestStack.White.Repository.Services
 {
     public class ServiceInterceptor : IInterceptor
     {

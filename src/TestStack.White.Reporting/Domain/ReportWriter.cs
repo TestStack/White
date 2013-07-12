@@ -1,7 +1,7 @@
 using System.IO;
-using Reporting.Utility;
+using TestStack.White.Reporting.Utility;
 
-namespace Reporting.Domain
+namespace TestStack.White.Reporting.Domain
 {
     public class ReportWriter
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using White.Core.Bricks;
 using White.Core.Configuration;
 
-namespace White.WebBrowser.Config
+namespace TestStack.White.WebBrowser.Config
 {
     public class WebBrowserAppXmlConfiguration : AssemblyConfiguration, WebBrowserConfiguration
     {

@@ -1,6 +1,6 @@
 using System.Windows.Forms;
 
-namespace WinFormsTestApp
+namespace WindowsFormsTestApplication
 {
     public partial class FormWithoutScrollAndItemOutside : Form
     {

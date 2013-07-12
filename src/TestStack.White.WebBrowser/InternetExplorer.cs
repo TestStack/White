@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using White.Core;
 
-namespace White.WebBrowser
+namespace TestStack.White.WebBrowser
 {
     public static class InternetExplorer
     {
