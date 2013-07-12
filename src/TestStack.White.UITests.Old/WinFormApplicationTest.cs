@@ -1,9 +1,9 @@
 using NUnit.Framework;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
-using White.Core.UITests.Testing;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests
 {

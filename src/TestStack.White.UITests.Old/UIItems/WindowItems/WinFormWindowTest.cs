@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.MenuItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {

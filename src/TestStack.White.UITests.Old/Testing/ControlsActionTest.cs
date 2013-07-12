@@ -1,8 +1,8 @@
 using System.Configuration;
 using NUnit.Framework;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
-using White.Core.WindowsAPI;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.WindowsAPI;
 
 namespace White.Core.UITests.Testing
 {

@@ -1,11 +1,12 @@
 using System;
 using Castle.Core.Logging;
 using NUnit.Framework;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.InputDevices;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 
 namespace White.Core.UITests.Testing
 {

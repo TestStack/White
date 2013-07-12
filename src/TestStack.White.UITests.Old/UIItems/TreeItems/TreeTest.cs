@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using NUnit.Framework;
-using White.Core.UIItems;
-using White.Core.UIItems.TreeItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.TreeItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TreeItems
 {

@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.Scrolling;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.Scrolling;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {

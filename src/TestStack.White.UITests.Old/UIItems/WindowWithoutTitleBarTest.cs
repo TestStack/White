@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using White.Core.Factory;
-using White.Core.UITests.Testing;
+using TestStack.White.Factory;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {

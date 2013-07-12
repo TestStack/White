@@ -1,9 +1,9 @@
 using System.Threading;
 using System.Windows.Forms;
 using NUnit.Framework;
-using White.Core.InputDevices;
-using White.Core.UITests.Testing;
-using White.Core.WindowsAPI;
+using TestStack.White.InputDevices;
+using TestStack.White.UITests.Testing;
+using TestStack.White.WindowsAPI;
 using TextBox = White.Core.UIItems.TextBox;
 
 namespace White.Core.UITests.UIItems

@@ -2,12 +2,12 @@ using System;
 using System.Linq;
 using System.Windows.Automation;
 using NUnit.Framework;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Custom;
-using White.Core.UIItems.WindowItems;
-using White.Core.UITests.Testing;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Custom;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests
 {

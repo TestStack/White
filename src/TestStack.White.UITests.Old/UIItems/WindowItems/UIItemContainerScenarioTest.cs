@@ -1,7 +1,7 @@
 using System.Windows.Automation;
 using NUnit.Framework;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {

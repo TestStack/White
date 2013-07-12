@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using White.Core.UIItems.TreeItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems.TreeItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TreeItems
 {

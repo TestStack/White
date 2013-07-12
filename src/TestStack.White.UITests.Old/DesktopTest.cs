@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using NUnit.Framework;
-using White.Core.Configuration;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
 namespace White.Core.UITests

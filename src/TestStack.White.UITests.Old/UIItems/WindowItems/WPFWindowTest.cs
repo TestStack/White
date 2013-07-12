@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
 namespace White.Core.UITests.UIItems.WindowItems
 {

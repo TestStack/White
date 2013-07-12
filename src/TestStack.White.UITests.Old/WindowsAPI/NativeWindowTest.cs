@@ -1,9 +1,9 @@
 using System;
 using NUnit.Framework;
-using White.Core.UIA;
-using White.Core.UIItems;
-using White.Core.UITests.Testing;
-using White.Core.WindowsAPI;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
+using TestStack.White.UITests.Testing;
+using TestStack.White.WindowsAPI;
 
 namespace White.Core.UITests.WindowsAPI
 {

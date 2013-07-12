@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using White.Core.UIItems.TableItems;
+using TestStack.White.UIItems.TableItems;
 
 namespace White.Core.UITests.UIItems.TableItems
 {

@@ -1,7 +1,7 @@
 using NUnit.Framework;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowStripControls;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowStripControls;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.WindowStripControls
 {

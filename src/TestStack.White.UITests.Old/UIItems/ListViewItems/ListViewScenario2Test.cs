@@ -1,10 +1,10 @@
 using System.Windows.Automation;
 using NUnit.Framework;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.WPFUIItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.WPFUIItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.ListViewItems
 {

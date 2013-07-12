@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using White.Core.UIItems.TabItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems.TabItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.TabItems
 {

@@ -1,8 +1,8 @@
 using System.Windows.Automation;
 using NUnit.Framework;
-using White.Core.UIItems;
-using White.Core.UIItems.ListViewItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListViewItems;
+using TestStack.White.UITests.Testing;
 using Xunit;
 
 namespace White.Core.UITests.UIItems

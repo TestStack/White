@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using NUnit.Framework;
-using White.Core.UIItems.PropertyGridItems;
-using White.Core.UIItems.WindowItems;
-using White.Core.UITests.Testing;
-using White.Core.WindowsAPI;
+using TestStack.White.UIItems.PropertyGridItems;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UITests.Testing;
+using TestStack.White.WindowsAPI;
 
 namespace White.Core.UITests.UIItems.PropertyGridItems
 {

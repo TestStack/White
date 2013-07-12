@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using White.Core.UIItems.MenuItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems
 {

@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UITests.Testing;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UITests.Testing;
 
 namespace White.Core.UITests.UIItems.ListBoxItems
 {
