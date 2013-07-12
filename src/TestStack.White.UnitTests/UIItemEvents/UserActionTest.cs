@@ -1,9 +1,9 @@
 using NSubstitute;
-using White.Core.UIItemEvents;
-using White.Core.UIItems;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.UIItemEvents
+namespace TestStack.White.UnitTests.UIItemEvents
 {
     public class UserActionTest
     {

@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     /// <summary>
     /// Used to ensure backwards compatibility

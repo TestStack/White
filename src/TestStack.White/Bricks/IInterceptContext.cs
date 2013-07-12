@@ -1,4 +1,4 @@
-﻿namespace White.Core.Bricks
+﻿namespace TestStack.White.Bricks
 {
     public interface IInterceptContext
     {

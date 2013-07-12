@@ -1,11 +1,10 @@
 ﻿using System.Diagnostics;
-using White.Core;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.MenuItems;
-using White.Core.WindowsAPI;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.MenuItems;
+using TestStack.White.WindowsAPI;
 using Xunit;
 
 namespace TestStack.White.UITests.Scenarios

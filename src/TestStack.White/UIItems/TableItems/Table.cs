@@ -1,12 +1,12 @@
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     public class Table : UIItem, VerticalSpanProvider, TableVerticalScrollOffset
     {

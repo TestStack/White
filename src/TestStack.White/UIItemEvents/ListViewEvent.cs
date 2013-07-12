@@ -1,10 +1,10 @@
 using System.Windows.Automation;
-using White.Core.InputDevices;
-using White.Core.UIItems;
-using White.Core.UIItems.ListViewItems;
-using White.Core.Utility;
+using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListViewItems;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public class ListViewEvent : UserEvent
     {

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Windows.Automation;
 
-namespace White.Core.ScreenMap
+namespace TestStack.White.ScreenMap
 {
     public class WindowsAutomationTypesSurrogates : IDataContractSurrogate
     {

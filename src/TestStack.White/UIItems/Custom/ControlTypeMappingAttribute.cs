@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Core.UIItems.Custom
+namespace TestStack.White.UIItems.Custom
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ControlTypeMappingAttribute : Attribute

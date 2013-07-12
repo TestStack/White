@@ -2,7 +2,7 @@ using System;
 using System.Globalization;
 using Castle.Core.Logging;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     class WhiteDefaultLogger : LevelFilteredLogger
     {

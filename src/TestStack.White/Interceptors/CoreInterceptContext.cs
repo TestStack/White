@@ -1,9 +1,9 @@
 using System;
-using White.Core.Bricks;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.Bricks;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.Interceptors
+namespace TestStack.White.Interceptors
 {
     public class CoreInterceptContext : IInterceptContext
     {

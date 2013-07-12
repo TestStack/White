@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Castle.DynamicProxy;
-using White.Core.Interceptors;
+using TestStack.White.Interceptors;
 
-namespace White.Core.Bricks
+namespace TestStack.White.Bricks
 {
     public class DynamicProxyInterceptors : List<IWhiteInterceptor>
     {

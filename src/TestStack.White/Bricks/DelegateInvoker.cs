@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace White.Core.Bricks
+namespace TestStack.White.Bricks
 {
     /// <summary>
     /// This class builds an object to invoke a late-bound method, without using MethodInfo.InvokeAction and thus avoiding exceptions being wrapped 

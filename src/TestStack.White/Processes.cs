@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace White.Core
+namespace TestStack.White
 {
     public class Processes : List<Process>
     {

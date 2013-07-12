@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.TableItems;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.TableItems;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public class TableRowFactory
     {

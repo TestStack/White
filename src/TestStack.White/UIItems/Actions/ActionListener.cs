@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.Actions
+namespace TestStack.White.UIItems.Actions
 {
     public interface ActionListener
     {

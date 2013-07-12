@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     public class MouseCursor
     {

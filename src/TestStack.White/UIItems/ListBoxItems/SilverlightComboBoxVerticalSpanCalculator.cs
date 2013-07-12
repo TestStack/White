@@ -1,8 +1,8 @@
 using System.Windows;
 using Castle.Core.Logging;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
-namespace White.Core.UIItems.ListBoxItems
+namespace TestStack.White.UIItems.ListBoxItems
 {
     public class SilverlightComboBoxVerticalSpanCalculator
     {

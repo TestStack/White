@@ -1,8 +1,8 @@
 using System.Windows;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     /// <summary>
     /// Any operation performed using the mouse would wait till the window is busy after this operation. Before any operation is 

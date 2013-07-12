@@ -1,8 +1,8 @@
 using System.Drawing;
-using White.Core.Drawing;
+using TestStack.White.Drawing;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.Drawing
+namespace TestStack.White.UnitTests.Drawing
 {
     public class DrawingPointXTest
     {

@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
 using System.Windows.Automation;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
-using White.Core.Utility;
-using Action = White.Core.UIItems.Actions.Action;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.Utility;
+using Action = TestStack.White.UIItems.Actions.Action;
 
-namespace White.Core.UIItems.ListBoxItems
+namespace TestStack.White.UIItems.ListBoxItems
 {
     public abstract class ListItem : UIItem
     {

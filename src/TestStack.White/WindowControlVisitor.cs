@@ -1,6 +1,6 @@
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
-namespace White.Core
+namespace TestStack.White
 {
     public interface WindowControlVisitor
     {

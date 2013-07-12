@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core
+namespace TestStack.White
 {
     public class UIItemList<T> : List<T> where T : IUIItem
     {

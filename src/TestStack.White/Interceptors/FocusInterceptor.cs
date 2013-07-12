@@ -1,7 +1,6 @@
-using System.Threading;
 using Castle.DynamicProxy;
 
-namespace White.Core.Interceptors
+namespace TestStack.White.Interceptors
 {
     //TODO How to do focus on secondary controls?
     public class FocusInterceptor : IWhiteInterceptor

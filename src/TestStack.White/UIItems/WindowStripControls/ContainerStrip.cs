@@ -1,10 +1,10 @@
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.WindowStripControls
+namespace TestStack.White.UIItems.WindowStripControls
 {
     //bug: eliminate this class to reduce code.....user can get the controls using the same API as UIItemContainer
     public class ContainerStrip : UIItemContainer

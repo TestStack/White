@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace White.Core.WindowsAPI
+namespace TestStack.White.WindowsAPI
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct Input

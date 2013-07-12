@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.WindowStripControls
+namespace TestStack.White.UIItems.WindowStripControls
 {
     public class StatusStripSplitButton
     {

@@ -1,9 +1,9 @@
 using System.Windows.Automation;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     //TODO Table in scrolled position is not supported
     public class TableVerticalScrollBar : UIItem, IVScrollBar

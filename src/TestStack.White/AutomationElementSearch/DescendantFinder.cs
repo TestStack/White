@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using System.Windows.Automation;
 using System.Linq;
+using System.Windows.Automation;
 
-namespace White.Core.AutomationElementSearch
+namespace TestStack.White.AutomationElementSearch
 {
     public class DescendantFinder : IDescendantFinder
     {

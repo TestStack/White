@@ -1,9 +1,9 @@
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.MenuItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository.UITests
 {

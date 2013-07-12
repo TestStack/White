@@ -1,4 +1,4 @@
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     public enum MouseIcon
     {

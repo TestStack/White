@@ -1,8 +1,8 @@
 using System.Collections.ObjectModel;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.Scrolling {
+namespace TestStack.White.UIItems.Scrolling {
     public class WPFScrollBars : AbstractScrollBars {
         private readonly AutomationElement parentElement;
         private readonly ActionListener actionListener;

@@ -2,10 +2,10 @@ using System;
 using System.Text;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIItems;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems;
 
-namespace White.Core
+namespace TestStack.White
 {
     public static class Debug
     {

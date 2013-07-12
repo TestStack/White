@@ -1,10 +1,10 @@
 using System;
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     public class TableHorizontalScrollBar : IHScrollBar
     {

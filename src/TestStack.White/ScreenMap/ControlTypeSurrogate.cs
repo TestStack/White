@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace White.Core.ScreenMap
+namespace TestStack.White.ScreenMap
 {
     [DataContract]
     public class ControlTypeSurrogate

@@ -1,6 +1,6 @@
-using White.Core.InputDevices;
+using TestStack.White.InputDevices;
 
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     internal class ClickedNodeVisitor : TreeNodeVisitor
     {

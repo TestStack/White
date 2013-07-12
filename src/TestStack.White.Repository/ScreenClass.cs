@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using TestStack.White.Bricks;
 using TestStack.White.Repository.EntityMapping;
 using TestStack.White.Repository.Interceptors;
 using TestStack.White.Repository.ScreenAttributes;
-using White.Core.Bricks;
-using White.Core.SystemExtensions;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.SystemExtensions;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository
 {

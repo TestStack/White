@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.UIItems.Actions;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.ListBoxItems
+namespace TestStack.White.UIItems.ListBoxItems
 {
     //todo document specialized classes and their methods somehow
     [PlatformSpecificItem]

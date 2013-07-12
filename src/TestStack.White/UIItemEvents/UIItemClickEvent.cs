@@ -1,7 +1,7 @@
-using White.Core.UIItems;
-using White.Core.Utility;
+using TestStack.White.UIItems;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public class UIItemClickEvent : UserEvent
     {

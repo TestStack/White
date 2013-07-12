@@ -4,22 +4,22 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Automation;
 using Castle.DynamicProxy;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.InputDevices;
-using White.Core.Interceptors;
-using White.Core.Sessions;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Container;
-using White.Core.UIItems.Custom;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.Scrolling;
-using White.Core.UIItems.TabItems;
-using White.Core.UIItems.WindowStripControls;
-using White.Core.Utility;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.InputDevices;
+using TestStack.White.Interceptors;
+using TestStack.White.Sessions;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Container;
+using TestStack.White.UIItems.Custom;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.Scrolling;
+using TestStack.White.UIItems.TabItems;
+using TestStack.White.UIItems.WindowStripControls;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     //BUG: Allow finding more than one item, also ability to do this within a container
     //TODO: Dont let people compile code is they are trying to find UIItem which are secondary or window

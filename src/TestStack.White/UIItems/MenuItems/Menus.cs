@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Factory;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Factory;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.MenuItems
+namespace TestStack.White.UIItems.MenuItems
 {
     public class Menus : UIItemList<Menu>
     {

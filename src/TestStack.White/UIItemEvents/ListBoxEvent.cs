@@ -1,6 +1,6 @@
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public class ListBoxEvent : ListControlEvent
     {

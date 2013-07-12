@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 
-namespace White.Core.UIItems.Custom
+namespace TestStack.White.UIItems.Custom
 {
     public class CustomControlTypeMapping
     {

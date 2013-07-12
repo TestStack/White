@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
 
-namespace White.Core.AutomationElementSearch
+namespace TestStack.White.AutomationElementSearch
 {
     public class AutomationSearchConditionFactory
     {

@@ -2,17 +2,17 @@ using System;
 using System.Windows;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.ScreenMap;
-using White.Core.UIA;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Container;
-using White.Core.UIItems.Finders;
-using Window=White.Core.UIItems.WindowItems.Window;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.ScreenMap;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Container;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core.Sessions
+namespace TestStack.White.Sessions
 {
     public class WindowSession : IDisposable
     {

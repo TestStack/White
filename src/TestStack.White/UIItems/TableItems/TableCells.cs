@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     public class TableCells : UIItemList<TableCell>
     {

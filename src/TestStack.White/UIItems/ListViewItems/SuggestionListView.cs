@@ -1,11 +1,11 @@
 using System;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.UIItems.Actions;
-using White.Core.Utility;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItems.ListViewItems
+namespace TestStack.White.UIItems.ListViewItems
 {
     public static class SuggestionListView
     {

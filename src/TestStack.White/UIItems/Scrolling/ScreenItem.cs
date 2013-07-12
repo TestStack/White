@@ -1,9 +1,9 @@
 using System;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.Utility;
+using TestStack.White.Configuration;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItems.Scrolling
+namespace TestStack.White.UIItems.Scrolling
 {
     public class ScreenItem
     {

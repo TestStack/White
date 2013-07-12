@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using NUnit.Framework;
+using TestStack.White.Factory;
 using TestStack.White.Repository;
-using White.Core.Factory;
 using WpfTodo.UITests.Screens;
 
 namespace WpfTodo.UITests

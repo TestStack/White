@@ -1,8 +1,8 @@
 using System;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.Custom
+namespace TestStack.White.UIItems.Custom
 {
     public class CustomUIItem : UIItem
     {

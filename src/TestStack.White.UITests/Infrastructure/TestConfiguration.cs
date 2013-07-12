@@ -1,6 +1,4 @@
-﻿using White.Core;
-
-namespace TestStack.White.UITests.Infrastructure
+﻿namespace TestStack.White.UITests.Infrastructure
 {
     public abstract class TestConfiguration
     {

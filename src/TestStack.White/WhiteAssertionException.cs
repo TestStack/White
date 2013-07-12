@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Core
+namespace TestStack.White
 {
     [Serializable]
     public class WhiteAssertionException : Exception

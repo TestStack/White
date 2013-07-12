@@ -1,9 +1,8 @@
+using TestStack.White.InputDevices;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.WebBrowser.Silverlight;
-using White.Core;
-using White.Core.InputDevices;
-using White.Core.UIA;
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
 using Xunit;
 
 namespace TestStack.White.WebBrowser.UITests.Silverlight

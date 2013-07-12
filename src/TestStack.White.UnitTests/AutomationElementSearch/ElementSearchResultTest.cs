@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
+using TestStack.White.AutomationElementSearch;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.AutomationElementSearch
+namespace TestStack.White.UnitTests.AutomationElementSearch
 {
     public class ElementSearchResultTest
     {

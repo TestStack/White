@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using White.Core.UIA;
-using White.Core.UIItems;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
 using Xunit;
 
 namespace TestStack.White.UITests.UIA

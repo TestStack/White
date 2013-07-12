@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace White.Core.UIItems.ListViewItems
+namespace TestStack.White.UIItems.ListViewItems
 {
     public interface SuggestionList
     {

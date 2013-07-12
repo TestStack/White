@@ -1,7 +1,7 @@
-using White.Core.UIItems;
-using White.Core.WindowsAPI;
+using TestStack.White.UIItems;
+using TestStack.White.WindowsAPI;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     /// <summary>
     /// Any operation performed using the keyboard would wait till the container is busy after this operation. Before any operation is 

@@ -1,6 +1,6 @@
 using System;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class PlatformSpecificItemAttribute : Attribute

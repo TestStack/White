@@ -1,7 +1,7 @@
 using Castle.DynamicProxy;
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
-namespace White.Core.Interceptors
+namespace TestStack.White.Interceptors
 {
     //Doc PrimaryUIItems would be scrolled automatically but secondary wont
     public class ScrollInterceptor : IWhiteInterceptor

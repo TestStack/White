@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Castle.Core.Logging;
+using TestStack.White.Configuration;
+using TestStack.White.Mappings;
 using TestStack.White.Repository.EntityMapping;
-using White.Core.Configuration;
-using White.Core.Mappings;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository
 {

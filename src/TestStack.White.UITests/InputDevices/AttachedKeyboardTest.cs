@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using White.Core.InputDevices;
-using White.Core.UIItems;
+using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
 using Xunit;
 
 namespace TestStack.White.UITests.InputDevices

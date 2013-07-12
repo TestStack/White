@@ -1,8 +1,8 @@
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIItems.Finders;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.WPFUIItems
+namespace TestStack.White.UIItems.WPFUIItems
 {
     public static class WPFUIItem
     {

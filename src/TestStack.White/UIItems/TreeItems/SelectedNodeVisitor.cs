@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     public class SelectedNodeVisitor : TreeNodeVisitor
     {

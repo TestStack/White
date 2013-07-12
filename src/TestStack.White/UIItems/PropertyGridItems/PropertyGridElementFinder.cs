@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
+using TestStack.White.AutomationElementSearch;
 
-namespace White.Core.UIItems.PropertyGridItems
+namespace TestStack.White.UIItems.PropertyGridItems
 {
     public class PropertyGridElementFinder
     {

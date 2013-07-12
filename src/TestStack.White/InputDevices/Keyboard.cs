@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using White.Core.UIItems.Actions;
-using White.Core.WindowsAPI;
-using Action=White.Core.UIItems.Actions.Action;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
+using Action = TestStack.White.UIItems.Actions.Action;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     //BUG: KeysConverter
     /// <summary>

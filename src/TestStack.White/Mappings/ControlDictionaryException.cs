@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Core.Mappings
+namespace TestStack.White.Mappings
 {
     [Serializable]
     public class ControlDictionaryException : Exception

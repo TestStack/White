@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 using TestStack.White.Reporting.Domain;
-using White.Core.SystemExtensions;
+using TestStack.White.SystemExtensions;
 using Xunit;
 
 namespace TestStack.White.Reporting.UnitTests

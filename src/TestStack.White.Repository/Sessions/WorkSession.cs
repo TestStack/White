@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using TestStack.White.Reporting.Domain;
 using TestStack.White.Repository.Services;
-using White.Core;
 
 namespace TestStack.White.Repository.Sessions
 {

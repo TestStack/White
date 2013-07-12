@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     public interface TableVerticalScrollOffset
     {

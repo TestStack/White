@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace White.Core.UIItems.Scrolling
+namespace TestStack.White.UIItems.Scrolling
 {
     public interface IScrollBar
     {

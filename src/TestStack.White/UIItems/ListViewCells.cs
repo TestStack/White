@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.ListViewItems;
+using TestStack.White.Factory;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.ListViewItems;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class ListViewCells : UIItemList<ListViewCell>
     {

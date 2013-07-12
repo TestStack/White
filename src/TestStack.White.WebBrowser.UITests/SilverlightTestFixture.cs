@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.WebBrowser.UITests
 {

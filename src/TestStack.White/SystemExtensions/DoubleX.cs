@@ -1,4 +1,4 @@
-namespace White.Core.SystemExtensions
+namespace TestStack.White.SystemExtensions
 {
     public static class DoubleX
     {

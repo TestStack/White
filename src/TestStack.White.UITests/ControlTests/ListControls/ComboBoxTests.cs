@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.ListBoxItems;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.ListBoxItems;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.ListControls

@@ -1,6 +1,6 @@
-using White.Core.UIItems.Custom;
+using TestStack.White.UIItems.Custom;
 
-namespace TestStack.White.Core.UnitTests.UIItems.Finders
+namespace TestStack.White.UnitTests.UIItems.Finders
 {
     [ControlTypeMapping(CustomUIItemType.Pane)]
     public class TestCustomUIItem : CustomUIItem

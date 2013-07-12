@@ -1,26 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.InputDevices;
-using White.Core.Recording;
-using White.Core.Sessions;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.MenuItems;
-using White.Core.UIItems.WindowStripControls;
-using White.Core.Utility;
-using Action = White.Core.UIItems.Actions.Action;
-using Condition = System.Windows.Automation.Condition;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.InputDevices;
+using TestStack.White.Recording;
+using TestStack.White.Sessions;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UIItems.WindowStripControls;
+using TestStack.White.Utility;
+using Action = TestStack.White.UIItems.Actions.Action;
 
-namespace White.Core.UIItems.WindowItems
+namespace TestStack.White.UIItems.WindowItems
 {
     //TODO support for standard dialog windows
     //TODO Read data from console window, Printer, StartMenu, DateTime, UserProfile, ControlPanel, Desktop

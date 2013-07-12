@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.Recording;
-using White.Core.UIItems.Actions;
+using TestStack.White.Recording;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class Hyperlink : UIItem
     {

@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace White.Core.WindowsAPI
+namespace TestStack.White.WindowsAPI
 {
     //Credits: http://www.developerfusion.com/code/4630/capture-a-screen-shot/
     public class DisplayedItem

@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public abstract class EventWriter
     {

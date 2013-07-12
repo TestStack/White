@@ -1,11 +1,11 @@
 using System.Windows.Automation;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.Utility;
 using TestStack.White.WebBrowser.Silverlight;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.WindowItems;
-using White.Core.Utility;
 
 namespace TestStack.White.WebBrowser
 {

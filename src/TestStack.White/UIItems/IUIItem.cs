@@ -1,15 +1,15 @@
 using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.Recording;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.Scrolling;
-using White.Core.WindowsAPI;
-using Point=System.Windows.Point;
-using Window=White.Core.UIItems.WindowItems.Window;
+using TestStack.White.Recording;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.Scrolling;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.WindowsAPI;
+using Point = System.Windows.Point;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public interface IUIItem : ActionListener
     {

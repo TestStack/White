@@ -4,11 +4,11 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.UIItems.Custom;
-using White.Core.UIItems.WindowStripControls;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.UIItems.Custom;
+using TestStack.White.UIItems.WindowStripControls;
 
-namespace White.Core.UIItems.Finders
+namespace TestStack.White.UIItems.Finders
 {
     /// <summary>
     /// SearchCritera can be used when UIItem identification is not satisfied by standard Get methods on UIItemContainer (Window is subclass of 

@@ -1,9 +1,9 @@
 using System;
-using White.Core.Factory;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.Factory;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.Container
+namespace TestStack.White.UIItems.Container
 {
     internal class NonCachedContainerItemFactory : ContainerItemFactory
     {

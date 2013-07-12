@@ -1,6 +1,6 @@
 using System;
 using System.Reflection;
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
 namespace TestStack.White.Repository.EntityMapping
 {

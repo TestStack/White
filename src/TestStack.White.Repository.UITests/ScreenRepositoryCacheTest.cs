@@ -1,7 +1,6 @@
 using NSubstitute;
-using White.Core;
-using White.Core.Factory;
-using White.Core.Sessions;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests

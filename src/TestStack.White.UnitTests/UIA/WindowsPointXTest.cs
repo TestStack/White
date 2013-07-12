@@ -1,8 +1,8 @@
 using System.Windows;
-using White.Core.UIA;
+using TestStack.White.UIA;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.UIA
+namespace TestStack.White.UnitTests.UIA
 {
     public class WindowsPointXTest
     {

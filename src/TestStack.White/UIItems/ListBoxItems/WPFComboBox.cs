@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems.ListBoxItems
+namespace TestStack.White.UIItems.ListBoxItems
 {
     [PlatformSpecificItem]
     public class WPFComboBox : ComboBox

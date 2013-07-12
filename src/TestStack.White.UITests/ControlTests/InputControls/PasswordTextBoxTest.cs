@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using White.Core;
-using White.Core.UIItems;
-using White.Core.Utility;
+using TestStack.White.UIItems;
+using TestStack.White.Utility;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.InputControls

@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Factory;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     internal class SplashWindow : WinFormWindow
     {

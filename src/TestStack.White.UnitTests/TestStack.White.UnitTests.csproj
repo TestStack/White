@@ -8,8 +8,8 @@
     <ProjectGuid>{7C7960B2-905D-409A-8068-B010A35BA151}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestStack.White.Core.UnitTests</RootNamespace>
-    <AssemblyName>TestStack.White.Core.UnitTests</AssemblyName>
+    <RootNamespace>TestStack.White.UnitTests</RootNamespace>
+    <AssemblyName>TestStack.White.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <StartupObject>

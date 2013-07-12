@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.PropertyGridItems
+namespace TestStack.White.UIItems.PropertyGridItems
 {
     public class PropertyGridCategory : UIItem
     {

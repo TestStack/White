@@ -1,11 +1,11 @@
 using System;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIItemEvents;
-using White.Core.UIItems;
+using TestStack.White.Configuration;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems;
 
-namespace White.Core.Recording
+namespace TestStack.White.Recording
 {
     public class SafeAutomationEventHandler
     {

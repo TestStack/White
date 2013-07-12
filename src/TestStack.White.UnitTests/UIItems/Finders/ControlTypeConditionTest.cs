@@ -1,9 +1,9 @@
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowStripControls;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowStripControls;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.UIItems.Finders
+namespace TestStack.White.UnitTests.UIItems.Finders
 {
     public class ControlTypeConditionTest
     {

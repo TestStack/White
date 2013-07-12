@@ -1,12 +1,11 @@
 using System.Threading;
 using System.Windows.Automation;
-using White.Core;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.WebBrowser.Silverlight
 {

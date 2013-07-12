@@ -1,10 +1,10 @@
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     [PlatformSpecificItem]
     public class WPFTreeNode : TreeNode

@@ -1,7 +1,7 @@
 ﻿using System;
 using Castle.DynamicProxy;
 
-namespace White.Core.Bricks
+namespace TestStack.White.Bricks
 {
     public class DynamicProxyGenerator
     {

@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using System.Windows.Automation;
-using White.Core.Configuration;
-using White.Core.UIItems.Finders;
 using System.Linq;
+using System.Windows.Automation;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.AutomationElementSearch
+namespace TestStack.White.AutomationElementSearch
 {
     /// <summary>
     /// Internal to white and should not be used unless a known issue. One should be able to find all items 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace White.Core.Utility
+namespace TestStack.White.Utility
 {
     internal static class MethodNameResolver
     {

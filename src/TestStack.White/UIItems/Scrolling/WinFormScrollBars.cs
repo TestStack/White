@@ -1,7 +1,7 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.Scrolling {
+namespace TestStack.White.UIItems.Scrolling {
     public class WinFormScrollBars : ScrollBars {
         private IHScrollBar ihScrollBar;
         private IVScrollBar vScrollBar;

@@ -1,6 +1,6 @@
 using Castle.DynamicProxy;
 
-namespace White.Core.Interceptors
+namespace TestStack.White.Interceptors
 {
     public interface IWhiteInterceptor
     {

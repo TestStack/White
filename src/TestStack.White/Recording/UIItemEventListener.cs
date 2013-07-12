@@ -1,6 +1,6 @@
-using White.Core.UIItemEvents;
+using TestStack.White.UIItemEvents;
 
-namespace White.Core.Recording
+namespace TestStack.White.Recording
 {
     public interface UIItemEventListener
     {

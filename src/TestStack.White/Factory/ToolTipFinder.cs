@@ -1,11 +1,11 @@
 using System;
 using System.Windows.Automation;
-using White.Core.Configuration;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.Utility;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.Utility;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public static class ToolTipFinder
     {

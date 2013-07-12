@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.MenuItems
+namespace TestStack.White.UIItems.MenuItems
 {
     /// <summary>
     /// Models Menu items (root or leaf). SubMenus can be retrieved from it which by themselves are Menu(s).

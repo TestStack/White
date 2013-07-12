@@ -1,5 +1,5 @@
 using System;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Finders;
 
 namespace TestStack.White.Repository.ScreenAttributes
 {

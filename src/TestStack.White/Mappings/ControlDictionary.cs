@@ -2,19 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.UIItems;
-using White.Core.UIItems.Custom;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.MenuItems;
-using White.Core.UIItems.PropertyGridItems;
-using White.Core.UIItems.Scrolling;
-using White.Core.UIItems.TabItems;
-using White.Core.UIItems.TableItems;
-using White.Core.UIItems.TreeItems;
-using White.Core.UIItems.WindowItems;
-using White.Core.UIItems.WindowStripControls;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Custom;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UIItems.PropertyGridItems;
+using TestStack.White.UIItems.Scrolling;
+using TestStack.White.UIItems.TabItems;
+using TestStack.White.UIItems.TableItems;
+using TestStack.White.UIItems.TreeItems;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UIItems.WindowStripControls;
 
-namespace White.Core.Mappings
+namespace TestStack.White.Mappings
 {
     public class ControlDictionary
     {

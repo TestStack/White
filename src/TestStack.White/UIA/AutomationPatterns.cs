@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 
-namespace White.Core.UIA
+namespace TestStack.White.UIA
 {
     public class AutomationPatterns : List<AutomationPattern>
     {

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using White.Core.Bricks;
-using White.Core.Configuration;
+using TestStack.White.Bricks;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.Repository.Configuration
 {

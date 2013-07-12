@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.Mappings;
-using White.Core.UIItems.Custom;
+using TestStack.White.Mappings;
+using TestStack.White.UIItems.Custom;
 
-namespace White.Core.UIItems.Finders
+namespace TestStack.White.UIItems.Finders
 {
     public static class SearchConditionFactory
     {

@@ -1,14 +1,13 @@
 using System.Linq;
 using System.Windows.Automation;
-using White.Core;
-using White.Core.Mappings;
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.PropertyGridItems;
-using White.Core.UIItems.WindowStripControls;
+using TestStack.White.Mappings;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.PropertyGridItems;
+using TestStack.White.UIItems.WindowStripControls;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.Mappings
+namespace TestStack.White.UnitTests.Mappings
 {
     public class ControlDictionaryTest
     {

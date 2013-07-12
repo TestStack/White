@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Castle.DynamicProxy;
 using TestStack.White.Reporting.Domain;
-using White.Core;
 
 namespace TestStack.White.Repository.Services
 {

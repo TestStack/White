@@ -1,11 +1,10 @@
 using System.IO;
+using TestStack.White.Factory;
 using TestStack.White.Repository.Services;
 using TestStack.White.Repository.Sessions;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
-using White.Core;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests.Sessions

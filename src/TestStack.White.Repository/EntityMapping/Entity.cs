@@ -6,8 +6,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIItems.TableItems;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.TableItems;
 
 namespace TestStack.White.Repository.EntityMapping
 {

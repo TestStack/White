@@ -5,12 +5,12 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Windows;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.UIA;
-using White.Core.UIItems.Finders;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.ScreenMap
+namespace TestStack.White.ScreenMap
 {
     [DataContract]
     public class WindowItemsMap

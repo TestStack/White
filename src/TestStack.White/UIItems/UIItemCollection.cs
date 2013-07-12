@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIA;
-using White.Core.Factory;
-using White.Core.Mappings;
-using White.Core.UIItems.Actions;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.Mappings;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class UIItemCollection : List<IUIItem>
     {

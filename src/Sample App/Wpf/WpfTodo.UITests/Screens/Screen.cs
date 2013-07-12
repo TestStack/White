@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Automation;
 using TestStack.White.Repository;
-using White.Core.UIItems.WindowItems;
-using White.Core.Utility;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.Utility;
 
 namespace WpfTodo.UITests.Screens
 {

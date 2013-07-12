@@ -6,8 +6,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using Castle.Core.Logging;
-using White.Core;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.Reporting.Domain
 {

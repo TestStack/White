@@ -1,10 +1,9 @@
-using System;
 using System.IO;
 using Castle.Core.Logging;
-using White.Core.Bricks;
-using White.Core.UIItems;
+using TestStack.White.Bricks;
+using TestStack.White.UIItems;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     /// <summary>
     /// Represents all the configuration at Core level. These configuration can be set from the configuration file as well as programmatically.

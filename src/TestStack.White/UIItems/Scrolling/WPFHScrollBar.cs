@@ -1,10 +1,9 @@
-using System;
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using Action=White.Core.UIItems.Actions.Action;
+using TestStack.White.UIItems.Actions;
+using Action = TestStack.White.UIItems.Actions.Action;
 
-namespace White.Core.UIItems.Scrolling
+namespace TestStack.White.UIItems.Scrolling
 {
     [PlatformSpecificItem(ReferAsType = typeof (IHScrollBar))]
     public class WPFHScrollBar : WPFScrollBar, IHScrollBar

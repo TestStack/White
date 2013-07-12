@@ -1,8 +1,8 @@
-using White.Core.Finder;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.Finder;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.Container
+namespace TestStack.White.UIItems.Container
 {
     internal class CachedContainerItemFactory : ContainerItemFactory
     {

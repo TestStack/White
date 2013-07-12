@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     [Serializable]
     public class UIItemSearchException : Exception

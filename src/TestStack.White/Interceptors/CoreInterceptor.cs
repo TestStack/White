@@ -1,12 +1,12 @@
 using System;
 using Castle.Core.Logging;
 using Castle.DynamicProxy;
-using White.Core.Bricks;
-using White.Core.Configuration;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.Bricks;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.Interceptors
+namespace TestStack.White.Interceptors
 {
     public class CoreInterceptor : IInterceptor
     {

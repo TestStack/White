@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Recording;
-using White.Core.UIItemEvents;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.ListViewItems;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Recording;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.ListViewItems;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     //TODO Take care of horizontal scrolling
     /// <summary>

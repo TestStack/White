@@ -2,10 +2,10 @@ using System;
 using System.Windows;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.Mappings;
+using TestStack.White.Configuration;
+using TestStack.White.Mappings;
 
-namespace White.Core.UIA
+namespace TestStack.White.UIA
 {
     public static class AutomationElementX
     {

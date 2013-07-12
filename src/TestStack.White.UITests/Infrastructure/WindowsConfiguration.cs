@@ -2,10 +2,9 @@
 using System.IO;
 using System.Reflection;
 using Castle.DynamicProxy;
-using White.Core;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
 
 namespace TestStack.White.UITests.Infrastructure
 {

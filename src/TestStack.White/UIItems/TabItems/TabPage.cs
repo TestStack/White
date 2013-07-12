@@ -1,7 +1,7 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TabItems
+namespace TestStack.White.UIItems.TabItems
 {
     /// <summary>
     /// Access tab page by first finding a Tab and then getting hold of the TabPage inside it.

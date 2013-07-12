@@ -1,6 +1,6 @@
-﻿using White.Core.InputDevices;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
+﻿using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.UITests
 {

@@ -1,7 +1,7 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     /// <summary>
     /// Represents ControlType.Pane object. Child UIItems can be found from it.

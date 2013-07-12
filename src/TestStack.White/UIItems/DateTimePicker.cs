@@ -1,10 +1,10 @@
 using System;
 using System.Windows.Automation;
-using White.Core.Configuration;
-using White.Core.UIItems.Actions;
-using White.Core.WindowsAPI;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class DateTimePicker : UIItem
     {

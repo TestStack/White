@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Automation;
 
-namespace White.Core.Mappings
+namespace TestStack.White.Mappings
 {
     public class ControlDictionaryItem
     {

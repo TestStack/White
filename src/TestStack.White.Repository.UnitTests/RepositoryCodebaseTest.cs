@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using White.Core.SystemExtensions;
+using TestStack.White.SystemExtensions;
 using Xunit;
 
 namespace TestStack.White.Repository.UnitTests

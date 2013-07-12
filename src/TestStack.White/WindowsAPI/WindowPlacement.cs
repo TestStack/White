@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace White.Core.WindowsAPI
+namespace TestStack.White.WindowsAPI
 {
     /// <summary>
     /// Intended for White Internal use only

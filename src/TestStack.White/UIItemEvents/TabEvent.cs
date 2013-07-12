@@ -1,7 +1,7 @@
-using White.Core.UIItems.TabItems;
-using White.Core.Utility;
+using TestStack.White.UIItems.TabItems;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public class TabEvent : UserEvent
     {

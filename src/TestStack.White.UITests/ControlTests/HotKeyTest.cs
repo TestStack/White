@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using White.Core.UIItems;
-using White.Core.Utility;
-using White.Core.WindowsAPI;
+using TestStack.White.UIItems;
+using TestStack.White.Utility;
+using TestStack.White.WindowsAPI;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests

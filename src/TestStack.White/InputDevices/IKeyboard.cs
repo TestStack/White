@@ -1,6 +1,6 @@
-using White.Core.WindowsAPI;
+using TestStack.White.WindowsAPI;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     public interface IKeyboard
     {

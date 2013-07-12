@@ -1,8 +1,8 @@
 using System.Windows;
-using White.Core.UIA;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.ScreenMap
+namespace TestStack.White.ScreenMap
 {
     public class NullWindowItemsMap : WindowItemsMap
     {

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
 using Xunit;
 
 namespace TestStack.White.UITests.Scenarios

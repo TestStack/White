@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Automation;
 
-namespace White.Core.AutomationElementSearch
+namespace TestStack.White.AutomationElementSearch
 {
     public class AutomationSearchCondition
     {

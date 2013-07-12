@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     //TODO: Change NUnit code to provide aspects, Checkout NUnit code and fix it
     [Serializable]

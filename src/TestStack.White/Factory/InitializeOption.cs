@@ -1,6 +1,4 @@
-using System;
-
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     /// <summary>
     /// In cache mode:

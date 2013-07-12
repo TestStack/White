@@ -1,14 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.Finder;
-using White.Core.Mappings;
-using White.Core.Sessions;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.Factory;
+using TestStack.White.Finder;
+using TestStack.White.Mappings;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.Container
+namespace TestStack.White.UIItems.Container
 {
     public class CurrentContainerItemFactory
     {

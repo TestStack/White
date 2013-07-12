@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.Custom
+namespace TestStack.White.UIItems.Custom
 {
     public enum CustomUIItemType
     {

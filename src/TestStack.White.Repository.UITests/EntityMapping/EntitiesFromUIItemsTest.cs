@@ -1,10 +1,9 @@
 using System;
 using TestStack.White.Repository.EntityMapping;
 using TestStack.White.Repository.UnitTests.EntityMapping;
+using TestStack.White.UIItems.TableItems;
+using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
-using White.Core;
-using White.Core.UIItems.TableItems;
-using White.Core.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests.EntityMapping

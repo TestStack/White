@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Recording;
-using White.Core.UIItemEvents;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Recording;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     /// <summary>
     /// Tree consists of TreeNodes. TreeNodes is a collection of TreeNode. Each TreeNode in turn consists of TreeNodes.

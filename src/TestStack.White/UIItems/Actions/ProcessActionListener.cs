@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using System.Windows.Automation;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
-namespace White.Core.UIItems.Actions
+namespace TestStack.White.UIItems.Actions
 {
     public class ProcessActionListener : ActionListener
     {

@@ -1,7 +1,7 @@
-using White.Core.UIItemEvents;
-using White.Core.Utility;
+using TestStack.White.UIItemEvents;
+using TestStack.White.Utility;
 
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     public class TreeNodeSelectEvent : TreeNodeEvent
     {

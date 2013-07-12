@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.Scrolling {
+namespace TestStack.White.UIItems.Scrolling {
     public interface ScrollBarButtonAutomationIds {
         string ForwardLarge { get; }
         string ForwardSmall { get; }

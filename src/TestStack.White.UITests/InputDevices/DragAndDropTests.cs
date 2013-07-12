@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.InputDevices;
-using White.Core.UIA;
-using White.Core.UIItems;
-using White.Core.Utility;
+using TestStack.White.InputDevices;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
+using TestStack.White.Utility;
 using Xunit;
 
 namespace TestStack.White.UITests.InputDevices

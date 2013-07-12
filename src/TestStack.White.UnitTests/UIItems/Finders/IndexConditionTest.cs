@@ -1,7 +1,7 @@
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Finders;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.UIItems.Finders
+namespace TestStack.White.UnitTests.UIItems.Finders
 {
     public class IndexConditionTest
     {

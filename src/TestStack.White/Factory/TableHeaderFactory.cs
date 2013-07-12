@@ -1,9 +1,9 @@
 using System.Windows.Automation;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.TableItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.TableItems;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public class TableHeaderFactory : UIItemFactory
     {

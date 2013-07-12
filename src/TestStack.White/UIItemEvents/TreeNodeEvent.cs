@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Text;
-using White.Core.UIItems.TreeItems;
+using TestStack.White.UIItems.TreeItems;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public abstract class TreeNodeEvent : UserEvent
     {

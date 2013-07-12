@@ -1,7 +1,7 @@
 using System.Windows;
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     public interface IMouse
     {

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Castle.Core.Logging;
+using TestStack.White.Configuration;
+using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
-using White.Core;
-using White.Core.Configuration;
-using White.Core.InputDevices;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.UITests

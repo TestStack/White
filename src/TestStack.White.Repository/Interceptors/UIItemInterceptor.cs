@@ -1,11 +1,10 @@
 using System;
 using Castle.DynamicProxy;
+using TestStack.White.Factory;
 using TestStack.White.Reporting.Domain;
-using White.Core;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository.Interceptors
 {

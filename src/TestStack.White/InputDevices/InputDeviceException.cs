@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     [Serializable]
     public class InputDeviceException : Exception

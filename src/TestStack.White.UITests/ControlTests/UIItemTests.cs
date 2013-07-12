@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.WPFUIItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.WPFUIItems;
 
 namespace TestStack.White.UITests.ControlTests
 {

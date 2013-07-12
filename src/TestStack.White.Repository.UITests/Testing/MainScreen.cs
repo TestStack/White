@@ -1,11 +1,11 @@
 using System;
+using TestStack.White.Factory;
 using TestStack.White.Repository.ScreenAttributes;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.TabItems;
-using White.Core.UIItems.TreeItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.TabItems;
+using TestStack.White.UIItems.TreeItems;
+using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests.Testing

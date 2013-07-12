@@ -3,15 +3,15 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.Drawing;
-using White.Core.UIA;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.WindowsAPI;
-using Action = White.Core.UIItems.Actions.Action;
+using TestStack.White.Configuration;
+using TestStack.White.Drawing;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
+using Action = TestStack.White.UIItems.Actions.Action;
 
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     public class Mouse : IMouse
     {

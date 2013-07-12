@@ -2,7 +2,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Windows.Automation;
 
-namespace White.Core.UIItems.Finders
+namespace TestStack.White.UIItems.Finders
 {
     [DataContract]
     public class OrSearchCondition : SearchCondition

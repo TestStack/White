@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public class ListViewCellFactory : UIItemFactory
     {

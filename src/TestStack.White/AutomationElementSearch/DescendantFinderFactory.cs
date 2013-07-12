@@ -1,7 +1,7 @@
 using System.Windows.Automation;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
-namespace White.Core.AutomationElementSearch
+namespace TestStack.White.AutomationElementSearch
 {
     public class DescendantFinderFactory
     {

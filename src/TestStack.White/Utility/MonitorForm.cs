@@ -1,7 +1,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace White.Core.Utility
+namespace TestStack.White.Utility
 {
     public class MonitorForm : Form
     {

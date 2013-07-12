@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Automation;
 
-namespace White.Core.UIA
+namespace TestStack.White.UIA
 {
     public static class AutomationElementCollectionX
     {

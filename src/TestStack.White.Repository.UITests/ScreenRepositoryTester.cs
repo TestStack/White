@@ -1,8 +1,7 @@
 using System;
+using TestStack.White.Factory;
 using TestStack.White.Repository.UITests.Testing;
 using TestStack.White.UITests.Infrastructure;
-using White.Core;
-using White.Core.Factory;
 
 namespace TestStack.White.Repository.UITests
 {

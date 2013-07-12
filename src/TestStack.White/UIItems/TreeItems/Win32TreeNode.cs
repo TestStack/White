@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.UIA;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     [PlatformSpecificItem]
     public class Win32TreeNode : TreeNode

@@ -3,10 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using Castle.DynamicProxy;
+using TestStack.White.Configuration;
 using TestStack.White.WebBrowser;
 using TestStack.White.WebBrowser.Silverlight;
-using White.Core;
-using White.Core.Configuration;
 
 namespace TestStack.White.UITests.Infrastructure
 {

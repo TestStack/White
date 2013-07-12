@@ -1,12 +1,12 @@
 using System.IO;
 using System.Windows;
-using White.Core.Factory;
-using White.Core.ScreenMap;
-using White.Core.UIA;
-using White.Core.UIItems.Finders;
+using TestStack.White.Factory;
+using TestStack.White.ScreenMap;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Finders;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.ScreenMap
+namespace TestStack.White.UnitTests.ScreenMap
 {
     public class WindowItemsMapTest
     {
@@ -28,7 +28,7 @@ namespace TestStack.White.Core.UnitTests.ScreenMap
 
         private InitializeOption InitializeOption()
         {
-            return global::White.Core.Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
+            return global::TestStack.White.Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
         }
 
         [Fact]

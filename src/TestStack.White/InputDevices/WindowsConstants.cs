@@ -1,4 +1,4 @@
-namespace White.Core.InputDevices
+namespace TestStack.White.InputDevices
 {
     /// <summary>
     /// Constants defined in winuser.h in C:\Program Files\Microsoft Visual Studio 8\VC\PlatformSDK\Include\WinUser.h

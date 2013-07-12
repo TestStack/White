@@ -1,4 +1,4 @@
-namespace White.Core
+namespace TestStack.White
 {
     public enum CacheMode
     {

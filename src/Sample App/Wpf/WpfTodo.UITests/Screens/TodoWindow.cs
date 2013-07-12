@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TestStack.White.Factory;
 using TestStack.White.Repository;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UIItems.WPFUIItems;
 using Todo.Core;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.WPFUIItems;
-using White.Core.UIItems.WindowItems;
 
 namespace WpfTodo.UITests.Screens
 {

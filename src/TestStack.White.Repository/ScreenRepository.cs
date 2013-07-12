@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TestStack.White.Factory;
 using TestStack.White.Reporting.Domain;
-using White.Core;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository
 {

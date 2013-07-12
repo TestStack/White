@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using Castle.Core.Logging;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.Repository.ScreenFlow
 {

@@ -1,8 +1,8 @@
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class ToolTip : UIItem
     {

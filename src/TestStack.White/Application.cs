@@ -4,13 +4,13 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core
+namespace TestStack.White
 {
     /// <summary>
     /// Represents a process which contains windows.

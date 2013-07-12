@@ -1,6 +1,6 @@
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
-namespace White.Core
+namespace TestStack.White
 {
     public static class Constants
     {

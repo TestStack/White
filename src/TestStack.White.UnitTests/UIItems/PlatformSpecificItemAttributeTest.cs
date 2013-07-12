@@ -1,9 +1,9 @@
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.Scrolling;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.UIItems
+namespace TestStack.White.UnitTests.UIItems
 {
     public class PlatformSpecificItemAttributeTest
     {

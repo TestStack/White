@@ -1,4 +1,4 @@
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository.UITests.Testing
 {

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using White.Core;
-using White.Core.UIItems;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests

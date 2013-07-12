@@ -1,6 +1,6 @@
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public interface IUIItemContainer : IUIItem
     {

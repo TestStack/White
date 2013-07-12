@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.UIItems.Actions;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     public class TableHeader : UIItem
     {

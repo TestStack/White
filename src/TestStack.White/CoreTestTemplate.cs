@@ -1,3 +1,3 @@
-namespace White.Core
+namespace TestStack.White
 {
 }

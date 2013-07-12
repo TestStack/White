@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.Configuration;
-using White.Core.UIA;
+using TestStack.White.Configuration;
+using TestStack.White.UIA;
 
-namespace White.Core.AutomationElementSearch
+namespace TestStack.White.AutomationElementSearch
 {
     public class RawAutomationElementFinder : IDescendantFinder
     {

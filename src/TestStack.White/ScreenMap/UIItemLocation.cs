@@ -1,8 +1,8 @@
 using System.Runtime.Serialization;
 using System.Windows;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.ScreenMap
+namespace TestStack.White.ScreenMap
 {
     [DataContract]
     public class UIItemLocation

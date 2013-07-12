@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace White.Core.UIItems.Scrolling
+namespace TestStack.White.UIItems.Scrolling
 {
     public class NullHScrollBar : NullScrollBar, IHScrollBar
     {

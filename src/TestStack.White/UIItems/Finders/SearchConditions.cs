@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 
-namespace White.Core.UIItems.Finders
+namespace TestStack.White.UIItems.Finders
 {
     public class SearchConditions : List<SearchCondition>
     {

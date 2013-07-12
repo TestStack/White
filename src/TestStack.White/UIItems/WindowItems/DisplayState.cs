@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.WindowItems
+namespace TestStack.White.UIItems.WindowItems
 {
     public enum DisplayState
     {

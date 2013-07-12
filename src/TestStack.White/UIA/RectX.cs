@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace White.Core.UIA
+namespace TestStack.White.UIA
 {
     public static class RectX
     {

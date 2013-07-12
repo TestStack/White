@@ -1,7 +1,7 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.Scrolling {
+namespace TestStack.White.UIItems.Scrolling {
     public class ComboBoxScrollBars : ScrollBars {
         public ComboBoxScrollBars(AutomationElement automationElement, ActionListener actionListener)
             : base(automationElement, actionListener, new DefaultScrollBarButtonAutomationIds(), new DefaultScrollBarButtonAutomationIds()) {}

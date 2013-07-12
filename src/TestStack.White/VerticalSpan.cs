@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace White.Core
+namespace TestStack.White
 {
     public class VerticalSpan : Span
     {

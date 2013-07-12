@@ -1,5 +1,5 @@
 using NSubstitute;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.Repository.UnitTests

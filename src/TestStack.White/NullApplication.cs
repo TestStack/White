@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core
+namespace TestStack.White
 {
     public class NullApplication : Application
     {

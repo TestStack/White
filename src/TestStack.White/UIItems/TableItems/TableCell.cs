@@ -1,9 +1,9 @@
 using System.Windows.Automation;
-using White.Core.Configuration;
-using White.Core.UIItems.Actions;
-using White.Core.WindowsAPI;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     //BUG There is better support for ComboBox cells, try it out
     public class TableCell : UIItem

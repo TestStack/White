@@ -1,4 +1,4 @@
-using White.Core.Factory;
+using TestStack.White.Factory;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests

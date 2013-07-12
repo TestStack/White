@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace White.Core.SystemExtensions
+namespace TestStack.White.SystemExtensions
 {
     public static class TypeExtensions
     {

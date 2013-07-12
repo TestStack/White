@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Factory;
-using White.Core.Recording;
-using White.Core.UIItemEvents;
-using White.Core.UIItems.Actions;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Factory;
+using TestStack.White.Recording;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TabItems
+namespace TestStack.White.UIItems.TabItems
 {
     public class Tab : UIItem
     {

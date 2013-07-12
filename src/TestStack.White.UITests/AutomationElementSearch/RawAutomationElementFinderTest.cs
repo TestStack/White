@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.UIItems;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems;
 using Xunit;
 
 namespace TestStack.White.UITests.AutomationElementSearch

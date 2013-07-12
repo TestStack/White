@@ -1,7 +1,6 @@
-using System;
 using System.Windows;
 
-namespace White.Core.UIItems.Scrolling
+namespace TestStack.White.UIItems.Scrolling
 {
     //BUG: Add LogStatements to make sure that the logging is not happening in NullScrollBar
     public class NullVScrollBar : NullScrollBar, IVScrollBar

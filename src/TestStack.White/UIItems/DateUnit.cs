@@ -1,4 +1,4 @@
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public enum DateUnit
     {

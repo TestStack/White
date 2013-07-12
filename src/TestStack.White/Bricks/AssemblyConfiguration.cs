@@ -3,7 +3,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using Castle.Core.Logging;
 
-namespace White.Core.Bricks
+namespace TestStack.White.Bricks
 {
     public class AssemblyConfiguration
     {

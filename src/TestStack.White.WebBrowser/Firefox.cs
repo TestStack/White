@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WebBrowser.Config;
-using White.Core;
-using White.Core.UIItems.WindowItems;
 
 namespace TestStack.White.WebBrowser
 {

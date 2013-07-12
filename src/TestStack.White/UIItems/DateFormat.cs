@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     /// <summary>
     /// Format in which the data in entered in the DateTimePicker. e.g. DayMonthYear, DayYearMonth, etc.

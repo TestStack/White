@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.ListViewItems;
-using White.Core.WindowsAPI;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.ListViewItems;
+using TestStack.White.WindowsAPI;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class ListViewRow : UIItem
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
-using White.Core.Configuration;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Configuration;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core.Utility
+namespace TestStack.White.Utility
 {
     public static class Retry
     {

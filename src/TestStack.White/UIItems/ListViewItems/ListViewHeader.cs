@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.UIItems.Actions;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.ListViewItems
+namespace TestStack.White.UIItems.ListViewItems
 {
     public class ListViewHeader : UIItem
     {

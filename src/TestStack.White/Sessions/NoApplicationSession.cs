@@ -1,6 +1,6 @@
-using White.Core.Factory;
+using TestStack.White.Factory;
 
-namespace White.Core.Sessions
+namespace TestStack.White.Sessions
 {
     public class NoApplicationSession : ApplicationSession
     {

@@ -1,7 +1,7 @@
 using System.Windows;
-using White.Core.SystemExtensions;
+using TestStack.White.SystemExtensions;
 
-namespace White.Core
+namespace TestStack.White
 {
     public class Span
     {

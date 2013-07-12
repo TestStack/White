@@ -1,9 +1,9 @@
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.WindowStripControls
+namespace TestStack.White.UIItems.WindowStripControls
 {
     public class WPFStatusBar : UIItem
     {

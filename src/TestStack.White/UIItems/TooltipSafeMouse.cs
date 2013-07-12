@@ -1,11 +1,11 @@
 using System.Threading;
 using Castle.Core.Logging;
-using White.Core.UIA;
-using White.Core.Configuration;
-using White.Core.InputDevices;
-using White.Core.UIItems.Actions;
+using TestStack.White.Configuration;
+using TestStack.White.InputDevices;
+using TestStack.White.UIA;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     //TODO this problem can occur on ListView as well
     internal class TooltipSafeMouse

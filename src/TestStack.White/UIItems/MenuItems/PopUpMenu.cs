@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.UIItems.MenuItems
+namespace TestStack.White.UIItems.MenuItems
 {
     public class PopUpMenu : UIItem
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace White.Core.UIItemEvents
+namespace TestStack.White.UIItemEvents
 {
     public class UserAction
     {

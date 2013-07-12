@@ -1,10 +1,10 @@
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.Actions;
-using White.Core.WindowsAPI;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public abstract class Slider : UIItem
     {

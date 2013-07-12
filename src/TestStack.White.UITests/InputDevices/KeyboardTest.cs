@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Text;
-using White.Core.InputDevices;
-using White.Core.UIItems;
-using White.Core.WindowsAPI;
+using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.WindowsAPI;
 using Xunit;
 
 namespace TestStack.White.UITests.InputDevices

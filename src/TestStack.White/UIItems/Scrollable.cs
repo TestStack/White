@@ -1,6 +1,6 @@
-using White.Core.UIItems.Scrolling;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public interface Scrollable
     {

@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Castle.Core.Logging;
-using White.Core.Bricks;
-using White.Core.Interceptors;
-using White.Core.UIItems;
+using TestStack.White.Bricks;
+using TestStack.White.Interceptors;
+using TestStack.White.UIItems;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     public class CoreAppXmlConfiguration : AssemblyConfiguration, ICoreConfiguration
     {

@@ -1,6 +1,6 @@
 using TestStack.White.Repository.ScreenAttributes;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests.Testing

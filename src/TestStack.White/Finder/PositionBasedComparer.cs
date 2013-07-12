@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
-namespace White.Core.Finder
+namespace TestStack.White.Finder
 {
     public class AutomationElementPositionComparer : PositionBasedComparer, IComparer<AutomationElement>
     {

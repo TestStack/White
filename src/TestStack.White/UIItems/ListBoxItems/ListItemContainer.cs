@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.ListBoxItems
+namespace TestStack.White.UIItems.ListBoxItems
 {
     public interface ListItemContainer
     {

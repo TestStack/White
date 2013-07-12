@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Reflection;
 using NUnit.Framework;
-using White.Core;
+using TestStack.White;
 
 namespace WpfTodo.UITests.Screens
 {

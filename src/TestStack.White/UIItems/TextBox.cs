@@ -1,10 +1,10 @@
 using System.Windows.Automation;
-using White.Core.Recording;
-using White.Core.UIA;
-using White.Core.UIItemEvents;
-using White.Core.UIItems.Actions;
+using TestStack.White.Recording;
+using TestStack.White.UIA;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class TextBox : UIItem, Scrollable
     {

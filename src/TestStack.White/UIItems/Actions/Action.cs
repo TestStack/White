@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core.UIItems.Actions
+namespace TestStack.White.UIItems.Actions
 {
     public class Action
     {

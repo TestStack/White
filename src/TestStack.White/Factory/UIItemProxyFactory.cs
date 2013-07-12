@@ -1,9 +1,9 @@
-using White.Core.Bricks;
-using White.Core.Interceptors;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.Bricks;
+using TestStack.White.Interceptors;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public static class UIItemProxyFactory
     {

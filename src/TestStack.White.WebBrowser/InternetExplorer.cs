@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using White.Core;
 
 namespace TestStack.White.WebBrowser
 {

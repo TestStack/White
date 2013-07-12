@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core
+namespace TestStack.White
 {
     public class Desktop : UIItemContainer
     {

@@ -5,22 +5,22 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
 using Castle.Core.Logging;
-using White.Core.AutomationElementSearch;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.InputDevices;
-using White.Core.Recording;
-using White.Core.UIA;
-using White.Core.UIItemEvents;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.Scrolling;
-using White.Core.WindowsAPI;
-using Action = White.Core.UIItems.Actions.Action;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.InputDevices;
+using TestStack.White.Recording;
+using TestStack.White.UIA;
+using TestStack.White.UIItemEvents;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.Scrolling;
+using TestStack.White.UIItems.WindowItems;
+using TestStack.White.WindowsAPI;
+using Action = TestStack.White.UIItems.Actions.Action;
 using Point = System.Windows.Point;
-using Window = White.Core.UIItems.WindowItems.Window;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     //TODO Make this class smaller
     //TODO ToolStrip and Similar kind of support

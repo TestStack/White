@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.UITests.Factory

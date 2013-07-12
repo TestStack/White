@@ -1,8 +1,8 @@
 using System.Windows.Automation;
-using White.Core.Sessions;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public interface SpecializedWindowFactory
     {

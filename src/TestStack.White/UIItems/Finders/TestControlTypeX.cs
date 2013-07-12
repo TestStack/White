@@ -1,7 +1,7 @@
 using System;
-using White.Core.UIItems.Custom;
+using TestStack.White.UIItems.Custom;
 
-namespace White.Core.UIItems.Finders
+namespace TestStack.White.UIItems.Finders
 {
     public static class TestControlTypeX
     {

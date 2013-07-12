@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Core.UIItems.Custom
+namespace TestStack.White.UIItems.Custom
 {
     [Serializable]
     public class CustomUIItemException : Exception

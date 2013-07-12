@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using White.Core.UIItems.TableItems;
+using TestStack.White.UIItems.TableItems;
 
 namespace TestStack.White.Repository.EntityMapping
 {

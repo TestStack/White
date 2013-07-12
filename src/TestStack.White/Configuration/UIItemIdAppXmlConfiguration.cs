@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using White.Core.Bricks;
+using TestStack.White.Bricks;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     public class UIItemIdAppXmlConfiguration : AssemblyConfiguration, UIItemIdConfiguration
     {

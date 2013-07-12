@@ -1,7 +1,7 @@
 using System;
 using Castle.Core.Logging;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     public class WhiteDefaultLoggerFactory : ILoggerFactory
     {

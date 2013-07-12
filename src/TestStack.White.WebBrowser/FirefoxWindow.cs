@@ -1,6 +1,6 @@
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.Sessions;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
 
 namespace TestStack.White.WebBrowser
 {

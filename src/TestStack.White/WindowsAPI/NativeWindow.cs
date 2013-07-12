@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows;
 
-namespace White.Core.WindowsAPI
+namespace TestStack.White.WindowsAPI
 {
     public class NativeWindow
     {

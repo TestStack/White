@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Factory;
-using White.Core.Mappings;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Factory;
+using TestStack.White.Mappings;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
 
-namespace White.Core.Finder
+namespace TestStack.White.Finder
 {
     public class CachedUIItems
     {

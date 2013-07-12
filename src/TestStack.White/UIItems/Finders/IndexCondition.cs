@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.Finder;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.Finder;
 
-namespace White.Core.UIItems.Finders
+namespace TestStack.White.UIItems.Finders
 {
     [DataContract]
     public class IndexCondition : SearchCondition

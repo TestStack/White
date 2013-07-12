@@ -1,7 +1,7 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.ListViewItems
+namespace TestStack.White.UIItems.ListViewItems
 {
     public class ListViewColumn : UIItem
     {

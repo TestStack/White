@@ -1,9 +1,9 @@
 using System.Windows;
 using System.Windows.Automation;
-using White.Core.AutomationElementSearch;
-using White.Core.UIItems.Actions;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TreeItems
+namespace TestStack.White.UIItems.TreeItems
 {
     public abstract class TreeNode : UIItem
     {

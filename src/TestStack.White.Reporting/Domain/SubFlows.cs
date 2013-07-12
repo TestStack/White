@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Castle.Core.Logging;
-using White.Core.Configuration;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.Reporting.Domain
 {

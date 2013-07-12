@@ -1,9 +1,9 @@
 using System.Windows.Automation;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.MenuItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
 
-namespace White.Core.UIItems.WindowStripControls
+namespace TestStack.White.UIItems.WindowStripControls
 {
     public class ToolStrip : ContainerStrip, MenuContainer
     {

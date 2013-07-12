@@ -1,4 +1,4 @@
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     public interface UIItemIdConfiguration
     {

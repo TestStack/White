@@ -1,12 +1,11 @@
-using System;
 using System.Windows.Automation;
-using White.Core.Factory;
-using White.Core.Sessions;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.MenuItems;
-using White.Core.UIItems.Scrolling;
+using TestStack.White.Factory;
+using TestStack.White.Sessions;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UIItems.Scrolling;
 
-namespace White.Core.UIItems.WindowItems
+namespace TestStack.White.UIItems.WindowItems
 {
     [PlatformSpecificItem]
     internal class WinFormWindow : Window

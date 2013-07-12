@@ -1,11 +1,11 @@
-using White.Core.Factory;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
-using White.Core.UIItems.Container;
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.WindowItems;
+using TestStack.White.Factory;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
+using TestStack.White.UIItems.Container;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
-namespace White.Core.Sessions
+namespace TestStack.White.Sessions
 {
     public class NullWindowSession : WindowSession
     {

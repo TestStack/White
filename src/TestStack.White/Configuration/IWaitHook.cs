@@ -1,6 +1,6 @@
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 
-namespace White.Core.Configuration
+namespace TestStack.White.Configuration
 {
     public interface IWaitHook
     {

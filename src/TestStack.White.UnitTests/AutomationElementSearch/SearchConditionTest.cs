@@ -1,8 +1,8 @@
-using White.Core.AutomationElementSearch;
-using White.Core.UIItems.Finders;
+using TestStack.White.AutomationElementSearch;
+using TestStack.White.UIItems.Finders;
 using Xunit;
 
-namespace TestStack.White.Core.UnitTests.AutomationElementSearch
+namespace TestStack.White.UnitTests.AutomationElementSearch
 {
     public class SearchConditionTest
     {

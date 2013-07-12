@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using White.Core.UIItems;
+using TestStack.White.UIItems;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests

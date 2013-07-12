@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
-using White.Core.InputDevices;
+using TestStack.White.InputDevices;
 
-namespace White.Core.WindowsAPI
+namespace TestStack.White.WindowsAPI
 {
     [StructLayout(LayoutKind.Explicit)]
     public struct ThirtyTwoBitInput

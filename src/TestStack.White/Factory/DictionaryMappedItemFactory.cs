@@ -1,10 +1,10 @@
 using System;
 using System.Windows.Automation;
-using White.Core.Mappings;
-using White.Core.UIItems;
-using White.Core.UIItems.Actions;
+using TestStack.White.Mappings;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.Factory
+namespace TestStack.White.Factory
 {
     public class DictionaryMappedItemFactory : UIItemFactory
     {

@@ -1,7 +1,7 @@
 using System.Windows;
-using White.Core.SystemExtensions;
+using TestStack.White.SystemExtensions;
 
-namespace White.Core.UIA
+namespace TestStack.White.UIA
 {
     public static class WindowsPointX
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
-using White.Core.Utility;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListBoxItems;
+using TestStack.White.Utility;
 using Xunit;
 
 namespace TestStack.White.UITests.Interceptors

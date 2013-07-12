@@ -1,6 +1,6 @@
 using System.Drawing;
 
-namespace White.Core.Drawing
+namespace TestStack.White.Drawing
 {
     public static class DrawingPointX
     {

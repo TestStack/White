@@ -1,4 +1,4 @@
-﻿namespace White.Core.UIItems.Scrolling {
+﻿namespace TestStack.White.UIItems.Scrolling {
     internal class SilverlightVScrollBarButtonAutomationIds : ScrollBarButtonAutomationIds {
         public virtual string ForwardLarge {
             get { return "VerticalLargeIncrease"; }

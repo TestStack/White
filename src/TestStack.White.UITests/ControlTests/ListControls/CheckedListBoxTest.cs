@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Automation;
-using White.Core.UIItems;
-using White.Core.UIItems.ListBoxItems;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.ListBoxItems;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.ListControls

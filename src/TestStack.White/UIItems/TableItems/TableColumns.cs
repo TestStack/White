@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
-using White.Core.Configuration;
-using White.Core.Factory;
-using White.Core.UIItems.Actions;
+using TestStack.White.Configuration;
+using TestStack.White.Factory;
+using TestStack.White.UIItems.Actions;
 
-namespace White.Core.UIItems.TableItems
+namespace TestStack.White.UIItems.TableItems
 {
     public class TableColumns : UIItemList<TableColumn>
     {

@@ -1,4 +1,4 @@
-namespace White.Core.UIItems.TabItems
+namespace TestStack.White.UIItems.TabItems
 {
     public interface ITabPage : IUIItem
     {

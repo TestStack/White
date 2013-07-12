@@ -1,7 +1,7 @@
 using System.Windows;
 using System.Windows.Automation;
 
-namespace White.Core.UIItems.Scrolling
+namespace TestStack.White.UIItems.Scrolling
 {
     public abstract class WPFScrollBar : IScrollBar
     {

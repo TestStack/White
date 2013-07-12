@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace White.Core
+namespace TestStack.White
 {
     [Serializable]
     public class AutomationException : Exception

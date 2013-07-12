@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Automation;
 
-namespace White.Core.UIItems
+namespace TestStack.White.UIItems
 {
     public class ToggleableItem : UIItem
     {

@@ -1,7 +1,7 @@
-using White.Core.UIItems.Finders;
-using White.Core.UIItems.MenuItems;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
 
-namespace White.Core.UIItems.WindowStripControls
+namespace TestStack.White.UIItems.WindowStripControls
 {
     public interface MenuContainer
     {
