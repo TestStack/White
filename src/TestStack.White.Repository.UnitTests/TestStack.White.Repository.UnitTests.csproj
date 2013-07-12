@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</ProjectGuid>
+    <ProjectGuid>{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>White.Repository</RootNamespace>
-    <AssemblyName>White.Repository</AssemblyName>
+    <RootNamespace>White.Repository.UnitTests</RootNamespace>
+    <AssemblyName>White.Repository.UnitTests</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -17,7 +17,8 @@
     </UpgradeBackupLocation>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>white.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -33,7 +34,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -60,73 +61,35 @@
   <ItemGroup>
     <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+      <HintPath>..\packages\Castle.Core.3.2.0\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NSubstitute">
+      <HintPath>..\packages\NSubstitute.1.6.0.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UIAutomationClient" />
-    <Reference Include="UIAutomationTypes" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppScreen.cs" />
-    <Compile Include="AppScreenComponent.cs" />
-    <Compile Include="AppScreenException.cs" />
-    <Compile Include="AppWindow.cs" />
+    <Compile Include="EntityMapping\Cricketer.cs" />
+    <Compile Include="EntityMapping\GoogleWebsite.cs" />
+    <Compile Include="EntityMapping\NestedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenAttributes\AutomationIdAttribute.cs" />
-    <Compile Include="ScreenAttributes\FrameworkIdAttribute.cs" />
-    <Compile Include="ScreenAttributes\IndexAttribute.cs" />
-    <Compile Include="Configuration\RepositoryAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\RepositoryConfiguration.cs" />
-    <Compile Include="EntityMapping\Entities.cs" />
-    <Compile Include="EntityMapping\Entity.cs" />
-    <Compile Include="EntityMapping\EntityField.cs" />
-    <Compile Include="EntityMapping\EntityFieldNotFoundException.cs" />
-    <Compile Include="EntityMapping\NestedEntities.cs" />
-    <Compile Include="FieldMap.cs" />
-    <Compile Include="Interceptors\ScreenInterceptors.cs" />
-    <Compile Include="Interceptors\ScreenObjectInterceptor.cs" />
-    <Compile Include="Interceptors\UIItemInterceptor.cs" />
-    <Compile Include="Interceptors\WindowInterceptor.cs" />
-    <Compile Include="ScreenAttributes\TextAttribute.cs" />
-    <Compile Include="RepositoryComponent.cs" />
-    <Compile Include="ScreenAttributes\SearchCriteriaAttribute.cs" />
-    <Compile Include="ScreenClass.cs" />
-    <Compile Include="ScreenAttributes\ScreenComponentAttribute.cs" />
-    <Compile Include="ScreenFlow\FlowWriter.cs" />
-    <Compile Include="ScreenFlow\WorkReport.cs" />
-    <Compile Include="ScreenFlow\GraphWriter.cs" />
-    <Compile Include="ScreenFlow\ScreenIdentity.cs" />
-    <Compile Include="ScreenFlow\StringGraphWriter.cs" />
-    <Compile Include="ScreenFlow\WorkFlow.cs" />
-    <Compile Include="ScreenRepository.cs" />
-    <Compile Include="ScreenRepositoryCacheKey.cs" />
-    <Compile Include="ScreenRepositoryListener.cs" />
-    <Compile Include="Services\LastServiceCallStatus.cs" />
-    <Compile Include="Services\NullExecutionHistory.cs" />
-    <Compile Include="Services\NullServiceExecution.cs" />
-    <Compile Include="Services\ServiceCalls.cs" />
-    <Compile Include="Services\ServiceExecution.cs" />
-    <Compile Include="Services\WhiteExecution.cs" />
-    <Compile Include="Services\ServiceCall.cs" />
-    <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\ExecutionHistory.cs" />
-    <Compile Include="Services\ServiceInterceptor.cs" />
-    <Compile Include="Services\WorkEnvironment.cs" />
-    <Compile Include="Services\WorkSnapshotAttribute.cs" />
-    <Compile Include="Sessions\WorkConfiguration.cs" />
-    <Compile Include="Sessions\WorkSession.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-    <None Include="white.snk" />
+    <Compile Include="EntityMapping\EntitiesTest.cs" />
+    <Compile Include="EntityMapping\EntityTest.cs" />
+    <Compile Include="EntityMapping\NestedEntitiesTest.cs" />
+    <Compile Include="EntityMapping\TestEntity.cs" />
+    <Compile Include="RepositoryCodebaseTest.cs" />
+    <Compile Include="ScreenClassComponent.cs" />
+    <Compile Include="ScreenClassContainingComponent.cs" />
+    <Compile Include="ScreenClassTest.cs" />
+    <Compile Include="Services\ServiceCallTest.cs" />
+    <Compile Include="Services\ServiceExecutionTest.cs" />
+    <Compile Include="Services\TestServiceForServiceCallTest.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -142,13 +105,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\TestStack.White\TestStack.White.csproj">
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Reporting\Source\White.Reporting.csproj">
-      <Project>{19fc2a6e-1c39-4db8-aabf-a234fd6bc3fe}</Project>
-      <Name>White.Reporting</Name>
+    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.Repository.csproj">
+      <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
+      <Name>White.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

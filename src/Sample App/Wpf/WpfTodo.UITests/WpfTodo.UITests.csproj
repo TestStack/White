@@ -50,7 +50,7 @@
     <Compile Include="TodoAppTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Components\Repository\Source\White.Repository.csproj">
+    <ProjectReference Include="..\..\..\TestStack.White.Repository\TestStack.White.Repository.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
       <Name>White.Repository</Name>
     </ProjectReference>

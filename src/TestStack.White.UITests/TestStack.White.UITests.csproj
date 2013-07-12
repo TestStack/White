@@ -95,10 +95,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\WebBrowser\Source\White.WebBrowser.csproj">
-      <Project>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</Project>
-      <Name>White.WebBrowser</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TestApplications\WindowsFormsTestApplication\WindowsFormsTestApplication.csproj">
       <Project>{24929ce3-4000-4600-8830-503be6a2ba42}</Project>
       <Name>WindowsFormsTestApplication</Name>
@@ -106,6 +102,10 @@
     <ProjectReference Include="..\TestApplications\WpfTestApplication\WpfTestApplication.csproj">
       <Project>{492e6340-32cc-4d03-a9c4-36fb4c40cf5c}</Project>
       <Name>WpfTestApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestStack.White.WebBrowser\TestStack.White.WebBrowser.csproj">
+      <Project>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</Project>
+      <Name>TestStack.White.WebBrowser</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestStack.White\TestStack.White.csproj">
       <Project>{12c59ce2-9cf7-44f4-b27c-90754609f979}</Project>
