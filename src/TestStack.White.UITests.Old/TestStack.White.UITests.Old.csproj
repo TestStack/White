@@ -102,7 +102,6 @@
     <Compile Include="UIItems\PanelTest.cs" />
     <Compile Include="UIItems\ProgressBarTest.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGridTest.cs" />
-    <Compile Include="UIItems\RadioButtonTest.cs" />
     <Compile Include="UIItems\SliderTest.cs" />
     <Compile Include="UIItems\SpinnerTest.cs" />
     <Compile Include="UIItems\SplashScreenTest.cs" />

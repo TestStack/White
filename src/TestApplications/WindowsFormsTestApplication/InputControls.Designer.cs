@@ -35,6 +35,8 @@
             this.MultiLineTextBox = new System.Windows.Forms.TextBox();
             this.PasswordBox = new System.Windows.Forms.TextBox();
             this.UnmaskPasswordButton = new System.Windows.Forms.Button();
+            this.RadioButton1 = new System.Windows.Forms.RadioButton();
+            this.RadioButton2 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // DatePicker
@@ -97,10 +99,34 @@
             this.UnmaskPasswordButton.UseVisualStyleBackColor = true;
             this.UnmaskPasswordButton.Click += new System.EventHandler(this.UnmaskPasswordButton_Click);
             // 
+            // RadioButton1
+            // 
+            this.RadioButton1.AutoSize = true;
+            this.RadioButton1.Location = new System.Drawing.Point(7, 205);
+            this.RadioButton1.Name = "RadioButton1";
+            this.RadioButton1.Size = new System.Drawing.Size(85, 17);
+            this.RadioButton1.TabIndex = 7;
+            this.RadioButton1.TabStop = true;
+            this.RadioButton1.Text = "radioButton1";
+            this.RadioButton1.UseVisualStyleBackColor = true;
+            // 
+            // RadioButton2
+            // 
+            this.RadioButton2.AutoSize = true;
+            this.RadioButton2.Location = new System.Drawing.Point(99, 205);
+            this.RadioButton2.Name = "RadioButton2";
+            this.RadioButton2.Size = new System.Drawing.Size(85, 17);
+            this.RadioButton2.TabIndex = 8;
+            this.RadioButton2.TabStop = true;
+            this.RadioButton2.Text = "radioButton2";
+            this.RadioButton2.UseVisualStyleBackColor = true;
+            // 
             // InputControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.RadioButton2);
+            this.Controls.Add(this.RadioButton1);
             this.Controls.Add(this.UnmaskPasswordButton);
             this.Controls.Add(this.PasswordBox);
             this.Controls.Add(this.MultiLineTextBox);
@@ -125,5 +151,7 @@
         private System.Windows.Forms.TextBox MultiLineTextBox;
         private System.Windows.Forms.TextBox PasswordBox;
         private System.Windows.Forms.Button UnmaskPasswordButton;
+        private System.Windows.Forms.RadioButton RadioButton1;
+        private System.Windows.Forms.RadioButton RadioButton2;
     }
 }

@@ -27,6 +27,8 @@
                 <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
                 <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" />
                 <PasswordBox x:Name="PasswordBox" />
+                <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
+                <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Scenarios" Grid.Column="3" AutomationProperties.AutomationId="ScenariosPane">
