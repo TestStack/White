@@ -115,5 +115,10 @@ namespace WpfTestApplication
         {
             new CustomUIItemScenario().ShowDialog();
         }
+
+        private void OpenMessageBoxClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this, "Close me", "Test message box", MessageBoxButton.OK);
+        }
     }
 }

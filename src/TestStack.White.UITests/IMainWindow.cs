@@ -8,6 +8,7 @@ namespace TestStack.White.UITests
     {
         void Close();
         Window ModalWindow(string title);
+        Window MessageBox(string title);
         AttachedKeyboard Keyboard { get; }
     }
 }

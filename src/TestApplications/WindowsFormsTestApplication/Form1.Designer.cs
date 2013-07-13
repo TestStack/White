@@ -42,6 +42,7 @@
             this.CustomUIItemScenario = new System.Windows.Forms.Button();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.OpenMessageBox = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OpenMessageBox);
             this.groupBox3.Controls.Add(this.CustomUIItemScenario);
             this.groupBox3.Controls.Add(this.DragDropScenario);
             this.groupBox3.Controls.Add(this.OpenFormWithoutScrollAndItemOutside);
@@ -170,6 +172,16 @@
             this.listControls1.Size = new System.Drawing.Size(260, 204);
             this.listControls1.TabIndex = 0;
             // 
+            // OpenMessageBox
+            // 
+            this.OpenMessageBox.Location = new System.Drawing.Point(7, 228);
+            this.OpenMessageBox.Name = "OpenMessageBox";
+            this.OpenMessageBox.Size = new System.Drawing.Size(193, 23);
+            this.OpenMessageBox.TabIndex = 7;
+            this.OpenMessageBox.Text = "Open Message Box";
+            this.OpenMessageBox.UseVisualStyleBackColor = true;
+            this.OpenMessageBox.Click += new System.EventHandler(this.OpenMessageBox_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -203,6 +215,7 @@
         private System.Windows.Forms.Button OpenFormWithoutScrollAndItemOutside;
         private System.Windows.Forms.Button DragDropScenario;
         private System.Windows.Forms.Button CustomUIItemScenario;
+        private System.Windows.Forms.Button OpenMessageBox;
     }
 }
 

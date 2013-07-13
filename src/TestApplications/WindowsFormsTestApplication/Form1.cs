@@ -66,5 +66,10 @@ namespace WindowsFormsTestApplication
         {
             new CustomUIItemScenario().ShowDialog(this);
         }
+
+        private void OpenMessageBox_Click(object sender, System.EventArgs e)
+        {
+            MessageBox.Show(this, "Close me", "Test message box", MessageBoxButtons.OK);
+        }
     }
 }

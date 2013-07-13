@@ -51,6 +51,7 @@
     <Compile Include="ControlTests\CustomUIItemTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
+    <Compile Include="MessageBoxTest.cs" />
     <Compile Include="WindowTests.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
     <Compile Include="ControlTests\ButtonTest.cs" />

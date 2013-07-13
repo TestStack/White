@@ -43,6 +43,8 @@
                         AutomationProperties.AutomationId="OpenFormWithoutScrollAndItemOutside" />
                 <Button Content="Custom UI Item" Click="CustomUIItemScenarioClick"
                         AutomationProperties.AutomationId="CustomUIItemScenario" />
+                <Button Content="Open Message Box" Click="OpenMessageBoxClick"
+                        AutomationProperties.AutomationId="OpenMessageBox" />
             </StackPanel>
         </GroupBox>
     </Grid>
