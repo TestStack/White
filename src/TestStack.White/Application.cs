@@ -183,7 +183,6 @@ namespace TestStack.White
             Logger.Info("Closing Application");
             if (Process.HasExited)
             {
-                Logger.Warn("Application has already exited (crashed?)");
                 Process.Dispose();
                 return;
             }

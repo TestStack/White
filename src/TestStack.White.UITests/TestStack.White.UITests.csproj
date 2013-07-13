@@ -52,8 +52,10 @@
     <Compile Include="ControlTests\GroupBoxTest.cs" />
     <Compile Include="ControlTests\HyperlinkTest.cs" />
     <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
+    <Compile Include="ControlTests\LabelTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
+    <Compile Include="ControlTests\ProgressBarTest.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />
     <Compile Include="NativeWindowTest.cs" />

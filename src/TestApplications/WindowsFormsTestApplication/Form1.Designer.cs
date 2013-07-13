@@ -32,6 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ScenariosPane = new System.Windows.Forms.GroupBox();
+            this.OpenWindowWithNoTitleBar = new System.Windows.Forms.Button();
             this.OpenMessageBox = new System.Windows.Forms.Button();
             this.CustomUIItemScenario = new System.Windows.Forms.Button();
             this.DragDropScenario = new System.Windows.Forms.Button();
@@ -41,11 +42,11 @@
             this.GetMultipleButton = new System.Windows.Forms.Button();
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.OpenWindowWithNoTitleBar = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.ScenariosPane.SuspendLayout();
@@ -89,6 +90,16 @@
             this.ScenariosPane.TabIndex = 5;
             this.ScenariosPane.TabStop = false;
             this.ScenariosPane.Text = "Scenarios";
+            // 
+            // OpenWindowWithNoTitleBar
+            // 
+            this.OpenWindowWithNoTitleBar.Location = new System.Drawing.Point(7, 258);
+            this.OpenWindowWithNoTitleBar.Name = "OpenWindowWithNoTitleBar";
+            this.OpenWindowWithNoTitleBar.Size = new System.Drawing.Size(193, 23);
+            this.OpenWindowWithNoTitleBar.TabIndex = 8;
+            this.OpenWindowWithNoTitleBar.Text = "No Title Bar Window";
+            this.OpenWindowWithNoTitleBar.UseVisualStyleBackColor = true;
+            this.OpenWindowWithNoTitleBar.Click += new System.EventHandler(this.OpenWindowWithNoTitleBar_Click);
             // 
             // OpenMessageBox
             // 
@@ -173,18 +184,9 @@
             this.ButtonWithTooltip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseClick);
             this.ButtonWithTooltip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseUp);
             // 
-            // OpenWindowWithNoTitleBar
-            // 
-            this.OpenWindowWithNoTitleBar.Location = new System.Drawing.Point(7, 258);
-            this.OpenWindowWithNoTitleBar.Name = "OpenWindowWithNoTitleBar";
-            this.OpenWindowWithNoTitleBar.Size = new System.Drawing.Size(193, 23);
-            this.OpenWindowWithNoTitleBar.TabIndex = 8;
-            this.OpenWindowWithNoTitleBar.Text = "No Title Bar Window";
-            this.OpenWindowWithNoTitleBar.UseVisualStyleBackColor = true;
-            this.OpenWindowWithNoTitleBar.Click += new System.EventHandler(this.OpenWindowWithNoTitleBar_Click);
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.ProgressBar);
             this.groupBox4.Controls.Add(this.LinkLabel);
             this.groupBox4.Location = new System.Drawing.Point(533, 13);
             this.groupBox4.Name = "groupBox4";
@@ -216,6 +218,14 @@
             this.listControls1.Name = "listControls1";
             this.listControls1.Size = new System.Drawing.Size(260, 204);
             this.listControls1.TabIndex = 0;
+            // 
+            // ProgressBar
+            // 
+            this.ProgressBar.Location = new System.Drawing.Point(9, 45);
+            this.ProgressBar.Name = "ProgressBar";
+            this.ProgressBar.Size = new System.Drawing.Size(100, 23);
+            this.ProgressBar.TabIndex = 8;
+            this.ProgressBar.Value = 50;
             // 
             // Form1
             // 
@@ -256,6 +266,7 @@
         private System.Windows.Forms.Button OpenWindowWithNoTitleBar;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.LinkLabel LinkLabel;
+        private System.Windows.Forms.ProgressBar ProgressBar;
     }
 }
 

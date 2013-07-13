@@ -16,16 +16,22 @@
             <wpfTestApplication:ListControls x:Name="ListControls" />
         </GroupBox>
         <GroupBox Header="OtherControls" Grid.Column="1" Width="150">
-            <TextBlock x:Name="LinkLabelContainer">
-                <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
-            </TextBlock>
+            <StackPanel>
+                <TextBlock x:Name="LinkLabelContainer">
+                    <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
+                </TextBlock>
+                <ProgressBar Value="50" x:Name="ProgressBar" />
+            </StackPanel>
+            
         </GroupBox>
         <GroupBox Header="Input controls" Grid.Column="2" Width="150">
             <StackPanel>
+                <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
                 <DatePicker x:Name="DatePicker" />
                 <CheckBox x:Name="CheckBox" Content="A checkbox" />
                 <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
                 <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" />
+                <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
                 <PasswordBox x:Name="PasswordBox" />
                 <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
                 <RadioButton x:Name="RadioButton2" Content="RadioButton2" />

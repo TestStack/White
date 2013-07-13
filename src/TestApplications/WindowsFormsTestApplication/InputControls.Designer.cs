@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.DatePicker = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
+            this.DateTimePickerLabel = new System.Windows.Forms.Label();
             this.CheckBox = new System.Windows.Forms.CheckBox();
             this.TextBox = new System.Windows.Forms.TextBox();
             this.MultiLineTextBox = new System.Windows.Forms.TextBox();
@@ -46,14 +46,14 @@
             this.DatePicker.Size = new System.Drawing.Size(200, 20);
             this.DatePicker.TabIndex = 0;
             // 
-            // label1
+            // DateTimePickerLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "DateTimePicker";
+            this.DateTimePickerLabel.AutoSize = true;
+            this.DateTimePickerLabel.Location = new System.Drawing.Point(4, 10);
+            this.DateTimePickerLabel.Name = "DateTimePickerLabel";
+            this.DateTimePickerLabel.Size = new System.Drawing.Size(83, 13);
+            this.DateTimePickerLabel.TabIndex = 1;
+            this.DateTimePickerLabel.Text = "DateTimePicker";
             // 
             // CheckBox
             // 
@@ -67,6 +67,11 @@
             // 
             // TextBox
             // 
+            this.TextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "hi",
+            "hello"});
+            this.TextBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextBox.Location = new System.Drawing.Point(7, 80);
             this.TextBox.Name = "TextBox";
             this.TextBox.Size = new System.Drawing.Size(196, 20);
@@ -132,7 +137,7 @@
             this.Controls.Add(this.MultiLineTextBox);
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.CheckBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.DateTimePickerLabel);
             this.Controls.Add(this.DatePicker);
             this.Name = "InputControls";
             this.Size = new System.Drawing.Size(319, 292);
@@ -145,7 +150,7 @@
         #endregion
 
         private System.Windows.Forms.DateTimePicker DatePicker;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label DateTimePickerLabel;
         private System.Windows.Forms.CheckBox CheckBox;
         private System.Windows.Forms.TextBox TextBox;
         private System.Windows.Forms.TextBox MultiLineTextBox;
