@@ -120,5 +120,10 @@ namespace WpfTestApplication
         {
             MessageBox.Show(this, "Close me", "Test message box", MessageBoxButton.OK);
         }
+
+        private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
+        {
+            AutomationProperties.SetHelpText(LinkLabel, "Hyperlink Clicked");            
+        }
     }
 }

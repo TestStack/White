@@ -45,9 +45,7 @@
       </TreeViewItem>
       <TreeViewItem Visibility="Visible" Header="Main" Name="main"/>
     </TreeView>
-    <TextBlock Margin="0,153,141,0" Height="15" VerticalAlignment="Top" Name="linkLabel" HorizontalAlignment="Right" Width="70">
-      <Hyperlink>Link Text</Hyperlink>
-    </TextBlock>
+    
     <Label Height="24" HorizontalAlignment="Left" Margin="17,0,0,166" Name="result" VerticalAlignment="Bottom" Width="86">Result</Label>
 
     <TabControl TabStripPlacement="Top" Margin="362,0,37,68" Name="seasons" Height="85" VerticalAlignment="Bottom" Grid.ColumnSpan="3">
@@ -144,12 +142,7 @@
     <Button Height="23" Margin="0,113,232,0" Name="launchModal" VerticalAlignment="Top" HorizontalAlignment="Right" Width="96">Launches Modal</Button>
     <ComboBox Height="26" HorizontalAlignment="Right" Margin="0,111,88,0" Name="comboBoxLaunchingModalWindow" VerticalAlignment="Top" Width="121" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"></ComboBox>
     <Button Height="23" Margin="0,0,173,218" Name="showError" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="161">Show Error</Button>
-    <RichTextBox Height="42" Margin="332,154,220,0" Name="textBox1" VerticalAlignment="Top" />
-    <TextBlock Height="15" HorizontalAlignment="Right" Margin="0,154,74,0" VerticalAlignment="Top" Width="64" Name="hyperlinkLaunchesModal">
-      <Hyperlink>
-        <Run>Launch Modal</Run>
-      </Hyperlink>
-    </TextBlock>
+        <RichTextBox Height="42" Margin="332,154,220,0" Name="textBox1" VerticalAlignment="Top" />
     <TreeView HorizontalAlignment="Left" Margin="20,247,0,205" Name="treeViewLaunchesModal" Width="120"  >
       <TreeViewItem Visibility="Visible" Header="Root" Name="rootNodeModal">
         <TreeViewItem Visibility="Visible" Header="Child" Name="childNodeModal" />

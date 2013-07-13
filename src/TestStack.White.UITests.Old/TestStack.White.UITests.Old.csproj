@@ -82,12 +82,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfiguration.cs" />
-    <Compile Include="Testing\ApplicationClass.cs" />
-    <Compile Include="Testing\ControlsActionTest.cs" />
-    <Compile Include="Testing\CoreTestTemplate.cs" />
-    <Compile Include="Testing\IllegalTestException.cs" />
-    <Compile Include="Testing\TestMode.cs" />
-    <Compile Include="Testing\TestModeTest.cs" />
     <Compile Include="UIAutomationTest.cs" />
     <Compile Include="UIItems\AbstractScrollBarsTest.cs" />
     <Compile Include="UIItems\ColorTest.cs" />
@@ -145,13 +139,9 @@
     <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusStripTest.cs" />
     <Compile Include="UIItems\WindowWithoutAmpersandInTitleTest.cs" />
-    <Compile Include="UIItems\WindowWithoutTitleBarTest.cs" />
-    <Compile Include="UIItems\WinFormHyperlinkTest.cs" />
     <Compile Include="UIItems\WinFormListViewTest.cs" />
     <Compile Include="UIItems\WinFormTextBoxTest.cs" />
-    <Compile Include="UIItems\WPFHyperlinkTest.cs" />
     <Compile Include="UIItems\WPFTextBlockTest.cs" />
-    <Compile Include="WindowsAPI\NativeWindowTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

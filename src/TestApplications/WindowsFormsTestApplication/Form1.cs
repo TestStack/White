@@ -76,5 +76,10 @@ namespace WindowsFormsTestApplication
         {
             new WindowWithNoTitleBar().ShowDialog(this);
         }
+
+        private void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel.AccessibleDescription = "Hyperlink Clicked";
+        }
     }
 }

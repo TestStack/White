@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace WindowsPresentationFramework
@@ -51,14 +50,6 @@ namespace WindowsPresentationFramework
             komboBox.Items.Add("6");
             komboBox.Items.Add("7");
             komboBox.Items.Add("ReallyReallyLongTextHere");
-
-
-            InlineCollection collection = linkLabel.Inlines;
-            var hyperlink = (Hyperlink) collection.FirstInline;
-            hyperlink.Click += HyperlinkClick;
-
-            hyperlink = (Hyperlink) hyperlinkLaunchesModal.Inlines.FirstInline;
-            hyperlink.Click += HyperlinkClickLaunchingModal;
 
             var winter = (TabItem) seasons.Items[2];
             var canvas = new Canvas();
@@ -249,11 +240,6 @@ namespace WindowsPresentationFramework
         private void HyperlinkClickLaunchingModal(object sender, RoutedEventArgs e)
         {
             ShowModalWindow();
-        }
-
-        private void HyperlinkClick(object sender, RoutedEventArgs e)
-        {
-            result.Content = "Link label clicked";
         }
 
         private void ComboBoxLaunchingModalWindowSelectionChanged(object sender, SelectionChangedEventArgs e)

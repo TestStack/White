@@ -9,12 +9,18 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
         <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
                   Name="AGroupBox">
             <wpfTestApplication:ListControls x:Name="ListControls" />
         </GroupBox>
-        <GroupBox Header="Input controls" Grid.Column="1" Width="150">
+        <GroupBox Header="OtherControls" Grid.Column="1" Width="150">
+            <TextBlock x:Name="LinkLabelContainer">
+                <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
+            </TextBlock>
+        </GroupBox>
+        <GroupBox Header="Input controls" Grid.Column="2" Width="150">
             <StackPanel>
                 <DatePicker x:Name="DatePicker" />
                 <CheckBox x:Name="CheckBox" Content="A checkbox" />
@@ -23,7 +29,7 @@
                 <PasswordBox x:Name="PasswordBox" />
             </StackPanel>
         </GroupBox>
-        <GroupBox Header="Scenarios" Grid.Column="2" AutomationProperties.AutomationId="ScenariosPane">
+        <GroupBox Header="Scenarios" Grid.Column="3" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>
                 <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter"
                         AutomationProperties.AutomationId="OpenHorizontalSplitterButton" />
