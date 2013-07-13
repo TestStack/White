@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.Utility;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.Splitters

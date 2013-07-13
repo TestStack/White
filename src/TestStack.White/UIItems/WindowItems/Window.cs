@@ -343,11 +343,6 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual Window MessageBox(string title)
         {
             Window window = factory.ModalWindow(title, InitializeOption.NoCache, WindowSession.ModalWindowSession(InitializeOption.NoCache));
-            if (window == null)
-            {
-                var debugDetails = Debug.Details(automationElement);
-                throw new AutomationException(string.Format("Failed to get MessageBox with title '{0}'", title), debugDetails);
-            }
             window.actionListener = this;
             return window;
         }

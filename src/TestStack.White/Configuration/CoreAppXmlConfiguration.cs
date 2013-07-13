@@ -5,6 +5,7 @@ using Castle.Core.Logging;
 using TestStack.White.Bricks;
 using TestStack.White.Interceptors;
 using TestStack.White.UIItems;
+using TestStack.White.Utility;
 
 namespace TestStack.White.Configuration
 {
@@ -144,6 +145,20 @@ namespace TestStack.White.Configuration
         }
 
         public virtual ILoggerFactory LoggerFactory { get; set; }
+
+        public virtual IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes)
+        {
+            var existing = new Dictionary<string, string>(UsedValues);
+            changes(this);
+
+            return new DelegateDisposable(() =>
+            {
+                foreach (var value in existing)
+                {
+                    SetUsedValue(value.Key, value.Value);
+                }
+            });
+        }
 
         public virtual IWaitHook AdditionalWaitHook { get; set; }
 

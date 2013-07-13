@@ -31,14 +31,6 @@ namespace TestStack.White.Factory
             return new PopUpMenu(Finder.AutomationElement, actionListener);
         }
 
-        private static AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
-        {
-            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
-            if (element == null)
-                throw new UIActionException(message + Debug.GetAllWindows());
-            return element;
-        }
-
         public virtual List<Window> DesktopWindows(Process process, ApplicationSession applicationSession)
         {
             return (from automationElement in FindAllWindowElements(process) 
@@ -78,7 +70,9 @@ namespace TestStack.White.Factory
 
         public virtual Window CreateWindow(string title, Process process, InitializeOption option, WindowSession windowSession)
         {
-            return Create(FindWindowElement(process, title), option, windowSession);
+            var message = string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, ", after waiting for 30 seconds");
+            var element = WaitTillFound(() => Finder.FindWindow(title, process.Id), message);
+            return Create(element, option, windowSession);
         }
 
         public virtual Window CreateWindow(SearchCriteria searchCriteria, Process process, InitializeOption option, WindowSession windowSession)
@@ -95,9 +89,33 @@ namespace TestStack.White.Factory
             return Create(foundElement, initializeOption, windowSession);
         }
 
-        private AutomationElement FindWindowElement(Process process, string title)
+        public virtual Window FindModalWindow(string title, Process process, InitializeOption option, AutomationElement parentWindowElement,
+                                              WindowSession windowSession)
         {
-            return WaitTillFound(() => Finder.FindWindow(title, process.Id), string.Format("Couldn't find window with title {0} in process {1}{2}", title, process.Id, ", after waiting for 30 seconds"));
+            var windowFinder = new AutomationElementFinder(parentWindowElement);
+            var message = "Could not find modal window with title: " + title;
+            var modalWindowElement = WaitTillFound(() => FindModalWindowElement(title, process, windowFinder), message);
+            return Create(modalWindowElement, option, windowSession);
+        }
+
+        public virtual Window FindModalWindow(SearchCriteria searchCriteria, InitializeOption option, AutomationElement parentWindowElement, WindowSession windowSession)
+        {
+            var windowFinder = new AutomationElementFinder(parentWindowElement);
+            var message = "Could not find modal window with SearchCriteria: " + searchCriteria;
+            var modalWindowElement = WaitTillFound(() => FindModalWindowElement(searchCriteria, windowFinder), message);
+            return Create(modalWindowElement, option, windowSession);
+        }
+
+        private AutomationElement FindModalWindowElement(string title, Process process, AutomationElementFinder windowFinder)
+        {
+            var windowElement = windowFinder.FindWindow(title, process.Id) ?? Finder.FindWindow(title, process.Id);
+            return windowElement;
+        }
+
+        private AutomationElement FindModalWindowElement(SearchCriteria searchCriteria, AutomationElementFinder windowFinder)
+        {
+            var windowElement = windowFinder.FindWindow(searchCriteria) ?? Finder.FindWindow(searchCriteria);
+            return windowElement;
         }
 
         private AutomationElement FindWindowElement(Process process, Predicate<string> match)
@@ -112,47 +130,6 @@ namespace TestStack.White.Factory
                 if (titleBarElement == null) return false;
                 return match.Invoke(titleBarElement.Current.Name);
             });
-        }
-
-        public virtual Window FindModalWindow(string title, Process process, InitializeOption option, AutomationElement parentWindowElement,
-                                              WindowSession windowSession)
-        {
-            var windowFinder = new AutomationElementFinder(parentWindowElement);
-            try
-            {
-                AutomationElement modalWindowElement = WaitTillFound(() =>
-                {
-                    AutomationElement windowElement = windowFinder.FindWindow(title, process.Id) ??
-                        Finder.FindWindow(title, process.Id);
-                    return windowElement;
-                }, "Could not find modal window with title: " + title);
-                return Create(modalWindowElement, option, windowSession);
-            }
-            catch (UIActionException e)
-            {
-                logger.Debug(e.ToString());
-                return null;
-            }
-        }
-
-        public virtual Window FindModalWindow(SearchCriteria searchCriteria, InitializeOption option, AutomationElement parentWindowElement, WindowSession windowSession)
-        {
-            var windowFinder = new AutomationElementFinder(parentWindowElement);
-            try
-            {
-                AutomationElement modalWindowElement = WaitTillFound(() =>
-                {
-                    AutomationElement windowElement = windowFinder.FindWindow(searchCriteria) ??
-                        Finder.FindWindow(searchCriteria);
-                    return windowElement;
-                }, "Could not find modal window with SearchCriteria: " + searchCriteria);
-                return Create(modalWindowElement, option, windowSession);
-            }
-            catch (UIActionException e)
-            {
-                logger.Debug(e.ToString());
-                return null;
-            }
         }
 
         public virtual List<Window> DesktopWindows()

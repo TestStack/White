@@ -25,9 +25,9 @@ namespace TestStack.White.Interceptors
             {
                 CoreAppXmlConfiguration.Instance.Interceptors.Process(invocation, coreInterceptContext);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                logger.Error(DynamicProxyInterceptors.ToString(invocation), ex);
+                logger.Error(DynamicProxyInterceptors.ToString(invocation));
                 throw;
             }
         }

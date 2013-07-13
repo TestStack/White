@@ -3,6 +3,8 @@ using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Testing;
+using White.Core.UITests.Testing;
+using Xunit;
 
 namespace White.Core.UITests
 {

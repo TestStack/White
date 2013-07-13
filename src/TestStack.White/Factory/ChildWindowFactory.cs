@@ -24,18 +24,24 @@ namespace TestStack.White.Factory
 
         public virtual Window ModalWindow(string title, InitializeOption option, WindowSession windowSession)
         {
-            return ModalWindow(() => Finder.FindWindow(title, 0), option, windowSession);
-        }
-
-        private static Window ModalWindow(Func<AutomationElement> find, InitializeOption option, WindowSession windowSession)
-        {
-            var automationElement = Retry.For(find, e => e == null, CoreAppXmlConfiguration.Instance.BusyTimeout());
-            return automationElement == null ? null: Create(automationElement, option, windowSession);
+            var message = "Could not find modal window with title: " + title;
+            var modalWindowElement = WaitTillFound(() => Finder.FindWindow(title, 0), message);
+            return Create(modalWindowElement, option, windowSession);
         }
 
         public virtual Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option, WindowSession windowSession)
         {
-            return ModalWindow(() => Finder.FindWindow(searchCriteria), option, windowSession);
+            var message = "Could not find modal window with SearchCriteria: " + searchCriteria;
+            var modalWindowElement = WaitTillFound(() => Finder.FindWindow(searchCriteria), message);
+            return Create(modalWindowElement, option, windowSession);
+        }
+
+        protected AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
+        {
+            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
+            if (element == null)
+                throw new AutomationException(message, Debug.GetAllWindows());
+            return element;
         }
 
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)

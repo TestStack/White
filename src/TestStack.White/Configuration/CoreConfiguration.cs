@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Castle.Core.Logging;
 using TestStack.White.Bricks;
@@ -10,6 +11,9 @@ namespace TestStack.White.Configuration
     /// </summary>
     public interface ICoreConfiguration
     {
+        /// <summary>
+        /// In Milliseconds
+        /// </summary>
         int BusyTimeout { get; set; }
         int FindWindowTimeout { get; set; }
         bool WaitBasedOnHourGlass { get; set; }
@@ -30,5 +34,6 @@ namespace TestStack.White.Configuration
         bool MoveMouseToGetStatusOfHourGlass { get; set; }
         bool InvertMouseButtons { get; set; }
         ILoggerFactory LoggerFactory { get; set; }
+        IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes);
     }
 }

@@ -26,13 +26,11 @@ namespace TestStack.White.UITests
             messageBox.Get<Button>(SearchCriteria.ByText("OK")).Click();
         }
 
-        public void ThrowsWhenNotFound()
+        void ThrowsWhenNotFound()
         {
-            MainWindow.Get<Button>("OpenMessageBox").Click();
             var exception = Assert.Throws<AutomationException>(() => MainWindow.MessageBox("foo"));
 
             Assert.Equal("Failed to get MessageBox with title 'foo'", exception.Message);
-            MainWindow.MessageBox("Test message box").Close();
         }
 
         protected override void ExecuteTestRun(WindowsFramework framework)

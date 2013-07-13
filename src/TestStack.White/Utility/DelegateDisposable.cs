@@ -1,6 +1,6 @@
 using System;
 
-namespace TestStack.White.UITests.ControlTests.Splitters
+namespace TestStack.White.Utility
 {
     public class DelegateDisposable : IDisposable
     {

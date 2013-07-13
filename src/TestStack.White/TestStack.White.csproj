@@ -197,6 +197,7 @@
     <Compile Include="UIItems\WinFormTextBox.cs" />
     <Compile Include="UIItems\WpfDatePicker.cs" />
     <Compile Include="UIItems\WPFUIItems\WPFUIItem.cs" />
+    <Compile Include="Utility\DelegateDisposable.cs" />
     <Compile Include="Utility\MethodNameResolver.cs" />
     <Compile Include="Utility\MonitorForm.cs">
       <SubType>Form</SubType>

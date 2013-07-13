@@ -52,6 +52,7 @@
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
     <Compile Include="MessageBoxTest.cs" />
+    <Compile Include="ModalWindowTest.cs" />
     <Compile Include="WindowTests.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
     <Compile Include="ControlTests\ButtonTest.cs" />
@@ -66,7 +67,6 @@
     <Compile Include="ControlTests\ListControls\DataBoundComboBoxTests.cs" />
     <Compile Include="ControlTests\ListControls\EditableComboBoxTests.cs" />
     <Compile Include="ControlTests\InputControls\DatePickerTests.cs" />
-    <Compile Include="ControlTests\Splitters\DelegateDisposable.cs" />
     <Compile Include="ControlTests\Splitters\HorizontalThumbTest.cs" />
     <Compile Include="ControlTests\Splitters\VerticalThumbTest.cs" />
     <Compile Include="Factory\InitializeOptionTest.cs" />
