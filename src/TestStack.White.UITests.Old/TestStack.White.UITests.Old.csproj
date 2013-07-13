@@ -86,9 +86,7 @@
     <Compile Include="UIItems\AbstractScrollBarsTest.cs" />
     <Compile Include="UIItems\ColorTest.cs" />
     <Compile Include="UIItems\ErrorProviderTest.cs" />
-    <Compile Include="UIItems\GroupBoxTest.cs" />
     <Compile Include="UIItems\HScrollBarTest.cs" />
-    <Compile Include="UIItems\HyperlinkTest.cs" />
     <Compile Include="UIItems\ImageTest.cs" />
     <Compile Include="UIItems\LabelTest.cs" />
     <Compile Include="UIItems\ListBoxItems\ListBoxWithScrollBarTest.cs" />

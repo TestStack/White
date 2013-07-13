@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlTests\CustomUIItemTest.cs" />
+    <Compile Include="ControlTests\GroupBoxTest.cs" />
     <Compile Include="ControlTests\HyperlinkTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />

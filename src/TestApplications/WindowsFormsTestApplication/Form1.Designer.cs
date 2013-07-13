@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ScenariosPane = new System.Windows.Forms.GroupBox();
             this.OpenMessageBox = new System.Windows.Forms.Button();
             this.CustomUIItemScenario = new System.Windows.Forms.Button();
             this.DragDropScenario = new System.Windows.Forms.Button();
@@ -42,13 +42,13 @@
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.OpenWindowWithNoTitleBar = new System.Windows.Forms.Button();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.ScenariosPane.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,23 +72,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input Controls";
             // 
-            // groupBox3
+            // ScenariosPane
             // 
-            this.groupBox3.Controls.Add(this.OpenWindowWithNoTitleBar);
-            this.groupBox3.Controls.Add(this.OpenMessageBox);
-            this.groupBox3.Controls.Add(this.CustomUIItemScenario);
-            this.groupBox3.Controls.Add(this.DragDropScenario);
-            this.groupBox3.Controls.Add(this.OpenFormWithoutScrollAndItemOutside);
-            this.groupBox3.Controls.Add(this.DisableControls);
-            this.groupBox3.Controls.Add(this.OpenListView);
-            this.groupBox3.Controls.Add(this.GetMultipleButton);
-            this.groupBox3.Controls.Add(this.ButtonWithTooltip);
-            this.groupBox3.Location = new System.Drawing.Point(733, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(207, 381);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Scenarios";
+            this.ScenariosPane.Controls.Add(this.OpenWindowWithNoTitleBar);
+            this.ScenariosPane.Controls.Add(this.OpenMessageBox);
+            this.ScenariosPane.Controls.Add(this.CustomUIItemScenario);
+            this.ScenariosPane.Controls.Add(this.DragDropScenario);
+            this.ScenariosPane.Controls.Add(this.OpenFormWithoutScrollAndItemOutside);
+            this.ScenariosPane.Controls.Add(this.DisableControls);
+            this.ScenariosPane.Controls.Add(this.OpenListView);
+            this.ScenariosPane.Controls.Add(this.GetMultipleButton);
+            this.ScenariosPane.Controls.Add(this.ButtonWithTooltip);
+            this.ScenariosPane.Location = new System.Drawing.Point(733, 12);
+            this.ScenariosPane.Name = "ScenariosPane";
+            this.ScenariosPane.Size = new System.Drawing.Size(207, 381);
+            this.ScenariosPane.TabIndex = 5;
+            this.ScenariosPane.TabStop = false;
+            this.ScenariosPane.Text = "Scenarios";
             // 
             // OpenMessageBox
             // 
@@ -183,20 +183,6 @@
             this.OpenWindowWithNoTitleBar.UseVisualStyleBackColor = true;
             this.OpenWindowWithNoTitleBar.Click += new System.EventHandler(this.OpenWindowWithNoTitleBar_Click);
             // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(7, 19);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(217, 356);
-            this.inputControls1.TabIndex = 0;
-            // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(6, 19);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.LinkLabel);
@@ -217,13 +203,27 @@
             this.LinkLabel.Text = "Link Text";
             this.LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
             // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(7, 19);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(217, 356);
+            this.inputControls1.TabIndex = 0;
+            // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(6, 19);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 405);
             this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.ScenariosPane);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -231,7 +231,7 @@
             this.Text = "MainWindow";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
+            this.ScenariosPane.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -243,7 +243,7 @@
         private ListControls listControls1;
         private System.Windows.Forms.GroupBox groupBox2;
         private InputControls inputControls1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox ScenariosPane;
         private System.Windows.Forms.Button ButtonWithTooltip;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button GetMultipleButton;
