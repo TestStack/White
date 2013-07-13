@@ -32,13 +32,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.DragDropScenario = new System.Windows.Forms.Button();
             this.OpenFormWithoutScrollAndItemOutside = new System.Windows.Forms.Button();
             this.DisableControls = new System.Windows.Forms.Button();
             this.OpenListView = new System.Windows.Forms.Button();
             this.GetMultipleButton = new System.Windows.Forms.Button();
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.DragDropScenario = new System.Windows.Forms.Button();
+            this.CustomUIItemScenario = new System.Windows.Forms.Button();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.groupBox1.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.CustomUIItemScenario);
             this.groupBox3.Controls.Add(this.DragDropScenario);
             this.groupBox3.Controls.Add(this.OpenFormWithoutScrollAndItemOutside);
             this.groupBox3.Controls.Add(this.DisableControls);
@@ -80,6 +82,16 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Scenarios";
+            // 
+            // DragDropScenario
+            // 
+            this.DragDropScenario.Location = new System.Drawing.Point(7, 169);
+            this.DragDropScenario.Name = "DragDropScenario";
+            this.DragDropScenario.Size = new System.Drawing.Size(194, 23);
+            this.DragDropScenario.TabIndex = 5;
+            this.DragDropScenario.Text = "Drag Drop Scenario";
+            this.DragDropScenario.UseVisualStyleBackColor = true;
+            this.DragDropScenario.Click += new System.EventHandler(this.DragDropScenario_Click);
             // 
             // OpenFormWithoutScrollAndItemOutside
             // 
@@ -134,15 +146,15 @@
             this.ButtonWithTooltip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseClick);
             this.ButtonWithTooltip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseUp);
             // 
-            // DragDropScenario
+            // CustomUIItemScenario
             // 
-            this.DragDropScenario.Location = new System.Drawing.Point(7, 169);
-            this.DragDropScenario.Name = "DragDropScenario";
-            this.DragDropScenario.Size = new System.Drawing.Size(194, 23);
-            this.DragDropScenario.TabIndex = 5;
-            this.DragDropScenario.Text = "Drag Drop Scenario";
-            this.DragDropScenario.UseVisualStyleBackColor = true;
-            this.DragDropScenario.Click += new System.EventHandler(this.DragDropScenario_Click);
+            this.CustomUIItemScenario.Location = new System.Drawing.Point(6, 198);
+            this.CustomUIItemScenario.Name = "CustomUIItemScenario";
+            this.CustomUIItemScenario.Size = new System.Drawing.Size(194, 23);
+            this.CustomUIItemScenario.TabIndex = 6;
+            this.CustomUIItemScenario.Text = "Custom UI Item";
+            this.CustomUIItemScenario.UseVisualStyleBackColor = true;
+            this.CustomUIItemScenario.Click += new System.EventHandler(this.CustomUIItemScenario_Click);
             // 
             // inputControls1
             // 
@@ -190,6 +202,7 @@
         private System.Windows.Forms.Button DisableControls;
         private System.Windows.Forms.Button OpenFormWithoutScrollAndItemOutside;
         private System.Windows.Forms.Button DragDropScenario;
+        private System.Windows.Forms.Button CustomUIItemScenario;
     }
 }
 

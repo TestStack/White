@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace WindowsFormsTestApplication
+namespace WindowsFormsTestApplication.Scenarios
 {
     public partial class DragAndDropTestWindow : Form
     {

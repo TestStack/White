@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Automation;
+using TestStack.White.UIItems;
 
 namespace TestStack.White.Mappings
 {
@@ -44,22 +45,22 @@ namespace TestStack.White.Mappings
 
         public static ControlDictionaryItem WinFormPrimary(Type testControlType, ControlType controlType)
         {
-            return Primary(testControlType, controlType, Constants.WinFormFrameworkId);
+            return Primary(testControlType, controlType, WindowsFramework.WinForms.FrameworkId());
         }
 
         public static ControlDictionaryItem WPFPrimary(Type testControlType, ControlType controlType)
         {
-            return Primary(testControlType, controlType, Constants.WPFFrameworkId);
+            return Primary(testControlType, controlType, WindowsFramework.Wpf.FrameworkId());
         }
 
         public static ControlDictionaryItem Win32Primary(Type testControlType, ControlType controlType)
         {
-            return Primary(testControlType, controlType, Constants.Win32FrameworkId);
+            return Primary(testControlType, controlType, WindowsFramework.Win32.FrameworkId());
         }
 
         public static ControlDictionaryItem SilverlightPrimary(Type testControlType, ControlType controlType)
         {
-            return Primary(testControlType, controlType, Constants.SilverlightFrameworkId);
+            return Primary(testControlType, controlType, WindowsFramework.Silverlight.FrameworkId());
         }
 
         private static ControlDictionaryItem Secondary(Type testControlType, ControlType controlType, string frameworkId)
@@ -79,22 +80,22 @@ namespace TestStack.White.Mappings
 
         public static ControlDictionaryItem WinFormSecondary(Type testControlType, ControlType controlType)
         {
-            return Secondary(testControlType, controlType, Constants.WinFormFrameworkId);
+            return Secondary(testControlType, controlType, WindowsFramework.WinForms.FrameworkId());
         }
 
         public static ControlDictionaryItem Win32Secondary(Type testControlType, ControlType controlType)
         {
-            return Secondary(testControlType, controlType, Constants.Win32FrameworkId);
+            return Secondary(testControlType, controlType, WindowsFramework.Win32.FrameworkId());
         }
 
         public static ControlDictionaryItem WPFSecondary(Type testControlType, ControlType controlType)
         {
-            return Secondary(testControlType, controlType, Constants.WPFFrameworkId);
+            return Secondary(testControlType, controlType, WindowsFramework.Wpf.FrameworkId());
         }
 
         public static ControlDictionaryItem SilverlightSecondary(Type testControlType, ControlType controlType)
         {
-            return Secondary(testControlType, controlType, Constants.SilverlightFrameworkId);
+            return Secondary(testControlType, controlType, WindowsFramework.Silverlight.FrameworkId());
         }
 
         public virtual bool IsPrimary

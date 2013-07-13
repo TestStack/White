@@ -15,7 +15,7 @@ namespace TestStack.White.UITests
     {
         private readonly List<Window> windowsToClose = new List<Window>();
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteTestBase));
-        WindowsFramework currentFramework;
+        WindowsFramework? currentFramework;
 
         internal Keyboard Keyboard;
         protected IMainWindow MainWindow { get; private set; }
@@ -50,7 +50,7 @@ namespace TestStack.White.UITests
 
         protected void RunTest(Action testAction, params WindowsFramework[] runFor)
         {
-            if (!runFor.Any() || runFor.Any(r => r.FrameworkId == currentFramework.FrameworkId))
+            if (!runFor.Any() || runFor.Any(r => r == currentFramework))
             {
                 try
                 {

@@ -1,4 +1,6 @@
 ﻿using System.Windows.Forms;
+using WindowsFormsTestApplication.Scenarios;
+using WindowsFormsTestApplication.Scenarios.CustomUIItem;
 
 namespace WindowsFormsTestApplication
 {
@@ -58,6 +60,11 @@ namespace WindowsFormsTestApplication
         private void DragDropScenario_Click(object sender, System.EventArgs e)
         {
             new DragAndDropTestWindow().ShowDialog();
+        }
+
+        private void CustomUIItemScenario_Click(object sender, System.EventArgs e)
+        {
+            new CustomUIItemScenario().ShowDialog(this);
         }
     }
 }

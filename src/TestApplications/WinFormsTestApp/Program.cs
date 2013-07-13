@@ -17,7 +17,6 @@ namespace WinFormsTestApp
             Application.SetCompatibleTextRenderingDefault(false);
             var forms = new Dictionary<string, Form>
                                  {
-                                     {"customcontrol", GetFormContainingCustomControl()},
                                      {"NoTitleBar", GetFormWithNoTitleBar()},
                                      {"PropertyGrid", new FormWithPropertyGrid()},
                                      {"LargeTree", new FormContainingLargeTree()},
@@ -58,13 +57,6 @@ namespace WinFormsTestApp
         private static Form1 GetFormWithNoTitleBar()
         {
             return new Form1(false) {ControlBox = false, FormBorderStyle = FormBorderStyle.None};
-        }
-
-        private static Form GetFormContainingCustomControl() {
-            var formContainingCustomControl = new Form {Text = "FormContainingCustomControl"};
-            var myDateControl = new MyDateControl {Name = "dateOfBirth"};
-            formContainingCustomControl.Controls.Add(myDateControl);
-            return formContainingCustomControl;
         }
     }
 }

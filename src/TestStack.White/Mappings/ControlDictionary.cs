@@ -87,9 +87,9 @@ namespace TestStack.White.Mappings
             items.Add(ControlDictionaryItem.WPFSecondary(typeof(WPFTreeNode), ControlType.TreeItem));
             items.Add(ControlDictionaryItem.Win32Secondary(typeof(Win32TreeNode), ControlType.TreeItem));
 
-            items.Add(new ControlDictionaryItem(typeof(DateTimePicker), ControlType.Pane, "SysDateTimePick32", true, true, false, Constants.WinFormFrameworkId, false));
-            items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Custom, "DatePicker", true, true, false, Constants.WPFFrameworkId, false));
-            items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Pane, "DatePicker", true, true, false, Constants.SilverlightFrameworkId, false));
+            items.Add(new ControlDictionaryItem(typeof(DateTimePicker), ControlType.Pane, "SysDateTimePick32", true, true, false, WindowsFramework.WinForms.FrameworkId(), false));
+            items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Custom, "DatePicker", true, true, false, WindowsFramework.Wpf.FrameworkId(), false));
+            items.Add(new ControlDictionaryItem(typeof(WpfDatePicker), ControlType.Pane, "DatePicker", true, true, false, WindowsFramework.Silverlight.FrameworkId(), false));
             items.Add(new ControlDictionaryItem(typeof(GroupBox), ControlType.Group, string.Empty, false, true, false, null, true));
             items.Add(new ControlDictionaryItem(null, ControlType.TitleBar, string.Empty, false, false, true, null, false));
 
@@ -177,7 +177,7 @@ namespace TestStack.White.Mappings
             {
                 bool isPrimaryMatching = controlDictionaryItem.IsPrimary && ControlTypeMatches(controlType, controlDictionaryItem) && !controlDictionaryItem.IsIdentifiedByClassName && !controlDictionaryItem.IsIdentifiedByName;
                 bool identifiedByClassNameMatches = !string.IsNullOrWhiteSpace(className) && className.Contains(controlDictionaryItem.ClassName) && controlDictionaryItem.IsIdentifiedByClassName;
-                bool identifiedByNameMatches = !string.IsNullOrWhiteSpace(name) && name.Equals(controlDictionaryItem.TestControlType.Name) && controlDictionaryItem.IsIdentifiedByName;
+                bool identifiedByNameMatches = !string.IsNullOrWhiteSpace(name) && controlDictionaryItem.TestControlType != null && name.Equals(controlDictionaryItem.TestControlType.Name) && controlDictionaryItem.IsIdentifiedByName;
                 return isPrimaryMatching || identifiedByClassNameMatches || identifiedByNameMatches;
             });
         }

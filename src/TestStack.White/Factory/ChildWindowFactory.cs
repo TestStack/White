@@ -46,11 +46,10 @@ namespace TestStack.White.Factory
                 return specializedWindowFactory.Create(element, option, windowSession);
             }
 
-            var windowsFramework = new WindowsFramework(element.Current.FrameworkId);
-            if (windowsFramework.IsWinForms) return new WinFormWindow(element, option, windowSession);
-            if (windowsFramework.IsWpf) return new WPFWindow(element, WindowFactory.Desktop, option, windowSession);
-            if (windowsFramework.IsWin32) return new Win32Window(element, WindowFactory.Desktop, option, windowSession);
-            if (windowsFramework.UIAutomationBug) return null;
+            var windowsFramework = WindowsFrameworkExtensions.FromFrameworkId(element.Current.FrameworkId);
+            if (windowsFramework == WindowsFramework.WinForms) return new WinFormWindow(element, option, windowSession);
+            if (windowsFramework == WindowsFramework.Wpf) return new WPFWindow(element, WindowFactory.Desktop, option, windowSession);
+            if (windowsFramework == WindowsFramework.Win32) return new Win32Window(element, WindowFactory.Desktop, option, windowSession);
             throw new UIItemSearchException(string.Format("{0} is not supported yet.", windowsFramework));
         }
     }

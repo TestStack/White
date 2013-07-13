@@ -83,7 +83,7 @@ namespace TestStack.White.Finder
 
         public virtual T Get<T>(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory) where T : UIItem
         {
-            return (T) Get(searchCriteria.AndControlType(typeof (T), new WindowsFramework(Constants.MissingFrameworkId)), actionListener, factory);
+            return (T) Get(searchCriteria.AndControlType(typeof (T), WindowsFramework.None), actionListener, factory);
         }
 
         private UIItemCollection GetAll(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory)

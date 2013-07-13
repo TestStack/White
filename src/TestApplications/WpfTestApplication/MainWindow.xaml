@@ -41,6 +41,8 @@
                 <Button Content="Disable Controls" Click="DisableControlsClick" x:Name="DisableControls" />
                 <Button Content="FormWithoutScrollAndItemOutside" Click="OpenFormWithoutScrollAndItemOutside"
                         AutomationProperties.AutomationId="OpenFormWithoutScrollAndItemOutside" />
+                <Button Content="Custom UI Item" Click="CustomUIItemScenarioClick"
+                        AutomationProperties.AutomationId="CustomUIItemScenario" />
             </StackPanel>
         </GroupBox>
     </Grid>

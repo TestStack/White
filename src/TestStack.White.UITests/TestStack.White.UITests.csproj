@@ -48,6 +48,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlTests\CustomUIItemTest.cs" />
+    <Compile Include="ControlTests\MyDateUIItem.cs" />
+    <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
+    <Compile Include="WindowTests.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
     <Compile Include="ControlTests\ButtonTest.cs" />
     <Compile Include="ControlTests\HotKeyTest.cs" />

@@ -1,4 +1,5 @@
 using System.Windows.Automation;
+using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using Xunit;
 
@@ -28,8 +29,8 @@ namespace TestStack.White.UnitTests.UIItems.Finders
         {
             Assert.Equal(SearchCriteria.ByAutomationId("foo"), SearchCriteria.ByAutomationId("foo"));
             Assert.NotEqual(SearchCriteria.ByText("foo"), SearchCriteria.ByAutomationId("foo"));
-            Assert.Equal(SearchCriteria.ByFramework(Constants.Win32FrameworkId), SearchCriteria.ByFramework(Constants.Win32FrameworkId));
-            Assert.NotEqual(SearchCriteria.ByFramework(Constants.WinFormFrameworkId), SearchCriteria.ByFramework(Constants.Win32FrameworkId));
+            Assert.Equal(SearchCriteria.ByFramework(WindowsFramework.Win32.FrameworkId()), SearchCriteria.ByFramework(WindowsFramework.Win32.FrameworkId()));
+            Assert.NotEqual(SearchCriteria.ByFramework(WindowsFramework.WinForms.FrameworkId()), SearchCriteria.ByFramework(WindowsFramework.Win32.FrameworkId()));
             Assert.Equal(SearchCriteria.ByAutomationId("foo").AndByText("bar"), SearchCriteria.ByAutomationId("foo").AndByText("bar"));
             Assert.Equal(SearchCriteria.ByText("bar").AndAutomationId("foo"), SearchCriteria.ByAutomationId("foo").AndByText("bar"));
             //ByNativePropertyTests...

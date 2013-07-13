@@ -21,7 +21,7 @@ namespace TestStack.White.UnitTests.Mappings
         [Fact]
         public void PrimaryControlTypes()
         {
-            Assert.Equal(true, controlDictionary.PrimaryControlTypes(Constants.WinFormFrameworkId).Count > 23);
+            Assert.Equal(true, controlDictionary.PrimaryControlTypes(WindowsFramework.WinForms.FrameworkId()).Count > 23);
         }
 
         [Fact]
@@ -53,21 +53,21 @@ namespace TestStack.White.UnitTests.Mappings
         [Fact]
         public void GetControlType()
         {
-            Assert.Equal(ControlType.Pane, controlDictionary.GetControlType(typeof(DateTimePicker), Constants.WinFormFrameworkId).Single());
-            Assert.Contains(ControlType.Button, controlDictionary.GetControlType(typeof(Button), Constants.WPFFrameworkId));
-            Assert.Contains(ControlType.CheckBox, controlDictionary.GetControlType(typeof(Button), Constants.WPFFrameworkId));
-            Assert.Equal(ControlType.Group, controlDictionary.GetControlType(typeof(GroupBox), Constants.WPFFrameworkId).Single());
-            Assert.Equal(ControlType.Pane, controlDictionary.GetControlType(typeof(Panel), Constants.WPFFrameworkId).Single());
+            Assert.Equal(ControlType.Pane, controlDictionary.GetControlType(typeof(DateTimePicker), WindowsFramework.WinForms.FrameworkId()).Single());
+            Assert.Contains(ControlType.Button, controlDictionary.GetControlType(typeof(Button), WindowsFramework.Wpf.FrameworkId()));
+            Assert.Contains(ControlType.CheckBox, controlDictionary.GetControlType(typeof(Button), WindowsFramework.Wpf.FrameworkId()));
+            Assert.Equal(ControlType.Group, controlDictionary.GetControlType(typeof(GroupBox), WindowsFramework.Wpf.FrameworkId()).Single());
+            Assert.Equal(ControlType.Pane, controlDictionary.GetControlType(typeof(Panel), WindowsFramework.Wpf.FrameworkId()).Single());
         }
 
         [Fact]
         public void GetControlTypeForAFramework()
         {
-            Assert.Contains(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), Constants.WPFFrameworkId));
-            Assert.Contains(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), Constants.WPFFrameworkId));
-            Assert.Equal(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), Constants.WPFFrameworkId).Single());
-            Assert.Equal(ControlType.Menu, controlDictionary.GetControlType(typeof(MenuBar), Constants.WPFFrameworkId).Single());
-            Assert.Equal(ControlType.MenuBar, controlDictionary.GetControlType(typeof(MenuBar), Constants.WinFormFrameworkId).Single());
+            Assert.Contains(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), WindowsFramework.Wpf.FrameworkId()));
+            Assert.Contains(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), WindowsFramework.Wpf.FrameworkId()));
+            Assert.Equal(ControlType.Edit, controlDictionary.GetControlType(typeof(TextBox), WindowsFramework.Wpf.FrameworkId()).Single());
+            Assert.Equal(ControlType.Menu, controlDictionary.GetControlType(typeof(MenuBar), WindowsFramework.Wpf.FrameworkId()).Single());
+            Assert.Equal(ControlType.MenuBar, controlDictionary.GetControlType(typeof(MenuBar), WindowsFramework.WinForms.FrameworkId()).Single());
         }
 
         [Fact]
@@ -82,37 +82,37 @@ namespace TestStack.White.UnitTests.Mappings
         [Fact]
         public void GetTestControlType()
         {
-            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, Constants.WinFormFrameworkId, true));
-            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, Constants.WPFFrameworkId, false));
-            Assert.Equal(typeof(WinFormComboBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, Constants.WinFormFrameworkId, true));
-            Assert.Equal(typeof(WPFComboBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, Constants.WPFFrameworkId, false));
-            Assert.Throws<ControlDictionaryException>(()=>controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, Constants.MissingFrameworkId, false));
-            Assert.Equal(typeof(SilverlightComboBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, Constants.SilverlightFrameworkId, false));
-            Assert.Equal(typeof(WPFLabel), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Text, Constants.SilverlightFrameworkId, false));
-            Assert.Equal(typeof(GroupBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Group, Constants.WPFFrameworkId, false));
-            Assert.Equal(typeof(Image), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Image, Constants.Win32FrameworkId, true));
-            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, Constants.MissingFrameworkId, false));
-            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, Constants.MissingFrameworkId, true));
-            Assert.Throws<ControlDictionaryException>(() => controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, Constants.MissingFrameworkId, true));
-            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, Constants.SilverlightFrameworkId, true));
-            Assert.Equal(typeof(TextBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Edit, Constants.SilverlightFrameworkId, true));
-            Assert.Equal(typeof(DateTimePicker), controlDictionary.GetTestControlType("SysDateTimePick32", string.Empty, ControlType.Pane, Constants.WinFormFrameworkId, true));
-            Assert.Equal(typeof(DateTimePicker), controlDictionary.GetTestControlType("Winforms.SysDateTimePick32.ad8aa", string.Empty, ControlType.Pane, Constants.WinFormFrameworkId, true));
+            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.WinForms.FrameworkId(), true));
+            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.Wpf.FrameworkId(), false));
+            Assert.Equal(typeof(WinFormComboBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.WinForms.FrameworkId(), true));
+            Assert.Equal(typeof(WPFComboBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.Wpf.FrameworkId(), false));
+            Assert.Throws<ControlDictionaryException>(()=>controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.None.FrameworkId(), false));
+            Assert.Equal(typeof(SilverlightComboBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.Silverlight.FrameworkId(), false));
+            Assert.Equal(typeof(WPFLabel), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Text, WindowsFramework.Silverlight.FrameworkId(), false));
+            Assert.Equal(typeof(GroupBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Group, WindowsFramework.Wpf.FrameworkId(), false));
+            Assert.Equal(typeof(Image), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Image, WindowsFramework.Win32.FrameworkId(), true));
+            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.None.FrameworkId(), false));
+            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.None.FrameworkId(), true));
+            Assert.Throws<ControlDictionaryException>(() => controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.None.FrameworkId(), true));
+            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.Silverlight.FrameworkId(), true));
+            Assert.Equal(typeof(TextBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Edit, WindowsFramework.Silverlight.FrameworkId(), true));
+            Assert.Equal(typeof(DateTimePicker), controlDictionary.GetTestControlType("SysDateTimePick32", string.Empty, ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), true));
+            Assert.Equal(typeof(DateTimePicker), controlDictionary.GetTestControlType("Winforms.SysDateTimePick32.ad8aa", string.Empty, ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), true));
         }
 
         [Fact]
         public void GetTestType()
         {
-            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, "foo", ControlType.Button, Constants.WinFormFrameworkId, false));
-            Assert.Equal(typeof(Panel), controlDictionary.GetTestControlType(string.Empty, "foo", ControlType.Pane, Constants.WinFormFrameworkId, false));
-            Assert.Equal(typeof(PropertyGrid), controlDictionary.GetTestControlType(string.Empty, "PropertyGrid", ControlType.Pane, Constants.WinFormFrameworkId, false));
+            Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, "foo", ControlType.Button, WindowsFramework.WinForms.FrameworkId(), false));
+            Assert.Equal(typeof(Panel), controlDictionary.GetTestControlType(string.Empty, "foo", ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), false));
+            Assert.Equal(typeof(PropertyGrid), controlDictionary.GetTestControlType(string.Empty, "PropertyGrid", ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), false));
         }
 
         [Fact]
         public void ControlTypeCanChangeBasedOnFramework()
         {
-            Assert.Equal(ControlType.Pane.ProgrammaticName, controlDictionary.GetControlType(typeof(DateTimePicker), Constants.WinFormFrameworkId).Single().ProgrammaticName);
-            Assert.Equal(ControlType.Custom.ProgrammaticName, controlDictionary.GetControlType(typeof(DateTimePicker), Constants.WPFFrameworkId).Single().ProgrammaticName);
+            Assert.Equal(ControlType.Pane.ProgrammaticName, controlDictionary.GetControlType(typeof(DateTimePicker), WindowsFramework.WinForms.FrameworkId()).Single().ProgrammaticName);
+            Assert.Equal(ControlType.Custom.ProgrammaticName, controlDictionary.GetControlType(typeof(DateTimePicker), WindowsFramework.Wpf.FrameworkId()).Single().ProgrammaticName);
         }
     }
 }

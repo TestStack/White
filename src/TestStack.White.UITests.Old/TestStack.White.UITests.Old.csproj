@@ -80,7 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationTest.cs" />
     <Compile Include="CustomUIItemTest.cs" />
     <Compile Include="DesktopTest.cs" />
     <Compile Include="MessageBoxTest.cs" />

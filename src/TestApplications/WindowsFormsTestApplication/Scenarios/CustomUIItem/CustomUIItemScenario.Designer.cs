@@ -1,6 +1,6 @@
-namespace WindowsFormsTestApplication
+﻿namespace WindowsFormsTestApplication.Scenarios.CustomUIItem
 {
-    partial class FormWithoutScrollAndItemOutside
+    partial class CustomUIItemScenario
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,30 @@ namespace WindowsFormsTestApplication
         /// </summary>
         private void InitializeComponent()
         {
-            this.ListBox = new System.Windows.Forms.ListBox();
+            this.DateOfBirth = new WindowsFormsTestApplication.Scenarios.CustomUIItem.MyDateControl();
             this.SuspendLayout();
             // 
-            // ListBox
+            // DateOfBirth
             // 
-            this.ListBox.FormattingEnabled = true;
-            this.ListBox.Location = new System.Drawing.Point(37, 70);
-            this.ListBox.Name = "ListBox";
-            this.ListBox.Size = new System.Drawing.Size(120, 95);
-            this.ListBox.TabIndex = 0;
+            this.DateOfBirth.Location = new System.Drawing.Point(13, 13);
+            this.DateOfBirth.Name = "DateOfBirth";
+            this.DateOfBirth.Size = new System.Drawing.Size(201, 49);
+            this.DateOfBirth.TabIndex = 0;
             // 
-            // FormWithoutScrollAndItemOutside
+            // CustomUIItemScenario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(255, 98);
-            this.Controls.Add(this.ListBox);
-            this.Name = "FormWithoutScrollAndItemOutside";
-            this.Text = "FormWithoutScrollAndItemOutside";
+            this.ClientSize = new System.Drawing.Size(394, 276);
+            this.Controls.Add(this.DateOfBirth);
+            this.Name = "CustomUIItemScenario";
+            this.Text = "CustomUIItemScenario";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.ListBox ListBox;
+        private MyDateControl DateOfBirth;
     }
 }

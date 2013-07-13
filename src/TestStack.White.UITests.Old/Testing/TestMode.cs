@@ -15,8 +15,8 @@ namespace White.Core.UITests.Testing
 
         static TestMode()
         {
-            Categories.Add(Constants.WinFormFrameworkId, ApplicationClass.WinForm);
-            Categories.Add(Constants.WPFFrameworkId, ApplicationClass.WPF);
+            Categories.Add(WindowsFramework.WinForms.FrameworkId(), ApplicationClass.WinForm);
+            Categories.Add(WindowsFramework.Wpf.FrameworkId(), ApplicationClass.WPF);
             Categories.Add(Constants.SWT, ApplicationClass.SWT);
         }
 
@@ -45,7 +45,7 @@ namespace White.Core.UITests.Testing
             bool containsExternalMode = commandLineArguments.Contains("/exclude");
             if (containsExternalMode)
             {
-                var modes = new List<string> {Constants.WPFFrameworkId, Constants.WinFormFrameworkId, Constants.SWT};
+                var modes = new List<string> {WindowsFramework.Wpf.FrameworkId(), WindowsFramework.WinForms.FrameworkId(), Constants.SWT};
                 string[] strings = commandLineArguments.Split(new[] {"/exclude:"}, StringSplitOptions.None);
                 strings = strings[1].Split(',', '\"', ' ');
                 foreach (string exclude in strings)

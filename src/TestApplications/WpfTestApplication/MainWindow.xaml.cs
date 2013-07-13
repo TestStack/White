@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WpfTestApplication.Scenarios.CustomUIItem;
 
 namespace WpfTestApplication
 {
@@ -108,6 +109,11 @@ namespace WpfTestApplication
         private void OpenDragDropScenario(object sender, RoutedEventArgs e)
         {
             new DragAndDropTestWindow().ShowDialog();
+        }
+
+        private void CustomUIItemScenarioClick(object sender, RoutedEventArgs e)
+        {
+            new CustomUIItemScenario().ShowDialog();
         }
     }
 }

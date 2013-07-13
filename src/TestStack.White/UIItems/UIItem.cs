@@ -68,7 +68,7 @@ namespace TestStack.White.UIItems
 
         public virtual WindowsFramework Framework
         {
-            get { return new WindowsFramework(automationElement.Current.FrameworkId); }
+            get { return WindowsFrameworkExtensions.FromFrameworkId(automationElement.Current.FrameworkId); }
         }
 
         public virtual Point Location
@@ -200,7 +200,7 @@ namespace TestStack.White.UIItems
 
         public virtual string PrimaryIdentification
         {
-            get { return automationElement.Current.FrameworkId.Equals(Constants.Win32FrameworkId) ? Name : Id; }
+            get { return automationElement.Current.FrameworkId.Equals(WindowsFramework.Win32.FrameworkId()) ? Name : Id; }
         }
 
         public virtual ActionListener ActionListener

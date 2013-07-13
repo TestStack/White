@@ -24,7 +24,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         {
             if (!(uiItem is UIItem))
                 throw new WhiteException("Cannot get UI Item container, uiItem must be an instance of UIItem");
-            if (!uiItem.Framework.IsWpf) Logger.Warn("Only WPF items should be treated as container items");
+            if (uiItem.Framework != WindowsFramework.Wpf) Logger.Warn("Only WPF items should be treated as container items");
             return ((UIItem)uiItem).AsContainer();
         }
 

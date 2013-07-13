@@ -1,6 +1,6 @@
 using System.Windows.Forms;
 
-namespace WinFormsTestApp
+namespace WindowsFormsTestApplication.Scenarios.CustomUIItem
 {
     public partial class MyDateControl : UserControl
     {

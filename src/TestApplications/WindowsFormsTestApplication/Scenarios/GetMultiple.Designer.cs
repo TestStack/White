@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsTestApplication
+﻿namespace WindowsFormsTestApplication.Scenarios
 {
     partial class GetMultiple
     {

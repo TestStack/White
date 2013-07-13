@@ -11,7 +11,7 @@ namespace TestStack.White.Repository.ScreenAttributes
 
         public FrameworkIdAttribute(string id)
         {
-            framework = new WindowsFramework(id);
+            framework = WindowsFrameworkExtensions.FromFrameworkId(id);
         }
 
         public FrameworkIdAttribute(WindowsFramework framework)

@@ -16,7 +16,7 @@ namespace TestStack.White.UITests.UIA
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            RunTest(()=>TestToString(framework.FrameworkId));
+            RunTest(()=>TestToString(framework.FrameworkId()));
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

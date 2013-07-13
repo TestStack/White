@@ -7,16 +7,16 @@ namespace TestStack.White.UITests.Infrastructure
     {
         public static TestConfiguration Create(WindowsFramework framework)
         {
-            switch (framework.FrameworkId)
+            switch (framework)
             {
-                case Constants.WPFFrameworkId:
+                case WindowsFramework.Wpf:
                     return new WpfTestConfiguration();
-                case Constants.WinFormFrameworkId:
+                case WindowsFramework.WinForms:
                     return new WinformsTestConfiguration();
-                case Constants.SilverlightFrameworkId:
+                case WindowsFramework.Silverlight:
                     return new SilverlightTestConfiguration();
-                case Constants.Win32FrameworkId:
-                case Constants.SWT:
+                case WindowsFramework.Win32:
+                case WindowsFramework.Swt:
                 //case Constants.WinRT:
                 default:
                     throw new ArgumentOutOfRangeException("framework");

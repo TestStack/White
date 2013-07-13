@@ -1,4 +1,4 @@
-namespace WinFormsTestApp
+namespace WindowsFormsTestApplication.Scenarios.CustomUIItem
 {
     partial class MyDateControl
     {
@@ -28,34 +28,34 @@ namespace WinFormsTestApp
         /// </summary>
         private void InitializeComponent()
         {
-            this.day = new System.Windows.Forms.TextBox();
-            this.month = new System.Windows.Forms.TextBox();
-            this.year = new System.Windows.Forms.TextBox();
+            this.Day = new System.Windows.Forms.TextBox();
+            this.Month = new System.Windows.Forms.TextBox();
+            this.Year = new System.Windows.Forms.TextBox();
             this.dayLabel = new System.Windows.Forms.Label();
             this.monthLabel = new System.Windows.Forms.Label();
             this.yearLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // day
+            // Day
             // 
-            this.day.Location = new System.Drawing.Point(36, 15);
-            this.day.Name = "day";
-            this.day.Size = new System.Drawing.Size(31, 20);
-            this.day.TabIndex = 0;
+            this.Day.Location = new System.Drawing.Point(36, 15);
+            this.Day.Name = "Day";
+            this.Day.Size = new System.Drawing.Size(31, 20);
+            this.Day.TabIndex = 0;
             // 
-            // month
+            // Month
             // 
-            this.month.Location = new System.Drawing.Point(102, 15);
-            this.month.Name = "month";
-            this.month.Size = new System.Drawing.Size(31, 20);
-            this.month.TabIndex = 1;
+            this.Month.Location = new System.Drawing.Point(102, 15);
+            this.Month.Name = "Month";
+            this.Month.Size = new System.Drawing.Size(31, 20);
+            this.Month.TabIndex = 1;
             // 
-            // year
+            // Year
             // 
-            this.year.Location = new System.Drawing.Point(164, 15);
-            this.year.Name = "year";
-            this.year.Size = new System.Drawing.Size(31, 20);
-            this.year.TabIndex = 2;
+            this.Year.Location = new System.Drawing.Point(164, 15);
+            this.Year.Name = "Year";
+            this.Year.Size = new System.Drawing.Size(31, 20);
+            this.Year.TabIndex = 2;
             // 
             // dayLabel
             // 
@@ -91,9 +91,9 @@ namespace WinFormsTestApp
             this.Controls.Add(this.yearLabel);
             this.Controls.Add(this.monthLabel);
             this.Controls.Add(this.dayLabel);
-            this.Controls.Add(this.year);
-            this.Controls.Add(this.month);
-            this.Controls.Add(this.day);
+            this.Controls.Add(this.Year);
+            this.Controls.Add(this.Month);
+            this.Controls.Add(this.Day);
             this.Name = "MyDateControl";
             this.Size = new System.Drawing.Size(201, 49);
             this.ResumeLayout(false);
@@ -103,9 +103,9 @@ namespace WinFormsTestApp
 
         #endregion
 
-        private System.Windows.Forms.TextBox day;
-        private System.Windows.Forms.TextBox month;
-        private System.Windows.Forms.TextBox year;
+        private System.Windows.Forms.TextBox Day;
+        private System.Windows.Forms.TextBox Month;
+        private System.Windows.Forms.TextBox Year;
         private System.Windows.Forms.Label dayLabel;
         private System.Windows.Forms.Label monthLabel;
         private System.Windows.Forms.Label yearLabel;

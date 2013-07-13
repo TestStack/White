@@ -46,7 +46,7 @@ namespace TestStack.White.UIItems
                 try
                 {
                     if (!automationElement.IsPrimaryControl()) continue;
-                    IUIItem uiItem = DictionaryMappedItemFactory.Create(automationElement, actionListener, customItemType);
+                    var uiItem = DictionaryMappedItemFactory.Create(automationElement, actionListener, customItemType);
                     if (uiItem != null) Add(uiItem);
                 }
                 catch (ControlDictionaryException)

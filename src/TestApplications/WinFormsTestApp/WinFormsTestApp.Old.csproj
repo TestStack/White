@@ -103,12 +103,6 @@
     <Compile Include="ModalForm.Designer.cs">
       <DependentUpon>ModalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyDateControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyDateControl.Designer.cs">
-      <DependentUpon>MyDateControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <EmbeddedResource Include="Form1.resx">
       <SubType>Designer</SubType>
@@ -129,10 +123,6 @@
     <EmbeddedResource Include="ModalForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>ModalForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyDateControl.resx">
-      <DependentUpon>MyDateControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <SubType>Designer</SubType>

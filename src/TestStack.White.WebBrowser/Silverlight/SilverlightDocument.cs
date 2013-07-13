@@ -41,7 +41,7 @@ namespace TestStack.White.WebBrowser.Silverlight
 
         public override WindowsFramework Framework
         {
-            get { return new WindowsFramework(Constants.SilverlightFrameworkId); }
+            get { return WindowsFramework.Silverlight; }
         }
 
         public virtual Window ChildWindow(string title)

@@ -54,38 +54,49 @@
     </ApplicationDefinition>
     <Compile Include="Custom controls\CustomItem.cs" />
     <Compile Include="Custom controls\CustomItemAutiomationPeer.cs" />
-    <Compile Include="DragAndDropTestWindow.xaml.cs">
+    <Compile Include="Scenarios\CustomUIItem\CustomUIItemScenario.xaml.cs">
+      <DependentUpon>CustomUIItemScenario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scenarios\CustomUIItem\MyDateControl.xaml.cs">
+      <DependentUpon>MyDateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Scenarios\DragAndDropTestWindow.xaml.cs">
       <DependentUpon>DragAndDropTestWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormWithoutScrollAndItemOutside.xaml.cs">
+    <Compile Include="Scenarios\FormWithoutScrollAndItemOutside.xaml.cs">
       <DependentUpon>FormWithoutScrollAndItemOutside.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GetMultiple.xaml.cs">
+    <Compile Include="Scenarios\GetMultiple.xaml.cs">
       <DependentUpon>GetMultiple.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListViewData.cs" />
     <Compile Include="ListViewWindow.xaml.cs">
       <DependentUpon>ListViewWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VerticalGridSplitter.xaml.cs">
+    <Compile Include="Scenarios\VerticalGridSplitter.xaml.cs">
       <DependentUpon>VerticalGridSplitter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WindowLaunchers.xaml.cs">
-      <DependentUpon>WindowLaunchers.xaml</DependentUpon>
-    </Compile>
-    <Page Include="DragAndDropTestWindow.xaml">
+    <Page Include="Scenarios\CustomUIItem\CustomUIItemScenario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FormWithoutScrollAndItemOutside.xaml">
+    <Page Include="Scenarios\CustomUIItem\MyDateControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GetMultiple.xaml">
+    <Page Include="Scenarios\DragAndDropTestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="HorizontalGridSplitter.xaml">
+    <Page Include="Scenarios\FormWithoutScrollAndItemOutside.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scenarios\GetMultiple.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Scenarios\HorizontalGridSplitter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -105,7 +116,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HorizontalGridSplitter.xaml.cs">
+    <Compile Include="Scenarios\HorizontalGridSplitter.xaml.cs">
       <DependentUpon>HorizontalGridSplitter.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListControls.xaml.cs">
@@ -115,13 +126,9 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="VerticalGridSplitter.xaml">
+    <Page Include="Scenarios\VerticalGridSplitter.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="WindowLaunchers.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

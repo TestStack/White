@@ -4,7 +4,7 @@
   <PreloadReferencedAssemblies>false</PreloadReferencedAssemblies>
   <AllowDynamicCodeContractChecking>true</AllowDynamicCodeContractChecking>
   <AllowStaticCodeContractChecking>false</AllowStaticCodeContractChecking>
-  <IgnoreThisComponentCompletely>false</IgnoreThisComponentCompletely>
+  <IgnoreThisComponentCompletely>true</IgnoreThisComponentCompletely>
   <RunPreBuildEvents>false</RunPreBuildEvents>
   <RunPostBuildEvents>false</RunPostBuildEvents>
   <PreviouslyBuiltSuccessfully>true</PreviouslyBuiltSuccessfully>
@@ -17,6 +17,8 @@
   <UseBuildPlatform></UseBuildPlatform>
   <ProxyProcessPath></ProxyProcessPath>
   <UseCPUArchitecture>AutoDetect</UseCPUArchitecture>
+  <MSTestThreadApartmentState>STA</MSTestThreadApartmentState>
+  <BuildProcessArchitecture>x86</BuildProcessArchitecture>
   <IgnoredTests>
     <RegexTestSelector>
       <RegularExpression>.*</RegularExpression>
