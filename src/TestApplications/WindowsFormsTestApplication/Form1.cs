@@ -71,5 +71,10 @@ namespace WindowsFormsTestApplication
         {
             MessageBox.Show(this, "Close me", "Test message box", MessageBoxButtons.OK);
         }
+
+        private void OpenWindowWithNoTitleBar_Click(object sender, System.EventArgs e)
+        {
+            new WindowWithNoTitleBar().ShowDialog(this);
+        }
     }
 }

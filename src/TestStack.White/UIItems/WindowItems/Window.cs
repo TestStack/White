@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -137,8 +138,16 @@ UI actions on window needing mouse would not work in area not falling under the 
                 Logger.Debug("Failed, falling back to windowPattern");
                 if (windowPattern != null)
                 {
-                    windowPattern.Close();
-                    ActionPerformed();
+                    try
+                    {
+                        Thread.Sleep(100);
+                        windowPattern.Close();
+                        ActionPerformed();
+                    }
+                    catch (ElementNotAvailableException)
+                    {
+                        
+                    }
                 }
             }
         }

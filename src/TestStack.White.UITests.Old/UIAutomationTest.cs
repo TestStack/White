@@ -2,6 +2,8 @@ using System;
 using System.Threading;
 using System.Windows.Automation;
 using NUnit.Framework;
+using TestStack.White;
+using Xunit;
 
 namespace White.Core.UITests
 {

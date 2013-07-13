@@ -7,61 +7,8 @@ using TestStack.White.Factory;
 
 namespace White.Core.UITests
 {
-    public abstract class TestConfiguration
-    {
-        public static string WPFTestAppLocation = @"WindowsPresentationFramework.exe";
-        public static string WinFormsTestAppLocation = @"WinFormsTestApp.exe";
-
-        public static string SWTTestAppLocation = @"java.exe";
-
-        private readonly string program;
-        protected string commandLineArguments;
-        private readonly InitializeOption windowInitializeOption;
-
-        protected TestConfiguration(string program, string commandLineArguments)
-        {
-            this.program = program;
-            this.commandLineArguments = commandLineArguments;
-            windowInitializeOption = InitializeOption.NoCache;
-        }
-
-        public virtual Application Launch()
-        {
-            var processStartInfo = new ProcessStartInfo
-                                       {
-                                           WorkingDirectory = WorkingDir,
-                                           FileName = program,
-                                           Arguments = commandLineArguments.Trim(),
-                                           UseShellExecute = false,
-                                           CreateNoWindow = true,
-                                           RedirectStandardOutput = true,
-                                           RedirectStandardError = true
-                                       };
-            return Application.Launch(processStartInfo);
-        }
-
-        protected virtual string WorkingDir
-        {
-            get { return Environment.CurrentDirectory; }
-        }
-
-        public virtual InitializeOption WindowInitializeOption
-        {
-            get { return windowInitializeOption.AndIdentifiedBy("Form1"); }
-        }
-    }
-
-    public class WPFTestConfiguration : TestConfiguration
-    {
-        public WPFTestConfiguration(string commandLineArguments) : base(WPFTestAppLocation, commandLineArguments) {}
-    }
-
-    public class WinFormTestConfiguration : TestConfiguration
-    {
-        public WinFormTestConfiguration(string commandLineArguments) : base(WinFormsTestAppLocation, commandLineArguments) {}
-    }
-
-    public class SWTTestConfiguration : TestConfiguration
+    
+    public class SWTTestConfiguration
     {
         private static readonly Dictionary<String, String> SWTJarFiles = new Dictionary<string, string>
                                                              {
@@ -70,8 +17,9 @@ namespace White.Core.UITests
                                                              };
 
         public SWTTestConfiguration(string commandLineArguments)
-            : base(SWTAppFullPath(),
-                    string.Format(@" -classpath SampleSWTApp\bin;""%classpath%"";SampleSWTApp\" + SWTJarFile() + @" -Djava.library.path=SampleSWTApp Program {0}", commandLineArguments)) { }
+            //: base(SWTAppFullPath(),
+            //        string.Format(@" -classpath SampleSWTApp\bin;""%classpath%"";SampleSWTApp\" + SWTJarFile() + @" -Djava.library.path=SampleSWTApp Program {0}", commandLineArguments)) 
+        { }
 
         private static string SWTJarFile()
         {
@@ -90,10 +38,10 @@ namespace White.Core.UITests
             if (!Directory.Exists(javaLocation)) throw new ConfigurationErrorsException("JavaLocation does not point to a valid installation of JDK in appSettings!");
             //check it contains java.exe
             if (!File.Exists(javaLocation + "\\java.exe")) throw new ConfigurationErrorsException("JavaLocation contains a valid JDK folder, but can't find java.exe within the folder in appSettings!");
-            return Path.Combine(javaLocation, SWTTestAppLocation);
+            return javaLocation;//Path.Combine(javaLocation, SWTTestAppLocation);
         }
 
-        protected override string WorkingDir
+        protected string WorkingDir
         {
             get { return @"..\..\..\TestApplications"; }
         }

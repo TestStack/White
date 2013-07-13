@@ -11,7 +11,7 @@ namespace TestStack.White.Utility
             this.action = action;
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             action();
         }

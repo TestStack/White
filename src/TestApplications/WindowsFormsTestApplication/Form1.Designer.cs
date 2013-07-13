@@ -32,6 +32,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.OpenMessageBox = new System.Windows.Forms.Button();
+            this.CustomUIItemScenario = new System.Windows.Forms.Button();
             this.DragDropScenario = new System.Windows.Forms.Button();
             this.OpenFormWithoutScrollAndItemOutside = new System.Windows.Forms.Button();
             this.DisableControls = new System.Windows.Forms.Button();
@@ -39,10 +41,9 @@
             this.GetMultipleButton = new System.Windows.Forms.Button();
             this.ButtonWithTooltip = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.CustomUIItemScenario = new System.Windows.Forms.Button();
+            this.OpenWindowWithNoTitleBar = new System.Windows.Forms.Button();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
-            this.OpenMessageBox = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -53,7 +54,7 @@
             this.groupBox1.Controls.Add(this.listControls1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(278, 276);
+            this.groupBox1.Size = new System.Drawing.Size(278, 381);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "List Controls";
@@ -63,13 +64,14 @@
             this.groupBox2.Controls.Add(this.inputControls1);
             this.groupBox2.Location = new System.Drawing.Point(296, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(230, 276);
+            this.groupBox2.Size = new System.Drawing.Size(230, 381);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Input Controls";
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.OpenWindowWithNoTitleBar);
             this.groupBox3.Controls.Add(this.OpenMessageBox);
             this.groupBox3.Controls.Add(this.CustomUIItemScenario);
             this.groupBox3.Controls.Add(this.DragDropScenario);
@@ -80,10 +82,30 @@
             this.groupBox3.Controls.Add(this.ButtonWithTooltip);
             this.groupBox3.Location = new System.Drawing.Point(532, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(207, 276);
+            this.groupBox3.Size = new System.Drawing.Size(207, 381);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Scenarios";
+            // 
+            // OpenMessageBox
+            // 
+            this.OpenMessageBox.Location = new System.Drawing.Point(7, 228);
+            this.OpenMessageBox.Name = "OpenMessageBox";
+            this.OpenMessageBox.Size = new System.Drawing.Size(193, 23);
+            this.OpenMessageBox.TabIndex = 7;
+            this.OpenMessageBox.Text = "Open Message Box";
+            this.OpenMessageBox.UseVisualStyleBackColor = true;
+            this.OpenMessageBox.Click += new System.EventHandler(this.OpenMessageBox_Click);
+            // 
+            // CustomUIItemScenario
+            // 
+            this.CustomUIItemScenario.Location = new System.Drawing.Point(6, 198);
+            this.CustomUIItemScenario.Name = "CustomUIItemScenario";
+            this.CustomUIItemScenario.Size = new System.Drawing.Size(194, 23);
+            this.CustomUIItemScenario.TabIndex = 6;
+            this.CustomUIItemScenario.Text = "Custom UI Item";
+            this.CustomUIItemScenario.UseVisualStyleBackColor = true;
+            this.CustomUIItemScenario.Click += new System.EventHandler(this.CustomUIItemScenario_Click);
             // 
             // DragDropScenario
             // 
@@ -148,21 +170,21 @@
             this.ButtonWithTooltip.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseClick);
             this.ButtonWithTooltip.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonWithTooltip_MouseUp);
             // 
-            // CustomUIItemScenario
+            // OpenWindowWithNoTitleBar
             // 
-            this.CustomUIItemScenario.Location = new System.Drawing.Point(6, 198);
-            this.CustomUIItemScenario.Name = "CustomUIItemScenario";
-            this.CustomUIItemScenario.Size = new System.Drawing.Size(194, 23);
-            this.CustomUIItemScenario.TabIndex = 6;
-            this.CustomUIItemScenario.Text = "Custom UI Item";
-            this.CustomUIItemScenario.UseVisualStyleBackColor = true;
-            this.CustomUIItemScenario.Click += new System.EventHandler(this.CustomUIItemScenario_Click);
+            this.OpenWindowWithNoTitleBar.Location = new System.Drawing.Point(7, 258);
+            this.OpenWindowWithNoTitleBar.Name = "OpenWindowWithNoTitleBar";
+            this.OpenWindowWithNoTitleBar.Size = new System.Drawing.Size(193, 23);
+            this.OpenWindowWithNoTitleBar.TabIndex = 8;
+            this.OpenWindowWithNoTitleBar.Text = "No Title Bar Window";
+            this.OpenWindowWithNoTitleBar.UseVisualStyleBackColor = true;
+            this.OpenWindowWithNoTitleBar.Click += new System.EventHandler(this.OpenWindowWithNoTitleBar_Click);
             // 
             // inputControls1
             // 
             this.inputControls1.Location = new System.Drawing.Point(7, 19);
             this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(217, 251);
+            this.inputControls1.Size = new System.Drawing.Size(217, 356);
             this.inputControls1.TabIndex = 0;
             // 
             // listControls1
@@ -171,16 +193,6 @@
             this.listControls1.Name = "listControls1";
             this.listControls1.Size = new System.Drawing.Size(260, 204);
             this.listControls1.TabIndex = 0;
-            // 
-            // OpenMessageBox
-            // 
-            this.OpenMessageBox.Location = new System.Drawing.Point(7, 228);
-            this.OpenMessageBox.Name = "OpenMessageBox";
-            this.OpenMessageBox.Size = new System.Drawing.Size(193, 23);
-            this.OpenMessageBox.TabIndex = 7;
-            this.OpenMessageBox.Text = "Open Message Box";
-            this.OpenMessageBox.UseVisualStyleBackColor = true;
-            this.OpenMessageBox.Click += new System.EventHandler(this.OpenMessageBox_Click);
             // 
             // Form1
             // 
@@ -216,6 +228,7 @@
         private System.Windows.Forms.Button DragDropScenario;
         private System.Windows.Forms.Button CustomUIItemScenario;
         private System.Windows.Forms.Button OpenMessageBox;
+        private System.Windows.Forms.Button OpenWindowWithNoTitleBar;
     }
 }
 

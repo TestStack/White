@@ -36,7 +36,7 @@ namespace TestStack.White.Factory
             return Create(modalWindowElement, option, windowSession);
         }
 
-        protected AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
+        protected virtual AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
         {
             var element = Retry.For(find, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
             if (element == null)

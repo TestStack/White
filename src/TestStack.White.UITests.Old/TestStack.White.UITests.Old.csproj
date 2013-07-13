@@ -80,10 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ModalWindowSessionTest.cs" />
-    <Compile Include="ModalWindowTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestCategories.cs" />
     <Compile Include="TestConfiguration.cs" />
     <Compile Include="Testing\ApplicationClass.cs" />
     <Compile Include="Testing\ControlsActionTest.cs" />
@@ -155,9 +152,6 @@
     <Compile Include="UIItems\WPFHyperlinkTest.cs" />
     <Compile Include="UIItems\WPFTextBlockTest.cs" />
     <Compile Include="WindowsAPI\NativeWindowTest.cs" />
-    <Compile Include="WindowWithoutTitleBarTest.cs" />
-    <Compile Include="WinFormApplicationTest.cs" />
-    <Compile Include="WPFModalWindowTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">

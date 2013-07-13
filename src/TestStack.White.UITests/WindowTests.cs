@@ -8,7 +8,7 @@ namespace TestStack.White.UITests
 {
     public class WindowTests : WhiteTestBase
     {
-        public void GetAllWindows()
+        void GetAllWindows()
         {
             using (StartScenario("GetMultipleButton", "GetMultiple"))
             {
@@ -16,7 +16,7 @@ namespace TestStack.White.UITests
             }
         }
 
-        public void FindWindow()
+        void FindWindow()
         {
             using (StartScenario("GetMultipleButton", "GetMultiple"))
             {
@@ -25,10 +25,19 @@ namespace TestStack.White.UITests
             }
         }
 
+        void WindowWithoutTitleBar()
+        {
+            using (var window = StartScenario("OpenWindowWithNoTitleBar", "WindowWithNoTitleBar"))
+            {
+                Assert.NotNull(window);
+            }
+        }
+
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(GetAllWindows);
             RunTest(FindWindow);
+            RunTest(WindowWithoutTitleBar, WindowsFramework.WinForms);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()
