@@ -53,6 +53,7 @@
     <Compile Include="ControlTests\HyperlinkTest.cs" />
     <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
+    <Compile Include="ControlTests\ListControls\ListViewTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
     <Compile Include="ControlTests\ProgressBarTest.cs" />

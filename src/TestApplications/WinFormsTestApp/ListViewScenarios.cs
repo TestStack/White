@@ -16,7 +16,7 @@ namespace WinFormsTestApp
 
         private static void AddListItem(ListView listView, string key)
         {
-            ListViewItem viewItem = new ListViewItem(key);
+            var viewItem = new ListViewItem(key);
             listView.Items.Add(viewItem);
             return;
         }

@@ -7,11 +7,22 @@
         mc:Ignorable="d" Title="ListViewWindow" Height="300" Width="300"
         d:DataContext="{d:DesignInstance wpfTestApplication:ListViewWindow}">
     <Grid>
-        <ListView ItemsSource="{Binding ListViewItems}" x:Name="ListView">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <ListView ItemsSource="{Binding ListViewItems}" x:Name="ListView" SelectionChanged="ListViewOnSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
                     <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ListView ItemsSource="{Binding ListViewItemsWithScroll}" x:Name="ListViewWithHorizontalScroll" Grid.Column="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
                 </GridView>
             </ListView.View>
         </ListView>

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading;
+using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
@@ -15,7 +16,6 @@ namespace TestStack.White.UITests
             Window messageBox = MainWindow.MessageBox("Test message box");
             var label = MainWindow.Get<Label>("65535");
             Assert.Equal("Close me", label.Text);
-            Thread.Sleep(200);
             messageBox.Close();
         }
 
@@ -28,9 +28,12 @@ namespace TestStack.White.UITests
 
         void ThrowsWhenNotFound()
         {
-            var exception = Assert.Throws<AutomationException>(() => MainWindow.MessageBox("foo"));
+            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.FindWindowTimeout = 500))
+            {
+                var exception = Assert.Throws<AutomationException>(() => MainWindow.MessageBox("foo"));
 
-            Assert.Equal("Failed to get MessageBox with title 'foo'", exception.Message);
+                Assert.Equal("Could not find modal window with title: foo", exception.Message);
+            }
         }
 
         protected override void ExecuteTestRun(WindowsFramework framework)

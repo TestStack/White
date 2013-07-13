@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -32,6 +34,12 @@ namespace TestStack.White.UIItems.WindowItems
             new Dictionary<DisplayState, WindowVisualState>();
 
         private AutomationEventHandler handler;
+        /// <summary>
+        /// If a window is opened then you try and close it straight away, the window can fail to close
+        /// 
+        /// This make sure the window is open for a minimum amount of time
+        /// </summary>
+        private readonly Task minOpenTime;
 
         public delegate bool WaitTillDelegate();
 
@@ -51,6 +59,7 @@ namespace TestStack.White.UIItems.WindowItems
             : base(automationElement, new NullActionListener(), initializeOption, windowSession)
         {
             InitializeWindow();
+            minOpenTime = Task.Factory.StartNew(() => Thread.Sleep(500));
         }
 
         private void InitializeWindow()
@@ -107,6 +116,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Close()
         {
+            minOpenTime.Wait();
             var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
             try
             {
@@ -402,14 +412,11 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// <returns></returns>
         public virtual List<Window> ModalWindows()
         {
-            var modalWindows = new List<Window>();
             var finder = new AutomationElementFinder(automationElement);
-            var descendants =
-                finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Window));
-            foreach (AutomationElement descendant in descendants)
-                modalWindows.Add(ChildWindowFactory.Create(descendant, InitializeOption.NoCache,
-                                                           WindowSession.ModalWindowSession(InitializeOption.NoCache)));
-            return modalWindows;
+            var descendants = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Window));
+            return descendants
+                .Select(descendant => ChildWindowFactory.Create(descendant, InitializeOption.NoCache, WindowSession.ModalWindowSession(InitializeOption.NoCache)))
+                .ToList();
         }
 
         public abstract PopUpMenu Popup { get; }

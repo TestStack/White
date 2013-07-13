@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
@@ -16,7 +15,6 @@ namespace TestStack.White.UITests
             LaunchModalWindow();
             Window modalWindow = MainWindow.ModalWindow("GetMultiple");
             Assert.NotNull(modalWindow);
-            Thread.Sleep(100); // Wait for open animation
             modalWindow.Close();
         }
 
@@ -25,7 +23,6 @@ namespace TestStack.White.UITests
             LaunchModalWindow();
             Window modalWindow = MainWindow.ModalWindow(SearchCriteria.ByText("GetMultiple"));
             Assert.NotNull(modalWindow);
-            Thread.Sleep(100); // Wait for open animation
             modalWindow.Close();
         }
 
@@ -34,7 +31,6 @@ namespace TestStack.White.UITests
             LaunchModalWindow();
             Window modalWindow = MainWindow.ModalWindow("GetMultiple", InitializeOption.NoCache.AndIdentifiedBy("ModalForm"));
             Assert.NotNull(modalWindow);
-            Thread.Sleep(100); // Wait for open animation
             modalWindow.Close();
         }
 

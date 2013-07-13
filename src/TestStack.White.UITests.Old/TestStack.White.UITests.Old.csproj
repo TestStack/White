@@ -90,11 +90,6 @@
     <Compile Include="UIItems\ListBoxItems\ListBoxWithScrollBarTest.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFListBoxTest.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFListBoxWithObjectBehindTest.cs" />
-    <Compile Include="UIItems\ListViewInvisibleItemTest.cs" />
-    <Compile Include="UIItems\ListViewItems\ListViewScenario2Test.cs" />
-    <Compile Include="UIItems\ListViewItems\ListViewScenarioTest.cs" />
-    <Compile Include="UIItems\ListViewScenarioTest.cs" />
-    <Compile Include="UIItems\ListViewTest.cs" />
     <Compile Include="UIItems\MenuItems\MenuTest.cs" />
     <Compile Include="UIItems\MenuItems\PopUpMenuTest.cs" />
     <Compile Include="UIItems\PanelTest.cs" />
@@ -132,7 +127,6 @@
     <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusStripTest.cs" />
     <Compile Include="UIItems\WindowWithoutAmpersandInTitleTest.cs" />
-    <Compile Include="UIItems\WinFormListViewTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
