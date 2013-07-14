@@ -81,5 +81,25 @@ namespace WindowsFormsTestApplication
         {
             LinkLabel.AccessibleDescription = "Hyperlink Clicked";
         }
+
+        private void OpenWindowWithAmperstand_Click(object sender, System.EventArgs e)
+        {
+            new WindowWithAmperstand().ShowDialog(this);
+        }
+
+        private void AddTextBox_Click(object sender, System.EventArgs e)
+        {
+            AddTextBoxPanel.Controls.Add(new TextBox { Name = "AddedTextBox" });
+        }
+
+        private void ShowHiddenTextBox_Click(object sender, System.EventArgs e)
+        {
+            HiddenTextBox.Visible = true;
+        }
+
+        private void OpenWindowWithScrollbars_Click(object sender, System.EventArgs e)
+        {
+            new WindowWithScrollbars().ShowDialog(this);
+        }
     }
 }

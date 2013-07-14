@@ -6,38 +6,56 @@
         Width="800" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <GroupBox Header="List Controls" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"
-                  Name="AGroupBox">
-            <wpfTestApplication:ListControls x:Name="ListControls" />
-        </GroupBox>
-        <GroupBox Header="OtherControls" Grid.Column="1" Width="150">
-            <StackPanel>
-                <TextBlock x:Name="LinkLabelContainer">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ToolBar x:Name="ToolStrip1" Grid.ColumnSpan="2">
+            <Button Content="Button in toolbar"></Button>
+        </ToolBar>
+        <ToolBar x:Name="ToolStrip2" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+        </ToolBar>
+        <TabControl Grid.Row="2" Grid.Column="0">
+            <TabItem Header="List Controls" x:Name="ListControlsTab">
+                <wpfTestApplication:ListControls x:Name="ListControls" />
+            </TabItem>
+            <TabItem Header="Input controls">
+                <StackPanel>
+                    <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
+                    <DatePicker x:Name="DatePicker" />
+                    <CheckBox x:Name="CheckBox" Content="A checkbox" />
+                    <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
+                    <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" />
+                    <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
+                    <PasswordBox x:Name="PasswordBox" />
+                    <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
+                    <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Other Controls">
+                <StackPanel>
+                    <TextBlock x:Name="LinkLabelContainer">
                     <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
-                </TextBlock>
-                <ProgressBar Value="50" x:Name="ProgressBar" />
-            </StackPanel>
-            
-        </GroupBox>
-        <GroupBox Header="Input controls" Grid.Column="2" Width="150">
-            <StackPanel>
-                <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
-                <DatePicker x:Name="DatePicker" />
-                <CheckBox x:Name="CheckBox" Content="A checkbox" />
-                <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
-                <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" />
-                <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
-                <PasswordBox x:Name="PasswordBox" />
-                <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
-                <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
-            </StackPanel>
-        </GroupBox>
-        <GroupBox Header="Scenarios" Grid.Column="3" AutomationProperties.AutomationId="ScenariosPane">
+                    </TextBlock>
+                    <ProgressBar Value="50" x:Name="ProgressBar" />
+                    <Canvas>
+                        <TextBox x:Name="TextBoxInsidePanel" Width="50"></TextBox>
+                    </Canvas>
+                    <StackPanel Orientation="Horizontal" x:Name="AddControlPanel">
+                        <Button x:Name="AddTextBox" Content="Add TextBox" Click="AddTextBox_OnClick" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" x:Name="HiddenControlPanel">
+                        <Button x:Name="ShowHiddenTextBox" Content="Show Hidden TextBox" Click="ShowHiddenTextBox_OnClick" />
+                        <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <GroupBox Header="Scenarios" Grid.Row="2" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>
                 <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter"
                         AutomationProperties.AutomationId="OpenHorizontalSplitterButton" />
@@ -59,6 +77,8 @@
                         AutomationProperties.AutomationId="CustomUIItemScenario" />
                 <Button Content="Open Message Box" Click="OpenMessageBoxClick"
                         AutomationProperties.AutomationId="OpenMessageBox" />
+                <Button Content="Open Window With Scrollbars" Click="OpenWindowWithScrollbars"
+                        AutomationProperties.AutomationId="OpenWindowWithScrollbars" /> 
             </StackPanel>
         </GroupBox>
     </Grid>

@@ -136,5 +136,20 @@ namespace TestStack.White.UITests
             windowsToClose.Add(window);
             return window;
         }
+
+        protected void SelectOtherControls()
+        {
+            MainWindow.Tabs[0].SelectTabPage(2);
+        }
+
+        protected void SelectInputControls()
+        {
+            MainWindow.Tabs[0].SelectTabPage(1);
+        }
+
+        protected void SelectListControls()
+        {
+            MainWindow.Tabs[0].SelectTabPage(0);
+        }
     }
 }

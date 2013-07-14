@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
+using WpfTestApplication.Scenarios;
 using WpfTestApplication.Scenarios.CustomUIItem;
 
 namespace WpfTestApplication
@@ -123,7 +124,22 @@ namespace WpfTestApplication
 
         private void Hyperlink_OnClick(object sender, RoutedEventArgs e)
         {
-            AutomationProperties.SetHelpText(LinkLabel, "Hyperlink Clicked");            
+            AutomationProperties.SetHelpText(LinkLabel, "Hyperlink Clicked");
+        }
+
+        private void AddTextBox_OnClick(object sender, RoutedEventArgs e)
+        {
+            AddControlPanel.Children.Add(new TextBox { Name = "AddedTextBox" });
+        }
+
+        private void ShowHiddenTextBox_OnClick(object sender, RoutedEventArgs e)
+        {
+            HiddenTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void OpenWindowWithScrollbars(object sender, RoutedEventArgs e)
+        {
+            new WindowWithScrollbars().ShowDialog();
         }
     }
 }

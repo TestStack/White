@@ -99,11 +99,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scenarios\WindowWithAmperstand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scenarios\WindowWithAmperstand.Designer.cs">
+      <DependentUpon>WindowWithAmperstand.cs</DependentUpon>
+    </Compile>
     <Compile Include="Scenarios\WindowWithNoTitleBar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Scenarios\WindowWithNoTitleBar.Designer.cs">
       <DependentUpon>WindowWithNoTitleBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Scenarios\WindowWithScrollbars.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Scenarios\WindowWithScrollbars.Designer.cs">
+      <DependentUpon>WindowWithScrollbars.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Scenarios\CustomUIItem\CustomUIItemScenario.resx">
       <DependentUpon>CustomUIItemScenario.cs</DependentUpon>
@@ -143,8 +155,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Scenarios\WindowWithAmperstand.resx">
+      <DependentUpon>WindowWithAmperstand.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Scenarios\WindowWithNoTitleBar.resx">
       <DependentUpon>WindowWithNoTitleBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Scenarios\WindowWithScrollbars.resx">
+      <DependentUpon>WindowWithScrollbars.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
