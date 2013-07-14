@@ -51,7 +51,7 @@ namespace TestStack.White.UIItems.Scrolling {
         {
             var value = Retry.For(() =>
             {
-                BackLargeChangeButton.PerformClick();
+                BackLargeChangeButton.Click();
                 return Value;
             }, v => v > 0, CoreAppXmlConfiguration.Instance.BusyTimeout(), TimeSpan.FromMilliseconds(0));
 

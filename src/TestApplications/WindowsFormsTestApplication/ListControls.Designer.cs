@@ -34,6 +34,8 @@
             this.AComboBox = new System.Windows.Forms.ComboBox();
             this.CheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.EditableComboBox = new System.Windows.Forms.ComboBox();
+            this.ListBoxWithVScrollBar = new System.Windows.Forms.ListBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label3
@@ -120,10 +122,100 @@
             this.EditableComboBox.Size = new System.Drawing.Size(121, 21);
             this.EditableComboBox.TabIndex = 7;
             // 
+            // ListBoxWithVScrollBar
+            // 
+            this.ListBoxWithVScrollBar.FormattingEnabled = true;
+            this.ListBoxWithVScrollBar.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "0"});
+            this.ListBoxWithVScrollBar.Location = new System.Drawing.Point(130, 91);
+            this.ListBoxWithVScrollBar.Name = "ListBoxWithVScrollBar";
+            this.ListBoxWithVScrollBar.Size = new System.Drawing.Size(120, 95);
+            this.ListBoxWithVScrollBar.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(127, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(144, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "ListBoxWithVerticalScrollbars";
+            // 
             // ListControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.ListBoxWithVScrollBar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -131,7 +223,7 @@
             this.Controls.Add(this.CheckedListBox);
             this.Controls.Add(this.EditableComboBox);
             this.Name = "ListControls";
-            this.Size = new System.Drawing.Size(260, 204);
+            this.Size = new System.Drawing.Size(571, 326);
             this.EnabledChanged += new System.EventHandler(this.ListControls_EnabledChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -146,5 +238,7 @@
         private System.Windows.Forms.ComboBox AComboBox;
         private System.Windows.Forms.CheckedListBox CheckedListBox;
         private System.Windows.Forms.ComboBox EditableComboBox;
+        private System.Windows.Forms.ListBox ListBoxWithVScrollBar;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -240,7 +240,7 @@ namespace TestStack.White.UIItems
             throw new AutomationException(string.Format("Cannot perform action on {0}, {1}", this, message), Debug.Details(AutomationElement));
         }
 
-        internal virtual void PerformClick()
+        void PerformClick()
         {
             if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
             mouse.Click(Bounds.Center(), actionListener);

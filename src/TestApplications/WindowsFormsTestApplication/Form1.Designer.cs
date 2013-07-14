@@ -49,7 +49,11 @@
             this.ListControlsTab = new System.Windows.Forms.TabPage();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.HiddenTextBox = new System.Windows.Forms.TextBox();
+            this.AddTextBoxPanel = new System.Windows.Forms.Panel();
+            this.AddTextBox = new System.Windows.Forms.Button();
+            this.ShowHiddenTextBox = new System.Windows.Forms.Button();
+            this.PanelWithText = new System.Windows.Forms.Panel();
             this.TextBoxInsidePanel = new System.Windows.Forms.TextBox();
             this.ToolStrip2 = new System.Windows.Forms.ToolStrip();
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -60,10 +64,6 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.ShowHiddenTextBox = new System.Windows.Forms.Button();
-            this.AddTextBox = new System.Windows.Forms.Button();
-            this.AddTextBoxPanel = new System.Windows.Forms.Panel();
-            this.HiddenTextBox = new System.Windows.Forms.TextBox();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.ScenariosPane.SuspendLayout();
@@ -71,7 +71,7 @@
             this.ListControlsTab.SuspendLayout();
             this.InputControlsTab.SuspendLayout();
             this.OtherControlsTab.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.PanelWithText.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,7 +265,7 @@
             this.OtherControlsTab.Controls.Add(this.AddTextBoxPanel);
             this.OtherControlsTab.Controls.Add(this.AddTextBox);
             this.OtherControlsTab.Controls.Add(this.ShowHiddenTextBox);
-            this.OtherControlsTab.Controls.Add(this.panel1);
+            this.OtherControlsTab.Controls.Add(this.PanelWithText);
             this.OtherControlsTab.Controls.Add(this.ProgressBar);
             this.OtherControlsTab.Controls.Add(this.LinkLabel);
             this.OtherControlsTab.Location = new System.Drawing.Point(4, 22);
@@ -275,17 +275,52 @@
             this.OtherControlsTab.Text = "Other Controls";
             this.OtherControlsTab.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // HiddenTextBox
             // 
-            this.panel1.Controls.Add(this.TextBoxInsidePanel);
-            this.panel1.Location = new System.Drawing.Point(15, 70);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(168, 50);
-            this.panel1.TabIndex = 9;
+            this.HiddenTextBox.Location = new System.Drawing.Point(160, 161);
+            this.HiddenTextBox.Name = "HiddenTextBox";
+            this.HiddenTextBox.Size = new System.Drawing.Size(100, 20);
+            this.HiddenTextBox.TabIndex = 13;
+            this.HiddenTextBox.Visible = false;
+            // 
+            // AddTextBoxPanel
+            // 
+            this.AddTextBoxPanel.Location = new System.Drawing.Point(114, 126);
+            this.AddTextBoxPanel.Name = "AddTextBoxPanel";
+            this.AddTextBoxPanel.Size = new System.Drawing.Size(238, 29);
+            this.AddTextBoxPanel.TabIndex = 12;
+            // 
+            // AddTextBox
+            // 
+            this.AddTextBox.Location = new System.Drawing.Point(15, 132);
+            this.AddTextBox.Name = "AddTextBox";
+            this.AddTextBox.Size = new System.Drawing.Size(93, 23);
+            this.AddTextBox.TabIndex = 11;
+            this.AddTextBox.Text = "Add TextBox";
+            this.AddTextBox.UseVisualStyleBackColor = true;
+            this.AddTextBox.Click += new System.EventHandler(this.AddTextBox_Click);
+            // 
+            // ShowHiddenTextBox
+            // 
+            this.ShowHiddenTextBox.Location = new System.Drawing.Point(15, 161);
+            this.ShowHiddenTextBox.Name = "ShowHiddenTextBox";
+            this.ShowHiddenTextBox.Size = new System.Drawing.Size(138, 23);
+            this.ShowHiddenTextBox.TabIndex = 10;
+            this.ShowHiddenTextBox.Text = "Show Hidden TextBox";
+            this.ShowHiddenTextBox.UseVisualStyleBackColor = true;
+            this.ShowHiddenTextBox.Click += new System.EventHandler(this.ShowHiddenTextBox_Click);
+            // 
+            // PanelWithText
+            // 
+            this.PanelWithText.Controls.Add(this.TextBoxInsidePanel);
+            this.PanelWithText.Location = new System.Drawing.Point(15, 70);
+            this.PanelWithText.Name = "PanelWithText";
+            this.PanelWithText.Size = new System.Drawing.Size(168, 50);
+            this.PanelWithText.TabIndex = 9;
             // 
             // TextBoxInsidePanel
             // 
-            this.TextBoxInsidePanel.Location = new System.Drawing.Point(13, 17);
+            this.TextBoxInsidePanel.Location = new System.Drawing.Point(88, 27);
             this.TextBoxInsidePanel.Name = "TextBoxInsidePanel";
             this.TextBoxInsidePanel.Size = new System.Drawing.Size(77, 20);
             this.TextBoxInsidePanel.TabIndex = 0;
@@ -362,41 +397,6 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
             // 
-            // ShowHiddenTextBox
-            // 
-            this.ShowHiddenTextBox.Location = new System.Drawing.Point(15, 161);
-            this.ShowHiddenTextBox.Name = "ShowHiddenTextBox";
-            this.ShowHiddenTextBox.Size = new System.Drawing.Size(138, 23);
-            this.ShowHiddenTextBox.TabIndex = 10;
-            this.ShowHiddenTextBox.Text = "Show Hidden TextBox";
-            this.ShowHiddenTextBox.UseVisualStyleBackColor = true;
-            this.ShowHiddenTextBox.Click += new System.EventHandler(this.ShowHiddenTextBox_Click);
-            // 
-            // AddTextBox
-            // 
-            this.AddTextBox.Location = new System.Drawing.Point(15, 132);
-            this.AddTextBox.Name = "AddTextBox";
-            this.AddTextBox.Size = new System.Drawing.Size(93, 23);
-            this.AddTextBox.TabIndex = 11;
-            this.AddTextBox.Text = "Add TextBox";
-            this.AddTextBox.UseVisualStyleBackColor = true;
-            this.AddTextBox.Click += new System.EventHandler(this.AddTextBox_Click);
-            // 
-            // AddTextBoxPanel
-            // 
-            this.AddTextBoxPanel.Location = new System.Drawing.Point(114, 126);
-            this.AddTextBoxPanel.Name = "AddTextBoxPanel";
-            this.AddTextBoxPanel.Size = new System.Drawing.Size(238, 29);
-            this.AddTextBoxPanel.TabIndex = 12;
-            // 
-            // HiddenTextBox
-            // 
-            this.HiddenTextBox.Location = new System.Drawing.Point(160, 161);
-            this.HiddenTextBox.Name = "HiddenTextBox";
-            this.HiddenTextBox.Size = new System.Drawing.Size(100, 20);
-            this.HiddenTextBox.TabIndex = 13;
-            this.HiddenTextBox.Visible = false;
-            // 
             // listControls1
             // 
             this.listControls1.Location = new System.Drawing.Point(20, 3);
@@ -408,7 +408,7 @@
             // 
             this.inputControls1.Location = new System.Drawing.Point(6, 6);
             this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(217, 343);
+            this.inputControls1.Size = new System.Drawing.Size(618, 295);
             this.inputControls1.TabIndex = 0;
             // 
             // Form1
@@ -429,8 +429,8 @@
             this.InputControlsTab.ResumeLayout(false);
             this.OtherControlsTab.ResumeLayout(false);
             this.OtherControlsTab.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.PanelWithText.ResumeLayout(false);
+            this.PanelWithText.PerformLayout();
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -460,7 +460,7 @@
         private System.Windows.Forms.TabPage ListControlsTab;
         private System.Windows.Forms.TabPage InputControlsTab;
         private System.Windows.Forms.TabPage OtherControlsTab;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel PanelWithText;
         private System.Windows.Forms.TextBox TextBoxInsidePanel;
         private System.Windows.Forms.Button OpenWindowWithScrollbars;
         private System.Windows.Forms.ToolStrip ToolStrip2;

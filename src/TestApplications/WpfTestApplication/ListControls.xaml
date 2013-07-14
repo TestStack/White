@@ -5,6 +5,103 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Margin="5">
+            <ListBox Height="70" Width="100" x:Name="ListBoxWithVScrollBar" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+                <ListBoxItem>1</ListBoxItem>
+                <ListBoxItem>2</ListBoxItem>
+                <ListBoxItem>3</ListBoxItem>
+                <ListBoxItem>4</ListBoxItem>
+                <ListBoxItem>5</ListBoxItem>
+                <ListBoxItem>6</ListBoxItem>
+                <ListBoxItem>7</ListBoxItem>
+                <ListBoxItem>8</ListBoxItem>
+                <ListBoxItem>9</ListBoxItem>
+                <ListBoxItem>0</ListBoxItem>
+            </ListBox>
+
+            <ListBox Height="88" x:Name="ListBoxWpf" VerticalAlignment="Bottom" Width="100">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBoxItem>Spielberg</ListBoxItem>
+                <ListBoxItem>Nagesh</ListBoxItem>
+                <ListBoxItem>
+                    <TextBox Background="Red" Text="Hrishikesh" TextWrapping="Wrap" />
+                </ListBoxItem>
+                <ListBoxItem>Hitchcock</ListBoxItem>
+                <ListBoxItem>Rodriguez</ListBoxItem>
+                <ListBoxItem>Whedon</ListBoxItem>
+            </ListBox>
+            <Button Content="Change items" x:Name="ChangeListItems" Click="ChangeListItems_OnClick" />
+        </StackPanel>
     <StackPanel>
         <TextBlock Text="ComboBoxTests" />
         <ComboBox x:Name="AComboBox" Width="150" HorizontalAlignment="Left">
@@ -52,5 +149,6 @@
             <CheckBox>Item3</CheckBox>
             <CheckBox>Item4</CheckBox>
         </ListBox>
+    </StackPanel>
     </StackPanel>
 </UserControl>

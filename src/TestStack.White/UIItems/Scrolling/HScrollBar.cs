@@ -12,22 +12,22 @@ namespace TestStack.White.UIItems.Scrolling
 
         public virtual void ScrollLeft()
         {
-            BackSmallChangeButton.PerformClick();
+            BackSmallChangeButton.Click();
         }
 
         public virtual void ScrollRight()
         {
-            ForwardSmallChangeButton.PerformClick();
+            ForwardSmallChangeButton.Click();
         }
 
         public virtual void ScrollLeftLarge()
         {
-            BackLargeChangeButton.PerformClick();
+            BackLargeChangeButton.Click();
         }
 
         public virtual void ScrollRightLarge()
         {
-            ForwardLargeChangeButton.PerformClick();
+            ForwardLargeChangeButton.Click();
         }
 
         public virtual bool IsScrollable

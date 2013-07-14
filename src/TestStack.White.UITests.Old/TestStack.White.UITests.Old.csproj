@@ -82,17 +82,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfiguration.cs" />
-    <Compile Include="UIItems\AbstractScrollBarsTest.cs" />
     <Compile Include="UIItems\ColorTest.cs" />
     <Compile Include="UIItems\ErrorProviderTest.cs" />
-    <Compile Include="UIItems\HScrollBarTest.cs" />
     <Compile Include="UIItems\ImageTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\ListBoxWithScrollBarTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\WPFListBoxTest.cs" />
-    <Compile Include="UIItems\ListBoxItems\WPFListBoxWithObjectBehindTest.cs" />
     <Compile Include="UIItems\MenuItems\MenuTest.cs" />
     <Compile Include="UIItems\MenuItems\PopUpMenuTest.cs" />
-    <Compile Include="UIItems\PanelTest.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGridTest.cs" />
     <Compile Include="UIItems\SliderTest.cs" />
     <Compile Include="UIItems\SpinnerTest.cs" />
@@ -115,7 +109,6 @@
     <Compile Include="UIItems\TreeItems\TreeTest.cs" />
     <Compile Include="UIItems\TreeItems\TreeWithModalLaunchedOnTreeNodeClickTest.cs" />
     <Compile Include="UIItems\TristateItemTest.cs" />
-    <Compile Include="UIItems\VScrollBarTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusStripTest.cs" />
   </ItemGroup>

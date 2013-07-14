@@ -1,20 +1,21 @@
-using NUnit.Framework;
+using System.Collections.Generic;
+using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.Scrolling;
-using TestStack.White.UITests.Testing;
+using Xunit;
 
-namespace White.Core.UITests.UIItems
+namespace TestStack.White.UITests.ControlTests
 {
-    public class VScrollBarTest : ControlsActionTest
+    public class VScrollBarTest : WhiteTestBase
     {
         private ListBox listBox;
         private IVScrollBar vScrollBar;
         private double smallChange;
         private double largeChange;
 
-        protected override void TestFixtureSetUp()
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            listBox = Window.Get<ListBox>("listBoxWithVScrollBar");
+            listBox = MainWindow.Get<ListBox>("ListBoxWithVScrollBar");
             vScrollBar = listBox.ScrollBars.Vertical;
             vScrollBar.ScrollDown();
             smallChange = vScrollBar.Value;
@@ -22,44 +23,41 @@ namespace White.Core.UITests.UIItems
             vScrollBar.ScrollDownLarge();
             largeChange = vScrollBar.Value;
             vScrollBar.ScrollUpLarge();
-        }
-
-        [SetUp]
-        public void SetUp()
-        {
             vScrollBar.SetToMinimum();
+
+            RunTest(ShouldGetVerticalScrollBar);
+            RunTest(ShouldScrollDown);
+            RunTest(ShouldScrollDownLarge);
+            RunTest(ShouldScrollUp);
+            RunTest(ShouldScrollUpLarge);
         }
 
-        [Fact]
-        public void ShouldGetVerticalScrollBar()
+        void ShouldGetVerticalScrollBar()
         {
-            Assert.IsNotNull(vScrollBar);
+            Assert.NotNull(vScrollBar);
         }
 
-        [Fact]
-        public void ShouldScrollDown()
-        {
-            double currentValue = vScrollBar.Value;
-            vScrollBar.ScrollDown();
-            vScrollBar.ScrollDown();
-            vScrollBar.ScrollDown();
-            vScrollBar.ScrollDown();
-            vScrollBar.ScrollDown();
-            Assert.Equal(currentValue + (smallChange*5), vScrollBar.Value, 0.001d);
-        }
-
-        [Fact]
-        public void ShouldScrollDownLarge()
+        void ShouldScrollDown()
         {
             double currentValue = vScrollBar.Value;
-            vScrollBar.ScrollDownLarge();
-            vScrollBar.ScrollDownLarge();
-            vScrollBar.ScrollDownLarge();
-            Assert.Equal(currentValue + (largeChange*3), vScrollBar.Value, 0.001d);
+            vScrollBar.ScrollDown();
+            vScrollBar.ScrollDown();
+            vScrollBar.ScrollDown();
+            vScrollBar.ScrollDown();
+            vScrollBar.ScrollDown();
+            Assert.Equal(currentValue + (smallChange*5), vScrollBar.Value, 3);
         }
 
-        [Fact]
-        public void ShouldScrollUp()
+        void ShouldScrollDownLarge()
+        {
+            double currentValue = vScrollBar.Value;
+            vScrollBar.ScrollDownLarge();
+            vScrollBar.ScrollDownLarge();
+            vScrollBar.ScrollDownLarge();
+            Assert.Equal(currentValue + (largeChange*3), vScrollBar.Value, 3);
+        }
+
+        void ShouldScrollUp()
         {
             vScrollBar.SetToMaximum();
             double maxValue = vScrollBar.Value;
@@ -68,16 +66,22 @@ namespace White.Core.UITests.UIItems
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
-            Assert.Equal(maxValue - (smallChange*5), vScrollBar.Value);
+            Assert.Equal(maxValue - (smallChange * 5), vScrollBar.Value, 3);
         }
 
-        [Ignore("Causing Visual Studio to crash")]
-        public void ShouldScrollUpLarge()
+        void ShouldScrollUpLarge()
         {
+            var currentValue = vScrollBar.Value;
             vScrollBar.ScrollUpLarge();
             vScrollBar.ScrollUpLarge();
             vScrollBar.ScrollUpLarge();
-            Assert.Equal(50 - (largeChange*3), vScrollBar.Value - 3);
+            Assert.Equal(currentValue - (largeChange * 3), vScrollBar.Value, 3);
+        }
+
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
+        {
+            yield return WindowsFramework.Wpf;
+            yield return WindowsFramework.WinForms;
         }
     }
 }

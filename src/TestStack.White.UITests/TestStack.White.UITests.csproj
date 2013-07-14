@@ -51,11 +51,15 @@
     <Compile Include="ControlTests\CustomUIItemTest.cs" />
     <Compile Include="ControlTests\GroupBoxTest.cs" />
     <Compile Include="ControlTests\HyperlinkTest.cs" />
+    <Compile Include="ControlTests\HScrollBarTest.cs" />
     <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
+    <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
+    <Compile Include="ControlTests\ListControls\ListBoxTests.cs" />
     <Compile Include="ControlTests\ListControls\ListViewTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
+    <Compile Include="ControlTests\PanelTest.cs" />
     <Compile Include="ControlTests\ProgressBarTest.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />

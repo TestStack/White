@@ -36,7 +36,7 @@ namespace TestStack.White.UIItems
         public virtual void Increment()
         {
             Button button = GetButton("SmallIncrement");
-            button.PerformClick();
+            button.Click();
         }
 
         private Button GetButton(string buttonName)
@@ -46,7 +46,7 @@ namespace TestStack.White.UIItems
 
         public virtual void Decrement()
         {
-            GetButton("SmallDecrement").PerformClick();
+            GetButton("SmallDecrement").Click();
         }
     }
 }

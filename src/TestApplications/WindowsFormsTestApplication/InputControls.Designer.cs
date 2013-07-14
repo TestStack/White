@@ -80,11 +80,14 @@
             // 
             // MultiLineTextBox
             // 
+            this.MultiLineTextBox.AcceptsReturn = true;
             this.MultiLineTextBox.Location = new System.Drawing.Point(7, 107);
             this.MultiLineTextBox.Multiline = true;
             this.MultiLineTextBox.Name = "MultiLineTextBox";
+            this.MultiLineTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.MultiLineTextBox.Size = new System.Drawing.Size(196, 64);
             this.MultiLineTextBox.TabIndex = 4;
+            this.MultiLineTextBox.WordWrap = false;
             // 
             // PasswordBox
             // 

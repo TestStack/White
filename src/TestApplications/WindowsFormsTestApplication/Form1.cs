@@ -11,6 +11,7 @@ namespace WindowsFormsTestApplication
         public Form1()
         {
             InitializeComponent();
+            PanelWithText.Text = "PanelText";
         }
 
         private void GetMultiple_Click(object sender, System.EventArgs e)

@@ -29,7 +29,7 @@
                     <DatePicker x:Name="DatePicker" />
                     <CheckBox x:Name="CheckBox" Content="A checkbox" />
                     <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
-                    <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" />
+                    <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" HorizontalScrollBarVisibility="Auto" />
                     <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
                     <PasswordBox x:Name="PasswordBox" />
                     <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
