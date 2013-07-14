@@ -1,6 +1,7 @@
 vNext
  - BREAKING: White Namespace changed from White.Core to TestStack.White
  - BREAKING: ModalWindow now throws when the window cannot be found
+ - BREAKING/Enhancement: MultiLineTextBox no longer exists, simply use TextBox
  - Fix: Expandable lists now restore their previous expansion (after the items have been retrieved), if `ComboBoxItemsPopulatedWithoutDropDownOpen` is set to false
 
 Version 0.10.3
