@@ -53,6 +53,8 @@
     <Compile Include="ControlTests\HyperlinkTest.cs" />
     <Compile Include="ControlTests\HScrollBarTest.cs" />
     <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
+    <Compile Include="ControlTests\InputControls\SpinnerTest.cs" />
+    <Compile Include="ControlTests\TabItems\TabTest.cs" />
     <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
     <Compile Include="ControlTests\ListControls\ListBoxTests.cs" />

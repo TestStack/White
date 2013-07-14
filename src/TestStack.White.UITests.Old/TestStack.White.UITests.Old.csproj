@@ -92,9 +92,6 @@
     <Compile Include="UIItems\SpinnerTest.cs" />
     <Compile Include="UIItems\SplashScreenTest.cs" />
     <Compile Include="UIItems\SWTMenuTest.cs" />
-    <Compile Include="UIItems\TabItems\TabItemTest.cs" />
-    <Compile Include="UIItems\TabItems\TabTest.cs" />
-    <Compile Include="UIItems\TabItems\TabWithReverseDisplayOrderTest.cs" />
     <Compile Include="UIItems\TableItems\AbstractTableTest.cs" />
     <Compile Include="UIItems\TableItems\NoTableHeaderTest.cs" />
     <Compile Include="UIItems\TableItems\TableCellTest.cs" />

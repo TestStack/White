@@ -19,21 +19,23 @@
         </ToolBar>
         <ToolBar x:Name="ToolStrip2" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
         </ToolBar>
-        <TabControl Grid.Row="2" Grid.Column="0">
+        <TabControl Grid.Row="2" Grid.Column="0" x:Name="ControlsTab">
             <TabItem Header="List Controls" x:Name="ListControlsTab">
                 <wpfTestApplication:ListControls x:Name="ListControls" />
             </TabItem>
-            <TabItem Header="Input controls">
-                <StackPanel>
-                    <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
-                    <DatePicker x:Name="DatePicker" />
-                    <CheckBox x:Name="CheckBox" Content="A checkbox" />
-                    <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
-                    <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" HorizontalScrollBarVisibility="Auto" />
-                    <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
-                    <PasswordBox x:Name="PasswordBox" />
-                    <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
-                    <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
+            <TabItem Header="Input Controls">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="5">
+                        <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
+                        <DatePicker x:Name="DatePicker" />
+                        <CheckBox x:Name="CheckBox" Content="A checkbox" />
+                        <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
+                        <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" Width="200" HorizontalScrollBarVisibility="Auto" />
+                        <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
+                        <PasswordBox x:Name="PasswordBox" />
+                        <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
+                        <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
             <TabItem Header="Other Controls">
@@ -78,7 +80,7 @@
                 <Button Content="Open Message Box" Click="OpenMessageBoxClick"
                         AutomationProperties.AutomationId="OpenMessageBox" />
                 <Button Content="Open Window With Scrollbars" Click="OpenWindowWithScrollbars"
-                        AutomationProperties.AutomationId="OpenWindowWithScrollbars" /> 
+                        AutomationProperties.AutomationId="OpenWindowWithScrollbars" />
             </StackPanel>
         </GroupBox>
     </Grid>

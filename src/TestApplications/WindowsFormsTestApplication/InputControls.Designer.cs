@@ -37,6 +37,9 @@
             this.UnmaskPasswordButton = new System.Windows.Forms.Button();
             this.RadioButton1 = new System.Windows.Forms.RadioButton();
             this.RadioButton2 = new System.Windows.Forms.RadioButton();
+            this.NumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // DatePicker
@@ -129,10 +132,40 @@
             this.RadioButton2.Text = "radioButton2";
             this.RadioButton2.UseVisualStyleBackColor = true;
             // 
+            // NumericUpDown
+            // 
+            this.NumericUpDown.DecimalPlaces = 1;
+            this.NumericUpDown.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
+            this.NumericUpDown.Location = new System.Drawing.Point(230, 29);
+            this.NumericUpDown.Name = "NumericUpDown";
+            this.NumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.NumericUpDown.TabIndex = 40;
+            this.NumericUpDown.ThousandsSeparator = true;
+            this.NumericUpDown.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(227, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 13);
+            this.label1.TabIndex = 41;
+            this.label1.Text = "Numeric Up Down";
+            // 
             // InputControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.NumericUpDown);
             this.Controls.Add(this.RadioButton2);
             this.Controls.Add(this.RadioButton1);
             this.Controls.Add(this.UnmaskPasswordButton);
@@ -143,8 +176,9 @@
             this.Controls.Add(this.DateTimePickerLabel);
             this.Controls.Add(this.DatePicker);
             this.Name = "InputControls";
-            this.Size = new System.Drawing.Size(319, 292);
+            this.Size = new System.Drawing.Size(582, 292);
             this.EnabledChanged += new System.EventHandler(this.InputControls_EnabledChanged);
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,5 +195,7 @@
         private System.Windows.Forms.Button UnmaskPasswordButton;
         private System.Windows.Forms.RadioButton RadioButton1;
         private System.Windows.Forms.RadioButton RadioButton2;
+        private System.Windows.Forms.NumericUpDown NumericUpDown;
+        private System.Windows.Forms.Label label1;
     }
 }

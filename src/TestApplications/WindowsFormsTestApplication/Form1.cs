@@ -102,5 +102,11 @@ namespace WindowsFormsTestApplication
         {
             new WindowWithScrollbars().ShowDialog(this);
         }
+
+        private void ReverseTabOrderButton_Click(object sender, System.EventArgs e)
+        {
+            ControlsTab.RightToLeft = RightToLeft.Yes;
+            ControlsTab.RightToLeftLayout = true;
+        }
     }
 }

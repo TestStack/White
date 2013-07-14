@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems.TabItems
     /// <summary>
     /// Access tab page by first finding a Tab and then getting hold of the TabPage inside it.
     /// </summary>
-    public class TabPage : UIItem, ITabPage
+    public class TabPage : UIItemContainer, ITabPage
     {
         private readonly SelectionItem selectionItem;
 
@@ -32,6 +32,4 @@ namespace TestStack.White.UIItems.TabItems
             return Name;
         }
     }
-
-    public class TabPages : UIItemList<ITabPage> {}
 }

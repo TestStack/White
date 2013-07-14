@@ -12,9 +12,22 @@ namespace TestStack.White.UITests.Scenarios
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(() => GetMultipleButtons(framework));
+            RunTest(GetControlBasedOnIndex);
         }
 
-        private void GetMultipleButtons(WindowsFramework framework)
+        void GetControlBasedOnIndex()
+        {
+            using (var window = StartScenario("GetMultipleButton", "GetMultiple"))
+            {
+                var button = window.Get<Button>(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "Button").AndIndex(0));
+                Assert.NotNull(button);
+
+                var exception = Assert.Throws<AutomationException>(() => MainWindow.Get<TextBox>(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "Button").AndIndex(4)));
+                Assert.Equal("Failed to get (ControlType=button or ControlType=check box),Name=Button,Index=4", exception.Message);
+            }
+        }
+
+        void GetMultipleButtons(WindowsFramework framework)
         {
             MainWindow.Get<Button>("GetMultipleButton").Click();
             var window = MainWindow.ModalWindow("GetMultiple");

@@ -45,9 +45,11 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ProgressBar = new System.Windows.Forms.ProgressBar();
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.ControlsTab = new System.Windows.Forms.TabControl();
             this.ListControlsTab = new System.Windows.Forms.TabPage();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
             this.HiddenTextBox = new System.Windows.Forms.TextBox();
             this.AddTextBoxPanel = new System.Windows.Forms.Panel();
@@ -64,10 +66,9 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.ReverseTabOrderButton = new System.Windows.Forms.Button();
             this.ScenariosPane.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
             this.InputControlsTab.SuspendLayout();
             this.OtherControlsTab.SuspendLayout();
@@ -77,6 +78,7 @@
             // 
             // ScenariosPane
             // 
+            this.ScenariosPane.Controls.Add(this.ReverseTabOrderButton);
             this.ScenariosPane.Controls.Add(this.OpenWindowWithScrollbars);
             this.ScenariosPane.Controls.Add(this.OpenWindowWithAmperstand);
             this.ScenariosPane.Controls.Add(this.OpenWindowWithNoTitleBar);
@@ -226,16 +228,16 @@
             this.LinkLabel.Text = "Link Text";
             this.LinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel_LinkClicked);
             // 
-            // tabControl1
+            // ControlsTab
             // 
-            this.tabControl1.Controls.Add(this.ListControlsTab);
-            this.tabControl1.Controls.Add(this.InputControlsTab);
-            this.tabControl1.Controls.Add(this.OtherControlsTab);
-            this.tabControl1.Location = new System.Drawing.Point(13, 60);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(697, 333);
-            this.tabControl1.TabIndex = 7;
+            this.ControlsTab.Controls.Add(this.ListControlsTab);
+            this.ControlsTab.Controls.Add(this.InputControlsTab);
+            this.ControlsTab.Controls.Add(this.OtherControlsTab);
+            this.ControlsTab.Location = new System.Drawing.Point(13, 60);
+            this.ControlsTab.Name = "ControlsTab";
+            this.ControlsTab.SelectedIndex = 0;
+            this.ControlsTab.Size = new System.Drawing.Size(697, 333);
+            this.ControlsTab.TabIndex = 7;
             // 
             // ListControlsTab
             // 
@@ -248,6 +250,13 @@
             this.ListControlsTab.Text = "List Controls";
             this.ListControlsTab.UseVisualStyleBackColor = true;
             // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(20, 3);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
             // InputControlsTab
             // 
             this.InputControlsTab.Controls.Add(this.inputControls1);
@@ -258,6 +267,13 @@
             this.InputControlsTab.TabIndex = 1;
             this.InputControlsTab.Text = "Input Controls";
             this.InputControlsTab.UseVisualStyleBackColor = true;
+            // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(6, 6);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(618, 295);
+            this.inputControls1.TabIndex = 0;
             // 
             // OtherControlsTab
             // 
@@ -397,19 +413,15 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
             // 
-            // listControls1
+            // ReverseTabOrderButton
             // 
-            this.listControls1.Location = new System.Drawing.Point(20, 3);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(6, 6);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(618, 295);
-            this.inputControls1.TabIndex = 0;
+            this.ReverseTabOrderButton.Location = new System.Drawing.Point(7, 222);
+            this.ReverseTabOrderButton.Name = "ReverseTabOrderButton";
+            this.ReverseTabOrderButton.Size = new System.Drawing.Size(115, 23);
+            this.ReverseTabOrderButton.TabIndex = 11;
+            this.ReverseTabOrderButton.Text = "Reverse Tab Order";
+            this.ReverseTabOrderButton.UseVisualStyleBackColor = true;
+            this.ReverseTabOrderButton.Click += new System.EventHandler(this.ReverseTabOrderButton_Click);
             // 
             // Form1
             // 
@@ -418,13 +430,13 @@
             this.ClientSize = new System.Drawing.Size(982, 405);
             this.Controls.Add(this.ToolStrip2);
             this.Controls.Add(this.ToolStrip1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.ControlsTab);
             this.Controls.Add(this.ScenariosPane);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
             this.ScenariosPane.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.ControlsTab.ResumeLayout(false);
             this.ListControlsTab.ResumeLayout(false);
             this.InputControlsTab.ResumeLayout(false);
             this.OtherControlsTab.ResumeLayout(false);
@@ -456,7 +468,7 @@
         private System.Windows.Forms.LinkLabel LinkLabel;
         private System.Windows.Forms.ProgressBar ProgressBar;
         private System.Windows.Forms.Button OpenWindowWithAmperstand;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl ControlsTab;
         private System.Windows.Forms.TabPage ListControlsTab;
         private System.Windows.Forms.TabPage InputControlsTab;
         private System.Windows.Forms.TabPage OtherControlsTab;
@@ -476,6 +488,7 @@
         private System.Windows.Forms.Button AddTextBox;
         private System.Windows.Forms.Button ShowHiddenTextBox;
         private System.Windows.Forms.TextBox HiddenTextBox;
+        private System.Windows.Forms.Button ReverseTabOrderButton;
     }
 }
 

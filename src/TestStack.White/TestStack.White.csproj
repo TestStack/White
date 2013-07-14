@@ -183,6 +183,7 @@
     <Compile Include="UIItems\DateUnit.cs" />
     <Compile Include="UIItems\ListBoxItems\Win32ComboBox.cs" />
     <Compile Include="UIItems\DateFormat.cs" />
+    <Compile Include="UIItems\TabItems\TabPages.cs" />
     <Compile Include="UIItems\TableItems\NullTableHeader.cs" />
     <Compile Include="UIItems\TableItems\TableVerticalScrollOffset.cs" />
     <Compile Include="UIItems\Thumb.cs" />

@@ -1,6 +1,6 @@
 namespace TestStack.White.UIItems.TabItems
 {
-    public interface ITabPage : IUIItem
+    public interface ITabPage : IUIItemContainer
     {
         bool IsSelected { get; }
         void Select();
