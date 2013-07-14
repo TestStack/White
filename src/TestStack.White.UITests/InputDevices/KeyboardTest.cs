@@ -23,6 +23,7 @@ namespace TestStack.White.UITests.InputDevices
 
         void EnterAccentedChars()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             const string text = "דאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהבדאגהב";
 
@@ -33,6 +34,7 @@ namespace TestStack.White.UITests.InputDevices
 
         void ShouldSetTheValueOfATextBox()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             EnterAndAssertValueOfTextEntered(textBox, "ab");
             EnterAndAssertValueOfTextEntered(textBox, "abcdefghijklmnopqrstuvwxyz");
@@ -46,6 +48,7 @@ namespace TestStack.White.UITests.InputDevices
 
         void ShouldBeAbleToPressLeftAndRightCursorKeys()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             textBox.Text = "Textbox";
 
@@ -66,6 +69,7 @@ namespace TestStack.White.UITests.InputDevices
 
         void CapsLock()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             ClearTextBox(textBox);
             Keyboard.CapsLockOn = false;
@@ -95,6 +99,7 @@ namespace TestStack.White.UITests.InputDevices
 
         void MultilineTextBox()
         {
+            SelectInputControls();
             var builder = new StringBuilder();
             builder.Append("abcd").AppendLine();
             builder.Append("efgh").AppendLine();

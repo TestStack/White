@@ -14,11 +14,13 @@ namespace TestStack.White.UITests.Interceptors
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(DoNotAllowActionOnDisabledControls);
-            RunTest(AllowActionsPossibleOnDisableControls);
+            RunTest(AllowActionsPossibleOnDisabledInputControls);
+            RunTest(AllowActionsPossibleOnDisabledListControls);
         }
 
         void DoNotAllowActionOnDisabledControls()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             MainWindow.Get<Button>("DisableControls").Click();
             Retry.For(() => !textBox.Enabled, TimeSpan.FromSeconds(2));
@@ -26,19 +28,32 @@ namespace TestStack.White.UITests.Interceptors
             MainWindow.Get<Button>("DisableControls").Click();
         }
 
-        void AllowActionsPossibleOnDisableControls()
+        void AllowActionsPossibleOnDisabledInputControls()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
-            var comboBox = MainWindow.Get<ComboBox>("AComboBox");
 
             // Set Values
             textBox.Text = "blah";
-            comboBox.Select("Test2");
 
             MainWindow.Get<Button>("DisableControls").Click();
 
             // Assert we can still read the values
             Assert.Equal("blah", textBox.Text);
+            MainWindow.Get<Button>("DisableControls").Click();
+        }
+
+        void AllowActionsPossibleOnDisabledListControls()
+        {
+            SelectListControls();
+            var comboBox = MainWindow.Get<ComboBox>("AComboBox");
+
+            // Set Values
+            comboBox.Select("Test2");
+
+            MainWindow.Get<Button>("DisableControls").Click();
+
+            // Assert we can still read the values
             Assert.Equal("Test2", comboBox.SelectedItem.Text);
             MainWindow.Get<Button>("DisableControls").Click();
         }

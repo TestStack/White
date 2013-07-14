@@ -20,6 +20,7 @@ namespace TestStack.White.UITests.ControlTests
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
+            SelectInputControls();
             RunTest(Text);
             RunTest(FindTextBlock, WindowsFramework.Wpf);
         }

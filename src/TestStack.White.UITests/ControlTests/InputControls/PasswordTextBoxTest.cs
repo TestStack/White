@@ -32,6 +32,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
+            SelectInputControls();
             RunTest(CannotGetTextFromPassword);
             RunTest(GetPasswordValueWhenTextBoxIsNotPasswordField, WindowsFramework.WinForms);
         }

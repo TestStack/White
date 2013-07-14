@@ -9,6 +9,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
     {
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
+            SelectInputControls();
             RunTest(() => GetDate(DateTime.Today), WindowsFramework.WinForms);
             RunTest(() => GetDate(null), WindowsFramework.Wpf, WindowsFramework.Silverlight);
             RunTest(SetDate); 

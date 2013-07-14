@@ -26,6 +26,7 @@ namespace TestStack.White.UITests.ControlTests
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
+            SelectOtherControls();
             RunTest(MinimumValue);
             RunTest(MaximumValue);
             RunTest(Value);

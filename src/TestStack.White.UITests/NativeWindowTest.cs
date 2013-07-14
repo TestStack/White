@@ -28,6 +28,7 @@ namespace TestStack.White.UITests
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
+            SelectInputControls();
             RunTest(BackgroundColor);
         }
 

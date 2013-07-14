@@ -9,6 +9,7 @@ namespace TestStack.White.UITests.InputDevices
     {
         public void Enter()
         {
+            SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             textBox.Focus();
             AttachedKeyboard attachedKeyboard = MainWindow.Keyboard;
