@@ -3,7 +3,7 @@ using TestStack.White.UIItems;
 using TestStack.White.UIItems.TabItems;
 using Xunit;
 
-namespace TestStack.White.UITests.ControlTests.TabItems
+namespace TestStack.White.UITests.ControlTests
 {
     public class TabTest : WhiteTestBase
     {

@@ -39,6 +39,8 @@
             this.RadioButton2 = new System.Windows.Forms.RadioButton();
             this.NumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
+            this.BlueTextBox = new System.Windows.Forms.TextBox();
+            this.TriStateCheckBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,10 +162,34 @@
             this.label1.TabIndex = 41;
             this.label1.Text = "Numeric Up Down";
             // 
+            // BlueTextBox
+            // 
+            this.BlueTextBox.BackColor = System.Drawing.Color.Blue;
+            this.BlueTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BlueTextBox.Location = new System.Drawing.Point(230, 56);
+            this.BlueTextBox.Name = "BlueTextBox";
+            this.BlueTextBox.Size = new System.Drawing.Size(100, 20);
+            this.BlueTextBox.TabIndex = 42;
+            // 
+            // TriStateCheckBox
+            // 
+            this.TriStateCheckBox.AutoSize = true;
+            this.TriStateCheckBox.Checked = true;
+            this.TriStateCheckBox.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.TriStateCheckBox.Location = new System.Drawing.Point(230, 82);
+            this.TriStateCheckBox.Name = "TriStateCheckBox";
+            this.TriStateCheckBox.Size = new System.Drawing.Size(112, 17);
+            this.TriStateCheckBox.TabIndex = 43;
+            this.TriStateCheckBox.Text = "TriStateCheckBox";
+            this.TriStateCheckBox.ThreeState = true;
+            this.TriStateCheckBox.UseVisualStyleBackColor = true;
+            // 
             // InputControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.TriStateCheckBox);
+            this.Controls.Add(this.BlueTextBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.NumericUpDown);
             this.Controls.Add(this.RadioButton2);
@@ -197,5 +223,7 @@
         private System.Windows.Forms.RadioButton RadioButton2;
         private System.Windows.Forms.NumericUpDown NumericUpDown;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox BlueTextBox;
+        private System.Windows.Forms.CheckBox TriStateCheckBox;
     }
 }

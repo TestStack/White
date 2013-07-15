@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ScenariosPane = new System.Windows.Forms.GroupBox();
+            this.ReverseTabOrderButton = new System.Windows.Forms.Button();
             this.OpenWindowWithScrollbars = new System.Windows.Forms.Button();
             this.OpenWindowWithAmperstand = new System.Windows.Forms.Button();
             this.OpenWindowWithNoTitleBar = new System.Windows.Forms.Button();
@@ -47,9 +48,7 @@
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
             this.ControlsTab = new System.Windows.Forms.TabControl();
             this.ListControlsTab = new System.Windows.Forms.TabPage();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
             this.HiddenTextBox = new System.Windows.Forms.TextBox();
             this.AddTextBoxPanel = new System.Windows.Forms.Panel();
@@ -66,7 +65,9 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.ReverseTabOrderButton = new System.Windows.Forms.Button();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.Image = new System.Windows.Forms.PictureBox();
             this.ScenariosPane.SuspendLayout();
             this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
@@ -74,6 +75,7 @@
             this.OtherControlsTab.SuspendLayout();
             this.PanelWithText.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenariosPane
@@ -96,6 +98,16 @@
             this.ScenariosPane.TabIndex = 5;
             this.ScenariosPane.TabStop = false;
             this.ScenariosPane.Text = "Scenarios";
+            // 
+            // ReverseTabOrderButton
+            // 
+            this.ReverseTabOrderButton.Location = new System.Drawing.Point(7, 222);
+            this.ReverseTabOrderButton.Name = "ReverseTabOrderButton";
+            this.ReverseTabOrderButton.Size = new System.Drawing.Size(115, 23);
+            this.ReverseTabOrderButton.TabIndex = 11;
+            this.ReverseTabOrderButton.Text = "Reverse Tab Order";
+            this.ReverseTabOrderButton.UseVisualStyleBackColor = true;
+            this.ReverseTabOrderButton.Click += new System.EventHandler(this.ReverseTabOrderButton_Click);
             // 
             // OpenWindowWithScrollbars
             // 
@@ -250,13 +262,6 @@
             this.ListControlsTab.Text = "List Controls";
             this.ListControlsTab.UseVisualStyleBackColor = true;
             // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(20, 3);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
             // InputControlsTab
             // 
             this.InputControlsTab.Controls.Add(this.inputControls1);
@@ -268,15 +273,9 @@
             this.InputControlsTab.Text = "Input Controls";
             this.InputControlsTab.UseVisualStyleBackColor = true;
             // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(6, 6);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(618, 295);
-            this.inputControls1.TabIndex = 0;
-            // 
             // OtherControlsTab
             // 
+            this.OtherControlsTab.Controls.Add(this.Image);
             this.OtherControlsTab.Controls.Add(this.HiddenTextBox);
             this.OtherControlsTab.Controls.Add(this.AddTextBoxPanel);
             this.OtherControlsTab.Controls.Add(this.AddTextBox);
@@ -413,15 +412,29 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
             // 
-            // ReverseTabOrderButton
+            // listControls1
             // 
-            this.ReverseTabOrderButton.Location = new System.Drawing.Point(7, 222);
-            this.ReverseTabOrderButton.Name = "ReverseTabOrderButton";
-            this.ReverseTabOrderButton.Size = new System.Drawing.Size(115, 23);
-            this.ReverseTabOrderButton.TabIndex = 11;
-            this.ReverseTabOrderButton.Text = "Reverse Tab Order";
-            this.ReverseTabOrderButton.UseVisualStyleBackColor = true;
-            this.ReverseTabOrderButton.Click += new System.EventHandler(this.ReverseTabOrderButton_Click);
+            this.listControls1.Location = new System.Drawing.Point(20, 3);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(6, 6);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(618, 295);
+            this.inputControls1.TabIndex = 0;
+            // 
+            // Image
+            // 
+            this.Image.Image = ((System.Drawing.Image)(resources.GetObject("Image.Image")));
+            this.Image.Location = new System.Drawing.Point(15, 200);
+            this.Image.Name = "Image";
+            this.Image.Size = new System.Drawing.Size(84, 86);
+            this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Image.TabIndex = 14;
+            this.Image.TabStop = false;
             // 
             // Form1
             // 
@@ -445,6 +458,7 @@
             this.PanelWithText.PerformLayout();
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -489,6 +503,7 @@
         private System.Windows.Forms.Button ShowHiddenTextBox;
         private System.Windows.Forms.TextBox HiddenTextBox;
         private System.Windows.Forms.Button ReverseTabOrderButton;
+        private System.Windows.Forms.PictureBox Image;
     }
 }
 

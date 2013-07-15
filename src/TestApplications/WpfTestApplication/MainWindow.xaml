@@ -29,6 +29,7 @@
                         <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
                         <DatePicker x:Name="DatePicker" />
                         <CheckBox x:Name="CheckBox" Content="A checkbox" />
+                        <CheckBox x:Name="TriStateCheckBox" Content="Tristate Checkbox" IsThreeState="True" IsChecked="{x:Null}" />
                         <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
                         <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" Width="200" HorizontalScrollBarVisibility="Auto" />
                         <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
@@ -54,6 +55,7 @@
                         <Button x:Name="ShowHiddenTextBox" Content="Show Hidden TextBox" Click="ShowHiddenTextBox_OnClick" />
                         <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
                     </StackPanel>
+                    <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="White.jpg" Width="100" x:Name="Image"/>
                 </StackPanel>
             </TabItem>
         </TabControl>

@@ -40,6 +40,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="UIAutomationClient" />
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
@@ -48,13 +49,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlTests\ColorTest.cs" />
     <Compile Include="ControlTests\CustomUIItemTest.cs" />
     <Compile Include="ControlTests\GroupBoxTest.cs" />
     <Compile Include="ControlTests\HyperlinkTest.cs" />
     <Compile Include="ControlTests\HScrollBarTest.cs" />
+    <Compile Include="ControlTests\ImageTest.cs" />
     <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
     <Compile Include="ControlTests\InputControls\SpinnerTest.cs" />
-    <Compile Include="ControlTests\TabItems\TabTest.cs" />
+    <Compile Include="ControlTests\InputControls\TristateItemTest.cs" />
+    <Compile Include="ControlTests\TabTest.cs" />
     <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
     <Compile Include="ControlTests\ListControls\ListBoxTests.cs" />
