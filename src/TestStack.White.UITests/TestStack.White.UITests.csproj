@@ -58,6 +58,7 @@
     <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
     <Compile Include="ControlTests\InputControls\SpinnerTest.cs" />
     <Compile Include="ControlTests\InputControls\TristateItemTest.cs" />
+    <Compile Include="ControlTests\SliderTest.cs" />
     <Compile Include="ControlTests\TabTest.cs" />
     <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />

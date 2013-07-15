@@ -85,8 +85,6 @@
     <Compile Include="UIItems\MenuItems\MenuTest.cs" />
     <Compile Include="UIItems\MenuItems\PopUpMenuTest.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGridTest.cs" />
-    <Compile Include="UIItems\SliderTest.cs" />
-    <Compile Include="UIItems\SplashScreenTest.cs" />
     <Compile Include="UIItems\TableItems\AbstractTableTest.cs" />
     <Compile Include="UIItems\TableItems\NoTableHeaderTest.cs" />
     <Compile Include="UIItems\TableItems\TableCellTest.cs" />

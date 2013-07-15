@@ -65,9 +65,10 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.Image = new System.Windows.Forms.PictureBox();
+            this.Slider = new System.Windows.Forms.TrackBar();
             this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.inputControls1 = new WindowsFormsTestApplication.InputControls();
-            this.Image = new System.Windows.Forms.PictureBox();
             this.ScenariosPane.SuspendLayout();
             this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
@@ -76,6 +77,7 @@
             this.PanelWithText.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Slider)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenariosPane
@@ -275,6 +277,7 @@
             // 
             // OtherControlsTab
             // 
+            this.OtherControlsTab.Controls.Add(this.Slider);
             this.OtherControlsTab.Controls.Add(this.Image);
             this.OtherControlsTab.Controls.Add(this.HiddenTextBox);
             this.OtherControlsTab.Controls.Add(this.AddTextBoxPanel);
@@ -412,6 +415,24 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
             // 
+            // Image
+            // 
+            this.Image.Image = ((System.Drawing.Image)(resources.GetObject("Image.Image")));
+            this.Image.Location = new System.Drawing.Point(15, 200);
+            this.Image.Name = "Image";
+            this.Image.Size = new System.Drawing.Size(84, 86);
+            this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Image.TabIndex = 14;
+            this.Image.TabStop = false;
+            // 
+            // Slider
+            // 
+            this.Slider.LargeChange = 4;
+            this.Slider.Location = new System.Drawing.Point(139, 19);
+            this.Slider.Name = "Slider";
+            this.Slider.Size = new System.Drawing.Size(104, 45);
+            this.Slider.TabIndex = 15;
+            // 
             // listControls1
             // 
             this.listControls1.Location = new System.Drawing.Point(20, 3);
@@ -425,16 +446,6 @@
             this.inputControls1.Name = "inputControls1";
             this.inputControls1.Size = new System.Drawing.Size(618, 295);
             this.inputControls1.TabIndex = 0;
-            // 
-            // Image
-            // 
-            this.Image.Image = ((System.Drawing.Image)(resources.GetObject("Image.Image")));
-            this.Image.Location = new System.Drawing.Point(15, 200);
-            this.Image.Name = "Image";
-            this.Image.Size = new System.Drawing.Size(84, 86);
-            this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Image.TabIndex = 14;
-            this.Image.TabStop = false;
             // 
             // Form1
             // 
@@ -459,6 +470,7 @@
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Slider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -504,6 +516,7 @@
         private System.Windows.Forms.TextBox HiddenTextBox;
         private System.Windows.Forms.Button ReverseTabOrderButton;
         private System.Windows.Forms.PictureBox Image;
+        private System.Windows.Forms.TrackBar Slider;
     }
 }
 

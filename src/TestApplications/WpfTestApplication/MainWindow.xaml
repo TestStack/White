@@ -56,6 +56,7 @@
                         <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
                     </StackPanel>
                     <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="White.jpg" Width="100" x:Name="Image"/>
+                    <Slider x:Name="Slider" LargeChange="4" SmallChange="1" />
                 </StackPanel>
             </TabItem>
         </TabControl>
