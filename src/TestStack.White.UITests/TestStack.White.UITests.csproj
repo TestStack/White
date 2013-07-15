@@ -60,6 +60,8 @@
     <Compile Include="ControlTests\InputControls\TristateItemTest.cs" />
     <Compile Include="ControlTests\SliderTest.cs" />
     <Compile Include="ControlTests\TabTest.cs" />
+    <Compile Include="ControlTests\TreeItems\TreeNodeTest.cs" />
+    <Compile Include="ControlTests\TreeItems\TreeTest.cs" />
     <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
     <Compile Include="ControlTests\ListControls\ListBoxTests.cs" />

@@ -40,23 +40,37 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Other Controls">
-                <StackPanel>
-                    <TextBlock x:Name="LinkLabelContainer">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <TextBlock x:Name="LinkLabelContainer">
                     <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
-                    </TextBlock>
-                    <ProgressBar Value="50" x:Name="ProgressBar" />
-                    <Canvas>
-                        <TextBox x:Name="TextBoxInsidePanel" Width="50"></TextBox>
-                    </Canvas>
-                    <StackPanel Orientation="Horizontal" x:Name="AddControlPanel">
-                        <Button x:Name="AddTextBox" Content="Add TextBox" Click="AddTextBox_OnClick" />
+                        </TextBlock>
+                        <ProgressBar Value="50" x:Name="ProgressBar" />
+                        <Canvas>
+                            <TextBox x:Name="TextBoxInsidePanel" Width="50"></TextBox>
+                        </Canvas>
+                        <StackPanel Orientation="Horizontal" x:Name="AddControlPanel">
+                            <Button x:Name="AddTextBox" Content="Add TextBox" Click="AddTextBox_OnClick" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" x:Name="HiddenControlPanel">
+                            <Button x:Name="ShowHiddenTextBox" Content="Show Hidden TextBox" Click="ShowHiddenTextBox_OnClick" />
+                            <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
+                        </StackPanel>
+                        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="White.jpg" Width="100" x:Name="Image"/>
+                        <Slider x:Name="Slider" LargeChange="4" SmallChange="1" />
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal" x:Name="HiddenControlPanel">
-                        <Button x:Name="ShowHiddenTextBox" Content="Show Hidden TextBox" Click="ShowHiddenTextBox_OnClick" />
-                        <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
+                    <StackPanel>
+                        <TreeView x:Name="TreeView" Width="195" Height="155">
+                            <TreeViewItem Visibility="Visible" Header="Root" Name="RootNode">
+                                <TreeViewItem Visibility="Visible" Header="Child" Name="ChildNode">
+                                    <TreeViewItem Visibility="Visible" Header="Grand Child"/>
+                                </TreeViewItem>
+
+                            </TreeViewItem>
+                            <TreeViewItem Visibility="Visible" Header="Main" Name="Main"/>
+                        </TreeView>
+                        <Button Content="Add Node" x:Name="AddNode" Click="AddNode_OnClick" />
                     </StackPanel>
-                    <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="White.jpg" Width="100" x:Name="Image"/>
-                    <Slider x:Name="Slider" LargeChange="4" SmallChange="1" />
                 </StackPanel>
             </TabItem>
         </TabControl>

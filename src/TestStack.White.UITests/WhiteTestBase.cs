@@ -24,6 +24,7 @@ namespace TestStack.White.UITests
         [Fact]
         public void Automate()
         {
+            CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
             var frameworksToRun = SupportedFrameworks();
 
             foreach (var framework in frameworksToRun)

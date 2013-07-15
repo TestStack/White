@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Grand Child");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Child", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Main");
             this.ScenariosPane = new System.Windows.Forms.GroupBox();
             this.ReverseTabOrderButton = new System.Windows.Forms.Button();
             this.OpenWindowWithScrollbars = new System.Windows.Forms.Button();
@@ -48,8 +54,12 @@
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
             this.ControlsTab = new System.Windows.Forms.TabControl();
             this.ListControlsTab = new System.Windows.Forms.TabPage();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
+            this.Slider = new System.Windows.Forms.TrackBar();
+            this.Image = new System.Windows.Forms.PictureBox();
             this.HiddenTextBox = new System.Windows.Forms.TextBox();
             this.AddTextBoxPanel = new System.Windows.Forms.Panel();
             this.AddTextBox = new System.Windows.Forms.Button();
@@ -65,19 +75,17 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.Image = new System.Windows.Forms.PictureBox();
-            this.Slider = new System.Windows.Forms.TrackBar();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.TreeView = new System.Windows.Forms.TreeView();
+            this.AddNode = new System.Windows.Forms.Button();
             this.ScenariosPane.SuspendLayout();
             this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
             this.InputControlsTab.SuspendLayout();
             this.OtherControlsTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Slider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             this.PanelWithText.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Slider)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenariosPane
@@ -264,6 +272,13 @@
             this.ListControlsTab.Text = "List Controls";
             this.ListControlsTab.UseVisualStyleBackColor = true;
             // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(20, 3);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
             // InputControlsTab
             // 
             this.InputControlsTab.Controls.Add(this.inputControls1);
@@ -275,8 +290,17 @@
             this.InputControlsTab.Text = "Input Controls";
             this.InputControlsTab.UseVisualStyleBackColor = true;
             // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(6, 6);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(618, 295);
+            this.inputControls1.TabIndex = 0;
+            // 
             // OtherControlsTab
             // 
+            this.OtherControlsTab.Controls.Add(this.AddNode);
+            this.OtherControlsTab.Controls.Add(this.TreeView);
             this.OtherControlsTab.Controls.Add(this.Slider);
             this.OtherControlsTab.Controls.Add(this.Image);
             this.OtherControlsTab.Controls.Add(this.HiddenTextBox);
@@ -293,6 +317,24 @@
             this.OtherControlsTab.Text = "Other Controls";
             this.OtherControlsTab.UseVisualStyleBackColor = true;
             // 
+            // Slider
+            // 
+            this.Slider.LargeChange = 4;
+            this.Slider.Location = new System.Drawing.Point(139, 19);
+            this.Slider.Name = "Slider";
+            this.Slider.Size = new System.Drawing.Size(121, 45);
+            this.Slider.TabIndex = 15;
+            // 
+            // Image
+            // 
+            this.Image.Image = ((System.Drawing.Image)(resources.GetObject("Image.Image")));
+            this.Image.Location = new System.Drawing.Point(15, 200);
+            this.Image.Name = "Image";
+            this.Image.Size = new System.Drawing.Size(84, 86);
+            this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Image.TabIndex = 14;
+            this.Image.TabStop = false;
+            // 
             // HiddenTextBox
             // 
             this.HiddenTextBox.Location = new System.Drawing.Point(160, 161);
@@ -305,7 +347,7 @@
             // 
             this.AddTextBoxPanel.Location = new System.Drawing.Point(114, 126);
             this.AddTextBoxPanel.Name = "AddTextBoxPanel";
-            this.AddTextBoxPanel.Size = new System.Drawing.Size(238, 29);
+            this.AddTextBoxPanel.Size = new System.Drawing.Size(146, 29);
             this.AddTextBoxPanel.TabIndex = 12;
             // 
             // AddTextBox
@@ -333,12 +375,12 @@
             this.PanelWithText.Controls.Add(this.TextBoxInsidePanel);
             this.PanelWithText.Location = new System.Drawing.Point(15, 70);
             this.PanelWithText.Name = "PanelWithText";
-            this.PanelWithText.Size = new System.Drawing.Size(168, 50);
+            this.PanelWithText.Size = new System.Drawing.Size(245, 50);
             this.PanelWithText.TabIndex = 9;
             // 
             // TextBoxInsidePanel
             // 
-            this.TextBoxInsidePanel.Location = new System.Drawing.Point(88, 27);
+            this.TextBoxInsidePanel.Location = new System.Drawing.Point(165, 27);
             this.TextBoxInsidePanel.Name = "TextBoxInsidePanel";
             this.TextBoxInsidePanel.Size = new System.Drawing.Size(77, 20);
             this.TextBoxInsidePanel.TabIndex = 0;
@@ -415,37 +457,33 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
             // 
-            // Image
+            // TreeView
             // 
-            this.Image.Image = ((System.Drawing.Image)(resources.GetObject("Image.Image")));
-            this.Image.Location = new System.Drawing.Point(15, 200);
-            this.Image.Name = "Image";
-            this.Image.Size = new System.Drawing.Size(84, 86);
-            this.Image.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Image.TabIndex = 14;
-            this.Image.TabStop = false;
+            this.TreeView.Location = new System.Drawing.Point(271, 14);
+            this.TreeView.Name = "TreeView";
+            treeNode1.Name = "GrandChild";
+            treeNode1.Text = "Grand Child";
+            treeNode2.Name = "ChildNode";
+            treeNode2.Text = "Child";
+            treeNode3.Name = "RootNode";
+            treeNode3.Text = "Root";
+            treeNode4.Name = "Main";
+            treeNode4.Text = "Main";
+            this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4});
+            this.TreeView.Size = new System.Drawing.Size(199, 96);
+            this.TreeView.TabIndex = 16;
             // 
-            // Slider
+            // AddNode
             // 
-            this.Slider.LargeChange = 4;
-            this.Slider.Location = new System.Drawing.Point(139, 19);
-            this.Slider.Name = "Slider";
-            this.Slider.Size = new System.Drawing.Size(104, 45);
-            this.Slider.TabIndex = 15;
-            // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(20, 3);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(6, 6);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(618, 295);
-            this.inputControls1.TabIndex = 0;
+            this.AddNode.Location = new System.Drawing.Point(271, 117);
+            this.AddNode.Name = "AddNode";
+            this.AddNode.Size = new System.Drawing.Size(75, 23);
+            this.AddNode.TabIndex = 17;
+            this.AddNode.Text = "Add Node";
+            this.AddNode.UseVisualStyleBackColor = true;
+            this.AddNode.Click += new System.EventHandler(this.AddNode_Click);
             // 
             // Form1
             // 
@@ -465,12 +503,12 @@
             this.InputControlsTab.ResumeLayout(false);
             this.OtherControlsTab.ResumeLayout(false);
             this.OtherControlsTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Slider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             this.PanelWithText.ResumeLayout(false);
             this.PanelWithText.PerformLayout();
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Slider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -517,6 +555,8 @@
         private System.Windows.Forms.Button ReverseTabOrderButton;
         private System.Windows.Forms.PictureBox Image;
         private System.Windows.Forms.TrackBar Slider;
+        private System.Windows.Forms.Button AddNode;
+        private System.Windows.Forms.TreeView TreeView;
     }
 }
 

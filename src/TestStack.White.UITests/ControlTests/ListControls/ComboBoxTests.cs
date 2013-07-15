@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Automation;
-using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
@@ -15,7 +14,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
             ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
             RunTest(ListItemInComboBoxWithoutTextAvailableInitially, WindowsFramework.Wpf);
             RunTest(ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved);

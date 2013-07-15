@@ -92,12 +92,6 @@
     <Compile Include="UIItems\TableItems\TableRowTest.cs" />
     <Compile Include="UIItems\TableItems\TableTest.cs" />
     <Compile Include="UIItems\TableItems\TableVerticalScrollOffsetTest.cs" />
-    <Compile Include="UIItems\TreeItems\TestNodeWithoutHeaderTest.cs" />
-    <Compile Include="UIItems\TreeItems\TreeNodesTest.cs" />
-    <Compile Include="UIItems\TreeItems\TreeNodeTest.cs" />
-    <Compile Include="UIItems\TreeItems\TreeScrollingTest.cs" />
-    <Compile Include="UIItems\TreeItems\TreeTest.cs" />
-    <Compile Include="UIItems\TreeItems\TreeWithModalLaunchedOnTreeNodeClickTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusStripTest.cs" />
   </ItemGroup>

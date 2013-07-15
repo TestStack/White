@@ -3,9 +3,9 @@ using System.Windows.Automation;
 
 namespace TestStack.White.UIItems.Scrolling
 {
-    public abstract class WPFScrollBar : IScrollBar
+    public abstract class WpfScrollBar : IScrollBar
     {
-        protected readonly ScrollPattern scrollPattern;
+        protected readonly ScrollPattern ScrollPattern;
 
         protected delegate void ScrollBackLarge();
 
@@ -13,9 +13,9 @@ namespace TestStack.White.UIItems.Scrolling
 
         private delegate void Scroll();
 
-        protected WPFScrollBar(AutomationElement parent)
+        protected WpfScrollBar(AutomationElement parent)
         {
-            scrollPattern = (ScrollPattern) parent.GetCurrentPattern(ScrollPattern.Pattern);
+            ScrollPattern = (ScrollPattern) parent.GetCurrentPattern(ScrollPattern.Pattern);
         }
 
         public abstract double Value { get; }
@@ -68,6 +68,20 @@ namespace TestStack.White.UIItems.Scrolling
         protected virtual void SetToMinimum(ScrollBackLarge scrollBackLarge)
         {
             MoveTo(0.0, () => scrollBackLarge());
+        }
+
+        protected virtual double ValidPercentage(double percentage)
+        {
+            if (percentage < 0)
+                return 0;
+            if (percentage > 100)
+                return 100;
+            return percentage;
+        }
+
+        protected virtual double SmallPercentage()
+        {
+            return ScrollPercentage / 4;
         }
     }
 }

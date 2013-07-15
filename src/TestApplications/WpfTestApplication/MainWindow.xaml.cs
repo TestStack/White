@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
@@ -16,6 +17,12 @@ namespace WpfTestApplication
         {
             DataContext = this;
             InitializeComponent();
+            var treeViewItem = new TreeViewItem { Header = "Lots Of Children" };
+            foreach (var i in Enumerable.Range(1, 50))
+            {
+                treeViewItem.Items.Add(new TreeViewItem { Header = "Child" + i });
+            }
+            TreeView.Items.Add(treeViewItem);
         }
 
         public ObservableCollection<string> ListItems
@@ -140,6 +147,11 @@ namespace WpfTestApplication
         private void OpenWindowWithScrollbars(object sender, RoutedEventArgs e)
         {
             new WindowWithScrollbars().ShowDialog();
+        }
+
+        private void AddNode_OnClick(object sender, RoutedEventArgs e)
+        {
+            TreeView.Items.Add("AddedNode");
         }
     }
 }

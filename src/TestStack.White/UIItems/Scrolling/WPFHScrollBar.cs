@@ -6,23 +6,23 @@ using Action = TestStack.White.UIItems.Actions.Action;
 namespace TestStack.White.UIItems.Scrolling
 {
     [PlatformSpecificItem(ReferAsType = typeof (IHScrollBar))]
-    public class WPFHScrollBar : WPFScrollBar, IHScrollBar
+    public class WpfHScrollBar : WpfScrollBar, IHScrollBar
     {
         private readonly ActionListener actionListener;
 
-        public WPFHScrollBar(AutomationElement parent, ActionListener actionListener) : base(parent)
+        public WpfHScrollBar(AutomationElement parent, ActionListener actionListener) : base(parent)
         {
             this.actionListener = actionListener;
         }
 
         public override double Value
         {
-            get { return scrollPattern.Current.HorizontalScrollPercent; }
+            get { return ScrollPattern.Current.HorizontalScrollPercent; }
         }
 
         protected override double ScrollPercentage
         {
-            get { return scrollPattern.Current.HorizontalViewSize; }
+            get { return ScrollPattern.Current.HorizontalViewSize; }
         }
 
         public override Rect Bounds
@@ -34,7 +34,29 @@ namespace TestStack.White.UIItems.Scrolling
         {
             if (!IsScrollable) return;
 
-            scrollPattern.ScrollHorizontal(amount);
+            switch (amount)
+            {
+                case ScrollAmount.LargeDecrement:
+                    ScrollPattern.SetScrollPercent(
+                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent - ScrollPercentage),
+                        ScrollPattern.Current.VerticalScrollPercent);
+                    break;
+                case ScrollAmount.SmallDecrement:
+                    ScrollPattern.SetScrollPercent(
+                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent - SmallPercentage()),
+                        ScrollPattern.Current.VerticalScrollPercent);
+                    break;
+                case ScrollAmount.LargeIncrement:
+                    ScrollPattern.SetScrollPercent(
+                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent + ScrollPercentage),
+                        ScrollPattern.Current.VerticalScrollPercent);
+                    break;
+                case ScrollAmount.SmallIncrement:
+                    ScrollPattern.SetScrollPercent(
+                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent + SmallPercentage()),
+                        ScrollPattern.Current.VerticalScrollPercent);
+                    break;
+            }
             actionListener.ActionPerformed(Action.WindowMessage);
         }
 
@@ -60,7 +82,7 @@ namespace TestStack.White.UIItems.Scrolling
 
         public virtual bool IsScrollable
         {
-            get { return scrollPattern.Current.HorizontallyScrollable; }
+            get { return ScrollPattern.Current.HorizontallyScrollable; }
         }
 
         public override void SetToMinimum()

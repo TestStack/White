@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
 using WindowsFormsTestApplication.Scenarios;
 using WindowsFormsTestApplication.Scenarios.CustomUIItem;
 
@@ -12,6 +13,12 @@ namespace WindowsFormsTestApplication
         {
             InitializeComponent();
             PanelWithText.Text = "PanelText";
+            var treeViewItem = new TreeNode("Lots Of Children");
+            foreach (var i in Enumerable.Range(1, 50))
+            {
+                treeViewItem.Nodes.Add(new TreeNode("Child" + i));
+            }
+            TreeView.Nodes.Add(treeViewItem);
         }
 
         private void GetMultiple_Click(object sender, System.EventArgs e)
@@ -107,6 +114,11 @@ namespace WindowsFormsTestApplication
         {
             ControlsTab.RightToLeft = RightToLeft.Yes;
             ControlsTab.RightToLeftLayout = true;
+        }
+
+        private void AddNode_Click(object sender, System.EventArgs e)
+        {
+            TreeView.Nodes.Add("AddedNode");
         }
     }
 }

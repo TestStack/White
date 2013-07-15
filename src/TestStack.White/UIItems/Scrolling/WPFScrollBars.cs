@@ -16,7 +16,7 @@ namespace TestStack.White.UIItems.Scrolling {
             get {
                 var patterns = new Collection<AutomationPattern>(parentElement.GetSupportedPatterns());
                 return patterns.Contains(ScrollPattern.Pattern)
-                           ? (IHScrollBar) new WPFHScrollBar(parentElement, actionListener)
+                           ? (IHScrollBar) new WpfHScrollBar(parentElement, actionListener)
                            : new NullHScrollBar();
             }
         }
@@ -25,7 +25,7 @@ namespace TestStack.White.UIItems.Scrolling {
             get {
                 var patterns = new Collection<AutomationPattern>(parentElement.GetSupportedPatterns());
                 return patterns.Contains(ScrollPattern.Pattern)
-                           ? (IVScrollBar) new WPFVScrollBar(parentElement, actionListener)
+                           ? (IVScrollBar) new WpfVScrollBar(parentElement, actionListener)
                            : new NullVScrollBar();
             }
         }
