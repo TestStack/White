@@ -53,7 +53,7 @@ namespace TestStack.White.Repository
             window.Focus(displayState);
         }
 
-        public virtual void Populate(FieldMap fieldMap, Entity entity)
+        public virtual void Populate(IFieldMap fieldMap, Entity entity)
         {
             var fieldsWithNoValueOnEntity = new List<string>();
 

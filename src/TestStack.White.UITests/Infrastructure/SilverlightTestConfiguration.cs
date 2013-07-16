@@ -2,10 +2,9 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Castle.DynamicProxy;
 using TestStack.White.Configuration;
+using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WebBrowser;
-using TestStack.White.WebBrowser.Silverlight;
 
 namespace TestStack.White.UITests.Infrastructure
 {
@@ -60,45 +59,10 @@ namespace TestStack.White.UITests.Infrastructure
             return Application.Launch(processStartInfo);
         }
 
-        public override IMainWindow GetMainWindow(Application application)
+        public override Window GetMainWindow(Application application)
         {
             var ieWindow = (InternetExplorerWindow)application.GetWindow("TestSilverlightApplication - Windows Internet Explorer");
-            var mainWindowAdapter = new ProxyGenerator()
-                .CreateInterfaceProxyWithoutTarget<IMainWindow>(new SilverlightAdditionalCallsInterceptor(ieWindow.SilverlightDocument),
-                                                                new ForwardIfExistsInterceptor(ieWindow.SilverlightDocument));
-            return mainWindowAdapter;
-        }
-
-        public class SilverlightAdditionalCallsInterceptor : IInterceptor
-        {
-            private readonly SilverlightDocument silverlightDocument;
-
-            public SilverlightAdditionalCallsInterceptor(SilverlightDocument silverlightDocument)
-            {
-                this.silverlightDocument = silverlightDocument;
-            }
-
-            public void Intercept(IInvocation invocation)
-            {
-                if (invocation.Method.Name == "ModalWindow")
-                {
-                    invocation.ReturnValue = silverlightDocument.ChildWindow((string) invocation.Arguments[0]);
-                }
-                else if (invocation.Method.Name == "Close")
-                {
-                    var processes = Process.GetProcessesByName("iexplore");
-                    foreach (var process in processes)
-                    {
-                        try
-                        {
-                            process.Kill();
-                        }
-                        catch { }
-                    }
-                }
-                else
-                    invocation.Proceed();
-            }
+            return ieWindow.SilverlightDocument;
         }
     }
 }

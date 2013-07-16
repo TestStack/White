@@ -70,11 +70,14 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationClient" />
     <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DummyScreen.cs" />
+    <Compile Include="DummyWindow.cs" />
     <Compile Include="EntityMapping\Cricketer.cs" />
     <Compile Include="EntityMapping\GoogleWebsite.cs" />
     <Compile Include="EntityMapping\NestedEntity.cs" />
@@ -87,6 +90,7 @@
     <Compile Include="ScreenClassComponent.cs" />
     <Compile Include="ScreenClassContainingComponent.cs" />
     <Compile Include="ScreenClassTest.cs" />
+    <Compile Include="ScreenRepositoryCacheTest.cs" />
     <Compile Include="Services\ServiceCallTest.cs" />
     <Compile Include="Services\ServiceExecutionTest.cs" />
     <Compile Include="Services\TestServiceForServiceCallTest.cs" />

@@ -5,26 +5,32 @@ using TestStack.White.Sessions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.WebBrowser.Silverlight
 {
-    public class SilverlightDocument : UIItemContainer
+    public class SilverlightDocument : Window
     {
+        private readonly BrowserWindow ieWindow;
+
         protected SilverlightDocument()
         {
         }
 
-        public SilverlightDocument(AutomationElement automationElement, ActionListener actionListener,
+        public SilverlightDocument(AutomationElement automationElement, BrowserWindow actionListener,
                                    InitializeOption initializeOption,
                                    WindowSession windowSession)
             : base(automationElement, actionListener, initializeOption, windowSession)
         {
+            ieWindow = actionListener;
         }
 
-        public SilverlightDocument(AutomationElement automationElement, ActionListener actionListener)
-            : base(automationElement, actionListener)
+        public SilverlightDocument(AutomationElement automationElement, BrowserWindow actionListener,
+                                   WindowSession windowSession)
+            : base(automationElement, actionListener, InitializeOption.NoCache, windowSession)
         {
+            ieWindow = actionListener;
         }
 
         public override void ActionPerformed(Action action)
@@ -32,6 +38,23 @@ namespace TestStack.White.WebBrowser.Silverlight
             if (action == Action.Scroll) Thread.Sleep(500);
             CustomWait();
             base.ActionPerformed();
+        }
+
+        public override Window ModalWindow(string title, InitializeOption option)
+        {
+            var childWindow = Get<Window>(SearchCriteria.ByText(title));
+            return childWindow;
+        }
+
+        public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
+        {
+            var childWindow = Get<Window>(searchCriteria);
+            return childWindow;
+        }
+
+        public override PopUpMenu Popup
+        {
+            get { throw new System.NotSupportedException(); }
         }
 
         protected override ActionListener ChildrenActionListener
@@ -48,6 +71,11 @@ namespace TestStack.White.WebBrowser.Silverlight
         {
             var childWindow = Get<Window>(SearchCriteria.ByText(title));
             return childWindow;
+        }
+
+        public override void Close()
+        {
+            ieWindow.Close();
         }
     }
 }

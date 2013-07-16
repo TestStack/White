@@ -2,7 +2,7 @@ using System;
 
 namespace TestStack.White.Repository
 {
-    public interface FieldMap
+    public interface IFieldMap
     {
         /// <summary>
         /// Derives the field on the Entity, which would be populated for the given controlName and controlType

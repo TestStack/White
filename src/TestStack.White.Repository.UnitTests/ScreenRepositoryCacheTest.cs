@@ -3,7 +3,7 @@ using TestStack.White.Factory;
 using TestStack.White.Sessions;
 using Xunit;
 
-namespace TestStack.White.Repository.UITests
+namespace TestStack.White.Repository.UnitTests
 {
     public class ScreenRepositoryCacheTest
     {

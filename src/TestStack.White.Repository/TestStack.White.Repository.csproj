@@ -89,7 +89,7 @@
     <Compile Include="EntityMapping\EntityField.cs" />
     <Compile Include="EntityMapping\EntityFieldNotFoundException.cs" />
     <Compile Include="EntityMapping\NestedEntities.cs" />
-    <Compile Include="FieldMap.cs" />
+    <Compile Include="IFieldMap.cs" />
     <Compile Include="Interceptors\ScreenInterceptors.cs" />
     <Compile Include="Interceptors\ScreenObjectInterceptor.cs" />
     <Compile Include="Interceptors\UIItemInterceptor.cs" />

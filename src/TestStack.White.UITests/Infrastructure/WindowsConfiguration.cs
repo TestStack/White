@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Castle.DynamicProxy;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.UITests.Infrastructure
 {
@@ -31,11 +31,9 @@ namespace TestStack.White.UITests.Infrastructure
             return Application.Launch(processStartInfo);
         }
 
-        public override IMainWindow GetMainWindow(Application application)
+        public override Window GetMainWindow(Application application)
         {
-            var window = application.GetWindow(SearchCriteria.ByFramework(framework.FrameworkId()).AndByText("MainWindow"), InitializeOption.NoCache);
-            var mainWindowAdapter = new ProxyGenerator().CreateInterfaceProxyWithoutTarget<IMainWindow>(new ForwardIfExistsInterceptor(window));
-            return mainWindowAdapter;
+            return application.GetWindow(SearchCriteria.ByFramework(framework.FrameworkId()).AndByText("MainWindow"), InitializeOption.NoCache);
         }
 
         protected abstract string ApplicationExePath();

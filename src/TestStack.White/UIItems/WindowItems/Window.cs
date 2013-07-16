@@ -54,9 +54,11 @@ namespace TestStack.White.UIItems.WindowItems
         {
         }
 
-        protected Window(AutomationElement automationElement, InitializeOption initializeOption,
-                         WindowSession windowSession)
-            : base(automationElement, new NullActionListener(), initializeOption, windowSession)
+        protected Window(AutomationElement automationElement, InitializeOption initializeOption, WindowSession windowSession)
+            : this(automationElement, new NullActionListener(), initializeOption, windowSession) { }
+
+        protected Window(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption, WindowSession windowSession)
+            : base(automationElement, actionListener, initializeOption, windowSession)
         {
             InitializeWindow();
             minOpenTime = Task.Factory.StartNew(() => Thread.Sleep(500));
@@ -156,7 +158,7 @@ UI actions on window needing mouse would not work in area not falling under the 
                     }
                     catch (ElementNotAvailableException)
                     {
-                        
+
                     }
                 }
             }
@@ -211,7 +213,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         private void WaitForWindow()
         {
-            var windowPattern = (WindowPattern) Pattern(WindowPattern.Pattern);
+            var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
             if (!CoreAppXmlConfiguration.Instance.InProc && !IsConsole() &&
                 (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
             {

@@ -79,6 +79,7 @@
     <Compile Include="ControlTests\ProgressBarTest.cs" />
     <Compile Include="ControlTests\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="ControlTests\WindowStripControls\StatusStripTest.cs" />
+    <Compile Include="Screens\MainScreen.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />
     <Compile Include="NativeWindowTest.cs" />
@@ -99,8 +100,6 @@
     <Compile Include="ControlTests\Splitters\HorizontalThumbTest.cs" />
     <Compile Include="ControlTests\Splitters\VerticalThumbTest.cs" />
     <Compile Include="Factory\InitializeOptionTest.cs" />
-    <Compile Include="IMainWindow.cs" />
-    <Compile Include="Infrastructure\ForwardIfExistsInterceptor.cs" />
     <Compile Include="Infrastructure\SilverlightTestConfiguration.cs" />
     <Compile Include="Infrastructure\WindowsConfiguration.cs" />
     <Compile Include="InputDevices\AttachedKeyboardTest.cs" />
@@ -136,6 +135,10 @@
     <ProjectReference Include="..\TestApplications\WpfTestApplication\WpfTestApplication.csproj">
       <Project>{492e6340-32cc-4d03-a9c4-36fb4c40cf5c}</Project>
       <Name>WpfTestApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.Repository.csproj">
+      <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
+      <Name>TestStack.White.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestStack.White.WebBrowser\TestStack.White.WebBrowser.csproj">
       <Project>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</Project>

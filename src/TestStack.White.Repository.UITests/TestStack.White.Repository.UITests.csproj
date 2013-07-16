@@ -76,7 +76,6 @@
     <Compile Include="DummyWindow.cs" />
     <Compile Include="EntityMapping\EntitiesFromUIItemsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenRepositoryCacheTest.cs" />
     <Compile Include="ScreenRepositoryTest.cs" />
     <Compile Include="ScreenRepositoryTester.cs" />
     <Compile Include="Sessions\WorkSessionTest.cs" />

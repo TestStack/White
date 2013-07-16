@@ -4,6 +4,7 @@ using System.Linq;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.InputDevices;
+using TestStack.White.Repository;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
@@ -18,8 +19,9 @@ namespace TestStack.White.UITests
         WindowsFramework? currentFramework;
 
         internal Keyboard Keyboard;
-        protected IMainWindow MainWindow { get; private set; }
+        protected Window MainWindow { get; private set; }
         protected Application Application { get; private set; }
+        protected ScreenRepository Repository { get; private set; }
 
         [Fact]
         public void Automate()
@@ -74,6 +76,7 @@ namespace TestStack.White.UITests
                 Keyboard = Keyboard.Instance;
                 var configuration = TestConfigurationFactory.Create(framework);
                 Application = configuration.LaunchApplication();
+                Repository = new ScreenRepository(Application);
                 MainWindow = configuration.GetMainWindow(Application);
 
                 return new ShutdownApplicationDisposable(this);
