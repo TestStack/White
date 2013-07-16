@@ -15,5 +15,15 @@ namespace WindowsFormsTestApplication
             EditableComboBox.Enabled = Enabled;
             CheckedListBox.Enabled = Enabled;
         }
+
+        private void mainToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            ListBoxWithVScrollBar.AccessibleDescription = "Root2 Clicked";
+        }
+
+        private void level2ToolStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            ListBoxWithVScrollBar.AccessibleDescription = "Level 2 Clicked";
+        }
     }
 }

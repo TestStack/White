@@ -1,30 +1,31 @@
-using NUnit.Framework;
+using System.Collections.Generic;
+using TestStack.White.UIItems;
 using TestStack.White.UIItems.TableItems;
-using TestStack.White.UITests.Testing;
+using Xunit;
 
-namespace White.Core.UITests.UIItems.TableItems
+namespace TestStack.White.UITests.ControlTests.DataGrid.WinForms
 {
-    [TestFixture, WinFormCategory]
-    public class TableCellTest : ControlsActionTest
+    public class TableCellTest : WhiteTestBase
     {
-        private TableRow row;
-        private Table table;
+        TableRow row;
+        Table table;
 
-        protected override void TestFixtureSetUp()
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            table = Window.Get<Table>("people");
-        }
-
-        [SetUp]
-        public void SetUp()
-        {
+            SelectDataGridTab();
+            table = MainWindow.Get<Table>("DataGrid");
             TableRows rows = table.Rows;
             row = rows[0];
-            row.Cells[0].Value = "Imran";
+
+            RunTest(SetTextCellValue);
+            RunTest(GetEmptyValue);
+            RunTest(SetCheckBoxCellValue);
+            RunTest(SetComboBoxCellValue);
+            RunTest(TextOnButtonCell);
+            RunTest(Click);
         }
 
-        [Fact]
-        public void SetTextCellValue()
+        void SetTextCellValue()
         {
             TableCell cell = row.Cells[0];
             Assert.Equal("Imran", cell.Value);
@@ -32,16 +33,14 @@ namespace White.Core.UITests.UIItems.TableItems
             Assert.Equal("Mudassar", cell.Value);
         }
 
-        [Fact]
-        public void GetEmptyValue()
+        void GetEmptyValue()
         {
             TableCell cell = table.Rows[3].Cells[0];
             cell.Value = string.Empty;
             Assert.Equal(string.Empty, cell.Value);
         }
 
-        [Fact]
-        public void SetCheckBoxCellValue()
+        void SetCheckBoxCellValue()
         {
             Assert.Equal(true.ToString(), row.Cells[2].Value);
             row.Cells[2].Value = true;
@@ -50,25 +49,26 @@ namespace White.Core.UITests.UIItems.TableItems
             Assert.Equal(false.ToString(), row.Cells[2].Value);
         }
 
-        [Fact]
-        public void SetComboBoxCellValue()
+        void SetComboBoxCellValue()
         {
             Assert.Equal("Pakistan", row.Cells[1].Value);
             row.Cells[1].Value = "India";
             Assert.Equal("India", row.Cells[1].Value);
         }
 
-        [Fact]
-        public void TextOnButtonCell()
+        void TextOnButtonCell()
         {
             Assert.Equal("Show", row.Cells[3].Value);
         }
 
-        //TODO: Why does clicking on cell number 3 clicks on cell number 1
-        [Fact]
-        public void Click()
+        void Click()
         {
             row.Cells[1].Click();
+        }
+
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
+        {
+            yield return WindowsFramework.WinForms;
         }
     }
 }

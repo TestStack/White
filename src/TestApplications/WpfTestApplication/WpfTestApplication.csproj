@@ -54,6 +54,7 @@
     </ApplicationDefinition>
     <Compile Include="Custom controls\CustomItem.cs" />
     <Compile Include="Custom controls\CustomItemAutiomationPeer.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Scenarios\CustomUIItem\CustomUIItemScenario.xaml.cs">
       <DependentUpon>CustomUIItemScenario.xaml</DependentUpon>
     </Compile>

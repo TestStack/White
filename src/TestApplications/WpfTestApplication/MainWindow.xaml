@@ -12,14 +12,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ToolBar x:Name="ToolStrip1" Grid.ColumnSpan="2">
+        <Menu x:Name="MenuBar" Grid.ColumnSpan="2">
+            <MenuItem Header="File" AutomationProperties.AutomationId="FileId">
+                <MenuItem Header="Click Me" Click="ClickMe_OnClick" />
+            </MenuItem>
+        </Menu>
+        <ToolBar x:Name="ToolStrip1" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0">
             <Button Content="Button in toolbar"></Button>
         </ToolBar>
-        <ToolBar x:Name="ToolStrip2" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+        <ToolBar x:Name="ToolStrip2" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
         </ToolBar>
-        <TabControl Grid.Row="2" Grid.Column="0" x:Name="ControlsTab">
+        <TabControl Grid.Row="3" Grid.Column="0" x:Name="ControlsTab">
             <TabItem Header="List Controls" x:Name="ListControlsTab">
                 <wpfTestApplication:ListControls x:Name="ListControls" />
             </TabItem>
@@ -74,7 +80,7 @@
                 </StackPanel>
             </TabItem>
         </TabControl>
-        <GroupBox Header="Scenarios" Grid.Row="2" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">
+        <GroupBox Header="Scenarios" Grid.Row="3" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>
                 <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter"
                         AutomationProperties.AutomationId="OpenHorizontalSplitterButton" />

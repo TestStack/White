@@ -152,5 +152,10 @@ namespace TestStack.White.UITests
         {
             MainWindow.Tabs[0].SelectTabPage(0);
         }
+
+        protected void SelectDataGridTab()
+        {
+            MainWindow.Tabs[0].SelectTabPage(3);
+        }
     }
 }

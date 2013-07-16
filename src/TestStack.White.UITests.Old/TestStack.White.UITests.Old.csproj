@@ -82,16 +82,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestConfiguration.cs" />
-    <Compile Include="UIItems\MenuItems\MenuTest.cs" />
-    <Compile Include="UIItems\MenuItems\PopUpMenuTest.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGridTest.cs" />
-    <Compile Include="UIItems\TableItems\AbstractTableTest.cs" />
-    <Compile Include="UIItems\TableItems\NoTableHeaderTest.cs" />
-    <Compile Include="UIItems\TableItems\TableCellTest.cs" />
-    <Compile Include="UIItems\TableItems\TableRowsTest.cs" />
-    <Compile Include="UIItems\TableItems\TableRowTest.cs" />
-    <Compile Include="UIItems\TableItems\TableTest.cs" />
-    <Compile Include="UIItems\TableItems\TableVerticalScrollOffsetTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="UIItems\WindowStripControls\StatusStripTest.cs" />
   </ItemGroup>

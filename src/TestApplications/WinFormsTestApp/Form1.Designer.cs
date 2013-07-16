@@ -418,14 +418,14 @@ namespace WinFormsTestApp
             this.rootToolStripMenuItem,
             this.mainToolStripMenuItem});
             this.menuStripContainingMultilevelSubMenus.Name = "menuStripContainingMultilevelSubMenus";
-            this.menuStripContainingMultilevelSubMenus.Size = new System.Drawing.Size(102, 48);
+            this.menuStripContainingMultilevelSubMenus.Size = new System.Drawing.Size(153, 70);
             // 
             // rootToolStripMenuItem
             // 
             this.rootToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.level1ToolStripMenuItem});
             this.rootToolStripMenuItem.Name = "rootToolStripMenuItem";
-            this.rootToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.rootToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.rootToolStripMenuItem.Text = "Root";
             // 
             // level1ToolStripMenuItem
@@ -433,19 +433,19 @@ namespace WinFormsTestApp
             this.level1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.level2ToolStripMenuItem});
             this.level1ToolStripMenuItem.Name = "level1ToolStripMenuItem";
-            this.level1ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.level1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.level1ToolStripMenuItem.Text = "Level1";
             // 
             // level2ToolStripMenuItem
             // 
             this.level2ToolStripMenuItem.Name = "level2ToolStripMenuItem";
-            this.level2ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.level2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.level2ToolStripMenuItem.Text = "Level2";
             // 
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mainToolStripMenuItem.Text = "Main";
             // 
             // launchModal
@@ -637,7 +637,6 @@ namespace WinFormsTestApp
             this.comboBoxLaunchingModalWindow.Name = "comboBoxLaunchingModalWindow";
             this.comboBoxLaunchingModalWindow.Size = new System.Drawing.Size(121, 21);
             this.comboBoxLaunchingModalWindow.TabIndex = 19;
-            // 
             // 
             // addDynamicControl
             // 

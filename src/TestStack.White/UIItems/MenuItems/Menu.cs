@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
@@ -9,7 +10,8 @@ namespace TestStack.White.UIItems.MenuItems
     /// </summary>
     public class Menu : UIItem
     {
-        private Menus childMenus;
+        Menus childMenus;
+
         protected Menu() {}
         public Menu(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
 
@@ -41,6 +43,8 @@ namespace TestStack.White.UIItems.MenuItems
             get
             {
                 if (childMenus != null) return childMenus;
+                Click();
+                Thread.Sleep(100);
                 childMenus = new Menus(automationElement, actionListener);
                 return childMenus;
             }

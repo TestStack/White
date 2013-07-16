@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Grand Child");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Child", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Main");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Grand Child");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Child", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Main");
             this.ScenariosPane = new System.Windows.Forms.GroupBox();
             this.ReverseTabOrderButton = new System.Windows.Forms.Button();
             this.OpenWindowWithScrollbars = new System.Windows.Forms.Button();
@@ -54,10 +54,10 @@
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
             this.ControlsTab = new System.Windows.Forms.TabControl();
             this.ListControlsTab = new System.Windows.Forms.TabPage();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
+            this.AddNode = new System.Windows.Forms.Button();
+            this.TreeView = new System.Windows.Forms.TreeView();
             this.Slider = new System.Windows.Forms.TrackBar();
             this.Image = new System.Windows.Forms.PictureBox();
             this.HiddenTextBox = new System.Windows.Forms.TextBox();
@@ -66,6 +66,13 @@
             this.ShowHiddenTextBox = new System.Windows.Forms.Button();
             this.PanelWithText = new System.Windows.Forms.Panel();
             this.TextBoxInsidePanel = new System.Windows.Forms.TextBox();
+            this.DataGridTab = new System.Windows.Forms.TabPage();
+            this.DataGrid = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.country = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.alive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.display = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.details = new System.Windows.Forms.DataGridViewLinkColumn();
             this.ToolStrip2 = new System.Windows.Forms.ToolStrip();
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -75,8 +82,14 @@
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.TreeView = new System.Windows.Forms.TreeView();
-            this.AddNode = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clickMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.ScenariosPane.SuspendLayout();
             this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
@@ -85,7 +98,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.Slider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             this.PanelWithText.SuspendLayout();
+            this.DataGridTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.ToolStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ScenariosPane
@@ -102,7 +118,7 @@
             this.ScenariosPane.Controls.Add(this.OpenListView);
             this.ScenariosPane.Controls.Add(this.GetMultipleButton);
             this.ScenariosPane.Controls.Add(this.ButtonWithTooltip);
-            this.ScenariosPane.Location = new System.Drawing.Point(716, 60);
+            this.ScenariosPane.Location = new System.Drawing.Point(716, 77);
             this.ScenariosPane.Name = "ScenariosPane";
             this.ScenariosPane.Size = new System.Drawing.Size(254, 333);
             this.ScenariosPane.TabIndex = 5;
@@ -255,10 +271,11 @@
             this.ControlsTab.Controls.Add(this.ListControlsTab);
             this.ControlsTab.Controls.Add(this.InputControlsTab);
             this.ControlsTab.Controls.Add(this.OtherControlsTab);
-            this.ControlsTab.Location = new System.Drawing.Point(13, 60);
+            this.ControlsTab.Controls.Add(this.DataGridTab);
+            this.ControlsTab.Location = new System.Drawing.Point(12, 77);
             this.ControlsTab.Name = "ControlsTab";
             this.ControlsTab.SelectedIndex = 0;
-            this.ControlsTab.Size = new System.Drawing.Size(697, 333);
+            this.ControlsTab.Size = new System.Drawing.Size(697, 337);
             this.ControlsTab.TabIndex = 7;
             // 
             // ListControlsTab
@@ -267,17 +284,10 @@
             this.ListControlsTab.Location = new System.Drawing.Point(4, 22);
             this.ListControlsTab.Name = "ListControlsTab";
             this.ListControlsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ListControlsTab.Size = new System.Drawing.Size(689, 307);
+            this.ListControlsTab.Size = new System.Drawing.Size(689, 311);
             this.ListControlsTab.TabIndex = 0;
             this.ListControlsTab.Text = "List Controls";
             this.ListControlsTab.UseVisualStyleBackColor = true;
-            // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(20, 3);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
             // 
             // InputControlsTab
             // 
@@ -285,17 +295,10 @@
             this.InputControlsTab.Location = new System.Drawing.Point(4, 22);
             this.InputControlsTab.Name = "InputControlsTab";
             this.InputControlsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.InputControlsTab.Size = new System.Drawing.Size(689, 307);
+            this.InputControlsTab.Size = new System.Drawing.Size(689, 311);
             this.InputControlsTab.TabIndex = 1;
             this.InputControlsTab.Text = "Input Controls";
             this.InputControlsTab.UseVisualStyleBackColor = true;
-            // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(6, 6);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(618, 295);
-            this.inputControls1.TabIndex = 0;
             // 
             // OtherControlsTab
             // 
@@ -312,10 +315,38 @@
             this.OtherControlsTab.Controls.Add(this.LinkLabel);
             this.OtherControlsTab.Location = new System.Drawing.Point(4, 22);
             this.OtherControlsTab.Name = "OtherControlsTab";
-            this.OtherControlsTab.Size = new System.Drawing.Size(689, 307);
+            this.OtherControlsTab.Size = new System.Drawing.Size(689, 311);
             this.OtherControlsTab.TabIndex = 2;
             this.OtherControlsTab.Text = "Other Controls";
             this.OtherControlsTab.UseVisualStyleBackColor = true;
+            // 
+            // AddNode
+            // 
+            this.AddNode.Location = new System.Drawing.Point(271, 117);
+            this.AddNode.Name = "AddNode";
+            this.AddNode.Size = new System.Drawing.Size(75, 23);
+            this.AddNode.TabIndex = 17;
+            this.AddNode.Text = "Add Node";
+            this.AddNode.UseVisualStyleBackColor = true;
+            this.AddNode.Click += new System.EventHandler(this.AddNode_Click);
+            // 
+            // TreeView
+            // 
+            this.TreeView.Location = new System.Drawing.Point(271, 14);
+            this.TreeView.Name = "TreeView";
+            treeNode5.Name = "GrandChild";
+            treeNode5.Text = "Grand Child";
+            treeNode6.Name = "ChildNode";
+            treeNode6.Text = "Child";
+            treeNode7.Name = "RootNode";
+            treeNode7.Text = "Root";
+            treeNode8.Name = "Main";
+            treeNode8.Text = "Main";
+            this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8});
+            this.TreeView.Size = new System.Drawing.Size(199, 96);
+            this.TreeView.TabIndex = 16;
             // 
             // Slider
             // 
@@ -385,9 +416,65 @@
             this.TextBoxInsidePanel.Size = new System.Drawing.Size(77, 20);
             this.TextBoxInsidePanel.TabIndex = 0;
             // 
+            // DataGridTab
+            // 
+            this.DataGridTab.Controls.Add(this.DataGrid);
+            this.DataGridTab.Location = new System.Drawing.Point(4, 22);
+            this.DataGridTab.Name = "DataGridTab";
+            this.DataGridTab.Padding = new System.Windows.Forms.Padding(3);
+            this.DataGridTab.Size = new System.Drawing.Size(689, 311);
+            this.DataGridTab.TabIndex = 3;
+            this.DataGridTab.Text = "Data Grid";
+            this.DataGridTab.UseVisualStyleBackColor = true;
+            // 
+            // DataGrid
+            // 
+            this.DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.name,
+            this.country,
+            this.alive,
+            this.display,
+            this.details});
+            this.DataGrid.Location = new System.Drawing.Point(6, 6);
+            this.DataGrid.Name = "DataGrid";
+            this.DataGrid.Size = new System.Drawing.Size(677, 295);
+            this.DataGrid.TabIndex = 10;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            // 
+            // country
+            // 
+            this.country.HeaderText = "Country";
+            this.country.Items.AddRange(new object[] {
+            "India",
+            "Sri Lanka",
+            "Pakistan"});
+            this.country.Name = "country";
+            // 
+            // alive
+            // 
+            this.alive.HeaderText = "Alive";
+            this.alive.Name = "alive";
+            // 
+            // display
+            // 
+            this.display.HeaderText = "Display";
+            this.display.Name = "display";
+            this.display.Text = "Show";
+            // 
+            // details
+            // 
+            this.details.HeaderText = "Details";
+            this.details.Name = "details";
+            this.details.Text = "More..";
+            // 
             // ToolStrip2
             // 
-            this.ToolStrip2.Location = new System.Drawing.Point(0, 25);
+            this.ToolStrip2.Location = new System.Drawing.Point(0, 24);
             this.ToolStrip2.Name = "ToolStrip2";
             this.ToolStrip2.Size = new System.Drawing.Size(982, 25);
             this.ToolStrip2.TabIndex = 29;
@@ -403,7 +490,7 @@
             this.toolStripComboBox1,
             this.toolStripTextBox1,
             this.toolStripProgressBar1});
-            this.ToolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.ToolStrip1.Location = new System.Drawing.Point(0, 49);
             this.ToolStrip1.Name = "ToolStrip1";
             this.ToolStrip1.Size = new System.Drawing.Size(982, 25);
             this.ToolStrip1.TabIndex = 28;
@@ -457,41 +544,76 @@
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 22);
             // 
-            // TreeView
+            // menuStrip1
             // 
-            this.TreeView.Location = new System.Drawing.Point(271, 14);
-            this.TreeView.Name = "TreeView";
-            treeNode1.Name = "GrandChild";
-            treeNode1.Text = "Grand Child";
-            treeNode2.Name = "ChildNode";
-            treeNode2.Text = "Child";
-            treeNode3.Name = "RootNode";
-            treeNode3.Text = "Root";
-            treeNode4.Name = "Main";
-            treeNode4.Text = "Main";
-            this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
-            this.TreeView.Size = new System.Drawing.Size(199, 96);
-            this.TreeView.TabIndex = 16;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.editToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(982, 24);
+            this.menuStrip1.TabIndex = 30;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // AddNode
+            // fileToolStripMenuItem
             // 
-            this.AddNode.Location = new System.Drawing.Point(271, 117);
-            this.AddNode.Name = "AddNode";
-            this.AddNode.Size = new System.Drawing.Size(75, 23);
-            this.AddNode.TabIndex = 17;
-            this.AddNode.Text = "Add Node";
-            this.AddNode.UseVisualStyleBackColor = true;
-            this.AddNode.Click += new System.EventHandler(this.AddNode_Click);
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.clickMeToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // clickMeToolStripMenuItem
+            // 
+            this.clickMeToolStripMenuItem.Name = "clickMeToolStripMenuItem";
+            this.clickMeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clickMeToolStripMenuItem.Text = "Click Me";
+            this.clickMeToolStripMenuItem.Click += new System.EventHandler(this.clickMeToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "Edit";
+            // 
+            // selectToolStripMenuItem
+            // 
+            this.selectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lineToolStripMenuItem});
+            this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.selectToolStripMenuItem.Text = "Select";
+            // 
+            // lineToolStripMenuItem
+            // 
+            this.lineToolStripMenuItem.Name = "lineToolStripMenuItem";
+            this.lineToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.lineToolStripMenuItem.Text = "Line";
+            // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(20, 3);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(6, 6);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(618, 295);
+            this.inputControls1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 405);
-            this.Controls.Add(this.ToolStrip2);
+            this.ClientSize = new System.Drawing.Size(982, 426);
             this.Controls.Add(this.ToolStrip1);
+            this.Controls.Add(this.ToolStrip2);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.ControlsTab);
             this.Controls.Add(this.ScenariosPane);
             this.Name = "Form1";
@@ -507,8 +629,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Image)).EndInit();
             this.PanelWithText.ResumeLayout(false);
             this.PanelWithText.PerformLayout();
+            this.DataGridTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,6 +683,19 @@
         private System.Windows.Forms.TrackBar Slider;
         private System.Windows.Forms.Button AddNode;
         private System.Windows.Forms.TreeView TreeView;
+        private System.Windows.Forms.TabPage DataGridTab;
+        private System.Windows.Forms.DataGridView DataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
+        private System.Windows.Forms.DataGridViewComboBoxColumn country;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn alive;
+        private System.Windows.Forms.DataGridViewButtonColumn display;
+        private System.Windows.Forms.DataGridViewLinkColumn details;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clickMeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lineToolStripMenuItem;
     }
 }
 

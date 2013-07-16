@@ -153,5 +153,10 @@ namespace WpfTestApplication
         {
             TreeView.Items.Add("AddedNode");
         }
+
+        private void ClickMe_OnClick(object sender, RoutedEventArgs e)
+        {
+            AutomationProperties.SetHelpText(this, "Click Me Clicked");
+        }
     }
 }

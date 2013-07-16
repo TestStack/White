@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +37,12 @@
             this.EditableComboBox = new System.Windows.Forms.ComboBox();
             this.ListBoxWithVScrollBar = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.listViewContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.rootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.level1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.level2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listViewContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -124,6 +131,7 @@
             // 
             // ListBoxWithVScrollBar
             // 
+            this.ListBoxWithVScrollBar.ContextMenuStrip = this.listViewContextMenu;
             this.ListBoxWithVScrollBar.FormattingEnabled = true;
             this.ListBoxWithVScrollBar.Items.AddRange(new object[] {
             "1",
@@ -210,6 +218,44 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "ListBoxWithVerticalScrollbars";
             // 
+            // listViewContextMenu
+            // 
+            this.listViewContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rootToolStripMenuItem,
+            this.mainToolStripMenuItem});
+            this.listViewContextMenu.Name = "menuStripContainingMultilevelSubMenus";
+            this.listViewContextMenu.Size = new System.Drawing.Size(153, 70);
+            // 
+            // rootToolStripMenuItem
+            // 
+            this.rootToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.level1ToolStripMenuItem});
+            this.rootToolStripMenuItem.Name = "rootToolStripMenuItem";
+            this.rootToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.rootToolStripMenuItem.Text = "Root";
+            // 
+            // level1ToolStripMenuItem
+            // 
+            this.level1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.level2ToolStripMenuItem});
+            this.level1ToolStripMenuItem.Name = "level1ToolStripMenuItem";
+            this.level1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.level1ToolStripMenuItem.Text = "Level1";
+            // 
+            // level2ToolStripMenuItem
+            // 
+            this.level2ToolStripMenuItem.Name = "level2ToolStripMenuItem";
+            this.level2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.level2ToolStripMenuItem.Text = "Level2";
+            this.level2ToolStripMenuItem.Click += new System.EventHandler(this.level2ToolStripMenuItem_Click);
+            // 
+            // mainToolStripMenuItem
+            // 
+            this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mainToolStripMenuItem.Text = "Root2";
+            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
+            // 
             // ListControls
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,6 +271,7 @@
             this.Name = "ListControls";
             this.Size = new System.Drawing.Size(571, 326);
             this.EnabledChanged += new System.EventHandler(this.ListControls_EnabledChanged);
+            this.listViewContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,5 +287,10 @@
         private System.Windows.Forms.ComboBox EditableComboBox;
         private System.Windows.Forms.ListBox ListBoxWithVScrollBar;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ContextMenuStrip listViewContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem rootToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem level1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem level2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
     }
 }

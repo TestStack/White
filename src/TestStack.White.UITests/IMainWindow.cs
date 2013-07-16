@@ -4,6 +4,7 @@ using TestStack.White.Factory;
 using TestStack.White.InputDevices;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.TabItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UIItems.WindowStripControls;
@@ -28,6 +29,12 @@ namespace TestStack.White.UITests
         bool IsClosed { get; }
         List<UIItem> ItemsWithin(UIItem containingItem);
         ToolStrip GetToolStrip(string primaryIdentification);
+        MenuBar MenuBar { get; }
+        List<MenuBar> MenuBars { get; }
+        string HelpText { get; }
+        PopUpMenu Popup { get; }
+        bool HasPopup();
+        Menu PopupMenu(params string[] path);
         void WaitTill(Window.WaitTillDelegate waitTillDelegate);
         void WaitTill(Window.WaitTillDelegate waitTillDelegate, TimeSpan timeout);
     }

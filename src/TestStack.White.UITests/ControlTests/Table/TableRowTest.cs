@@ -1,23 +1,27 @@
-using NUnit.Framework;
+using System.Collections.Generic;
+using TestStack.White.UIItems;
 using TestStack.White.UIItems.TableItems;
-using TestStack.White.UITests.Testing;
+using Xunit;
 
-namespace White.Core.UITests.UIItems.TableItems
+namespace TestStack.White.UITests.ControlTests.DataGrid.WinForms
 {
-    [TestFixture, WinFormCategory]
-    public class TableRowTest : ControlsActionTest
+    public class TableRowTest : WhiteTestBase
     {
-        private Table table;
-        private TableRows rows;
+        Table table;
+        TableRows rows;
 
-        protected override void TestFixtureSetUp()
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            table = Window.Get<Table>("people");
+            SelectDataGridTab();
+            table = MainWindow.Get<Table>("DataGrid");
             rows = table.Rows;
+
+            RunTest(RowData);
+            RunTest(GetRowAfterSortingOnAColumn);
+            RunTest(Select);
         }
 
-        [Fact]
-        public void RowData()
+        void RowData()
         {
             TableRow firstRow = rows[0];
             Assert.Equal("Imran", firstRow.Cells[0].Value);
@@ -30,8 +34,7 @@ namespace White.Core.UITests.UIItems.TableItems
             Assert.Equal(false.ToString(), thirdRow.Cells[2].Value);
         }
 
-        [Fact]
-        public void GetRowAfterSortingOnAColumn()
+        void GetRowAfterSortingOnAColumn()
         {
             table.Header.Columns["Name"].Click();
             table.Refresh();
@@ -46,10 +49,14 @@ namespace White.Core.UITests.UIItems.TableItems
             Assert.Equal(false.ToString(), thirdRow.Cells[2].Value);
         }
 
-        [Fact]
-        public void Select()
+        void Select()
         {
-            Assert.Equal(true, rows[0].Select());
+            Assert.True(rows[0].Select());
+        }
+
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
+        {
+            yield return WindowsFramework.WinForms;
         }
     }
 }
