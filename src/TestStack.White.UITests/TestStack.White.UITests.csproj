@@ -60,6 +60,7 @@
     <Compile Include="ControlTests\InputControls\TristateItemTest.cs" />
     <Compile Include="ControlTests\MenuItems\MenuTest.cs" />
     <Compile Include="ControlTests\MenuItems\PopUpMenuTest.cs" />
+    <Compile Include="ControlTests\PropertyGridTest.cs" />
     <Compile Include="ControlTests\SliderTest.cs" />
     <Compile Include="ControlTests\Table\TableCellTest.cs" />
     <Compile Include="ControlTests\Table\TableRowsTest.cs" />
@@ -76,6 +77,8 @@
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
     <Compile Include="ControlTests\PanelTest.cs" />
     <Compile Include="ControlTests\ProgressBarTest.cs" />
+    <Compile Include="ControlTests\WindowStripControls\StatusBarTest.cs" />
+    <Compile Include="ControlTests\WindowStripControls\StatusStripTest.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />
     <Compile Include="NativeWindowTest.cs" />

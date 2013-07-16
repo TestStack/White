@@ -1,36 +1,33 @@
 using System.Collections.Generic;
-using NUnit.Framework;
+using TestStack.White.UIItems;
 using TestStack.White.UIItems.PropertyGridItems;
-using TestStack.White.UIItems.WindowItems;
-using TestStack.White.UITests.Testing;
 using TestStack.White.WindowsAPI;
+using Xunit;
 
-namespace White.Core.UITests.UIItems.PropertyGridItems
+namespace TestStack.White.UITests.ControlTests
 {
-    [TestFixture, WinFormCategory]
-    public class PropertyGridTest : CoreTestTemplate
+    public class PropertyGridTest : WhiteTestBase
     {
-        private Window window;
-        private PropertyGrid propertyGrid;
-        protected override string CommandLineArguments
+        PropertyGrid propertyGrid;
+
+        protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            get { return "PropertyGrid"; }
+            SelectPropertyGridTab();
+            propertyGrid = MainWindow.Get<PropertyGrid>("PropertyGrid");
+
+            RunTest(Get);
+            RunTest(Categories);
+            RunTest(BrowseForValue);
+            RunTest(CannotBrowseForValue);
+            RunTest(Properties);
+            RunTest(Property);
+        }
+        void Get()
+        {
+            Assert.NotNull(propertyGrid);
         }
 
-        protected override void TestFixtureSetUp()
-        {
-            window = Application.GetWindow("FormWithPropertyGrid");
-            propertyGrid = window.Get<PropertyGrid>("propertyGrid1");
-        }
-
-        [Fact]
-        public void Get()
-        {
-            Assert.NotEqual(null, propertyGrid);
-        }
-
-        [Fact]
-        public void Categories()
+        void Categories()
         {
             List<PropertyGridCategory> categories = propertyGrid.Categories;
             Assert.Equal(4, categories.Count);
@@ -40,32 +37,28 @@ namespace White.Core.UITests.UIItems.PropertyGridItems
             Assert.Equal("Number", categories[3].Text);
         }
 
-        [Fact]
-        public void BrowseForValue()
+        void BrowseForValue()
         {
             PropertyGridCategory propertyGridCategory = propertyGrid.Category("Input");
             PropertyGridProperty property = propertyGridCategory.GetProperty("FileName");
             property.BrowseForValue();
-            Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ESCAPE);
+            MainWindow.ModalWindow("Open File").Close();
         }
 
-        [Test, ExpectedException(typeof(WhiteException))]
-        public void CannotBrowseForValue()
+        void CannotBrowseForValue()
         {
             PropertyGridProperty propertyWithoutBrowseButton = propertyGrid.Category("General").GetProperty("WindowSize");
-            propertyWithoutBrowseButton.BrowseForValue();
+            Assert.Throws<WhiteException>(()=>propertyWithoutBrowseButton.BrowseForValue());
         }
 
-        [Fact]
-        public void Properties()
+        void Properties()
         {
             Assert.Equal(3, propertyGrid.Category("General").Properties.Count);
             Assert.Equal(2, propertyGrid.Category("Misc").Properties.Count);
             Assert.Equal(2, propertyGrid.Category("Number").Properties.Count);
         }
 
-        [Fact]
-        public void Property()
+        void Property()
         {
             PropertyGridProperty gridProperty = propertyGrid.Category("General").Properties[0];
             Assert.Equal("ToolbarColor", gridProperty.Name);
@@ -75,9 +68,9 @@ namespace White.Core.UITests.UIItems.PropertyGridItems
             Assert.Equal(false, gridProperty.IsReadOnly);
         }
 
-        public override void TextFixtureTearDown()
+        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
         {
-            window.Close();
+            yield return WindowsFramework.WinForms;
         }
     }
 }

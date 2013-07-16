@@ -35,6 +35,7 @@ namespace TestStack.White.UITests
         PopUpMenu Popup { get; }
         bool HasPopup();
         Menu PopupMenu(params string[] path);
+        StatusStrip StatusBar(InitializeOption initializeOption);
         void WaitTill(Window.WaitTillDelegate waitTillDelegate);
         void WaitTill(Window.WaitTillDelegate waitTillDelegate, TimeSpan timeout);
     }

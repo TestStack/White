@@ -20,6 +20,7 @@ namespace WindowsFormsTestApplication
             }
             TreeView.Nodes.Add(treeViewItem);
             PopulateDataGrid();
+            PropertyGrid.SelectedObject = new BasicTypes("str", false, 6, 1.2f);
         }
 
         private void GetMultiple_Click(object sender, System.EventArgs e)

@@ -157,5 +157,10 @@ namespace TestStack.White.UITests
         {
             MainWindow.Tabs[0].SelectTabPage(3);
         }
+
+        protected void SelectPropertyGridTab()
+        {
+            MainWindow.Tabs[0].SelectTabPage(4);
+        }
     }
 }

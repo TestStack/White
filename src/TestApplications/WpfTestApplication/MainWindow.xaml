@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="350"
+        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="450"
         Width="800" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu x:Name="MenuBar" Grid.ColumnSpan="2">
             <MenuItem Header="File" AutomationProperties.AutomationId="FileId">
@@ -106,5 +107,9 @@
                         AutomationProperties.AutomationId="OpenWindowWithScrollbars" />
             </StackPanel>
         </GroupBox>
+        <StatusBar Name="StatusBar" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">
+            <StatusBarItem>Status Item 1</StatusBarItem>
+            <StatusBarItem>Status Item 2</StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
