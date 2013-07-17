@@ -1,11 +1,9 @@
-using TestStack.White.Repository.ScreenAttributes;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
 namespace TestStack.White.Repository.UITests.Testing
 {
-    [ScreenComponent]
     public class MainProgressBars : AppScreenComponent
     {
         protected ProgressBar ProgressBar;

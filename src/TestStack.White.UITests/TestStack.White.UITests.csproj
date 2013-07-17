@@ -79,6 +79,8 @@
     <Compile Include="ControlTests\ProgressBarTest.cs" />
     <Compile Include="ControlTests\WindowStripControls\StatusBarTest.cs" />
     <Compile Include="ControlTests\WindowStripControls\StatusStripTest.cs" />
+    <Compile Include="Repository\RepositoryTests.cs" />
+    <Compile Include="Repository\WorkSessionTest.cs" />
     <Compile Include="Screens\MainScreen.cs" />
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />

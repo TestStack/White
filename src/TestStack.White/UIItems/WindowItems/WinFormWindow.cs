@@ -31,7 +31,7 @@ namespace TestStack.White.UIItems.WindowItems
 
         public override T Get<T>(string primaryIdentification)
         {
-            if (typeof (T).Equals(typeof (Image)))
+            if (typeof (T) == typeof (Image))
             {
                 IUIItem image = factory.WinFormImage(primaryIdentification, this);
                 return (T) image;

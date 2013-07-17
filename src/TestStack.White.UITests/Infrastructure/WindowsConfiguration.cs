@@ -2,9 +2,11 @@
 using System.IO;
 using System.Reflection;
 using TestStack.White.Factory;
+using TestStack.White.Repository;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UITests.Screens;
 
 namespace TestStack.White.UITests.Infrastructure
 {
@@ -33,7 +35,17 @@ namespace TestStack.White.UITests.Infrastructure
 
         public override Window GetMainWindow(Application application)
         {
-            return application.GetWindow(SearchCriteria.ByFramework(framework.FrameworkId()).AndByText("MainWindow"), InitializeOption.NoCache);
+            return application.GetWindow(Criteria(), InitializeOption.NoCache);
+        }
+
+        public override MainScreen GetMainScreen(ScreenRepository repository)
+        {
+            return repository.Get<MainScreen>(Criteria(), InitializeOption.NoCache);
+        }
+
+        SearchCriteria Criteria()
+        {
+            return SearchCriteria.ByFramework(framework.FrameworkId()).AndByText("MainWindow");
         }
 
         protected abstract string ApplicationExePath();

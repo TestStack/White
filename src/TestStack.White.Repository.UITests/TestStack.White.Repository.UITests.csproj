@@ -78,7 +78,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreenRepositoryTest.cs" />
     <Compile Include="ScreenRepositoryTester.cs" />
-    <Compile Include="Sessions\WorkSessionTest.cs" />
     <Compile Include="Testing\BaseScreen.cs" />
     <Compile Include="Testing\MainProgressBars.cs" />
     <Compile Include="Testing\MainScreen.cs" />
@@ -108,6 +107,10 @@
       <Project>{10A51741-09F8-47CA-AB94-965EE71342F7}</Project>
       <Name>TestStack.White.UITests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestStack.White.UnitTests\TestStack.White.UnitTests.csproj">
+      <Project>{7C7960B2-905D-409A-8068-B010A35BA151}</Project>
+      <Name>TestStack.White.UnitTests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
@@ -115,10 +118,6 @@
     <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.Repository.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
       <Name>White.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestStack.White.Repository.UnitTests\TestStack.White.Repository.UnitTests.csproj">
-      <Project>{CE81A52D-B39E-42C0-8B54-C67CF294B3FB}</Project>
-      <Name>White.Repository.UnitTests</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

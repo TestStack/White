@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -32,13 +32,13 @@ namespace TestStack.White.Bricks
             parameterTypes.AddRange(method.GetParameters().Select(x => x.ParameterType));
             parameterTypes.Add(method.ReturnType);
 
-            var invokerType = invokerTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
+            var invokerType = InvokerTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
             if (invokerType == null)
                 throw new ArgumentException(string.Format("Could not create an invoker for the method '{0}'. This type of method is not supported. Try reducing the number of arguments in action.", method));
 
             invokerType = invokerType.MakeGenericType(parameterTypes.ToArray());
 
-            var invokerWrapperType = invokerWrapperTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
+            var invokerWrapperType = InvokerWrapperTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
             if (invokerWrapperType == null)
                 throw new ArgumentException(string.Format("Could not create an invoker for the method '{0}'. This type of method is not supported. Try reducing the number of arguments in action.", method));
 
@@ -54,14 +54,14 @@ namespace TestStack.White.Bricks
             var parameterTypes = new List<Type>();
             parameterTypes.AddRange(method.GetParameters().Select(x => x.ParameterType));
 
-            var invokerType = voidInvokerTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
+            var invokerType = VoidInvokerTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
             if (invokerType == null)
                 throw new ArgumentException(string.Format("Could not create an invoker for the method '{0}'. This type of method is not supported. Try reducing the number of arguments in action.", method));
 
             if (parameterTypes.Count > 0)
                 invokerType = invokerType.MakeGenericType(parameterTypes.ToArray());
 
-            var invokerWrapperType = voidInvokerWrapperTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
+            var invokerWrapperType = VoidInvokerWrapperTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
             if (invokerWrapperType == null)
                 throw new ArgumentException(string.Format("Could not create an invoker for the method '{0}'. This type of method is not supported. Try reducing the number of arguments in action.", method));
 
@@ -88,6 +88,27 @@ namespace TestStack.White.Bricks
         private delegate void VoidActionInvoker<TArg0>(TArg0 arg0);
         private delegate void VoidActionInvoker();
         // ReSharper restore TypeParameterCanBeVariant
+
+        private class ActionInvokerWrapper<TArg0, TArg1, TArg2, TArg3, TArg4, TReturn> : IActionInvokerWrapper
+        {
+            private readonly ActionInvoker<TArg0, TArg1, TArg2, TArg3, TArg4, TReturn> invoker;
+
+            public ActionInvokerWrapper(ActionInvoker<TArg0, TArg1, TArg2, TArg3, TArg4, TReturn> invoker)
+            {
+                this.invoker = invoker;
+            }
+
+            public object Call(object[] args)
+            {
+                var arg0 = Get<TArg0>(args[0]);
+                var arg1 = Get<TArg1>(args[1]);
+                var arg2 = Get<TArg2>(args[2]);
+                var arg3 = Get<TArg3>(args[3]);
+                var arg4 = Get<TArg4>(args[4]);
+                var result = invoker(arg0, arg1, arg2, arg3, arg4);
+                return result;
+            }
+        }
 
         private class ActionInvokerWrapper<TArg0, TArg1, TArg2, TArg3, TReturn> : IActionInvokerWrapper
         {
@@ -176,6 +197,27 @@ namespace TestStack.White.Bricks
             {
                 var result = invoker();
                 return result;
+            }
+        }
+
+        private class VoidActionInvokerWrapper<TArg0, TArg1, TArg2, TArg3, TArg4> : IActionInvokerWrapper
+        {
+            private readonly VoidActionInvoker<TArg0, TArg1, TArg2, TArg3, TArg4> invoker;
+
+            public VoidActionInvokerWrapper(VoidActionInvoker<TArg0, TArg1, TArg2, TArg3, TArg4> invoker)
+            {
+                this.invoker = invoker;
+            }
+
+            public object Call(object[] args)
+            {
+                var arg0 = Get<TArg0>(args[0]);
+                var arg1 = Get<TArg1>(args[1]);
+                var arg2 = Get<TArg2>(args[2]);
+                var arg3 = Get<TArg3>(args[3]);
+                var arg4 = Get<TArg4>(args[4]);
+                invoker(arg0, arg1, arg2, arg3, arg4);
+                return null;
             }
         }
 
@@ -269,33 +311,39 @@ namespace TestStack.White.Bricks
             }
         }
 
-        private readonly static Type[] invokerTypes = new[] {
-                                                                typeof(ActionInvoker<,,,,,>),
-                                                                typeof(ActionInvoker<,,,,>),
-                                                                typeof(ActionInvoker<,,,>),
-                                                                typeof(ActionInvoker<,,>),
-                                                                typeof(ActionInvoker<,>),
-                                                                typeof(ActionInvoker<>)};
-        private readonly static Type[] invokerWrapperTypes = new[] {
-                                                                       typeof(ActionInvokerWrapper<,,,,>),
-                                                                       typeof(ActionInvokerWrapper<,,,>),
-                                                                       typeof(ActionInvokerWrapper<,,>),
-                                                                       typeof(ActionInvokerWrapper<,>),
-                                                                       typeof(ActionInvokerWrapper<>)};
+        private readonly static Type[] InvokerTypes =
+        {
+            typeof(ActionInvoker<,,,,,>),
+            typeof(ActionInvoker<,,,,>),
+            typeof(ActionInvoker<,,,>),
+            typeof(ActionInvoker<,,>),
+            typeof(ActionInvoker<,>),
+            typeof(ActionInvoker<>)};
+        private readonly static Type[] InvokerWrapperTypes =
+        {
+            typeof(ActionInvokerWrapper<,,,,,>),
+            typeof(ActionInvokerWrapper<,,,,>),
+            typeof(ActionInvokerWrapper<,,,>),
+            typeof(ActionInvokerWrapper<,,>),
+            typeof(ActionInvokerWrapper<,>),
+            typeof(ActionInvokerWrapper<>)};
 
-        private readonly static Type[] voidInvokerTypes = new[] {
-                                                                    typeof(VoidActionInvoker<,,,,>),
-                                                                    typeof(VoidActionInvoker<,,,>),
-                                                                    typeof(VoidActionInvoker<,,>),
-                                                                    typeof(VoidActionInvoker<,>),
-                                                                    typeof(VoidActionInvoker<>),
-                                                                    typeof(VoidActionInvoker)};
-        private readonly static Type[] voidInvokerWrapperTypes = new[] {
-                                                                           typeof(VoidActionInvokerWrapper<,,,>),
-                                                                           typeof(VoidActionInvokerWrapper<,,>),
-                                                                           typeof(VoidActionInvokerWrapper<,>),
-                                                                           typeof(VoidActionInvokerWrapper<>),
-                                                                           typeof(VoidActionInvokerWrapper)};
+        private readonly static Type[] VoidInvokerTypes =
+        {
+            typeof(VoidActionInvoker<,,,,>),
+            typeof(VoidActionInvoker<,,,>),
+            typeof(VoidActionInvoker<,,>),
+            typeof(VoidActionInvoker<,>),
+            typeof(VoidActionInvoker<>),
+            typeof(VoidActionInvoker)};
+        private readonly static Type[] VoidInvokerWrapperTypes =
+        {
+            typeof(VoidActionInvokerWrapper<,,,,>),
+            typeof(VoidActionInvokerWrapper<,,,>),
+            typeof(VoidActionInvokerWrapper<,,>),
+            typeof(VoidActionInvokerWrapper<,>),
+            typeof(VoidActionInvokerWrapper<>),
+            typeof(VoidActionInvokerWrapper)};
 
         #endregion
     }

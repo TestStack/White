@@ -126,11 +126,11 @@ namespace TestStack.White.Repository.UITests.Testing
         public virtual void LaunchModalWindow()
         {
             launchModal.Click();
-            screenRepository.GetModal<ModalScreen>("ModalForm", window, InitializeOption.NoCache).Close();
+            ScreenRepository.GetModal<ModalScreen>("ModalForm", Window, InitializeOption.NoCache).Close();
             linkLaunchesModalWindow.Click();
-            screenRepository.GetModal<ModalScreen>("ModalForm", window, InitializeOption.NoCache).Close();
+            ScreenRepository.GetModal<ModalScreen>("ModalForm", Window, InitializeOption.NoCache).Close();
             checkBoxLaunchedModalWindow.Click();
-            screenRepository.GetModal<ModalScreen>("ModalForm", window, InitializeOption.NoCache).Close();
+            ScreenRepository.GetModal<ModalScreen>("ModalForm", Window, InitializeOption.NoCache).Close();
         }
 
         public virtual void SelectNodesInTree()

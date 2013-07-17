@@ -2,7 +2,7 @@ using System;
 using TestStack.White.Repository.Services;
 using Xunit;
 
-namespace TestStack.White.Repository.UnitTests.Services
+namespace TestStack.White.UnitTests.Repository.Services
 {
     public class ServiceExecutionTest
     {

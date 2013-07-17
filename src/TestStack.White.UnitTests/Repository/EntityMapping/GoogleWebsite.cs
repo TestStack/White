@@ -1,4 +1,4 @@
-namespace TestStack.White.Repository.UnitTests.EntityMapping
+namespace TestStack.White.UnitTests.Repository.EntityMapping
 {
     public class GoogleWebsite
     {

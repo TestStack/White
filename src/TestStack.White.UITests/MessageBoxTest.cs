@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;

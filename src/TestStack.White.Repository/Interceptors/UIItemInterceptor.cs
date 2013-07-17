@@ -1,5 +1,6 @@
 using System;
 using Castle.DynamicProxy;
+using TestStack.White.Bricks;
 using TestStack.White.Factory;
 using TestStack.White.Reporting.Domain;
 using TestStack.White.UIItems;
@@ -11,7 +12,6 @@ namespace TestStack.White.Repository.Interceptors
     /// <summary>
     /// Lazily initializes the UIItem.
     /// </summary>
-    //TODO: Use DynamicProxy correctly by using its own mechanism of forwarding the call
     public class UIItemInterceptor : IInterceptor
     {
         private readonly SearchCriteria searchCriteria;
@@ -35,12 +35,13 @@ namespace TestStack.White.Repository.Interceptors
             }
             try
             {
-                invocation.ReturnValue = invocation.Method.Invoke(uiItem, invocation.Arguments);
+                var invoker = DelegateInvoker.CreateInvoker(uiItem, invocation.Method);
+                invocation.ReturnValue = invoker.Call(invocation.Arguments);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 sessionReport.Act();
-                throw new WhiteException(string.Format("Error Invoking {0}.{1}", uiItem.GetType().Name, invocation.Method.Name), e.InnerException);
+                throw;
             }
         }
     }

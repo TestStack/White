@@ -1,6 +1,7 @@
+using TestStack.White.Repository;
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository.UnitTests
+namespace TestStack.White.UnitTests.Repository
 {
     public class ScreenClassComponent : AppScreenComponent
     {

@@ -40,7 +40,7 @@ namespace WpfTodo.UITests.Screens
         {
             AddTaskButton.Click();
 
-            return screenRepository.GetModal<NewTaskScreen>("New Task", window, InitializeOption.NoCache);
+            return ScreenRepository.GetModal<NewTaskScreen>("New Task", Window, InitializeOption.NoCache);
         }
     }
 }

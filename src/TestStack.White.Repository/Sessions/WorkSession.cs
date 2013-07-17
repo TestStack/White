@@ -14,7 +14,7 @@ namespace TestStack.White.Repository.Sessions
         private readonly IReport sessionReport;
         private readonly WhiteExecution whiteExecution;
 
-        public WorkSession(WorkConfiguration workConfiguration, WorkEnvironment workEnvironment)
+        public WorkSession(WorkConfiguration workConfiguration, IWorkEnvironment workEnvironment)
         {
             sessionReport = workConfiguration.CreateSessionReport();
             ServiceExecution serviceExecution = ServiceExecution.Create(workEnvironment);

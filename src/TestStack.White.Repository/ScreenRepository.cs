@@ -4,6 +4,7 @@ using System.Linq;
 using TestStack.White.Factory;
 using TestStack.White.Reporting.Domain;
 using TestStack.White.Sessions;
+using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Repository
@@ -49,13 +50,24 @@ namespace TestStack.White.Repository
 
         public virtual T Get<T>(string title, InitializeOption option) where T : AppScreen
         {
+            Func<Window> window = () => applicationSession.Application.GetWindow(title, IdentifiedOption<T>(option));
+            return Get<T>(title, window);
+        }
+
+        public virtual T Get<T>(SearchCriteria searchCriteria, InitializeOption option) where T : AppScreen
+        {
+            Func<Window> window = () => applicationSession.Application.GetWindow(searchCriteria, IdentifiedOption<T>(option));
+            return Get<T>(searchCriteria.ToString(), window);
+        }
+
+        T Get<T>(string cacheKey, Func<Window> window) where T : AppScreen
+        {
             ClearClosedScreens();
             AppScreen screen;
-            var repositoryCacheKey = new ScreenRepositoryCacheKey(title, typeof (T));
+            var repositoryCacheKey = new ScreenRepositoryCacheKey(cacheKey, typeof (T));
             if (!screenCache.TryGetValue(repositoryCacheKey, out screen))
             {
-                Window window = applicationSession.Application.GetWindow(title, IdentifiedOption<T>(option));
-                screen = GetScreen<T>(window);
+                screen = GetScreen<T>(window());
                 screenCache.Add(repositoryCacheKey, screen);
             }
 

@@ -7,7 +7,7 @@ using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
 using Xunit;
 
-namespace TestStack.White.Repository.UITests.Sessions
+namespace TestStack.White.UITests.Repository
 {
     public class WorkSessionTest
     {
@@ -27,15 +27,10 @@ namespace TestStack.White.Repository.UITests.Sessions
             {
                 Application application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
-                Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
-                window.Get<Button>("buton");
+                Window window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
+                window.Get<Button>("ButtonWithTooltip");
             }
-            Assert.Equal(true, File.Exists("foo.xml"));
-        }
-
-        private static WorkSession WorkSession()
-        {
-            return new WorkSession(new WorkConfiguration(), new NullWorkEnvironment());
+            Assert.True(File.Exists("foo.xml"));
         }
 
         [Fact]
@@ -46,18 +41,21 @@ namespace TestStack.White.Repository.UITests.Sessions
             {
                 Application application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
-                Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
-                window.Get<Button>("buton");
-                window.Get<Button>("addNode");
+                Window window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
+                window.Get<Button>("ButtonWithTooltip");
             }
             using (WorkSession workSession = WorkSession())
             {
                 Application application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
-                Window window = application.GetWindow("Form1", InitializeOption.NoCache.AndIdentifiedBy("foo"));
-                window.Get<Button>("buton");
-                window.Get<Button>("addNode");
+                Window window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
+                window.Get<Button>("ButtonWithTooltip");
             }
+        }
+
+        private static WorkSession WorkSession()
+        {
+            return new WorkSession(new WorkConfiguration(), new NullWorkEnvironment());
         }
 
         private static int NumberOfFiles()

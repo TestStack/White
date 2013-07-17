@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TestStack.White.Repository.EntityMapping;
 using TestStack.White.UIItems.TableItems;
 
-namespace TestStack.White.Repository.UnitTests.EntityMapping
+namespace TestStack.White.UnitTests.Repository.EntityMapping
 {
     public class Cricketer : Entity
     {

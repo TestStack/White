@@ -98,7 +98,6 @@
     <Compile Include="RepositoryComponent.cs" />
     <Compile Include="ScreenAttributes\SearchCriteriaAttribute.cs" />
     <Compile Include="ScreenClass.cs" />
-    <Compile Include="ScreenAttributes\ScreenComponentAttribute.cs" />
     <Compile Include="ScreenFlow\FlowWriter.cs" />
     <Compile Include="ScreenFlow\WorkReport.cs" />
     <Compile Include="ScreenFlow\GraphWriter.cs" />
@@ -111,6 +110,7 @@
     <Compile Include="Services\LastServiceCallStatus.cs" />
     <Compile Include="Services\NullExecutionHistory.cs" />
     <Compile Include="Services\NullServiceExecution.cs" />
+    <Compile Include="Services\NullWorkEnvironment.cs" />
     <Compile Include="Services\ServiceCalls.cs" />
     <Compile Include="Services\ServiceExecution.cs" />
     <Compile Include="Services\WhiteExecution.cs" />
@@ -118,7 +118,7 @@
     <Compile Include="Services\Service.cs" />
     <Compile Include="Services\ExecutionHistory.cs" />
     <Compile Include="Services\ServiceInterceptor.cs" />
-    <Compile Include="Services\WorkEnvironment.cs" />
+    <Compile Include="Services\IWorkEnvironment.cs" />
     <Compile Include="Services\WorkSnapshotAttribute.cs" />
     <Compile Include="Sessions\WorkConfiguration.cs" />
     <Compile Include="Sessions\WorkSession.cs" />

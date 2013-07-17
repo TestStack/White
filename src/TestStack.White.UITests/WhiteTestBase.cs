@@ -8,6 +8,7 @@ using TestStack.White.Repository;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
+using TestStack.White.UITests.Screens;
 using Xunit;
 
 namespace TestStack.White.UITests
@@ -20,6 +21,7 @@ namespace TestStack.White.UITests
 
         internal Keyboard Keyboard;
         protected Window MainWindow { get; private set; }
+        protected MainScreen MainScreen { get; private set; }
         protected Application Application { get; private set; }
         protected ScreenRepository Repository { get; private set; }
 
@@ -78,6 +80,7 @@ namespace TestStack.White.UITests
                 Application = configuration.LaunchApplication();
                 Repository = new ScreenRepository(Application);
                 MainWindow = configuration.GetMainWindow(Application);
+                MainScreen = configuration.GetMainScreen(Repository);
 
                 return new ShutdownApplicationDisposable(this);
             }
@@ -89,6 +92,7 @@ namespace TestStack.White.UITests
                 throw;
             }
         }
+
 
         protected abstract IEnumerable<WindowsFramework> SupportedFrameworks();
 

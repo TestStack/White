@@ -19,7 +19,7 @@ namespace WpfTodo.UITests.Screens
 
         bool ShellIsBusy()
         {
-            var currentPropertyValue = window.AutomationElement.GetCurrentPropertyValue(AutomationElement.HelpTextProperty);
+            var currentPropertyValue = Window.AutomationElement.GetCurrentPropertyValue(AutomationElement.HelpTextProperty);
             return currentPropertyValue != null && ((string)currentPropertyValue).Contains("Busy");
         }
     }

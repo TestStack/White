@@ -110,6 +110,23 @@
     <Compile Include="CoreProjectTest.cs" />
     <Compile Include="Drawing\DrawingPointXTest.cs" />
     <Compile Include="Mappings\ControlDictionaryTest.cs" />
+    <Compile Include="Repository\DummyScreen.cs" />
+    <Compile Include="Repository\DummyWindow.cs" />
+    <Compile Include="Repository\EntityMapping\Cricketer.cs" />
+    <Compile Include="Repository\EntityMapping\EntitiesTest.cs" />
+    <Compile Include="Repository\EntityMapping\EntityTest.cs" />
+    <Compile Include="Repository\EntityMapping\GoogleWebsite.cs" />
+    <Compile Include="Repository\EntityMapping\NestedEntitiesTest.cs" />
+    <Compile Include="Repository\EntityMapping\NestedEntity.cs" />
+    <Compile Include="Repository\EntityMapping\TestEntity.cs" />
+    <Compile Include="Repository\RepositoryCodebaseTest.cs" />
+    <Compile Include="Repository\ScreenClassComponent.cs" />
+    <Compile Include="Repository\ScreenClassContainingComponent.cs" />
+    <Compile Include="Repository\ScreenClassTest.cs" />
+    <Compile Include="Repository\ScreenRepositoryCacheTest.cs" />
+    <Compile Include="Repository\Services\ServiceCallTest.cs" />
+    <Compile Include="Repository\Services\ServiceExecutionTest.cs" />
+    <Compile Include="Repository\Services\TestServiceForServiceCallTest.cs" />
     <Compile Include="ScreenMap\WindowItemsMapTest.cs" />
     <Compile Include="SpanTest.cs" />
     <Compile Include="SystemExtensions\DoubleXTest.cs" />
@@ -144,6 +161,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.Repository.csproj">
+      <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
+      <Name>TestStack.White.Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestStack.White\TestStack.White.csproj">
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>

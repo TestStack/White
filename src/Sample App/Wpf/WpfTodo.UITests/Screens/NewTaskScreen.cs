@@ -17,27 +17,27 @@ namespace WpfTodo.UITests.Screens
 
         public virtual string Title
         {
-            get { return window.Get<TextBox>("Title").Text; }
-            set { window.Get<TextBox>("Title").Text = value; }
+            get { return Window.Get<TextBox>("Title").Text; }
+            set { Window.Get<TextBox>("Title").Text = value; }
         }
 
         public virtual string Description
         {
-            get { return window.Get<TextBox>("Description").Text; }
-            set { window.Get<TextBox>("Description").Text = value; }
+            get { return Window.Get<TextBox>("Description").Text; }
+            set { Window.Get<TextBox>("Description").Text = value; }
         }
 
         public virtual DateTime DueDate
         {
             get
             {
-                var uiItem = window.Get(SearchCriteria.ByAutomationId("DueDate"));
+                var uiItem = Window.Get(SearchCriteria.ByAutomationId("DueDate"));
                 var currentPropertyValue = uiItem.AutomationElement.GetCurrentPropertyValue(ValuePattern.ValueProperty);
                 return (DateTime)currentPropertyValue;
             }
             set
             {
-                var uiItem = window.Get(SearchCriteria.ByAutomationId("DueDate"));
+                var uiItem = Window.Get(SearchCriteria.ByAutomationId("DueDate"));
                 uiItem.Enter(value.ToShortDateString());
             }
         }

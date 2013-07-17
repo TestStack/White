@@ -1,9 +1,10 @@
 using NSubstitute;
 using TestStack.White.Factory;
+using TestStack.White.Repository;
 using TestStack.White.Sessions;
 using Xunit;
 
-namespace TestStack.White.Repository.UnitTests
+namespace TestStack.White.UnitTests.Repository
 {
     public class ScreenRepositoryCacheTest
     {

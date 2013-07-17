@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using TestStack.White.Configuration;
+using TestStack.White.Repository;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UITests.Screens;
 using TestStack.White.WebBrowser;
 
 namespace TestStack.White.UITests.Infrastructure
@@ -63,6 +65,11 @@ namespace TestStack.White.UITests.Infrastructure
         {
             var ieWindow = (InternetExplorerWindow)application.GetWindow("TestSilverlightApplication - Windows Internet Explorer");
             return ieWindow.SilverlightDocument;
+        }
+
+        public override MainScreen GetMainScreen(ScreenRepository repository)
+        {
+            return null;
         }
     }
 }

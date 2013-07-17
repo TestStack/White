@@ -5,7 +5,7 @@ using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository.UnitTests
+namespace TestStack.White.UnitTests.Repository
 {
     public class DummyWindow : Window
     {

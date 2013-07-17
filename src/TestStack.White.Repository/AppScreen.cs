@@ -19,38 +19,38 @@ namespace TestStack.White.Repository
 
         public virtual string WindowTitle
         {
-            get { return window.Title; }
+            get { return Window.Title; }
         }
 
         public virtual bool IsClosed
         {
-            get { return window.IsClosed; }
+            get { return Window.IsClosed; }
         }
 
         public virtual void Focus()
         {
-            window.Focus();
+            Window.Focus();
         }
 
         public virtual void Close()
         {
-            screenRepository.Closing(this);
-            window.Close();
+            ScreenRepository.Closing(this);
+            Window.Close();
         }
 
         public override string ToString()
         {
-            return GetType().Name + ":" + window.Title;
+            return GetType().Name + ":" + Window.Title;
         }
 
         protected virtual void ScreenChanged()
         {
-            screenRepository.SessionReport.Act();
+            ScreenRepository.SessionReport.Act();
         }
 
         public virtual void Focus(DisplayState displayState)
         {
-            window.Focus(displayState);
+            Window.Focus(displayState);
         }
 
         public virtual void Populate(IFieldMap fieldMap, Entity entity)

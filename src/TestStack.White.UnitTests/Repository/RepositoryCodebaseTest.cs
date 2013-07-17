@@ -1,9 +1,10 @@
 using System;
 using System.Linq;
+using TestStack.White.Repository;
 using TestStack.White.SystemExtensions;
 using Xunit;
 
-namespace TestStack.White.Repository.UnitTests
+namespace TestStack.White.UnitTests.Repository
 {
     public class RepositoryCodebaseTest
     {

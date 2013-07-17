@@ -1,8 +1,9 @@
 using NSubstitute;
+using TestStack.White.Repository;
 using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
-namespace TestStack.White.Repository.UnitTests
+namespace TestStack.White.UnitTests.Repository
 {
     public class ScreenClassTest
     {

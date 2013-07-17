@@ -1,7 +1,7 @@
 using TestStack.White.Repository.EntityMapping;
 using Xunit;
 
-namespace TestStack.White.Repository.UnitTests.EntityMapping
+namespace TestStack.White.UnitTests.Repository.EntityMapping
 {
     public class NestedEntitiesTest
     {

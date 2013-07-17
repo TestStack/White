@@ -4,15 +4,15 @@ namespace TestStack.White.Repository
 {
     public class RepositoryComponent
     {
-        protected readonly Window window;
-        protected readonly ScreenRepository screenRepository;
+        protected readonly Window Window;
+        protected readonly ScreenRepository ScreenRepository;
 
         protected RepositoryComponent() {}
 
         public RepositoryComponent(Window window, ScreenRepository screenRepository)
         {
-            this.window = window;
-            this.screenRepository = screenRepository;
+            Window = window;
+            ScreenRepository = screenRepository;
         }
     }
 }

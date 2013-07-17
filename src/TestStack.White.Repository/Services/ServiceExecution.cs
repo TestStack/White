@@ -8,14 +8,14 @@ namespace TestStack.White.Repository.Services
     public class ServiceExecution
     {
         private readonly ExecutionHistory executionHistory;
-        private readonly WorkEnvironment workEnvironment;
+        private readonly IWorkEnvironment workEnvironment;
         private readonly ServiceCalls currentServiceCalls = new ServiceCalls();
         private ServiceCall currentServiceCall;
         private object o;
 
         protected ServiceExecution() {}
 
-        public ServiceExecution(ExecutionHistory executionHistory, WorkEnvironment workEnvironment)
+        public ServiceExecution(ExecutionHistory executionHistory, IWorkEnvironment workEnvironment)
         {
             this.executionHistory = executionHistory;
             this.workEnvironment = workEnvironment;
@@ -89,7 +89,7 @@ namespace TestStack.White.Repository.Services
             if (executionHistory.HasError) workEnvironment.RevertToSnapshot(executionHistory.LastSnapshot);
         }
 
-        public static ServiceExecution Create(WorkEnvironment workEnvironment)
+        public static ServiceExecution Create(IWorkEnvironment workEnvironment)
         {
             if (!RepositoryAppXmlConfiguration.Instance.UseHistory)
                 return new NullServiceExecution();

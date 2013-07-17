@@ -1,13 +1,6 @@
 namespace TestStack.White.Repository.Services
 {
-    public interface WorkEnvironment
-    {
-        object TakeSnapshot();
-        void RevertToSnapshot(object snapshotId);
-        void DropSnapshot(object snapshotId);
-    }
-
-    public class NullWorkEnvironment : WorkEnvironment
+    public class NullWorkEnvironment : IWorkEnvironment
     {
         public virtual object TakeSnapshot()
         {
