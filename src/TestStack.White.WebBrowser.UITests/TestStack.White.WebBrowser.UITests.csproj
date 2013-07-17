@@ -89,7 +89,7 @@
     </ProjectReference>
     <ProjectReference Include="..\TestStack.White.WebBrowser\TestStack.White.WebBrowser.csproj">
       <Project>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</Project>
-      <Name>White.WebBrowser</Name>
+      <Name>TestStack.White.WebBrowser</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

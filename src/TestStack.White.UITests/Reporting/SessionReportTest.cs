@@ -1,7 +1,7 @@
-using Reporting.Domain;
+using TestStack.White.Reporting.Domain;
 using Xunit;
 
-namespace White.Reporting.UITests
+namespace TestStack.White.UITests.Reporting
 {
     public class SessionReportTest
     {
