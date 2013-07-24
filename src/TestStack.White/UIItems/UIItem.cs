@@ -243,7 +243,12 @@ namespace TestStack.White.UIItems
         void PerformClick()
         {
             if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
-            mouse.Click(Bounds.Center(), actionListener);
+            var bounds = Bounds;
+            if (bounds.IsEmpty)
+            {
+                throw new WhiteException(string.Format("Failed to click on {0}, bounds empty", ToString()));
+            }
+            mouse.Click(bounds.Center(), actionListener);
         }
 
         /// <summary>

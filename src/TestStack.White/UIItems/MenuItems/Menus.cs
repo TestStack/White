@@ -64,10 +64,10 @@ namespace TestStack.White.UIItems.MenuItems
             if (path.Length == 0) throw new ArgumentException("Menu path not specified");
             Menu item = Find(path[0]);
             if (item == null) throw new UIItemSearchException("Could not find Menu " + path[0]);
-            item.Click();
 
             for (int i = 1; i < path.Length; i++)
             {
+                item.Click();
                 item = item.SubMenu(path[i]);
                 if (item == null) throw new UIItemSearchException("Could not find Menu " + path[i]);
             }
