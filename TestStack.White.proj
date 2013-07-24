@@ -40,7 +40,7 @@
     <PropertyGroup>
       <UITestFolder Condition="'$(UITestFolder)' == ''">$(Root)src\TestStack.White.UITests\bin\$(Configuration)\</UITestFolder>
     </PropertyGroup>
-    <Exec Command="@(xUnit) $(UITestFolder)TestStack.White.UITests.dll" />
+    <Exec Command="@(xUnit) $(UITestFolder)TestStack.White.UITests.dll /noshadow" />
   </Target>
 
   <Target Name="Publish">
