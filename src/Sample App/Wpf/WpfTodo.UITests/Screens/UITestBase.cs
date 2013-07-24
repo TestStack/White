@@ -1,25 +1,22 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
-using NUnit.Framework;
 using TestStack.White;
 
 namespace WpfTodo.UITests.Screens
 {
-    public class UITestBase
+    public abstract class UITestBase : IDisposable
     {
         public Application Application { get; private set; }
 
-        [TestFixtureSetUp]
-        public void Setup()
+        protected UITestBase()
         {
             var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var markpadLocation = Path.Combine(directoryName, @"WpfTodo.exe");
             Application = Application.Launch(markpadLocation);
-            //MainWindow = new TodoWindow(Application, Application.GetWindow("Wpf Todo"));
         }
 
-        [TestFixtureTearDown]
-        public void Teardown()
+        public void Dispose()
         {
             Application.Dispose();
         }

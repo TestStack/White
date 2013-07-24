@@ -22,9 +22,11 @@ namespace TestStack.White.Repository.Sessions
             whiteExecution.ServiceExecution.RevertToSnapshot();
         }
         
-        public virtual void Attach(Application application)
+        public virtual ScreenRepository Attach(Application application)
         {
-            screenRepositories.Add(new ScreenRepository(application.ApplicationSession, sessionReport));
+            var screenRepository = new ScreenRepository(application.ApplicationSession, sessionReport);
+            screenRepositories.Add(screenRepository);
+            return screenRepository;
         }
 
         public virtual void Dispose()

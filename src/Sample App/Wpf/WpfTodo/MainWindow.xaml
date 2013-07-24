@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:wpfTodo="clr-namespace:WpfTodo"
         mc:Ignorable="d" Title="Wpf Todo" Height="350" Width="525"
         xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        d:DataContext="{d:DesignInstance wpfTodo:MainWindowViewModel}" wpfTodo:BusyAutomationBehaviour.IsApplicationBusy="{Binding LoadingTasks}">
+        d:DataContext="{d:DesignInstance wpfTodo:MainWindowViewModel}" wpfTodo:BusyAutomationBehaviour.IsApplicationBusy="{Binding LoadingTasks, Mode=OneWay}">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,7 +26,7 @@
         <Button AutomationProperties.AutomationId="AddTaskButton" Content="New Task" HorizontalAlignment="Right"
                 Command="{Binding AddTaskCommand}" Margin="5" Grid.Row="1" />
 
-        <controls:ProgressRing IsActive="{Binding LoadingTasks}" Grid.Row="2" />
+        <controls:ProgressRing IsActive="{Binding LoadingTasks, Mode=OneWay}" Grid.Row="2" />
 
             <ListBox ItemsSource="{Binding Tasks}" AutomationProperties.AutomationId="TasksList" Grid.Row="2">
             <ListBox.ItemTemplate>
