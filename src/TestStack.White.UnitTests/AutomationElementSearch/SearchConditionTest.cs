@@ -15,7 +15,7 @@ namespace TestStack.White.UnitTests.AutomationElementSearch
         }
 
         [Fact]
-        public void Equals()
+        public void EqualsTests()
         {
             Assert.Equal(SearchConditionFactory.CreateForAutomationId("foo"), SearchConditionFactory.CreateForAutomationId("foo"));
             Assert.NotEqual(SearchConditionFactory.CreateForAutomationId("foo"), SearchConditionFactory.CreateForAutomationId("foo1"));

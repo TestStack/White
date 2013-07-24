@@ -6,7 +6,10 @@
     <Configuration Condition="$(Configuration) == ''">Release</Configuration>
     <MSBuildCommunityTasksPath>$(Root)tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
   </PropertyGroup>
-
+  <ItemGroup>
+	<xUnit Include="$(Root)src\packages\xunit.runners.*\tools\xunit.console.clr4.x86.exe" />
+  </ItemGroup>
+	
   <Target Name="Cleanup">
     <Error Condition="$(Root) == ''" Text="Root variable must be defined" />
 
@@ -30,14 +33,11 @@
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
-    <Exec Command="$(xUnit) $(Root)src\TestStack.White.UnitTests\bin\$(Configuration)\White.Core.UnitTests.dll" />
+    <Exec Command="@(xUnit) $(Root)src\TestStack.White.UnitTests\bin\$(Configuration)\TestStack.White.UnitTests.dll" />
   </Target>
 
   <Target Name="UITests" DependsOnTargets="Build">
-    <ItemGroup>
-      <xUnit Include="$(Root)packages\xunit.runners.*\tools\xunit.console.clr4.x86.exe" />
-    </ItemGroup>
-    <Exec Command="$(xUnit) $(Root)src\TestStack.White.UITests\bin\$(Configuration)\White.Core.UITests.dll" />
+    <Exec Command="@(xUnit) $(Root)src\TestStack.White.UITests\bin\$(Configuration)\TestStack.White.UITests.dll" />
   </Target>
 
   <Target Name="Publish">

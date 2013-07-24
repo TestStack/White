@@ -25,7 +25,7 @@ namespace TestStack.White.UnitTests.UIItems.Finders
         }
 
         [Fact]
-        public void Equals()
+        public void EqualsTests()
         {
             Assert.Equal(SearchCriteria.ByAutomationId("foo"), SearchCriteria.ByAutomationId("foo"));
             Assert.NotEqual(SearchCriteria.ByText("foo"), SearchCriteria.ByAutomationId("foo"));

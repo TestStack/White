@@ -8,7 +8,7 @@ IF '%2'=='' (SET platform="x86") ELSE (SET platform=%2)
 :: Build the solution. Override the platform to account for running
 :: from Visual Studio Tools command prompt (x64). Log quietly to the 
 :: console and verbosely to a file.
-%msbuild% White.proj /property:Platform=%platform% /property:Configuration=%configuration%
+%msbuild% TestStack.White.proj /property:Platform=%platform% /property:Configuration=%configuration%
 
 IF NOT ERRORLEVEL 0 EXIT /B %ERRORLEVEL%
 
