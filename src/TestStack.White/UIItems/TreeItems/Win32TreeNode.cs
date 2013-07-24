@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
-using White.Core.WindowsAPI;
+using TestStack.White.WindowsAPI;
 
 namespace TestStack.White.UIItems.TreeItems
 {
