@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build;Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Test;Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildProjectDirectory)\</Root>
     <Platform Condition="$(Platform) == ''">x86</Platform>
@@ -46,5 +46,6 @@
     </PropertyGroup>
     <MakeDir Directories="$(Root)build\Artifacts" />
     <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.Repository\TestStack.White.Repository.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.Repository\bin\$(Configuration)" />
   </Target>
 </Project>

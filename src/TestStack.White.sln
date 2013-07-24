@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		..\Build.cmd = ..\Build.cmd
 		..\Changes.txt = ..\Changes.txt
-		..\White.proj = ..\White.proj
+		..\TestStack.White.proj = ..\TestStack.White.proj
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestApps", "TestApps", "{1AF6AEE7-C9D5-4B05-BEFE-AB61D83667D4}"
