@@ -37,7 +37,10 @@
   </Target>
 
   <Target Name="UITests" DependsOnTargets="Build">
-    <Exec Command="@(xUnit) $(Root)src\TestStack.White.UITests\bin\$(Configuration)\TestStack.White.UITests.dll" />
+    <PropertyGroup>
+      <UITestFolder Condition="'$(UITestFolder)' == ''">$(Root)src\TestStack.White.UITests\bin\$(Configuration)\</UITestFolder>
+    </PropertyGroup>
+    <Exec Command="@(xUnit) $(UITestFolder)TestStack.White.UITests.dll" />
   </Target>
 
   <Target Name="Publish">
