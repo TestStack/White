@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
+using TestStack.White.Utility;
 
 namespace TestStack.White.UIItems.MenuItems
 {
@@ -54,7 +56,7 @@ namespace TestStack.White.UIItems.MenuItems
         {
             var find = Find(menuItem => searchCriteria.AppliesTo(menuItem.AutomationElement));
 
-            Thread.Sleep(200); // We need to sleep here because windows animates menu items which makes the click close the menu instead of clicking on it
+            Thread.Sleep(250); // We need to sleep here because windows animates menu items which makes the click close the menu instead of clicking on it
 
             return find;
         }
@@ -64,10 +66,10 @@ namespace TestStack.White.UIItems.MenuItems
             if (path.Length == 0) throw new ArgumentException("Menu path not specified");
             Menu item = Find(path[0]);
             if (item == null) throw new UIItemSearchException("Could not find Menu " + path[0]);
+            if (path.Length == 1) return item;
 
             for (int i = 1; i < path.Length; i++)
             {
-                item.Click();
                 item = item.SubMenu(path[i]);
                 if (item == null) throw new UIItemSearchException("Could not find Menu " + path[i]);
             }

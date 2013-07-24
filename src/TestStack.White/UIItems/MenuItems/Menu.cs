@@ -44,7 +44,7 @@ namespace TestStack.White.UIItems.MenuItems
             {
                 if (childMenus != null) return childMenus;
                 Click();
-                Thread.Sleep(100);
+                Thread.Sleep(250);
                 childMenus = new Menus(automationElement, actionListener);
                 return childMenus;
             }

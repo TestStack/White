@@ -12,7 +12,6 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(FindMenuBar);
-            RunTest(FindSubMenu);
             RunTest(Click);
             RunTest(FindByAutomationId, WindowsFramework.Wpf);
         }
@@ -22,12 +21,6 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
             Assert.NotNull(MainWindow.MenuBar);
             Assert.NotNull(MainWindow.MenuBar.MenuItem("File"));
             Assert.Equal(1, MainWindow.MenuBars.Count);
-        }
-
-        void FindSubMenu()
-        {
-            Menu menu = MainWindow.MenuBar.MenuItem("File", "Click Me");
-            Assert.NotNull(menu);
         }
 
         void Click()
