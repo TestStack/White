@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
@@ -59,7 +60,24 @@ namespace TestStack.White
                                              new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,
                                              new FileInfo(processStartInfo.FileName).FullName, 
                                              Environment.CurrentDirectory);
-            Process process = Process.Start(processStartInfo);
+            Process process;
+            try
+            {
+                process = Process.Start(processStartInfo);
+            }
+            catch (Win32Exception ex)
+            {
+                var error =
+                    string.Format(
+                        "[Failed Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
+                        processStartInfo.FileName,
+                        new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,
+                        new FileInfo(processStartInfo.FileName).FullName,
+                        Environment.CurrentDirectory);
+                Logger.Error(error, ex);
+                throw;
+            }
+            //TODO Expose this, and make it capture output properly
             if (ConfigurationManager.AppSettings["CaptureAUTOutput"] != null)
             {
                 string output = process.StandardOutput.ReadToEnd();
