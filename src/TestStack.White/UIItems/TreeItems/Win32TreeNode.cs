@@ -2,6 +2,7 @@ using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
+using White.Core.WindowsAPI;
 
 namespace TestStack.White.UIItems.TreeItems
 {
@@ -15,14 +16,16 @@ namespace TestStack.White.UIItems.TreeItems
         // would not work when there is an icon to left of the node.
         protected override void DoExpand()
         {
-            DoubleClick();
+            Click();
+            KeyIn(KeyboardInput.SpecialKeys.RIGHT);
             if (Nodes.Count == 0)
                 throw new AutomationException(string.Format("Cannot expand TreeNode {0}, expand button not visible", this), Debug.Details(AutomationElement));
         }
 
         protected override void DoCollapse()
         {
-            DoubleClick();
+            Click();
+            KeyIn(KeyboardInput.SpecialKeys.LEFT);
         }
 
         protected override Point SelectPoint
