@@ -377,9 +377,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Init.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="TestStack.White.nuspec">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="TestStack.White.psm1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="white.snk" />
   </ItemGroup>
