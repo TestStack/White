@@ -6,8 +6,13 @@ namespace TestStack.White.UIItems.Scrolling
     [PlatformSpecificItem(ReferAsType = typeof(IVScrollBar))]
     public class VScrollBar : ScrollBar, IVScrollBar
     {
-        protected VScrollBar() {}
-        public VScrollBar(AutomationElement automationElement, ActionListener actionListener, ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds) {}
+        protected VScrollBar()
+        {         
+        }
+        public VScrollBar(AutomationElement automationElement, ActionListener actionListener,
+            ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds)
+        {
+        }
 
         public virtual void ScrollUp()
         {

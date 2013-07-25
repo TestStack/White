@@ -1,11 +1,14 @@
+using System;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
+using TestStack.White.Utility;
 
 namespace TestStack.White.UIItems.Scrolling {
-    public class ScrollBar : UIItem, IScrollBar {
+    public abstract class ScrollBar : UIItem, IScrollBar {
         private readonly ScrollBarButtonAutomationIds automationIds;
         private readonly PrimaryUIItemFactory primaryUIItemFactory;
 
@@ -46,8 +49,15 @@ namespace TestStack.White.UIItems.Scrolling {
 
         public virtual void SetToMinimum()
         {
-            ((RangeValuePattern)Pattern(RangeValuePattern.Pattern)).SetValue(0);
-            BackSmallChangeButton.Click();
+            var value = Retry.For(() =>
+            {
+                BackLargeChangeButton.Click();
+                return Value;
+            }, v => v > 0, CoreAppXmlConfiguration.Instance.BusyTimeout(), TimeSpan.FromMilliseconds(0));
+
+            if (value > 0)
+                throw new UIActionException(string.Format("Could not set the ScrollBar to minimum visible{0}", Constants.BusyMessage));
+            Logger.DebugFormat("ScrollBar position set to {0}", Value);
         }
 
         public virtual void SetToMaximum() {

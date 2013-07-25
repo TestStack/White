@@ -6,9 +6,15 @@ namespace TestStack.White.UIItems.Scrolling
     [PlatformSpecificItem(ReferAsType = typeof (IHScrollBar))]
     public class HScrollBar : ScrollBar, IHScrollBar
     {
-        protected HScrollBar() {}
+        protected HScrollBar()
+        {
+        }
 
-        public HScrollBar(AutomationElement automationElement, ActionListener actionListener, ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds) {}
+        public HScrollBar(AutomationElement automationElement, ActionListener actionListener,
+            ScrollBarButtonAutomationIds automationIds) :
+                base(automationElement, actionListener, automationIds)
+        {         
+        }
 
         public virtual void ScrollLeft()
         {

@@ -22,15 +22,9 @@ namespace TestStack.White.UIItems.Scrolling
         internal virtual void MakeVisible(VerticalSpanProvider verticalSpanProvider)
         {
             if (verticalScroll == null)
-            {
-                logger.DebugFormat("Vertical scrollbar not present in parent of {0}", uiItem);
                 return;
-            }
             if (!verticalScroll.IsScrollable)
-            {
-                logger.DebugFormat("Vertical scrollbar is not scrollable for parent of {0}", uiItem);
                 return;
-            }
 
             VerticalSpan verticalSpan = verticalSpanProvider.VerticalSpan;
 

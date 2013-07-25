@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
@@ -114,6 +115,18 @@ namespace TestStack.White.UIItems
         public virtual bool ValueOfEquals(AutomationProperty property, object compareTo)
         {
             return Property(property).Equals(compareTo);
+        }
+
+        protected virtual T Pattern<T>()
+        {
+            var fieldInfo = typeof(T).GetField("Pattern", BindingFlags.Static | BindingFlags.Public);
+            var pattern = (AutomationPattern)fieldInfo.GetValue(null);
+            object patternObject;
+            if (automationElement.TryGetCurrentPattern(pattern, out patternObject))
+            {
+                return (T)patternObject;
+            }
+            return (T)(object)null;
         }
 
         protected virtual BasePattern Pattern(AutomationPattern pattern)

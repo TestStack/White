@@ -12,6 +12,31 @@ namespace TestStack.White.UITests
 {
     public class WindowTests : WhiteTestBase
     {
+        protected override void ExecuteTestRun(WindowsFramework framework)
+        {
+            RunTest(GetAllWindows);
+            RunTest(FindWindow);
+            RunTest(WindowWithoutTitleBar, WindowsFramework.WinForms);
+            RunTest(WindowWithAmerstand, WindowsFramework.WinForms);
+            RunTest(IsCurrentlyActive);
+            RunTest(IsCurrentlyNotActive);
+            RunTest(HasAttachedMouse);
+            RunTest(FindNonExistentItem);
+            RunTest(GetAll);
+            RunTest(FindTabs);
+            RunTest(FindControlsInsideAPanel);
+            RunTest(SetWindowState);
+            RunTest(HandleDynamicallyAddedControls);
+            RunTest(GetTitle);
+            RunTest(ItemsWithin);
+            RunTest(WindowScrollsToMakeItemVisibleBeforePerformingAnyAction);
+            RunTest(FindToolBarsWhenThereAreMultiple);
+            RunTest(HandlesInvisibleControlsWinforms, WindowsFramework.WinForms);
+            RunTest(HandlesInvisibleControlsWpf, WindowsFramework.Wpf);
+            RunTest(IsClosed);
+            RunTest(CanFindTitleBar);
+        }
+
         void GetAllWindows()
         {
             using (StartScenario("GetMultipleButton", "GetMultiple"))
@@ -198,31 +223,6 @@ namespace TestStack.White.UITests
             Assert.NotNull(titleBar.MinimizeButton);
             Assert.NotNull(titleBar.MaximizeButton);
             Assert.NotNull(titleBar.CloseButton);
-        }
-
-        protected override void ExecuteTestRun(WindowsFramework framework)
-        {
-            RunTest(GetAllWindows);
-            RunTest(FindWindow);
-            RunTest(WindowWithoutTitleBar, WindowsFramework.WinForms);
-            RunTest(WindowWithAmerstand, WindowsFramework.WinForms);
-            RunTest(IsCurrentlyActive);
-            RunTest(IsCurrentlyNotActive);
-            RunTest(HasAttachedMouse);
-            RunTest(FindNonExistentItem);
-            RunTest(GetAll);
-            RunTest(FindTabs);
-            RunTest(FindControlsInsideAPanel);
-            RunTest(SetWindowState);
-            RunTest(HandleDynamicallyAddedControls);
-            RunTest(GetTitle);
-            RunTest(ItemsWithin);
-            RunTest(WindowScrollsToMakeItemVisibleBeforePerformingAnyAction);
-            RunTest(FindToolBarsWhenThereAreMultiple);
-            RunTest(HandlesInvisibleControlsWinforms, WindowsFramework.WinForms);
-            RunTest(HandlesInvisibleControlsWpf, WindowsFramework.Wpf);
-            RunTest(IsClosed);
-            RunTest(CanFindTitleBar);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()
