@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
@@ -15,11 +17,20 @@ namespace TestStack.White.UITests
 {
     public abstract class WhiteTestBase
     {
-        private readonly List<Window> windowsToClose = new List<Window>();
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteTestBase));
+        readonly List<Window> windowsToClose = new List<Window>();
+        readonly string screenshotDir;
         WindowsFramework? currentFramework;
 
         internal Keyboard Keyboard;
+
+        protected WhiteTestBase()
+        {
+            screenshotDir = "c:\\FailedTestsScreenshots";
+            if (!Directory.Exists(screenshotDir))
+                Directory.CreateDirectory(screenshotDir);
+        }
+
         protected Window MainWindow { get; private set; }
         protected MainScreen MainScreen { get; private set; }
         protected Application Application { get; private set; }
@@ -63,6 +74,7 @@ namespace TestStack.White.UITests
                 }
                 catch (Exception ex)
                 {
+                    new ScreenCapture().CaptureScreenShot().Save(Path.Combine(screenshotDir, testAction.Method.Name + ".png"), ImageFormat.Png);
                     throw new TestFailedException(string.Format("Failed to run {0} for {1}. Details:\r\n\r\n{2}", 
                         testAction.Method.Name, currentFramework, ex), ex);
                 }

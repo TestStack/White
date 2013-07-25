@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -9,10 +10,15 @@ namespace TestStack.White.UITests.AutomationElementSearch
 {
     public class RawAutomationElementFinderTest : WhiteTestBase
     {
+        readonly IDisposable cleanup;
+
         public RawAutomationElementFinderTest()
         {
-            CoreAppXmlConfiguration.Instance.RawElementBasedSearch = true;
-            CoreAppXmlConfiguration.Instance.MaxElementSearchDepth = 2;
+            cleanup = CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c =>
+            {
+                c.RawElementBasedSearch = true;
+                c.MaxElementSearchDepth = 2;
+            });
         }
 
         protected override void ExecuteTestRun(WindowsFramework framework)
@@ -22,11 +28,13 @@ namespace TestStack.White.UITests.AutomationElementSearch
 
         public void Descendant()
         {
-            var window = StartScenario("OpenListView", "ListViewWindow");
-            var listView = window.Get<ListView>("ListView");
-            var finder = new RawAutomationElementFinder(listView.AutomationElement);
-            Assert.NotEqual(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.HeaderItem).OfName("Key")));
-            Assert.Equal(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.Header).OfName("Key")));
+            using (var window = StartScenario("OpenListView", "ListViewWindow"))
+            {
+                var listView = window.Get<ListView>("ListView");
+                var finder = new RawAutomationElementFinder(listView.AutomationElement);
+                Assert.NotEqual(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.HeaderItem).OfName("Key")));
+                Assert.Equal(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.Header).OfName("Key")));
+            }
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()
@@ -37,7 +45,7 @@ namespace TestStack.White.UITests.AutomationElementSearch
 
         public void Dispose()
         {
-            CoreAppXmlConfiguration.Instance.RawElementBasedSearch = false;
+            cleanup.Dispose();
         }
     }
 }
