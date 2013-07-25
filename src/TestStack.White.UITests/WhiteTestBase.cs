@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,23 @@ namespace TestStack.White.UITests
             screenshotDir = "c:\\FailedTestsScreenshots";
             if (!Directory.Exists(screenshotDir))
                 Directory.CreateDirectory(screenshotDir);
+        }
+
+        static WhiteTestBase()
+        {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
+        }
+
+        static void CurrentDomain_DomainUnload(object sender, EventArgs e)
+        {
+            GC.Collect();
+            GC.Collect();
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Trace.TraceError(((Exception)e.ExceptionObject).Message);
         }
 
         protected Window MainWindow { get; private set; }
