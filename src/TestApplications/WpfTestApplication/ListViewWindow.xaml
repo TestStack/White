@@ -12,6 +12,11 @@
             <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
         <ListView ItemsSource="{Binding ListViewItems}" x:Name="ListView" SelectionChanged="ListViewOnSelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />

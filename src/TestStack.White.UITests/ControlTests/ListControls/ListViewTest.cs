@@ -7,6 +7,21 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 {
     public class ListViewTest : WhiteTestBase
     {
+        protected override void ExecuteTestRun(WindowsFramework framework)
+        {
+            RunTest(CellCount);
+            RunTest(CellText);
+            RunTest(Columns);
+            RunTest(MultiSelect);
+            RunTest(RowCount);
+            RunTest(SelectBasedOnCell);
+            RunTest(SelectRow);
+            RunTest(SelectScrolledRow);
+            RunTest(SelectedRow);
+            RunTest(SelectedRows);
+            RunTest(SelectWhenHorizontalScrollIsPresent);
+        }
+
         void SelectRow()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -21,7 +36,15 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 Assert.Equal(true, secondRow.IsSelected);
             }
         }
-
+        void SelectScrolledRow()
+        {
+            using (var window = StartScenario("OpenListView", "ListViewWindow"))
+            {
+                var listView = window.Get<ListView>("ListView");
+                listView.Select("Key", "Action15");
+                Assert.Equal("App15", listView.SelectedRows[0].Cells["Value"].Text);
+            }
+        }
         void SelectedRow()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -60,7 +83,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
-                Assert.Equal(3, listView.Rows.Count);
+                Assert.Equal(18, listView.Rows.Count);
             }
         }
 
@@ -119,20 +142,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 listView.Row("Key", "bardfgreerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre")
                     .Select();
             }
-        }
-
-        protected override void ExecuteTestRun(WindowsFramework framework)
-        {
-            RunTest(CellCount);
-            RunTest(CellText);
-            RunTest(Columns);
-            RunTest(MultiSelect);
-            RunTest(RowCount);
-            RunTest(SelectBasedOnCell);
-            RunTest(SelectRow);
-            RunTest(SelectedRow);
-            RunTest(SelectedRows);
-            RunTest(SelectWhenHorizontalScrollIsPresent);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

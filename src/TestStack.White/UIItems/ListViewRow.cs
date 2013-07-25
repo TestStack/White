@@ -50,7 +50,12 @@ namespace TestStack.White.UIItems
         public virtual void Select()
         {
             actionListener.ActionPerforming(this);
-            mouse.Click(ClickablePoint, actionListener);
+            var clickablePoint = ClickablePoint;
+            if (clickablePoint.X == 0 && clickablePoint.Y == 0)
+            {
+                throw new WhiteException(string.Format("Failed to select {0}, clickable point empty", ToString()));
+            }
+            mouse.Click(clickablePoint, actionListener);
         }
 
         /// <summary>
