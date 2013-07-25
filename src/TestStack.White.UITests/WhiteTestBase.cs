@@ -105,7 +105,6 @@ namespace TestStack.White.UITests
             }
         }
 
-
         protected abstract IEnumerable<WindowsFramework> SupportedFrameworks();
 
         protected IEnumerable<WindowsFramework> AllFrameworks()
@@ -133,17 +132,7 @@ namespace TestStack.White.UITests
                 }
                 testBase.windowsToClose.Clear();
                 testBase.MainWindow.Close();
-                if (!testBase.Application.HasExited)
-                {
-                    // ReSharper disable EmptyGeneralCatchClause
-                    try
-                    {
-                        testBase.Application.Close();
-                    }
-                    catch (Exception)
-                    { }
-                    // ReSharper restore EmptyGeneralCatchClause
-                }
+                testBase.Application.Dispose();
                 testBase.Application = null;
                 testBase.MainWindow = null;
             }

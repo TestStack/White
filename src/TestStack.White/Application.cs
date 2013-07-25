@@ -210,6 +210,7 @@ namespace TestStack.White
             {
                 Logger.Info("Application Failed to exit, killing process");
                 Process.Kill();
+                Process.WaitForExit(5000);
             }
             Process.Dispose();
         }
@@ -221,8 +222,10 @@ namespace TestStack.White
         {
             try
             {
+                if (Process.HasExited) return;
                 process.Kill();
                 process.WaitForExit();
+                Process.Dispose();
             }
             catch { }
         }
