@@ -76,6 +76,16 @@ namespace TestStack.White.UIItems.TreeItems
             return Nodes.GetItem(nodePath);
         }
 
+        public override IScrollBars ScrollBars
+        {
+            get
+            {
+                if (Framework == WindowsFramework.Wpf)
+                    return new WpfTreeViewScrollBars(AutomationElement, actionListener);
+                return base.ScrollBars;
+            }
+        }
+
         public override void HookEvents(UIItemEventListener eventListener)
         {
             clickedTreeNodeHandler = delegate

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Threading;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.TreeItems;
 using Xunit;
