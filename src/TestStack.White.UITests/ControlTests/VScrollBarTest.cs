@@ -23,7 +23,8 @@ namespace TestStack.White.UITests.ControlTests
             vScrollBar.ScrollDownLarge();
             largeChange = vScrollBar.Value;
             vScrollBar.ScrollUpLarge();
-            vScrollBar.SetToMinimum();
+            if (vScrollBar.IsNotMinimum)
+                vScrollBar.SetToMinimum();
 
             RunTest(ShouldGetVerticalScrollBar);
             RunTest(ShouldScrollDown);
