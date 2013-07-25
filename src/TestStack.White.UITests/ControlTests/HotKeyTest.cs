@@ -16,12 +16,12 @@ namespace TestStack.White.UITests.ControlTests
             Keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
             Keyboard.Enter("B");
             Keyboard.LeaveKey(KeyboardInput.SpecialKeys.ALT);
-            Retry.For(()=>Assert.Equal("Clicked", button.Text), TimeSpan.FromSeconds(2));
+            Retry.For(() => Assert.Equal("Clicked", button.Text), TimeSpan.FromSeconds(2));
         }
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
-            RunTest(()=>AccessKey(framework));
+            RunTest(() => AccessKey(framework));
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

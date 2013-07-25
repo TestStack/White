@@ -8,7 +8,7 @@ using Xunit;
 
 namespace TestStack.White.UITests.AutomationElementSearch
 {
-    public class RawAutomationElementFinderTest : WhiteTestBase
+    public class RawAutomationElementFinderTest : WhiteTestBase, IDisposable
     {
         readonly IDisposable cleanup;
 

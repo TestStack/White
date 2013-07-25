@@ -12,10 +12,10 @@ namespace TestStack.White.UITests.Scenarios
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(() => GetMultipleButtons(framework));
-            RunTest(GetControlBasedOnIndex);
+            RunTest(() => GetControlBasedOnIndex(framework));
         }
 
-        void GetControlBasedOnIndex()
+        void GetControlBasedOnIndex(WindowsFramework framework)
         {
             using (var window = StartScenario("GetMultipleButton", "GetMultiple"))
             {
@@ -23,7 +23,10 @@ namespace TestStack.White.UITests.Scenarios
                 Assert.NotNull(button);
 
                 var exception = Assert.Throws<AutomationException>(() => MainWindow.Get<TextBox>(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "Button").AndIndex(4)));
-                Assert.Equal("Failed to get (ControlType=button or ControlType=check box),Name=Button,Index=4", exception.Message);
+                var expected = framework == WindowsFramework.Wpf?
+                    "Failed to get ControlType=edit,AutomationElementIdentifiers.NameProperty=Button,Index=4":
+                    "Failed to get (ControlType=edit or ControlType=document),AutomationElementIdentifiers.NameProperty=Button,Index=4";
+                Assert.Equal(expected, exception.Message);
             }
         }
 
