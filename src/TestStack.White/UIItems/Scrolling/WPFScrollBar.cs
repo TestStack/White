@@ -7,12 +7,6 @@ namespace TestStack.White.UIItems.Scrolling
     {
         protected readonly ScrollPattern ScrollPattern;
 
-        protected delegate void ScrollBackLarge();
-
-        protected delegate void ScrollForwardLarge();
-
-        private delegate void Scroll();
-
         protected WpfScrollBar(AutomationElement parent)
         {
             ScrollPattern = (ScrollPattern) parent.GetCurrentPattern(ScrollPattern.Pattern);
@@ -34,54 +28,5 @@ namespace TestStack.White.UIItems.Scrolling
         public abstract void SetToMinimum();
         public abstract void SetToMaximum();
         public abstract Rect Bounds { get; }
-
-        protected virtual void SetToMaximum(ScrollForwardLarge scrollForwardLarge)
-        {
-            MoveTo(100.0, () => scrollForwardLarge());
-        }
-
-        private void MoveTo(double value, Scroll scroll)
-        {
-            double beforeScrollValue = Value;
-            double beforeScrollPercentage = ScrollPercentage;
-            while (!(value).Equals(beforeScrollValue))
-            {
-                scroll();
-                double currentScrollValue = Value;
-                double currentScrollPercentage = ScrollPercentage;
-
-                CheckChangeInScrollPosition(beforeScrollValue, currentScrollValue, beforeScrollPercentage, currentScrollPercentage);
-                
-                beforeScrollValue = currentScrollValue;
-                beforeScrollPercentage = currentScrollPercentage;
-            }
-        }
-
-        private void CheckChangeInScrollPosition(double beforeScrollValue, double currentValue, double beforeScrollPercentage, double currentScrollPercentage)
-        {
-            if (beforeScrollValue == currentValue && beforeScrollPercentage == currentScrollPercentage)
-            {
-                throw new UIActionException("Cannot set the scroll bar to the start position");
-            }
-        }
-
-        protected virtual void SetToMinimum(ScrollBackLarge scrollBackLarge)
-        {
-            MoveTo(0.0, () => scrollBackLarge());
-        }
-
-        protected virtual double ValidPercentage(double percentage)
-        {
-            if (percentage < 0)
-                return 0;
-            if (percentage > 100)
-                return 100;
-            return percentage;
-        }
-
-        protected virtual double SmallPercentage()
-        {
-            return ScrollPercentage / 4;
-        }
     }
 }

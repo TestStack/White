@@ -3,7 +3,8 @@ using TestStack.White.UIItems.Actions;
 
 namespace TestStack.White.UIItems.Scrolling
 {
-    internal class VScrollBar : ScrollBar, IVScrollBar
+    [PlatformSpecificItem(ReferAsType = typeof(IVScrollBar))]
+    public class VScrollBar : ScrollBar, IVScrollBar
     {
         protected VScrollBar() {}
         public VScrollBar(AutomationElement automationElement, ActionListener actionListener, ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds) {}

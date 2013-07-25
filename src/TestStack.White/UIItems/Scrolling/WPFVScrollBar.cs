@@ -62,40 +62,18 @@ namespace TestStack.White.UIItems.Scrolling
 
         public override void SetToMinimum()
         {
-            SetToMinimum(ScrollUpLarge);
+            ScrollPattern.SetScrollPercent(ScrollPattern.Current.HorizontalScrollPercent, 0);
         }
 
         public override void SetToMaximum()
         {
-            SetToMaximum(ScrollDownLarge);
+            ScrollPattern.SetScrollPercent(ScrollPattern.Current.HorizontalScrollPercent, 100);
         }
 
         protected virtual void Scroll(ScrollAmount amount)
         {
             if (!IsScrollable) return;
-            switch (amount)
-            {
-                case ScrollAmount.LargeDecrement:
-                    ScrollPattern.SetScrollPercent(
-                        ScrollPattern.Current.HorizontalScrollPercent, 
-                        ValidPercentage(ScrollPattern.Current.VerticalScrollPercent - ScrollPercentage));
-                    break;
-                case ScrollAmount.SmallDecrement:
-                    ScrollPattern.SetScrollPercent(
-                        ScrollPattern.Current.HorizontalScrollPercent,
-                        ValidPercentage(ScrollPattern.Current.VerticalScrollPercent - SmallPercentage()));
-                    break;
-                case ScrollAmount.LargeIncrement:
-                    ScrollPattern.SetScrollPercent(
-                        ScrollPattern.Current.HorizontalScrollPercent, 
-                        ValidPercentage(ScrollPattern.Current.VerticalScrollPercent + ScrollPercentage));
-                    break;
-                case ScrollAmount.SmallIncrement:
-                    ScrollPattern.SetScrollPercent(
-                        ScrollPattern.Current.HorizontalScrollPercent,
-                        ValidPercentage(ScrollPattern.Current.VerticalScrollPercent + SmallPercentage()));
-                    break;
-            }
+            ScrollPattern.ScrollVertical(amount);
             actionListener.ActionPerformed(Action.Scroll);
         }
     }

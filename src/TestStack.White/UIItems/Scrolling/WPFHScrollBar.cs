@@ -33,30 +33,7 @@ namespace TestStack.White.UIItems.Scrolling
         protected virtual void Scroll(ScrollAmount amount)
         {
             if (!IsScrollable) return;
-
-            switch (amount)
-            {
-                case ScrollAmount.LargeDecrement:
-                    ScrollPattern.SetScrollPercent(
-                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent - ScrollPercentage),
-                        ScrollPattern.Current.VerticalScrollPercent);
-                    break;
-                case ScrollAmount.SmallDecrement:
-                    ScrollPattern.SetScrollPercent(
-                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent - SmallPercentage()),
-                        ScrollPattern.Current.VerticalScrollPercent);
-                    break;
-                case ScrollAmount.LargeIncrement:
-                    ScrollPattern.SetScrollPercent(
-                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent + ScrollPercentage),
-                        ScrollPattern.Current.VerticalScrollPercent);
-                    break;
-                case ScrollAmount.SmallIncrement:
-                    ScrollPattern.SetScrollPercent(
-                        ValidPercentage(ScrollPattern.Current.HorizontalScrollPercent + SmallPercentage()),
-                        ScrollPattern.Current.VerticalScrollPercent);
-                    break;
-            }
+            ScrollPattern.ScrollHorizontal(amount);
             actionListener.ActionPerformed(Action.WindowMessage);
         }
 
@@ -87,12 +64,12 @@ namespace TestStack.White.UIItems.Scrolling
 
         public override void SetToMinimum()
         {
-            SetToMinimum(ScrollLeftLarge);
+            ScrollPattern.SetScrollPercent(0, ScrollPattern.Current.VerticalScrollPercent);
         }
 
         public override void SetToMaximum()
         {
-            SetToMaximum(ScrollRightLarge);
+            ScrollPattern.SetScrollPercent(100, ScrollPattern.Current.VerticalScrollPercent);
         }
     }
 }
