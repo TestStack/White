@@ -5,10 +5,8 @@
     <Platform Condition="$(Platform) == ''">x86</Platform>
     <Configuration Condition="$(Configuration) == ''">Release</Configuration>
     <MSBuildCommunityTasksPath>$(Root)tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
+    <xUnit Include="$(Root)tools\xUnit\xunit.console.exe" />
   </PropertyGroup>
-  <ItemGroup>
-	<xUnit Include="$(Root)tools\xUnit\xunit.console.exe" />
-  </ItemGroup>
 	
   <Target Name="Cleanup">
     <Error Condition="$(Root) == ''" Text="Root variable must be defined" />
@@ -33,14 +31,14 @@
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
-    <Exec Command="@(xUnit) $(Root)src\TestStack.White.UnitTests\bin\$(Configuration)\TestStack.White.UnitTests.dll" />
+    <Exec Command="$(xUnit) $(Root)src\TestStack.White.UnitTests\bin\$(Configuration)\TestStack.White.UnitTests.dll" />
   </Target>
 
   <Target Name="UITests" DependsOnTargets="Build">
     <PropertyGroup>
       <UITestFolder Condition="'$(UITestFolder)' == ''">$(Root)src\TestStack.White.UITests\bin\$(Configuration)\</UITestFolder>
     </PropertyGroup>
-    <Exec Command="@(xUnit) $(UITestFolder)TestStack.White.UITests.dll /noshadow" />
+    <Exec Command="$(xUnit) $(UITestFolder)TestStack.White.UITests.dll /noshadow" />
   </Target>
 
   <Target Name="Publish">
