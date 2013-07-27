@@ -41,6 +41,7 @@ namespace TestStack.White.UITests
         static void CurrentDomain_DomainUnload(object sender, EventArgs e)
         {
             GC.Collect();
+            GC.WaitForPendingFinalizers();
             GC.Collect();
         }
 
