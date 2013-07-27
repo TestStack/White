@@ -32,16 +32,6 @@ namespace TestStack.White.UITests
                 Directory.CreateDirectory(screenshotDir);
         }
 
-        static WhiteTestBase()
-        {
-            AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
-        }
-
-        static void CurrentDomain_DomainUnload(object sender, EventArgs e)
-        {
-            Thread.Sleep(5000);
-        }
-
         protected Window MainWindow { get; private set; }
         protected MainScreen MainScreen { get; private set; }
         protected Application Application { get; private set; }
