@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Threading;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.InputDevices;
@@ -30,6 +30,16 @@ namespace TestStack.White.UITests
             screenshotDir = "c:\\FailedTestsScreenshots";
             if (!Directory.Exists(screenshotDir))
                 Directory.CreateDirectory(screenshotDir);
+        }
+
+        static WhiteTestBase()
+        {
+            AppDomain.CurrentDomain.DomainUnload += CurrentDomain_DomainUnload;
+        }
+
+        static void CurrentDomain_DomainUnload(object sender, EventArgs e)
+        {
+            Thread.Sleep(5000);
         }
 
         protected Window MainWindow { get; private set; }
@@ -117,7 +127,7 @@ namespace TestStack.White.UITests
 
         private class ShutdownApplicationDisposable : IDisposable
         {
-            private WhiteTestBase testBase;
+            private readonly WhiteTestBase testBase;
 
             public ShutdownApplicationDisposable(WhiteTestBase testBase)
             {
@@ -136,16 +146,6 @@ namespace TestStack.White.UITests
                 testBase.Application.Dispose();
                 testBase.Application = null;
                 testBase.MainWindow = null;
-                testBase = null;
-                Cleanup();
-            }
-
-            [MethodImpl(MethodImplOptions.NoInlining)]
-            void Cleanup()
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
             }
         }
 
