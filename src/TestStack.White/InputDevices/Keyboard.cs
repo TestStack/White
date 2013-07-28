@@ -33,6 +33,9 @@ namespace TestStack.White.InputDevices
         [DllImport("user32", EntryPoint = "SendInput")]
         private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
 
+        [DllImport("user32", EntryPoint = "SendInput")]
+        private static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
+
         [DllImport("user32.dll")]
         private static extern IntPtr GetMessageExtraInfo();
 
@@ -168,7 +171,14 @@ namespace TestStack.White.InputDevices
 
         private static void SendInput(Input input)
         {
-            SendInput(1, ref input, Marshal.SizeOf(typeof (Input)));
+            // Added check for 32/64 bit  
+            if (IntPtr.Size == 4)
+                SendInput(1, ref input, Marshal.SizeOf(typeof(Input)));
+            else
+            {
+                var input64 = new Input64(input);
+                SendInput64(1, ref input64, Marshal.SizeOf(typeof(Input)));
+            }
         }
 
         private static Input GetInputFor(short character, KeyboardInput.KeyUpDown keyUpOrDown)
