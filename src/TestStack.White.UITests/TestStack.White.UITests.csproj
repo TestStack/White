@@ -154,9 +154,9 @@
       <Project>{19FC2A6E-1C39-4DB8-AABF-A234FD6BC3FE}</Project>
       <Name>TestStack.White.Reporting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.Repository.csproj">
+    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.ScreenObjects.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
-      <Name>TestStack.White.Repository</Name>
+      <Name>TestStack.White.ScreenObjects</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestStack.White.WebBrowser\TestStack.White.WebBrowser.csproj">
       <Project>{31F10CBC-B77C-4B58-8706-E8800FFC1D20}</Project>

@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using TestStack.White.Factory;
-using TestStack.White.Repository.Services;
-using TestStack.White.Repository.Sessions;
+using TestStack.White.ScreenObjects.Services;
+using TestStack.White.ScreenObjects.Sessions;
 using WpfTodo.UITests.Screens;
 using Xunit;
 

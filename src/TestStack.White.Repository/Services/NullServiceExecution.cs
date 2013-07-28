@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace TestStack.White.Repository.Services
+namespace TestStack.White.ScreenObjects.Services
 {
     public class NullServiceExecution : ServiceExecution
     {

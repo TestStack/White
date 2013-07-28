@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Text;
-using TestStack.White.Repository.EntityMapping;
+using TestStack.White.ScreenObjects.EntityMapping;
 using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.EntityMapping

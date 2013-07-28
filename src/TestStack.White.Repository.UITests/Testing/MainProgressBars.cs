@@ -2,7 +2,7 @@ using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using Xunit;
 
-namespace TestStack.White.Repository.UITests.Testing
+namespace TestStack.White.ScreenObjects.UITests.Testing
 {
     public class MainProgressBars : AppScreenComponent
     {

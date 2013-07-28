@@ -1,6 +1,6 @@
 using NSubstitute;
 using TestStack.White.Factory;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.Sessions;
 using Xunit;
 

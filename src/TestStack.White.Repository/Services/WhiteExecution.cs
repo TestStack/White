@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using TestStack.White.Bricks;
 using TestStack.White.Reporting.Configuration;
 using TestStack.White.Reporting.Domain;
-using TestStack.White.Repository.Configuration;
+using TestStack.White.ScreenObjects.Configuration;
 
-namespace TestStack.White.Repository.Services
+namespace TestStack.White.ScreenObjects.Services
 {
     public class WhiteExecution : IDisposable
     {

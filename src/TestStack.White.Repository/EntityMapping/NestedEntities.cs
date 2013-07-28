@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TestStack.White.Repository.EntityMapping
+namespace TestStack.White.ScreenObjects.EntityMapping
 {
     [Serializable]
     public class NestedEntities : List<Entity>

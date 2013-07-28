@@ -7,7 +7,7 @@ using TestStack.White.Sessions;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository
+namespace TestStack.White.ScreenObjects
 {
     //TODO: When the window is not found the exception from screen repository should be clear enough.
     //TODO: Provide Live and FileTemplates

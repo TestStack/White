@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using TestStack.White.UIItems.TableItems;
 
-namespace TestStack.White.Repository.EntityMapping
+namespace TestStack.White.ScreenObjects.EntityMapping
 {
     [Serializable]
     public class Entities<T> : List<T> where T : Entity

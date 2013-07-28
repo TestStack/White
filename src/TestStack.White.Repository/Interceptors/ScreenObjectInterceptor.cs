@@ -1,6 +1,6 @@
 using Castle.DynamicProxy;
 
-namespace TestStack.White.Repository.Interceptors
+namespace TestStack.White.ScreenObjects.Interceptors
 {
     public class ScreenObjectInterceptor : IInterceptor
     {

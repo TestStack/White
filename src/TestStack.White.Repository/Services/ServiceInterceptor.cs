@@ -3,7 +3,7 @@ using System.Linq;
 using Castle.DynamicProxy;
 using TestStack.White.Reporting.Domain;
 
-namespace TestStack.White.Repository.Services
+namespace TestStack.White.ScreenObjects.Services
 {
     public class ServiceInterceptor : IInterceptor
     {

@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using TestStack.White.Reporting.Domain;
-using TestStack.White.Repository.Services;
+using TestStack.White.ScreenObjects.Services;
 
-namespace TestStack.White.Repository.Sessions
+namespace TestStack.White.ScreenObjects.Sessions
 {
     /// <summary>
     /// Represents white session for test/automation. There should be only one instance of this.

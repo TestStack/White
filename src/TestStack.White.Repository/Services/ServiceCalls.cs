@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace TestStack.White.Repository.Services
+namespace TestStack.White.ScreenObjects.Services
 {
     public class ServiceCalls : List<ServiceCall>
     {

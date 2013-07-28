@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Castle.Core.Internal;
 
-namespace TestStack.White.Repository
+namespace TestStack.White.ScreenObjects
 {
     [Serializable]
     public class AppScreenException : Exception

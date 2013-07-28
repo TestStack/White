@@ -7,7 +7,7 @@ using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository.Interceptors
+namespace TestStack.White.ScreenObjects.Interceptors
 {
     /// <summary>
     /// Lazily initializes the UIItem.

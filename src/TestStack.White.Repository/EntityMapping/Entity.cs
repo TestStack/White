@@ -9,7 +9,7 @@ using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems.TableItems;
 
-namespace TestStack.White.Repository.EntityMapping
+namespace TestStack.White.ScreenObjects.EntityMapping
 {
     /// <summary>
     /// Represents an entity which can be mapped to the screen objects.

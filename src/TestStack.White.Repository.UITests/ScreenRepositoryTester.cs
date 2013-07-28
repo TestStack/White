@@ -1,9 +1,9 @@
 using System;
 using TestStack.White.Factory;
-using TestStack.White.Repository.UITests.Testing;
+using TestStack.White.ScreenObjects.UITests.Testing;
 using TestStack.White.UITests.Infrastructure;
 
-namespace TestStack.White.Repository.UITests
+namespace TestStack.White.ScreenObjects.UITests
 {
     public class ScreenRepositoryTester : IDisposable
     {

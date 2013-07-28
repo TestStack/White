@@ -8,8 +8,8 @@
     <ProjectGuid>{168E237E-07C8-4379-8199-9FDEB6B7D402}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestStack.White.Repository.UITests</RootNamespace>
-    <AssemblyName>TestStack.White.Repository.UITests</AssemblyName>
+    <RootNamespace>TestStack.White.ScreenObjects.UITests</RootNamespace>
+    <AssemblyName>TestStack.White.ScreenObjects.UITests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -116,9 +116,9 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.Repository.csproj">
+    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.ScreenObjects.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
-      <Name>TestStack.White.Repository</Name>
+      <Name>TestStack.White.ScreenObjects</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

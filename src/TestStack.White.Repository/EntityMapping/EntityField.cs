@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using TestStack.White.UIItems;
 
-namespace TestStack.White.Repository.EntityMapping
+namespace TestStack.White.ScreenObjects.EntityMapping
 {
     public class EntityField
     {

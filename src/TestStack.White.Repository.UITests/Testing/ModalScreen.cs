@@ -1,6 +1,6 @@
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository.UITests.Testing
+namespace TestStack.White.ScreenObjects.UITests.Testing
 {
     public class ModalScreen : AppScreen
     {

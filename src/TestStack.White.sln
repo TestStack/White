@@ -52,9 +52,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSilverlightApplication.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.Reporting", "TestStack.White.Reporting\TestStack.White.Reporting.csproj", "{19FC2A6E-1C39-4DB8-AABF-A234FD6BC3FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.Repository", "TestStack.White.Repository\TestStack.White.Repository.csproj", "{FCD3E92F-FEE9-414D-A460-09F7F685B83E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.ScreenObjects", "TestStack.White.Repository\TestStack.White.ScreenObjects.csproj", "{FCD3E92F-FEE9-414D-A460-09F7F685B83E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.Repository.UITests", "TestStack.White.Repository.UITests\TestStack.White.Repository.UITests.csproj", "{168E237E-07C8-4379-8199-9FDEB6B7D402}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.ScreenObjects.UITests", "TestStack.White.Repository.UITests\TestStack.White.ScreenObjects.UITests.csproj", "{168E237E-07C8-4379-8199-9FDEB6B7D402}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.WebBrowser", "TestStack.White.WebBrowser\TestStack.White.WebBrowser.csproj", "{31F10CBC-B77C-4B58-8706-E8800FFC1D20}"
 EndProject

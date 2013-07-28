@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using TestStack.White.Configuration;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Screens;
 using TestStack.White.WebBrowser;

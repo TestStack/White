@@ -4,7 +4,7 @@ using System.IO;
 using TestStack.White.Bricks;
 using TestStack.White.Configuration;
 
-namespace TestStack.White.Repository.Configuration
+namespace TestStack.White.ScreenObjects.Configuration
 {
     public class RepositoryAppXmlConfiguration : AssemblyConfiguration, RepositoryConfiguration
     {

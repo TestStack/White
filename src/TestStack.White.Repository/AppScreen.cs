@@ -3,11 +3,11 @@ using System.Reflection;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.Mappings;
-using TestStack.White.Repository.EntityMapping;
+using TestStack.White.ScreenObjects.EntityMapping;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository
+namespace TestStack.White.ScreenObjects
 {
     //TODO: Provider some mechanism to log/inform about whether there are any errors on the screen or not.
     //TODO: Take care of act kind of stuff by putting attribute

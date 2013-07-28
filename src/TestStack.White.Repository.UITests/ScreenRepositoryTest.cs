@@ -1,7 +1,7 @@
 using TestStack.White.Factory;
 using Xunit;
 
-namespace TestStack.White.Repository.UITests
+namespace TestStack.White.ScreenObjects.UITests
 {
     public class ScreenRepositoryTest
     {

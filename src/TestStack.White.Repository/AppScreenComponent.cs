@@ -1,6 +1,6 @@
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository
+namespace TestStack.White.ScreenObjects
 {
     public class AppScreenComponent : RepositoryComponent
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace TestStack.White.Repository.EntityMapping
+namespace TestStack.White.ScreenObjects.EntityMapping
 {
     [Serializable]
     public class EntityFieldNotFoundException : Exception

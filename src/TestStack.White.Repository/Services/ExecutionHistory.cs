@@ -2,7 +2,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using TestStack.White.Configuration;
 
-namespace TestStack.White.Repository.Services
+namespace TestStack.White.ScreenObjects.Services
 {
     [DataContract]
     public class ExecutionHistory

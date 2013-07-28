@@ -1,4 +1,4 @@
-namespace TestStack.White.Repository.Services
+namespace TestStack.White.ScreenObjects.Services
 {
     public class NullWorkEnvironment : IWorkEnvironment
     {

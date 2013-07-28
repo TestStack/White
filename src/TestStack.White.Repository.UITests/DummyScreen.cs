@@ -1,6 +1,6 @@
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository.UITests
+namespace TestStack.White.ScreenObjects.UITests
 {
     public class DummyScreen : AppScreen
     {

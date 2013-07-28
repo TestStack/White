@@ -1,4 +1,4 @@
-using TestStack.White.Repository.EntityMapping;
+using TestStack.White.ScreenObjects.EntityMapping;
 
 namespace TestStack.White.UnitTests.Repository.EntityMapping
 {

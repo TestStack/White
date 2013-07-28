@@ -1,6 +1,6 @@
 using System;
 
-namespace TestStack.White.Repository
+namespace TestStack.White.ScreenObjects
 {
     public interface IFieldMap
     {

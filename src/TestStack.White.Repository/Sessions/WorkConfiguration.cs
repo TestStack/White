@@ -1,7 +1,7 @@
 using TestStack.White.Reporting.Configuration;
 using TestStack.White.Reporting.Domain;
 
-namespace TestStack.White.Repository.Sessions
+namespace TestStack.White.ScreenObjects.Sessions
 {
     public class WorkConfiguration
     {

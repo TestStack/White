@@ -1,4 +1,4 @@
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.UnitTests.Repository

@@ -7,7 +7,7 @@ using System.Threading;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.InputDevices;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;

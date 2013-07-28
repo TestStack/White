@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace TestStack.White.Repository.Configuration
+namespace TestStack.White.ScreenObjects.Configuration
 {
     //TODO: Power management
     public interface RepositoryConfiguration

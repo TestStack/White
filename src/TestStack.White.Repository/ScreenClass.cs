@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TestStack.White.Bricks;
-using TestStack.White.Repository.EntityMapping;
-using TestStack.White.Repository.Interceptors;
-using TestStack.White.Repository.ScreenAttributes;
+using TestStack.White.ScreenObjects.EntityMapping;
+using TestStack.White.ScreenObjects.Interceptors;
+using TestStack.White.ScreenObjects.ScreenAttributes;
 using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
 
-namespace TestStack.White.Repository
+namespace TestStack.White.ScreenObjects
 {
     public class ScreenClass
     {
