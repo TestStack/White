@@ -126,7 +126,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="TestStack.White.Repository.nuspec">
+    <None Include="TestStack.White.ScreenObjects.nuspec">
       <SubType>Designer</SubType>
     </None>
     <None Include="white.snk" />
