@@ -5,10 +5,14 @@ namespace TestStack.White.WindowsAPI
     [StructLayout(LayoutKind.Explicit)]
     public struct Input
     {
-        [FieldOffset(0)] private int type;
-        [FieldOffset(4)] private MouseInput mi;
-        [FieldOffset(4)] private KeyboardInput ki;
-        [FieldOffset(4)] private readonly HardwareInput hi;
+        [FieldOffset(0)]
+        public int type;
+        [FieldOffset(4)]
+        public MouseInput mi;
+        [FieldOffset(4)]
+        public KeyboardInput ki;
+        [FieldOffset(4)]
+        public readonly HardwareInput hi;
 
         public static Input MouseInput(int type, MouseInput mouseInput)
         {
