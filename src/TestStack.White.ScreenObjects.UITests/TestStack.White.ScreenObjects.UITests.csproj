@@ -116,7 +116,7 @@
       <Project>{12C59CE2-9CF7-44F4-B27C-90754609F979}</Project>
       <Name>TestStack.White</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestStack.White.Repository\TestStack.White.ScreenObjects.csproj">
+    <ProjectReference Include="..\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
       <Name>TestStack.White.ScreenObjects</Name>
     </ProjectReference>
