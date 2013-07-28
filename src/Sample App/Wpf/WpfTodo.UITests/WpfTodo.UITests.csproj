@@ -54,7 +54,7 @@
       <Project>{19FC2A6E-1C39-4DB8-AABF-A234FD6BC3FE}</Project>
       <Name>TestStack.White.Reporting</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\TestStack.White.Repository\TestStack.White.ScreenObjects.csproj">
+    <ProjectReference Include="..\..\..\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
       <Name>TestStack.White.ScreenObjects</Name>
     </ProjectReference>
