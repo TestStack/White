@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
 using TestStack.White.InputDevices;
 using TestStack.White.UIItems;
@@ -12,6 +12,7 @@ namespace TestStack.White.UITests.InputDevices
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
             RunTest(EnterAccentedChars);
+            RunTest(EnterUnicodeCharacters);
             RunTest(MultilineTextBox);
             RunTest(ShouldSetTheValueOfATextBox);
             RunTest(ShouldBeAbleToPressLeftAndRightCursorKeys);
@@ -25,7 +26,18 @@ namespace TestStack.White.UITests.InputDevices
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
-            const string text = "����������������������������������������";
+            const string text = "ãàâäáãàâäáãàâäáãàâäáãàâäáãàâäáãàâäáãàâäá";
+
+            textBox.BulkText = text;
+
+            Assert.Equal(text, textBox.Text);
+        }
+
+        void EnterUnicodeCharacters()
+        {
+            SelectInputControls();
+            var textBox = MainWindow.Get<TextBox>("TextBox");
+            const string text = "ŕ&aacute;&acirc;ă&auml;ĺć&ccedil;č&eacute;ę&euml;ě&iacute;&icirc;ď";
 
             textBox.BulkText = text;
 
