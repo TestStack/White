@@ -1,5 +1,5 @@
 using System;
-using TestStack.White.Repository.Services;
+using TestStack.White.ScreenObjects.Services;
 using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.Services

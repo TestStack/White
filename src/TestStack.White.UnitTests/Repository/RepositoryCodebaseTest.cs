@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.SystemExtensions;
 using Xunit;
 

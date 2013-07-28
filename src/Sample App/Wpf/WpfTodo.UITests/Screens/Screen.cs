@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Automation;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.Utility;
 

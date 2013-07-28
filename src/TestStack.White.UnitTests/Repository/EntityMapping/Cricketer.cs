@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using TestStack.White.Repository.EntityMapping;
+using TestStack.White.ScreenObjects.EntityMapping;
 using TestStack.White.UIItems.TableItems;
 
 namespace TestStack.White.UnitTests.Repository.EntityMapping
