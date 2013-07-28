@@ -2,7 +2,7 @@
 <Project DefaultTargets="Test;Publish" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Root>$(MSBuildProjectDirectory)\</Root>
-    <Platform Condition="$(Platform) == ''">x86</Platform>
+    <BuildPlatform Condition="$(BuildPlatform) == ''">Any CPU</BuildPlatform>
     <Configuration Condition="$(Configuration) == ''">Release</Configuration>
     <MSBuildCommunityTasksPath>$(Root)tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
     <xUnit>$(Root)tools\xUnit\xunit.console.exe</xUnit>
@@ -27,7 +27,7 @@
   </Target>
 
   <Target Name="Build" DependsOnTargets="Cleanup">
-    <MSBuild Projects="$(Root)src\TestStack.White.sln" Properties="Configuration=$(Configuration);Platform=$(Platform)" />
+    <MSBuild Projects="$(Root)src\TestStack.White.sln" Properties="Configuration=$(Configuration);Platform=$(BuildPlatform)" />
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">

@@ -169,9 +169,7 @@ namespace TestStack.White.WindowsAPI
 
         public static CursorInfo New()
         {
-            CursorInfo info = new CursorInfo();
-            info.size = (uint) Marshal.SizeOf(typeof (CursorInfo));
-            return info;
+            return new CursorInfo {size = (uint) Marshal.SizeOf(typeof (CursorInfo))};
         }
     }
 

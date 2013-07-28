@@ -2,7 +2,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
-using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.Drawing;
 using TestStack.White.UIA;
@@ -15,14 +14,12 @@ namespace TestStack.White.InputDevices
 {
     public class Mouse : IMouse
     {
-        [DllImport("User32.dll")]
-        private static extern uint SendInput(uint numberOfInputs,
-                                             ref Input input,
-                                             int structSize);
-//        private static extern uint SendInput(uint numberOfInputs,
-//                                             [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] Input[] input,
-//                                             int structSize);
+        [DllImport("user32", EntryPoint = "SendInput")]
+        private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
 
+        [DllImport("user32", EntryPoint = "SendInput")]
+        private static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
+        
         [DllImport("user32.dll")]
         private static extern IntPtr GetMessageExtraInfo();
 
@@ -43,7 +40,6 @@ namespace TestStack.White.InputDevices
         private DateTime lastClickTime = DateTime.Now;
         private readonly short doubleClickTime = GetDoubleClickTime();
         private Point lastClickLocation;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Mouse));
         private const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
         private Mouse()
@@ -64,7 +60,7 @@ namespace TestStack.White.InputDevices
                 {
                     throw new WhiteException(string.Format("Trying to set location outside the screen. {0}", value));
                 }
-                SetCursorPos((int) value.X, (int) value.Y);
+                SetCursorPos((int)value.X, (int)value.Y);
             }
         }
 
@@ -144,7 +140,14 @@ namespace TestStack.White.InputDevices
 
         private static void SendInput(Input input)
         {
-            SendInput(1, ref input, Marshal.SizeOf(input));
+            // Added check for 32/64 bit  
+            if (IntPtr.Size == 4)
+                SendInput(1, ref input, Marshal.SizeOf(typeof(Input)));
+            else
+            {
+                var input64 = new Input64(input);
+                SendInput64(1, ref input64, Marshal.SizeOf(typeof(Input)));
+            }
         }
 
         private static MouseInput MouseInput(int command)
@@ -217,12 +220,12 @@ namespace TestStack.White.InputDevices
         {
             Location = startPosition;
             HoldForDrag();
-            var dragStepFraction = (float) (1.0/CoreAppXmlConfiguration.Instance.DragStepCount);
+            var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
-                double newX = startPosition.X + (endPosition.X - startPosition.X)*(dragStepFraction*i);
-                double newY = startPosition.Y + (endPosition.Y - startPosition.Y)*(dragStepFraction*i);
-                var newPoint = new Point((int) newX, (int) newY);
+                double newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
+                double newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);
+                var newPoint = new Point((int)newX, (int)newY);
                 Location = newPoint;
             }
             LeftUp();
