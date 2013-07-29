@@ -10,12 +10,12 @@ namespace TestStack.White.UIItems
     /// </summary>
     public class DateFormat
     {
-        public static DateFormat dayMonthYear = new DateFormat(DateUnit.Day, DateUnit.Month, DateUnit.Year);
-        public static DateFormat dayYearMonth = new DateFormat(DateUnit.Day, DateUnit.Year, DateUnit.Month);
-        public static DateFormat monthDayYear = new DateFormat(DateUnit.Month, DateUnit.Day, DateUnit.Year);
-        public static DateFormat monthYearDay = new DateFormat(DateUnit.Month, DateUnit.Year, DateUnit.Day);
-        public static DateFormat yearMonthDay = new DateFormat(DateUnit.Year, DateUnit.Month, DateUnit.Day);
-        public static DateFormat yearDayMonth = new DateFormat(DateUnit.Year, DateUnit.Day, DateUnit.Month);
+        public static DateFormat DayMonthYear = new DateFormat(DateUnit.Day, DateUnit.Month, DateUnit.Year);
+        public static DateFormat DayYearMonth = new DateFormat(DateUnit.Day, DateUnit.Year, DateUnit.Month);
+        public static DateFormat MonthDayYear = new DateFormat(DateUnit.Month, DateUnit.Day, DateUnit.Year);
+        public static DateFormat MonthYearDay = new DateFormat(DateUnit.Month, DateUnit.Year, DateUnit.Day);
+        public static DateFormat YearMonthDay = new DateFormat(DateUnit.Year, DateUnit.Month, DateUnit.Day);
+        public static DateFormat YearDayMonth = new DateFormat(DateUnit.Year, DateUnit.Day, DateUnit.Month);
 
         private readonly List<DateUnit> dateUnits = new List<DateUnit>();
 
@@ -49,6 +49,9 @@ namespace TestStack.White.UIItems
             return dateFormat;
         }
 
+        /// <summary>
+        /// Use ',' as separator.
+        /// </summary>
         public static DateFormat Parse(string @string)
         {
             string[] parts = @string.Split(',');

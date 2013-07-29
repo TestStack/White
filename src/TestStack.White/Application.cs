@@ -38,8 +38,9 @@ namespace TestStack.White
         /// <summary>
         /// Runs the process identified by the executable and creates Application object for this executable
         /// </summary>
-        /// <param name="executable">location of the executable</param>
-        /// <returns></returns>
+        /// <param name="executable">Path to the executable</param>
+        /// <exception cref="ArgumentNullException">No process info passed</exception>
+        /// <exception cref="WhiteException">White Failed to Launch or Attached to process</exception>
         public static Application Launch(string executable)
         {
             var processStartInfo = new ProcessStartInfo(executable);
@@ -49,8 +50,8 @@ namespace TestStack.White
         /// <summary>
         /// Lauches the process and creates and Application object for it
         /// </summary>
-        /// <param name="processStartInfo"></param>
-        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">No process info passed</exception>
+        /// <exception cref="WhiteException">White Failed to Launch or Attached to process</exception>
         public static Application Launch(ProcessStartInfo processStartInfo)
         {
             if (string.IsNullOrEmpty(processStartInfo.WorkingDirectory)) processStartInfo.WorkingDirectory = ".";
@@ -89,22 +90,27 @@ namespace TestStack.White
         }
 
         /// <summary>
-        /// Creates an Application object for existing process 
+        /// Attaches White to an existing process by process id 
         /// </summary>
-        /// <param name="processId"></param>
-        /// <returns></returns>
+        /// <exception cref="WhiteException">White Failed to Attach to process</exception>
         public static Application Attach(int processId)
         {
-            Process process = Process.GetProcessById(processId);
-            if (process == null) throw new WhiteException("Could not find process with id: " + processId);
+            Process process;
+            try
+            {
+                process = Process.GetProcessById(processId);
+            }
+            catch (ArgumentException e)
+            {
+                throw new WhiteException("Could not find process with id: " + processId, e);
+            }
             return new Application(process);
         }
 
         /// <summary>
-        /// Attaches with existing process
+        /// Attaches White to an existing process
         /// </summary>
-        /// <param name="process"></param>
-        /// <returns></returns>
+        /// <exception cref="WhiteException">White Failed to Attach to process</exception>
         public static Application Attach(Process process)
         {
             return new Application(process);
@@ -113,8 +119,7 @@ namespace TestStack.White
         /// <summary>
         /// Attaches with existing process
         /// </summary>
-        /// <param name="executable"></param>
-        /// <returns></returns>
+        /// <exception cref="WhiteException">White Failed to Attach to process with specified name</exception>
         public static Application Attach(string executable)
         {
             Process[] processes = Process.GetProcessesByName(executable);
@@ -127,6 +132,9 @@ namespace TestStack.White
         /// </summary>
         /// <param name="processStartInfo"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="WhiteException">White Failed to Launch or Attach to process</exception>
         public static Application AttachOrLaunch(ProcessStartInfo processStartInfo)
         {
             string processName = ReplaceLast(processStartInfo.FileName, ".exe", string.Empty);
@@ -165,6 +173,7 @@ namespace TestStack.White
         /// <param name="title">Title text of window displayed on desktop</param>
         /// <param name="option">Option which would be used to initialize the window.</param>
         /// <returns></returns>
+        /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
         public virtual Window GetWindow(string title, InitializeOption option)
         {
             WindowSession windowSession = applicationSession.WindowSession(option);
@@ -172,10 +181,11 @@ namespace TestStack.White
         }
 
         /// <summary>
-        /// Get visible window
+        /// Get visible window. NoCache option is set by default
         /// </summary>
         /// <param name="title">Title text of window displayed on desktop</param>
         /// <returns></returns>
+        /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
         public virtual Window GetWindow(string title)
         {
             return GetWindow(title, InitializeOption.NoCache);
@@ -187,6 +197,7 @@ namespace TestStack.White
         /// <param name="searchCriteria"></param>
         /// <param name="initializeOption">found window would be initialized with this option</param>
         /// <returns></returns>
+        /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
         public virtual Window GetWindow(SearchCriteria searchCriteria, InitializeOption initializeOption)
         {
             WindowSession windowSession = applicationSession.WindowSession(initializeOption);
@@ -234,6 +245,7 @@ namespace TestStack.White
         /// All windows belonging to the application
         /// </summary>
         /// <returns></returns>
+        /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
         public virtual List<Window> GetWindows()
         {
             return windowFactory.DesktopWindows(process, new NoApplicationSession());
@@ -289,6 +301,7 @@ namespace TestStack.White
         /// </summary>
         /// <param name="match"></param>
         /// <param name="initializeOption">option for the window which matches the condition</param>
+        /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
         public virtual Window Find(Predicate<string> match, InitializeOption initializeOption)
         {
             WindowSession windowSession = applicationSession.WindowSession(initializeOption);

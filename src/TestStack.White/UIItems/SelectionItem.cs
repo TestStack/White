@@ -19,6 +19,7 @@ namespace TestStack.White.UIItems
             }
         }
 
+        /// <exception cref="UIActionException"></exception>
         public virtual void Select()
         {
             if (!Bounds.IsEmpty) Click();
