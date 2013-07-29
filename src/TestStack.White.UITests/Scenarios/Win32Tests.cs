@@ -38,7 +38,10 @@ namespace TestStack.White.UITests.Scenarios
             using (var app = Application.Launch(IExplorer))
             using (var window = app.GetWindow("New tab - Internet Explorer"))
             {
-                window.Get<Button>(SearchCriteria.ByAutomationId("Item 3")).Click();
+                var button = window.Get<Button>(SearchCriteria.ByAutomationId("Item 3"));
+                //check if we can get a win32 tooltip
+                Assert.Equal("Tools (Alt+X)", window.GetToolTipOn(button).Text);
+                button.Click();
                 window.PopupMenu("Internet options").Click();
                 using (var internetOptions = window.ModalWindow("Internet Options"))
                 {
