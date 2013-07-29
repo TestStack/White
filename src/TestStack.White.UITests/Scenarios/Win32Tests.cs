@@ -5,6 +5,7 @@ using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UIItems.WindowStripControls;
 using TestStack.White.WindowsAPI;
 using Xunit;
 
@@ -64,6 +65,11 @@ namespace TestStack.White.UITests.Scenarios
             using (var application = Application.AttachOrLaunch(psi))
             using (var mainWindow = application.GetWindow(SearchCriteria.ByText("Calculator"), InitializeOption.NoCache))
             {
+                // Verify can click on menu twice
+                var menuBar = mainWindow.Get<MenuBar>(SearchCriteria.ByText("Application"));
+                menuBar.MenuItem("Edit", "Copy").Click();
+                menuBar.MenuItem("Edit", "Copy").Click();
+
                 mainWindow.Keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
                 mainWindow.Keyboard.Enter("E");
                 mainWindow.Keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);
