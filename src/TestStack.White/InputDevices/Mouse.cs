@@ -15,36 +15,37 @@ namespace TestStack.White.InputDevices
     public class Mouse : IMouse
     {
         [DllImport("user32", EntryPoint = "SendInput")]
-        private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
+        static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
 
         [DllImport("user32", EntryPoint = "SendInput")]
-        private static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
-        
+        static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
+
         [DllImport("user32.dll")]
-        private static extern IntPtr GetMessageExtraInfo();
+        static extern IntPtr GetMessageExtraInfo();
 
         [DllImport("user32.dll")]
 
-        private static extern bool GetCursorPos(ref System.Drawing.Point cursorInfo);
+        static extern bool GetCursorPos(ref System.Drawing.Point cursorInfo);
 
         [DllImport("user32.dll")]
-        private static extern bool SetCursorPos(int x, int y);
+        static extern bool SetCursorPos(int x, int y);
 
         [DllImport("user32.dll")]
-        private static extern bool GetCursorInfo(ref CursorInfo cursorInfo);
+        static extern bool GetCursorInfo(ref CursorInfo cursorInfo);
 
         [DllImport("user32.dll")]
-        private static extern short GetDoubleClickTime();
+        static extern short GetDoubleClickTime();
+
+        [DllImport("user32.dll")]
+        static extern int GetSystemMetrics(SystemMetric smIndex);
 
         public static Mouse Instance = new Mouse();
-        private DateTime lastClickTime = DateTime.Now;
-        private readonly short doubleClickTime = GetDoubleClickTime();
-        private Point lastClickLocation;
-        private const int ExtraMillisecondsBecauseOfBugInWindows = 13;
+        DateTime lastClickTime = DateTime.Now;
+        readonly short doubleClickTime = GetDoubleClickTime();
+        Point lastClickLocation;
+        const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
-        private Mouse()
-        {
-        }
+        Mouse() { }
 
         public virtual Point Location
         {
@@ -77,22 +78,22 @@ namespace TestStack.White.InputDevices
 
         private static int RightMouseButtonDown
         {
-            get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN); }
+            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN; }
         }
 
         private static int RightMouseButtonUp
         {
-            get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP); }
+            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP; }
         }
 
         private static int LeftMouseButtonDown
         {
-            get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN); }
+            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN; }
         }
 
         private static int LeftMouseButtonUp
         {
-            get { return (CoreAppXmlConfiguration.Instance.InvertMouseButtons ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP); }
+            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP; }
         }
 
         public virtual void RightClick()

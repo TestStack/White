@@ -32,7 +32,6 @@ namespace TestStack.White.Configuration
         bool RawElementBasedSearch { get; set; }
         int DoubleClickInterval { get; set; }
         bool MoveMouseToGetStatusOfHourGlass { get; set; }
-        bool InvertMouseButtons { get; set; }
         ILoggerFactory LoggerFactory { get; set; }
         IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes);
     }
