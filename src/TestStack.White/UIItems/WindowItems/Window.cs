@@ -424,7 +424,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// Recursively gets all the descendant windows.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="UIItemSearchException">if your framework is not supported</exception> // from ChildWindowFactory.Create
+        /// <exception cref="UIItemSearchException">The application type is not supported by White</exception> // from ChildWindowFactory.Create
         public virtual List<Window> ModalWindows()
         {
             var finder = new AutomationElementFinder(automationElement);

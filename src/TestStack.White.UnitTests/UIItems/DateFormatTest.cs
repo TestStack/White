@@ -8,8 +8,8 @@ namespace TestStack.White.UnitTests.UIItems
         [Fact]
         public void DifferentDateFormats()
         {
-            Assert.Equal(DateFormat.dayMonthYear, DateFormat.Create("-", "dd-MM-yyyy"));
-            Assert.Equal(DateFormat.dayMonthYear, DateFormat.Create("-", "d-M-yyyy"));
+            Assert.Equal(DateFormat.DayMonthYear, DateFormat.Create("-", "dd-MM-yyyy"));
+            Assert.Equal(DateFormat.DayMonthYear, DateFormat.Create("-", "d-M-yyyy"));
         }
     }
 }
