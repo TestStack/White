@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Grand Child");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Child", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Main");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Grand Child");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Child", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Main");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ScenariosPane = new System.Windows.Forms.GroupBox();
             this.ReverseTabOrderButton = new System.Windows.Forms.Button();
@@ -54,9 +54,7 @@
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
             this.ControlsTab = new System.Windows.Forms.TabControl();
             this.ListControlsTab = new System.Windows.Forms.TabPage();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
             this.AddNode = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
@@ -75,6 +73,8 @@
             this.alive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.display = new System.Windows.Forms.DataGridViewButtonColumn();
             this.details = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.PropertyGridTab = new System.Windows.Forms.TabPage();
+            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             this.ToolStrip2 = new System.Windows.Forms.ToolStrip();
             this.ToolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
@@ -99,8 +99,9 @@
             this.toolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
             this.splitButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripProgressBar2 = new System.Windows.Forms.ToolStripProgressBar();
-            this.PropertyGridTab = new System.Windows.Forms.TabPage();
-            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
+            this.DataGridControl = new System.Windows.Forms.DataGridView();
             this.ScenariosPane.SuspendLayout();
             this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
@@ -111,10 +112,11 @@
             this.PanelWithText.SuspendLayout();
             this.DataGridTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
+            this.PropertyGridTab.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            this.PropertyGridTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenariosPane
@@ -303,13 +305,6 @@
             this.ListControlsTab.Text = "List Controls";
             this.ListControlsTab.UseVisualStyleBackColor = true;
             // 
-            // listControls1
-            // 
-            this.listControls1.Location = new System.Drawing.Point(20, 3);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
-            // 
             // InputControlsTab
             // 
             this.InputControlsTab.Controls.Add(this.inputControls1);
@@ -320,13 +315,6 @@
             this.InputControlsTab.TabIndex = 1;
             this.InputControlsTab.Text = "Input Controls";
             this.InputControlsTab.UseVisualStyleBackColor = true;
-            // 
-            // inputControls1
-            // 
-            this.inputControls1.Location = new System.Drawing.Point(6, 6);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(618, 286);
-            this.inputControls1.TabIndex = 0;
             // 
             // OtherControlsTab
             // 
@@ -362,17 +350,17 @@
             // 
             this.TreeView.Location = new System.Drawing.Point(271, 14);
             this.TreeView.Name = "TreeView";
-            treeNode1.Name = "GrandChild";
-            treeNode1.Text = "Grand Child";
-            treeNode2.Name = "ChildNode";
-            treeNode2.Text = "Child";
-            treeNode3.Name = "RootNode";
-            treeNode3.Text = "Root";
-            treeNode4.Name = "Main";
-            treeNode4.Text = "Main";
+            treeNode5.Name = "GrandChild";
+            treeNode5.Text = "Grand Child";
+            treeNode6.Name = "ChildNode";
+            treeNode6.Text = "Child";
+            treeNode7.Name = "RootNode";
+            treeNode7.Text = "Root";
+            treeNode8.Name = "Main";
+            treeNode8.Text = "Main";
             this.TreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode7,
+            treeNode8});
             this.TreeView.Size = new System.Drawing.Size(199, 96);
             this.TreeView.TabIndex = 16;
             // 
@@ -446,6 +434,7 @@
             // 
             // DataGridTab
             // 
+            this.DataGridTab.Controls.Add(this.DataGridControl);
             this.DataGridTab.Controls.Add(this.DataGrid);
             this.DataGridTab.Location = new System.Drawing.Point(4, 22);
             this.DataGridTab.Name = "DataGridTab";
@@ -466,7 +455,7 @@
             this.details});
             this.DataGrid.Location = new System.Drawing.Point(6, 6);
             this.DataGrid.Name = "DataGrid";
-            this.DataGrid.Size = new System.Drawing.Size(677, 289);
+            this.DataGrid.Size = new System.Drawing.Size(677, 130);
             this.DataGrid.TabIndex = 10;
             // 
             // name
@@ -499,6 +488,24 @@
             this.details.HeaderText = "Details";
             this.details.Name = "details";
             this.details.Text = "More..";
+            // 
+            // PropertyGridTab
+            // 
+            this.PropertyGridTab.Controls.Add(this.PropertyGrid);
+            this.PropertyGridTab.Location = new System.Drawing.Point(4, 22);
+            this.PropertyGridTab.Name = "PropertyGridTab";
+            this.PropertyGridTab.Padding = new System.Windows.Forms.Padding(3);
+            this.PropertyGridTab.Size = new System.Drawing.Size(689, 298);
+            this.PropertyGridTab.TabIndex = 4;
+            this.PropertyGridTab.Text = "Property Grid";
+            this.PropertyGridTab.UseVisualStyleBackColor = true;
+            // 
+            // PropertyGrid
+            // 
+            this.PropertyGrid.Location = new System.Drawing.Point(6, 6);
+            this.PropertyGrid.Name = "PropertyGrid";
+            this.PropertyGrid.Size = new System.Drawing.Size(251, 286);
+            this.PropertyGrid.TabIndex = 1;
             // 
             // ToolStrip2
             // 
@@ -695,23 +702,27 @@
             this.toolStripProgressBar2.Size = new System.Drawing.Size(100, 16);
             this.toolStripProgressBar2.Value = 50;
             // 
-            // PropertyGridTab
+            // listControls1
             // 
-            this.PropertyGridTab.Controls.Add(this.PropertyGrid);
-            this.PropertyGridTab.Location = new System.Drawing.Point(4, 22);
-            this.PropertyGridTab.Name = "PropertyGridTab";
-            this.PropertyGridTab.Padding = new System.Windows.Forms.Padding(3);
-            this.PropertyGridTab.Size = new System.Drawing.Size(689, 298);
-            this.PropertyGridTab.TabIndex = 4;
-            this.PropertyGridTab.Text = "Property Grid";
-            this.PropertyGridTab.UseVisualStyleBackColor = true;
+            this.listControls1.Location = new System.Drawing.Point(6, 19);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
             // 
-            // PropertyGrid
+            // inputControls1
             // 
-            this.PropertyGrid.Location = new System.Drawing.Point(6, 6);
-            this.PropertyGrid.Name = "PropertyGrid";
-            this.PropertyGrid.Size = new System.Drawing.Size(251, 286);
-            this.PropertyGrid.TabIndex = 1;
+            this.inputControls1.Location = new System.Drawing.Point(6, 6);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(618, 286);
+            this.inputControls1.TabIndex = 0;
+            // 
+            // DataGridControl
+            // 
+            this.DataGridControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridControl.Location = new System.Drawing.Point(6, 142);
+            this.DataGridControl.Name = "DataGridControl";
+            this.DataGridControl.Size = new System.Drawing.Size(677, 150);
+            this.DataGridControl.TabIndex = 11;
             // 
             // Form1
             // 
@@ -739,13 +750,14 @@
             this.PanelWithText.PerformLayout();
             this.DataGridTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
+            this.PropertyGridTab.ResumeLayout(false);
             this.ToolStrip1.ResumeLayout(false);
             this.ToolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            this.PropertyGridTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -818,6 +830,7 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar2;
         private System.Windows.Forms.TabPage PropertyGridTab;
         private System.Windows.Forms.PropertyGrid PropertyGrid;
+        private System.Windows.Forms.DataGridView DataGridControl;
     }
 }
 

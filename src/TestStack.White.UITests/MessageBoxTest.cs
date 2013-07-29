@@ -22,7 +22,7 @@ namespace TestStack.White.UITests
         {
             MainWindow.Get<Button>("OpenMessageBox").Click();
             Window messageBox = MainWindow.MessageBox("Test message box");
-            messageBox.Get<Button>(SearchCriteria.ByText("OK")).Click();
+            messageBox.Get<Button>(SearchCriteria.ByAutomationId("2")).Click();
         }
 
         void ThrowsWhenNotFound()

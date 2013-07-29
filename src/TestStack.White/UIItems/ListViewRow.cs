@@ -39,7 +39,7 @@ namespace TestStack.White.UIItems
             get
             {
                 actionListener.ActionPerforming(this);
-                List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.Text));
+                var collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.Text));
                 return new ListViewCells(collection, actionListener, header);
             }
         }

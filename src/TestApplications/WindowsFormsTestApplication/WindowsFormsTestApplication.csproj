@@ -120,6 +120,7 @@
     <Compile Include="Scenarios\WindowWithScrollbars.Designer.cs">
       <DependentUpon>WindowWithScrollbars.cs</DependentUpon>
     </Compile>
+    <Compile Include="TestItem.cs" />
     <EmbeddedResource Include="Scenarios\CustomUIItem\CustomUIItemScenario.resx">
       <DependentUpon>CustomUIItemScenario.cs</DependentUpon>
     </EmbeddedResource>
