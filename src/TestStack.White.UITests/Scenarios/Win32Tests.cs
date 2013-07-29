@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
@@ -36,7 +37,7 @@ namespace TestStack.White.UITests.Scenarios
         public void InternetExplorerTests()
         {
             using (var app = Application.Launch(IExplorer))
-            using (var window = app.GetWindow("New tab - Internet Explorer"))
+            using (var window = app.GetWindows().Single())
             {
                 var button = window.Get<Button>(SearchCriteria.ByAutomationId("Item 3"));
                 //check if we can get a win32 tooltip
