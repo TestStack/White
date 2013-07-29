@@ -17,7 +17,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             {
                 AutomationElement scrollParentElement =
                     new AutomationElementFinder(automationElement).Child(AutomationSearchCondition.ByAutomationId("ListBox"));
-                if (scrollBars == null) scrollBars = ScrollerFactory.CreateBars(scrollParentElement, actionListener);
+                if (scrollBars == null) scrollBars = ScrollerFactory.CreateBars(scrollParentElement, ActionListener);
                 return scrollBars;
             }
         }

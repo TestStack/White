@@ -12,7 +12,7 @@ namespace TestStack.White.UIItems
 
         public virtual SuggestionList SuggestionList
         {
-            get { return SuggestionListView.WaitAndFind(actionListener); }
+            get { return SuggestionListView.WaitAndFind(ActionListener); }
         }
     }
 }

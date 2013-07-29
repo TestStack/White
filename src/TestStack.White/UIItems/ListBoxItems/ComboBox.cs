@@ -18,7 +18,6 @@ namespace TestStack.White.UIItems.ListBoxItems
 
         public ComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
         {
-            this.actionListener = actionListener;
         }
 
         public override VerticalSpan VerticalSpan
@@ -33,7 +32,7 @@ namespace TestStack.White.UIItems.ListBoxItems
 
         public override IScrollBars ScrollBars
         {
-            get { return new ComboBoxScrollBars(automationElement, actionListener); }
+            get { return new ComboBoxScrollBars(automationElement, ActionListener); }
         }
 
         public virtual string EditableText
@@ -49,7 +48,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                 AutomationElement editElement = EditableElement();
                 if (editElement != null)
                 {
-                    return new TextBox(editElement, actionListener);
+                    return new TextBox(editElement, ActionListener);
                 }
                 throw new WhiteException("ComboBox is not editable");
             }

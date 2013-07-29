@@ -28,7 +28,6 @@ namespace TestStack.White.UIItems
     public class UIItem : IUIItem
     {
         protected readonly AutomationElement automationElement;
-        protected ActionListener actionListener;
         internal static readonly Mouse mouse = Mouse.Instance;
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
@@ -44,7 +43,7 @@ namespace TestStack.White.UIItems
         {
             if (null == automationElement) throw new NullReferenceException();
             this.automationElement = automationElement;
-            this.actionListener = actionListener;
+            ActionListener = actionListener;
             factory = new PrimaryUIItemFactory(new AutomationElementFinder(automationElement));
         }
 
@@ -77,9 +76,12 @@ namespace TestStack.White.UIItems
             get { return automationElement.Current.BoundingRectangle.TopLeft; }
         }
 
+        /// <summary>
+        /// Perform window message action.
+        /// </summary>
         protected virtual void ActionPerformed()
         {
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed(Action.WindowMessage);
         }
 
         public virtual Rect Bounds
@@ -146,8 +148,7 @@ namespace TestStack.White.UIItems
 
         public virtual void RightClickAt(Point point)
         {
-            actionListener.ActionPerforming(this);
-            mouse.RightClick(point, actionListener);
+            mouse.RightClick(point, ActionListener);
         }
 
         public virtual void RightClick()
@@ -162,7 +163,6 @@ namespace TestStack.White.UIItems
 
         public virtual void Focus()
         {
-            actionListener.ActionPerforming(this);
             try
             {
                 automationElement.SetFocus();
@@ -202,7 +202,7 @@ namespace TestStack.White.UIItems
             Rect errorProviderBounds = element.Current.BoundingRectangle;
             if (automationElement.Current.BoundingRectangle.Right != errorProviderBounds.Left) return null;
             mouse.Location = errorProviderBounds.Center();
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
             return window.ToolTip.Text;
         }
 
@@ -216,17 +216,13 @@ namespace TestStack.White.UIItems
             get { return automationElement.Current.FrameworkId.Equals(WindowsFramework.Win32.FrameworkId()) ? Name : Id; }
         }
 
-        public virtual ActionListener ActionListener
-        {
-            get { return actionListener; }
-        }
+        public virtual ActionListener ActionListener {  get; private set; }
 
         /// <summary>
         /// Performs mouse click at the center of this item
         /// </summary>
         public virtual void Click()
         {
-            actionListener.ActionPerforming(this);
             PerformIfValid(PerformClick);
         }
 
@@ -261,7 +257,7 @@ namespace TestStack.White.UIItems
             {
                 throw new WhiteException(string.Format("Failed to click on {0}, bounds empty", ToString()));
             }
-            mouse.Click(bounds.Center(), actionListener);
+            mouse.Click(bounds.Center(), ActionListener);
         }
 
         /// <summary>
@@ -269,8 +265,7 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void DoubleClick()
         {
-            actionListener.ActionPerforming(this);
-            PerformIfValid(()=>mouse.DoubleClick(Bounds.Center(), actionListener));
+            PerformIfValid(()=>mouse.DoubleClick(Bounds.Center(), ActionListener));
         }
 
         /// <summary>
@@ -279,8 +274,7 @@ namespace TestStack.White.UIItems
         /// <param name="key"></param>
         public virtual void KeyIn(KeyboardInput.SpecialKeys key)
         {
-            actionListener.ActionPerforming(this);
-            keyboard.PressSpecialKey(key, actionListener);
+            keyboard.PressSpecialKey(key, ActionListener);
         }
 
         public override bool Equals(object obj)
@@ -303,7 +297,7 @@ namespace TestStack.White.UIItems
 
         public virtual IScrollBars ScrollBars
         {
-            get { return scrollBars ?? (scrollBars = ScrollerFactory.CreateBars(automationElement, actionListener)); }
+            get { return scrollBars ?? (scrollBars = ScrollerFactory.CreateBars(automationElement, ActionListener)); }
         }
 
         protected virtual void HookClickEvent(UIItemEventListener eventListener)
@@ -366,11 +360,12 @@ namespace TestStack.White.UIItems
 
         public virtual void ActionPerforming(UIItem uiItem)
         {
+            ActionListener.ActionPerforming(uiItem);
         }
 
         public virtual void ActionPerformed(Action action)
         {
-            actionListener.ActionPerformed(action);
+            ActionListener.ActionPerformed(action);
         }
 
         public virtual void LogStructure()
@@ -399,18 +394,18 @@ namespace TestStack.White.UIItems
             if (pattern != null) pattern.SetValue(string.Empty);
             if (string.IsNullOrEmpty(value)) return;
 
-            actionListener.ActionPerformed(Action.WindowMessage);
+            ActionPerformed();
             EnterData(value);
         }
 
         protected virtual void EnterData(string value)
         {
             var lines = value.Replace("\r\n", "\n").Split('\n');
-            keyboard.Send(lines[0], actionListener);
+            keyboard.Send(lines[0], ActionListener);
             foreach (var line in lines.Skip(1))
             {
                 keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
-                keyboard.Send(line, actionListener); 
+                keyboard.Send(line, ActionListener); 
             }
         }
 

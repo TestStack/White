@@ -41,7 +41,7 @@ namespace TestStack.White.UIItems
 
         private Button GetButton(string buttonName)
         {
-            return new Button(finder.Child(AutomationSearchCondition.ByControlType(ControlType.Button).WithAutomationId(buttonName)), actionListener);
+            return new Button(finder.Child(AutomationSearchCondition.ByControlType(ControlType.Button).WithAutomationId(buttonName)), ActionListener);
         }
 
         public virtual void Decrement()

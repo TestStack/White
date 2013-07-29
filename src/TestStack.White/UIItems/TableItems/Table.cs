@@ -35,7 +35,7 @@ namespace TestStack.White.UIItems.TableItems
                 {
                     AutomationElement headerElement = finder.Descendant(SearchCriteria.ByText(UIItemIdAppXmlConfiguration.Instance.TableHeader).AutomationCondition);
                     if (headerElement == null) return null;
-                    header = (TableHeader) new TableHeaderFactory().Create(headerElement, actionListener);
+                    header = (TableHeader) new TableHeaderFactory().Create(headerElement, ActionListener);
                 }
                 return header;
             }
@@ -69,7 +69,7 @@ namespace TestStack.White.UIItems.TableItems
 
         public override void RightClick()
         {
-            new TooltipSafeMouse(mouse).RightClickOutsideToolTip(this, actionListener);
+            new TooltipSafeMouse(mouse).RightClickOutsideToolTip(this, ActionListener);
         }
 
         public virtual VerticalSpan VerticalSpan

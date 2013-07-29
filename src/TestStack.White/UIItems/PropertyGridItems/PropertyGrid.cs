@@ -28,7 +28,7 @@ namespace TestStack.White.UIItems.PropertyGridItems
                 {
                     var automationPatterns = new AutomationPatterns(element);
                     if (!automationPatterns.HasPattern(ValuePattern.Pattern))
-                        categories.Add(new PropertyGridCategory(element, actionListener, finder));
+                        categories.Add(new PropertyGridCategory(element, ActionListener, finder));
                 }
 
                 return categories;

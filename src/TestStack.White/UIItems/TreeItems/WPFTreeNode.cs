@@ -35,7 +35,7 @@ namespace TestStack.White.UIItems.TreeItems
 
         private Button GetExpandCollapseButton()
         {
-            return (Button) factory.Create(SearchCriteria.ByControlType(ControlType.Button), actionListener);
+            return (Button) factory.Create(SearchCriteria.ByControlType(ControlType.Button), ActionListener);
         }
     }
 }

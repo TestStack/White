@@ -36,7 +36,7 @@ namespace TestStack.White.UIItems.TabItems
                     var finder = new AutomationElementFinder(automationElement);
                     List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.TabItem));
                     foreach (AutomationElement tabItemElement in collection)
-                        pages.Add(new TabPage(tabItemElement, actionListener));
+                        pages.Add(new TabPage(tabItemElement, ActionListener));
                 }
 
                 return pages;
@@ -56,7 +56,7 @@ namespace TestStack.White.UIItems.TabItems
             if (tabPage == null) throw new UIItemSearchException(string.Format("No tab found with title{0}", tabTitle));
 
             tabPage.Select();
-            if (!oldTab.Equals(SelectedTab)) actionListener.ActionPerformed(new Action(ActionType.NewControls));
+            if (!oldTab.Equals(SelectedTab)) ActionPerformed(new Action(ActionType.NewControls));
         }
 
         public override void HookEvents(UIItemEventListener eventListener)

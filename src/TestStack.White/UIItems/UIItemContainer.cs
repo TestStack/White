@@ -165,7 +165,7 @@ namespace TestStack.White.UIItems
 
         protected virtual ActionListener ChildrenActionListener
         {
-            get { return HasActionInterceptionBehaviour() ? this : actionListener; }
+            get { return HasActionInterceptionBehaviour() ? this : ActionListener; }
         }
 
         private bool HasActionInterceptionBehaviour()
