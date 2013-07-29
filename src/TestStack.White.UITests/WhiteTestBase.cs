@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Threading;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.InputDevices;
@@ -75,7 +75,18 @@ namespace TestStack.White.UITests
                 }
                 catch (Exception ex)
                 {
-                    new ScreenCapture().CaptureScreenShot().Save(Path.Combine(screenshotDir, testAction.Method.Name + ".png"), ImageFormat.Png);
+                    string path2 = string.Empty;
+                    try
+                    {
+                        path2 = testAction.Method.Name + ".png";
+                        var filename = Path.Combine(screenshotDir, path2);
+                        new ScreenCapture().CaptureScreenShot().Save(filename, ImageFormat.Png);
+                        Trace.WriteLine(string.Format("Screenshot taken: {0}", filename));
+                    }
+                    catch (Exception)
+                    {
+                        Trace.TraceError(string.Format("Failed to save screenshot to directory: {0}, filename: {1}", screenshotDir, path2));
+                    }
                     throw new TestFailedException(string.Format("Failed to run {0} for {1}. Details:\r\n\r\n{2}", 
                         testAction.Method.Name, currentFramework, ex), ex);
                 }
