@@ -1,4 +1,4 @@
-using TestStack.White.Repository.Services;
+using TestStack.White.ScreenObjects.Services;
 
 namespace TestStack.White.UnitTests.Repository.Services
 {

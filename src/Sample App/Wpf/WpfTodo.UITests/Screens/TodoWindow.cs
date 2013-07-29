@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TestStack.White.Factory;
-using TestStack.White.Repository;
-using TestStack.White.Repository.ScreenAttributes;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.ListBoxItems;

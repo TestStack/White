@@ -1,5 +1,5 @@
 using NSubstitute;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.WindowItems;
 using Xunit;
 

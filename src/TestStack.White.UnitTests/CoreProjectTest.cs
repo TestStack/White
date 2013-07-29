@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using TestStack.White.Reporting.Domain;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;

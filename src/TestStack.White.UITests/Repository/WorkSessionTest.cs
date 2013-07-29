@@ -1,7 +1,7 @@
 using System.IO;
 using TestStack.White.Factory;
-using TestStack.White.Repository.Services;
-using TestStack.White.Repository.Sessions;
+using TestStack.White.ScreenObjects.Services;
+using TestStack.White.ScreenObjects.Sessions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 using TestStack.White.Factory;
-using TestStack.White.Repository;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;

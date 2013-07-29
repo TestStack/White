@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Windows;
 using TestStack.White.InputDevices;
 using TestStack.White.UIA;
