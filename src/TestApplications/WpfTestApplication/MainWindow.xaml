@@ -80,6 +80,9 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Data Grid">
+                <DataGrid x:Name="DataGridControl" AutoGenerateColumns="True" ItemsSource="{Binding Path = TestItems}"/>
+            </TabItem>
         </TabControl>
         <GroupBox Header="Scenarios" Grid.Row="3" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">
             <StackPanel>

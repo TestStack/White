@@ -21,6 +21,19 @@ namespace WindowsFormsTestApplication
             TreeView.Nodes.Add(treeViewItem);
             PopulateDataGrid();
             PropertyGrid.SelectedObject = new BasicTypes("str", false, 6, 1.2f);
+            DataGridControl.DataSource = TestItems;
+        }
+
+        public TestItem[] TestItems
+        {
+            get
+            {
+                return new[]{
+                               new TestItem {Id = 1, Contents = "Item1", Description = "Simple item 1"}, 
+                               new TestItem {Id = 2, Contents = "Item2", Description = ""},
+                               new TestItem {Id = 3, Contents = "Item3"}
+                           };
+            }
         }
 
         private void GetMultiple_Click(object sender, System.EventArgs e)

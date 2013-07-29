@@ -28,7 +28,7 @@ namespace TestStack.White.UITests.ControlTests
 
         void AssertChildrenCount(WindowsFramework framework)
         {
-            Assert.Equal(framework == WindowsFramework.Wpf ? 3 : 5, tab.TabCount);
+            Assert.Equal(framework == WindowsFramework.Wpf ? 4 : 5, tab.TabCount);
         }
 
         void ShouldSelectTabPage()
