@@ -14,7 +14,7 @@ namespace TestStack.White.UITests.Scenarios
     {
         const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
         const string Notepad = @"C:\Windows\system32\notepad.exe";
-        const string InternetExplorer = @"C:\Program Files\Internet InternetExplorer\iexplore.exe";
+        const string InternetExplorer = @"C:\Program Files\Internet Explorer\iexplore.exe";
 
         [Fact]
         public void NotepadTests()
