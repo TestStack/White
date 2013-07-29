@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Windows.Automation;
 using TestStack.White.Factory;
 using TestStack.White.Sessions;
@@ -31,7 +32,8 @@ namespace TestStack.White.UIItems.WindowItems
 
         public override Window ModalWindow(string title, InitializeOption option)
         {
-            return windowFactory.ModalWindow(title, option, WindowSession.ModalWindowSession(option));
+            return windowFactory.FindModalWindow(title, Process.GetProcessById(automationElement.Current.ProcessId), option, automationElement,
+                                                         WindowSession.ModalWindowSession(option));
         }
 
         public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
