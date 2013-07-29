@@ -123,7 +123,7 @@
     <Compile Include="Scenarios\HorizontalGridSplitter.xaml.cs">
       <DependentUpon>HorizontalGridSplitter.xaml</DependentUpon>
     </Compile>
-    <Compile Include="HelpClasses.cs" />
+    <Compile Include="TestItem.cs" />
     <Compile Include="ListControls.xaml.cs">
       <DependentUpon>ListControls.xaml</DependentUpon>
     </Compile>
