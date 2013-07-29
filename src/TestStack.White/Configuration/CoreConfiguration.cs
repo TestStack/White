@@ -24,7 +24,7 @@ namespace TestStack.White.Configuration
         int TooltipWaitTime { get; set; }
         int SuggestionListTimeout { get; set; }
         DateFormat DefaultDateFormat { get; set; }
-        int DragStepCount { get; }
+        int DragStepCount { get; set; }
         bool InProc { get; set; }
         bool ComboBoxItemsPopulatedWithoutDropDownOpen { get; set; }
         IWaitHook AdditionalWaitHook { get; set; }
