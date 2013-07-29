@@ -9,9 +9,27 @@ using Xunit;
 
 namespace TestStack.White.UITests.Scenarios
 {
-    public class Win32CalculatorTest
+    public class Win32Tests
     {
         private const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
+        private const string Notepad = @"C:\Windows\system32\notepad.exe";
+
+        [Fact]
+        public void NotepadTests()
+        {
+            using (var app = Application.Launch(Notepad))
+            using (var window = app.GetWindow("Untitled - Notepad"))
+            {
+                window.Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ALT);
+                window.Keyboard.Enter("o");
+                window.Keyboard.Enter("f");
+
+                using (var modalWindow = window.ModalWindow("Font"))
+                {
+                    Assert.NotNull(modalWindow);
+                }
+            }
+        }
 
         [Fact]
         public void CalculatorTests()

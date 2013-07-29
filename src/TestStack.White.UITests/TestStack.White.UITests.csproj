@@ -125,7 +125,7 @@
     <Compile Include="Infrastructure\TestConfiguration.cs" />
     <Compile Include="Infrastructure\TestConfigurationFactory.cs" />
     <Compile Include="Scenarios\GetMultipleTest.cs" />
-    <Compile Include="Scenarios\Win32CalculatorTest.cs" />
+    <Compile Include="Scenarios\Win32Tests.cs" />
     <Compile Include="TestFailedException.cs" />
     <Compile Include="UIA\AutomationElementXTest.cs" />
     <Compile Include="WhiteTestBase.cs" />
