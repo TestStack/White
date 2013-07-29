@@ -13,6 +13,7 @@ namespace TestStack.White.UITests.Scenarios
     {
         private const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
         private const string Notepad = @"C:\Windows\system32\notepad.exe";
+        const string IExplorer = @"C:\Program Files\Internet Explorer\iexplore.exe";
 
         [Fact]
         public void NotepadTests()
@@ -27,6 +28,25 @@ namespace TestStack.White.UITests.Scenarios
                 using (var modalWindow = window.ModalWindow("Font"))
                 {
                     Assert.NotNull(modalWindow);
+                }
+            }
+        }
+
+        [Fact]
+        public void InternetExplorerTests()
+        {
+            using (var app = Application.Launch(IExplorer))
+            using (var window = app.GetWindow("New tab - Internet Explorer"))
+            {
+                window.Get<Button>(SearchCriteria.ByAutomationId("Item 3")).Click();
+                window.PopupMenu("Internet options").Click();
+                using (var internetOptions = window.ModalWindow("Internet Options"))
+                {
+                    var textBox = internetOptions.Get<TextBox>(SearchCriteria.ByAutomationId("1487"));
+
+                    textBox.Text = "http://google.com";
+
+                    Assert.Equal("http://google.com", textBox.Text);
                 }
             }
         }
