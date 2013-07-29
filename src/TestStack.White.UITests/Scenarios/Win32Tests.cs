@@ -12,9 +12,9 @@ namespace TestStack.White.UITests.Scenarios
 {
     public class Win32Tests
     {
-        private const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
-        private const string Notepad = @"C:\Windows\system32\notepad.exe";
-        const string IExplorer = @"C:\Program Files\Internet Explorer\iexplore.exe";
+        const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
+        const string Notepad = @"C:\Windows\system32\notepad.exe";
+        const string InternetExplorer = @"C:\Program Files\Internet InternetExplorer\iexplore.exe";
 
         [Fact]
         public void NotepadTests()
@@ -36,7 +36,7 @@ namespace TestStack.White.UITests.Scenarios
         [Fact]
         public void InternetExplorerTests()
         {
-            using (var app = Application.Launch(IExplorer))
+            using (var app = Application.Launch(InternetExplorer))
             using (var window = app.GetWindows().Single())
             {
                 var button = window.Get<Button>(SearchCriteria.ByAutomationId("Item 3"));
