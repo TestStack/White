@@ -138,12 +138,6 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("MoveMouseToGetStatusOfHourGlass", value); }
         }
 
-        public virtual bool InvertMouseButtons
-        {
-            get { return Convert.ToBoolean(UsedValues["InvertMouseButtons"]); }
-            set { SetUsedValue("InvertMouseButtons", value); }
-        }
-
         public virtual ILoggerFactory LoggerFactory { get; set; }
 
         public virtual IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes)
