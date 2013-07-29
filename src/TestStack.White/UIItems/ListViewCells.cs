@@ -16,6 +16,7 @@ namespace TestStack.White.UIItems
             this.header = header;
         }
 
+        /// <exception cref="UIActionException">when header row is not defined</exception>
         public virtual ListViewCell this[string columnName]
         {
             get
