@@ -12,10 +12,11 @@ namespace TestStack.White.UIItems.MenuItems
 {
     public class Menus : UIItemList<Menu>
     {
-        private static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();
+        static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();
 
         public Menus(AutomationElement parent, ActionListener actionListener)
         {
+            if (parent == null) throw new ArgumentNullException("parent", "You must specify a parent automation id when creating a menu");
             AutomationSearchCondition condition = AutomationSearchCondition.ByControlType(ControlType.MenuItem);
             var finder = new AutomationElementFinder(parent);
             finder = PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent);
