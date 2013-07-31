@@ -62,6 +62,7 @@ namespace TestStack.White.Mappings
 
             items.AddWPFPrimary(typeof(CustomUIItem), ControlType.Custom);
             items.AddWinFormPrimary(typeof(TextBox), ControlType.Document);
+            items.AddWin32Primary(typeof(TextBox), ControlType.Document);
             items.AddWPFPrimary(typeof(Image), ControlType.Image);
             items.AddSilverlightPrimary(typeof(Image), ControlType.Image);
             items.AddWin32Primary(typeof(Image), ControlType.Image);

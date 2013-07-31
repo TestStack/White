@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics;
+using System.Linq;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.MenuItems;
+using TestStack.White.UIItems.WindowStripControls;
 using TestStack.White.WindowsAPI;
 using Xunit;
 
@@ -11,8 +13,9 @@ namespace TestStack.White.UITests.Scenarios
 {
     public class Win32Tests
     {
-        private const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
-        private const string Notepad = @"C:\Windows\system32\notepad.exe";
+        const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
+        const string Notepad = @"C:\Windows\system32\notepad.exe";
+        const string InternetExplorer = @"C:\Program Files\Internet Explorer\iexplore.exe";
 
         [Fact]
         public void NotepadTests()
@@ -32,6 +35,28 @@ namespace TestStack.White.UITests.Scenarios
         }
 
         [Fact]
+        public void InternetExplorerTests()
+        {
+            using (var app = Application.Launch(InternetExplorer))
+            using (var window = app.GetWindows().Single())
+            {
+                var button = window.Get<Button>(SearchCriteria.ByAutomationId("Item 3"));
+                //check if we can get a win32 tooltip
+                Assert.Equal("Tools (Alt+X)", window.GetToolTipOn(button).Text);
+                button.Click();
+                window.PopupMenu("Internet options").Click();
+                using (var internetOptions = window.ModalWindow("Internet Options"))
+                {
+                    var textBox = internetOptions.Get<TextBox>(SearchCriteria.ByAutomationId("1487"));
+
+                    textBox.Text = "http://google.com";
+
+                    Assert.Equal("http://google.com", textBox.Text);
+                }
+            }
+        }
+
+        [Fact]
         public void CalculatorTests()
         {
             //strat process for the above exe file location
@@ -40,6 +65,11 @@ namespace TestStack.White.UITests.Scenarios
             using (var application = Application.AttachOrLaunch(psi))
             using (var mainWindow = application.GetWindow(SearchCriteria.ByText("Calculator"), InitializeOption.NoCache))
             {
+                // Verify can click on menu twice
+                var menuBar = mainWindow.Get<MenuBar>(SearchCriteria.ByText("Application"));
+                menuBar.MenuItem("Edit", "Copy").Click();
+                menuBar.MenuItem("Edit", "Copy").Click();
+
                 mainWindow.Keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
                 mainWindow.Keyboard.Enter("E");
                 mainWindow.Keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
@@ -10,6 +11,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public DescendantFinder(AutomationElement automationElement)
         {
+            if (automationElement == null) throw new ArgumentNullException("automationElement");
             this.automationElement = automationElement;
         }
 
@@ -25,7 +27,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual List<AutomationElement> Descendants(AutomationSearchCondition automationSearchCondition)
         {
-            AutomationElementCollection collection = automationElement.FindAll(TreeScope.Descendants, automationSearchCondition.Condition);
+            var collection = automationElement.FindAll(TreeScope.Descendants, automationSearchCondition.Condition);
             var enumerable = collection.Cast<AutomationElement>();
             return new List<AutomationElement>(enumerable);
         }

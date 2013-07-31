@@ -14,13 +14,14 @@ namespace TestStack.White.UIItems.MenuItems
 {
     public class Menus : UIItemList<Menu>
     {
-        private static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();
+        static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();
 
         public Menus(AutomationElement parent, ActionListener actionListener)
         {
+            if (parent == null) throw new ArgumentNullException("parent", "You must specify a parent automation id when creating a menu");
             AutomationSearchCondition condition = AutomationSearchCondition.ByControlType(ControlType.MenuItem);
             var finder = new AutomationElementFinder(parent);
-            finder = PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent);
+            finder = Retry.For(()=> PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent), CoreAppXmlConfiguration.Instance.BusyTimeout());
             List<AutomationElement> children = finder.Descendants(condition);
             foreach (AutomationElement child in children)
                 Add((Menu) Factory.Create(child, actionListener));
@@ -37,6 +38,7 @@ namespace TestStack.White.UIItems.MenuItems
                     AutomationElement windowElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Window));
                     menuElement = new AutomationElementFinder(windowElement).Child(AutomationSearchCondition.ByControlType(ControlType.Menu));
                 }
+                if (menuElement == null) throw new UIItemSearchException("Could not find Menu");
                 finder = new AutomationElementFinder(menuElement);
             }
             return finder;
