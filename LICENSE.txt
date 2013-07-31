@@ -1,1 +1,3 @@
-﻿TestStack.White is distributed under the terms of both the MIT license and the Apache License (Version 2.0)
+TestStack.White is distributed under the terms of both the MIT license and the Apache License (Version 2.0)
+
+You may choose either License, and no action is required on your part to notify us about which License you have selected
