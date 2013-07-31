@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
@@ -14,6 +15,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public AutomationElementFinder(AutomationElement automationElement)
         {
+            if (automationElement == null) throw new ArgumentNullException("automationElement");
             this.automationElement = automationElement;
         }
 
