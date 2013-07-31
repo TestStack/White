@@ -1,3 +1,5 @@
-TestStack.White is distributed under the terms of both the MIT license and the Apache License (Version 2.0)
-
-You may choose either License, and no action is required on your part to notify us about which License you have selected
+TestStack.White is dual licensed to stay compatible with Whites Original Apache 2 license.
+ 
+You can choose either MIT or Apache 2.
+ 
+You don’t have to do anything special to choose one license or the other and you don’t have to notify anyone which license you are using.
