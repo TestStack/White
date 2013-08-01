@@ -6,10 +6,6 @@ Project white has been inactive for some time, but still has many users and is a
 
 TestStack has brought this project into it's offering to try and breathe some life into Project White. 
 
-We welcome pull requests and reported issues!
-
-If you have any queries, please join our discussion group at [https://groups.google.com/forum/#!forum/teststack_white](https://groups.google.com/forum/#!forum/teststack_white)  
-
 ## Getting Started
 Install TestStack.White from NuGet
 
@@ -21,17 +17,29 @@ I have created a sample app which uses the Screen pattern. It is available at [h
 
 Documentation
 -----------------
- - If you would like to know how to automate specific controls check out Whites UI Test Suite  
+ 
+### Documentation Site
+[http://teststack.azurewebsites.net/white/index.html](http://teststack.azurewebsites.net/white/index.html)
+
+### Discussion Group
+[https://groups.google.com/forum/#!forum/teststack_white](https://groups.google.com/forum/#!forum/teststack_white)
+
+### Sample Applications
+[https://github.com/TestStack/White/tree/master/src/Sample%20App](https://github.com/TestStack/White/tree/master/src/Sample%20App)
+
+### Whites UI Tests
 [https://github.com/TestStack/White/tree/master/src/TestStack.White.UITests](https://github.com/TestStack/White/tree/master/src/TestStack.White.UITests)
- - For documentation topics, check out the Wiki  
-[https://github.com/TestStack/White/wiki](https://github.com/TestStack/White/wiki)
- - For old documentation, check out the CodePlex site (This will be migrated and updated)  
-[https://white.codeplex.com/documentation](https://white.codeplex.com/documentation)
 
 Contributions to White's documentation is welcome
 
 ## Contributing to White
 Pull Requests for White are welcome, please include either Unit or UI Tests covering your changes if possible. 
+
+### Setting up Git
+[http://jake.ginnivan.net/setting-up-git](http://jake.ginnivan.net/setting-up-git)
+
+### Contributing to a TestStack Project
+[http://teststack.azurewebsites.net/Contributing.html](http://teststack.azurewebsites.net/Contributing.html)
 
 ## Reporting Issues
 If possible, please add a failing test to TestStack.White.UITests when you report an issue, this will allow me to fix it, and ensure there is no regression later.
