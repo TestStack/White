@@ -7,18 +7,18 @@ namespace TestStack.White.AutomationElementSearch
 {
     public class AutomationSearchCondition
     {
-        private readonly List<Condition> conditions = new List<Condition>();
-        private static readonly Dictionary<string, Func<AutomationElement.AutomationElementInformation, object, bool>> valueMatchers =
+        static readonly Dictionary<string, Func<AutomationElement.AutomationElementInformation, object, bool>> ValueMatchers =
             new Dictionary<string, Func<AutomationElement.AutomationElementInformation, object, bool>>();
+        readonly List<Condition> conditions = new List<Condition>();
 
         static AutomationSearchCondition()
         {
-            valueMatchers[AutomationElement.NameProperty.ProgrammaticName] = (information, value) => information.Name.Equals(value);
-            valueMatchers[AutomationElement.AutomationIdProperty.ProgrammaticName] = (information, value) => information.AutomationId.Equals(value);
-            valueMatchers[AutomationElement.ClassNameProperty.ProgrammaticName] = (information, value) => information.ClassName.Equals(value);
-            valueMatchers[AutomationElement.ProcessIdProperty.ProgrammaticName] =
+            ValueMatchers[AutomationElement.NameProperty.ProgrammaticName] = (information, value) => information.Name.Equals(value);
+            ValueMatchers[AutomationElement.AutomationIdProperty.ProgrammaticName] = (information, value) => information.AutomationId.Equals(value);
+            ValueMatchers[AutomationElement.ClassNameProperty.ProgrammaticName] = (information, value) => information.ClassName.Equals(value);
+            ValueMatchers[AutomationElement.ProcessIdProperty.ProgrammaticName] =
                 (information, value) => information.ProcessId.ToString().Equals(value.ToString());
-            valueMatchers[AutomationElement.ControlTypeProperty.ProgrammaticName] = (information, value) => information.ControlType.Id.Equals(value);
+            ValueMatchers[AutomationElement.ControlTypeProperty.ProgrammaticName] = (information, value) => information.ControlType.Id.Equals(value);
         }
 
         public AutomationSearchCondition(Condition condition)
@@ -132,7 +132,7 @@ namespace TestStack.White.AutomationElementSearch
 
                 if (condition is PropertyCondition)
                 {
-                    var match = valueMatchers[((PropertyCondition) condition).Property.ProgrammaticName](element.Current, ((PropertyCondition) condition).Value);
+                    var match = ValueMatchers[((PropertyCondition) condition).Property.ProgrammaticName](element.Current, ((PropertyCondition) condition).Value);
                     if (!match && and) return false;
                     if (match && !and) return true;
                 }
