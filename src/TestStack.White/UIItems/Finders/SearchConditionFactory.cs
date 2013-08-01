@@ -63,5 +63,11 @@ namespace TestStack.White.UIItems.Finders
             var automationElementProperty = new AutomationElementProperty(value, automationProperty.ProgrammaticName, automationProperty);
             return new SimpleSearchCondition(automationElement => automationElement.GetCurrentPropertyValue(automationProperty), automationElementProperty);
         }
+
+        public static SearchCondition CreateForNativeProperty(AutomationProperty automationProperty, object value)
+        {
+            var automationElementProperty = new AutomationElementProperty(value, automationProperty.ProgrammaticName, automationProperty);
+            return new SimpleSearchCondition(automationElement => automationElement.GetCurrentPropertyValue(automationProperty), automationElementProperty);
+        }
     }
 }
