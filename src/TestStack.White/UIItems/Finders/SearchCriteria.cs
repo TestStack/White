@@ -92,6 +92,11 @@ namespace TestStack.White.UIItems.Finders
             return new SearchCriteria(SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
         }
 
+        public static SearchCriteria ByNativeProperty(AutomationProperty automationProperty, object value)
+        {
+            return new SearchCriteria(SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
+        }
+
         public static SearchCriteria ByControlType(Type testControlType, WindowsFramework framework)
         {
             var searchCriteria = new SearchCriteria(SearchConditionFactory.CreateForControlType(testControlType, framework));
@@ -196,6 +201,12 @@ namespace TestStack.White.UIItems.Finders
         }
 
         public virtual SearchCriteria AndNativeProperty(AutomationProperty automationProperty, bool value)
+        {
+            conditions.Insert(0, SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
+            return this;
+        }
+
+        public virtual SearchCriteria AndNativeProperty(AutomationProperty automationProperty, object value)
         {
             conditions.Insert(0, SearchConditionFactory.CreateForNativeProperty(automationProperty, value));
             return this;
