@@ -220,11 +220,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         private void WaitForWindow()
         {
             var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
-            if (!CoreAppXmlConfiguration.Instance.InProc && !IsConsole() &&
-                (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
-            {
-                throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
-            }
+
             if (windowPattern == null) return;
             var finalState = Retry.For(
                 () => windowPattern.Current.WindowInteractionState,
@@ -236,11 +232,6 @@ UI actions on window needing mouse would not work in area not falling under the 
                 var message = string.Format(format, Constants.BusyMessage, windowPattern.Current.WindowInteractionState);
                 throw new UIActionException(message);
             }
-        }
-
-        private bool IsConsole()
-        {
-            return ("ConsoleWindowClass".Equals(automationElement.Current.ClassName));
         }
 
         /// <exception cref="System.ArgumentException">when current process is not available any more (id expired)</exception>
