@@ -188,7 +188,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
             catch (Exception e)
             {
-                if (!(e is InvalidOperationException || e is ElementNotAvailableException || e is Win32Exception))
+                if (!(e is InvalidOperationException || e is ElementNotAvailableException || e is Win32Exception || e is UnauthorizedAccessException))
                     throw new UIActionException(string.Format("Window didn't respond" + Constants.BusyMessage), e);
             }
         }
