@@ -25,6 +25,7 @@ namespace TestStack.White.Factory
         public virtual Window ModalWindow(string title, InitializeOption option, WindowSession windowSession)
         {
             var message = "Could not find modal window with title: " + title;
+            title = title.Replace("&", string.Empty); // Seems v3 just strips the amperstand out
             var modalWindowElement = WaitTillFound(() => Finder.FindWindow(title, 0), message);
             return Create(modalWindowElement, option, windowSession);
         }
