@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Automation;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
@@ -128,10 +129,10 @@ namespace TestStack.White.UITests
             {
                 var button = window.Get<Button>("HiddenButton");
                 button.Click();
-                Assert.Equal("HiddenButtonClicked", button.HelpText);
+                Assert.Equal("HiddenButtonClicked", button.LegacyHelpText);
                 var buttonUpTop = window.Get<Button>("ButtonBackUpTop");
                 buttonUpTop.Click();
-                Assert.Equal("ButtonBackUpTopClicked", buttonUpTop.HelpText);
+                Assert.Equal("ButtonBackUpTopClicked", buttonUpTop.LegacyHelpText);
             }
         }
 

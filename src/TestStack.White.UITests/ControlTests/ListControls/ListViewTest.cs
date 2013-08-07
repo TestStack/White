@@ -30,7 +30,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 listView.Select(0);
                 ListViewRow firstRow = listView.Rows[0];
                 Assert.Equal(true, firstRow.IsSelected);
-                Assert.Equal("ListView item selected - " + 0, listView.HelpText);
+                Assert.Equal("ListView item selected - " + 0, listView.LegacyHelpText);
                 listView.Select(1);
                 ListViewRow secondRow = listView.Rows[1];
                 Assert.Equal(true, secondRow.IsSelected);

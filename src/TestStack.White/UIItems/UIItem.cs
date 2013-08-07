@@ -343,7 +343,31 @@ namespace TestStack.White.UIItems
             }
         }
 
-        public virtual string HelpText { get { return automationElement.Current.HelpText; } }
+        public virtual string HelpText
+        {
+            get
+            {
+                return automationElement.Current.HelpText;
+            }
+        }
+
+        /// <summary>
+        /// AccessibleDescription in Winforms no longer sets the HelpText, use this to get the AccessibleDescription
+        /// </summary>
+        public virtual string LegacyHelpText
+        {
+            get
+            {
+                var helpText = automationElement.Current.HelpText;
+                var automationPattern = LegacyIAccessiblePattern.Pattern;
+                if (string.IsNullOrEmpty(helpText) && AutomationElement.GetSupportedPatterns().Contains(automationPattern))
+                {
+                    var p = (LegacyIAccessiblePattern)AutomationElement.GetCurrentPattern(automationPattern);
+                    helpText = p.Current.Description;
+                }
+                return helpText;
+            }
+        }
 
         /// <summary>
         /// Internal to white and intended to be used for white recording

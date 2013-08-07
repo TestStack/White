@@ -28,7 +28,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             var textBox = MainWindow.Get<TextBox>("TextBox");
             textBox.Text = "somethingElse";
             Assert.Equal("somethingElse", textBox.Text);
-            Assert.Equal("Text Changed", textBox.HelpText);
+            Assert.Equal("Text Changed", textBox.LegacyHelpText);
             textBox.Text = "";
             Assert.Equal("", textBox.Text);
             textBox.Text = "againSomethingElse";

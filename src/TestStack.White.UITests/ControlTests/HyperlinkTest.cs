@@ -11,7 +11,7 @@ namespace TestStack.White.UITests.ControlTests
         {
             var hyperlink = MainWindow.Get<Hyperlink>("LinkLabel");
             hyperlink.Click(10, 10);
-            Assert.Equal("Hyperlink Clicked", hyperlink.HelpText);
+            Assert.Equal("Hyperlink Clicked", hyperlink.LegacyHelpText);
         }
 
         public void ClickablePoint()
@@ -22,7 +22,7 @@ namespace TestStack.White.UITests.ControlTests
 
             Assert.NotEqual(new Point(0, 0), clickablePoint);
             hyperlink.Click();
-            Assert.Equal("Hyperlink Clicked", hyperlink.HelpText);
+            Assert.Equal("Hyperlink Clicked", hyperlink.LegacyHelpText);
         }
 
         public void ClickHyperlinkFromLabel()
@@ -30,7 +30,7 @@ namespace TestStack.White.UITests.ControlTests
             var labelContainingHyperlink = MainWindow.Get<WPFLabel>("LinkLabelContainer");
             var hyperlink = labelContainingHyperlink.Hyperlink("Link Text");
             hyperlink.Click();
-            Assert.Equal("Hyperlink Clicked", hyperlink.HelpText);
+            Assert.Equal("Hyperlink Clicked", hyperlink.LegacyHelpText);
         }
 
         protected override void ExecuteTestRun(WindowsFramework framework)
