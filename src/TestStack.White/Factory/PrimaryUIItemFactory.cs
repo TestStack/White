@@ -68,14 +68,14 @@ namespace TestStack.White.Factory
         {
             if (searchCriteria.IsIndexed)
             {
-                UIItemCollection collection = CreateAll(searchCriteria, actionListener);
+                UIItemCollection collection = CreateAll(searchCriteria, actionListener, null);
                 return searchCriteria.IndexedItem(collection);
             }
             return dictionaryMappedItemFactory.Create(Finder.Descendant(searchCriteria.AutomationCondition), actionListener,
                                                       searchCriteria.CustomItemType);
         }
 
-        public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, ActionListener actionListener)
+        public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, ActionListener actionListener, string defaultFrameworkId)
         {
             return new UIItemCollection(Finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
         }
