@@ -40,8 +40,8 @@ namespace TestStack.White
                 AutomationElement element =
                     finder.Child(new[]
                                      {
-                                         AutomationSearchCondition.ByControlType(ControlType.Pane).OfName("Program Manager"),
-                                         AutomationSearchCondition.ByControlType(ControlType.List).OfName("Desktop")
+                                         AutomationSearchCondition.ByControlType(ControlType.Pane).WithName("Program Manager"),
+                                         AutomationSearchCondition.ByControlType(ControlType.List).WithName("Desktop")
                                      });
                 return new ListControl(element, new ProcessActionListener(element));
             }

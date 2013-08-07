@@ -41,4 +41,4 @@ Discussion Group:
 https://groups.google.com/forum/#!forum/teststack_white
 
 Change Log:
-https://github.com/TestStack/White/blob/master/Changes.txt
+http://docs.teststack.net/White/ChangeLog.html

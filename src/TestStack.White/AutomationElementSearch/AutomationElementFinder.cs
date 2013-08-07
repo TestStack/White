@@ -69,7 +69,7 @@ namespace TestStack.White.AutomationElementSearch
             List<AutomationSearchCondition> windowSearchConditions = new AutomationSearchConditionFactory().GetWindowSearchConditions(processId);
             foreach (var searchCondition in windowSearchConditions)
             {
-                AutomationElement windowElement = Child(searchCondition.OfName(title));
+                AutomationElement windowElement = Child(searchCondition.WithName(title));
                 if (windowElement != null) return windowElement;
             }
 
@@ -77,7 +77,7 @@ namespace TestStack.White.AutomationElementSearch
                          new[]
                              {
                                  AutomationSearchCondition.GetWindowWithTitleBarSearchCondition(processId),
-                                 AutomationSearchCondition.ByControlType(ControlType.TitleBar).OfName(title)
+                                 AutomationSearchCondition.ByControlType(ControlType.TitleBar).WithName(title)
                              });
         }
 

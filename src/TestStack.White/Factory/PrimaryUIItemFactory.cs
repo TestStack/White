@@ -48,7 +48,7 @@ namespace TestStack.White.Factory
 
         public virtual bool TryGetPopupMenu(ActionListener actionListener, out PopUpMenu popUpMenu)
         {
-            var searchConditions = new[] {AutomationSearchCondition.ByControlType(ControlType.Menu).OfName("DropDown")};
+            var searchConditions = new[] {AutomationSearchCondition.ByControlType(ControlType.Menu).WithName("DropDown")};
             return TryGetPopupMenu(searchConditions, actionListener, out popUpMenu);
         }
 

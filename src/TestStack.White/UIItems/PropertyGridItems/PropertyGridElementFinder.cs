@@ -22,7 +22,7 @@ namespace TestStack.White.UIItems.PropertyGridItems
         public virtual AutomationElement FindBrowseButton()
         {
             AutomationElement element = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Table),
-                                                     AutomationSearchCondition.ByControlType(ControlType.Button).OfName("Browse..."));
+                                                     AutomationSearchCondition.ByControlType(ControlType.Button).WithName("Browse..."));
             return element;
         }
     }
