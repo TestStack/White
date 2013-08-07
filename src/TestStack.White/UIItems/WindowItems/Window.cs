@@ -86,7 +86,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual string Title
         {
-            get { return TitleBar == null ? Name : TitleBar.Name; }
+            get { return TitleBar == null ? Name : TitleBar.Title; }
         }
 
         private WindowPattern WinPattern
