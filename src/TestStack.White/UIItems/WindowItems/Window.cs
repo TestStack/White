@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -187,7 +188,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
             catch (Exception e)
             {
-                if (!(e is InvalidOperationException || e is ElementNotAvailableException))
+                if (!(e is InvalidOperationException || e is ElementNotAvailableException || e is Win32Exception))
                     throw new UIActionException(string.Format("Window didn't respond" + Constants.BusyMessage), e);
             }
         }
