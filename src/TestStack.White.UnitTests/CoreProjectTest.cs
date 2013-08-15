@@ -18,7 +18,8 @@ namespace TestStack.White.UnitTests
         {
             var virtuals = typeof(UIItem).Assembly.GetTypes()
                 .Where(t => t.IsClass)
-                .Where(t => !t.FullName.Contains("InvokerWrapper") && !t.FullName.Contains("AnonymousType"))
+                .Where(t => !t.FullName.Contains("InvokerWrapper") && !t.FullName.Contains("AnonymousType")
+                && !t.FullName.Contains("ApplicationActivationManager"))
                 .Select(t => new
                 {
                     Type = t,

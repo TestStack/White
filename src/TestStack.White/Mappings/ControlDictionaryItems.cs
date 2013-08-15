@@ -17,6 +17,11 @@ namespace TestStack.White.Mappings
             Add(ControlDictionaryItem.WPFPrimary(testControlType, controlType));
         }
 
+        public void AddInternetExplorerPrimary(Type testControlType, ControlType controlType)
+        {
+            Add(ControlDictionaryItem.InternetExplorerPrimary(testControlType, controlType));
+        }
+
         public virtual void AddWPFSecondary(Type testControlType, ControlType controlType)
         {
             Add(ControlDictionaryItem.WPFSecondary(testControlType, controlType));

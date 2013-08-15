@@ -10,6 +10,7 @@ using TestStack.White.Factory;
 using TestStack.White.Sessions;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.WindowsAPI;
 
 namespace TestStack.White
 {
@@ -87,6 +88,22 @@ namespace TestStack.White
                 Logger.DebugFormat("[TestProcessError:{0}]", error);
             }
             return Attach(process);
+        }
+
+        /// <summary>
+        /// Launches an app
+        /// </summary>
+        /// <param name="appUserModelId">something like (%package_family_name% + "!App"_</param>
+        public static Application LaunchWindows8Application(string appUserModelId)
+        {
+            IApplicationActivationManager appActiveManager = new ApplicationActivationManager();
+            // This call ensures that the app is launched as the foreground window
+            //CoAllowSetForegroundWindow(appActiveManager, IntPtr.Zero);
+
+            uint pid;
+            appActiveManager.ActivateApplication(appUserModelId, null, ActivateOptions.None, out pid);
+
+            return Attach((int)pid);
         }
 
         /// <summary>

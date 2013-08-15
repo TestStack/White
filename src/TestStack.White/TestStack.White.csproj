@@ -214,6 +214,9 @@
     <Compile Include="Utility\PropertyResolver.cs" />
     <Compile Include="Utility\Retry.cs" />
     <Compile Include="Utility\TestExecutionMonitor.cs" />
+    <Compile Include="WindowsAPI\ActivateOptions.cs" />
+    <Compile Include="WindowsAPI\ApplicationActivationManager.cs" />
+    <Compile Include="WindowsAPI\IApplicationActivationManager.cs" />
     <Compile Include="WindowsAPI\InputFactory.cs" />
     <Compile Include="WindowsAPI\ThirtyTwoBitInput.cs" />
     <Compile Include="WindowsAPI\WindowPlacement.cs" />
