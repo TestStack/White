@@ -102,6 +102,7 @@
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />
     <Compile Include="NativeWindowTest.cs" />
+    <Compile Include="Windows8AppsTests.cs" />
     <Compile Include="WindowTests.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
     <Compile Include="ControlTests\ButtonTest.cs" />
