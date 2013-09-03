@@ -48,5 +48,6 @@
     <MakeDir Directories="$(Root)build\Artifacts" />
     <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
     <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.ScreenObjects\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.WebBrowser\TestStack.White.WebBrowser.nuspec -Version $(Version) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.WebBrowser\bin\$(Configuration)" />
   </Target>
 </Project>

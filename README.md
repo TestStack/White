@@ -18,6 +18,9 @@ I have created a sample app which uses the Screen pattern. It is available at [h
 Documentation
 -----------------
  
+### Change Log
+[http://docs.teststack.net/White/ChangeLog.html](http://docs.teststack.net/White/ChangeLog.html)
+
 ### Documentation Site
 [http://teststack.azurewebsites.net/white/index.html](http://teststack.azurewebsites.net/white/index.html)
 

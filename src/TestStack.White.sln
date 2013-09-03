@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.20617.1 PREVIEW
+VisualStudioVersion = 12.0.20623.1 VSUPREVIEW
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1BCBA4C4-8C47-496C-B0D4-FDE9D066ED27}"
 	ProjectSection(SolutionItems) = preProject
@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\LICENSE-APACHE.txt = ..\LICENSE-APACHE.txt
 		..\LICENSE-MIT.txt = ..\LICENSE-MIT.txt
 		..\LICENSE.txt = ..\LICENSE.txt
+		..\README.md = ..\README.md
 		..\TestStack.White.proj = ..\TestStack.White.proj
 	EndProjectSection
 EndProject
