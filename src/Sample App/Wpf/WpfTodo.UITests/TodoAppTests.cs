@@ -15,11 +15,14 @@ namespace WpfTodo.UITests
         [Fact]
         public void Automate()
         {
-            using (var workSession = new WorkSession(new WorkConfiguration
-            {
-                ArchiveLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                Name = "WpfTodo"
-            }, new NullWorkEnvironment()))
+            var workConfiguration =
+                new WorkConfiguration
+                {
+                    ArchiveLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+                    Name = "WpfTodo"
+                };
+
+            using (var workSession = new WorkSession(workConfiguration, new NullWorkEnvironment()))
             {
                 var screenRepository = workSession.Attach(Application);
                 var mainWindow = screenRepository.Get<TodoWindow>("Wpf Todo", InitializeOption.NoCache);
