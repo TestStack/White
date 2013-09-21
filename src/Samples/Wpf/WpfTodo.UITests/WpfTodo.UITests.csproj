@@ -63,7 +63,7 @@
       <Name>TestStack.White</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Todo.Core\Todo.Core.csproj">
-      <Project>{f5604a48-3bd0-4418-83f1-3ecc03dd2ff0}</Project>
+      <Project>{F5604A48-3BD0-4418-83F1-3ECC03DD2FF0}</Project>
       <Name>Todo.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\WpfTodo\WpfTodo.csproj">
