@@ -36,7 +36,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTestApplication", "TestA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestStack.White.UITests", "TestStack.White.UITests\TestStack.White.UITests.csproj", "{10A51741-09F8-47CA-AB94-965EE71342F7}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample App", "Sample App", "{37EE7583-778A-481E-ADD4-52A357BE95F0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{37EE7583-778A-481E-ADD4-52A357BE95F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Winforms", "Winforms", "{DFCF10D7-82C1-4916-A829-B520E8C65321}"
 EndProject
