@@ -28,7 +28,7 @@ Documentation
 [https://groups.google.com/forum/#!forum/teststack_white](https://groups.google.com/forum/#!forum/teststack_white)
 
 ### Sample Applications
-[https://github.com/TestStack/White/tree/master/src/Sample%20App](https://github.com/TestStack/White/tree/master/src/Sample%20App)
+[https://github.com/TestStack/White/tree/master/src/Samples](https://github.com/TestStack/White/tree/master/src/Samples)
 
 ### Whites UI Tests
 [https://github.com/TestStack/White/tree/master/src/TestStack.White.UITests](https://github.com/TestStack/White/tree/master/src/TestStack.White.UITests)
