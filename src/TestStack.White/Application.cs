@@ -79,6 +79,8 @@ namespace TestStack.White
                 Logger.Error(error, ex);
                 throw;
             }
+            process.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout);
+            NativeWindow.SetForegroundWindow(process.MainWindowHandle);
             //TODO Expose this, and make it capture output properly
             if (ConfigurationManager.AppSettings["CaptureAUTOutput"] != null)
             {

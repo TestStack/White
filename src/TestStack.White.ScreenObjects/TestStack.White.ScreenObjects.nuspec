@@ -8,7 +8,7 @@
     <authors>Vivek Singh, Jake Ginnivan</authors>
     <owners>Jake Ginnivan</owners>
     <licenseUrl>https://github.com/TestStack/White/blob/master/LICENSE.txt</licenseUrl>
-    <projectUrl>http://teststack.github.com/White/</projectUrl>
+    <projectUrl>https://github.com/TestStack/White</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright Jake Ginnivan 2013</copyright>
     <tags>White UIAutomation Testing UIA WPF Silverlight Win32 Automation PageObject TestStack</tags>
