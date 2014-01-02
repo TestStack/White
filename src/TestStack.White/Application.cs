@@ -10,7 +10,6 @@ using TestStack.White.Factory;
 using TestStack.White.Sessions;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
-using TestStack.White.WindowsAPI;
 
 namespace TestStack.White
 {
@@ -79,8 +78,6 @@ namespace TestStack.White
                 Logger.Error(error, ex);
                 throw;
             }
-            process.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout);
-            NativeWindow.SetForegroundWindow(process.MainWindowHandle);
             //TODO Expose this, and make it capture output properly
             if (ConfigurationManager.AppSettings["CaptureAUTOutput"] != null)
             {
