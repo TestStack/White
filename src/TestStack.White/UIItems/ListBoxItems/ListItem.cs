@@ -70,6 +70,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                 Thread.Sleep(10);
                 return oldBounds.Equals(item.Bounds);
             }, TimeSpan.FromSeconds(1), TimeSpan.FromMilliseconds(10));
+            Thread.Sleep(100);
         }
 
         public abstract void Check();
