@@ -25,7 +25,7 @@ namespace TestStack.White.UIItems
 
         public virtual void Toggle()
         {
-            var pattern = (TogglePattern) Pattern(TogglePattern.Pattern);
+            var pattern = GetPattern<TogglePattern>();
             pattern.Toggle();
         }
     }

@@ -91,7 +91,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         private WindowPattern WinPattern
         {
-            get { return (WindowPattern)Pattern(WindowPattern.Pattern); }
+            get { return GetPattern<WindowPattern>(); }
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual void Close()
         {
             minOpenTime.Wait();
-            var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
+            var windowPattern = GetPattern<WindowPattern>();
             try
             {
                 Logger.DebugFormat("Closing window {0}", Title);
@@ -220,7 +220,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// <exception cref="UIActionException">when window is not responding</exception>
         private void WaitForWindow()
         {
-            var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
+            var windowPattern = GetPattern<WindowPattern>();
 
             if (windowPattern == null) return;
             var finalState = Retry.For(
