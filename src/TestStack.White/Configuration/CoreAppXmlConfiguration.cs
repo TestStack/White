@@ -29,7 +29,7 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("DefaultDateFormat", DateFormat.CultureDefault.ToString());
             DefaultValues.Add("DragStepCount", 1);
             DefaultValues.Add("InProc", false);
-            DefaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", true);
+            DefaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", false);
             DefaultValues.Add("RawElementBasedSearch", false);
             DefaultValues.Add("MaxElementSearchDepth", 10);
             DefaultValues.Add("DoubleClickInterval", 0);

@@ -29,28 +29,29 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 
         void ListItemInComboBoxWithoutTextAvailableInitially()
         {
+            var config = CoreAppXmlConfiguration.Instance;
+            var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             try
             {
-                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+                config.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
                 Assert.Equal(0, ComboBoxUnderTest.Items.Count);
             }
             finally
             {
-                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
+                config.ComboBoxItemsPopulatedWithoutDropDownOpen = originalVal;
             }
         }
 
         void ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrieval()
         {
             // Arrange
-            var expandCollapsePattern = (ExpandCollapsePattern)ComboBoxUnderTest.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
             var config = CoreAppXmlConfiguration.Instance;
             var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
 
             try
             {
-                expandCollapsePattern.Expand();
+                ComboBoxUnderTest.Expand();
 
                 // Act
 #pragma warning disable 168
@@ -59,13 +60,13 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 #pragma warning restore 168
 
                 // Assert
-                var expansionState = expandCollapsePattern.Current.ExpandCollapseState;
+                var expansionState = ComboBoxUnderTest.ExpandCollapseState;
                 Assert.Equal(ExpandCollapseState.Expanded, expansionState);
             }
             finally
             {
                 config.ComboBoxItemsPopulatedWithoutDropDownOpen = originalVal;
-                expandCollapsePattern.Collapse();
+                ComboBoxUnderTest.Collapse();
             }
         }
 
@@ -85,7 +86,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 #pragma warning restore 168
 
                 // Assert
-                var expansionState = (ExpandCollapseState)ComboBoxUnderTest.AutomationElement.GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
+                var expansionState = ComboBoxUnderTest.ExpandCollapseState;
                 // The combobox should have been collapsed after the items were retrieved
                 Assert.Equal(ExpandCollapseState.Collapsed, expansionState);
             }
