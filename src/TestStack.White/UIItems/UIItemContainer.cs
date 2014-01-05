@@ -84,7 +84,7 @@ namespace TestStack.White.UIItems
         {
             try
             {
-                Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
+                Get(searchCriteria, new TimeSpan(0,0,0));
                 return true;
             }
             catch (AutomationException)
