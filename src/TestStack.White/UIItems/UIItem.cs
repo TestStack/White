@@ -428,7 +428,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        /// Highlight UIItem with the red frame for 1 second
+        /// Highlight UIItem with red frame
         /// </summary>
         public void DrawHighlight()
         {

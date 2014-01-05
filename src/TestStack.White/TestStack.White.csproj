@@ -92,6 +92,7 @@
     <Compile Include="Configuration\ConfigurationExtensions.cs" />
     <Compile Include="Configuration\WhiteDefaultLogger.cs" />
     <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
+    <Compile Include="Drawing\ScreenRectangle.cs" />
     <Compile Include="InputDevices\Input64.cs" />
     <Compile Include="InputDevices\SystemMetric.cs" />
     <Compile Include="Interceptors\IWhiteInterceptor.cs" />

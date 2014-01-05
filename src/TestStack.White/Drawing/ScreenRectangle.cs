@@ -6,12 +6,16 @@ using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.Drawing
 {
     internal class ScreenRectangle
     {
-        Form form = new Form();
+        private Form form = new Form();
+        //TODO: Think about making color configurable
+        private Color Color = Color.Red;
+
         internal ScreenRectangle(Rect rectangle)
         {
             form.FormBorderStyle = FormBorderStyle.None;
@@ -21,7 +25,7 @@ namespace TestStack.White.Drawing
             form.Top = 0;
             form.Width = 1;
             form.Height = 1;
-            form.BackColor = Color.Red;
+            form.BackColor = this.Color;
             form.Opacity = 0.8;
             form.Visible = true;
 
@@ -29,14 +33,17 @@ namespace TestStack.White.Drawing
             int num1 = TestStack.White.WindowsAPI.NativeWindow.GetWindowLong(form.Handle, -20);
             TestStack.White.WindowsAPI.NativeWindow.SetWindowLong(form.Handle, -20, num1 | 0x80);
 
+            //Set position
             TestStack.White.WindowsAPI.NativeWindow.SetWindowPos(form.Handle, new IntPtr(-1), Convert.ToInt32(rectangle.X), Convert.ToInt32(rectangle.Y),
                 Convert.ToInt32(rectangle.Width), Convert.ToInt32(rectangle.Height), 0x10);
         }
-        public void Show()
+
+        internal void Show()
         {
             TestStack.White.WindowsAPI.NativeWindow.ShowWindow(form.Handle, 8);
         }
-        public void Hide()
+
+        internal void Hide()
         {
             form.Hide();
         }
@@ -44,25 +51,28 @@ namespace TestStack.White.Drawing
 
     internal class FrameRectangle
     {
-        private ScreenRectangle leftRectangle;
-        private ScreenRectangle topRectangle;
-        private ScreenRectangle rightRectangle;
-        private ScreenRectangle bottomRectangle;
+        //Using 4 rectangles to display each border
+        private ScreenRectangle leftBorder;
+        private ScreenRectangle topBorder;
+        private ScreenRectangle rightBorder;
+        private ScreenRectangle bottomBorder;
+
         private ScreenRectangle[] rectangles;
         private int width = 3;
 
-        public FrameRectangle(Rect boundingRectangle)
+        internal FrameRectangle(Rect boundingRectangle)
         {
-            leftRectangle = new ScreenRectangle(new Rect(boundingRectangle.X - width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2*width));
-            topRectangle = new ScreenRectangle(new Rect(boundingRectangle.X, boundingRectangle.Y - width, boundingRectangle.Width, width));
-            rightRectangle = new ScreenRectangle(new Rect(boundingRectangle.X + boundingRectangle.Width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2*width));
-            bottomRectangle = new ScreenRectangle(new Rect(boundingRectangle.X, boundingRectangle.Y + boundingRectangle.Height, boundingRectangle.Width, width));
-            rectangles = new ScreenRectangle[] { leftRectangle, topRectangle, rightRectangle, bottomRectangle };
+            leftBorder = new ScreenRectangle(new Rect(boundingRectangle.X - width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2*width));
+            topBorder = new ScreenRectangle(new Rect(boundingRectangle.X, boundingRectangle.Y - width, boundingRectangle.Width, width));
+            rightBorder = new ScreenRectangle(new Rect(boundingRectangle.X + boundingRectangle.Width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2*width));
+            bottomBorder = new ScreenRectangle(new Rect(boundingRectangle.X, boundingRectangle.Y + boundingRectangle.Height, boundingRectangle.Width, width));
+            rectangles = new ScreenRectangle[] { leftBorder, topBorder, rightBorder, bottomBorder };
         }
-        public void Highlight()
+
+        internal void Highlight()
         {
             rectangles.ToList().ForEach(x => x.Show());
-            Thread.Sleep(1000);
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.HighlightTimeout);
             rectangles.ToList().ForEach(x => x.Hide());
         }
     }
