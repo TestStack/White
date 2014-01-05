@@ -429,7 +429,7 @@ namespace TestStack.White.UIItems
         /// <summary>
         /// Highlight UIItem with red frame
         /// </summary>
-        public void DrawHighlight()
+        public virtual void DrawHighlight()
         {
             Rect rectangle = this.AutomationElement.Current.BoundingRectangle;
 

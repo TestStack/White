@@ -38,12 +38,12 @@ namespace TestStack.White.Drawing
                 Convert.ToInt32(rectangle.Width), Convert.ToInt32(rectangle.Height), 0x10);
         }
 
-        internal void Show()
+        internal virtual void Show()
         {
             TestStack.White.WindowsAPI.NativeWindow.ShowWindow(form.Handle, 8);
         }
 
-        internal void Hide()
+        internal virtual void Hide()
         {
             form.Hide();
         }
@@ -69,7 +69,7 @@ namespace TestStack.White.Drawing
             rectangles = new ScreenRectangle[] { leftBorder, topBorder, rightBorder, bottomBorder };
         }
 
-        internal void Highlight()
+        internal virtual void Highlight()
         {
             rectangles.ToList().ForEach(x => x.Show());
             Thread.Sleep(CoreAppXmlConfiguration.Instance.HighlightTimeout);
