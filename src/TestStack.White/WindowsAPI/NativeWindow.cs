@@ -83,7 +83,7 @@ namespace TestStack.White.WindowsAPI
                 return GetTextColor(GetDC(handle));
             }
         }
-
+        
         public virtual void PostCloseMessage()
         {
             PostMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
