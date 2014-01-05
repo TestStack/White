@@ -20,6 +20,8 @@ using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 using Point = System.Windows.Point;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace TestStack.White.UIItems
 {
@@ -423,6 +425,59 @@ namespace TestStack.White.UIItems
         {
             var invokePattern = (InvokePattern) Pattern(InvokePattern.Pattern);
             if (invokePattern != null) invokePattern.Invoke();
+        }
+
+
+        //Native methods needed for highlighting UIItems
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hwndAfter, int x, int y, int width, int height, int flags);
+        [return: MarshalAs(UnmanagedType.Bool)]
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        /// <summary>
+        /// Highlight UIItem with filled rectangle for 2 seconds
+        /// </summary>
+        public void DrawHighlight()
+        {
+            //TODO: Highlight UIItem with a frame
+
+            Rect rectangle = this.AutomationElement.Current.BoundingRectangle;
+
+            if (rectangle != Rect.Empty)
+            {
+                Form form = new Form();
+                form.FormBorderStyle = FormBorderStyle.None;
+                form.ShowInTaskbar = false;
+                form.TopMost = true;
+                form.Left = Convert.ToInt32(rectangle.X);
+                form.Top = Convert.ToInt32(rectangle.Y);
+                form.Width = Convert.ToInt32(rectangle.Width);
+                form.Height = Convert.ToInt32(rectangle.Height);
+                form.BackColor = Color.Red;
+                form.Opacity = 0.7;
+                form.Visible = true;
+
+                //Set popup style
+                int num1 = GetWindowLong(form.Handle, -20);
+                SetWindowLong(form.Handle, -20, num1 | 0x80);
+
+                SetWindowPos(form.Handle, new IntPtr(-1), Convert.ToInt32(rectangle.X), Convert.ToInt32(rectangle.Y),
+                    Convert.ToInt32(rectangle.Width), Convert.ToInt32(rectangle.Height), 0x10);
+
+                ShowWindow(form.Handle, 8);
+                //TODO: Think of better solution
+                Thread.Sleep(2000);
+
+                form.Dispose();
+            }
         }
     }
 }
