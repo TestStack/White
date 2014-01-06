@@ -84,7 +84,7 @@ namespace TestStack.White.UIItems
         {
             try
             {
-                Get(searchCriteria, new TimeSpan(0,0,0));
+                Get(searchCriteria, TimeSpan.FromMilliseconds(0));
                 return true;
             }
             catch (AutomationException)
