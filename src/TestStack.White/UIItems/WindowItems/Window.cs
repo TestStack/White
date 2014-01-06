@@ -20,6 +20,7 @@ using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowStripControls;
 using TestStack.White.Utility;
+using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.UIItems.WindowItems
@@ -35,6 +36,9 @@ namespace TestStack.White.UIItems.WindowItems
             new Dictionary<DisplayState, WindowVisualState>();
 
         private AutomationEventHandler handler;
+        private Process ownerProcess;
+        private uint ownerThreadId;
+
         /// <summary>
         /// If a window is opened then you try and close it straight away, the window can fail to close
         /// 
@@ -77,6 +81,11 @@ UI actions on window needing mouse would not work in area not falling under the 
                     Title, Bounds, bounds);
             }
             WindowSession.Register(this);
+            
+            var hwnd = new IntPtr(automationElement.Current.NativeWindowHandle);
+            int ownerProcessId;
+            ownerThreadId = NativeWindow.GetWindowThreadProcessId(hwnd, out ownerProcessId);
+            ownerProcess = Process.GetProcessById(ownerProcessId);
         }
 
         protected override ActionListener ChildrenActionListener
@@ -124,6 +133,8 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual void Close()
         {
             minOpenTime.Wait();
+            ownerProcess.Dispose();
+            ownerProcess = null;
             var windowPattern = GetPattern<WindowPattern>();
             try
             {
@@ -235,10 +246,18 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        /// <exception cref="System.ArgumentException">when current process is not available any more (id expired)</exception>
         protected virtual void WaitForProcess()
         {
-            Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
+            if (ownerProcess == null || ownerProcess.HasExited) return;
+            try
+            {
+                ownerProcess.WaitForInputIdle();
+            }
+            catch (InvalidOperationException)
+            {
+                // process might be exited after the check, but before WaitForInputIdle() call
+                // in this case we will do nothing
+            }
         }
 
         public override void ActionPerformed(Action action)

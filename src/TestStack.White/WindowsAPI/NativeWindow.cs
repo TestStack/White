@@ -20,6 +20,9 @@ namespace TestStack.White.WindowsAPI
         [DllImport("gdi32.dll")]
         private static extern COLORREF GetTextColor(IntPtr hdc);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
         public NativeWindow(Point point)
         {
             handle = WindowFromPoint(new POINT((int) point.X, (int) point.Y));
