@@ -43,7 +43,8 @@ namespace TestStack.White.UIItems
                         new AutomationSearchCondition(
                             new OrCondition(
                                 AutomationSearchCondition.ByControlType(ControlType.Text).Condition,
-                                AutomationSearchCondition.ByControlType(ControlType.CheckBox).Condition)));
+                                AutomationSearchCondition.ByControlType(ControlType.CheckBox).Condition,
+                                AutomationSearchCondition.ByControlType(ControlType.ComboBox).Condition)));
                 return new ListViewCells(collection, actionListener, header);
             }
         }
