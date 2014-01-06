@@ -26,16 +26,11 @@ namespace TestStack.White.UIItems
             }
         }
 
-        private void ClearDate()
-        {
-            
-        }
-
         public virtual void SetDate(DateTime? dateTime, DateFormat dateFormat)
         {
             if (dateTime == null)
             {
-                ClearDate();
+                Logger.Warn("DateTime cannot be null, value will not be set");
                 return;
             }
 
