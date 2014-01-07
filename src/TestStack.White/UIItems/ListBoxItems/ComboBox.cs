@@ -84,6 +84,9 @@ namespace TestStack.White.UIItems.ListBoxItems
                 return;
             }
             base.Select(index);
+            var p = (ExpandCollapsePattern) this.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
+            if (p.Current.ExpandCollapseState.Equals(ExpandCollapseState.Expanded))
+                p.Collapse();
         }
 
         public override void HookEvents(UIItemEventListener eventListener)
