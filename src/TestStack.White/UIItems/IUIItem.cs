@@ -94,5 +94,7 @@ namespace TestStack.White.UIItems
         AutomationElement GetElement(SearchCriteria searchCriteria);
 
         void Enter(string value);
+
+        void DrawHighlight();
     }
 }
