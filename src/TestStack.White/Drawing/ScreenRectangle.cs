@@ -27,7 +27,7 @@ namespace TestStack.White.Drawing
             form.Height = 1;
             form.BackColor = this.Color;
             form.Opacity = 0.8;
-            form.Visible = true;
+            form.Visible = false;
 
             //Set popup style
             int num1 = TestStack.White.WindowsAPI.NativeWindow.GetWindowLong(form.Handle, -20);
