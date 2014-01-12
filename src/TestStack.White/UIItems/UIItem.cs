@@ -27,6 +27,7 @@ namespace TestStack.White.UIItems
     //TODO ToolStrip and Similar kind of support
     public class UIItem : IUIItem
     {
+        private readonly static TreeWalker windowWalker = new TreeWalker(new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Window));
         protected readonly AutomationElement automationElement;
         protected ActionListener actionListener;
         internal static readonly Mouse mouse = Mouse.Instance;
@@ -46,6 +47,7 @@ namespace TestStack.White.UIItems
             this.automationElement = automationElement;
             this.actionListener = actionListener;
             factory = new PrimaryUIItemFactory(new AutomationElementFinder(automationElement));
+            OwnerWindow = new Lazy<AutomationElement>(() => windowWalker.GetParent(automationElement));
         }
 
         /// <summary>
@@ -56,6 +58,8 @@ namespace TestStack.White.UIItems
         {
             get { return automationElement; }
         }
+
+        protected readonly Lazy<AutomationElement> OwnerWindow;
 
         protected virtual object Property(AutomationProperty automationProperty)
         {

@@ -1,8 +1,11 @@
+using System;
 using System.Windows.Automation;
 using TestStack.White.Recording;
 using TestStack.White.UIA;
 using TestStack.White.UIItemEvents;
 using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
+using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.UIItems
 {
@@ -30,7 +33,11 @@ namespace TestStack.White.UIItems
 
                 throw new WhiteException(string.Format("AutomationElement for {0} supports neither ValuePattern or TextPattern", ToString()));
             }
-            set { Enter(value); }
+            set
+            {
+                Enter(value);
+                NativeWindow.WaitForInputIdle(new IntPtr(OwnerWindow.Value.Current.NativeWindowHandle), TimeSpan.FromSeconds(1));
+            }
         }
 
         /// <summary>

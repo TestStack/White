@@ -1,6 +1,9 @@
 using System;
+using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
+using TestStack.White.Utility;
 
 namespace TestStack.White.WindowsAPI
 {
@@ -22,6 +25,22 @@ namespace TestStack.White.WindowsAPI
 
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
+        public static bool WaitForInputIdle(IntPtr hWnd, TimeSpan timeout)
+        {
+            int pid;
+            uint tid = GetWindowThreadProcessId(hWnd, out pid);
+            if (tid == 0) throw new ArgumentException("Window not found");
+            return Retry.For(() => IsThreadIdle(pid, tid), timeout, TimeSpan.FromMilliseconds(10));
+        }
+
+        private static bool IsThreadIdle(int pid, uint tid)
+        {
+            Process prc = Process.GetProcessById(pid);
+            var thr = prc.Threads.Cast<ProcessThread>().First(t => tid == t.Id);
+            return thr.ThreadState == ThreadState.Wait &&
+                   thr.WaitReason == ThreadWaitReason.UserRequest;
+        }
 
         public NativeWindow(Point point)
         {
