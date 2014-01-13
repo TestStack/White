@@ -338,11 +338,10 @@ namespace TestStack.White.UIItems
             get
             {
                 var helpText = automationElement.Current.HelpText;
-                var automationPattern = LegacyIAccessiblePattern.Pattern;
-                if (string.IsNullOrEmpty(helpText) && AutomationElement.GetSupportedPatterns().Contains(automationPattern))
+                var legacyIAccessiblePattern = AutomationElement.GetPattern<LegacyIAccessiblePattern>();
+                if (string.IsNullOrEmpty(helpText) && legacyIAccessiblePattern != null)
                 {
-                    var p = (LegacyIAccessiblePattern)AutomationElement.GetCurrentPattern(automationPattern);
-                    helpText = p.Current.Description;
+                    helpText = legacyIAccessiblePattern.Current.Description;
                 }
                 return helpText;
             }

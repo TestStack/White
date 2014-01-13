@@ -39,19 +39,18 @@ namespace TestStack.White.UIItems.ListBoxItems
             if (Bounds.IsEmpty)
             {
                 Logger.Debug("Bounds empty, falling back to automation patterns");
-                var selectionItemPattern =
-                    (SelectionItemPattern) automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
-                selectionItemPattern.Select();
+                GetPattern<SelectionItemPattern>().Select();
             }
             else
             {
                 Logger.Debug("Selecting item with Click");
                 WaitForBoundsToStabilise(this);
                 mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+
                 if (!Retry.For(() => IsSelected, TimeSpan.FromSeconds(1)))
                 {
                     Logger.Debug("Failed to select list item via click. Falling back to automation patterns");
-                    ((SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern)).Select();
+                    GetPattern<SelectionItemPattern>().Select();
                 }
             }
 
