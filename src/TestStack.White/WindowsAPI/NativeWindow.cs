@@ -30,7 +30,7 @@ namespace TestStack.White.WindowsAPI
         {
             int pid;
             uint tid = GetWindowThreadProcessId(hWnd, out pid);
-            if (tid == 0) throw new ArgumentException("Window not found");
+            if (tid == 0) return true; // probably closed already
             return Retry.For(() => IsThreadIdle(pid, tid), timeout, TimeSpan.FromMilliseconds(10));
         }
 
