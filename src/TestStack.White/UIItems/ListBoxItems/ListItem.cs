@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Windows.Automation;
+using TestStack.White.Configuration;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.Utility;
@@ -47,7 +48,8 @@ namespace TestStack.White.UIItems.ListBoxItems
                 WaitForBoundsToStabilise(this);
                 mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
 
-                if (!Retry.For(() => IsSelected, TimeSpan.FromSeconds(1)))
+                var timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.ComboBoxItemSelectionTimeout);
+                if (!Retry.For(() => IsSelected, timeout))
                 {
                     Logger.Debug("Failed to select list item via click. Falling back to automation patterns");
                     GetPattern<SelectionItemPattern>().Select();
