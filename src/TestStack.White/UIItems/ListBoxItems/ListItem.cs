@@ -48,7 +48,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                 Logger.Debug("Selecting item with Click");
                 WaitForBoundsToStabilise(this);
                 mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
-                if (!IsSelected)
+                if (!Retry.For(() => IsSelected, TimeSpan.FromSeconds(1)))
                 {
                     Logger.Debug("Failed to select list item via click. Falling back to automation patterns");
                     ((SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern)).Select();
@@ -70,7 +70,6 @@ namespace TestStack.White.UIItems.ListBoxItems
                 Thread.Sleep(10);
                 return oldBounds.Equals(item.Bounds);
             }, TimeSpan.FromSeconds(1), TimeSpan.FromMilliseconds(10));
-            Thread.Sleep(100);
         }
 
         public abstract void Check();
