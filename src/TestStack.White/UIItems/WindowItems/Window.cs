@@ -227,23 +227,9 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        /// <exception cref="Exception"></exception>
-        /// <exception cref="UIActionException">when window is not responding</exception>
         private void WaitForWindow()
         {
-            var windowPattern = GetPattern<WindowPattern>();
-
-            if (windowPattern == null) return;
-            var finalState = Retry.For(
-                () => windowPattern.Current.WindowInteractionState,
-                windowState => windowState == WindowInteractionState.NotResponding,
-                CoreAppXmlConfiguration.Instance.BusyTimeout());
-            if (finalState == WindowInteractionState.NotResponding)
-            {
-                const string format = "Window didn't come out of WaitState{0} last state known was {1}";
-                var message = string.Format(format, Constants.BusyMessage, windowPattern.Current.WindowInteractionState);
-                throw new UIActionException(message);
-            }
+            NativeWindow.WaitForInputIdle(new IntPtr(AutomationElement.Current.NativeWindowHandle), TimeSpan.FromSeconds(1));
         }
 
         protected virtual void WaitForProcess()

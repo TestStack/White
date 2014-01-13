@@ -36,7 +36,6 @@ namespace TestStack.White.UIItems
             set
             {
                 Enter(value);
-                NativeWindow.WaitForInputIdle(new IntPtr(OwnerWindow.Value.Current.NativeWindowHandle), TimeSpan.FromSeconds(1));
             }
         }
 
