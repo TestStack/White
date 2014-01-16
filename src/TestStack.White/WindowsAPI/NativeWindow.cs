@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -19,6 +20,43 @@ namespace TestStack.White.WindowsAPI
 
         [DllImport("gdi32.dll")]
         private static extern COLORREF GetTextColor(IntPtr hdc);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+        private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool IsWindowEnabled(IntPtr hWnd);
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        private const uint WM_CLOSE = 0x0010;
+
+        public static IEnumerable<NativeWindow> GetProcessWindows(int processId)
+        {
+            var result = new List<NativeWindow>();
+            Func<IntPtr, bool> processWindow = hwnd =>
+            {
+                if (IsWindowEnabled(hwnd))
+                {
+                    int pid;
+                    GetWindowThreadProcessId(hwnd, out pid);
+                    if (pid == processId)
+                        result.Add(new NativeWindow(hwnd));
+                }
+                return true;
+            };
+            EnumWindows((wnd, param) => processWindow(wnd), IntPtr.Zero);
+            return result;
+        }
 
         public NativeWindow(Point point)
         {
@@ -44,6 +82,11 @@ namespace TestStack.White.WindowsAPI
             {
                 return GetTextColor(GetDC(handle));
             }
+        }
+
+        public virtual void PostCloseMessage()
+        {
+            PostMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
         }
     }
 }
