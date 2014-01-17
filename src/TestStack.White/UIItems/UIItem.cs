@@ -117,7 +117,7 @@ namespace TestStack.White.UIItems
             return Property(property).Equals(compareTo);
         }
 
-        public T GetPattern<T>() 
+        public virtual T GetPattern<T>() 
             where T : class
         {
             return AutomationElement.GetPattern<T>();

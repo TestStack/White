@@ -25,7 +25,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                 parent.Logger.DebugFormat("TempExpand called. Expansion made: {0}", needsCollapse);
             }
 
-            public void Dispose()
+            public virtual void Dispose()
             {
                 parent.Logger.DebugFormat("TempExpand finished. Will be collapsed: {0}", needsCollapse);
                 if (needsCollapse)
