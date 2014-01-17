@@ -29,7 +29,8 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("DefaultDateFormat", DateFormat.CultureDefault.ToString());
             DefaultValues.Add("DragStepCount", 1);
             DefaultValues.Add("InProc", false);
-            DefaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", true);
+            DefaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", false);
+            DefaultValues.Add("ComboBoxItemSelectionTimeout", 1000);
             DefaultValues.Add("RawElementBasedSearch", false);
             DefaultValues.Add("MaxElementSearchDepth", 10);
             DefaultValues.Add("DoubleClickInterval", 0);
@@ -130,6 +131,12 @@ namespace TestStack.White.Configuration
         {
             get { return Convert.ToBoolean(UsedValues["ComboBoxItemsPopulatedWithoutDropDownOpen"]); }
             set { SetUsedValue("ComboBoxItemsPopulatedWithoutDropDownOpen", value); }
+        }
+
+        public virtual int ComboBoxItemSelectionTimeout
+        {
+            get { return Convert.ToInt32(UsedValues["ComboBoxItemSelectionTimeout"]); }
+            set { SetUsedValue("ComboBoxItemSelectionTimeout", value); }
         }
 
         public virtual bool MoveMouseToGetStatusOfHourGlass

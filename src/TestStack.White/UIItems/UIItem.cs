@@ -117,33 +117,12 @@ namespace TestStack.White.UIItems
             return Property(property).Equals(compareTo);
         }
 
-        protected virtual T Pattern<T>()
+        public T GetPattern<T>() 
+            where T : class
         {
-            var fieldInfo = typeof(T).GetField("Pattern", BindingFlags.Static | BindingFlags.Public);
-            var pattern = (AutomationPattern)fieldInfo.GetValue(null);
-            object patternObject;
-            if (automationElement.TryGetCurrentPattern(pattern, out patternObject))
-            {
-                return (T)patternObject;
-            }
-            return (T)(object)null;
+            return AutomationElement.GetPattern<T>();
         }
-
-        protected virtual BasePattern Pattern(AutomationPattern pattern)
-        {
-            return Pattern(AutomationElement, pattern);
-        }
-
-        internal static BasePattern Pattern(AutomationElement automationElement, AutomationPattern pattern)
-        {
-            object patternObject;
-            if (automationElement.TryGetCurrentPattern(pattern, out patternObject))
-            {
-                return (BasePattern) patternObject;
-            }
-            return null;
-        }
-
+        
         public virtual void RightClickAt(Point point)
         {
             actionListener.ActionPerforming(this);
@@ -359,11 +338,10 @@ namespace TestStack.White.UIItems
             get
             {
                 var helpText = automationElement.Current.HelpText;
-                var automationPattern = LegacyIAccessiblePattern.Pattern;
-                if (string.IsNullOrEmpty(helpText) && AutomationElement.GetSupportedPatterns().Contains(automationPattern))
+                var legacyIAccessiblePattern = AutomationElement.GetPattern<LegacyIAccessiblePattern>();
+                if (string.IsNullOrEmpty(helpText) && legacyIAccessiblePattern != null)
                 {
-                    var p = (LegacyIAccessiblePattern)AutomationElement.GetCurrentPattern(automationPattern);
-                    helpText = p.Current.Description;
+                    helpText = legacyIAccessiblePattern.Current.Description;
                 }
                 return helpText;
             }
@@ -419,7 +397,7 @@ namespace TestStack.White.UIItems
 
         public virtual void Enter(string value)
         {
-            var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+            var pattern = GetPattern<ValuePattern>();
             if (pattern != null) pattern.SetValue(string.Empty);
             if (string.IsNullOrEmpty(value)) return;
 
@@ -445,7 +423,7 @@ namespace TestStack.White.UIItems
 
         public virtual void RaiseClickEvent()
         {
-            var invokePattern = (InvokePattern) Pattern(InvokePattern.Pattern);
+            var invokePattern = GetPattern<InvokePattern>();
             if (invokePattern != null) invokePattern.Invoke();
         }
     }

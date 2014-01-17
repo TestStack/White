@@ -29,8 +29,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         {
             Assert.Equal(false, listBoxUnderTest.IsChecked("Item2"));
             var item = listBoxUnderTest.Item("Item2");
-            ((SelectionItemPattern)item.AutomationElement.GetCurrentPattern(SelectionItemPattern.Pattern))
-                .Select();
+            item.GetPattern<SelectionItemPattern>().Select();
             listBoxUnderTest.Check("Item2");
             Assert.Equal(true, listBoxUnderTest.IsChecked("Item2"));
         }
