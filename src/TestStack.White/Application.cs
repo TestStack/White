@@ -232,7 +232,10 @@ namespace TestStack.White
                 Process.Dispose();
                 return;
             }
-            Process.CloseMainWindow();
+            foreach (var window in NativeWindow.GetProcessWindows(Process.Id))
+            {
+                window.PostCloseMessage();
+            }
             Process.WaitForExit(5000);
             if (!Process.HasExited)
             {

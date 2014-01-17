@@ -12,7 +12,7 @@ namespace TestStack.White.UIItems
 
         public override void SetDate(DateTime? dateTime, DateFormat dateFormat)
         {
-            GetPattern<ValuePattern>().SetValue(dateTime != null ? dateTime.Value.ToShortDateString() : null);
+            GetPattern<ValuePattern>().SetValue(dateTime != null ? dateTime.Value.ToShortDateString() : string.Empty);
         }
     }
 }

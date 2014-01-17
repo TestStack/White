@@ -65,6 +65,35 @@ namespace TestStack.White.UIItems
             return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
         }
 
+        public virtual bool Exists<T>() where T : IUIItem
+        {
+            return Exists<T>(SearchCriteria.All);
+        }
+
+        public virtual bool Exists<T>(string primaryIdentification) where T : IUIItem
+        {
+            return Exists<T>(SearchCriteria.ByAutomationId(primaryIdentification));
+        }
+
+        public virtual bool Exists<T>(SearchCriteria searchCriteria) where T : IUIItem
+        {
+            return Exists(searchCriteria.AndControlType(typeof(T), Framework));
+        }
+
+        public virtual bool Exists(SearchCriteria searchCriteria)
+        {
+            try
+            {
+                Get(searchCriteria, TimeSpan.FromMilliseconds(0));
+                return true;
+            }
+            catch (AutomationException)
+            {
+                return false;
+            }
+
+        }
+
         /// <summary>
         /// Finds UIItem which matches specified type and searchCriteria. Look at documentation of SearchCriteria for details on it.
         /// </summary>

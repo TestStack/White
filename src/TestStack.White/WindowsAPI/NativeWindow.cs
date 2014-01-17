@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -42,6 +43,40 @@ namespace TestStack.White.WindowsAPI
                    thr.WaitReason == ThreadWaitReason.UserRequest;
         }
 
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
+
+        private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool IsWindowEnabled(IntPtr hWnd);
+
+        [return: MarshalAs(UnmanagedType.Bool)]
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool PostMessage(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
+
+        private const uint WM_CLOSE = 0x0010;
+
+        public static IEnumerable<NativeWindow> GetProcessWindows(int processId)
+        {
+            var result = new List<NativeWindow>();
+            Func<IntPtr, bool> processWindow = hwnd =>
+            {
+                if (IsWindowEnabled(hwnd))
+                {
+                    int pid;
+                    GetWindowThreadProcessId(hwnd, out pid);
+                    if (pid == processId)
+                        result.Add(new NativeWindow(hwnd));
+                }
+                return true;
+            };
+            EnumWindows((wnd, param) => processWindow(wnd), IntPtr.Zero);
+            return result;
+        }
+
         public NativeWindow(Point point)
         {
             handle = WindowFromPoint(new POINT((int) point.X, (int) point.Y));
@@ -66,6 +101,11 @@ namespace TestStack.White.WindowsAPI
             {
                 return GetTextColor(GetDC(handle));
             }
+        }
+
+        public virtual void PostCloseMessage()
+        {
+            PostMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
         }
     }
 }
