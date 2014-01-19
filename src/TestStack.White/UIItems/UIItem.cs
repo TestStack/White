@@ -338,8 +338,8 @@ namespace TestStack.White.UIItems
             get
             {
                 var displayedItem = new DisplayedItem(new IntPtr(automationElement.Current.NativeWindowHandle));
-                System.Drawing.Image image = displayedItem.GetVisibleImage();
-                return new Bitmap(image);
+                using(System.Drawing.Image image = displayedItem.GetVisibleImage())
+					return new Bitmap(image);
             }
         }
 
