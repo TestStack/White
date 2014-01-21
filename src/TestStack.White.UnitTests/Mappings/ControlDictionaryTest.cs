@@ -98,6 +98,9 @@ namespace TestStack.White.UnitTests.Mappings
             Assert.Equal(typeof(TextBox), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Edit, WindowsFramework.Silverlight.FrameworkId(), true));
             Assert.Equal(typeof(DateTimePicker), controlDictionary.GetTestControlType("SysDateTimePick32", string.Empty, ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), true));
             Assert.Equal(typeof(DateTimePicker), controlDictionary.GetTestControlType("Winforms.SysDateTimePick32.ad8aa", string.Empty, ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), true));
+            Assert.Equal(typeof(Win32ListItem), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ListItem, string.Empty, false));
+            Assert.Equal(typeof(Win32ListItem), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ListItem, WindowsFramework.WinForms.FrameworkId(), false));
+            Assert.Equal(typeof(WPFListItem), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ListItem, WindowsFramework.Wpf.FrameworkId(), false));
         }
 
         [Fact]

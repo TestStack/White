@@ -118,6 +118,9 @@ namespace TestStack.White.Mappings
 
         public virtual Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
         {
+            if (Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
+                frameWorkId = WindowsFramework.Win32.FrameworkId();
+
             var dictionaryItems = items.Where(controlDictionaryItem =>
             {
                 if (!ControlTypeMatches(controlType, controlDictionaryItem)) return false;
