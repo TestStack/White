@@ -29,7 +29,7 @@ namespace TestStack.White.UIItems.Finders
 
         public override string ToString()
         {
-            return string.Format("({0})", string.Join(" or ", simpleSearchConditions.Select(c => c.ToString()).ToArray()));
+            return string.Format("({0})", string.Join(" or ", simpleSearchConditions.Select(c => c.ToString())));
         }
 
         internal override string ToString(string operation)

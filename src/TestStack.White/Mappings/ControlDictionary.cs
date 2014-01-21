@@ -157,7 +157,7 @@ namespace TestStack.White.Mappings
                 throw new ControlDictionaryException(string.Format(
                    "Multiple TestControls found for ControlType={0} and FrameworkId:{1} - {2}",
                    controlType.LocalizedControlType, frameWorkId,
-                   string.Join(", ", dictionaryItems.Select(d => d.TestControlType == null ? "null" : d.TestControlType.FullName).ToArray())));
+                   string.Join(", ", dictionaryItems.Select(d => d.TestControlType == null ? "null" : d.TestControlType.FullName))));
 
             }
             return dictionaryItems.Single().TestControlType;
@@ -180,8 +180,8 @@ namespace TestStack.White.Mappings
             return items.Exists(controlDictionaryItem =>
             {
                 bool isPrimaryMatching = controlDictionaryItem.IsPrimary && ControlTypeMatches(controlType, controlDictionaryItem) && !controlDictionaryItem.IsIdentifiedByClassName && !controlDictionaryItem.IsIdentifiedByName;
-                bool identifiedByClassNameMatches = !string.IsNullOrEmpty(className) && className.Contains(controlDictionaryItem.ClassName) && controlDictionaryItem.IsIdentifiedByClassName;
-                bool identifiedByNameMatches = !string.IsNullOrEmpty(name) && controlDictionaryItem.TestControlType != null && name.Equals(controlDictionaryItem.TestControlType.Name) && controlDictionaryItem.IsIdentifiedByName;
+                bool identifiedByClassNameMatches = !string.IsNullOrWhiteSpace(className) && className.Contains(controlDictionaryItem.ClassName) && controlDictionaryItem.IsIdentifiedByClassName;
+                bool identifiedByNameMatches = !string.IsNullOrWhiteSpace(name) && controlDictionaryItem.TestControlType != null && name.Equals(controlDictionaryItem.TestControlType.Name) && controlDictionaryItem.IsIdentifiedByName;
                 return isPrimaryMatching || identifiedByClassNameMatches || identifiedByNameMatches;
             });
         }

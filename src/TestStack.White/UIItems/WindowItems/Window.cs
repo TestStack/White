@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -38,7 +39,7 @@ namespace TestStack.White.UIItems.WindowItems
         /// 
         /// This make sure the window is open for a minimum amount of time
         /// </summary>
-        private readonly ManualResetEvent minOpenTime;
+        private readonly Task minOpenTime;
 
         public delegate bool WaitTillDelegate();
 
@@ -60,14 +61,7 @@ namespace TestStack.White.UIItems.WindowItems
             : base(automationElement, actionListener, initializeOption, windowSession)
         {
             InitializeWindow();
-            minOpenTime = new ManualResetEvent(false);
-            Timer timer = null;
-            TimerCallback timerCallback = state =>
-            {
-                timer.Dispose();
-                minOpenTime.Set();
-            };
-            timer = new Timer(timerCallback, null, TimeSpan.FromMilliseconds(500), TimeSpan.FromMilliseconds(-1));
+            minOpenTime = Task.Factory.StartNew(() => Thread.Sleep(500));
         }
 
         private void InitializeWindow()
@@ -128,7 +122,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Close()
         {
-            minOpenTime.WaitOne();
+            minOpenTime.Wait();
             var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
             try
             {

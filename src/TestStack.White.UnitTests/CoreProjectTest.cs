@@ -79,7 +79,7 @@ namespace TestStack.White.UnitTests
             AllSubsclassesHaveEmptyConstructor(collection, typeof(SearchCriteria));
             AllSubsclassesHaveEmptyConstructor(collection, typeof(AutomationElementProperty));
             if (collection.Any())
-                throw new Exception(string.Join("\r\n", collection.ToArray()));
+                throw new Exception(string.Join("\r\n", collection));
         }
 
         private void AllSubsclassesHaveEmptyConstructor(List<string> collection, Type type)
