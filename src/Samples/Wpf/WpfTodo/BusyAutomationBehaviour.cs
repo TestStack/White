@@ -10,7 +10,7 @@ namespace WpfTodo
 
         private static void OnChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            AutomationProperties.SetHelpText(d, GetIsApplicationBusy(d) ? "Busy" : string.Empty);           
+            AutomationProperties.SetHelpText(d, GetIsApplicationBusy(d) ? "Busy" : string.Empty);
         }
 
         public static void SetIsApplicationBusy(DependencyObject element, bool value)
