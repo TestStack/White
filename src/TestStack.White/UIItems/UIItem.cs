@@ -104,7 +104,7 @@ namespace TestStack.White.UIItems
 
         public virtual Point ClickablePoint
         {
-            get { return (Point) Property(AutomationElement.ClickablePointProperty); }
+            get { return (Point)Property(AutomationElement.ClickablePointProperty); }
         }
 
         public virtual string AccessKey
@@ -139,7 +139,7 @@ namespace TestStack.White.UIItems
             object patternObject;
             if (automationElement.TryGetCurrentPattern(pattern, out patternObject))
             {
-                return (BasePattern) patternObject;
+                return (BasePattern)patternObject;
             }
             return null;
         }
@@ -270,7 +270,7 @@ namespace TestStack.White.UIItems
         public virtual void DoubleClick()
         {
             actionListener.ActionPerforming(this);
-            PerformIfValid(()=>mouse.DoubleClick(Bounds.Center(), actionListener));
+            PerformIfValid(() => mouse.DoubleClick(Bounds.Center(), actionListener));
         }
 
         /// <summary>
@@ -338,8 +338,8 @@ namespace TestStack.White.UIItems
             get
             {
                 var displayedItem = new DisplayedItem(new IntPtr(automationElement.Current.NativeWindowHandle));
-                using(System.Drawing.Image image = displayedItem.GetVisibleImage())
-					return new Bitmap(image);
+                using (System.Drawing.Image image = displayedItem.GetVisibleImage())
+                    return new Bitmap(image);
             }
         }
 
@@ -410,7 +410,7 @@ namespace TestStack.White.UIItems
             foreach (var line in lines.Skip(1))
             {
                 keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RETURN);
-                keyboard.Send(line, actionListener); 
+                keyboard.Send(line, actionListener);
             }
         }
 
@@ -421,7 +421,7 @@ namespace TestStack.White.UIItems
 
         public virtual void RaiseClickEvent()
         {
-            var invokePattern = (InvokePattern) Pattern(InvokePattern.Pattern);
+            var invokePattern = (InvokePattern)Pattern(InvokePattern.Pattern);
             if (invokePattern != null) invokePattern.Invoke();
         }
     }

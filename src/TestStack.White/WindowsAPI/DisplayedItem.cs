@@ -75,10 +75,10 @@ namespace TestStack.White.WindowsAPI
             {
                 DeleteDC(compatibleDeviceContext);
                 ReleaseDC(windowHandle, deviceContext);
-	            img = Image.FromHbitmap(bitmap);
-	            DeleteObject(bitmap);
+                img = Image.FromHbitmap(bitmap);
+                DeleteObject(bitmap);
             }
-	        using (img) return new Bitmap(img);
+            using (img) return new Bitmap(img);
         }
     }
 }
