@@ -78,8 +78,7 @@ namespace TestStack.White.WindowsAPI
                 img = Image.FromHbitmap(bitmap);
                 DeleteObject(bitmap);
             }
-
-            return new Bitmap(img);
+            using (img) return new Bitmap(img);
         }
     }
 }

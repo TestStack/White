@@ -124,6 +124,9 @@ namespace TestStack.White.Mappings
             //We want to be working with null, not an empty string
             if (frameWorkId == string.Empty) frameWorkId = null;
 
+            if (Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
+                frameWorkId = WindowsFramework.Win32.FrameworkId();
+
             var dictionaryItems = items.Where(controlDictionaryItem =>
             {
                 if (!ControlTypeMatches(controlType, controlDictionaryItem)) return false;
