@@ -11,9 +11,12 @@ Install TestStack.White from NuGet
 
     PM> Install-Package TestStack.White
 
-Download [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/) which is an ESSENTIAL tool when doing UI Automation work.
+[Download UI Automation Verify][uiaverify_download], now [part of the Windows SDK][uiaverify_windows_sdk], which is an ESSENTIAL tool when doing UI Automation work.
 
 I have created a sample app which uses the Screen pattern. It is available at [https://github.com/TestStack/White/tree/master/src/Sample%20App](https://github.com/TestStack/White/tree/master/src/Sample%20App)
+
+[uiaverify_download]: http://msdn.microsoft.com/en-US/windows/desktop/bg162891
+[uiaverify_windows_sdk]: http://msdn.microsoft.com/en-us/library/windows/desktop/hh920986(v=vs.85).aspx
 
 Documentation
 -----------------
