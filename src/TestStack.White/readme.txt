@@ -31,3 +31,4 @@ https://github.com/TestStack/White/issues
 
 Discussion Group:
 https://groups.google.com/forum/#!forum/teststack_white
+http://docs.teststack.net/White/ChangeLog.html

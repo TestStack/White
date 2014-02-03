@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using TestStack.White.Configuration;
@@ -14,34 +13,9 @@ namespace TestStack.White.InputDevices
 {
     public class Mouse : IMouse
     {
-        [DllImport("user32", EntryPoint = "SendInput")]
-        static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
-
-        [DllImport("user32", EntryPoint = "SendInput")]
-        static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
-
-        [DllImport("user32.dll")]
-        static extern IntPtr GetMessageExtraInfo();
-
-        [DllImport("user32.dll")]
-
-        static extern bool GetCursorPos(ref System.Drawing.Point cursorInfo);
-
-        [DllImport("user32.dll")]
-        static extern bool SetCursorPos(int x, int y);
-
-        [DllImport("user32.dll")]
-        static extern bool GetCursorInfo(ref CursorInfo cursorInfo);
-
-        [DllImport("user32.dll")]
-        static extern short GetDoubleClickTime();
-
-        [DllImport("user32.dll")]
-        static extern int GetSystemMetrics(SystemMetric smIndex);
-
         public static Mouse Instance = new Mouse();
         DateTime lastClickTime = DateTime.Now;
-        readonly short doubleClickTime = GetDoubleClickTime();
+        readonly short doubleClickTime = Native.GetDoubleClickTime();
         Point lastClickLocation;
         const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
@@ -52,7 +26,7 @@ namespace TestStack.White.InputDevices
             get
             {
                 var point = new System.Drawing.Point();
-                GetCursorPos(ref point);
+                Native.GetCursorPos(ref point);
                 return point.ConvertToWindowsPoint();
             }
             set
@@ -61,7 +35,7 @@ namespace TestStack.White.InputDevices
                 {
                     throw new WhiteException(string.Format("Trying to set location outside the screen. {0}", value));
                 }
-                SetCursorPos((int)value.X, (int)value.Y);
+                Native.SetCursorPos((int)value.X, (int)value.Y);
             }
         }
 
@@ -70,7 +44,7 @@ namespace TestStack.White.InputDevices
             get
             {
                 CursorInfo cursorInfo = CursorInfo.New();
-                GetCursorInfo(ref cursorInfo);
+                Native.GetCursorInfo(ref cursorInfo);
                 int i = cursorInfo.handle.ToInt32();
                 return new MouseCursor(i);
             }
@@ -78,28 +52,28 @@ namespace TestStack.White.InputDevices
 
         private static int RightMouseButtonDown
         {
-            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN; }
+            get { return Native.GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN; }
         }
 
         private static int RightMouseButtonUp
         {
-            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP; }
+            get { return Native.GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP; }
         }
 
         private static int LeftMouseButtonDown
         {
-            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN; }
+            get { return Native.GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN; }
         }
 
         private static int LeftMouseButtonUp
         {
-            get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP; }
+            get { return Native.GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP; }
         }
 
         public virtual void RightClick()
         {
-            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
-            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
+            Native.SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
+            Native.SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
         }
 
         public virtual void Click()
@@ -117,12 +91,12 @@ namespace TestStack.White.InputDevices
 
         public static void LeftUp()
         {
-            SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonUp)));
+            Native.SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonUp)));
         }
 
         public static void LeftDown()
         {
-            SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonDown)));
+            Native.SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonDown)));
         }
 
         public virtual void DoubleClick(Point point)
@@ -139,21 +113,9 @@ namespace TestStack.White.InputDevices
             ActionPerformed(actionListener);
         }
 
-        private static void SendInput(Input input)
-        {
-            // Added check for 32/64 bit  
-            if (IntPtr.Size == 4)
-                SendInput(1, ref input, Marshal.SizeOf(typeof(Input)));
-            else
-            {
-                var input64 = new Input64(input);
-                SendInput64(1, ref input64, Marshal.SizeOf(typeof(Input)));
-            }
-        }
-
         private static MouseInput MouseInput(int command)
         {
-            return new MouseInput(command, GetMessageExtraInfo());
+            return new MouseInput(command, Native.GetMessageExtraInfo());
         }
 
         public virtual void RightClick(Point point, ActionListener actionListener)

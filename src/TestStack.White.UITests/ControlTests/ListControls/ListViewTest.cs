@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListViewItems;
 using Xunit;
@@ -20,6 +21,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             RunTest(SelectedRow);
             RunTest(SelectedRows);
             RunTest(SelectWhenHorizontalScrollIsPresent);
+            RunTest(CreateListViewRowDirectlyFromAutomationElement);
         }
 
         void SelectRow()
@@ -30,7 +32,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 listView.Select(0);
                 ListViewRow firstRow = listView.Rows[0];
                 Assert.Equal(true, firstRow.IsSelected);
-                Assert.Equal("ListView item selected - " + 0, listView.HelpText);
+                Assert.Equal("ListView item selected - " + 0, listView.LegacyHelpText);
                 listView.Select(1);
                 ListViewRow secondRow = listView.Rows[1];
                 Assert.Equal(true, secondRow.IsSelected);
@@ -43,6 +45,17 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 var listView = window.Get<ListView>("ListView");
                 listView.Select("Key", "Action15");
                 Assert.Equal("App15", listView.SelectedRows[0].Cells["Value"].Text);
+            }
+        }
+        void CreateListViewRowDirectlyFromAutomationElement()
+        {
+            using (var window = StartScenario("OpenListView", "ListViewWindow"))
+            {
+                var listView = window.Get<ListView>("ListView");
+                var factory = new DictionaryMappedItemFactory();
+                var ae = listView.Rows[1].AutomationElement;
+                var uiItem = factory.Create(ae, listView.ActionListener);
+                Assert.IsAssignableFrom<ListViewRow>(uiItem);
             }
         }
         void SelectedRow()

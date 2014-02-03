@@ -1,7 +1,10 @@
 using System;
+using System.Diagnostics;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
+using TestStack.White.Utility;
 
 namespace TestStack.White.WindowsAPI
 {
@@ -21,14 +24,30 @@ namespace TestStack.White.WindowsAPI
         [DllImport("gdi32.dll")]
         private static extern COLORREF GetTextColor(IntPtr hdc);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
+        public static bool WaitForInputIdle(IntPtr hWnd, TimeSpan timeout)
+        {
+            int pid;
+            uint tid = GetWindowThreadProcessId(hWnd, out pid);
+            if (tid == 0) return true; // probably closed already
+            return Retry.For(() => IsThreadIdle(pid, tid), timeout, TimeSpan.FromMilliseconds(10));
+        }
+
+        private static bool IsThreadIdle(int pid, uint tid)
+        {
+            Process prc = Process.GetProcessById(pid);
+            var thr = prc.Threads.Cast<ProcessThread>().First(t => tid == t.Id);
+            return thr.ThreadState == ThreadState.Wait &&
+                   thr.WaitReason == ThreadWaitReason.UserRequest;
+        }
+
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool EnumWindows(EnumWindowsProc lpEnumFunc, IntPtr lParam);
 
         private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr lParam);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
 
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]

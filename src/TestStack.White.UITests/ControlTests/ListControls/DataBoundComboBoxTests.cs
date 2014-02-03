@@ -18,21 +18,24 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 
         private void CanSelectDataboundItems()
         {
-            ListItems items;
-            CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+            var config = CoreAppXmlConfiguration.Instance;
+            bool oldValue = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
+            config.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             try
             {
-                items = ComboBoxUnderTest.Items;
+                ListItems items = ComboBoxUnderTest.Items;
                 Assert.Equal(0, items.Count);
+
+                config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+
+                items = ComboBoxUnderTest.Items;
+                Assert.Equal(5, items.Count);
+                Assert.Equal("Test", items[0].Text);
             }
             finally
             {
-                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
+                config.ComboBoxItemsPopulatedWithoutDropDownOpen = oldValue;
             }
-
-            items = ComboBoxUnderTest.Items;
-            Assert.Equal(5, items.Count);
-            Assert.Equal("Test", items[0].Text);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

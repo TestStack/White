@@ -32,8 +32,8 @@ namespace TestStack.White.UITests.AutomationElementSearch
             {
                 var listView = window.Get<ListView>("ListView");
                 var finder = new RawAutomationElementFinder(listView.AutomationElement);
-                Assert.NotEqual(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.HeaderItem).OfName("Key")));
-                Assert.Equal(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.Header).OfName("Key")));
+                Assert.NotEqual(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.HeaderItem).WithName("Key")));
+                Assert.Equal(null, finder.Descendant(AutomationSearchCondition.ByControlType(ControlType.Header).WithName("Key")));
             }
         }
 

@@ -59,6 +59,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.2.2\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Interop.UIAutomationClient">
+      <HintPath>..\packages\UIAComWrapper.1.1.0.8\lib\net40\Interop.UIAutomationClient.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="NSubstitute, Version=1.6.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
@@ -67,7 +71,10 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAutomationClient" />
+    <Reference Include="UIAComWrapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=78cbcf77433a85e5, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\UIAComWrapper.1.1.0.8\lib\net40\UIAComWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="xunit">
       <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
@@ -100,10 +107,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestApplications\WinFormsTestApp\WinFormsTestApp.Old.csproj">
-      <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
-      <Name>WinFormsTestApp.Old</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TestStack.White.UITests\TestStack.White.UITests.csproj">
       <Project>{10A51741-09F8-47CA-AB94-965EE71342F7}</Project>
       <Name>TestStack.White.UITests</Name>

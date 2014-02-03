@@ -31,7 +31,7 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
             Assert.True(MainWindow.HasPopup());
             Menu menu = MainWindow.PopupMenu("Root2");
             menu.Click();
-            Assert.Equal("Root2 Clicked", listBox.HelpText);
+            Assert.Equal("Root2 Clicked", listBox.LegacyHelpText);
         }
 
         void ClickOnNestedMenu()
@@ -39,7 +39,7 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
             var listBox = MainWindow.Get<ListBox>("ListBoxWithVScrollBar");
             listBox.RightClick();
             MainWindow.PopupMenu("Root", "Level1", "Level2").Click();
-            Assert.Equal("Level 2 Clicked", listBox.HelpText);
+            Assert.Equal("Level 2 Clicked", listBox.LegacyHelpText);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

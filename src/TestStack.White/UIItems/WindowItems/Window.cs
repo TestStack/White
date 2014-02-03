@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -19,6 +20,7 @@ using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowStripControls;
 using TestStack.White.Utility;
+using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.UIItems.WindowItems
@@ -34,6 +36,9 @@ namespace TestStack.White.UIItems.WindowItems
             new Dictionary<DisplayState, WindowVisualState>();
 
         private AutomationEventHandler handler;
+        private Process ownerProcess;
+        private uint ownerThreadId;
+
         /// <summary>
         /// If a window is opened then you try and close it straight away, the window can fail to close
         /// 
@@ -76,6 +81,11 @@ UI actions on window needing mouse would not work in area not falling under the 
                     Title, Bounds, bounds);
             }
             WindowSession.Register(this);
+            
+            var hwnd = new IntPtr(automationElement.Current.NativeWindowHandle);
+            int ownerProcessId;
+            ownerThreadId = NativeWindow.GetWindowThreadProcessId(hwnd, out ownerProcessId);
+            ownerProcess = Process.GetProcessById(ownerProcessId);
         }
 
         protected override ActionListener ChildrenActionListener
@@ -85,12 +95,12 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual string Title
         {
-            get { return TitleBar == null ? Name : TitleBar.Name; }
+            get { return TitleBar == null ? Name : TitleBar.Title; }
         }
 
         private WindowPattern WinPattern
         {
-            get { return (WindowPattern)Pattern(WindowPattern.Pattern); }
+            get { return GetPattern<WindowPattern>(); }
         }
 
         /// <summary>
@@ -123,7 +133,9 @@ UI actions on window needing mouse would not work in area not falling under the 
         public virtual void Close()
         {
             minOpenTime.Wait();
-            var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
+            ownerProcess.Dispose();
+            ownerProcess = null;
+            var windowPattern = GetPattern<WindowPattern>();
             try
             {
                 Logger.DebugFormat("Closing window {0}", Title);
@@ -187,7 +199,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
             catch (Exception e)
             {
-                if (!(e is InvalidOperationException || e is ElementNotAvailableException))
+                if (!(e is InvalidOperationException || e is ElementNotAvailableException || e is Win32Exception || e is UnauthorizedAccessException))
                     throw new UIActionException(string.Format("Window didn't respond" + Constants.BusyMessage), e);
             }
         }
@@ -215,38 +227,23 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
-        /// <exception cref="Exception"></exception>
-        /// <exception cref="UIActionException">when window is not responding</exception>
         private void WaitForWindow()
         {
-            var windowPattern = (WindowPattern)Pattern(WindowPattern.Pattern);
-            if (!CoreAppXmlConfiguration.Instance.InProc && !IsConsole() &&
-                (windowPattern != null && !windowPattern.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout)))
-            {
-                throw new Exception(string.Format("Timeout occured{0}", Constants.BusyMessage));
-            }
-            if (windowPattern == null) return;
-            var finalState = Retry.For(
-                () => windowPattern.Current.WindowInteractionState,
-                windowState => windowState == WindowInteractionState.NotResponding,
-                CoreAppXmlConfiguration.Instance.BusyTimeout());
-            if (finalState == WindowInteractionState.NotResponding)
-            {
-                const string format = "Window didn't come out of WaitState{0} last state known was {1}";
-                var message = string.Format(format, Constants.BusyMessage, windowPattern.Current.WindowInteractionState);
-                throw new UIActionException(message);
-            }
+            NativeWindow.WaitForInputIdle(new IntPtr(AutomationElement.Current.NativeWindowHandle), TimeSpan.FromSeconds(1));
         }
 
-        private bool IsConsole()
-        {
-            return ("ConsoleWindowClass".Equals(automationElement.Current.ClassName));
-        }
-
-        /// <exception cref="System.ArgumentException">when current process is not available any more (id expired)</exception>
         protected virtual void WaitForProcess()
         {
-            Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
+            if (ownerProcess == null || ownerProcess.HasExited) return;
+            try
+            {
+                ownerProcess.WaitForInputIdle();
+            }
+            catch (InvalidOperationException)
+            {
+                // process might be exited after the check, but before WaitForInputIdle() call
+                // in this case we will do nothing
+            }
         }
 
         public override void ActionPerformed(Action action)

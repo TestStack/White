@@ -27,7 +27,7 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         {
             Menu menu = MainWindow.MenuBar.MenuItem("File", "Click Me");
             menu.Click();
-            Assert.Equal(MainWindow.HelpText, "Click Me Clicked");
+            Assert.Equal(MainWindow.LegacyHelpText, "Click Me Clicked");
         }
 
         void FindByAutomationId()

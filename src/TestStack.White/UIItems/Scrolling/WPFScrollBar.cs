@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Automation;
+using TestStack.White.UIA;
 
 namespace TestStack.White.UIItems.Scrolling
 {
@@ -9,7 +10,7 @@ namespace TestStack.White.UIItems.Scrolling
 
         protected WpfScrollBar(AutomationElement parent)
         {
-            ScrollPattern = (ScrollPattern) parent.GetCurrentPattern(ScrollPattern.Pattern);
+            ScrollPattern = parent.GetPattern<ScrollPattern>();
         }
 
         public abstract double Value { get; }
