@@ -41,7 +41,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             dateTimePicker.Date = null;
 
             //Checks that date in Win32 DateTimePicker didn't change, but date in WPF DateTimePicker was cleared
-            Assert.Equal(dateTimePicker.Framework == WindowsFramework.Wpf ? DateTime.Parse("") : date,
+            Assert.Equal(dateTimePicker.Framework == WindowsFramework.Wpf ? null : date,
                 dateTimePicker.Date);
         }
 
