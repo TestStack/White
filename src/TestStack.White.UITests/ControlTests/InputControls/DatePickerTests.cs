@@ -12,7 +12,8 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             SelectInputControls();
             RunTest(() => GetDate(DateTime.Today), WindowsFramework.WinForms);
             RunTest(() => GetDate(null), WindowsFramework.Wpf, WindowsFramework.Silverlight);
-            RunTest(SetDate); 
+            RunTest(SetDate);
+            RunTest(ClearDate, WindowsFramework.Wpf, WindowsFramework.WinForms);
         }
 
         private void GetDate(DateTime? defaultTime)
@@ -31,6 +32,17 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             changedDate = DateTime.Today.AddDays(23);
             dateTimePicker.Date = changedDate;
             Assert.Equal(changedDate, dateTimePicker.Date);
+        }
+
+        private void ClearDate()
+        {
+            var dateTimePicker = MainWindow.Get<DateTimePicker>("DatePicker");
+            var date = dateTimePicker.Date;
+            dateTimePicker.Date = null;
+
+            //Checks that date in Win32 DateTimePicker didn't change, but date in WPF DateTimePicker was cleared
+            Assert.Equal(dateTimePicker.Framework == WindowsFramework.Wpf ? DateTime.Parse("") : date,
+                dateTimePicker.Date);
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()
