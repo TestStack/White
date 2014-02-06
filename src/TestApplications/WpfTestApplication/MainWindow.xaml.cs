@@ -13,16 +13,21 @@ namespace WpfTestApplication
     {
         private bool controlsDisabled;
         private readonly ObservableCollection<State> states = new ObservableCollection<State>();
+
         public MainWindow()
         {
             DataContext = this;
+
             InitializeComponent();
+
             var treeViewItem = new TreeViewItem { Header = "Lots Of Children" };
             foreach (var i in Enumerable.Range(1, 50))
             {
                 treeViewItem.Items.Add(new TreeViewItem { Header = "Child" + i });
             }
+
             TreeView.Items.Add(treeViewItem);
+
             states.Add(new State()
             {
                 Id = "1",
@@ -46,8 +51,11 @@ namespace WpfTestApplication
                 Description = "",
                 ComboboxItems = new ObservableCollection<string>(DataGridComboboxItems)
             });
+        }
 
-            DataContext = states;
+        public ObservableCollection<State> States
+        {
+            get { return states; }
         }
 
         public ObservableCollection<string> ListItems

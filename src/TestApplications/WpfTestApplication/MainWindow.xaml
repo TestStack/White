@@ -81,7 +81,7 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Data Grid">
-                <DataGrid x:Name="DataGridControl" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding}">
+                <DataGrid x:Name="DataGridControl" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding States}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Contents" Binding="{Binding Contents}"/>
