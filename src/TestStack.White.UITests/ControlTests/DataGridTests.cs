@@ -32,7 +32,7 @@ namespace TestStack.White.UITests.ControlTests
             var rows = DataGridWpfUnderTest.Rows;
             Assert.Equal(3, rows.Count);
             var row1 = rows.Get(0);
-            Assert.Equal(3, row1.Cells.Count);
+            Assert.Equal(4, row1.Cells.Count);
             Assert.Equal("1", row1.Cells[0].Text);
             Assert.Equal("Item1", row1.Cells[1].Text);
             Assert.Contains("Simple", row1.Cells[2].Text);
