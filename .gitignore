@@ -104,6 +104,6 @@ packages
 *.log
 
 # our output folder for build artifacts
-artifacts
+build
 
 Thumbs.db
