@@ -22,6 +22,7 @@
   <files>
     <file src="TestStack.White.dll" target="lib\net40" />
     <file src="TestStack.White.pdb" target="lib\net40" />
+    <file src="TestStack.White.xml" target="lib\net40" />
     <file src="Init.ps1" target="tools" />
     <file src="TestStack.White.psm1" target="tools" />
     <file src="readme.txt" target="" />
