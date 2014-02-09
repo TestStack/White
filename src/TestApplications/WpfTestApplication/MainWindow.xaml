@@ -81,7 +81,20 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Data Grid">
-                <DataGrid x:Name="DataGridControl" AutoGenerateColumns="True" ItemsSource="{Binding Path = TestItems}"/>
+                <DataGrid x:Name="DataGridControl" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding States}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Contents" Binding="{Binding Contents}"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                        <DataGridTemplateColumn Header="Combobox" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding ComboboxItems}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
         </TabControl>
         <GroupBox Header="Scenarios" Grid.Row="3" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">

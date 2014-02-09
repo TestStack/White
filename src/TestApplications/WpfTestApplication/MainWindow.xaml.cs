@@ -12,17 +12,50 @@ namespace WpfTestApplication
     public partial class MainWindow
     {
         private bool controlsDisabled;
+        private readonly ObservableCollection<State> states = new ObservableCollection<State>();
 
         public MainWindow()
         {
             DataContext = this;
+
             InitializeComponent();
+
             var treeViewItem = new TreeViewItem { Header = "Lots Of Children" };
             foreach (var i in Enumerable.Range(1, 50))
             {
                 treeViewItem.Items.Add(new TreeViewItem { Header = "Child" + i });
             }
+
             TreeView.Items.Add(treeViewItem);
+
+            states.Add(new State()
+            {
+                Id = "1",
+                Contents = "Item1",
+                Description = "Simple item 1",
+                ComboboxItems = new ObservableCollection<string>(DataGridComboboxItems)
+            });
+
+            states.Add(new State()
+            {
+                Id = "2",
+                Contents = "Item2",
+                Description = "",
+                ComboboxItems = new ObservableCollection<string>(DataGridComboboxItems)
+            });
+
+            states.Add(new State()
+            {
+                Id = "3",
+                Contents = "Item3",
+                Description = "",
+                ComboboxItems = new ObservableCollection<string>(DataGridComboboxItems)
+            });
+        }
+
+        public ObservableCollection<State> States
+        {
+            get { return states; }
         }
 
         public ObservableCollection<string> ListItems
@@ -159,16 +192,34 @@ namespace WpfTestApplication
             AutomationProperties.SetHelpText(this, "Click Me Clicked");
         }
 
-        public TestItem[] TestItems        
+        public string[] DataGridComboboxItems
         {
-            get            
+            get
             {
-                return new[]{
-                               new TestItem {Id = 1, Contents = "Item1", Description = "Simple item 1"}, 
-                               new TestItem {Id = 2, Contents = "Item2", Description = ""},
-                               new TestItem {Id = 3, Contents = "Item3"}
-                           };
+                return new[]
+                {
+                    "Item1",
+                    "Item2",
+                    "Item3",
+                    "Item4"
+                };
             }
+
+        }
+
+        public class State
+        {
+            public string Id
+            { get; set; }
+
+            public string Contents
+            { get; set; }
+
+            public string Description
+            { get; set; }
+
+            public ObservableCollection<string> ComboboxItems
+            { get; set; }
         }
     }
 }
