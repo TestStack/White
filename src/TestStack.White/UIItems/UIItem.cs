@@ -431,12 +431,15 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void DrawHighlight()
         {
-            Rect rectangle = this.AutomationElement.Current.BoundingRectangle;
+            new Thread(() =>
+                {
+                    Rect rectangle = this.AutomationElement.Current.BoundingRectangle;
 
-            if (rectangle != Rect.Empty)
-            {
-                new Drawing.FrameRectangle(rectangle).Highlight();
-            }
+                    if (rectangle != Rect.Empty)
+                    {
+                        new Drawing.FrameRectangle(rectangle).Highlight();
+                    }
+                }).Start();
         }
     }
 }
