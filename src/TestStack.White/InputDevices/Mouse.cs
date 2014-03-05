@@ -124,6 +124,16 @@ namespace TestStack.White.InputDevices
         {
             SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonDown)));
         }
+        //SU - Added for RightDragandDrop
+        public static void RightUp()
+        {
+            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
+        }
+
+        public static void RightDown()
+        {
+            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
+        }
 
         public virtual void DoubleClick(Point point)
         {
@@ -230,6 +240,22 @@ namespace TestStack.White.InputDevices
                 Location = newPoint;
             }
             LeftUp();
+            dropItem.ActionPerformed(Action.WindowMessage);
+        }
+
+        public virtual void DragAndDrop_RMB(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
+        {
+            Location = startPosition;
+            RightDown();
+            var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
+            for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
+            {
+                double newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
+                double newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);
+                var newPoint = new Point((int)newX, (int)newY);
+                Location = newPoint;
+            }
+            RightUp();
             dropItem.ActionPerformed(Action.WindowMessage);
         }
 
