@@ -59,6 +59,12 @@ namespace TestStack.White.InputDevices
             mouse.DragAndDrop(draggedItem, startPosition, dropItem, endPosition);
             ActionPerformed();
         }
+        //SU - Added for rightMouse button drag and drop
+        public virtual void DragAndDrop_RMB(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
+        {
+            mouse.DragAndDrop_RMB(draggedItem, startPosition, dropItem, endPosition);
+            ActionPerformed();
+        }
 
         public virtual Point Location
         {
