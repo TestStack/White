@@ -18,7 +18,7 @@ namespace TestStack.White.Configuration
 
         static CoreAppXmlConfiguration()
         {
-            DefaultValues.Add("BusyTimeout", 5000);
+            DefaultValues.Add("BusyTimeout", 600000);
             DefaultValues.Add("FindWindowTimeout", 30000);
             DefaultValues.Add("WaitBasedOnHourGlass", true);
             DefaultValues.Add("WorkSessionLocation", ".");
