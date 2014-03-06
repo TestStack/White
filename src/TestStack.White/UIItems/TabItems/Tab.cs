@@ -68,6 +68,6 @@ namespace TestStack.White.UIItems.TabItems
         public override void UnHookEvents()
         {
             Automation.RemoveAutomationPropertyChangedEventHandler(automationElement, handler);
-        }        
+        }
     }
 }
