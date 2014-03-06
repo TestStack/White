@@ -10,6 +10,15 @@ namespace TestStack.White.UIItems
         protected Hyperlink() {}
         public Hyperlink(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
 
+        /// <summary>
+        /// Add invoke pattern for ComboBox Item
+        /// </summary>
+        public virtual void Invoke()
+        {
+            var p = (InvokePattern)this.AutomationElement.GetCurrentPattern(InvokePattern.Pattern);
+            p.Invoke();
+        }
+
         public virtual void Click(int xOffset, int yOffset)
         {
             double x = automationElement.Current.BoundingRectangle.X + xOffset;
