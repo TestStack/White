@@ -37,7 +37,16 @@ namespace TestStack.White.WindowsAPI
 
         private static bool IsThreadIdle(int pid, uint tid)
         {
-            Process prc = Process.GetProcessById(pid);
+            Process prc;
+            try
+            {
+                prc = Process.GetProcessById(pid);
+            }
+            catch (ArgumentException)
+            {
+                // process with specified pid is not running - most probably it was closed already, in which case we can assume it is definitely idle
+                return true;
+            }
             var thr = prc.Threads.Cast<ProcessThread>().First(t => tid == t.Id);
             return thr.ThreadState == ThreadState.Wait &&
                    thr.WaitReason == ThreadWaitReason.UserRequest;
