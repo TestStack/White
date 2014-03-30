@@ -107,7 +107,7 @@ namespace TestStack.White.ScreenObjects
 
         private static InitializeOption IdentifiedOption<T>(InitializeOption option)
         {
-            return option.AndIdentifiedBy(typeof (T).FullName);
+            return option.AndIdentifiedBy(typeof (T).GUID.ToString());
         }
 
         private T GetScreen<T>(Window window) where T : AppScreen
