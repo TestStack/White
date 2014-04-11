@@ -28,6 +28,7 @@ namespace TestStack.White.Configuration
         bool InProc { get; set; }
         bool ComboBoxItemsPopulatedWithoutDropDownOpen { get; set; }
         int ComboBoxItemSelectionTimeout { get; set; }
+        int TextBoxRawInputProcessingTime { get; set; }
         IWaitHook AdditionalWaitHook { get; set; }
         int MaxElementSearchDepth { get; set; }
         bool RawElementBasedSearch { get; set; }
