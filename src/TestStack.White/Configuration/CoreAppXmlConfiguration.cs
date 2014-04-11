@@ -140,7 +140,7 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("ComboBoxItemSelectionTimeout", value); }
         }
 
-        public int TextBoxRawInputProcessingTime
+        public virtual int TextBoxRawInputProcessingTime
         {
             get { return Convert.ToInt32(UsedValues["TextBoxRawInputProcessingTime"]); }
             set { SetUsedValue("TextBoxRawInputProcessingTime", value); }
