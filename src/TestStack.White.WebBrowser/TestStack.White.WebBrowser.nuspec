@@ -11,6 +11,7 @@
     <authors>Vivek Singh, Jake Ginnivan</authors>
     <owners>Jake Ginnivan</owners>
     <licenseUrl>https://github.com/TestStack/White/blob/master/LICENSE.txt</licenseUrl>
+    <iconUrl>https://raw.github.com/TestStack/White/master/logo.png</iconUrl>
     <projectUrl>https://github.com/TestStack/White</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright Jake Ginnivan 2012</copyright>
