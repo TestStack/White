@@ -20,6 +20,7 @@ namespace TestStack.White.UIItems.Custom
         protected virtual UIItemContainer Container
         {
             get { return container; }
+            set { container = value; }
         }
 
         internal virtual void SetContainer(UIItemContainer uiItemContainer)

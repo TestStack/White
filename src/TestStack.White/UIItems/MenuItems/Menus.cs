@@ -1,17 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Windows.Automation;
-using TestStack.White.AutomationElementSearch;
-using TestStack.White.Configuration;
-using TestStack.White.Factory;
-using TestStack.White.UIItems.Actions;
-using TestStack.White.UIItems.Finders;
-using TestStack.White.Utility;
-
 namespace TestStack.White.UIItems.MenuItems
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
+    using System.Windows.Automation;
+    using TestStack.White.AutomationElementSearch;
+    using TestStack.White.Configuration;
+    using TestStack.White.Factory;
+    using TestStack.White.UIItems.Actions;
+    using TestStack.White.UIItems.Finders;
+    using TestStack.White.Utility;
+
     public class Menus : UIItemList<Menu>
     {
         static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();

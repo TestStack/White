@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.Custom
         private static readonly Dictionary<CustomUIItemType, ControlType> Mappings = new Dictionary<CustomUIItemType, ControlType>();
 
         static CustomControlTypeMapping()
-        {
+        {            
             Mappings[CustomUIItemType.Pane] = System.Windows.Automation.ControlType.Pane;
             Mappings[CustomUIItemType.Custom] = System.Windows.Automation.ControlType.Custom;
             Mappings[CustomUIItemType.Group] = System.Windows.Automation.ControlType.Group;

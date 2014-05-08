@@ -48,15 +48,6 @@ namespace TestStack.White.UIItems
             Checked = false;
         }
 
-        /// <summary>
-        /// Add Toggle Pattern
-        /// </summary>
-        public virtual void Toggle()
-        {
-            var p = (TogglePattern)this.AutomationElement.GetCurrentPattern(TogglePattern.Pattern);
-            p.Toggle();
-        }
-
         public override void HookEvents(UIItemEventListener eventListener)
         {
             handler = delegate
