@@ -31,7 +31,7 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("InProc", false);
             DefaultValues.Add("ComboBoxItemsPopulatedWithoutDropDownOpen", false);
             DefaultValues.Add("ComboBoxItemSelectionTimeout", 1000);
-            DefaultValues.Add("TextBoxRawInputProcessingTime", 50);
+            DefaultValues.Add("RawInputQueueProcessingTime", 50);
             DefaultValues.Add("RawElementBasedSearch", false);
             DefaultValues.Add("MaxElementSearchDepth", 10);
             DefaultValues.Add("DoubleClickInterval", 0);
@@ -140,10 +140,10 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("ComboBoxItemSelectionTimeout", value); }
         }
 
-        public virtual int TextBoxRawInputProcessingTime
+        public virtual int RawInputQueueProcessingTime
         {
-            get { return Convert.ToInt32(UsedValues["TextBoxRawInputProcessingTime"]); }
-            set { SetUsedValue("TextBoxRawInputProcessingTime", value); }
+            get { return Convert.ToInt32(UsedValues["RawInputQueueProcessingTime"]); }
+            set { SetUsedValue("RawInputQueueProcessingTime", value); }
         }
 
         public virtual bool MoveMouseToGetStatusOfHourGlass
