@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TestStack.White.InputDevices;
 using TestStack.White.UIItems;
@@ -20,6 +22,7 @@ namespace TestStack.White.UITests.InputDevices
             RunTest(CapsLock);
             RunTest(LeaveAllKeys);
             RunTest(LeaveKey);
+            RunTest(EnterLongStringManyTimesToAssertStabilityAndRawInputProcessing);
         }
 
         void EnterAccentedChars()
@@ -126,6 +129,23 @@ namespace TestStack.White.UITests.InputDevices
             Keyboard.Send(stringToType, MainWindow);
             Assert.Equal(stringToType, textBox.Text);
             ClearTextBox(textBox);
+        }
+
+        void EnterLongStringManyTimesToAssertStabilityAndRawInputProcessing()
+        {
+            SelectInputControls();
+            var textBox = MainWindow.Get<TextBox>("TextBox");
+
+            const int times = 100;
+
+            // ~ 100 chars
+            string longOne = String.Concat(Enumerable.Range(0, 50).Select(i => i.ToString()));
+
+            for (int i = 0; i < times; i++)
+            {
+                textBox.Text = longOne;
+                Assert.Equal(longOne, textBox.Text);
+            }
         }
 
         void ClearTextBox(TextBox textBox)
