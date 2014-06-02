@@ -40,5 +40,14 @@ namespace TestStack.White.UIItems
         {
             toggleableItem.Toggle();
         }
+
+        public virtual void Invoke()
+        {
+            InvokePattern p = this.Pattern(InvokePattern.Pattern) as InvokePattern;
+            if (p != null)
+            {
+                p.Invoke();
+            }
+        }
     }
 }

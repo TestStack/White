@@ -60,9 +60,19 @@ namespace TestStack.White.UIItems
             return (T) Get(searchCriteria.AndControlType(typeof (T), Framework));
         }
 
+        public virtual bool TryGet<T>(T i, SearchCriteria searchCriteria) where T : IUIItem
+        {
+            return TryGet(i, searchCriteria.AndControlType(typeof(T), Framework));
+        }
+
         public virtual IUIItem Get(SearchCriteria searchCriteria)
         {
             return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
+        }
+
+        public virtual bool TryGet(IUIItem i, SearchCriteria searchCriteria)
+        {
+            return TryGet(i, searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
         }
 
         public virtual bool Exists<T>() where T : IUIItem
@@ -102,13 +112,44 @@ namespace TestStack.White.UIItems
         /// <returns>First items matching the criteria</returns>
         /// <exception cref="AutomationException">when item not found</exception>
         /// <exception cref="WhiteException">when any errors occured during search</exception>
+        public virtual bool TryGet(IUIItem i, SearchCriteria searchCriteria, TimeSpan timeout)
+        {
+            try
+            {
+                i = Retry.For(() =>
+                    CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
+                    b =>(bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
+                    timeout);
+
+                if (i == null)
+                {
+                    var debugDetails = Debug.Details(automationElement);
+                    throw new AutomationException(string.Format("Failed to get {0}", searchCriteria), debugDetails);
+                }
+
+                HandleIfCustomUIItem(i);
+                HandleIfUIItemContainer(i);
+                return true;
+            }
+            catch (AutomationException)
+            {
+                return false;
+            }
+            catch (Exception e)
+            {
+                var debugDetails = Debug.Details(automationElement);
+
+                throw new WhiteException(string.Format("Error occured while geting {0}", searchCriteria), debugDetails, e);
+            }
+        }
+
         public virtual IUIItem Get(SearchCriteria searchCriteria, TimeSpan timeout)
         {
             try
             {
                 var uiItem = Retry.For(() =>
                     CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
-                    b =>(bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
+                    b => (bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
                     timeout);
 
                 if (uiItem == null)

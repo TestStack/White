@@ -28,7 +28,7 @@ namespace TestStack.White
         {
         }
 
-        private Application(Process process)
+        protected Application(Process process)
         {
             this.process = process;
             applicationSession = new ApplicationSession();

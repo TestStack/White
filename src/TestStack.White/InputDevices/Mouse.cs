@@ -99,6 +99,7 @@ namespace TestStack.White.InputDevices
         public virtual void RightClick()
         {
             SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
+            Thread.Sleep(300);
             SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
         }
 
@@ -221,6 +222,8 @@ namespace TestStack.White.InputDevices
         {
             Location = startPosition;
             HoldForDrag();
+
+            Instance.Location = new Point(draggedItem.ClickablePoint.X, draggedItem.ClickablePoint.Y + 1);
             var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
@@ -229,6 +232,7 @@ namespace TestStack.White.InputDevices
                 var newPoint = new Point((int)newX, (int)newY);
                 Location = newPoint;
             }
+            dropItem.Focus();
             LeftUp();
             dropItem.ActionPerformed(Action.WindowMessage);
         }

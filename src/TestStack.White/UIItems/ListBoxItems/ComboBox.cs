@@ -60,6 +60,26 @@ namespace TestStack.White.UIItems.ListBoxItems
             get { return EditableElement() != null;}
         }
 
+        /// <summary>
+        /// Add expand pattern for ComboBox Item
+        /// </summary>
+        public virtual void Expand()
+        {
+            var p = (ExpandCollapsePattern)this.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
+            if (p.Current.ExpandCollapseState.Equals(ExpandCollapseState.Collapsed))
+                p.Expand();
+        }
+
+        /// <summary>
+        /// Add expand pattern for ComboBox Item
+        /// </summary>
+        public virtual void Collapse()
+        {
+            var p = (ExpandCollapsePattern)this.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
+            if (p.Current.ExpandCollapseState.Equals(ExpandCollapseState.Expanded))
+                p.Collapse();
+        }        
+
         private AutomationElement EditableElement()
         {
             return Finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit));
