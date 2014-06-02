@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Automation;
+using TestStack.White.AutomationElementSearch;
 using TestStack.White.Factory;
 using TestStack.White.Sessions;
 using TestStack.White.UIItems.Finders;
@@ -34,6 +37,16 @@ namespace TestStack.White.UIItems.WindowItems
         {
             return windowFactory.FindModalWindow(title, Process.GetProcessById(automationElement.Current.ProcessId), option, automationElement,
                                                          WindowSession.ModalWindowSession(option));
+        }
+
+        public override List<Window> ModalWindows()
+        {
+            var descendants = new AutomationElementFinder(automationElement)
+                .Children(new AutomationSearchConditionFactory().GetWindowSearchConditions(automationElement.Current.ProcessId).ToArray());
+
+            return descendants
+                .Select(descendant => ChildWindowFactory.Create(descendant, InitializeOption.NoCache, WindowSession.ModalWindowSession(InitializeOption.NoCache)))
+                .ToList();
         }
 
         public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
