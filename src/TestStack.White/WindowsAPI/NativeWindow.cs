@@ -83,10 +83,24 @@ namespace TestStack.White.WindowsAPI
                 return GetTextColor(GetDC(handle));
             }
         }
-
+        
         public virtual void PostCloseMessage()
         {
             PostMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
         }
+
+        //Native methods needed for highlighting UIItems
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hwndAfter, int x, int y, int width, int height, int flags);
+        [return: MarshalAs(UnmanagedType.Bool)]
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
     }
 }
