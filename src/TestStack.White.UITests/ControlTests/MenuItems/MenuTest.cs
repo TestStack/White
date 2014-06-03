@@ -14,6 +14,7 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
             RunTest(FindMenuBar);
             RunTest(Click);
             RunTest(FindByAutomationId, WindowsFramework.Wpf);
+            RunTest(FindMultiLevelMenuItem);
         }
 
         void FindMenuBar()
@@ -34,6 +35,15 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         {
             MenuBar menuBar = MainWindow.MenuBar;
             Assert.NotNull(menuBar.MenuItemBy(SearchCriteria.ByAutomationId("FileId")));
+        }
+
+        void FindMultiLevelMenuItem()
+        {
+            MenuBar menuBar = MainWindow.MenuBar;
+            Menu menu = menuBar.MenuItem("Multi-Level Menu");
+            Assert.NotNull(menu.SubMenu(SearchCriteria.ByText("Level 1"))
+                .SubMenu("Level 2")
+                .SubMenu("Level 3"));
         }
 
         protected override IEnumerable<WindowsFramework> SupportedFrameworks()

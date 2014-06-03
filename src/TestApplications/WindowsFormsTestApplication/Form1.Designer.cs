@@ -54,7 +54,9 @@
             this.LinkLabel = new System.Windows.Forms.LinkLabel();
             this.ControlsTab = new System.Windows.Forms.TabControl();
             this.ListControlsTab = new System.Windows.Forms.TabPage();
+            this.listControls1 = new WindowsFormsTestApplication.ListControls();
             this.InputControlsTab = new System.Windows.Forms.TabPage();
+            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
             this.OtherControlsTab = new System.Windows.Forms.TabPage();
             this.AddNode = new System.Windows.Forms.Button();
             this.TreeView = new System.Windows.Forms.TreeView();
@@ -67,6 +69,7 @@
             this.PanelWithText = new System.Windows.Forms.Panel();
             this.TextBoxInsidePanel = new System.Windows.Forms.TextBox();
             this.DataGridTab = new System.Windows.Forms.TabPage();
+            this.DataGridControl = new System.Windows.Forms.DataGridView();
             this.DataGrid = new System.Windows.Forms.DataGridView();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.country = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -99,9 +102,14 @@
             this.toolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
             this.splitButtonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripProgressBar2 = new System.Windows.Forms.ToolStripProgressBar();
-            this.listControls1 = new WindowsFormsTestApplication.ListControls();
-            this.inputControls1 = new WindowsFormsTestApplication.InputControls();
-            this.DataGridControl = new System.Windows.Forms.DataGridView();
+            this.multiLevelMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.item1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.level1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.item3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.level2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.item4ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.level3ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.item2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ScenariosPane.SuspendLayout();
             this.ControlsTab.SuspendLayout();
             this.ListControlsTab.SuspendLayout();
@@ -111,12 +119,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.Image)).BeginInit();
             this.PanelWithText.SuspendLayout();
             this.DataGridTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.PropertyGridTab.SuspendLayout();
             this.ToolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).BeginInit();
             this.SuspendLayout();
             // 
             // ScenariosPane
@@ -305,6 +313,13 @@
             this.ListControlsTab.Text = "List Controls";
             this.ListControlsTab.UseVisualStyleBackColor = true;
             // 
+            // listControls1
+            // 
+            this.listControls1.Location = new System.Drawing.Point(6, 19);
+            this.listControls1.Name = "listControls1";
+            this.listControls1.Size = new System.Drawing.Size(260, 204);
+            this.listControls1.TabIndex = 0;
+            // 
             // InputControlsTab
             // 
             this.InputControlsTab.Controls.Add(this.inputControls1);
@@ -315,6 +330,13 @@
             this.InputControlsTab.TabIndex = 1;
             this.InputControlsTab.Text = "Input Controls";
             this.InputControlsTab.UseVisualStyleBackColor = true;
+            // 
+            // inputControls1
+            // 
+            this.inputControls1.Location = new System.Drawing.Point(6, 6);
+            this.inputControls1.Name = "inputControls1";
+            this.inputControls1.Size = new System.Drawing.Size(618, 286);
+            this.inputControls1.TabIndex = 0;
             // 
             // OtherControlsTab
             // 
@@ -443,6 +465,14 @@
             this.DataGridTab.TabIndex = 3;
             this.DataGridTab.Text = "Data Grid";
             this.DataGridTab.UseVisualStyleBackColor = true;
+            // 
+            // DataGridControl
+            // 
+            this.DataGridControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridControl.Location = new System.Drawing.Point(6, 142);
+            this.DataGridControl.Name = "DataGridControl";
+            this.DataGridControl.Size = new System.Drawing.Size(677, 150);
+            this.DataGridControl.TabIndex = 11;
             // 
             // DataGrid
             // 
@@ -583,7 +613,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.multiLevelMenuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(982, 24);
@@ -601,7 +632,7 @@
             // clickMeToolStripMenuItem
             // 
             this.clickMeToolStripMenuItem.Name = "clickMeToolStripMenuItem";
-            this.clickMeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.clickMeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clickMeToolStripMenuItem.Text = "Click Me";
             this.clickMeToolStripMenuItem.Click += new System.EventHandler(this.clickMeToolStripMenuItem_Click);
             // 
@@ -618,7 +649,7 @@
             this.selectToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lineToolStripMenuItem});
             this.selectToolStripMenuItem.Name = "selectToolStripMenuItem";
-            this.selectToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.selectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.selectToolStripMenuItem.Text = "Select";
             // 
             // lineToolStripMenuItem
@@ -702,27 +733,63 @@
             this.toolStripProgressBar2.Size = new System.Drawing.Size(100, 16);
             this.toolStripProgressBar2.Value = 50;
             // 
-            // listControls1
+            // multiLevelMenuToolStripMenuItem
             // 
-            this.listControls1.Location = new System.Drawing.Point(6, 19);
-            this.listControls1.Name = "listControls1";
-            this.listControls1.Size = new System.Drawing.Size(260, 204);
-            this.listControls1.TabIndex = 0;
+            this.multiLevelMenuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.item1ToolStripMenuItem,
+            this.level1ToolStripMenuItem,
+            this.item2ToolStripMenuItem});
+            this.multiLevelMenuToolStripMenuItem.Name = "multiLevelMenuToolStripMenuItem";
+            this.multiLevelMenuToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.multiLevelMenuToolStripMenuItem.Text = "Multi-Level Menu";
             // 
-            // inputControls1
+            // item1ToolStripMenuItem
             // 
-            this.inputControls1.Location = new System.Drawing.Point(6, 6);
-            this.inputControls1.Name = "inputControls1";
-            this.inputControls1.Size = new System.Drawing.Size(618, 286);
-            this.inputControls1.TabIndex = 0;
+            this.item1ToolStripMenuItem.Name = "item1ToolStripMenuItem";
+            this.item1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.item1ToolStripMenuItem.Text = "Item 1";
             // 
-            // DataGridControl
+            // level1ToolStripMenuItem
             // 
-            this.DataGridControl.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridControl.Location = new System.Drawing.Point(6, 142);
-            this.DataGridControl.Name = "DataGridControl";
-            this.DataGridControl.Size = new System.Drawing.Size(677, 150);
-            this.DataGridControl.TabIndex = 11;
+            this.level1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.item3ToolStripMenuItem,
+            this.level2ToolStripMenuItem});
+            this.level1ToolStripMenuItem.Name = "level1ToolStripMenuItem";
+            this.level1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.level1ToolStripMenuItem.Text = "Level 1";
+            // 
+            // item3ToolStripMenuItem
+            // 
+            this.item3ToolStripMenuItem.Name = "item3ToolStripMenuItem";
+            this.item3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.item3ToolStripMenuItem.Text = "Item 3";
+            // 
+            // level2ToolStripMenuItem
+            // 
+            this.level2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.item4ToolStripMenuItem,
+            this.level3ToolStripMenuItem});
+            this.level2ToolStripMenuItem.Name = "level2ToolStripMenuItem";
+            this.level2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.level2ToolStripMenuItem.Text = "Level 2";
+            // 
+            // item4ToolStripMenuItem
+            // 
+            this.item4ToolStripMenuItem.Name = "item4ToolStripMenuItem";
+            this.item4ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.item4ToolStripMenuItem.Text = "Item 4";
+            // 
+            // level3ToolStripMenuItem
+            // 
+            this.level3ToolStripMenuItem.Name = "level3ToolStripMenuItem";
+            this.level3ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.level3ToolStripMenuItem.Text = "Level 3";
+            // 
+            // item2ToolStripMenuItem
+            // 
+            this.item2ToolStripMenuItem.Name = "item2ToolStripMenuItem";
+            this.item2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.item2ToolStripMenuItem.Text = "Item 2";
             // 
             // Form1
             // 
@@ -749,6 +816,7 @@
             this.PanelWithText.ResumeLayout(false);
             this.PanelWithText.PerformLayout();
             this.DataGridTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.PropertyGridTab.ResumeLayout(false);
             this.ToolStrip1.ResumeLayout(false);
@@ -757,7 +825,6 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridControl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -831,6 +898,14 @@
         private System.Windows.Forms.TabPage PropertyGridTab;
         private System.Windows.Forms.PropertyGrid PropertyGrid;
         private System.Windows.Forms.DataGridView DataGridControl;
+        private System.Windows.Forms.ToolStripMenuItem multiLevelMenuToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem item1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem level1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem item3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem level2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem item4ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem level3ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem item2ToolStripMenuItem;
     }
 }
 
