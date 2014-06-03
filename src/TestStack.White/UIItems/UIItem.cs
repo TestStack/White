@@ -20,6 +20,7 @@ using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 using Point = System.Windows.Point;
+using System.Windows.Forms;
 
 namespace TestStack.White.UIItems
 {
@@ -423,6 +424,19 @@ namespace TestStack.White.UIItems
         {
             var invokePattern = (InvokePattern)Pattern(InvokePattern.Pattern);
             if (invokePattern != null) invokePattern.Invoke();
+        }
+
+        /// <summary>
+        /// Highlight UIItem with red frame
+        /// </summary>
+        public virtual void DrawHighlight()
+        {
+            Rect rectangle = AutomationElement.Current.BoundingRectangle;
+
+            if (rectangle != Rect.Empty)
+            {
+                new Drawing.FrameRectangle(rectangle).Highlight();
+            }
         }
     }
 }

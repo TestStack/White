@@ -26,6 +26,7 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("PopupTimeout", 5000);
             DefaultValues.Add("TooltipWaitTime", 3000);
             DefaultValues.Add("SuggestionListTimeout", 3000);
+            DefaultValues.Add("HighlightTimeout", 1000);
             DefaultValues.Add("DefaultDateFormat", DateFormat.CultureDefault.ToString());
             DefaultValues.Add("DragStepCount", 1);
             DefaultValues.Add("InProc", false);
@@ -106,6 +107,12 @@ namespace TestStack.White.Configuration
         {
             get { return Convert.ToInt32(UsedValues["SuggestionListTimeout"]); }
             set { SetUsedValue("SuggestionListTimeout", value); }
+        }
+
+        public virtual int HighlightTimeout
+        {
+            get { return Convert.ToInt32(UsedValues["HighlightTimeout"]); }
+            set { SetUsedValue("HighlightTimeout", value); }
         }
 
         public virtual DateFormat DefaultDateFormat

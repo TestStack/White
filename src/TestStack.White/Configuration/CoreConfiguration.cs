@@ -23,6 +23,7 @@ namespace TestStack.White.Configuration
         int PopupTimeout { get; set; }
         int TooltipWaitTime { get; set; }
         int SuggestionListTimeout { get; set; }
+        int HighlightTimeout { get; set; }
         DateFormat DefaultDateFormat { get; set; }
         int DragStepCount { get; set; }
         bool InProc { get; set; }
