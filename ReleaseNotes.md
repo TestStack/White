@@ -1,4 +1,4 @@
-# vNext
+# 0.13.0 (7 June 2014)
 
  - [#188](https://github.com/TestStack/White/pull/188) - Issue144: Add DrawHighlight method to UIItem contributed by Ilya Murzinov ([ilya-murzinov](https://github.com/ilya-murzinov))
  - [#242](https://github.com/TestStack/White/pull/242) - White unable to extract DataItems (ListViewRow) contributed by Ilya Murzinov ([ilya-murzinov](https://github.com/ilya-murzinov))
