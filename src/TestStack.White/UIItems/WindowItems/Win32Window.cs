@@ -39,15 +39,20 @@ namespace TestStack.White.UIItems.WindowItems
                                                          WindowSession.ModalWindowSession(option));
         }
 
-        public override List<Window> ModalWindows()
-        {
-            var descendants = new AutomationElementFinder(automationElement)
-                .Children(new AutomationSearchConditionFactory().GetWindowSearchConditions(automationElement.Current.ProcessId).ToArray());
+        //TODO Try and get this working
+        //public override List<Window> ModalWindows()
+        //{
+        //    var automationSearchConditions = new AutomationSearchConditionFactory()
+        //        .GetWindowSearchConditions(automationElement.Current.ProcessId)
+        //        .ToArray();
 
-            return descendants
-                .Select(descendant => ChildWindowFactory.Create(descendant, InitializeOption.NoCache, WindowSession.ModalWindowSession(InitializeOption.NoCache)))
-                .ToList();
-        }
+        //    var descendants = new AutomationElementFinder(automationElement)
+        //        .Children(automationSearchConditions);
+
+        //    return descendants
+        //        .Select(descendant => ChildWindowFactory.Create(descendant, InitializeOption.NoCache, WindowSession.ModalWindowSession(InitializeOption.NoCache)))
+        //        .ToList();
+        //}
 
         public override Window ModalWindow(SearchCriteria searchCriteria, InitializeOption option)
         {

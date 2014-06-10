@@ -26,7 +26,8 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual List<AutomationElement> Children(params AutomationSearchCondition[] automationSearchConditions)
         {
-            return new MultiLevelAutomationElementFinder(automationSearchConditions).FindAll(automationElement).Cast<AutomationElement>().ToList();
+            return new MultiLevelAutomationElementFinder(automationSearchConditions)
+                .FindAll(automationElement);
         }
 
         public virtual AutomationElement Child(params AutomationSearchCondition[] automationSearchConditions)
