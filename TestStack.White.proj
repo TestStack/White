@@ -43,8 +43,8 @@
 
   <Target Name="Publish">
     <MakeDir Directories="$(Root)build\Artifacts" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(GitHub_SemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.nuspec -Version $(GitVersion_SemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.ScreenObjects\bin\$(Configuration)" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.WebBrowser\TestStack.White.WebBrowser.nuspec -Version $(GitVersion_SemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.WebBrowser\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(GitHub_LegacySemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.nuspec -Version $(GitVersion_LegacySemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.ScreenObjects\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.WebBrowser\TestStack.White.WebBrowser.nuspec -Version $(GitVersion_LegacySemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.WebBrowser\bin\$(Configuration)" />
   </Target>
 </Project>
