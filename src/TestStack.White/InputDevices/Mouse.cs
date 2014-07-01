@@ -74,6 +74,11 @@ namespace TestStack.White.InputDevices
         {
             Native.SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
             Native.SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
+
+            // Let the Raw Input Thread some time to process OS's hardware input queue.
+            // As this thread works with High priority - this short wait should be enough hopefully.
+            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
         }
 
         public virtual void Click()
@@ -107,9 +112,17 @@ namespace TestStack.White.InputDevices
         public virtual void DoubleClick(Point point, ActionListener actionListener)
         {
             Location = point;
-            MouseLeftButtonUpAndDown();
+            LeftDown();
+            LeftUp();
             Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
-            MouseLeftButtonUpAndDown();
+            LeftDown();
+            LeftUp();
+
+            // Let the Raw Input Thread some time to process OS's hardware input queue.
+            // As this thread works with High priority - this short wait should be enough hopefully.
+            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
+            
             ActionPerformed(actionListener);
         }
 
@@ -204,6 +217,11 @@ namespace TestStack.White.InputDevices
         {
             LeftDown();
             LeftUp();
+
+            // Let the Raw Input Thread some time to process OS's hardware input queue.
+            // As this thread works with High priority - this short wait should be enough hopefully.
+            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
         }
 
         public virtual void MoveOut()
