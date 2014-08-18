@@ -1,13 +1,18 @@
 using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Windows;
+using TestStack.White.SystemExtensions;
+using TestStack.White.UIItems.WindowItems;
+using Size = System.Drawing.Size;
 
 namespace TestStack.White
 {
     /// <summary>
     /// Provides functions to capture the entire screen, or a particular window, and save it to a file.
     /// </summary>
-    public class ScreenCapture
+    internal class ScreenCapture
     {
         // This code is a modified version of many similar classes along the same lines. There is no one source I can credit with this class
 
@@ -30,9 +35,10 @@ namespace TestStack.White
         [DllImport("user32.dll")]
         public static extern IntPtr GetWindowDC(IntPtr ptr);
 
-        public virtual Bitmap CaptureScreenShot()
+        public virtual Bitmap CaptureDesktop()
         {
-            var sz = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size;
+            var bounds = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
+            var sz = bounds.Size;
             var hDesk = GetDesktopWindow();
             var hSrce = GetWindowDC(hDesk);
             var hDest = CreateCompatibleDC(hSrce);
@@ -44,6 +50,19 @@ namespace TestStack.White
             DeleteObject(hBmp);
             DeleteDC(hDest);
             ReleaseDC(hDesk, hSrce);
+
+            return bmp;            
+        }
+
+        public virtual Bitmap CaptureArea(Rect rect)
+        {
+            var rectangle = rect.ToRectangle();
+            var width = rectangle.Right - rectangle.Left;
+            var height = rectangle.Bottom - rectangle.Top;
+            var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);
+            var graphics = Graphics.FromImage(bmp);
+
+            graphics.CopyFromScreen(rectangle.Left, rectangle.Top, 0, 0, new Size(width, height), CopyPixelOperation.SourceCopy);
 
             return bmp;
         }

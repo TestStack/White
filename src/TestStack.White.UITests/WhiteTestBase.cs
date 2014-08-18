@@ -80,7 +80,7 @@ namespace TestStack.White.UITests
                     {
                         path2 = testAction.Method.Name + ".png";
                         var filename = Path.Combine(screenshotDir, path2);
-                        new ScreenCapture().CaptureScreenShot().Save(filename, ImageFormat.Png);
+                        Desktop.CaptureScreenshot().Save(filename, ImageFormat.Png);
                         Trace.WriteLine(string.Format("Screenshot taken: {0}", filename));
                     }
                     catch (Exception)
