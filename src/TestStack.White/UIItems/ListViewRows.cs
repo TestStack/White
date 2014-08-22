@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems
 
         public ListViewRows(AutomationElementFinder finder, ActionListener actionListener, ListViewHeader header)
         {
-            List<AutomationElement> collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.DataItem));
+            List<AutomationElement> collection = finder.Children(AutomationSearchCondition.ByControlType(ControlType.DataItem));
             foreach (AutomationElement element in collection)
                 Add(new ListViewRow(element, actionListener, header));
         }
