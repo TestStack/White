@@ -91,9 +91,9 @@ namespace TestStack.White.WindowsAPI
 
         //Native methods needed for highlighting UIItems
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
-        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hwndAfter, int x, int y, int width, int height, int flags);
         [return: MarshalAs(UnmanagedType.Bool)]
-
+        internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hwndAfter, int x, int y, int width, int height, int flags);
+        
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
