@@ -6,6 +6,14 @@ Project white has been inactive for some time, but still has many users and is a
 
 TestStack has brought this project into it's offering to try and breathe some life into Project White. 
 
+## Contributing
+White needs contributors to keep improving. There is plenty to do:
+
+ - Write documentation. Currently on docs.teststack.net but will likley be migrated to the GitHub wiki, the wiki is publically editable so jump in, migrate a page or improve an existing one.
+ - Look into any of the open issues, submit a pull request or suggest a fix which could help the issue be closed
+ - Pick up a failing test on the https://github.com/TestStack/White/tree/UIAComWrapper branch. 
+ - Add a new test
+
 ## Getting Started
 Install TestStack.White from NuGet
 
