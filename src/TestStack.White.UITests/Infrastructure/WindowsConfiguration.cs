@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using TestStack.White.Factory;
@@ -21,7 +22,9 @@ namespace TestStack.White.UITests.Infrastructure
 
         public override Application LaunchApplication()
         {
-            var app = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ApplicationExePath());
+            // use Codebase so that the tests work also with shadowing enabled
+            var codeBase = new Uri(Assembly.GetExecutingAssembly().CodeBase);
+            var app = Path.Combine(Path.GetDirectoryName(codeBase.LocalPath), ApplicationExePath());
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = app,

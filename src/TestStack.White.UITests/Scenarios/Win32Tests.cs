@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
@@ -20,14 +21,26 @@ namespace TestStack.White.UITests.Scenarios
         [Fact]
         public void NotepadTests()
         {
+            string windowTitle = "Untitled - Notepad";
+            string fontMenuItemShortcuts = "of";
+            string fontDialogTitle = "Font";
+
+            var lang = CultureInfo.InstalledUICulture.Name;
+            if (lang.StartsWith("de"))
+            {
+                windowTitle = "Unbenannt - Editor";
+                fontMenuItemShortcuts = "os";
+                fontDialogTitle = "Schriftart";
+            }
+
             using (var app = Application.Launch(Notepad))
-            using (var window = app.GetWindow("Untitled - Notepad"))
+            using (var window = app.GetWindow(windowTitle))
             {
                 window.Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.ALT);
-                window.Keyboard.Enter("o");
-                window.Keyboard.Enter("f");
+                foreach (char c in fontMenuItemShortcuts)
+                    window.Keyboard.Enter(c.ToString());
 
-                using (var modalWindow = window.ModalWindow("Font"))
+                using (var modalWindow = window.ModalWindow(fontDialogTitle))
                 {
                     Assert.NotNull(modalWindow);
                 }
@@ -37,15 +50,27 @@ namespace TestStack.White.UITests.Scenarios
         [Fact]
         public void InternetExplorerTests()
         {
+            string toolTipText = "Tools (Alt+X)";
+            string optionsMenuItem = "Internet Options";
+            string optionsDialogTitle = "Internet Options";
+
+            var lang = CultureInfo.InstalledUICulture.Name;
+            if (lang.StartsWith("de"))
+            {
+                toolTipText = "Extras (Alt+X)";
+                optionsMenuItem = "Internetoptionen";
+                optionsDialogTitle = "Internetoptionen";
+            }
+
             using (var app = Application.Launch(InternetExplorer))
             using (var window = app.GetWindows().Single())
             {
                 var button = window.Get<Button>(SearchCriteria.ByAutomationId("Item 3"));
                 //check if we can get a win32 tooltip
-                Assert.Equal("Tools (Alt+X)", window.GetToolTipOn(button).Text);
+                Assert.Equal(toolTipText, window.GetToolTipOn(button).Text);
                 button.Click();
-                window.PopupMenu("Internet options").Click();
-                using (var internetOptions = window.ModalWindow("Internet Options"))
+                window.PopupMenu(optionsMenuItem).Click();
+                using (var internetOptions = window.ModalWindow(optionsDialogTitle))
                 {
                     var textBox = internetOptions.Get<TextBox>(SearchCriteria.ByAutomationId("1487"));
 
@@ -59,24 +84,47 @@ namespace TestStack.White.UITests.Scenarios
         [Fact]
         public void CalculatorTests()
         {
+            string windowTitle = "Calculator";
+            string menuBarName = "Application";
+            string editMenuItem = "Edit";
+            string copyMenuItem = "Copy";
+            string viewMenuItem = "View";
+            string basicMenuItem = "Basic";
+            string dateCalcAccelerator = "E";
+            string dateCalcComboBoxItem = "Calculate the difference between two dates";
+
+            var lang = CultureInfo.InstalledUICulture.Name;
+            if (lang.StartsWith("de"))
+            {
+                windowTitle = "Rechner";
+                menuBarName = "Anwendung";
+                editMenuItem = "Bearbeiten";
+                copyMenuItem = "Kopieren";
+                viewMenuItem = "Ansicht";
+                basicMenuItem = "Basismodus";
+                dateCalcAccelerator = "E";
+                dateCalcComboBoxItem = "Differenz zwischen zwei Datumsangaben berechnen";
+            }
+
+
             //strat process for the above exe file location
             var psi = new ProcessStartInfo(ExeSourceFile);
             // launch the process through white application
             using (var application = Application.AttachOrLaunch(psi))
-            using (var mainWindow = application.GetWindow(SearchCriteria.ByText("Calculator"), InitializeOption.NoCache))
+            using (var mainWindow = application.GetWindow(SearchCriteria.ByText(windowTitle), InitializeOption.NoCache))
             {
                 // Verify can click on menu twice
-                var menuBar = mainWindow.Get<MenuBar>(SearchCriteria.ByText("Application"));
-                menuBar.MenuItem("Edit", "Copy").Click();
-                menuBar.MenuItem("Edit", "Copy").Click();
+                var menuBar = mainWindow.Get<MenuBar>(SearchCriteria.ByText(menuBarName));
+                menuBar.MenuItem(editMenuItem, copyMenuItem).Click();
+                menuBar.MenuItem(editMenuItem, copyMenuItem).Click();
 
                 mainWindow.Keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
-                mainWindow.Keyboard.Enter("E");
+                mainWindow.Keyboard.Enter(dateCalcAccelerator);
                 mainWindow.Keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);
 
                 //On Date window find the difference between dates.
                 //Set value into combobox
-                mainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("4003")).Select("Calculate the difference between two dates");
+                mainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("4003")).Select(dateCalcComboBoxItem);
                 //Click on Calculate button
                 mainWindow.Get<Button>(SearchCriteria.ByAutomationId("4009")).Click();
 
@@ -84,9 +132,9 @@ namespace TestStack.White.UITests.Scenarios
                 mainWindow.Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.F4);
                 mainWindow.Keyboard.LeaveKey(KeyboardInput.SpecialKeys.CONTROL);
 
-                var menuView = mainWindow.Get<Menu>(SearchCriteria.ByText("View"));
+                var menuView = mainWindow.Get<Menu>(SearchCriteria.ByText(viewMenuItem));
                 menuView.Click();
-                var menuViewBasic = mainWindow.Get<Menu>(SearchCriteria.ByText("Basic"));
+                var menuViewBasic = mainWindow.Get<Menu>(SearchCriteria.ByText(basicMenuItem));
                 menuViewBasic.Click();
 
                 PerformSummationOnCalculator(mainWindow);
