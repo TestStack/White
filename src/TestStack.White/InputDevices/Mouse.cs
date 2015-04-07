@@ -139,6 +139,11 @@ namespace TestStack.White.InputDevices
             ActionPerformed(actionListener);
         }
 
+        public virtual void Wheel(int delta)
+        {
+            SendInput(InputFactory.Mouse(new MouseInput(120 * delta, WindowsConstants.MOUSEEVENTF_WHEEL, GetMessageExtraInfo())));
+        }
+
         private static void SendInput(Input input)
         {
             // Added check for 32/64 bit  
@@ -182,6 +187,13 @@ namespace TestStack.White.InputDevices
         {
             Location = point;
             Click();
+            ActionPerformed(actionListener);
+        }
+
+        public virtual void Wheel(Point point, int delta, ActionListener actionListener)
+        {
+            Location = point;
+            Wheel(delta);
             ActionPerformed(actionListener);
         }
 

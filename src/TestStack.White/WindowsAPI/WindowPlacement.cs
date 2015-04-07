@@ -49,6 +49,16 @@ namespace TestStack.White.WindowsAPI
         private readonly int time;
         private readonly IntPtr dwExtraInfo;
 
+        public MouseInput(int mouseData, int dwFlags, IntPtr dwExtraInfo)
+        {
+            this.dwFlags = dwFlags;
+            this.dwExtraInfo = dwExtraInfo;
+            dx = 0;
+            dy = 0;
+            time = 0;
+            this.mouseData = mouseData;
+        }
+
         public MouseInput(int dwFlags, IntPtr dwExtraInfo)
         {
             this.dwFlags = dwFlags;
