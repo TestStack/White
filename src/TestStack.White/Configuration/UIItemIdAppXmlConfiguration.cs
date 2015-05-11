@@ -16,8 +16,8 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("TableTopLeftHeaderCell", "Top Left Header Cell");
             DefaultValues.Add("TableCellNullValue", "(null)");
             DefaultValues.Add("TableHeader", "Top Row");
-            DefaultValues.Add("HorizontalScrollBar", "Horizontal ScrollBar");
-            DefaultValues.Add("VerticalScrollBar", "Vertical ScrollBar");
+            DefaultValues.Add("HorizontalScrollBar", "NonClientHorizontalScrollBar");
+            DefaultValues.Add("VerticalScrollBar", "NonClientVerticalScrollBar");
             DefaultValues.Add("TableCellPrefix", " Row ");
         }
 
