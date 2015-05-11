@@ -22,7 +22,7 @@ namespace TestStack.White.UIA
                 if (automationElement == null) return "(NULL)";
                 AutomationElement.AutomationElementInformation elementInformation = automationElement.Current;
                 return String.Format("AutomationId:{0}, Name:{1}, ControlType:{2}, FrameworkId:{3}", elementInformation.AutomationId, elementInformation.Name,
-                                     elementInformation.ControlType.LocalizedControlType, elementInformation.FrameworkId);
+                                     elementInformation.LocalizedControlType, elementInformation.FrameworkId);
             }
             catch
             {

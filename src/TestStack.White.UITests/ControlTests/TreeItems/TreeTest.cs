@@ -40,8 +40,9 @@ namespace TestStack.White.UITests.ControlTests.TreeItems
             var exception = Assert.Throws<AutomationException>(() => tree.HasNode("Root", "Child", "Grand Child", "Grand Child"));
             string expected = string.Format(
                 "Cannot expand TreeNode {0}TreeNode. AutomationId:, Name:Grand Child, " +
-                "ControlType:tree view item, FrameworkId:{1}, expand button not visible",
+                "ControlType:{1}, FrameworkId:{2}, expand button not visible",
                 framework == WindowsFramework.Wpf ? "WPF" : "Win32",
+                framework == WindowsFramework.Wpf ? "tree view item" : "tree item",
                 framework.FrameworkId());
             Assert.Equal(expected, exception.Message);
         }
