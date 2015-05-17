@@ -13,11 +13,11 @@ namespace TestStack.White.UIItems.TableItems
 
         public TableScrollBars(AutomationElementFinder finder, ActionListener actionListener, TableVerticalScrollOffset tableVerticalScrollOffset)
         {
-            AutomationElement verticalScrollElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Pane).WithName(UIItemIdAppXmlConfiguration.Instance.TableVerticalScrollBar));
+            AutomationElement verticalScrollElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.ScrollBar).WithName(UIItemIdAppXmlConfiguration.Instance.TableVerticalScrollBar));
             verticalScrollBar = (verticalScrollElement == null)
                                     ? (IVScrollBar) new NullVScrollBar()
                                     : new TableVerticalScrollBar(verticalScrollElement, actionListener, tableVerticalScrollOffset);
-            AutomationElement horizontalScrollElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Pane).WithName(UIItemIdAppXmlConfiguration.Instance.TableHorizontalScrollBar));
+            AutomationElement horizontalScrollElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.ScrollBar).WithName(UIItemIdAppXmlConfiguration.Instance.TableHorizontalScrollBar));
             horizontalScrollBar = (horizontalScrollElement == null)
                                       ? (IHScrollBar) new NullHScrollBar()
                                       : new TableHorizontalScrollBar(horizontalScrollElement, actionListener);
