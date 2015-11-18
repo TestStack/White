@@ -96,5 +96,6 @@ namespace TestStack.White.UIItems
         void Enter(string value);
 
         void DrawHighlight();
+        void DrawHighlight(Color color);
     }
 }

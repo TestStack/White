@@ -95,12 +95,12 @@ namespace TestStack.White.WindowsAPI
         internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hwndAfter, int x, int y, int width, int height, int flags);
         
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, UInt32 dwNewLong);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
-        internal static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+        internal static extern UInt32 GetWindowLong(IntPtr hWnd, int nIndex);
     }
 }

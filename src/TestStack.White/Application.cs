@@ -23,6 +23,7 @@ namespace TestStack.White
         private readonly ApplicationSession applicationSession;
         private readonly WindowFactory windowFactory;
         private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Application));
+        private bool detached = false;
 
         protected Application()
         {
@@ -58,9 +59,9 @@ namespace TestStack.White
             if (string.IsNullOrEmpty(processStartInfo.WorkingDirectory)) processStartInfo.WorkingDirectory = ".";
 
             Logger.DebugFormat("[Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
-                                             processStartInfo.FileName, 
+                                             processStartInfo.FileName,
                                              new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,
-                                             new FileInfo(processStartInfo.FileName).FullName, 
+                                             new FileInfo(processStartInfo.FileName).FullName,
                                              Environment.CurrentDirectory);
             Process process;
             try
@@ -283,7 +284,10 @@ namespace TestStack.White
 
         public virtual void Dispose()
         {
-            Kill();
+            if (!detached)
+            {
+                Kill();
+            }
         }
 
         public virtual Window FindSplash()
@@ -326,6 +330,14 @@ namespace TestStack.White
         {
             Kill();
             ApplicationSession.Save();
+        }
+
+        /// <summary>
+        /// Detaches from the current attached process
+        /// </summary>
+        public virtual void Detach()
+        {
+            detached = true;
         }
     }
 }
