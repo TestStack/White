@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Forms;
@@ -13,10 +11,8 @@ namespace TestStack.White.Drawing
     internal class ScreenRectangle
     {
         private Form form = new Form();
-        //TODO: Think about making color configurable
-        private Color Color = Color.Red;
 
-        internal ScreenRectangle(Rect rectangle)
+        internal ScreenRectangle(Color color, Rect rectangle)
         {
             form.FormBorderStyle = FormBorderStyle.None;
             form.ShowInTaskbar = false;
@@ -25,12 +21,12 @@ namespace TestStack.White.Drawing
             form.Top = 0;
             form.Width = 1;
             form.Height = 1;
-            form.BackColor = this.Color;
+            form.BackColor = color;
             form.Opacity = 0.8;
             form.Visible = false;
 
             //Set popup style
-            int num1 = TestStack.White.WindowsAPI.NativeWindow.GetWindowLong(form.Handle, -20);
+            var num1 = TestStack.White.WindowsAPI.NativeWindow.GetWindowLong(form.Handle, -20);
             TestStack.White.WindowsAPI.NativeWindow.SetWindowLong(form.Handle, -20, num1 | 0x80);
 
             //Set position
@@ -46,6 +42,7 @@ namespace TestStack.White.Drawing
         internal virtual void Hide()
         {
             form.Hide();
+            form.Dispose();
         }
     }
 
@@ -60,12 +57,12 @@ namespace TestStack.White.Drawing
         private ScreenRectangle[] rectangles;
         private int width = 3;
 
-        internal FrameRectangle(Rect boundingRectangle)
+        internal FrameRectangle(Color color, Rect boundingRectangle)
         {
-            leftBorder = new ScreenRectangle(new Rect(boundingRectangle.X - width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2*width));
-            topBorder = new ScreenRectangle(new Rect(boundingRectangle.X, boundingRectangle.Y - width, boundingRectangle.Width, width));
-            rightBorder = new ScreenRectangle(new Rect(boundingRectangle.X + boundingRectangle.Width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2*width));
-            bottomBorder = new ScreenRectangle(new Rect(boundingRectangle.X, boundingRectangle.Y + boundingRectangle.Height, boundingRectangle.Width, width));
+            leftBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X - width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2 * width));
+            topBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X, boundingRectangle.Y - width, boundingRectangle.Width, width));
+            rightBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X + boundingRectangle.Width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2 * width));
+            bottomBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X, boundingRectangle.Y + boundingRectangle.Height, boundingRectangle.Width, width));
             rectangles = new ScreenRectangle[] { leftBorder, topBorder, rightBorder, bottomBorder };
         }
 
