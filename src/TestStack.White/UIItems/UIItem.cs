@@ -427,15 +427,22 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        /// Highlight UIItem with red frame
+        /// Highlight UIItem with a red frame
         /// </summary>
         public virtual void DrawHighlight()
+        {
+            DrawHighlight(Color.Red);
+        }
+        /// <summary>
+        /// Highlight UIItem with a colored frame
+        /// </summary>
+        public virtual void DrawHighlight(Color color)
         {
             Rect rectangle = AutomationElement.Current.BoundingRectangle;
 
             if (rectangle != Rect.Empty)
             {
-                new Drawing.FrameRectangle(rectangle).Highlight();
+                new Drawing.FrameRectangle(color, rectangle).Highlight();
             }
         }
     }
