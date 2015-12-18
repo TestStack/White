@@ -105,7 +105,7 @@
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
     <Compile Include="ControlTests\ButtonTests.cs" />
     <Compile Include="ControlTests\HotKeyTest.cs" />
-    <Compile Include="ControlTests\InputControls\CheckboxTest.cs" />
+    <Compile Include="ControlTests\InputControls\CheckboxTests.cs" />
     <Compile Include="ControlTests\ListControls\CheckedListBoxTest.cs" />
     <Compile Include="ControlTests\InputControls\PasswordTextBoxTest.cs" />
     <Compile Include="ControlTests\InputControls\TextBoxTest.cs" />
