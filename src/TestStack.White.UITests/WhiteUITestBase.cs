@@ -29,17 +29,8 @@ namespace TestStack.White.UITests
             Directory.CreateDirectory(screenshotDir);
         }
 
-        [TearDown]
-        public void TestTeardown()
-        {
-            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
-            {
-                TakeScreenshot(TestContext.CurrentContext.Test.FullName);
-            }
-        }
-
         [OneTimeSetUp]
-        public void Setup()
+        public void BaseSetup()
         {
             mainWindow = SetMainWindow(framework);
         }
@@ -48,6 +39,15 @@ namespace TestStack.White.UITests
         public void Dispose()
         {
             mainWindow.Dispose();
+        }
+
+        [TearDown]
+        public void BaseTestTeardown()
+        {
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            {
+                TakeScreenshot(TestContext.CurrentContext.Test.FullName);
+            }
         }
 
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteUITestBase));
