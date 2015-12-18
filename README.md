@@ -21,7 +21,7 @@ Install TestStack.White from NuGet
 
 [Download UI Automation Verify][uiaverify_download], now [part of the Windows SDK][uiaverify_windows_sdk], which is an ESSENTIAL tool when doing UI Automation work.
 
-I have created a sample app which uses the Screen pattern. It is available at [https://github.com/TestStack/White/tree/master/src/Sample%20App](https://github.com/TestStack/White/tree/master/src/Sample%20App)
+See the [sample apps here](https://github.com/TestStack/White/tree/master/src/Samples) for examples of using White in both WinForms and WPF.
 
 [uiaverify_download]: http://msdn.microsoft.com/en-US/windows/desktop/bg162891
 [uiaverify_windows_sdk]: http://msdn.microsoft.com/en-us/library/windows/desktop/hh920986(v=vs.85).aspx
