@@ -11,11 +11,11 @@ namespace TestStack.White.UIItems.Finders
         }
 
         public ControlTypeProperty(ControlType controlType, string displayName)
-            : base(controlType, displayName, AutomationElement.ControlTypeProperty) {}
+            : base(controlType, displayName, AutomationElement.ControlTypeProperty) { }
 
         public override string DisplayValue
         {
-            get { return ((ControlType) Value).LocalizedControlType; }
+            get { return ((ControlType)Value).LocalizedControlType; }
         }
     }
 }

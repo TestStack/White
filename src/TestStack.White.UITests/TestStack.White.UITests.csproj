@@ -42,6 +42,10 @@
     <Reference Include="Castle.Core">
       <HintPath>..\packages\Castle.Core.3.3.0\lib\net40-client\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39032, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -96,9 +100,10 @@
     <Compile Include="MessageBoxTest.cs" />
     <Compile Include="ModalWindowTest.cs" />
     <Compile Include="NativeWindowTest.cs" />
+    <Compile Include="WhiteUITestBase.cs" />
     <Compile Include="WindowTests.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTest.cs" />
-    <Compile Include="ControlTests\ButtonTest.cs" />
+    <Compile Include="ControlTests\ButtonTests.cs" />
     <Compile Include="ControlTests\HotKeyTest.cs" />
     <Compile Include="ControlTests\InputControls\CheckboxTest.cs" />
     <Compile Include="ControlTests\ListControls\CheckedListBoxTest.cs" />
@@ -168,7 +173,9 @@
       <Name>TestStack.White</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -66,6 +66,10 @@
       <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET40\NSubstitute.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39032, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -102,14 +106,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AutomationElementSearch\AutomationSearchConditionFactoryTest.cs" />
-    <Compile Include="AutomationElementSearch\ElementSearchResultTest.cs" />
-    <Compile Include="AutomationElementSearch\SearchConditionTest.cs" />
-    <Compile Include="Configuration\UIItemIdAppXmlConfigurationTest.cs" />
-    <Compile Include="ControlsActionTest.cs" />
+    <Compile Include="AutomationElementSearch\AutomationSearchConditionFactoryTests.cs" />
+    <Compile Include="AutomationElementSearch\ElementSearchResultTests.cs" />
+    <Compile Include="AutomationElementSearch\SearchConditionTests.cs" />
+    <Compile Include="Configuration\UIItemIdAppXmlConfigurationTests.cs" />
     <Compile Include="CoreProjectTest.cs" />
-    <Compile Include="Drawing\DrawingPointXTest.cs" />
-    <Compile Include="Mappings\ControlDictionaryTest.cs" />
+    <Compile Include="Drawing\DrawingPointXTests.cs" />
+    <Compile Include="Mappings\ControlDictionaryTests.cs" />
     <Compile Include="Repository\DummyScreen.cs" />
     <Compile Include="Repository\DummyWindow.cs" />
     <Compile Include="Repository\EntityMapping\Cricketer.cs" />
@@ -128,7 +131,7 @@
     <Compile Include="Repository\Services\ServiceExecutionTest.cs" />
     <Compile Include="Repository\Services\TestServiceForServiceCallTest.cs" />
     <Compile Include="ScreenMap\WindowItemsMapTest.cs" />
-    <Compile Include="SpanTest.cs" />
+    <Compile Include="SpanTests.cs" />
     <Compile Include="SystemExtensions\DoubleXTest.cs" />
     <Compile Include="UIA\RectXTest.cs" />
     <Compile Include="UIA\WindowsPointXTest.cs" />
@@ -144,10 +147,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="white.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
