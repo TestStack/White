@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -6,14 +7,14 @@ using TestStack.White.Factory;
 using TestStack.White.ScreenObjects.Services;
 using TestStack.White.ScreenObjects.Sessions;
 using WpfTodo.UITests.Screens;
-using Xunit;
 
 namespace WpfTodo.UITests
 {
+    [TestFixture]
     public class TodoAppTests : UITestBase
     {
-        [Fact]
-        public void Automate()
+        [Test]
+        public void AutomateTest()
         {
             var workConfiguration =
                 new WorkConfiguration
@@ -36,8 +37,8 @@ namespace WpfTodo.UITests
                 newTaskScreen.Create();
 
                 var tasks = mainWindow.Tasks.ToList();
-                Assert.Equal(1, tasks.Count);
-                Assert.Equal(title, tasks[0].Title);
+                Assert.That(tasks, Has.Count.EqualTo(1));
+                Assert.That(tasks[0].Title, Is.EqualTo(title));
             }
         }
     }
