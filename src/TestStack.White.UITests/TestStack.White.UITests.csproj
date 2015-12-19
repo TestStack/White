@@ -79,8 +79,8 @@
     <Compile Include="ControlTests\Table\TableRowTests.cs" />
     <Compile Include="ControlTests\Table\TableTests.cs" />
     <Compile Include="ControlTests\TabTest.cs" />
-    <Compile Include="ControlTests\TreeItems\TreeNodeTest.cs" />
-    <Compile Include="ControlTests\TreeItems\TreeTest.cs" />
+    <Compile Include="ControlTests\TreeItems\TreeNodeTests.cs" />
+    <Compile Include="ControlTests\TreeItems\TreeTests.cs" />
     <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
