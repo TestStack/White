@@ -64,9 +64,9 @@
     <Compile Include="ControlTests\HyperlinkTest.cs" />
     <Compile Include="ControlTests\HScrollBarTest.cs" />
     <Compile Include="ControlTests\ImageTest.cs" />
-    <Compile Include="ControlTests\InputControls\RadioButtonTest.cs" />
-    <Compile Include="ControlTests\InputControls\SpinnerTest.cs" />
-    <Compile Include="ControlTests\InputControls\TristateItemTest.cs" />
+    <Compile Include="ControlTests\InputControls\RadioButtonTests.cs" />
+    <Compile Include="ControlTests\InputControls\SpinnerTests.cs" />
+    <Compile Include="ControlTests\InputControls\TristateItemTests.cs" />
     <Compile Include="ControlTests\MenuItems\MenuTest.cs" />
     <Compile Include="ControlTests\MenuItems\PopUpMenuTest.cs" />
     <Compile Include="ControlTests\PropertyGridTest.cs" />
@@ -108,7 +108,7 @@
     <Compile Include="ControlTests\InputControls\CheckboxTests.cs" />
     <Compile Include="ControlTests\ListControls\CheckedListBoxTest.cs" />
     <Compile Include="ControlTests\InputControls\PasswordTextBoxTests.cs" />
-    <Compile Include="ControlTests\InputControls\TextBoxTest.cs" />
+    <Compile Include="ControlTests\InputControls\TextBoxTests.cs" />
     <Compile Include="ControlTests\TooltipTests.cs" />
     <Compile Include="ControlTests\UIItemTests.cs" />
     <Compile Include="ControlTests\ListControls\ComboBoxTests.cs" />
