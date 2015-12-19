@@ -18,12 +18,12 @@ namespace TestStack.White.UITests
 {
     public abstract class WhiteUITestBase : IDisposable
     {
-        private readonly WindowsFramework framework;
+        protected WindowsFramework Framework { get; private set; }
         private IDisposable mainWindow;
 
         protected WhiteUITestBase(WindowsFramework framework)
         {
-            this.framework = framework;
+            Framework = framework;
             CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
             screenshotDir = @"c:\FailedTestsScreenshots";
             Directory.CreateDirectory(screenshotDir);
@@ -32,7 +32,7 @@ namespace TestStack.White.UITests
         [OneTimeSetUp]
         public void BaseSetup()
         {
-            mainWindow = SetMainWindow(framework);
+            mainWindow = SetMainWindow(Framework);
         }
 
         [OneTimeTearDown]

@@ -4,7 +4,7 @@ using TestStack.White.Factory;
 namespace TestStack.White.ScreenObjects.UITests
 {
     [TestFixture]
-    [Ignore("Not sure hot this is supposed to work")]
+    [Ignore("Not sure how this is supposed to work")]
     public class ScreenRepositoryTests
     {
         readonly ScreenRepositoryTester screenRepositoryTester;
