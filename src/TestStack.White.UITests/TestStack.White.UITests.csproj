@@ -67,6 +67,9 @@
     <Compile Include="ControlTests\InputControls\RadioButtonTests.cs" />
     <Compile Include="ControlTests\InputControls\SpinnerTests.cs" />
     <Compile Include="ControlTests\InputControls\TristateItemTests.cs" />
+    <Compile Include="ControlTests\ListControls\CheckedListBoxTests.cs" />
+    <Compile Include="ControlTests\ListControls\ListBoxWithScrollBarTests.cs" />
+    <Compile Include="ControlTests\ListControls\ListViewTests.cs" />
     <Compile Include="ControlTests\MenuItems\MenuTest.cs" />
     <Compile Include="ControlTests\MenuItems\PopUpMenuTest.cs" />
     <Compile Include="ControlTests\PropertyGridTest.cs" />
@@ -80,8 +83,6 @@
     <Compile Include="ControlTests\TreeItems\TreeTest.cs" />
     <Compile Include="ControlTests\VScrollBarTest.cs" />
     <Compile Include="ControlTests\LabelTest.cs" />
-    <Compile Include="ControlTests\ListControls\ListBoxTests.cs" />
-    <Compile Include="ControlTests\ListControls\ListViewTest.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
     <Compile Include="ControlTests\PanelTest.cs" />
@@ -106,7 +107,6 @@
     <Compile Include="ControlTests\ButtonTests.cs" />
     <Compile Include="ControlTests\HotKeyTest.cs" />
     <Compile Include="ControlTests\InputControls\CheckboxTests.cs" />
-    <Compile Include="ControlTests\ListControls\CheckedListBoxTest.cs" />
     <Compile Include="ControlTests\InputControls\PasswordTextBoxTests.cs" />
     <Compile Include="ControlTests\InputControls\TextBoxTests.cs" />
     <Compile Include="ControlTests\TooltipTests.cs" />

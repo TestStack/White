@@ -1,38 +1,39 @@
-﻿using System.Collections.Generic;
+﻿using NUnit.Framework;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
-using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {
-    public class EditableComboBoxTests : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class EditableComboBoxTests : WhiteUITestBase
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
 
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public EditableComboBoxTests(WindowsFramework framework)
+            : base(framework)
+        {
+        }
+
+        [OneTimeSetUp]
+        public void Setup()
         {
             ComboBoxUnderTest = MainWindow.Get<ComboBox>("EditableComboBox");
-            RunTest(SetValueInEditableComboBox);
-            RunTest(SelectItemInEditableComboBox);
         }
 
-        private void SetValueInEditableComboBox()
+        [Test]
+        public void SetValueInEditableComboBoxTest()
         {
             ComboBoxUnderTest.EditableText = "foobar";
-            Assert.Equal("foobar", ComboBoxUnderTest.EditableText);
+            Assert.That(ComboBoxUnderTest.EditableText, Is.EqualTo("foobar"));
         }
 
-        private void SelectItemInEditableComboBox()
+        [Test]
+        public void SelectItemInEditableComboBoxTest()
         {
             ComboBoxUnderTest.Select("Test3");
-            Assert.Equal("Test3", ComboBoxUnderTest.EditableText);
-            Assert.Equal("Test3", ComboBoxUnderTest.SelectedItemText);
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
+            Assert.That(ComboBoxUnderTest.EditableText, Is.EqualTo("Test3"));
+            Assert.That(ComboBoxUnderTest.SelectedItemText, Is.EqualTo("Test3"));
         }
     }
 }

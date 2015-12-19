@@ -1,38 +1,41 @@
-﻿using System.Collections.Generic;
+﻿using NUnit.Framework;
 using System.Windows.Automation;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.ListBoxItems;
-using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {
-    public class ComboBoxTests : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class ComboBoxTests : WhiteUITestBase
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
 
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public ComboBoxTests(WindowsFramework framework)
+            : base(framework)
         {
-            ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
-            RunTest(ListItemInComboBoxWithoutTextAvailableInitially, WindowsFramework.Wpf);
-            RunTest(ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved);
-            RunTest(ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrieval);
-            RunTest(CanSelectItemAtTopOfList);
-            RunTest(CanGetAllItems);
-            RunTest(CanSelectItemAtBottomOfList);
-            RunTest(CanSelectItemAtTopOfList); // Once an item is selected at the bottom of the list, White couldn't select at the top again
-            RunTest(CanSelectByIndex);
-            RunTest(CanSelectReallyLongText);
-            RunTest(SetValue);
         }
 
-        void ListItemInComboBoxWithoutTextAvailableInitially()
+        [OneTimeSetUp]
+        public void Setup()
         {
+            ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
+        }
+
+        [Test]
+        public void ListItemInComboBoxWithoutTextAvailableInitiallyTest()
+        {
+            if (Framework != WindowsFramework.Wpf)
+            {
+                Assert.Ignore();
+            }
+
             try
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
-                Assert.Equal(0, ComboBoxUnderTest.Items.Count);
+                Assert.That(ComboBoxUnderTest.Items, Has.Count.EqualTo(0));
             }
             finally
             {
@@ -40,7 +43,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             }
         }
 
-        void ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrieval()
+        [Test]
+        public void ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrievalTest()
         {
             // Arrange
             var expandCollapsePattern = (ExpandCollapsePattern)ComboBoxUnderTest.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
@@ -54,13 +58,13 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 
                 // Act
 #pragma warning disable 168
-// ReSharper disable once UnusedVariable
+                // ReSharper disable once UnusedVariable
                 var items = ComboBoxUnderTest.Items;
 #pragma warning restore 168
 
                 // Assert
                 var expansionState = expandCollapsePattern.Current.ExpandCollapseState;
-                Assert.Equal(ExpandCollapseState.Expanded, expansionState);
+                Assert.That(expansionState, Is.EqualTo(ExpandCollapseState.Expanded));
             }
             finally
             {
@@ -69,7 +73,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             }
         }
 
-        void ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrieved()
+        [Test]
+        public void ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrievedTest()
         {
             // Arrange
             var config = CoreAppXmlConfiguration.Instance;
@@ -80,14 +85,14 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 // Act
 #pragma warning disable 168
                 // Required to force the expansion of the combobox
-// ReSharper disable once UnusedVariable
+                // ReSharper disable once UnusedVariable
                 var items = ComboBoxUnderTest.Items;
 #pragma warning restore 168
 
                 // Assert
                 var expansionState = (ExpandCollapseState)ComboBoxUnderTest.AutomationElement.GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
                 // The combobox should have been collapsed after the items were retrieved
-                Assert.Equal(ExpandCollapseState.Collapsed, expansionState);
+                Assert.That(expansionState, Is.EqualTo(ExpandCollapseState.Collapsed));
             }
             finally
             {
@@ -96,48 +101,46 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 
         }
 
-        void CanSelectByIndex()
+        [Test]
+        public void CanSelectByIndexTest()
         {
             ComboBoxUnderTest.Select(4);
-            Assert.Equal("Test5", ComboBoxUnderTest.SelectedItemText);
+            Assert.That(ComboBoxUnderTest.SelectedItemText, Is.EqualTo("Test5"));
         }
-
-        void CanSelectItemAtBottomOfList()
+        [Test]
+        public void CanSelectItemAtBottomOfListTest()
         {
             ComboBoxUnderTest.Select("Test19");
-            Assert.Equal("Test19", ComboBoxUnderTest.SelectedItemText);
+            Assert.That(ComboBoxUnderTest.SelectedItemText, Is.EqualTo("Test19"));
         }
-
-        void CanGetAllItems()
+        [Test]
+        public void CanGetAllItemsTest()
         {
             var items = ComboBoxUnderTest.Items;
-            Assert.Equal(21, items.Count);
-            Assert.Equal("Test", items[0].Name);
-            Assert.Equal("Test20", items[19].Name);
+            Assert.That(items, Has.Count.EqualTo(21));
+            Assert.That(items[0].Name, Is.EqualTo("Test"));
+            Assert.That(items[19].Name, Is.EqualTo("Test20"));
         }
 
-        void CanSelectItemAtTopOfList()
+        [Test]
+        public void CanSelectItemAtTopOfListTest()
         {
             ComboBoxUnderTest.Select("Test2");
-            Assert.Equal("Test2", ComboBoxUnderTest.SelectedItemText);
+            Assert.That(ComboBoxUnderTest.SelectedItemText, Is.EqualTo("Test2"));
         }
 
-        void CanSelectReallyLongText()
+        [Test]
+        public void CanSelectReallyLongTextTest()
         {
             ComboBoxUnderTest.Select("ReallyReallyReallyLongTextHere");
-            Assert.Equal("ReallyReallyReallyLongTextHere", ComboBoxUnderTest.SelectedItem.Text);
+            Assert.That(ComboBoxUnderTest.SelectedItem.Text, Is.EqualTo("ReallyReallyReallyLongTextHere"));
         }
 
-        void SetValue()
+        [Test]
+        public void SetValueTest()
         {
             ComboBoxUnderTest.SetValue("Test4");
-            Assert.Equal("Test4", ComboBoxUnderTest.SelectedItem.Text);
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
+            Assert.That(ComboBoxUnderTest.SelectedItem.Text, Is.EqualTo("Test4"));
         }
     }
 }

@@ -1,140 +1,143 @@
-using System.Collections.Generic;
+using NUnit.Framework;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListViewItems;
-using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {
-    public class ListViewTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class ListViewTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public ListViewTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(CellCount);
-            RunTest(CellText);
-            RunTest(Columns);
-            RunTest(MultiSelect);
-            RunTest(RowCount);
-            RunTest(SelectBasedOnCell);
-            RunTest(SelectRow);
-            RunTest(SelectScrolledRow);
-            RunTest(SelectedRow);
-            RunTest(SelectedRows);
-            RunTest(SelectWhenHorizontalScrollIsPresent);
         }
 
-        void SelectRow()
+        [Test]
+        public void SelectRowTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
                 listView.Select(0);
-                ListViewRow firstRow = listView.Rows[0];
-                Assert.Equal(true, firstRow.IsSelected);
-                Assert.Equal("ListView item selected - " + 0, listView.HelpText);
+                var firstRow = listView.Rows[0];
+                Assert.That( firstRow.IsSelected, Is.True);
+                Assert.That(listView.HelpText, Is.EqualTo("ListView item selected - " + 0));
                 listView.Select(1);
-                ListViewRow secondRow = listView.Rows[1];
-                Assert.Equal(true, secondRow.IsSelected);
+                var secondRow = listView.Rows[1];
+                Assert.That( secondRow.IsSelected, Is.True);
             }
         }
-        void SelectScrolledRow()
+
+        [Test]
+        public void SelectScrolledRowTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
                 listView.Select("Key", "Action15");
-                Assert.Equal("App15", listView.SelectedRows[0].Cells["Value"].Text);
+                Assert.That(listView.SelectedRows[0].Cells["Value"].Text, Is.EqualTo("App15"));
             }
         }
-        void SelectedRow()
+
+        [Test]
+        public void SelectedRowTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
                 listView.Select(0);
-                ListViewRow listViewRow = listView.SelectedRows[0];
-                Assert.Equal("Search", listViewRow.Cells["Key"].Text);
+                var listViewRow = listView.SelectedRows[0];
+                Assert.That(listViewRow.Cells["Key"].Text, Is.EqualTo("Search"));
             }
         }
 
-        void SelectBasedOnCell()
+        [Test]
+        public void SelectBasedOnCellTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
                 listView.Select("Key", "Mail");
-                Assert.Equal("Mail", listView.SelectedRows[0].Cells["Key"].Text);
+                Assert.That(listView.SelectedRows[0].Cells["Key"].Text, Is.EqualTo("Mail"));
             }
         }
 
-        void Columns()
+        [Test]
+        public void ColumnsTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
-                ListViewColumns columns = listView.Header.Columns;
-                Assert.Equal(2, columns.Count);
-                Assert.Equal("Key", columns[0].Name);
-                Assert.Equal("Value", columns[1].Name);
+                var columns = listView.Header.Columns;
+                Assert.That(columns.Count, Is.EqualTo(2));
+                Assert.That(columns[0].Name, Is.EqualTo("Key"));
+                Assert.That(columns[1].Name, Is.EqualTo("Value"));
             }
         }
-
-        void RowCount()
+        [Test]
+        public void RowCountTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
-                Assert.Equal(18, listView.Rows.Count);
+                Assert.That(listView.Rows.Count, Is.EqualTo(18));
             }
         }
 
-        void CellCount()
+        [Test]
+        public void CellCountTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
-                ListViewRow row = listView.Rows[0];
-                Assert.Equal(2, row.Cells.Count);
+                var row = listView.Rows[0];
+                Assert.That(row.Cells.Count, Is.EqualTo(2));
             }
         }
 
-        void CellText()
+        [Test]
+        public void CellTextTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
-                ListViewRow first = listView.Rows[0];
-                Assert.Equal("Search", first.Cells[0].Text);
-                Assert.Equal("Google", first.Cells[1].Text);
-                ListViewRow second = listView.Rows[1];
-                Assert.Equal("Mail", second.Cells[0].Text);
-                Assert.Equal("GMail", second.Cells[1].Text);
+                var first = listView.Rows[0];
+                Assert.That(first.Cells[0].Text, Is.EqualTo("Search"));
+                Assert.That(first.Cells[1].Text, Is.EqualTo("Google"));
+                var second = listView.Rows[1];
+                Assert.That(second.Cells[0].Text, Is.EqualTo("Mail"));
+                Assert.That(second.Cells[1].Text, Is.EqualTo("GMail"));
             }
         }
 
-        void SelectedRows()
+        [Test]
+        public void SelectedRowsTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
                 listView.Rows[2].Select();
                 listView.Rows[0].Select();
-                ListViewRows rows = listView.SelectedRows;
-                Assert.Equal(1, rows.Count);
+                var rows = listView.SelectedRows;
+                Assert.That(rows.Count, Is.EqualTo(1));
             }
         }
 
-        void MultiSelect()
+        [Test]
+        public void MultiSelectTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
                 var listView = window.Get<ListView>("ListView");
                 listView.Rows[0].Select();
                 listView.Rows[1].MultiSelect();
-                Assert.Equal(2, listView.SelectedRows.Count);
+                Assert.That(listView.SelectedRows.Count, Is.EqualTo(2));
             }
         }
 
-        void SelectWhenHorizontalScrollIsPresent()
+        [Test]
+        public void SelectWhenHorizontalScrollIsPresentTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
             {
@@ -142,12 +145,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 listView.Row("Key", "bardfgreerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrre")
                     .Select();
             }
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
         }
     }
 }
