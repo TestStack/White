@@ -113,7 +113,7 @@
     <Compile Include="Configuration\CoreAppXmlConfiguration.cs" />
     <Compile Include="Configuration\CoreConfiguration.cs" />
     <Compile Include="Configuration\IWaitHook.cs" />
-    <Compile Include="Configuration\UIItemIdAppXmlConfiguration.cs" />
+    <Compile Include="Configuration\IUIItemIdAppXmlConfiguration.cs" />
     <Compile Include="Configuration\UIItemIdConfiguration.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CoreTestTemplate.cs" />

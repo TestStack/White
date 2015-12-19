@@ -33,7 +33,7 @@ namespace TestStack.White.UIItems.TableItems
             {
                 if (header == null)
                 {
-                    AutomationElement headerElement = finder.Descendant(SearchCriteria.ByText(UIItemIdAppXmlConfiguration.Instance.TableHeader).AutomationCondition);
+                    AutomationElement headerElement = finder.Descendant(SearchCriteria.ByText(IUIItemIdAppXmlConfiguration.Instance.TableHeader).AutomationCondition);
                     if (headerElement == null) return null;
                     header = (TableHeader) new TableHeaderFactory().Create(headerElement, actionListener);
                 }

@@ -18,7 +18,7 @@ namespace TestStack.White.UIItems.TableItems
             get
             {
                 object value = Property(ValuePattern.ValueProperty);
-                return UIItemIdAppXmlConfiguration.Instance.TableCellNullValue.Equals(value) ? string.Empty : value;
+                return IUIItemIdAppXmlConfiguration.Instance.TableCellNullValue.Equals(value) ? string.Empty : value;
             }
             set
             {

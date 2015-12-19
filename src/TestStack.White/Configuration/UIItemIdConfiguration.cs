@@ -1,6 +1,6 @@
 namespace TestStack.White.Configuration
 {
-    public interface UIItemIdConfiguration
+    public interface IUIItemIdConfiguration
     {
         string TableVerticalScrollBar { get; set; }
         string TableHorizontalScrollBar { get; set; }
