@@ -87,8 +87,8 @@
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
     <Compile Include="ControlTests\PanelTest.cs" />
     <Compile Include="ControlTests\ProgressBarTest.cs" />
-    <Compile Include="ControlTests\WindowStripControls\StatusBarTest.cs" />
-    <Compile Include="ControlTests\WindowStripControls\StatusStripTest.cs" />
+    <Compile Include="ControlTests\WindowStripControls\StatusBarTests.cs" />
+    <Compile Include="ControlTests\WindowStripControls\StatusStripTests.cs" />
     <Compile Include="GenericScreenTypeTest.cs" />
     <Compile Include="Reporting\One.cs" />
     <Compile Include="Reporting\SessionReportTest.cs" />
