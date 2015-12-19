@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using TestStack.White.UIItems;
-using TestStack.White.UIItems.ListViewItems;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {

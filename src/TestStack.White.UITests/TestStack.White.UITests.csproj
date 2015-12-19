@@ -70,8 +70,8 @@
     <Compile Include="ControlTests\ListControls\CheckedListBoxTests.cs" />
     <Compile Include="ControlTests\ListControls\ListBoxWithScrollBarTests.cs" />
     <Compile Include="ControlTests\ListControls\ListViewTests.cs" />
-    <Compile Include="ControlTests\MenuItems\MenuTest.cs" />
-    <Compile Include="ControlTests\MenuItems\PopUpMenuTest.cs" />
+    <Compile Include="ControlTests\MenuItems\MenuTests.cs" />
+    <Compile Include="ControlTests\MenuItems\PopUpMenuTests.cs" />
     <Compile Include="ControlTests\PropertyGridTest.cs" />
     <Compile Include="ControlTests\SliderTest.cs" />
     <Compile Include="ControlTests\Table\TableCellTest.cs" />
