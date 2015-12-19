@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using TestStack.White.Factory;
@@ -21,7 +22,7 @@ namespace TestStack.White.UITests.Infrastructure
 
         public override Application LaunchApplication()
         {
-            var app = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), ApplicationExePath());
+            var app = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath), ApplicationExePath());
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = app,
