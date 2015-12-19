@@ -74,10 +74,10 @@
     <Compile Include="ControlTests\MenuItems\PopUpMenuTests.cs" />
     <Compile Include="ControlTests\PropertyGridTest.cs" />
     <Compile Include="ControlTests\SliderTest.cs" />
-    <Compile Include="ControlTests\Table\TableCellTest.cs" />
-    <Compile Include="ControlTests\Table\TableRowsTest.cs" />
-    <Compile Include="ControlTests\Table\TableRowTest.cs" />
-    <Compile Include="ControlTests\Table\TableTest.cs" />
+    <Compile Include="ControlTests\Table\TableCellTests.cs" />
+    <Compile Include="ControlTests\Table\TableRowsTests.cs" />
+    <Compile Include="ControlTests\Table\TableRowTests.cs" />
+    <Compile Include="ControlTests\Table\TableTests.cs" />
     <Compile Include="ControlTests\TabTest.cs" />
     <Compile Include="ControlTests\TreeItems\TreeNodeTest.cs" />
     <Compile Include="ControlTests\TreeItems\TreeTest.cs" />

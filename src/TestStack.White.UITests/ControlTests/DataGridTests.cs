@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
-using TestStack.White.UIItems.TableItems;
 using Xunit;
 
 namespace TestStack.White.UITests.ControlTests
@@ -9,7 +8,7 @@ namespace TestStack.White.UITests.ControlTests
     public class DataGridTests : WhiteTestBase
     {
         protected ListView DataGridWpfUnderTest { get; set; }
-        protected Table DataGridWinFormsUnderTest { get; set; }
+        protected UIItems.TableItems.Table DataGridWinFormsUnderTest { get; set; }
 
         protected override void ExecuteTestRun(WindowsFramework framework)
         {
@@ -22,7 +21,7 @@ namespace TestStack.White.UITests.ControlTests
             }
             else if (framework == WindowsFramework.WinForms)
             {
-                DataGridWinFormsUnderTest = MainWindow.Get<Table>(SearchCriteria.ByAutomationId("DataGridControl"));
+                DataGridWinFormsUnderTest = MainWindow.Get<UIItems.TableItems.Table>(SearchCriteria.ByAutomationId("DataGridControl"));
                 RunTest(CanGetAllItemsWinforms);
             }
         }
