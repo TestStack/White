@@ -275,6 +275,15 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
+        /// Performs mouse wheel at the center of this item
+        /// </summary>
+        public virtual void MouseWheel(int delta)
+        {
+            actionListener.ActionPerforming(this);
+            PerformIfValid(() => mouse.Wheel(Bounds.Center(), delta, actionListener));
+        }
+
+        /// <summary>
         /// Perform keyboard action on this UIItem
         /// </summary>
         /// <param name="key"></param>

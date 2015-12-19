@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
 using TestStack.White.InputDevices;
@@ -30,6 +32,8 @@ namespace TestStack.White.UITests
             screenshotDir = "c:\\FailedTestsScreenshots";
             if (!Directory.Exists(screenshotDir))
                 Directory.CreateDirectory(screenshotDir);
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
         }
 
         protected Window MainWindow { get; private set; }
