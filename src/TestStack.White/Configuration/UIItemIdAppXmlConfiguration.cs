@@ -112,19 +112,19 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("TableCellPrefix", value); }
         }
 
-        public string BrowseText
+        public virtual string BrowseText
         {
             get { return UsedValues["BrowseText"]; }
             set { SetUsedValue("BrowseText", value); }
         }
 
-        public string OpenFileDialogTitle
+        public virtual string OpenFileDialogTitle
         {
             get { return UsedValues["OpenFileDialogTitle"]; }
             set { SetUsedValue("OpenFileDialogTitle", value); }
         }
 
-        public string PropertyGridMiscText
+        public virtual string PropertyGridMiscText
         {
             get { return UsedValues["PropertyGridMiscText"]; }
             set { SetUsedValue("PropertyGridMiscText", value); }
