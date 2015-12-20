@@ -1,54 +1,54 @@
+using NUnit.Framework;
 using System.IO;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects.Services;
 using TestStack.White.ScreenObjects.Sessions;
 using TestStack.White.UIItems;
-using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UITests.Infrastructure;
-using Xunit;
 
 namespace TestStack.White.UITests.Repository
 {
-    public class WorkSessionTest
+    [TestFixture]
+    public class WorkSessionTests
     {
-        [Fact]
+        [Test]
         public void ShouldNotSaveAnyWindowInformationToFileWhenNoWindowsAreLaunched()
         {
-            int numberOfFilesBeforeSessionStart = NumberOfFiles();
+            var numberOfFilesBeforeSessionStart = NumberOfFiles();
             using (WorkSession()){}
-            Assert.Equal(numberOfFilesBeforeSessionStart, NumberOfFiles());
+            Assert.That(NumberOfFiles(), Is.EqualTo(numberOfFilesBeforeSessionStart));
         }
 
-        [Fact]
+        [Test]
         public void ShouldSaveWindowInformationInFile()
         {
             File.Delete("foo.xml");
-            using (WorkSession workSession = WorkSession())
+            using (var workSession = WorkSession())
             {
-                Application application = new WinformsTestConfiguration().LaunchApplication();
+                var application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
-                Window window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
+                var window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("ButtonWithTooltip");
             }
-            Assert.True(File.Exists("foo.xml"));
+            Assert.That(File.Exists("foo.xml"), Is.True);
         }
 
-        [Fact]
+        [Test]
         public void ShouldFindControlBasedLocation()
         {
             File.Delete("foo.xml");
-            using (WorkSession workSession = WorkSession())
+            using (var workSession = WorkSession())
             {
-                Application application = new WinformsTestConfiguration().LaunchApplication();
+                var application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
-                Window window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
+                var window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("ButtonWithTooltip");
             }
-            using (WorkSession workSession = WorkSession())
+            using (var workSession = WorkSession())
             {
-                Application application = new WinformsTestConfiguration().LaunchApplication();
+                var application = new WinformsTestConfiguration().LaunchApplication();
                 workSession.Attach(application);
-                Window window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
+                var window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("ButtonWithTooltip");
             }
         }

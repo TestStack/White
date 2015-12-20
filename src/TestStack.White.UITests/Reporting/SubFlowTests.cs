@@ -1,29 +1,30 @@
 using System;
+using NUnit.Framework;
 using TestStack.White.Reporting.Domain;
-using Xunit;
 
 namespace TestStack.White.UITests.Reporting
 {
-    public class SubFlowTest
+    [TestFixture]
+    public class SubFlowTests
     {
         readonly SubFlow subFlow;
 
-        public SubFlowTest()
+        public SubFlowTests()
         {
             subFlow = new SubFlow("subFlow", "flow", "archiveLocation");
         }
 
-        [Fact]
+        [Test]
         public void NextOnSameNode()
         {
             subFlow.Next(One());
             subFlow.Act();
             subFlow.Act();
-            Assert.Equal(1, subFlow.FlowSteps.Count);
-            Assert.Equal(3, subFlow.FlowSteps[0].ScreenShots.Count);
+            Assert.That(subFlow.FlowSteps, Has.Count.EqualTo(1));
+            Assert.That(subFlow.FlowSteps[0].ScreenShots, Has.Count.EqualTo(3));
         }
 
-        [Fact]
+        [Test]
         public void Flow()
         {
             subFlow.Next(One());           
@@ -31,9 +32,9 @@ namespace TestStack.White.UITests.Reporting
             subFlow.Act();           
             subFlow.Next(Two());           
             subFlow.Act();
-            Assert.Equal(2, subFlow.FlowSteps.Count);
-            Assert.Equal(3, subFlow.FlowSteps[0].ScreenShots.Count);
-            Assert.Equal(2, subFlow.FlowSteps[1].ScreenShots.Count);
+            Assert.That(subFlow.FlowSteps, Has.Count.EqualTo(2));
+            Assert.That(subFlow.FlowSteps[0].ScreenShots, Has.Count.EqualTo(3));
+            Assert.That(subFlow.FlowSteps[1].ScreenShots, Has.Count.EqualTo(2));
         }
 
         private static Type One() {
@@ -43,6 +44,5 @@ namespace TestStack.White.UITests.Reporting
         private static Type Two() {
             return typeof(Two);
         }
-
     }
 }

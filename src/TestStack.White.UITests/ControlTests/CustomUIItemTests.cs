@@ -40,7 +40,7 @@ namespace TestStack.White.UITests.ControlTests
         [Test]
         public void NoDateUIItemMappingDefinedTest()
         {
-            Assert.Throws<CustomUIItemException>(() => window.Get<MyDateUIItemWithoutMappingDefined>("DateOfBirth"));
+            Assert.That(() => { window.Get<MyDateUIItemWithoutMappingDefined>("DateOfBirth"); }, Throws.TypeOf<CustomUIItemException>());
         }
     }
 }

@@ -1,34 +1,35 @@
+using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.Utility;
-using Xunit;
 
 namespace TestStack.White.UITests.Interceptors
 {
     //TODO: Check all operations and write tests possible on all disabled uiitem
-    public class DisabledControlsTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class DisabledControlsTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public DisabledControlsTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(DoNotAllowActionOnDisabledControls);
-            RunTest(AllowActionsPossibleOnDisabledInputControls);
-            RunTest(AllowActionsPossibleOnDisabledListControls);
         }
 
-        void DoNotAllowActionOnDisabledControls()
+        [Test]
+        public void DoNotAllowActionOnDisabledControlsTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             MainWindow.Get<Button>("DisableControls").Click();
             Retry.For(() => !textBox.Enabled, TimeSpan.FromSeconds(2));
-            Assert.Throws<ElementNotEnabledException>(() => { textBox.Text = "blah"; });
+            Assert.That(() => { textBox.Text = "blah"; }, Throws.TypeOf<ElementNotEnabledException>());
             MainWindow.Get<Button>("DisableControls").Click();
         }
 
-        void AllowActionsPossibleOnDisabledInputControls()
+        [Test]
+        public void AllowActionsPossibleOnDisabledInputControlsTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
@@ -39,11 +40,12 @@ namespace TestStack.White.UITests.Interceptors
             MainWindow.Get<Button>("DisableControls").Click();
 
             // Assert we can still read the values
-            Assert.Equal("blah", textBox.Text);
+            Assert.That(textBox.Text, Is.EqualTo("blah"));
             MainWindow.Get<Button>("DisableControls").Click();
         }
 
-        void AllowActionsPossibleOnDisabledListControls()
+        [Test]
+        public void AllowActionsPossibleOnDisabledListControlsTest()
         {
             SelectListControls();
             var comboBox = MainWindow.Get<ComboBox>("AComboBox");
@@ -54,14 +56,8 @@ namespace TestStack.White.UITests.Interceptors
             MainWindow.Get<Button>("DisableControls").Click();
 
             // Assert we can still read the values
-            Assert.Equal("Test2", comboBox.SelectedItem.Text);
+            Assert.That(comboBox.SelectedItem.Text, Is.EqualTo("Test2"));
             MainWindow.Get<Button>("DisableControls").Click();
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Wpf;
         }
     }
 }

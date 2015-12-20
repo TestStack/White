@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using NUnit.Framework;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
@@ -7,19 +7,24 @@ using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.UITests
 {
-    public class GenericScreenTypeTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class GenericScreenTypeTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public GenericScreenTypeTests(WindowsFramework framework)
+            : base(framework)
         {
-            var screen = Repository.Get<SomeGenericScreen<int, int>>(MainWindow.Title, InitializeOption.NoCache);
-            screen.MakeWindowItemsMapDirty();
-            Application.ApplicationSession.Save();
         }
 
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
+        [Test]
+        public void ExecuteTest()
         {
-            yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Wpf;
+            Assert.That(() =>
+            {
+                var screen = Repository.Get<SomeGenericScreen<int, int>>(MainWindow.Title, InitializeOption.NoCache);
+                screen.MakeWindowItemsMapDirty();
+                Application.ApplicationSession.Save();
+            }, Throws.Nothing);
         }
 
         private class SomeGenericScreen<T1, T2> : AppScreen

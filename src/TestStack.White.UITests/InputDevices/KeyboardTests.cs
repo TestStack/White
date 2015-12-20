@@ -81,7 +81,7 @@ namespace TestStack.White.UITests.InputDevices
         [Test]
         public void DoNotAllowToLeaveKeyWhichIsNotHeldTest()
         {
-            Assert.Throws<InputDeviceException>(() => Keyboard.Instance.LeaveKey(KeyboardInput.SpecialKeys.LEFT, MainWindow));
+            Assert.That(() => { Keyboard.Instance.LeaveKey(KeyboardInput.SpecialKeys.LEFT, MainWindow); }, Throws.TypeOf<InputDeviceException>());
         }
 
         [Test]

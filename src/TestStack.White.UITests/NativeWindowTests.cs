@@ -1,16 +1,30 @@
+using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using TestStack.White.UIA;
 using TestStack.White.UIItems;
 using TestStack.White.WindowsAPI;
 
 namespace TestStack.White.UITests
 {
-    public class NativeWindowTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class NativeWindowTests : WhiteUITestBase
     {
-        void BackgroundColor()
+        public NativeWindowTests(WindowsFramework framework)
+            : base(framework)
         {
-            var colorref = new COLORREF {R = 200};
+        }
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            SelectInputControls();
+        }
+
+        [Test]
+        public void BackgroundColorTest()
+        {
+            var colorref = new COLORREF { R = 200 };
             Console.WriteLine(colorref.R);
 
             var nativeWindow = new NativeWindow(new IntPtr(MainWindow.Get<TextBox>("TextBox").AutomationElement.Current.NativeWindowHandle));
@@ -24,18 +38,6 @@ namespace TestStack.White.UITests
             nativeWindow = new NativeWindow(MainWindow.Get<Button>("ButtonWithTooltip").Bounds.ImmediateInteriorEast());
             Console.WriteLine(nativeWindow.BackgroundColor);
             Console.WriteLine(nativeWindow.TextColor);
-        }
-
-        protected override void ExecuteTestRun(WindowsFramework framework)
-        {
-            SelectInputControls();
-            RunTest(BackgroundColor);
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
         }
     }
 }
