@@ -1,26 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using NUnit.Framework;
 using TestStack.White.UIItems;
-using Xunit;
 
 namespace TestStack.White.UITests.ControlTests
 {
-    public class TooltipTests : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class TooltipTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public TooltipTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(CanGetTooltip);
         }
 
-        private void CanGetTooltip()
+        [Test]
+        public void CanGetTooltip()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
-            Assert.Equal("I have a tooltip", MainWindow.GetToolTipOn(button).Text);
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
+            Assert.That(MainWindow.GetToolTipOn(button).Text, Is.EqualTo("I have a tooltip"));
         }
     }
 }

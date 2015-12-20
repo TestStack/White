@@ -59,11 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlTests\ColorTests.cs" />
-    <Compile Include="ControlTests\CustomUIItemTest.cs" />
-    <Compile Include="ControlTests\GroupBoxTest.cs" />
-    <Compile Include="ControlTests\HyperlinkTest.cs" />
-    <Compile Include="ControlTests\HScrollBarTest.cs" />
-    <Compile Include="ControlTests\ImageTest.cs" />
+    <Compile Include="ControlTests\CustomUIItemTests.cs" />
+    <Compile Include="ControlTests\GroupBoxTests.cs" />
+    <Compile Include="ControlTests\HyperlinkTests.cs" />
+    <Compile Include="ControlTests\HScrollBarTests.cs" />
+    <Compile Include="ControlTests\ImageTests.cs" />
     <Compile Include="ControlTests\InputControls\RadioButtonTests.cs" />
     <Compile Include="ControlTests\InputControls\SpinnerTests.cs" />
     <Compile Include="ControlTests\InputControls\TristateItemTests.cs" />
@@ -72,21 +72,21 @@
     <Compile Include="ControlTests\ListControls\ListViewTests.cs" />
     <Compile Include="ControlTests\MenuItems\MenuTests.cs" />
     <Compile Include="ControlTests\MenuItems\PopUpMenuTests.cs" />
-    <Compile Include="ControlTests\PropertyGridTest.cs" />
-    <Compile Include="ControlTests\SliderTest.cs" />
+    <Compile Include="ControlTests\PropertyGridTests.cs" />
+    <Compile Include="ControlTests\SliderTests.cs" />
     <Compile Include="ControlTests\Table\TableCellTests.cs" />
     <Compile Include="ControlTests\Table\TableRowsTests.cs" />
     <Compile Include="ControlTests\Table\TableRowTests.cs" />
     <Compile Include="ControlTests\Table\TableTests.cs" />
-    <Compile Include="ControlTests\TabTest.cs" />
+    <Compile Include="ControlTests\TabTests.cs" />
     <Compile Include="ControlTests\TreeItems\TreeNodeTests.cs" />
     <Compile Include="ControlTests\TreeItems\TreeTests.cs" />
-    <Compile Include="ControlTests\VScrollBarTest.cs" />
-    <Compile Include="ControlTests\LabelTest.cs" />
+    <Compile Include="ControlTests\VScrollBarTests.cs" />
+    <Compile Include="ControlTests\LabelTests.cs" />
     <Compile Include="ControlTests\MyDateUIItem.cs" />
     <Compile Include="ControlTests\MyDateUIItemWithoutMappingDefined.cs" />
-    <Compile Include="ControlTests\PanelTest.cs" />
-    <Compile Include="ControlTests\ProgressBarTest.cs" />
+    <Compile Include="ControlTests\PanelTests.cs" />
+    <Compile Include="ControlTests\ProgressBarTests.cs" />
     <Compile Include="ControlTests\WindowStripControls\StatusBarTests.cs" />
     <Compile Include="ControlTests\WindowStripControls\StatusStripTests.cs" />
     <Compile Include="GenericScreenTypeTest.cs" />
@@ -105,7 +105,7 @@
     <Compile Include="WindowTests.cs" />
     <Compile Include="AutomationElementSearch\RawAutomationElementFinderTests.cs" />
     <Compile Include="ControlTests\ButtonTests.cs" />
-    <Compile Include="ControlTests\HotKeyTest.cs" />
+    <Compile Include="ControlTests\HotKeyTests.cs" />
     <Compile Include="ControlTests\InputControls\CheckboxTests.cs" />
     <Compile Include="ControlTests\InputControls\PasswordTextBoxTests.cs" />
     <Compile Include="ControlTests\InputControls\TextBoxTests.cs" />

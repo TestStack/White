@@ -1,19 +1,26 @@
-using System.Collections.Generic;
+using NUnit.Framework;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.Scrolling;
-using Xunit;
 
 namespace TestStack.White.UITests.ControlTests
 {
-    public class VScrollBarTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class VScrollBarTests : WhiteUITestBase
     {
         private ListBox listBox;
         private IVScrollBar vScrollBar;
         private double smallChange;
         private double largeChange;
 
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public VScrollBarTests(WindowsFramework framework)
+            : base(framework)
+        {
+        }
+
+        [OneTimeSetUp]
+        public void Setup()
         {
             listBox = MainWindow.Get<ListBox>("ListBoxWithVScrollBar");
             vScrollBar = listBox.ScrollBars.Vertical;
@@ -24,65 +31,60 @@ namespace TestStack.White.UITests.ControlTests
             largeChange = vScrollBar.Value;
             vScrollBar.ScrollUpLarge();
             if (vScrollBar.IsNotMinimum)
+            {
                 vScrollBar.SetToMinimum();
-
-            RunTest(ShouldGetVerticalScrollBar);
-            RunTest(ShouldScrollDown);
-            RunTest(ShouldScrollDownLarge);
-            RunTest(ShouldScrollUp);
-            RunTest(ShouldScrollUpLarge);
+            }
         }
 
-        void ShouldGetVerticalScrollBar()
+        [Test]
+        public void ShouldGetVerticalScrollBarTest()
         {
-            Assert.NotNull(vScrollBar);
+            Assert.That(vScrollBar, Is.Not.Null);
         }
 
-        void ShouldScrollDown()
+        [Test]
+        public void ShouldScrollDownTest()
         {
-            double currentValue = vScrollBar.Value;
+            var currentValue = vScrollBar.Value;
             vScrollBar.ScrollDown();
             vScrollBar.ScrollDown();
             vScrollBar.ScrollDown();
             vScrollBar.ScrollDown();
             vScrollBar.ScrollDown();
-            Assert.Equal(currentValue + (smallChange*5), vScrollBar.Value, 3);
+            Assert.That(vScrollBar.Value, Is.EqualTo(currentValue + (smallChange * 5)).Within(3));
         }
 
-        void ShouldScrollDownLarge()
+        [Test]
+        public void ShouldScrollDownLarge()
         {
-            double currentValue = vScrollBar.Value;
+            var currentValue = vScrollBar.Value;
             vScrollBar.ScrollDownLarge();
             vScrollBar.ScrollDownLarge();
             vScrollBar.ScrollDownLarge();
-            Assert.Equal(currentValue + (largeChange*3), vScrollBar.Value, 3);
+            Assert.That(vScrollBar.Value, Is.EqualTo(currentValue + (largeChange * 3)).Within(3));
         }
 
-        void ShouldScrollUp()
+        [Test]
+        public void ShouldScrollUp()
         {
             vScrollBar.SetToMaximum();
-            double maxValue = vScrollBar.Value;
+            var maxValue = vScrollBar.Value;
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
             vScrollBar.ScrollUp();
-            Assert.Equal(maxValue - (smallChange * 5), vScrollBar.Value, 3);
+            Assert.That(vScrollBar.Value, Is.EqualTo(maxValue - (smallChange * 5)).Within(3));
         }
 
-        void ShouldScrollUpLarge()
+        [Test]
+        public void ShouldScrollUpLarge()
         {
             var currentValue = vScrollBar.Value;
             vScrollBar.ScrollUpLarge();
             vScrollBar.ScrollUpLarge();
             vScrollBar.ScrollUpLarge();
-            Assert.Equal(currentValue - (largeChange * 3), vScrollBar.Value, 3);
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
+            Assert.That(vScrollBar.Value, Is.EqualTo(currentValue - (largeChange * 3)).Within(3));
         }
     }
 }

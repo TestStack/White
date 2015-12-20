@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using System;
+using System.Windows.Automation;
 using TestStack.White.UIA;
 using TestStack.White.UIItems;
 
@@ -17,7 +19,7 @@ namespace TestStack.White.UITests.UIA
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
             var display = button.AutomationElement.Display();
-            Assert.That(display, Is.EqualTo(string.Format("AutomationId:ButtonWithTooltip, Name:Button with Tooltip, ControlType:button, FrameworkId:{0}", FrameworkId)));
+            Assert.That(display, Is.EqualTo(String.Format("AutomationId:ButtonWithTooltip, Name:Button with Tooltip, ControlType:{0}, FrameworkId:{1}", ControlType.Button.LocalizedControlType, FrameworkId)));
         }
     }
 }
