@@ -1,37 +1,37 @@
+using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using Castle.Core.Logging;
 using TestStack.White.InputDevices;
 using TestStack.White.UIA;
 using TestStack.White.UIItems;
 using TestStack.White.Utility;
-using Xunit;
 
 namespace TestStack.White.UITests.InputDevices
 {
-    public class DragAndDropTests : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class DragAndDropTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public DragAndDropTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(DragAndDrop);
-            RunTest(DragAndDropBasedOnPosition);
         }
 
-        void DragAndDropBasedOnPosition()
+        [Test]
+        public void DragAndDropBasedOnPositionTest()
         {
             using (var window = StartScenario("DragDropScenario", "DragAndDropTestWindow"))
             {
                 var button = window.Get<Button>("Button");
                 var textBox = window.Get<TextBox>("TextBox");
-
                 Mouse.Instance.DragAndDrop(textBox, textBox.Bounds.Center(), button, button.Bounds.Center());
 
-                Retry.For(() => Assert.Equal("TextBoxDraggedOntoButton", window.Get<Label>("DragDropResults").Text),
+                Retry.For(() => Assert.That(window.Get<Label>("DragDropResults").Text, Is.EqualTo("TextBoxDraggedOntoButton")),
                     TimeSpan.FromSeconds(2));
             }
         }
 
-        void DragAndDrop()
+        [Test]
+        public void DragAndDropTest()
         {
             using (var window = StartScenario("DragDropScenario", "DragAndDropTestWindow"))
             {
@@ -39,15 +39,9 @@ namespace TestStack.White.UITests.InputDevices
                 var textBox = window.Get<TextBox>("TextBox");
                 Mouse.Instance.DragAndDrop(textBox, button);
 
-                Retry.For(() => Assert.Equal("TextBoxDraggedOntoButton", window.Get<Label>("DragDropResults").Text),
+                Retry.For(() => Assert.That(window.Get<Label>("DragDropResults").Text, Is.EqualTo("TextBoxDraggedOntoButton")),
                     TimeSpan.FromSeconds(2));
             }
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
         }
     }
 }

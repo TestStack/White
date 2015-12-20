@@ -118,13 +118,13 @@
     <Compile Include="ControlTests\InputControls\DatePickerTests.cs" />
     <Compile Include="ControlTests\Splitters\HorizontalThumbTests.cs" />
     <Compile Include="ControlTests\Splitters\VerticalThumbTests.cs" />
-    <Compile Include="Factory\InitializeOptionTest.cs" />
+    <Compile Include="Factory\InitializeOptionTests.cs" />
     <Compile Include="Infrastructure\SilverlightTestConfiguration.cs" />
     <Compile Include="Infrastructure\WindowsConfiguration.cs" />
-    <Compile Include="InputDevices\AttachedKeyboardTest.cs" />
+    <Compile Include="InputDevices\AttachedKeyboardTests.cs" />
     <Compile Include="InputDevices\DragAndDropTests.cs" />
-    <Compile Include="InputDevices\KeyboardTest.cs" />
-    <Compile Include="InputDevices\MouseTest.cs" />
+    <Compile Include="InputDevices\KeyboardTests.cs" />
+    <Compile Include="InputDevices\MouseTests.cs" />
     <Compile Include="Interceptors\DisabledControlsTest.cs" />
     <Compile Include="Interceptors\ScrollInterceptorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

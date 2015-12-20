@@ -1,28 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using NUnit.Framework;
+using System;
 using System.Text;
 using TestStack.White.InputDevices;
 using TestStack.White.UIItems;
 using TestStack.White.WindowsAPI;
-using Xunit;
 
 namespace TestStack.White.UITests.InputDevices
 {
-    public class KeyboardTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class KeyboardTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public KeyboardTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(EnterAccentedChars);
-            RunTest(EnterUnicodeCharacters);
-            RunTest(MultilineTextBox);
-            RunTest(ShouldSetTheValueOfATextBox);
-            RunTest(ShouldBeAbleToPressLeftAndRightCursorKeys);
-            RunTest(DoNotAllowToLeaveKeyWhichIsNotHeld);
-            RunTest(CapsLock);
-            RunTest(LeaveAllKeys);
-            RunTest(LeaveKey);
         }
 
-        void EnterAccentedChars()
+        [OneTimeTearDown]
+        public void Teardown()
+        {
+            Keyboard.LeaveAllKeys();
+        }
+
+        [Test]
+        public void EnterAccentedCharsTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
@@ -30,10 +31,11 @@ namespace TestStack.White.UITests.InputDevices
 
             textBox.BulkText = text;
 
-            Assert.Equal(text, textBox.Text);
+            Assert.That(textBox.Text, Is.EqualTo(text));
         }
 
-        void EnterUnicodeCharacters()
+        [Test]
+        public void EnterUnicodeCharactersTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
@@ -41,10 +43,11 @@ namespace TestStack.White.UITests.InputDevices
 
             textBox.BulkText = text;
 
-            Assert.Equal(text, textBox.Text);
+            Assert.That(textBox.Text, Is.EqualTo(text));
         }
 
-        void ShouldSetTheValueOfATextBox()
+        [Test]
+        public void ShouldSetTheValueOfATextBoxTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
@@ -58,7 +61,8 @@ namespace TestStack.White.UITests.InputDevices
             EnterAndAssertValueOfTextEntered(textBox, "!@#$%^&*()");
         }
 
-        void ShouldBeAbleToPressLeftAndRightCursorKeys()
+        [Test]
+        public void ShouldBeAbleToPressLeftAndRightCursorKeysTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
@@ -66,50 +70,55 @@ namespace TestStack.White.UITests.InputDevices
 
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.RIGHT, MainWindow);
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, MainWindow);
-            Assert.Equal("Textbo", textBox.Text);
+            Assert.That(textBox.Text, Is.EqualTo("Textbo"));
 
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, MainWindow);
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.LEFT, MainWindow);
             Keyboard.PressSpecialKey(KeyboardInput.SpecialKeys.BACKSPACE, MainWindow);
-            Assert.Equal("Texbo", textBox.Text);
+            Assert.That(textBox.Text, Is.EqualTo("Texbo"));
         }
 
-        void DoNotAllowToLeaveKeyWhichIsNotHeld()
+        [Test]
+        public void DoNotAllowToLeaveKeyWhichIsNotHeldTest()
         {
-            Assert.Throws<InputDeviceException>(()=>Keyboard.Instance.LeaveKey(KeyboardInput.SpecialKeys.LEFT, MainWindow));
+            Assert.Throws<InputDeviceException>(() => Keyboard.Instance.LeaveKey(KeyboardInput.SpecialKeys.LEFT, MainWindow));
         }
 
-        void CapsLock()
+        [Test]
+        public void CapsLockTest()
         {
             SelectInputControls();
             var textBox = MainWindow.Get<TextBox>("TextBox");
             ClearTextBox(textBox);
             Keyboard.CapsLockOn = false;
-            Assert.Equal(false, Keyboard.CapsLockOn);
+            Assert.That(Keyboard.CapsLockOn, Is.False);
             Keyboard.CapsLockOn = true;
-            Assert.Equal(true, Keyboard.CapsLockOn);
+            Assert.That(Keyboard.CapsLockOn, Is.True);
             Keyboard.CapsLockOn = false;
-            Assert.Equal(false, Keyboard.CapsLockOn);
+            Assert.That(Keyboard.CapsLockOn, Is.False);
         }
 
-        void LeaveAllKeys()
+        [Test]
+        public void LeaveAllKeysTest()
         {
             Keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
             Keyboard.HoldKey(KeyboardInput.SpecialKeys.CONTROL);
-            Assert.Equal(2, Keyboard.HeldKeys.Length);
+            Assert.That(Keyboard.HeldKeys, Has.Length.EqualTo(2));
             Keyboard.LeaveAllKeys();
-            Assert.Equal(0, Keyboard.HeldKeys.Length);
+            Assert.That(Keyboard.HeldKeys, Has.Length.EqualTo(0));
         }
 
-        void LeaveKey()
+        [Test]
+        public void LeaveKeyTest()
         {
             Keyboard.HoldKey(KeyboardInput.SpecialKeys.ALT);
-            Assert.Equal(1, Keyboard.HeldKeys.Length);
+            Assert.That(Keyboard.HeldKeys, Has.Length.EqualTo(1));
             Keyboard.LeaveKey(KeyboardInput.SpecialKeys.ALT);
-            Assert.Equal(0, Keyboard.HeldKeys.Length);
+            Assert.That(Keyboard.HeldKeys, Has.Length.EqualTo(0));
         }
 
-        void MultilineTextBox()
+        [Test]
+        public void MultilineTextBoxTest()
         {
             SelectInputControls();
             var builder = new StringBuilder();
@@ -117,31 +126,20 @@ namespace TestStack.White.UITests.InputDevices
             builder.Append("efgh").AppendLine();
             var multilineTextBox = MainWindow.Get<TextBox>("MultiLineTextBox");
             multilineTextBox.Text = builder.ToString();
-            Assert.Equal(builder.ToString(), multilineTextBox.Text);
+            Assert.That(multilineTextBox.Text, Is.EqualTo(builder.ToString()));
         }
 
-        void EnterAndAssertValueOfTextEntered(TextBox textBox, string stringToType)
+        private void EnterAndAssertValueOfTextEntered(TextBox textBox, string stringToType)
         {
             ClearTextBox(textBox);
             Keyboard.Send(stringToType, MainWindow);
-            Assert.Equal(stringToType, textBox.Text);
+            Assert.That(textBox.Text, Is.EqualTo(stringToType));
             ClearTextBox(textBox);
         }
 
-        void ClearTextBox(TextBox textBox)
+        private void ClearTextBox(TextBox textBox)
         {
-            textBox.Text = string.Empty;
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Wpf;
-        }
-
-        public void Dispose()
-        {
-            Keyboard.LeaveAllKeys();
+            textBox.Text = String.Empty;
         }
     }
 }
