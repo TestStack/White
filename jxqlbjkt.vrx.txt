@@ -1,0 +1,19 @@
+﻿Made some formatting changes and used some more nunit features
+
+- Renamed GetMultipleTest.cs to Get GetMultipleTests.cs
+- Added assert for exceptions that Roemer suggested
+- Added assert for count Roemer suggested and changed the array of UIItems to a list so they have a count property
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Sun Dec 20 03:42:11 2015 -0500
+#
+# On branch nunit-GetMultipleTest
+# Your branch is up-to-date with 'origin/nunit-GetMultipleTest'.
+#
+# Changes to be committed:
+#	new file:   src/TestStack.White.UITests/Scenarios/GetMultipleTests.cs
+#	modified:   src/TestStack.White.UITests/TestStack.White.UITests.csproj
+#
+
