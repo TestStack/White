@@ -3,11 +3,13 @@ init:
 - ps: 
 install:
 - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-desktop.ps1'))
+before_build:
+- cmd: nuget restore src\TestStack.White.sln
 build:
-  project: src/TestStack.White.sln
+  project: src\TestStack.White.sln
   verbosity: minimal
 artifacts:
 - path: c:\FailedTestsScreenshots
   name: ScreenShotss
 on_finish:
-- ps: Get-ChildItem c:\FailedTestsScreenshots\*.* | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }
+- ps: if (Test-Path -path c:\FailedTestsScreenshots) { Get-ChildItem c:\FailedTestsScreenshots\*.* | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }}
