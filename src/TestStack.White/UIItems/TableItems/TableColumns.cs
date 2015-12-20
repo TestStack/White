@@ -21,7 +21,7 @@ namespace TestStack.White.UIItems.TableItems
 
         private static bool HeaderColumn(AutomationElement automationElement)
         {
-            return automationElement.GetCurrentPropertyValue(AutomationElement.NameProperty).Equals(IUIItemIdAppXmlConfiguration.Instance.TableTopLeftHeaderCell);
+            return automationElement.GetCurrentPropertyValue(AutomationElement.NameProperty).Equals(UIItemIdAppXmlConfiguration.Instance.TableTopLeftHeaderCell);
         }
 
         public virtual TableColumn this[string text]

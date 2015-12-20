@@ -11,5 +11,17 @@ namespace TestStack.White.Configuration
         string HorizontalScrollBar { get; set; }
         string VerticalScrollBar { get; set; }
         string TableCellPrefix { get; set; }
+        /// <summary>
+        /// The text for the "browse"-button
+        /// </summary>
+        string BrowseText { get; set; }
+        /// <summary>
+        /// The dialog title of the open browse dialog
+        /// </summary>
+        string OpenFileDialogTitle { get; set; }
+        /// <summary>
+        /// Text of the misc category on a property grid
+        /// </summary>
+        string PropertyGridMiscText { get; set; }
     }
 }

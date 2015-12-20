@@ -93,7 +93,6 @@
     <Compile Include="AutomationElementSearch\AutomationSearchConditionFactoryTests.cs" />
     <Compile Include="AutomationElementSearch\ElementSearchResultTests.cs" />
     <Compile Include="AutomationElementSearch\SearchConditionTests.cs" />
-    <Compile Include="Configuration\UIItemIdAppXmlConfigurationTests.cs" />
     <Compile Include="CoreProjectTest.cs" />
     <Compile Include="Drawing\DrawingPointXTests.cs" />
     <Compile Include="Mappings\ControlDictionaryTests.cs" />
