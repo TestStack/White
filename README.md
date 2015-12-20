@@ -6,6 +6,9 @@ Project white has been inactive for some time, but still has many users and is a
 
 TestStack has brought this project into it's offering to try and breathe some life into Project White. 
 
+## Build Status
+[![Build status](https://ci.appveyor.com/api/projects/status/3nq9oblpevt0uu0l/branch/nunit?svg=true)](https://ci.appveyor.com/project/RomanBaeriswyl/white-9yaco/branch/nunit)
+
 ## Contributing
 White needs contributors to keep improving. There is plenty to do:
 
