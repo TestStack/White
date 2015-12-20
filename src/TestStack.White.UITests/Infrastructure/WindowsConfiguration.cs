@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
@@ -22,7 +23,8 @@ namespace TestStack.White.UITests.Infrastructure
 
         public override Application LaunchApplication()
         {
-            var app = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath), ApplicationExePath());
+            var app = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath), ApplicationExePath);
+            System.Diagnostics.Debug.WriteLine("Starting: " + app);
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = app,
@@ -49,6 +51,6 @@ namespace TestStack.White.UITests.Infrastructure
             return SearchCriteria.ByFramework(framework.FrameworkId()).AndByText("MainWindow");
         }
 
-        protected abstract string ApplicationExePath();
+        protected abstract string ApplicationExePath { get; }
     }
 }

@@ -112,12 +112,18 @@ namespace TestStack.White.UITests
             {
                 foreach (var window in testBase.windowsToClose)
                 {
-                    if (!window.IsClosed)
+                    if (window != null && !window.IsClosed)
                         window.Close();
                 }
                 testBase.windowsToClose.Clear();
-                testBase.MainWindow.Close();
-                testBase.Application.Dispose();
+                if (testBase.MainWindow != null)
+                {
+                    testBase.MainWindow.Close();
+                }
+                if (testBase.Application != null)
+                {
+                    testBase.Application.Dispose();
+                }
                 testBase.Application = null;
                 testBase.MainWindow = null;
             }
