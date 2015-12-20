@@ -96,6 +96,10 @@
       <Project>{24929ce3-4000-4600-8830-503be6a2ba42}</Project>
       <Name>WindowsFormsTestApplication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestApplications\WpfTestApplication\WpfTestApplication.csproj">
+      <Project>{492e6340-32cc-4d03-a9c4-36fb4c40cf5c}</Project>
+      <Name>WpfTestApplication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestStack.White.UITests\TestStack.White.UITests.csproj">
       <Project>{10A51741-09F8-47CA-AB94-965EE71342F7}</Project>
       <Name>TestStack.White.UITests</Name>
@@ -125,4 +129,3 @@
   </Target>
   -->
 </Project>
-
