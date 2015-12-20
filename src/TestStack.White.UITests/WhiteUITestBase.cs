@@ -155,5 +155,17 @@ namespace TestStack.White.UITests
         {
             MainWindow.Tabs[0].SelectTabPage(4);
         }
+
+        protected string FrameworkId
+        {
+            get
+            {
+                var type = Framework.GetType();
+                var memInfo = type.GetMember(Framework.ToString());
+                var attributes = memInfo[0].GetCustomAttributes(typeof(FrameworkIdAttribute), false);
+                return ((FrameworkIdAttribute)attributes[0]).FrameworkId;
+            }
+            private set { }
+        }
     }
 }

@@ -1,28 +1,22 @@
-using System.Collections.Generic;
+using NUnit.Framework;
 using TestStack.White.UIA;
 using TestStack.White.UIItems;
-using Xunit;
 
 namespace TestStack.White.UITests.UIA
 {
-    public class AutomationElementXTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class AutomationElementXTest : WhiteUITestBase
     {
-        public void TestToString(string frameworkid)
+        public AutomationElementXTest(WindowsFramework framework) 
+            : base(framework) { }
+
+        [Test]
+        public void TestToString()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
-            string s = button.AutomationElement.Display();
-            Assert.Equal(string.Format("AutomationId:ButtonWithTooltip, Name:Button with Tooltip, ControlType:button, FrameworkId:{0}", frameworkid), s);
-        }
-
-        protected override void ExecuteTestRun(WindowsFramework framework)
-        {
-            RunTest(()=>TestToString(framework.FrameworkId()));
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Wpf;
+            var display = button.AutomationElement.Display();
+            Assert.That(display, Is.EqualTo(string.Format( "AutomationId:ButtonWithTooltip, Name:Button with Tooltip, ControlType:button, FrameworkId:{0}", FrameworkId)));
         }
     }
 }
