@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using NUnit.Framework;
+using System.Diagnostics;
 using System.Linq;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
@@ -7,17 +8,17 @@ using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowStripControls;
 using TestStack.White.WindowsAPI;
-using Xunit;
 
 namespace TestStack.White.UITests.Scenarios
 {
+    [TestFixture]
     public class Win32Tests
     {
         const string ExeSourceFile = @"C:\Windows\system32\calc.exe";
         const string Notepad = @"C:\Windows\system32\notepad.exe";
         const string InternetExplorer = @"C:\Program Files\Internet Explorer\iexplore.exe";
 
-        [Fact]
+        [Test]
         public void NotepadTests()
         {
             using (var app = Application.Launch(Notepad))
@@ -29,12 +30,12 @@ namespace TestStack.White.UITests.Scenarios
 
                 using (var modalWindow = window.ModalWindow("Font"))
                 {
-                    Assert.NotNull(modalWindow);
+                    Assert.That(modalWindow, Is.Not.Null);
                 }
             }
         }
 
-        [Fact]
+        [Test]
         public void InternetExplorerTests()
         {
             using (var app = Application.Launch(InternetExplorer))
@@ -42,7 +43,7 @@ namespace TestStack.White.UITests.Scenarios
             {
                 var button = window.Get<Button>(SearchCriteria.ByAutomationId("Item 3"));
                 //check if we can get a win32 tooltip
-                Assert.Equal("Tools (Alt+X)", window.GetToolTipOn(button).Text);
+                Assert.That(window.GetToolTipOn(button).Text, Is.EqualTo("Tools (Alt+X)"));
                 button.Click();
                 window.PopupMenu("Internet options").Click();
                 using (var internetOptions = window.ModalWindow("Internet Options"))
@@ -51,12 +52,12 @@ namespace TestStack.White.UITests.Scenarios
 
                     textBox.Text = "http://google.com";
 
-                    Assert.Equal("http://google.com", textBox.Text);
+                    Assert.That(textBox.Text, Is.EqualTo("http://google.com"));
                 }
             }
         }
 
-        [Fact]
+        [Test]
         public void CalculatorTests()
         {
             //strat process for the above exe file location
@@ -113,8 +114,8 @@ namespace TestStack.White.UITests.Scenarios
 
             //Get the result
             var resultLable = mainWindow.Get<Label>(SearchCriteria.ByAutomationId("150"));
-            string result = resultLable.Text;
-            Assert.Equal("6912", result);
+            var result = resultLable.Text;
+            Assert.That(result, Is.EqualTo("6912"));
         }
     }
 }
