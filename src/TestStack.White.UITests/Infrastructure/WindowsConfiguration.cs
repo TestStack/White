@@ -24,7 +24,6 @@ namespace TestStack.White.UITests.Infrastructure
         public override Application LaunchApplication()
         {
             var app = Path.Combine(Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath), ApplicationExePath);
-            System.Diagnostics.Debug.WriteLine("Starting: " + app);
             var processStartInfo = new ProcessStartInfo
             {
                 FileName = app,
