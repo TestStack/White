@@ -165,7 +165,6 @@ namespace TestStack.White.UITests
                 var attributes = memInfo[0].GetCustomAttributes(typeof(FrameworkIdAttribute), false);
                 return ((FrameworkIdAttribute)attributes[0]).FrameworkId;
             }
-            private set { }
         }
     }
 }

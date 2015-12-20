@@ -6,17 +6,18 @@ namespace TestStack.White.UITests.UIA
 {
     [TestFixture(WindowsFramework.WinForms)]
     [TestFixture(WindowsFramework.Wpf)]
-    public class AutomationElementXTest : WhiteUITestBase
+    public class AutomationElementXTests : WhiteUITestBase
     {
-        public AutomationElementXTest(WindowsFramework framework) 
-            : base(framework) { }
+        public AutomationElementXTests(WindowsFramework framework)
+            : base(framework)
+        { }
 
         [Test]
-        public void TestToString()
+        public void ToStringTest()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
             var display = button.AutomationElement.Display();
-            Assert.That(display, Is.EqualTo(string.Format( "AutomationId:ButtonWithTooltip, Name:Button with Tooltip, ControlType:button, FrameworkId:{0}", FrameworkId)));
+            Assert.That(display, Is.EqualTo(string.Format("AutomationId:ButtonWithTooltip, Name:Button with Tooltip, ControlType:button, FrameworkId:{0}", FrameworkId)));
         }
     }
 }
