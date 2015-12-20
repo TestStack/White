@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows.Automation;
+using NUnit.Framework;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
-using Xunit;
 
 namespace TestStack.White.UITests.Scenarios
 {
-    public class GetMultipleTest : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class GetMultipleTest : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public GetMultipleTest(WindowsFramework framework) : base(framework)
         {
-            RunTest(() => GetMultipleButtons(framework));
-            RunTest(() => GetControlBasedOnIndex(framework));
         }
 
-        void GetControlBasedOnIndex(WindowsFramework framework)
+        [Test]
+        public void GetControlBasedOnIndex()
         {
             using (var window = StartScenario("GetMultipleButton", "GetMultiple"))
             {
@@ -23,14 +23,15 @@ namespace TestStack.White.UITests.Scenarios
                 Assert.NotNull(button);
 
                 var exception = Assert.Throws<AutomationException>(() => MainWindow.Get<TextBox>(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "Button").AndIndex(4)));
-                var expected = framework == WindowsFramework.Wpf?
+                var expected = Framework == WindowsFramework.Wpf?
                     "Failed to get ControlType=edit,AutomationElementIdentifiers.NameProperty=Button,Index=4":
                     "Failed to get (ControlType=edit or ControlType=document),AutomationElementIdentifiers.NameProperty=Button,Index=4";
-                Assert.Equal(expected, exception.Message);
+                Assert.That(expected, Is.EqualTo(exception.Message));
             }
         }
 
-        void GetMultipleButtons(WindowsFramework framework)
+        [Test]
+        public void GetMultipleButtons()
         {
             MainWindow.Get<Button>("GetMultipleButton").Click();
             var window = MainWindow.ModalWindow("GetMultiple");
@@ -38,43 +39,37 @@ namespace TestStack.White.UITests.Scenarios
             try
             {
                 var buttons = window.GetMultiple(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "Button")).OfType<Button>();
-                Assert.Equal(3, buttons.Count());
+                Assert.That(3, Is.EqualTo(buttons.Count()));
 
-                if (framework == WindowsFramework.Wpf)
+                if (Framework == WindowsFramework.Wpf)
                 {
                     buttons = window.GetMultiple(SearchCriteria.ByAutomationId("Test")).OfType<Button>();
-                    Assert.Equal(3, buttons.Count());
+                    Assert.That(3, Is.EqualTo(buttons.Count()));
                 }
 
                 var checkboxes = window.GetMultiple(SearchCriteria.ByControlType(ControlType.CheckBox)).OfType<CheckBox>();
-                Assert.Equal(3, checkboxes.Count());
+                Assert.That(3, Is.EqualTo(checkboxes.Count()));
 
                 checkboxes = window.GetMultiple(SearchCriteria.ByNativeProperty(AutomationElement.NameProperty, "Checkbox")).OfType<CheckBox>();
-                Assert.Equal(3, checkboxes.Count());
+                Assert.That(3, Is.EqualTo(checkboxes.Count()));
 
-                if (framework == WindowsFramework.Wpf)
+                if (Framework == WindowsFramework.Wpf)
                 {
                     checkboxes = window.GetMultiple(SearchCriteria.ByAutomationId("Test2")).OfType<CheckBox>();
-                    Assert.Equal(3, checkboxes.Count());
+                    Assert.That(3, Is.EqualTo(checkboxes.Count()));
                 }
 
-                if (framework == WindowsFramework.Wpf)
+                if (Framework == WindowsFramework.Wpf)
                 {
                     var customControls = window.GetMultiple(SearchCriteria.ByClassName("CustomItem"));
 
-                    Assert.Equal(3, customControls.Length);
+                    Assert.That(3, Is.EqualTo(customControls.Length));
                 }
             }
             finally
             {
                 window.Close();
             }
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
-            yield return WindowsFramework.WinForms;
         }
     }
 }
