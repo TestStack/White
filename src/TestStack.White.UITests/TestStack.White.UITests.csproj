@@ -133,7 +133,7 @@
     <Compile Include="Scenarios\GetMultipleTest.cs" />
     <Compile Include="Scenarios\Win32Tests.cs" />
     <Compile Include="TestFailedException.cs" />
-    <Compile Include="UIA\AutomationElementXTest.cs" />
+    <Compile Include="UIA\AutomationElementXTests.cs" />
     <Compile Include="WhiteTestBase.cs" />
     <Compile Include="Infrastructure\WinformsTestConfiguration.cs" />
     <Compile Include="Infrastructure\WpfTestConfiguration.cs" />
