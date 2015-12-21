@@ -32,6 +32,10 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 Assert.Ignore();
             }
 
+            // Restart the application and reinitialize
+            Restart();
+            ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
+
             try
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
@@ -107,12 +111,14 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             ComboBoxUnderTest.Select(4);
             Assert.That(ComboBoxUnderTest.SelectedItemText, Is.EqualTo("Test5"));
         }
+
         [Test]
         public void CanSelectItemAtBottomOfListTest()
         {
             ComboBoxUnderTest.Select("Test19");
             Assert.That(ComboBoxUnderTest.SelectedItemText, Is.EqualTo("Test19"));
         }
+
         [Test]
         public void CanGetAllItemsTest()
         {

@@ -7,16 +7,10 @@ namespace TestStack.White.UITests.Reporting
     [TestFixture]
     public class SubFlowTests
     {
-        readonly SubFlow subFlow;
-
-        public SubFlowTests()
-        {
-            subFlow = new SubFlow("subFlow", "flow", "archiveLocation");
-        }
-
         [Test]
         public void NextOnSameNode()
         {
+            var subFlow = CreateTestObject();
             subFlow.Next(One());
             subFlow.Act();
             subFlow.Act();
@@ -27,21 +21,29 @@ namespace TestStack.White.UITests.Reporting
         [Test]
         public void Flow()
         {
-            subFlow.Next(One());           
-            subFlow.Act();           
-            subFlow.Act();           
-            subFlow.Next(Two());           
+            var subFlow = CreateTestObject();
+            subFlow.Next(One());
+            subFlow.Act();
+            subFlow.Act();
+            subFlow.Next(Two());
             subFlow.Act();
             Assert.That(subFlow.FlowSteps, Has.Count.EqualTo(2));
             Assert.That(subFlow.FlowSteps[0].ScreenShots, Has.Count.EqualTo(3));
             Assert.That(subFlow.FlowSteps[1].ScreenShots, Has.Count.EqualTo(2));
         }
 
-        private static Type One() {
+        private SubFlow CreateTestObject()
+        {
+            return new SubFlow("subFlow", "flow", "archiveLocation");
+        }
+
+        private static Type One()
+        {
             return typeof(One);
         }
 
-        private static Type Two() {
+        private static Type Two()
+        {
             return typeof(Two);
         }
     }

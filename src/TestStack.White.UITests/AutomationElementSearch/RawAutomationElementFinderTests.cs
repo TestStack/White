@@ -9,7 +9,7 @@ namespace TestStack.White.UITests.AutomationElementSearch
 {
     [TestFixture(WindowsFramework.WinForms)]
     [TestFixture(WindowsFramework.Wpf)]
-    public class RawAutomationElementFinderTests : WhiteUITestBase, IDisposable
+    public class RawAutomationElementFinderTests : WhiteUITestBase
     {
         private IDisposable cleanup;
 
@@ -29,9 +29,8 @@ namespace TestStack.White.UITests.AutomationElementSearch
         }
 
         [OneTimeTearDown]
-        public new void Dispose()
+        public void Teardown()
         {
-            base.Dispose();
             cleanup.Dispose();
         }
 

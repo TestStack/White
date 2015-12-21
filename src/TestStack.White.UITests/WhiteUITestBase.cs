@@ -16,7 +16,7 @@ using TestStack.White.UITests.Screens;
 
 namespace TestStack.White.UITests
 {
-    public abstract class WhiteUITestBase : IDisposable
+    public abstract class WhiteUITestBase
     {
         protected WindowsFramework Framework { get; private set; }
         private IDisposable mainWindow;
@@ -36,7 +36,7 @@ namespace TestStack.White.UITests
         }
 
         [OneTimeTearDown]
-        public void Dispose()
+        public void BaseTeardown()
         {
             mainWindow.Dispose();
         }
@@ -135,6 +135,12 @@ namespace TestStack.White.UITests
             var window = MainWindow.ModalWindow(windowTitle);
             windowsToClose.Add(window);
             return window;
+        }
+
+        protected void Restart()
+        {
+            mainWindow.Dispose();
+            mainWindow = SetMainWindow(Framework);
         }
 
         protected void SelectOtherControls()

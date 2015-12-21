@@ -6,7 +6,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
 {
     [TestFixture(WindowsFramework.WinForms)]
     [TestFixture(WindowsFramework.Wpf)]
-    [TestFixture(WindowsFramework.Silverlight)]
+    // [TestFixture(WindowsFramework.Silverlight)]
     public class DatePickerTests : WhiteUITestBase
     {
         public DatePickerTests(WindowsFramework framework)
@@ -30,7 +30,7 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         public void SetDateTest()
         {
             var dateTimePicker = MainWindow.Get<DateTimePicker>("DatePicker");
-            DateTime changedDate = DateTime.Today.AddDays(23);
+            var changedDate = DateTime.Today.AddDays(23);
             dateTimePicker.Date = changedDate;
             Assert.That(dateTimePicker.Date, Is.EqualTo(changedDate));
 
