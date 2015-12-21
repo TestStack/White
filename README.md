@@ -19,12 +19,12 @@ Install TestStack.White from NuGet
 
     PM> Install-Package TestStack.White
 
-[Download UI Automation Verify][uiaverify_download], now [part of the Windows SDK][uiaverify_windows_sdk], which is an ESSENTIAL tool when doing UI Automation work.
+[Download Inspect][inspect_download], now [part of the Windows SDK][inspect_windows_sdk], which is an ESSENTIAL tool when doing UI Automation work.
 
 See the [sample apps here](https://github.com/TestStack/White/tree/master/src/Samples) for examples of using White in both WinForms and WPF.
 
-[uiaverify_download]: http://msdn.microsoft.com/en-US/windows/desktop/bg162891
-[uiaverify_windows_sdk]: http://msdn.microsoft.com/en-us/library/windows/desktop/hh920986(v=vs.85).aspx
+[inspect_download]: http://msdn.microsoft.com/en-US/windows/desktop/bg162891
+[inspect_windows_sdk]: https://msdn.microsoft.com/en-us/library/windows/desktop/dd318521(v=vs.85).aspx
 
 Documentation
 -----------------
