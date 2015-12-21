@@ -1,13 +1,14 @@
+using NUnit.Framework;
 using System.IO;
 using System.Windows;
 using TestStack.White.Factory;
 using TestStack.White.ScreenMap;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Finders;
-using Xunit;
 
 namespace TestStack.White.UnitTests.ScreenMap
 {
+    [TestFixture]
     public class WindowItemsMapTest
     {
         public WindowItemsMapTest()
@@ -15,59 +16,58 @@ namespace TestStack.White.UnitTests.ScreenMap
             File.Delete("foo.xml");
         }
 
-        [Fact]
+        [Test]
         public void ReplaceExistingLocationIfExists()
         {
-            WindowItemsMap windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
+            var windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByAutomationId("foo"));
             var newPoint = new Point(1, 2);
             windowItemsMap.Add(newPoint, SearchCriteria.ByAutomationId("foo"));
-            Assert.Equal(1, windowItemsMap.UIItemLocations.Count);
-            Assert.Equal(newPoint, windowItemsMap.UIItemLocations[0].Point);
+            Assert.That(windowItemsMap.UIItemLocations, Has.Count.EqualTo(1));
+            Assert.That(windowItemsMap.UIItemLocations[0].Point, Is.EqualTo(newPoint));
         }
 
         private InitializeOption InitializeOption()
         {
-            return global::TestStack.White.Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
+            return Factory.InitializeOption.NoCache.AndIdentifiedBy("foo");
         }
 
-        [Fact]
+        [Test]
         public void ReplaceExistingLocationWhenSearchCriteriaChangesForTheSamePoint()
         {
-            WindowItemsMap windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
+            var windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByAutomationId("foo"));
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByText("foo"));
-
-            Assert.Equal(1, windowItemsMap.UIItemLocations.Count);
+            Assert.That(windowItemsMap.UIItemLocations, Has.Count.EqualTo(1));
         }
 
-        [Fact]
+        [Test]
         public void GetItemLocationWhenNotPresent()
         {
-            WindowItemsMap windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
-            Assert.Equal(RectX.UnlikelyWindowPosition, windowItemsMap.GetItemLocation(SearchCriteria.ByText("foo")));
+            var windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
+            Assert.That(windowItemsMap.GetItemLocation(SearchCriteria.ByText("foo")), Is.EqualTo(RectX.UnlikelyWindowPosition));
         }
 
-        [Fact]
+        [Test]
         public void GetItemLocation()
         {
-            WindowItemsMap windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
+            var windowItemsMap = WindowItemsMap.Create(InitializeOption(), RectX.UnlikelyWindowPosition);
             windowItemsMap.Add(new Point(1, 1), SearchCriteria.ByAutomationId("foo"));
-            Assert.Equal(new Point(1, 1), windowItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
+            Assert.That(windowItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")), Is.EqualTo(new Point(1, 1)));
         }
 
-        [Fact]
+        [Test]
         public void GetItemLocationWhenWindowPositionChanges()
         {
-            WindowItemsMap windowsItemsMap = WindowItemsMap.Create(InitializeOption(), new Point(20, 20));
+            var windowsItemsMap = WindowItemsMap.Create(InitializeOption(), new Point(20, 20));
             windowsItemsMap.Add(new Point(27, 27), SearchCriteria.ByAutomationId("foo"));
             windowsItemsMap.Save();
 
             windowsItemsMap = WindowItemsMap.Create(InitializeOption(), new Point(5, 5));
-            Assert.Equal(new Point(12, 12), windowsItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
+            Assert.That(windowsItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")), Is.EqualTo(new Point(12, 12)));
 
             windowsItemsMap.CurrentWindowPosition = new Point(10, 10);
-            Assert.Equal(new Point(17, 17), windowsItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")));
+            Assert.That(windowsItemsMap.GetItemLocation(SearchCriteria.ByAutomationId("foo")), Is.EqualTo(new Point(17, 17)));
         }
     }
 }

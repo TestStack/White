@@ -1,53 +1,54 @@
 using System.Windows;
+using NUnit.Framework;
 using TestStack.White.UIA;
-using Xunit;
 
 namespace TestStack.White.UnitTests.UIA
 {
+    [TestFixture]
     public class RectXTest
     {
-        [Fact]
+        [Test]
         public void IsZero()
         {
-            Assert.Equal(true, new Rect(0, 0, 0, 0).IsZeroSize());
-            Assert.Equal(false, new Rect(0, 0, 1, 0).IsZeroSize());
+            Assert.That(new Rect(0, 0, 0, 0).IsZeroSize(), Is.True);
+            Assert.That(new Rect(0, 0, 1, 0).IsZeroSize(), Is.False);
         }
 
-        [Fact]
+        [Test]
         public void Center()
         {
-            Assert.Equal(new Point(15, 15), new Rect(10, 10, 10, 10).Center());
-            Assert.Equal(new Point(15, 5), new Rect(10, 0, 10, 10).Center());
+            Assert.That(new Rect(10, 10, 10, 10).Center(), Is.EqualTo(new Point(15, 15)));
+            Assert.That(new Rect(10, 0, 10, 10).Center(), Is.EqualTo(new Point(15, 5)));
         }
 
-        [Fact]
+        [Test]
         public void ImmediateExteriorEast()
         {
-            Assert.Equal(new Point(21, 15), new Rect(10, 10, 10, 10).ImmediateExteriorEast());
+            Assert.That(new Rect(10, 10, 10, 10).ImmediateExteriorEast(), Is.EqualTo(new Point(21, 15)));
         }
 
-        [Fact]
+        [Test]
         public void ImmediateInteriorEast()
         {
-            Assert.Equal(new Point(19, 15), new Rect(10, 10, 10, 10).ImmediateInteriorEast());
+            Assert.That(new Rect(10, 10, 10, 10).ImmediateInteriorEast(), Is.EqualTo(new Point(19, 15)));
         }
 
-        [Fact]
+        [Test]
         public void ImmediateExteriorWest()
         {
-            Assert.Equal(new Point(9, 15), new Rect(10, 10, 10, 10).ImmediateExteriorWest());
+            Assert.That(new Rect(10, 10, 10, 10).ImmediateExteriorWest(), Is.EqualTo(new Point(9, 15)));
         }
 
-        [Fact]
+        [Test]
         public void ImmediateInteriorNorth()
         {
-            Assert.Equal(new Rect(10, 10, 10, 10).ImmediateInteriorNorth(), new Point(15, 11));
+            Assert.That(new Point(15, 11), Is.EqualTo(new Rect(10, 10, 10, 10).ImmediateInteriorNorth()));
         }
 
-        [Fact]
+        [Test]
         public void ImmediateInteriorSouth()
         {
-            Assert.Equal(new Rect(10, 10, 10, 10).ImmediateInteriorSouth(), new Point(15, 19));
+            Assert.That(new Point(15, 19), Is.EqualTo(new Rect(10, 10, 10, 10).ImmediateInteriorSouth()));
         }
     }
 }

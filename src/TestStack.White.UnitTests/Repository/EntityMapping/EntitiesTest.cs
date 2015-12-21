@@ -1,13 +1,15 @@
+using NUnit.Framework;
 using System.Collections.Generic;
 using System.Text;
 using TestStack.White.ScreenObjects.EntityMapping;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.EntityMapping
 {
+    [TestFixture]
     public class EntitiesTest
     {
-        [Fact(Skip = "No idea what this is doing")]
+        [Test]
+        [Ignore("No idea what this is doing")]
         public void To_String()
         {
             var list = new Entities<Entity>();
@@ -19,18 +21,19 @@ namespace TestStack.White.UnitTests.Repository.EntityMapping
             var builder = new StringBuilder();
             builder.AppendLine("ZO, YO, ");
             builder.AppendLine("8, 7, ");
-            Assert.Equal(builder.ToString(), list.ToString());
+            Assert.That(list.ToString(), Is.EqualTo(builder.ToString()));
         }
 
-        [Fact(Skip = "No idea what this is doing")]
+        [Test]
+        [Ignore("No idea what this is doing")]
         public void Construction()
         {
-            var data = new List<string[]> {new[] {"1", "2"}, new[] {"3", "4"}};
-            var entities = new Entities<TestEntity>(new[] {"ZO", "YO"}, data);
-            Assert.Equal("1", entities[0].Zo);
-            Assert.Equal("2", entities[0].NestedEntity.Yo);
-            Assert.Equal("3", entities[1].Zo);
-            Assert.Equal("4", entities[1].NestedEntity.Yo);
+            var data = new List<string[]> { new[] { "1", "2" }, new[] { "3", "4" } };
+            var entities = new Entities<TestEntity>(new[] { "ZO", "YO" }, data);
+            Assert.That(entities[0].Zo, Is.EqualTo("1"));
+            Assert.That(entities[0].NestedEntity.Yo, Is.EqualTo("2"));
+            Assert.That(entities[1].Zo, Is.EqualTo("3"));
+            Assert.That(entities[1].NestedEntity.Yo, Is.EqualTo("4"));
         }
     }
 }

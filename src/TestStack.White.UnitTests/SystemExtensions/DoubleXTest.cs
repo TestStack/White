@@ -1,17 +1,18 @@
+using NUnit.Framework;
 using TestStack.White.SystemExtensions;
-using Xunit;
 
 namespace TestStack.White.UnitTests.SystemExtensions
 {
+    [TestFixture]
     public class DoubleXTest
     {
-        [Fact]
+        [Test]
         public void IsInvalid()
         {
-            Assert.Equal(true, double.NegativeInfinity.IsInvalid());
-            Assert.Equal(true, double.PositiveInfinity.IsInvalid());
-            Assert.Equal(true, double.NaN.IsInvalid());
-            Assert.Equal(false, 0d.IsInvalid());
+            Assert.That(double.NegativeInfinity.IsInvalid(), Is.True);
+            Assert.That(double.PositiveInfinity.IsInvalid(), Is.True);
+            Assert.That(double.NaN.IsInvalid(), Is.True);
+            Assert.That(0d.IsInvalid(), Is.False);
         }
     }
 }

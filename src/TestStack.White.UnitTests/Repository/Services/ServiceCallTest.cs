@@ -1,16 +1,17 @@
+using NUnit.Framework;
 using TestStack.White.ScreenObjects.Services;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.Services
 {
+    [TestFixture]
     public class ServiceCallTest
     {
-        [Fact]
+        [Test]
         public void ShouldStoreParameterTypeOfMethod()
         {
             var type = typeof(TestServiceForServiceCallTest);
             var serviceCall = new ServiceCall(new TestServiceForServiceCallTest(), type.GetMethod("Method"));
-            Assert.Equal("System.String", serviceCall.ParameterTypes[0]);
+            Assert.That(serviceCall.ParameterTypes[0], Is.EqualTo("System.String"));
         }
     }
 }

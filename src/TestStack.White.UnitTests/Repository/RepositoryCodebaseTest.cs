@@ -1,14 +1,15 @@
+using NUnit.Framework;
 using System;
 using System.Linq;
 using TestStack.White.ScreenObjects;
 using TestStack.White.SystemExtensions;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository
 {
+    [TestFixture]
     public class RepositoryCodebaseTest
     {
-        [Fact]
+        [Test]
         public void AllMethodsAreVirtual()
         {
             var virtuals = typeof(ScreenRepository).Assembly.GetTypes()
