@@ -1,13 +1,14 @@
+using NUnit.Framework;
 using System;
 using System.Linq;
 using TestStack.White.SystemExtensions;
-using Xunit;
 
 namespace TestStack.White.WebBrowser.UITests
 {
+    [TestFixture]
     public class WebBrowserCodebaseTest
     {
-        [Fact]
+        [Test]
         public void AllMethodsAreVirtual()
         {
             var virtuals = typeof(Firefox).Assembly.GetTypes()

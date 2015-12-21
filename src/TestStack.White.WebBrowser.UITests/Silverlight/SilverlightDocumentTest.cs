@@ -1,9 +1,9 @@
+using NUnit.Framework;
 using TestStack.White.InputDevices;
 using TestStack.White.UIA;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.WebBrowser.Silverlight;
-using Xunit;
 
 namespace TestStack.White.WebBrowser.UITests.Silverlight
 {
@@ -12,11 +12,12 @@ namespace TestStack.White.WebBrowser.UITests.Silverlight
         private SilverlightDocument document;
         private Label label;
 
-        [Fact(Skip = "Ignoring broken tests in silverlight for the moment")]
+        [Test]
+        [Ignore("Ignoring broken tests in silverlight for the moment")]
         public void Get()
         {
             var button = document.Get<Button>("button");
-            Assert.NotEqual(null, button);
+            Assert.That(button, Is.Not.Null);
         }
 
         protected override void PostSetup()
@@ -25,47 +26,51 @@ namespace TestStack.White.WebBrowser.UITests.Silverlight
             label = document.Get<Label>("status");
         }
 
-        [Fact(Skip = "Ignoring broken tests in silverlight for the moment")]
+        [Test]
+        [Ignore("Ignoring broken tests in silverlight for the moment")]
         public void Event()
         {
-            Assert.NotEqual(null, label);
+            Assert.That(label, Is.Not.Null);
             var button = document.Get<Button>("button");
             button.Click();
-            Assert.Equal("0", label.Text);
+            Assert.That(label.Text, Is.EqualTo("0"));
         }
 
-        [Fact(Skip = "Ignoring broken tests in silverlight for the moment")]
+        [Test]
+        [Ignore("Ignoring broken tests in silverlight for the moment")]
         public void TestComboBox()
         {
             var comboBox = document.Get<ComboBox>("combo");
-            Assert.Equal(2, comboBox.Items.Count);
-            Assert.Equal("foo", comboBox.Items[0].Text);
+            Assert.That(comboBox.Items, Has.Count.EqualTo(2));
+            Assert.That(comboBox.Items[0].Text, Is.EqualTo("foo"));
         }
 
-        [Fact(Skip = "Ignoring broken tests in silverlight for the moment")]
+        [Test]
+        [Ignore("Ignoring broken tests in silverlight for the moment")]
         public void Tooltip()
         {
             var button = document.Get<Button>("button");
-            ToolTip toolTip = document.GetToolTipOn(button);
-            Assert.Equal(null, toolTip);
+            var toolTip = document.GetToolTipOn(button);
+            Assert.That(toolTip, Is.Null);
 
             var comboBox = document.Get<ComboBox>("combo");
             toolTip = document.GetToolTipOn(comboBox);
-            Assert.NotEqual(null, toolTip);
+            Assert.That(toolTip, Is.Not.Null);
             Debug.LogPatterns(toolTip);
             Debug.LogProperties(toolTip);
         }
 
-        [Fact(Skip = "Ignoring broken tests in silverlight for the moment")]
+        [Test]
+        [Ignore("Ignoring broken tests in silverlight for the moment")]
         public void SelectItemInComboBoxWhichIsAlreadySelected()
         {
-            string previousText = label.Text;
+            var previousText = label.Text;
             var button = document.Get<Button>("button");
             var comboBox = document.Get<ComboBox>("combo");
             comboBox.Select("foo");
             comboBox.Select("foo");
             Mouse.Instance.Click(button.Bounds.Center(), document);
-            Assert.NotEqual(label.Text, previousText);
+            Assert.That(label.Text, Is.Not.EqualTo(previousText));
         }
     }
 }
