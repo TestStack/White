@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects.Services;
 using TestStack.White.ScreenObjects.Sessions;
@@ -16,13 +17,14 @@ namespace WpfTodo.UITests
         [Test]
         public void AutomateTest()
         {
-            var workConfiguration =
-                new WorkConfiguration
-                {
-                    ArchiveLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-                    Name = "WpfTodo"
-                };
+            var workPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            var workConfiguration = new WorkConfiguration
+            {
+                ArchiveLocation = workPath,
+                Name = "WpfTodo"
+            };
 
+            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(workPath);
             using (var workSession = new WorkSession(workConfiguration, new NullWorkEnvironment()))
             {
                 var screenRepository = workSession.Attach(Application);

@@ -1,7 +1,6 @@
+using NUnit.Framework;
 using System;
 using System.Windows.Automation;
-using System.Windows.Automation.Peers;
-using NUnit.Framework;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
@@ -73,6 +72,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             MainWindow.Get<Button>("ChangeListItems").Click();
             listBox.Select("Jackson");
             listBox.Select("Allen");
+            // This test modifies the UI, so restart the app for the next test(s)
+            Restart();
         }
     }
 }
