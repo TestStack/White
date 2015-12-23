@@ -1,32 +1,55 @@
 using System.Collections.Generic;
 using TestStack.White.Bricks;
+using TestStack.White.Utility;
 
 namespace TestStack.White.Configuration
 {
-    public class UIItemIdAppXmlConfiguration : AssemblyConfiguration, UIItemIdConfiguration
+    public class UIItemIdAppXmlConfiguration : AssemblyConfiguration, IUIItemIdConfiguration
     {
-        private static UIItemIdConfiguration instance;
+        private static IUIItemIdConfiguration instance;
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
         static UIItemIdAppXmlConfiguration()
         {
-            DefaultValues.Add("TableVerticalScrollBar", "Vertical Scroll Bar");
-            DefaultValues.Add("TableHorizontalScrollBar", "Horizontal Scroll Bar");
-            DefaultValues.Add("TableColumn", "Row ");
-            DefaultValues.Add("TableTopLeftHeaderCell", "Top Left Header Cell");
-            DefaultValues.Add("TableCellNullValue", "(null)");
-            DefaultValues.Add("TableHeader", "Top Row");
-            DefaultValues.Add("HorizontalScrollBar", "Horizontal ScrollBar");
-            DefaultValues.Add("VerticalScrollBar", "Vertical ScrollBar");
-            DefaultValues.Add("TableCellPrefix", " Row ");
+            switch (SystemLanguageRetreiver.GetCurrentOsCulture().TwoLetterISOLanguageName)
+            {
+                case "de":
+                    DefaultValues.Add("TableVerticalScrollBar", "Vertikale Schiebeleiste");
+                    DefaultValues.Add("TableHorizontalScrollBar", "Horizontale Schiebeleiste");
+                    DefaultValues.Add("TableColumn", "Zeile ");
+                    DefaultValues.Add("TableTopLeftHeaderCell", "Obere linke Headerzelle");
+                    DefaultValues.Add("TableCellNullValue", "(null)");
+                    DefaultValues.Add("TableHeader", "Oberste Zeile");
+                    DefaultValues.Add("HorizontalScrollBar", "Horizontale Schiebeleiste");
+                    DefaultValues.Add("VerticalScrollBar", "Vertikale Schiebeleiste");
+                    DefaultValues.Add("TableCellPrefix", " Zeile ");
+                    DefaultValues.Add("BrowseText", "Durchsuchen...");
+                    DefaultValues.Add("OpenFileDialogTitle", "Datei öffnen");
+                    DefaultValues.Add("PropertyGridMiscText", "Sonstiges");
+                    break;
+                default:
+                    DefaultValues.Add("TableVerticalScrollBar", "Vertical Scroll Bar");
+                    DefaultValues.Add("TableHorizontalScrollBar", "Horizontal Scroll Bar");
+                    DefaultValues.Add("TableColumn", "Row ");
+                    DefaultValues.Add("TableTopLeftHeaderCell", "Top Left Header Cell");
+                    DefaultValues.Add("TableCellNullValue", "(null)");
+                    DefaultValues.Add("TableHeader", "Top Row");
+                    DefaultValues.Add("HorizontalScrollBar", "Horizontal ScrollBar");
+                    DefaultValues.Add("VerticalScrollBar", "Vertical ScrollBar");
+                    DefaultValues.Add("TableCellPrefix", " Row ");
+                    DefaultValues.Add("BrowseText", "Browse...");
+                    DefaultValues.Add("OpenFileDialogTitle", "Open File");
+                    DefaultValues.Add("PropertyGridMiscText", "Misc");
+                    break;
+            }
         }
 
-        public static UIItemIdConfiguration Instance
+        public static IUIItemIdConfiguration Instance
         {
             get { return instance ?? (instance = new UIItemIdAppXmlConfiguration()); }
         }
 
-        private UIItemIdAppXmlConfiguration() : 
+        private UIItemIdAppXmlConfiguration() :
             base("White", "UIItemId", DefaultValues, CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItemIdAppXmlConfiguration)))
         { }
 
@@ -88,5 +111,23 @@ namespace TestStack.White.Configuration
             get { return UsedValues["TableCellPrefix"]; }
             set { SetUsedValue("TableCellPrefix", value); }
         }
+
+        public virtual string BrowseText
+        {
+            get { return UsedValues["BrowseText"]; }
+            set { SetUsedValue("BrowseText", value); }
+        }
+
+        public virtual string OpenFileDialogTitle
+        {
+            get { return UsedValues["OpenFileDialogTitle"]; }
+            set { SetUsedValue("OpenFileDialogTitle", value); }
+        }
+
+        public virtual string PropertyGridMiscText
+        {
+            get { return UsedValues["PropertyGridMiscText"]; }
+            set { SetUsedValue("PropertyGridMiscText", value); }
+        }        
     }
 }

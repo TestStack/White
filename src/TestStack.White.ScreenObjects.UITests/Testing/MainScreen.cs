@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects.ScreenAttributes;
@@ -6,7 +7,6 @@ using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.TabItems;
 using TestStack.White.UIItems.TreeItems;
 using TestStack.White.UIItems.WindowItems;
-using Xunit;
 
 namespace TestStack.White.ScreenObjects.UITests.Testing
 {
@@ -43,31 +43,31 @@ namespace TestStack.White.ScreenObjects.UITests.Testing
 
         public virtual void ClickButton()
         {
-            buton.Click();
-            Assert.Equal("Button Clicked", result.Text);
+            Button.Click();
+            Assert.That(result.Text, Is.EqualTo("Button Clicked"));
         }
 
         public virtual void EnterText()
         {
             textBox.Text = "abcd";
-            Assert.Equal("abcd", textBox.Text);
-            Assert.Equal("Text changed", result.Text);
+            Assert.That(textBox.Text, Is.EqualTo("abcd"));
+            Assert.That(result.Text, Is.EqualTo("Text changed"));
         }
 
         public virtual void SelectComboBoxItem()
         {
             komboBox.Select("Arundhati Roy");
-            Assert.Equal("Arundhati Roy", komboBox.SelectedItemText);
+            Assert.That(komboBox.SelectedItemText, Is.EqualTo("Arundhati Roy"));
             komboBox.Select("Noam Chomsky");
-            Assert.Equal("Noam Chomsky", komboBox.SelectedItemText);
+            Assert.That(komboBox.SelectedItemText, Is.EqualTo("Noam Chomsky"));
         }
 
         public virtual void EnterTextInTheTextBoxesWithSameNameUsingIndex()
         {
             myNameIsDuplicateBox.Text = "one";
-            Assert.Equal("one", myNameIsDuplicateBox.Text);
+            Assert.That(myNameIsDuplicateBox.Text, Is.EqualTo("one"));
             iAmDuplicateBox.Text = "two";
-            Assert.Equal("two", iAmDuplicateBox.Text);
+            Assert.That(iAmDuplicateBox.Text, Is.EqualTo("two"));
         }
 
         public virtual void SelectTab()
@@ -78,49 +78,49 @@ namespace TestStack.White.ScreenObjects.UITests.Testing
         public virtual void SelectCheckbox()
         {
             chequeBox.Checked = true;
-            Assert.Equal(true, chequeBox.Checked);
+            Assert.That(chequeBox.Checked, Is.True);
             chequeBox.Checked = false;
-            Assert.Equal(false, chequeBox.Checked);
+            Assert.That(chequeBox.Checked, Is.False);
         }
 
         public virtual void SelectItemInChequedListBox()
         {
             chequedListBox.Check("Bill Gates");
-            Assert.Equal(true,chequedListBox.IsChecked("Bill Gates"));
+            Assert.That(chequedListBox.IsChecked("Bill Gates"), Is.True);
         }
 
         public virtual void SelectRadioButton()
         {
-            Assert.Equal(false,radioButton1.IsSelected);
-            Assert.Equal(false,radioButton2.IsSelected);
+            Assert.That(radioButton1.IsSelected, Is.False);
+            Assert.That(radioButton2.IsSelected, Is.False);
             radioButton1.Select();
-            Assert.Equal(true, radioButton1.IsSelected);
+            Assert.That(radioButton1.IsSelected, Is.True);
             radioButton2.Select();
-            Assert.Equal(true, radioButton2.IsSelected);
+            Assert.That(radioButton2.IsSelected, Is.True);
         }
 
         public virtual void SelectItemInListBox()
         {
             listBox.Select("Speilberg");
-            Assert.Equal(true,listBox.IsSelected("Speilberg"));
+            Assert.That(listBox.IsSelected("Speilberg"), Is.True);
             listBox.Select("Nagesh");
-            Assert.Equal(true,listBox.IsSelected("Nagesh"));
+            Assert.That(listBox.IsSelected("Nagesh"), Is.True);
         }
 
         public virtual void SelectDateTime()
         {
-            Assert.Equal(DateTime.Today, dateTimePicker.Date);
+            Assert.That(dateTimePicker.Date, Is.EqualTo(DateTime.Today));
             DateTime tenDaysFromToday = DateTime.Today.AddDays(10);
             dateTimePicker.Date = tenDaysFromToday;
-            Assert.Equal(tenDaysFromToday, dateTimePicker.Date);
+            Assert.That(dateTimePicker.Date, Is.EqualTo(tenDaysFromToday));
         }
 
         public virtual void SelectItemInListView()
         {
             listView.Select(0);
-            Assert.Equal(true,listView.Rows[0].IsSelected);
+            Assert.That(listView.Rows[0].IsSelected, Is.True);
             listView.Select(1);
-            Assert.Equal(true,listView.Rows[1].IsSelected);
+            Assert.That(listView.Rows[1].IsSelected, Is.True);
         }
 
         public virtual void LaunchModalWindow()
@@ -137,9 +137,9 @@ namespace TestStack.White.ScreenObjects.UITests.Testing
         {
             ped.Node("Root").Expand();
             ped.Node("Root", "Child").Expand();
-            Assert.Equal(2, ped.Nodes.Count);
+            Assert.That(ped.Nodes, Has.Count.EqualTo(2));
             addNode.Click();
-            Assert.Equal(true, ped.HasNode("DynamicNode"));
+            Assert.That(ped.HasNode("DynamicNode"), Is.True);
         }
 
         public virtual void CheckProgress()

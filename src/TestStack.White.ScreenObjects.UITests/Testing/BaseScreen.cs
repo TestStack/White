@@ -5,7 +5,7 @@ namespace TestStack.White.ScreenObjects.UITests.Testing
 {
     public class BaseScreen : AppScreen
     {
-        protected Button buton = null;
+        protected Button Button = null;
 
         public BaseScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository) { }
     }

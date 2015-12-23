@@ -1,82 +1,81 @@
-using System.Collections.Generic;
+using System;
+using NUnit.Framework;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Automation;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
-using Xunit;
 
 namespace TestStack.White.UITests
 {
-    public class WindowTests : WhiteTestBase
+    [TestFixture(WindowsFramework.WinForms)]
+    [TestFixture(WindowsFramework.Wpf)]
+    public class WindowTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public WindowTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(GetAllWindows);
-            RunTest(FindWindow);
-            RunTest(WindowWithoutTitleBar, WindowsFramework.WinForms);
-            RunTest(WindowWithAmerstand, WindowsFramework.WinForms);
-            RunTest(IsCurrentlyActive);
-            RunTest(IsCurrentlyNotActive);
-            RunTest(HasAttachedMouse);
-            RunTest(FindNonExistentItem);
-            RunTest(GetAll);
-            RunTest(FindTabs);
-            RunTest(FindControlsInsideAPanel);
-            RunTest(SetWindowState);
-            RunTest(HandleDynamicallyAddedControls);
-            RunTest(GetTitle);
-            RunTest(ItemsWithin);
-            RunTest(WindowScrollsToMakeItemVisibleBeforePerformingAnyAction);
-            RunTest(FindToolBarsWhenThereAreMultiple);
-            RunTest(HandlesInvisibleControlsWinforms, WindowsFramework.WinForms);
-            RunTest(HandlesInvisibleControlsWpf, WindowsFramework.Wpf);
-            RunTest(IsClosed);
-            RunTest(CanFindTitleBar);
         }
 
-        void GetAllWindows()
+        [Test]
+        public void GetAllWindowsTest()
         {
             using (StartScenario("GetMultipleButton", "GetMultiple"))
             {
-                Assert.Equal(2, Application.GetWindows().Count);
+                Assert.That(Application.GetWindows(), Has.Count.EqualTo(2));
             }
         }
 
-        void FindWindow()
+        [Test]
+        public void FindWindowTest()
         {
             using (StartScenario("GetMultipleButton", "GetMultiple"))
             {
-                Window foundWindow = Application.Find(obj => obj.StartsWith("GetMul"), InitializeOption.NoCache);
-                Assert.NotNull(foundWindow);
+                var foundWindow = Application.Find(obj => obj.StartsWith("GetMul"), InitializeOption.NoCache);
+                Assert.That(foundWindow, Is.Not.Null);
             }
         }
 
-        void WindowWithoutTitleBar()
+        [Test]
+        public void WindowWithoutTitleBarTest()
         {
+            if (Framework != WindowsFramework.WinForms)
+            {
+                Assert.Ignore();
+            }
             using (var window = StartScenario("OpenWindowWithNoTitleBar", "WindowWithNoTitleBar"))
             {
-                Assert.NotNull(window);
+                Assert.That(window, Is.Not.Null);
             }
         }
 
-        void WindowWithAmerstand()
+        [Test]
+        public void WindowWithAmerstandTest()
         {
+            if (Framework != WindowsFramework.WinForms)
+            {
+                Assert.Ignore();
+            }
             using (var window = StartScenario("OpenWindowWithAmperstand", "WindowWithAmperstand&1"))
-                Assert.NotNull(window);
+            {
+                Assert.That(window, Is.Not.Null);
+            }
         }
 
-        void IsCurrentlyActive()
+        [Test]
+        public void IsCurrentlyActiveTest()
         {
             MainWindow.Focus();
-            Assert.True(MainWindow.IsCurrentlyActive);
+            Assert.That(MainWindow.IsCurrentlyActive, Is.True);
             MainWindow.Get<Button>("ButtonWithTooltip").Click();
-            Assert.True(MainWindow.IsCurrentlyActive);
+            Assert.That(MainWindow.IsCurrentlyActive, Is.True);
         }
 
-        void IsCurrentlyNotActive()
+        [Test]
+        public void IsCurrentlyNotActiveTest()
         {
             const string exeSourceFile = @"C:\Windows\system32\calc.exe";
             var psi = new ProcessStartInfo(exeSourceFile);
@@ -85,150 +84,173 @@ namespace TestStack.White.UITests
             using (var mainWindow = application.GetWindow(SearchCriteria.ByText("Calculator"), InitializeOption.NoCache))
             {
                 mainWindow.Focus();
-                Assert.Equal(false, MainWindow.IsCurrentlyActive);
+                Assert.That(MainWindow.IsCurrentlyActive, Is.False);
             }
         }
 
-        void HandlesInvisibleControlsWinforms()
+        [Test]
+        public void HandlesInvisibleControlsWinformsTest()
         {
+            if (Framework != WindowsFramework.WinForms)
+            {
+                Assert.Ignore();
+            }
             using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
             {
-                var exception = Assert.Throws<AutomationException>(() => MainWindow.Get<TextBox>("HiddenTextBox"));
-                Assert.Equal("Failed to get (ControlType=edit or ControlType=document),AutomationId=HiddenTextBox",
-                    exception.Message);
+                Assert.That(() => { MainWindow.Get<TextBox>("HiddenTextBox"); },
+                    Throws.TypeOf<AutomationException>().With.Message.EqualTo(
+                        String.Format("Failed to get (ControlType={0} or ControlType={1}),AutomationId=HiddenTextBox",
+                            ControlType.Edit.LocalizedControlType, ControlType.Document.LocalizedControlType)));
             }
 
             MainWindow.Get<Button>("ShowHiddenTextBox").Click();
             var textBox = MainWindow.Get<TextBox>("HiddenTextBox");
-            Assert.True(textBox.Visible);
+            Assert.That(textBox.Visible, Is.True);
         }
 
-        void HandlesInvisibleControlsWpf()
+        [Test]
+        public void HandlesInvisibleControlsWpfTest()
         {
+            if (Framework != WindowsFramework.Wpf)
+            {
+                Assert.Ignore();
+            }
             var textBox = MainWindow.Get<TextBox>("HiddenTextBox");
-            Assert.False(textBox.Visible);
+            Assert.That(textBox.Visible, Is.False);
             MainWindow.Get<Button>("ShowHiddenTextBox").Click();
-            Assert.True(textBox.Visible);
+            Assert.That(textBox.Visible, Is.True);
         }
 
-        void FindToolBarsWhenThereAreMultiple()
+        [Test]
+        public void FindToolBarsWhenThereAreMultipleTest()
         {
-            Assert.NotEqual(null, MainWindow.GetToolStrip("ToolStrip1"));
-            Assert.NotEqual(null, MainWindow.GetToolStrip("ToolStrip2"));
+            Assert.That(MainWindow.GetToolStrip("ToolStrip1"), Is.Not.Null);
+            Assert.That(MainWindow.GetToolStrip("ToolStrip2"), Is.Not.Null);
             using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
             {
-                var exception = Assert.Throws<AutomationException>(() => MainWindow.GetToolStrip("ToolStrip3"));
-                Assert.Equal("Failed to get AutomationId=ToolStrip3", exception.Message);
+                Assert.That(() => { MainWindow.GetToolStrip("ToolStrip3"); },
+                    Throws.TypeOf<AutomationException>().With.Message.EqualTo(
+                        "Failed to get AutomationId=ToolStrip3"));
             }
         }
 
-        void WindowScrollsToMakeItemVisibleBeforePerformingAnyAction()
+        [Test]
+        public void WindowScrollsToMakeItemVisibleBeforePerformingAnyActionTest()
         {
             using (var window = StartScenario("OpenWindowWithScrollbars", "WindowWithScrollbars"))
             {
                 var button = window.Get<Button>("HiddenButton");
                 button.Click();
-                Assert.Equal("HiddenButtonClicked", button.HelpText);
+                Assert.That(button.HelpText, Is.EqualTo("HiddenButtonClicked"));
                 var buttonUpTop = window.Get<Button>("ButtonBackUpTop");
                 buttonUpTop.Click();
-                Assert.Equal("ButtonBackUpTopClicked", buttonUpTop.HelpText);
+                Assert.That(buttonUpTop.HelpText, Is.EqualTo("ButtonBackUpTopClicked"));
             }
         }
 
-        void ItemsWithin()
+        [Test]
+        public void ItemsWithinTest()
         {
             var groupBox = MainWindow.Get<GroupBox>("ScenariosPane");
-            List<UIItem> uiItems = MainWindow.ItemsWithin(groupBox);
-            Assert.True(uiItems.Count > 1, "Scenarios should have more than 1 button");
-            Assert.True(uiItems.OfType<Button>().Count() > 1, "Scenarios should have more than 1 button");
+            var uiItems = MainWindow.ItemsWithin(groupBox);
+            Assert.That(uiItems, Has.Count.GreaterThan(1), "Scenarios should have more than 1 button");
+            Assert.That(uiItems.OfType<Button>().ToList(), Has.Count.GreaterThan(1), "Scenarios should have more than 1 button");
         }
 
-        void GetTitle()
+        [Test]
+        public void GetTitleTest()
         {
-            Assert.NotNull(MainWindow.Title);
+            Assert.That(MainWindow.Title, Is.Not.Null);
         }
 
-        void HandleDynamicallyAddedControls()
+        [Test]
+        public void HandleDynamicallyAddedControlsTest()
         {
             SelectOtherControls();
             using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
-                Assert.Throws<AutomationException>(() => MainWindow.Get<TextBox>("AddedTextBox"));
+            {
+                Assert.That(() => { MainWindow.Get<TextBox>("AddedTextBox"); },
+                    Throws.TypeOf<AutomationException>());
+            }
 
             MainWindow.Get<Button>("AddTextBox").Click();
-            Assert.NotEqual(null, MainWindow.Get<TextBox>("AddedTextBox"));
+            Assert.That(MainWindow.Get<TextBox>("AddedTextBox"), Is.Not.Null);
         }
 
-        void SetWindowState()
+        [Test]
+        public void SetWindowStateTest()
         {
             try
             {
                 MainWindow.DisplayState = DisplayState.Maximized;
-                Assert.Equal(DisplayState.Maximized, MainWindow.DisplayState);
+                Assert.That(MainWindow.DisplayState, Is.EqualTo(DisplayState.Maximized));
 
                 MainWindow.DisplayState = DisplayState.Restored;
-                Assert.Equal(DisplayState.Restored, MainWindow.DisplayState);
+                Assert.That(MainWindow.DisplayState, Is.EqualTo(DisplayState.Restored));
 
                 MainWindow.DisplayState = DisplayState.Minimized;
-                Assert.Equal(DisplayState.Minimized, MainWindow.DisplayState);
+                Assert.That(MainWindow.DisplayState, Is.EqualTo(DisplayState.Minimized));
             }
             finally
             {
-                MainWindow.DisplayState = DisplayState.Restored;                
+                MainWindow.DisplayState = DisplayState.Restored;
             }
         }
 
-        void FindControlsInsideAPanel()
+        [Test]
+        public void FindControlsInsideAPanelTest()
         {
             SelectOtherControls();
             var textBox = MainWindow.Get<TextBox>("TextBoxInsidePanel");
-            Assert.NotNull(textBox);
+            Assert.That(textBox, Is.Not.Null);
         }
 
-        void FindTabs()
+        [Test]
+        public void FindTabsTest()
         {
-            Assert.Equal(1, MainWindow.Tabs.Count);
+            Assert.That(MainWindow.Tabs, Has.Count.EqualTo(1));
         }
 
-        void GetAll()
+        [Test]
+        public void GetAllTest()
         {
-            Assert.NotEmpty(MainWindow.Items);
+            Assert.That(MainWindow.Items, Is.Not.Empty);
         }
 
-        void HasAttachedMouse()
+        [Test]
+        public void HasAttachedMouseTest()
         {
-            Assert.NotNull(MainWindow.Mouse);
+            Assert.That(MainWindow.Mouse, Is.Not.Null);
         }
 
-        void FindNonExistentItem()
+        [Test]
+        public void FindNonExistentItemTest()
         {
-            var excepion = Assert.Throws<AutomationException>(() => MainWindow.Get<TextBox>("DoesntExist"));
-            Assert.Contains("Failed to get", excepion.Message);
-            Assert.Contains("ControlType=edit", excepion.Message);
-            Assert.Contains("AutomationId=DoesntExist", excepion.Message);
+            Assert.That(() => { MainWindow.Get<TextBox>("DoesntExist"); },
+                Throws.TypeOf<AutomationException>().
+                    With.Message.Contains("Failed to get").
+                    And.Message.Contains(String.Format("ControlType={0}", ControlType.Edit.LocalizedControlType)).
+                    And.Message.Contains("AutomationId=DoesntExist"));
         }
 
-        void IsClosed()
+        [Test]
+        public void IsClosedTest()
         {
             MainWindow.Get<Button>("GetMultipleButton").Click();
             var window = MainWindow.ModalWindow("GetMultiple");
-            Assert.False(window.IsClosed);
+            Assert.That(window.IsClosed, Is.False);
             window.Close();
             window.WaitTill(() => window.IsClosed);
-            Assert.True(window.IsClosed);
+            Assert.That(window.IsClosed, Is.True);
         }
 
-        void CanFindTitleBar()
+        [Test]
+        public void CanFindTitleBarTest()
         {
-            TitleBar titleBar = MainWindow.TitleBar;
-            Assert.NotNull(titleBar.MinimizeButton);
-            Assert.NotNull(titleBar.MaximizeButton);
-            Assert.NotNull(titleBar.CloseButton);
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.WinForms;
-            yield return WindowsFramework.Wpf;
+            var titleBar = MainWindow.TitleBar;
+            Assert.That(titleBar.MinimizeButton, Is.Not.Null);
+            Assert.That(titleBar.MaximizeButton, Is.Not.Null);
+            Assert.That(titleBar.CloseButton, Is.Not.Null);
         }
     }
 }

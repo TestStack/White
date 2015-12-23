@@ -9,9 +9,9 @@ namespace TestStack.White.UITests.Infrastructure
         {
         }
 
-        protected override string ApplicationExePath()
+        protected override string ApplicationExePath
         {
-            return "WindowsFormsTestApplication.exe";
+            get { return "WindowsFormsTestApplication.exe"; }
         }
     }
 }

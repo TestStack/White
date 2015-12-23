@@ -1,15 +1,16 @@
+using NUnit.Framework;
 using TestStack.White.ScreenObjects.EntityMapping;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.EntityMapping
 {
+    [TestFixture]
     public class NestedEntitiesTest
     {
-        [Fact]
+        [Test]
         public void Create()
         {
             var testEntity = new TestEntity(new NestedEntity());
-            Assert.Equal(2, new NestedEntities(testEntity).Count);
+            Assert.That(new NestedEntities(testEntity), Has.Count.EqualTo(2));
         }
     }
 }

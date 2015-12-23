@@ -33,7 +33,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
@@ -55,29 +54,22 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.3.0\lib\net40-client\Castle.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="NSubstitute, Version=1.6.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+    <Reference Include="nunit.framework, Version=3.0.5813.39032, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\NSubstitute.1.7.2.0\lib\NET40\NSubstitute.dll</HintPath>
+      <HintPath>..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationClient" />
-    <Reference Include="xunit">
-      <HintPath>..\packages\xunit.1.9.2\lib\net20\xunit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DummyScreen.cs" />
     <Compile Include="DummyWindow.cs" />
     <Compile Include="EntityMapping\EntitiesFromUIItemsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenRepositoryTest.cs" />
+    <Compile Include="ScreenRepositoryTests.cs" />
     <Compile Include="ScreenRepositoryTester.cs" />
     <Compile Include="Testing\BaseScreen.cs" />
     <Compile Include="Testing\MainProgressBars.cs" />
@@ -100,9 +92,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestApplications\WinFormsTestApp\WinFormsTestApp.Old.csproj">
-      <Project>{bdd325ef-d400-4a37-b4c6-d7bf150587c7}</Project>
-      <Name>WinFormsTestApp.Old</Name>
+    <ProjectReference Include="..\TestApplications\WindowsFormsTestApplication\WindowsFormsTestApplication.csproj">
+      <Project>{24929ce3-4000-4600-8830-503be6a2ba42}</Project>
+      <Name>WindowsFormsTestApplication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestApplications\WpfTestApplication\WpfTestApplication.csproj">
+      <Project>{492e6340-32cc-4d03-a9c4-36fb4c40cf5c}</Project>
+      <Name>WpfTestApplication</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestStack.White.UITests\TestStack.White.UITests.csproj">
       <Project>{10A51741-09F8-47CA-AB94-965EE71342F7}</Project>
@@ -121,8 +117,10 @@
       <Name>TestStack.White.ScreenObjects</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -11,7 +11,7 @@ namespace WpfTodo.UITests.Screens
 
         protected UITestBase()
         {
-            var directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var directoryName = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
             var markpadLocation = Path.Combine(directoryName, @"WpfTodo.exe");
             Application = Application.Launch(markpadLocation);
         }

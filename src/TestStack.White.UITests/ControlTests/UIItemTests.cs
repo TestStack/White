@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using NUnit.Framework;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.ListBoxItems;
@@ -7,25 +7,21 @@ using TestStack.White.UIItems.WPFUIItems;
 
 namespace TestStack.White.UITests.ControlTests
 {
-    public class UIItemTests : WhiteTestBase
+    [TestFixture(WindowsFramework.Wpf)]
+    public class UIItemTests : WhiteUITestBase
     {
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public UIItemTests(WindowsFramework framework)
+            : base(framework)
         {
-            RunTest(can_click_on_elements_located_by_searching_through_several_containers);
         }
 
-        void can_click_on_elements_located_by_searching_through_several_containers()
+        [Test]
+        public void ClickOnElementLocatedBySearchingThroughSeveralContainersTest()
         {
             var groupBox = MainWindow.Get<TabPage>(SearchCriteria.ByAutomationId("ListControlsTab"));
             var listbox = groupBox.Get<ListBox>(SearchCriteria.ByAutomationId("CheckedListBox"));
             var listboxItem = listbox.Get<ListItem>(SearchCriteria.ByText("Item1"));
-            
-            listboxItem.Click();
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
+            Assert.That(() => { listboxItem.Click(); }, Throws.Nothing);
         }
     }
 }

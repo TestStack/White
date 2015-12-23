@@ -1,14 +1,15 @@
 using NSubstitute;
+using NUnit.Framework;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects;
 using TestStack.White.Sessions;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository
 {
+    [TestFixture]
     public class ScreenRepositoryCacheTest
     {
-        [Fact]
+        [Test]
         public void ScreensShouldBeCached()
         {
             var application = Substitute.For<Application>();
@@ -19,10 +20,10 @@ namespace TestStack.White.UnitTests.Repository
             applicationSession.Application.Returns(application);
 
             var screenRepository = new ScreenRepository(applicationSession);
-            Assert.Same(GetScreen(screenRepository), GetScreen(screenRepository));
+            Assert.That(GetScreen(screenRepository), Is.SameAs(GetScreen(screenRepository)));
         }
 
-        [Fact]
+        [Test]
         public void ScreenShouldRemovedFromCacheWhenClosed()
         {
             var application = Substitute.For<Application>();
@@ -35,14 +36,14 @@ namespace TestStack.White.UnitTests.Repository
             applicationSession.Application.Returns(application);
 
             var screenRepository = new ScreenRepository(applicationSession);
-            DummyScreen screen = GetScreen(screenRepository);
-            Assert.Same(screen, GetScreen(screenRepository));
+            var screen = GetScreen(screenRepository);
+            Assert.That(GetScreen(screenRepository), Is.SameAs(screen));
             screen.Close();
             GetScreen(screenRepository);
             application.ReceivedWithAnyArgs(2).GetWindow("dummy", InitializeOption.NoCache);
         }
 
-        [Fact]
+        [Test]
         public void ScreenCachingWithMatches()
         {
             var application = Substitute.For<Application>();
@@ -54,14 +55,16 @@ namespace TestStack.White.UnitTests.Repository
             applicationSession.Application.Returns(application);
 
             var screenRepository = new ScreenRepository(applicationSession);
-            Assert.Same(FindScreen(screenRepository), FindScreen(screenRepository));
+            Assert.That(FindScreen(screenRepository), Is.SameAs(FindScreen(screenRepository)));
         }
 
-        private static DummyScreen FindScreen(ScreenRepository screenRepository) {
+        private static DummyScreen FindScreen(ScreenRepository screenRepository)
+        {
             return screenRepository.Get<DummyScreen>(t => true, InitializeOption.NoCache);
         }
 
-        private static DummyScreen GetScreen(ScreenRepository screenRepository) {
+        private static DummyScreen GetScreen(ScreenRepository screenRepository)
+        {
             return screenRepository.Get<DummyScreen>("dummy", InitializeOption.NoCache);
         }
     }

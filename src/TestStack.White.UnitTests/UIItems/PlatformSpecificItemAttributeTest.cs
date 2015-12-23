@@ -1,17 +1,18 @@
+using NUnit.Framework;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
 using TestStack.White.UIItems.Scrolling;
-using Xunit;
 
 namespace TestStack.White.UnitTests.UIItems
 {
+    [TestFixture]
     public class PlatformSpecificItemAttributeTest
     {
-        [Fact]
+        [Test]
         public void BaseTypeIsSpecified()
         {
-            Assert.Equal(typeof (ComboBox), PlatformSpecificItemAttribute.BaseType(typeof (WPFComboBox)));
-            Assert.Equal(typeof (IHScrollBar), PlatformSpecificItemAttribute.BaseType(typeof (HScrollBar)));
+            Assert.That(PlatformSpecificItemAttribute.BaseType(typeof(WPFComboBox)), Is.EqualTo(typeof(ComboBox)));
+            Assert.That(PlatformSpecificItemAttribute.BaseType(typeof(HScrollBar)), Is.EqualTo(typeof(IHScrollBar)));
         }
     }
 }
