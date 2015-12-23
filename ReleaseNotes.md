@@ -1,3 +1,16 @@
+# 0.14.0 (TBD)
+
+### Features
+- Migration to nUnit - [#348](https://github.com/TestStack/White/pull/348)
+- Being able to capture part of the screen - [#350](https://github.com/TestStack/White/pull/350), [#260](https://github.com/TestStack/White/pull/260) (Slightly modified version of ([HEskandari](https://github.com/HEskandari))
+- Added color parameter to DrawHighlight
+
+### Bug Fixes
+None so far
+
+### Breaking Changes
+None so far
+
 # 0.13.0 (7 June 2014)
 
  - [#188](https://github.com/TestStack/White/pull/188) - Issue144: Add DrawHighlight method to UIItem contributed by Ilya Murzinov ([ilya-murzinov](https://github.com/ilya-murzinov))
