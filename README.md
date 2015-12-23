@@ -1,4 +1,6 @@
 # TestStack.White
+
+[![Join the chat at https://gitter.im/TestStack/White](https://badges.gitter.im/TestStack/White.svg)](https://gitter.im/TestStack/White?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 White is a framework for automating rich client applications based on Win32, WinForms, WPF, Silverlight and SWT (Java) platforms. It is .NET based and does not require the use of any proprietary scripting languages. Tests/automation programs using White can be written with whatever .NET language, IDE and tools you are already using. White provides a consistent object-oriented API, hiding the complexity of Microsoft's UIAutomation library (on which White is based) and windows messages. 
 
 ## Introduction
