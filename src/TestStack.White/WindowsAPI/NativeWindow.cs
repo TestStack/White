@@ -60,7 +60,7 @@ namespace TestStack.White.WindowsAPI
 
         public NativeWindow(Point point)
         {
-            handle = WindowFromPoint(new POINT((int) point.X, (int) point.Y));
+            handle = WindowFromPoint(new POINT((int)point.X, (int)point.Y));
         }
 
         public NativeWindow(IntPtr handle)
@@ -83,7 +83,7 @@ namespace TestStack.White.WindowsAPI
                 return GetTextColor(GetDC(handle));
             }
         }
-        
+
         public virtual void PostCloseMessage()
         {
             PostMessage(handle, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
@@ -93,7 +93,7 @@ namespace TestStack.White.WindowsAPI
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool SetWindowPos(IntPtr hWnd, IntPtr hwndAfter, int x, int y, int width, int height, int flags);
-        
+
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, UInt32 dwNewLong);
 
@@ -102,5 +102,8 @@ namespace TestStack.White.WindowsAPI
 
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         internal static extern UInt32 GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        internal static extern bool SetForegroundWindow(IntPtr windowHandle);
     }
 }

@@ -10,7 +10,7 @@ namespace TestStack.White.Drawing
 {
     internal class ScreenRectangle
     {
-        private Form form = new Form();
+        private readonly Form form = new Form();
 
         internal ScreenRectangle(Color color, Rect rectangle)
         {
@@ -25,18 +25,18 @@ namespace TestStack.White.Drawing
             form.Opacity = 0.8;
             form.Visible = false;
 
-            //Set popup style
-            var num1 = TestStack.White.WindowsAPI.NativeWindow.GetWindowLong(form.Handle, -20);
-            TestStack.White.WindowsAPI.NativeWindow.SetWindowLong(form.Handle, -20, num1 | 0x80);
+            // Set popup style
+            var num1 = WindowsAPI.NativeWindow.GetWindowLong(form.Handle, -20);
+            WindowsAPI.NativeWindow.SetWindowLong(form.Handle, -20, num1 | 0x80);
 
-            //Set position
-            TestStack.White.WindowsAPI.NativeWindow.SetWindowPos(form.Handle, new IntPtr(-1), Convert.ToInt32(rectangle.X), Convert.ToInt32(rectangle.Y),
+            // Set position
+            WindowsAPI.NativeWindow.SetWindowPos(form.Handle, new IntPtr(-1), Convert.ToInt32(rectangle.X), Convert.ToInt32(rectangle.Y),
                 Convert.ToInt32(rectangle.Width), Convert.ToInt32(rectangle.Height), 0x10);
         }
 
         internal virtual void Show()
         {
-            TestStack.White.WindowsAPI.NativeWindow.ShowWindow(form.Handle, 8);
+            WindowsAPI.NativeWindow.ShowWindow(form.Handle, 8);
         }
 
         internal virtual void Hide()
@@ -48,22 +48,17 @@ namespace TestStack.White.Drawing
 
     internal class FrameRectangle
     {
-        //Using 4 rectangles to display each border
-        private ScreenRectangle leftBorder;
-        private ScreenRectangle topBorder;
-        private ScreenRectangle rightBorder;
-        private ScreenRectangle bottomBorder;
-
-        private ScreenRectangle[] rectangles;
-        private int width = 3;
+        private readonly ScreenRectangle[] rectangles;
+        const int Width = 3;
 
         internal FrameRectangle(Color color, Rect boundingRectangle)
         {
-            leftBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X - width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2 * width));
-            topBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X, boundingRectangle.Y - width, boundingRectangle.Width, width));
-            rightBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X + boundingRectangle.Width, boundingRectangle.Y - width, width, boundingRectangle.Height + 2 * width));
-            bottomBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X, boundingRectangle.Y + boundingRectangle.Height, boundingRectangle.Width, width));
-            rectangles = new ScreenRectangle[] { leftBorder, topBorder, rightBorder, bottomBorder };
+            // Using 4 rectangles to display each border
+            var leftBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X - Width, boundingRectangle.Y - Width, Width, boundingRectangle.Height + 2 * Width));
+            var topBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X, boundingRectangle.Y - Width, boundingRectangle.Width, Width));
+            var rightBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X + boundingRectangle.Width, boundingRectangle.Y - Width, Width, boundingRectangle.Height + 2 * Width));
+            var bottomBorder = new ScreenRectangle(color, new Rect(boundingRectangle.X, boundingRectangle.Y + boundingRectangle.Height, boundingRectangle.Width, Width));
+            rectangles = new[] { leftBorder, topBorder, rightBorder, bottomBorder };
         }
 
         internal virtual void Highlight()

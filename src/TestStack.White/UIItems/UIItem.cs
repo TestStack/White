@@ -1,3 +1,4 @@
+using Castle.Core.Logging;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -5,7 +6,6 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
-using Castle.Core.Logging;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
@@ -20,7 +20,6 @@ using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 using Point = System.Windows.Point;
-using System.Windows.Forms;
 
 namespace TestStack.White.UIItems
 {
@@ -173,6 +172,11 @@ namespace TestStack.White.UIItems
             {
                 Logger.Debug("Could not set focus on " + AutomationElement.Display());
             }
+        }
+
+        public virtual void SetForeground()
+        {
+            WindowsAPI.NativeWindow.SetForegroundWindow(new IntPtr(automationElement.Current.NativeWindowHandle));
         }
 
         public virtual void Visit(WindowControlVisitor windowControlVisitor)

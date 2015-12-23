@@ -38,6 +38,10 @@ namespace TestStack.White.UIItems
         void RightClickAt(Point point);
         void RightClick();
         void Focus();
+        /// <summary>
+        /// An alternative to use instead of Focus, might sometimes be more reliable
+        /// </summary>
+        void SetForeground();
         void Visit(WindowControlVisitor windowControlVisitor);
 
         /// <summary>
