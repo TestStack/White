@@ -449,5 +449,10 @@ namespace TestStack.White.UIItems
                 new Drawing.FrameRectangle(color, rectangle).Highlight();
             }
         }
+
+        public virtual Bitmap Capture()
+        {
+            return Desktop.CaptureScreenshot(Bounds);
+        }
     }
 }
