@@ -67,7 +67,7 @@ namespace TestStack.White.UITests
             var imagePath = Path.Combine(screenshotDir, imagename);
             try
             {
-                new ScreenCapture().CaptureScreenShot().Save(imagePath, ImageFormat.Png);
+                Desktop.CaptureScreenshot().Save(imagePath, ImageFormat.Png);
                 Trace.WriteLine(String.Format("Screenshot taken: {0}", imagePath));
             }
             catch (Exception)

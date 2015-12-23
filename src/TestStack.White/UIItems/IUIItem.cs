@@ -101,5 +101,10 @@ namespace TestStack.White.UIItems
 
         void DrawHighlight();
         void DrawHighlight(Color color);
+
+        /// <summary>
+        /// Captures an image of the element
+        /// </summary>
+        Bitmap Capture();
     }
 }
