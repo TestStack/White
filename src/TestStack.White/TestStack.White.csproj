@@ -155,6 +155,7 @@
     <Compile Include="ScreenMap\WindowsAutomationTypesSurrogates.cs" />
     <Compile Include="Span.cs" />
     <Compile Include="SystemExtensions\DoubleX.cs" />
+    <Compile Include="SystemExtensions\RectangleExtensions.cs" />
     <Compile Include="SystemExtensions\TypeExtensions.cs" />
     <Compile Include="UIA\AutomationElementCollectionX.cs" />
     <Compile Include="UIA\AutomationElementX.cs" />
