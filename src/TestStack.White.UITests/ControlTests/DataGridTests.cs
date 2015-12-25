@@ -59,6 +59,19 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        public void IsCellSelectedWpfTest()
+        {
+            if (Framework != WindowsFramework.Wpf)
+            {
+                Assert.Ignore();
+            }
+            var rows = dataGridWpfUnderTest.Rows;
+            rows[1].Cells[1].Click();
+            Assert.That(rows[1].Cells[1].IsSelected, Is.True);
+            Assert.That(rows[1].Cells[2].IsSelected, Is.False);
+        }
+
+        [Test]
         public void CanGetAllItemsWinformsTest()
         {
             if (Framework != WindowsFramework.WinForms)
