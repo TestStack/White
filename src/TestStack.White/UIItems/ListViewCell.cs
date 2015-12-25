@@ -17,8 +17,11 @@ namespace TestStack.White.UIItems
             this.cell = cell;
         }
 
+
         public bool IsSelected
         {
+            //The reason is selected is using the HasKeyboardFocus property instead of a selection item pattern is because the cells do not support the selection item pattern.
+            //If this ever changes this should be switched to use the selection item pattern.
             get { return cell.Current.HasKeyboardFocus; }
         }
     }
