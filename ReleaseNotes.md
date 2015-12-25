@@ -4,6 +4,7 @@
 - Migration to nUnit - [#348](https://github.com/TestStack/White/pull/348)
 - Being able to capture part of the screen - [#350](https://github.com/TestStack/White/pull/350), [#260](https://github.com/TestStack/White/pull/260) (Slightly modified version of ([HEskandari](https://github.com/HEskandari))
 - Added color parameter to DrawHighlight
+- Added some localization for German UI
 
 ### Bug Fixes
 None so far
