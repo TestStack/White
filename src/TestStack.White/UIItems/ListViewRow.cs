@@ -46,12 +46,7 @@ namespace TestStack.White.UIItems
             get
             {
                 actionListener.ActionPerforming(this);
-                var collection = finder.Descendants(
-                        new AutomationSearchCondition(
-                            new OrCondition(
-                                AutomationSearchCondition.ByControlType(ControlType.Text).Condition,
-                                AutomationSearchCondition.ByControlType(ControlType.CheckBox).Condition,
-                                AutomationSearchCondition.ByControlType(ControlType.ComboBox).Condition)));
+                var collection = finder.Descendants(AutomationSearchCondition.ByClassName("DataGridCell"));
                 return new ListViewCells(collection, actionListener, header);
             }
         }
