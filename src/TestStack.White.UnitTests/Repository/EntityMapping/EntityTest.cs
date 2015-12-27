@@ -1,50 +1,50 @@
+using NUnit.Framework;
 using TestStack.White.ScreenObjects.EntityMapping;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.EntityMapping
 {
+    [TestFixture]
     public class EntityTest
     {
-        [Fact]
+        [Test]
         public void SetFieldValue()
         {
             var testEntity = new TestEntity(new NestedEntity());
             testEntity.Field("yo").SetValue("5");
-            Assert.Equal("5", testEntity.NestedEntity.Yo);
-
-            Assert.Equal(null, testEntity.Field("bo"));
+            Assert.That(testEntity.NestedEntity.Yo, Is.EqualTo("5"));
+            Assert.That(testEntity.Field("bo"), Is.EqualTo(null));
         }
 
-        [Fact]
+        [Test]
         public void Should_Format_To_Field()
         {
-            Assert.Equal("one_two", Entity.HeaderFormatter.To_Field_Name("One Two"));
-            Assert.Equal("two_or_one", Entity.HeaderFormatter.To_Field_Name("Two /One"));
-            Assert.Equal("two_or_one_three", Entity.HeaderFormatter.To_Field_Name("Two / One Three"));
+            Assert.That(Entity.HeaderFormatter.To_Field_Name("One Two"), Is.EqualTo("one_two"));
+            Assert.That(Entity.HeaderFormatter.To_Field_Name("Two /One"), Is.EqualTo("two_or_one"));
+            Assert.That(Entity.HeaderFormatter.To_Field_Name("Two / One Three"), Is.EqualTo("two_or_one_three"));
         }
 
-        [Fact]
+        [Test]
         public void Should_Format_To_Header_Column()
         {
-            Assert.Equal("ONE TWO", Entity.HeaderFormatter.To_Header_Column("one_two"));
-            Assert.Equal("TWO/ONE", Entity.HeaderFormatter.To_Header_Column("two_or_one"));
-            Assert.Equal("TWO/ONE THREE", Entity.HeaderFormatter.To_Header_Column("two_or_one_three"));
+            Assert.That(Entity.HeaderFormatter.To_Header_Column("one_two"), Is.EqualTo("ONE TWO"));
+            Assert.That(Entity.HeaderFormatter.To_Header_Column("two_or_one"), Is.EqualTo("TWO/ONE"));
+            Assert.That(Entity.HeaderFormatter.To_Header_Column("two_or_one_three"), Is.EqualTo("TWO/ONE THREE"));
         }
 
-        [Fact]
+        [Test]
         public void To_String()
         {
             var nestedEntity = new NestedEntity {Yo = "7"};
             var testEntity = new TestEntity(nestedEntity) {Zo = "8"};
-            Assert.Equal("zo=8, nestedEntity=yo=7, ", testEntity.ToString());
+            Assert.That(testEntity.ToString(), Is.EqualTo("zo=8, nestedEntity=yo=7, "));
         }
 
-        [Fact]
+        [Test]
         public void Header()
         {
             var nestedEntity = new NestedEntity();
             var testEntity = new TestEntity(nestedEntity);
-            Assert.Equal("ZO, YO, ", testEntity.Header);
+            Assert.That(testEntity.Header, Is.EqualTo("ZO, YO, "));
         }
     }
 }

@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using TestStack.White.ScreenObjects;
 using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
-using Xunit;
 
 namespace TestStack.White.UnitTests
 {
+    [TestFixture]
     public class CoreProjectTest
     {
-        [Fact]
+        [Test]
         public void AllMethodsAreVirtual()
         {
             var virtuals = typeof(UIItem).Assembly.GetTypes()
@@ -33,7 +34,7 @@ namespace TestStack.White.UnitTests
                 string.Join("\r\n", virtuals));
         }
 
-        [Fact]
+        [Test]
         public void AllMethodsAreVirtualInRepositoryCodeBase()
         {
             var virtuals = typeof(ScreenRepository).Assembly.GetTypes()
@@ -52,7 +53,7 @@ namespace TestStack.White.UnitTests
                     string.Join("\r\n", virtuals));
         }
 
-        [Fact]
+        [Test]
         public void AllMethodsAreVirtualInReportingCodeBase()
         {
             var virtuals = typeof(IReport).Assembly.GetTypes()
@@ -71,7 +72,7 @@ namespace TestStack.White.UnitTests
                     string.Join("\r\n", virtuals));
         }
 
-        [Fact]
+        [Test]
         public void AllUIItemsHaveDefaultConstructor()
         {
             var collection = new List<string>();
@@ -93,7 +94,7 @@ namespace TestStack.White.UnitTests
             });
             foreach (var subClass in classes)
             {
-                bool hasDefaultConstructor = false;
+                var hasDefaultConstructor = false;
                 foreach (var constructorInfo in subClass.GetConstructors(BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly))
                 {
                     if (constructorInfo.GetParameters().Length == 0 || subClass.Name.Equals(typeof(ToggleableItem).Name))

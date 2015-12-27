@@ -1,3 +1,4 @@
+using Castle.Core.Logging;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -5,7 +6,6 @@ using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Automation;
-using Castle.Core.Logging;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
@@ -151,6 +151,11 @@ namespace TestStack.White.UIItems
             {
                 Logger.Debug("Could not set focus on " + AutomationElement.Display());
             }
+        }
+
+        public virtual void SetForeground()
+        {
+            WindowsAPI.NativeWindow.SetForegroundWindow(new IntPtr(automationElement.Current.NativeWindowHandle));
         }
 
         public virtual void Visit(WindowControlVisitor windowControlVisitor)
@@ -425,6 +430,31 @@ namespace TestStack.White.UIItems
         {
             var invokePattern = GetPattern<InvokePattern>();
             if (invokePattern != null) invokePattern.Invoke();
+        }
+
+        /// <summary>
+        /// Highlight UIItem with a red frame
+        /// </summary>
+        public virtual void DrawHighlight()
+        {
+            DrawHighlight(Color.Red);
+        }
+        /// <summary>
+        /// Highlight UIItem with a colored frame
+        /// </summary>
+        public virtual void DrawHighlight(Color color)
+        {
+            Rect rectangle = AutomationElement.Current.BoundingRectangle;
+
+            if (rectangle != Rect.Empty)
+            {
+                new Drawing.FrameRectangle(color, rectangle).Highlight();
+            }
+        }
+
+        public virtual Bitmap Capture()
+        {
+            return Desktop.CaptureScreenshot(Bounds);
         }
     }
 }

@@ -1,42 +1,44 @@
+using NUnit.Framework;
 using System;
 using TestStack.White.ScreenObjects.Services;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository.Services
 {
+    [TestFixture]
     public class ServiceExecutionTest
     {
-        private readonly ServiceExecution serviceExecution;
-        private readonly ExecutionHistory executionHistory;
-        private readonly Type type;
+        private ServiceExecution serviceExecution;
+        private ExecutionHistory executionHistory;
+        private Type type;
 
-        public ServiceExecutionTest()
+        [SetUp]
+        public void Setup()
         {
             type = typeof(TestService);
             executionHistory = new ExecutionHistory();
             serviceExecution = new ServiceExecution(executionHistory, new NullWorkEnvironment());
         }
 
-        [Fact]
+        [Test]
         public void InvokingANewServiceShouldAddItToEventHistory()
         {
-            LastServiceCallStatus callStatus = serviceExecution.Invoking(new TestService(), type.GetMethod("Method"));
+            var callStatus = serviceExecution.Invoking(new TestService(), type.GetMethod("Method"));
             serviceExecution.Invoked(null);
-            Assert.Equal(1, executionHistory.ServiceCalls.Count);
-            Assert.Equal(false, callStatus.WasExecuted);
+            Assert.That(executionHistory.ServiceCalls, Has.Count.EqualTo(1));
+            Assert.That(callStatus.WasExecuted, Is.False);
         }
 
-        [Fact]
+        [Test]
         public void InvokingAExistingServiceShouldReturnStatus()
         {
             var callInPreviousRun = new ServiceCall(new TestService(), type.GetMethod("Method"));
             executionHistory.Add(callInPreviousRun);
             callInPreviousRun.ReturnValue = string.Empty;
 
-            LastServiceCallStatus callStatus = serviceExecution.Invoking(new TestService(), type.GetMethod("Method"));
-            Assert.Equal(1, executionHistory.ServiceCalls.Count);
-            Assert.NotEqual(null, callStatus);
-            Assert.NotEqual(null, callStatus.ReturnValue);
+            var callStatus = serviceExecution.Invoking(new TestService(), type.GetMethod("Method"));
+            Assert.That(executionHistory.ServiceCalls, Has.Count.EqualTo(1));
+            Assert.That(callStatus, Is.Not.Null);
+            Assert.That(callStatus.ReturnValue, Is.Not.Null);
         }
     }
 

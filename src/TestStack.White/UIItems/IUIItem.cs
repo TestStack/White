@@ -38,6 +38,10 @@ namespace TestStack.White.UIItems
         void RightClickAt(Point point);
         void RightClick();
         void Focus();
+        /// <summary>
+        /// An alternative to use instead of Focus, might sometimes be more reliable
+        /// </summary>
+        void SetForeground();
         void Visit(WindowControlVisitor windowControlVisitor);
 
         /// <summary>
@@ -94,5 +98,13 @@ namespace TestStack.White.UIItems
         AutomationElement GetElement(SearchCriteria searchCriteria);
 
         void Enter(string value);
+
+        void DrawHighlight();
+        void DrawHighlight(Color color);
+
+        /// <summary>
+        /// Captures an image of the element
+        /// </summary>
+        Bitmap Capture();
     }
 }

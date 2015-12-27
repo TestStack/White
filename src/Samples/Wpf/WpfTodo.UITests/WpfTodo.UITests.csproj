@@ -12,7 +12,6 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
@@ -49,6 +48,12 @@
     <Reference Include="xunit">
       <HintPath>..\..\..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="UIAutomationTypes" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -59,10 +64,6 @@
     <Compile Include="TodoAppTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\TestStack.White.Reporting\TestStack.White.Reporting.csproj">
-      <Project>{19FC2A6E-1C39-4DB8-AABF-A234FD6BC3FE}</Project>
-      <Name>TestStack.White.Reporting</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.csproj">
       <Project>{FCD3E92F-FEE9-414D-A460-09F7F685B83E}</Project>
       <Name>TestStack.White.ScreenObjects</Name>
@@ -83,8 +84,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

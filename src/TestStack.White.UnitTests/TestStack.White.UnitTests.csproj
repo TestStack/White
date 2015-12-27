@@ -37,7 +37,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
@@ -59,10 +58,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Castle.Core.3.2.2\lib\net40-client\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Interop.UIAutomationClient">
       <HintPath>..\packages\UIAComWrapper.1.1.0.8\lib\net40\Interop.UIAutomationClient.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
@@ -71,11 +66,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\NSubstitute.1.6.1.0\lib\NET40\NSubstitute.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.framework, Version=3.0.5813.39032, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.0.1\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationFramework">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -99,20 +97,15 @@
     <Reference Include="WindowsBase">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="xunit">
-      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AutomationElementSearch\AutomationSearchConditionFactoryTest.cs" />
-    <Compile Include="AutomationElementSearch\ElementSearchResultTest.cs" />
-    <Compile Include="AutomationElementSearch\SearchConditionTest.cs" />
-    <Compile Include="Configuration\UIItemIdAppXmlConfigurationTest.cs" />
-    <Compile Include="ControlsActionTest.cs" />
+    <Compile Include="AutomationElementSearch\AutomationSearchConditionFactoryTests.cs" />
+    <Compile Include="AutomationElementSearch\ElementSearchResultTests.cs" />
+    <Compile Include="AutomationElementSearch\SearchConditionTests.cs" />
     <Compile Include="CoreProjectTest.cs" />
-    <Compile Include="Drawing\DrawingPointXTest.cs" />
-    <Compile Include="Mappings\ControlDictionaryTest.cs" />
+    <Compile Include="Drawing\DrawingPointXTests.cs" />
+    <Compile Include="Mappings\ControlDictionaryTests.cs" />
     <Compile Include="Repository\DummyScreen.cs" />
     <Compile Include="Repository\DummyWindow.cs" />
     <Compile Include="Repository\EntityMapping\Cricketer.cs" />
@@ -131,7 +124,7 @@
     <Compile Include="Repository\Services\ServiceExecutionTest.cs" />
     <Compile Include="Repository\Services\TestServiceForServiceCallTest.cs" />
     <Compile Include="ScreenMap\WindowItemsMapTest.cs" />
-    <Compile Include="SpanTest.cs" />
+    <Compile Include="SpanTests.cs" />
     <Compile Include="SystemExtensions\DoubleXTest.cs" />
     <Compile Include="UIA\RectXTest.cs" />
     <Compile Include="UIA\WindowsPointXTest.cs" />
@@ -147,10 +140,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="white.snk" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
@@ -178,7 +175,6 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

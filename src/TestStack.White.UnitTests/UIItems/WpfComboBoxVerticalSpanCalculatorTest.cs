@@ -1,30 +1,31 @@
 ﻿using System.Windows;
+using NUnit.Framework;
 using TestStack.White.UIItems.ListBoxItems;
-using Xunit;
 
 namespace TestStack.White.UnitTests.UIItems
 {
+    [TestFixture]
     public class WpfComboBoxVerticalSpanCalculatorTest
     {
-        [Fact]
+        [Test]
         public void Calculate()
         {
             var calculator = new WPFComboBoxVerticalSpanCalculator(Rectangle(0), Rectangle(10), Rectangle(100), 60);
-            VerticalSpan verticalSpan = calculator.VerticalSpan;
-            Assert.Equal(10, verticalSpan.Start);
-            Assert.Equal(70, verticalSpan.End);
+            var verticalSpan = calculator.VerticalSpan;
+            Assert.That(verticalSpan.Start, Is.EqualTo(10));
+            Assert.That(verticalSpan.End, Is.EqualTo(70));
         }
 
-        [Fact]
+        [Test]
         public void CalculateWhenListItemsDropUp()
         {
             var calculator = new WPFComboBoxVerticalSpanCalculator(Rectangle(70), Rectangle(10), Rectangle(100), 60);
-            VerticalSpan verticalSpan = calculator.VerticalSpan;
-            Assert.Equal(10, verticalSpan.Start);
-            Assert.Equal(70, verticalSpan.End);
+            var verticalSpan = calculator.VerticalSpan;
+            Assert.That(verticalSpan.Start, Is.EqualTo(10));
+            Assert.That(verticalSpan.End, Is.EqualTo(70));
         }
 
-        private static Rect Rectangle(int y)
+        private Rect Rectangle(int y)
         {
             return new Rect(10, y, 10, 10);
         }

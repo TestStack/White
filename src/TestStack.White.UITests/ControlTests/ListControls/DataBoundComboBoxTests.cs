@@ -1,46 +1,36 @@
-﻿using System.Collections.Generic;
+using NUnit.Framework;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
-using Xunit;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {
-    public class DataBoundComboBoxTests : WhiteTestBase
+    [TestFixture(WindowsFramework.Wpf)]
+    public class DataBoundComboBoxTests : WhiteUITestBase
     {
-        protected ComboBox ComboBoxUnderTest { get; set; }
-
-        protected override void ExecuteTestRun(WindowsFramework framework)
+        public DataBoundComboBoxTests(WindowsFramework framework)
+            : base(framework)
         {
-            ComboBoxUnderTest = MainWindow.Get<ComboBox>("DataBoundComboBox");
-            RunTest(CanSelectDataboundItems);
         }
 
-        private void CanSelectDataboundItems()
+        [Test]
+        public void CanSelectDataboundItemsTest()
         {
-            var config = CoreAppXmlConfiguration.Instance;
-            bool oldValue = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
-            config.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
+            var comboBoxUnderTest = MainWindow.Get<ComboBox>("DataBoundComboBox");
+            ListItems items;
+            CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
             try
             {
-                ListItems items = ComboBoxUnderTest.Items;
-                Assert.Equal(0, items.Count);
-
-                config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
-
-                items = ComboBoxUnderTest.Items;
-                Assert.Equal(5, items.Count);
-                Assert.Equal("Test", items[0].Text);
+                items = comboBoxUnderTest.Items;
+                Assert.That(items, Has.Count.EqualTo(0));
             }
             finally
             {
-                config.ComboBoxItemsPopulatedWithoutDropDownOpen = oldValue;
+                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
-        }
-
-        protected override IEnumerable<WindowsFramework> SupportedFrameworks()
-        {
-            yield return WindowsFramework.Wpf;
+            items = comboBoxUnderTest.Items;
+            Assert.That(items, Has.Count.EqualTo(5));
+            Assert.That(items[0].Text, Is.EqualTo("Test"));;
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Factory;
@@ -63,7 +64,29 @@ namespace TestStack.White
         public static Bitmap CaptureScreenshot()
         {
             var screenCapture = new ScreenCapture();
-            return screenCapture.CaptureScreenShot();
+            return screenCapture.CaptureDesktop();
+        }
+
+        /// <summary>
+        /// Captures a screenshot of the provided boundary, and returns the bitmap
+        /// </summary>
+        /// <param name="bounds">Screen rectangle to capture</param>
+        public static Bitmap CaptureScreenshot(Rect bounds)
+        {
+            var screenCapture = new ScreenCapture();
+            return screenCapture.CaptureArea(bounds);
+        }
+
+        /// <summary>
+        /// Takes a screenshot of the provided boundary, and saves it to disk
+        /// </summary>
+        /// <param name="bounds"></param>
+        /// <param name="filename">The fullname of the file (including extension)</param>
+        /// <param name="imageFormat"></param>
+        public static void TakeScreenshot(Rect bounds, string filename, ImageFormat imageFormat)
+        {
+            var bitmap = CaptureScreenshot(bounds);
+            bitmap.Save(filename, imageFormat);            
         }
 
         /// <summary>

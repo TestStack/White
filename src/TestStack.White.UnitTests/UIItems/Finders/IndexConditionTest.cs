@@ -1,16 +1,17 @@
+using NUnit.Framework;
 using TestStack.White.UIItems.Finders;
-using Xunit;
 
 namespace TestStack.White.UnitTests.UIItems.Finders
 {
+    [TestFixture]
     public class IndexConditionTest
     {
-        [Fact]
+        [Test]
         public void TestEquals()
         {
-            Assert.Equal(new IndexCondition(1), new IndexCondition(1));
-            Assert.NotEqual(new IndexCondition(1), new IndexCondition(2));
-            Assert.Equal(new IndexCondition(-1), new IndexCondition(-1));
+            Assert.That(new IndexCondition(1), Is.EqualTo(new IndexCondition(1)));
+            Assert.That(new IndexCondition(1), Is.Not.EqualTo(new IndexCondition(2)));
+            Assert.That(new IndexCondition(-1), Is.EqualTo(new IndexCondition(-1)));
         }
     }
 }

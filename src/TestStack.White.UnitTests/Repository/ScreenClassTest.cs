@@ -1,13 +1,14 @@
 using NSubstitute;
+using NUnit.Framework;
 using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.WindowItems;
-using Xunit;
 
 namespace TestStack.White.UnitTests.Repository
 {
+    [TestFixture]
     public class ScreenClassTest
     {
-        [Fact]
+        [Test]
         public void NewScreenContainingComponent()
         {
             var window = Substitute.For<Window>();

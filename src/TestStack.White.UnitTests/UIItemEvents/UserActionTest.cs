@@ -1,10 +1,11 @@
 using NSubstitute;
+using NUnit.Framework;
 using TestStack.White.UIItemEvents;
 using TestStack.White.UIItems;
-using Xunit;
 
 namespace TestStack.White.UnitTests.UIItemEvents
 {
+    [TestFixture]
     public class UserActionTest
     {
         private readonly UserAction userAction;
@@ -21,27 +22,27 @@ namespace TestStack.White.UnitTests.UIItemEvents
             return t;
         }
 
-        [Fact]
+        [Test]
         public void IsNotRepeatEventWhenRegisteringFirstEvent()
         {
             userAction.Register(new UIItemClickEvent(UIItem<Button>("cb")));
-            Assert.Equal(false, userAction.RepeatEvent);
+            Assert.That(userAction.RepeatEvent, Is.False);
         }
 
-        [Fact]
+        [Test]
         public void IsNotRepeatEventWhenRegisteringDifferentEvent()
         {
             userAction.Register(new UIItemClickEvent(UIItem<Button>("cb")));
             userAction.Register(new UIItemClickEvent(UIItem<Button>("cb")));
-            Assert.Equal(false, userAction.RepeatEvent);
+            Assert.That(userAction.RepeatEvent, Is.False);
         }
 
-        [Fact]
+        [Test]
         public void RepeatEventWhenRegisteringSameEvent()
         {
             userAction.Register(new TextBoxEvent(UIItem<TextBox>("cb")));
             userAction.Register(new TextBoxEvent(UIItem<TextBox>("cb")));
-            Assert.Equal(true, userAction.RepeatEvent);
+            Assert.That(userAction.RepeatEvent, Is.True);
         }
     }
 }

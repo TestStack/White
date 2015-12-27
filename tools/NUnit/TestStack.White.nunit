@@ -1,0 +1,10 @@
+﻿<NUnitProject>
+  <Settings activeconfig="Debug" processModel="Default" domainUsage="Default" appbase="..\..\src" />
+  <Config name="Debug" binpathtype="Auto" appbase="">
+    <assembly path="TestStack.White.ScreenObjects\bin\Debug\TestStack.White.ScreenObjects.UITests.dll" />
+    <assembly path="TestStack.White.UITests\bin\Debug\TestStack.White.UITests.dll" />
+    <assembly path="TestStack.White.UnitTests\bin\Debug\TestStack.White.UnitTests.dll" />
+    <assembly path="TestStack.White.WebBrowser.UITests\bin\Debug\TestStack.White.WebBrowser.UITests.dll" />
+    <assembly path="TestStack.White.WebBrowser.UnitTests\bin\Debug\TestStack.White.WebBrowser.UnitTests.dll" />
+  </Config>
+</NUnitProject>

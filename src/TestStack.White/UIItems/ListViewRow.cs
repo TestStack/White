@@ -33,7 +33,7 @@ namespace TestStack.White.UIItems
             var factory = new ListViewFactory(parentGridFinder, actionListener);
             return factory.Header;
         }
-
+        
         public ListViewRow(AutomationElement automationElement, ActionListener actionListener, ListViewHeader header)
             : base(automationElement, actionListener)
         {

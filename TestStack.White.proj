@@ -7,7 +7,7 @@
     <MSBuildCommunityTasksPath>$(Root)tools\MSBuildCommunityTasks</MSBuildCommunityTasksPath>
     <xUnit>$(Root)tools\xUnit\xunit.console.exe</xUnit>
   </PropertyGroup>
-	
+
   <Target Name="Cleanup">
     <Error Condition="$(Root) == ''" Text="Root variable must be defined" />
 
@@ -43,8 +43,8 @@
 
   <Target Name="Publish">
     <MakeDir Directories="$(Root)build\Artifacts" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(GitHubFlowVersion_SemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.nuspec -Version $(GitHubFlowVersion_SemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.ScreenObjects\bin\$(Configuration)" />
-    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.WebBrowser\TestStack.White.WebBrowser.nuspec -Version $(GitHubFlowVersion_SemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.WebBrowser\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White\TestStack.White.nuspec -Version $(GitVersion_LegacySemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.ScreenObjects\TestStack.White.ScreenObjects.nuspec -Version $(GitVersion_LegacySemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.ScreenObjects\bin\$(Configuration)" />
+    <Exec Command="$(Root)src\.nuget\nuget.exe pack $(Root)src\TestStack.White.WebBrowser\TestStack.White.WebBrowser.nuspec -Version $(GitVersion_LegacySemVer) -OutputDir $(Root)build\Artifacts -BasePath $(Root)src\TestStack.White.WebBrowser\bin\$(Configuration)" />
   </Target>
 </Project>

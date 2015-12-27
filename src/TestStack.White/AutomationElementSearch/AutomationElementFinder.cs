@@ -26,7 +26,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual List<AutomationElement> Children(params AutomationSearchCondition[] automationSearchConditions)
         {
-            return new MultiLevelAutomationElementFinder(automationSearchConditions).FindAll(automationElement).Cast<AutomationElement>().ToList();
+            return new MultiLevelAutomationElementFinder(automationSearchConditions).FindAll(automationElement);
         }
 
         public virtual AutomationElement Child(params AutomationSearchCondition[] automationSearchConditions)
@@ -66,7 +66,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual AutomationElement FindWindow(string title, int processId)
         {
-            List<AutomationSearchCondition> windowSearchConditions = new AutomationSearchConditionFactory().GetWindowSearchConditions(processId);
+            var windowSearchConditions = new AutomationSearchConditionFactory().GetWindowSearchConditions(processId);
             foreach (var searchCondition in windowSearchConditions)
             {
                 AutomationElement windowElement = Child(searchCondition.WithName(title));
@@ -83,7 +83,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual AutomationElement FindWindow(SearchCriteria searchCriteria, int processId)
         {
-            Condition condition = searchCriteria.AutomationConditionWith(new PropertyCondition(AutomationElement.ProcessIdProperty, processId));
+            var condition = searchCriteria.AutomationConditionWith(new PropertyCondition(AutomationElement.ProcessIdProperty, processId));
             return automationElement.FindFirst(TreeScope.Children, condition);
         }
 
@@ -103,7 +103,6 @@ namespace TestStack.White.AutomationElementSearch
         /// so that it can be fixed
         /// Please understand that calling this method on any UIItem which has a lot of child AutomationElements might result in very bad performance.
         /// </summary>
-        /// <param name="automationSearchCondition"></param>
         /// <returns>null or found AutomationElement</returns>
         public virtual AutomationElement FindDescendantRaw(AutomationSearchCondition automationSearchCondition)
         {

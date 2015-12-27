@@ -14,7 +14,8 @@ namespace TestStack.White.ScreenObjects.UITests
         {
             application = new WinformsTestConfiguration().LaunchApplication();
             var screenRepository = new ScreenRepository(application.ApplicationSession);
-            mainScreen = screenRepository.Get<MainScreen>("Form1", initializeOption);
+            mainScreen = screenRepository.Get<MainScreen>("MainWindow", initializeOption);
+            //mainScreen.Tabs[0].SelectTabPage(2);
             return mainScreen;
         }
 

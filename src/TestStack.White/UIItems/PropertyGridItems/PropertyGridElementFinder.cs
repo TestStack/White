@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
 
 namespace TestStack.White.UIItems.PropertyGridItems
 {
