@@ -350,7 +350,7 @@ namespace TestStack.White.UIItems
 
         public virtual string HelpText { get { return automationElement.Current.HelpText; } }
 
-        public string ItemStatus { get { return automationElement.Current.ItemStatus; } }
+        public virtual string ItemStatus { get { return automationElement.Current.ItemStatus; } }
 
         /// <summary>
         /// Internal to white and intended to be used for white recording
