@@ -54,13 +54,13 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.UIAutomationClient, Version=12.0.20617.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\UIAComWrapper.1.1.0.14\lib\net40\Interop.UIAutomationClient.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.0.5813.39032, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Castle.Core.3.2.2\lib\net40-client\Castle.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Interop.UIAutomationClient">
-      <HintPath>..\packages\UIAComWrapper.1.1.0.8\lib\net40\Interop.UIAutomationClient.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
     <Reference Include="NSubstitute, Version=1.6.1.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -71,9 +71,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAComWrapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=78cbcf77433a85e5, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\UIAComWrapper.1.1.0.8\lib\net40\UIAComWrapper.dll</HintPath>
+    <Reference Include="UIAComWrapper, Version=1.1.0.14, Culture=neutral, PublicKeyToken=78cbcf77433a85e5, processorArchitecture=MSIL">
+      <HintPath>..\packages\UIAComWrapper.1.1.0.14\lib\net40\UIAComWrapper.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
