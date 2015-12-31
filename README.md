@@ -50,6 +50,8 @@ Documentation
 ### Documentation Site
 [http://teststack.azurewebsites.net/white/index.html](http://teststack.azurewebsites.net/white/index.html)
 
+Also these docs can be found [directly on GitHub](https://github.com/TestStack/TestStack.docs/tree/master/_source/White).
+
 ### Discussion Group
 [https://groups.google.com/forum/#!forum/teststack_white](https://groups.google.com/forum/#!forum/teststack_white)
 
