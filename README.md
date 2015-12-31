@@ -31,12 +31,27 @@ Install TestStack.White from NuGet
 
     PM> Install-Package TestStack.White
 
-[Download UI Automation Verify][uiaverify_download], now [part of the Windows SDK][uiaverify_windows_sdk], which is an ESSENTIAL tool when doing UI Automation work.
+Now download one or more of these tools. Each of these has their own strengths and weaknesses and generally using more than one to view the automation properties will be required.
+
+- [Inspect][inspect_download] - This is [part of the Windows SDK][inspect_windows_sdk] and is a good tool in general for looking at automation properties.
+- [UI Automation Verify][uiaverify_download] - Also [part of the Windows SDK][uiaverify_windows_sdk] another good general tool for looking at automation properties. There's a [fork of original UIAVerify][uia_verify_teststack_fork] that allows usage of custom patterns and custom properties. For an example how to add your own custom pattern or property to your application, look at [this project][custom_uia_patterns].
+- [Snoop][snoop_download] - Only works with WPF applications and is really good at it. Offers much more functionality than just viewing the automation properties.
+- [Spy++][Spy++] - This is included in visual studio under the tools menu option. This is good for working with Winforms, Win32 and VB6 applications because it allows you to view the applications window messages and automation properties.
 
 See the [sample apps here](https://github.com/TestStack/White/tree/master/src/Samples) for examples of using White in both WinForms and WPF.
 
+[inspect_download]: http://msdn.microsoft.com/en-US/windows/desktop/bg162891
+[inspect_windows_sdk]: https://msdn.microsoft.com/en-us/library/windows/desktop/dd318521(v=vs.85).aspx
+
 [uiaverify_download]: http://msdn.microsoft.com/en-US/windows/desktop/bg162891
 [uiaverify_windows_sdk]: http://msdn.microsoft.com/en-us/library/windows/desktop/hh920986(v=vs.85).aspx
+[uia_verify_teststack_fork]: https://github.com/TestStack/UIAVerify
+
+[custom_uia_patterns]: https://github.com/TestStack/uia-custom-pattern-managed
+
+[snoop_download]: https://snoopwpf.codeplex.com/
+
+[spy++]: https://msdn.microsoft.com/en-us/library/aa264396(v=vs.60).aspx
 
 Documentation
 -----------------
@@ -46,6 +61,8 @@ Documentation
 
 ### Documentation Site
 [http://teststack.azurewebsites.net/white/index.html](http://teststack.azurewebsites.net/white/index.html)
+
+Also these docs can be found [directly on GitHub](https://github.com/TestStack/TestStack.docs/tree/master/_source/White).
 
 ### Discussion Group
 [https://groups.google.com/forum/#!forum/teststack_white](https://groups.google.com/forum/#!forum/teststack_white)
