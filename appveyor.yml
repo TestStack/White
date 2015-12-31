@@ -26,3 +26,6 @@ build_script:
 
 on_finish:
   - ps: if (Test-Path -path c:\FailedTestsScreenshots) { Get-ChildItem c:\FailedTestsScreenshots\*.* | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }}
+
+cache:
+  - src\packages -> **\packages.config  # preserve "packages" directory in the root of build folder but will reset it if packages.config is modified
