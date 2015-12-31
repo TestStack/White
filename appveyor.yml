@@ -23,6 +23,7 @@ build_script:
 
   - cmd: ECHO nuget pack nuget\TestStack.White.nuspec -version "%GitVersion_NuGetVersion%" -prop "configuration=%CONFIGURATION%"
   - cmd: nuget pack nuget\TestStack.White.nuspec -version "%GitVersion_NuGetVersion%" -prop "configuration=%CONFIGURATION%"
+  - cmd: appveyor PushArtifact "TestStack.White.%GitVersion_NuGetVersion%.nupkg"
 
 on_finish:
   - ps: if (Test-Path -path c:\FailedTestsScreenshots) { Get-ChildItem c:\FailedTestsScreenshots\*.* | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }}
