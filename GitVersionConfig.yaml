@@ -1,0 +1,4 @@
+assembly-versioning-scheme: MajorMinor
+mode: ContinuousDelivery
+next-version: 0.13.0
+branches: {}
