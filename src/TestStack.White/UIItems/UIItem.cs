@@ -352,6 +352,8 @@ namespace TestStack.White.UIItems
             }
         }
 
+        public virtual string ItemStatus { get { return automationElement.Current.ItemStatus; } }
+
         /// <summary>
         /// Internal to white and intended to be used for white recording
         /// </summary>
