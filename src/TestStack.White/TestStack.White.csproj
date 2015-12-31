@@ -389,6 +389,7 @@
     <None Include="packages.config" />
     <None Include="TestStack.White.nuspec">
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="TestStack.White.psm1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

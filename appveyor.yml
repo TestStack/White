@@ -1,12 +1,28 @@
-version: 1.0.{build}
-init:
-- ps: 
 install:
-- ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-desktop.ps1'))
-before_build:
-- cmd: nuget restore src\TestStack.White.sln
-build:
-  project: src\TestStack.White.sln
-  verbosity: minimal
+  - choco install gitversion.portable -pre -y
+  - choco install gitlink -y
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-desktop.ps1'))
+
+assembly_info:
+  patch: false
+
+platform:
+  - Any CPU
+
+configuration:
+  - Release
+
+build_script:
+  - cmd: nuget restore src\TestStack.White.sln
+  - cmd: gitversion /l console /output buildserver /updateAssemblyInfo
+  
+  - cmd: msbuild src\TestStack.White.sln "/p:Configuration=%CONFIGURATION%;Platform=%PLATFORM%"
+
+  - cmd: ECHO GitLink src\ -u https://github.com/TestStack/White -c %CONFIGURATION% 
+  - cmd: GitLink . -u https://github.com/TestStack/White -c %CONFIGURATION%
+
+  - cmd: ECHO nuget pack src\TestStack.White\bin\%CONFIGURATION%\TestStack.White.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+  - cmd: nuget pack src\TestStack.White\bin\%CONFIGURATION%\TestStack.White.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
+
 on_finish:
-- ps: if (Test-Path -path c:\FailedTestsScreenshots) { Get-ChildItem c:\FailedTestsScreenshots\*.* | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }}
+  - ps: if (Test-Path -path c:\FailedTestsScreenshots) { Get-ChildItem c:\FailedTestsScreenshots\*.* | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }}
