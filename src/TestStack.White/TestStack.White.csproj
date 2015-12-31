@@ -58,6 +58,8 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <DocumentationFile>bin\Release\TestStack.White.xml</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <NoWarn>1591, 1570</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
