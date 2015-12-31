@@ -18,8 +18,8 @@ build_script:
   
   - cmd: msbuild src\TestStack.White.sln "/p:Configuration=%CONFIGURATION%;Platform=%PLATFORM%"
 
-  - cmd: ECHO GitLink src\ -u https://github.com/TestStack/White -c %CONFIGURATION% 
-  - cmd: GitLink . -u https://github.com/TestStack/White -c %CONFIGURATION%
+  - cmd: ECHO GitLink src\ -u https://github.com/TestStack/White -c %CONFIGURATION% -ignore WinformsTodo,WpfTodo,WpfTodo.UITests,Todo.Core,TestSilverlightApplication,TestSilverlightApplication.Web,WindowsFormsTestApplication,WinFormsTestApp.Old,WPFTestApp.Old,WpfTestApplication,TestStack.White.Reporting,TestStack.White.ScreenObjects,TestStack.White.ScreenObjects.UITests,TestStack.White.UITests,TestStack.White.UnitTests,TestStack.White.WebBrowser,TestStack.White.WebBrowser.UITests,TestStack.White.WebBrowser.UnitTests
+  - cmd: GitLink . -u https://github.com/TestStack/White -c %CONFIGURATION% -ignore WinformsTodo,WpfTodo,WpfTodo.UITests,Todo.Core,TestSilverlightApplication,TestSilverlightApplication.Web,WindowsFormsTestApplication,WinFormsTestApp.Old,WPFTestApp.Old,WpfTestApplication,TestStack.White.Reporting,TestStack.White.ScreenObjects,TestStack.White.ScreenObjects.UITests,TestStack.White.UITests,TestStack.White.UnitTests,TestStack.White.WebBrowser,TestStack.White.WebBrowser.UITests,TestStack.White.WebBrowser.UnitTests
 
   - cmd: ECHO nuget pack src\TestStack.White\bin\%CONFIGURATION%\TestStack.White.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
   - cmd: nuget pack src\TestStack.White\bin\%CONFIGURATION%\TestStack.White.nuspec -version "%GitVersion_NuGetVersion%" -prop "target=%CONFIGURATION%"
