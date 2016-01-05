@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     {
         protected WinFormComboBox() {}
 
-        public WinFormComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WinFormComboBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         //todo implement this for Win32ComboBox as well
         /// <summary>

@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems.Scrolling
         protected VScrollBar()
         {         
         }
-        public VScrollBar(AutomationElement automationElement, ActionListener actionListener,
+        public VScrollBar(AutomationElement automationElement, IActionListener actionListener,
             ScrollBarButtonAutomationIds automationIds) : base(automationElement, actionListener, automationIds)
         {
         }

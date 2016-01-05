@@ -2,7 +2,7 @@ using TestStack.White.UIItems.Scrolling;
 
 namespace TestStack.White.UIItems
 {
-    public interface Scrollable
+    public interface IScrollable
     {
         IScrollBars ScrollBars { get; }
     }

@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     public class Win32ComboBox : ComboBox
     {
         protected Win32ComboBox() {}
-        public Win32ComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Win32ComboBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public override IScrollBars ScrollBars
         {

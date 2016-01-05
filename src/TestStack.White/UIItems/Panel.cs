@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems
     public class Panel : UIItemContainer
     {
         protected Panel() {}
-        public Panel(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Panel(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual string Text
         {

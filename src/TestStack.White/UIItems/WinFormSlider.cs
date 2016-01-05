@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems
     public class WinFormSlider : Slider
     {
         protected WinFormSlider() {}
-        public WinFormSlider(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WinFormSlider(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         protected override string IncrementButtonId()
         {
@@ -22,7 +22,7 @@ namespace TestStack.White.UIItems
     public class WPFSlider : Slider
     {
         protected WPFSlider() {}
-        public WPFSlider(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WPFSlider(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         protected override string IncrementButtonId()
         {

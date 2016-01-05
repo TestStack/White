@@ -39,13 +39,13 @@ namespace TestStack.White.Finder
             }
         }
 
-        public virtual UIItemCollection GetAll(Predicate<AutomationElement> predicate, UIItemFactory factory, ActionListener actionListener)
+        public virtual UIItemCollection GetAll(Predicate<AutomationElement> predicate, IUIItemFactory factory, IActionListener actionListener)
         {
             List<AutomationElement> foundElements = list.FindAll(predicate);
             return new UIItemCollection(foundElements, factory, actionListener);
         }
 
-        public virtual UIItemCollection UIItems(ActionListener actionListener)
+        public virtual UIItemCollection UIItems(IActionListener actionListener)
         {
             if (uiItemCollection != null) return uiItemCollection;
             uiItemCollection = new UIItemCollection();
@@ -59,34 +59,34 @@ namespace TestStack.White.Finder
             get { return list.Count; }
         }
 
-        public virtual IUIItem Get(SearchCriteria searchCriteria, ActionListener actionListener)
+        public virtual IUIItem Get(SearchCriteria searchCriteria, IActionListener actionListener)
         {
             return Get(searchCriteria, actionListener, dictionaryMappedItemFactory);
         }
 
-        public virtual UIItemCollection GetAll(SearchCriteria searchCriteria, ActionListener actionListener)
+        public virtual UIItemCollection GetAll(SearchCriteria searchCriteria, IActionListener actionListener)
         {
             return GetAll(searchCriteria, actionListener, dictionaryMappedItemFactory);
         }
 
-        public virtual IUIItem Get(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory)
+        public virtual IUIItem Get(SearchCriteria searchCriteria, IActionListener actionListener, IUIItemFactory factory)
         {
             List<AutomationElement> automationElements = searchCriteria.Filter(list);
             if (automationElements.Count == 0) return null;
             return factory.Create(automationElements[0], actionListener);
         }
 
-        public virtual T Get<T>(SearchCriteria searchCriteria, ActionListener actionListener) where T : UIItem
+        public virtual T Get<T>(SearchCriteria searchCriteria, IActionListener actionListener) where T : UIItem
         {
             return Get<T>(searchCriteria, actionListener, dictionaryMappedItemFactory);
         }
 
-        public virtual T Get<T>(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory) where T : UIItem
+        public virtual T Get<T>(SearchCriteria searchCriteria, IActionListener actionListener, IUIItemFactory factory) where T : UIItem
         {
             return (T) Get(searchCriteria.AndControlType(typeof (T), WindowsFramework.None), actionListener, factory);
         }
 
-        private UIItemCollection GetAll(SearchCriteria searchCriteria, ActionListener actionListener, UIItemFactory factory)
+        private UIItemCollection GetAll(SearchCriteria searchCriteria, IActionListener actionListener, IUIItemFactory factory)
         {
             List<AutomationElement> automationElements = searchCriteria.Filter(list);
             return new UIItemCollection(automationElements.ToArray(), factory, actionListener);

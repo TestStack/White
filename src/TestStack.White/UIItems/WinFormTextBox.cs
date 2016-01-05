@@ -7,10 +7,10 @@ namespace TestStack.White.UIItems
     [PlatformSpecificItem]
     public class WinFormTextBox : TextBox
     {
-        public WinFormTextBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WinFormTextBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
         public WinFormTextBox() {}
 
-        public virtual SuggestionList SuggestionList
+        public virtual ISuggestionList SuggestionList
         {
             get { return SuggestionListView.WaitAndFind(actionListener); }
         }

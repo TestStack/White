@@ -18,7 +18,7 @@ namespace TestStack.White.UIItemEvents
             parameters = new object[] {tab.SelectedTab.Name};
         }
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return Action;
         }

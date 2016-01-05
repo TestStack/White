@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.TableItems
         private readonly IVScrollBar verticalScrollBar;
         private readonly IHScrollBar horizontalScrollBar;
 
-        public TableScrollBars(AutomationElementFinder finder, ActionListener actionListener, TableVerticalScrollOffset tableVerticalScrollOffset)
+        public TableScrollBars(AutomationElementFinder finder, IActionListener actionListener, ITableVerticalScrollOffset tableVerticalScrollOffset)
         {
             AutomationElement verticalScrollElement = finder.Child(AutomationSearchCondition.ByControlType(ControlType.Pane).OfName(UIItemIdAppXmlConfiguration.Instance.TableVerticalScrollBar));
             verticalScrollBar = (verticalScrollElement == null)

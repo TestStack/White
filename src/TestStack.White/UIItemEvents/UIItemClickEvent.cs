@@ -14,7 +14,7 @@ namespace TestStack.White.UIItemEvents
 
         public UIItemClickEvent(IUIItem uiItem) : base(uiItem) {}
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return CachedActionName;
         }

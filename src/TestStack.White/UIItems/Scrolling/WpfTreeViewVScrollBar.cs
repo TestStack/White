@@ -7,9 +7,9 @@ namespace TestStack.White.UIItems.Scrolling
     [PlatformSpecificItem(ReferAsType = typeof(IVScrollBar))]
     public class WpfTreeViewVScrollBar : WpfTreeViewScrollBar, IVScrollBar
     {
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public WpfTreeViewVScrollBar(AutomationElement parent, ActionListener actionListener)
+        public WpfTreeViewVScrollBar(AutomationElement parent, IActionListener actionListener)
             : base(parent)
         {
             this.actionListener = actionListener;

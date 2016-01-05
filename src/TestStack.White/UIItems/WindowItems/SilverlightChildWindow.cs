@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems.WindowItems
     {
         protected SilverlightChildWindow() {}
 
-        public SilverlightChildWindow(AutomationElement automationElement, ActionListener actionListener)
+        public SilverlightChildWindow(AutomationElement automationElement, IActionListener actionListener)
             : base(automationElement, InitializeOption.NoCache, new NullWindowSession())
         {
             // We need to sleep to make sure animation is finished

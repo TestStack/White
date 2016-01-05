@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     public class SilverlightComboBox : ComboBox
     {
         protected SilverlightComboBox() {}
-        public SilverlightComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) { }
+        public SilverlightComboBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) { }
 
         public override IScrollBars ScrollBars
         {

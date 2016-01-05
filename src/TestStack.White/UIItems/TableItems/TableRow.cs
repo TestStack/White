@@ -13,7 +13,7 @@ namespace TestStack.White.UIItems.TableItems
 
         protected TableRow() {}
 
-        public TableRow(AutomationElement automationElement, ActionListener actionListener, TableHeader tableHeader, TableCellFactory tableCellFactory)
+        public TableRow(AutomationElement automationElement, IActionListener actionListener, TableHeader tableHeader, TableCellFactory tableCellFactory)
             : base(automationElement, actionListener)
         {
             this.tableHeader = tableHeader;

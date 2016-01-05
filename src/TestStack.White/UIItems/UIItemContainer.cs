@@ -23,7 +23,7 @@ namespace TestStack.White.UIItems
 {
     //BUG: Allow finding more than one item, also ability to do this within a container
     //TODO: Dont let people compile code is they are trying to find UIItem which are secondary or window
-    public class UIItemContainer : UIItem, IUIItemContainer, VerticalSpanProvider
+    public class UIItemContainer : UIItem, IUIItemContainer, IVerticalSpanProvider
     {
         protected readonly CurrentContainerItemFactory CurrentContainerItemFactory;
         protected WindowSession WindowSession = new NullWindowSession();
@@ -32,7 +32,7 @@ namespace TestStack.White.UIItems
         {
         }
 
-        public UIItemContainer(AutomationElement automationElement, ActionListener actionListener,
+        public UIItemContainer(AutomationElement automationElement, IActionListener actionListener,
                                InitializeOption initializeOption,
                                WindowSession windowSession) : base(automationElement, actionListener)
         {
@@ -40,7 +40,7 @@ namespace TestStack.White.UIItems
             CurrentContainerItemFactory = new CurrentContainerItemFactory(factory, initializeOption, automationElement, ChildrenActionListener);
         }
 
-        public UIItemContainer(AutomationElement automationElement, ActionListener actionListener)
+        public UIItemContainer(AutomationElement automationElement, IActionListener actionListener)
             : this(automationElement, actionListener, InitializeOption.NoCache, new NullWindowSession())
         {
         }
@@ -162,7 +162,7 @@ namespace TestStack.White.UIItems
             CurrentContainerItemFactory.ReInitialize(option);
         }
 
-        protected virtual ActionListener ChildrenActionListener
+        protected virtual IActionListener ChildrenActionListener
         {
             get { return HasActionInterceptionBehaviour() ? this : actionListener; }
         }

@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.TreeItems
     public class Win32TreeNode : TreeNode
     {
         protected Win32TreeNode() {}
-        public Win32TreeNode(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Win32TreeNode(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         //TODO Expand and Collapse also Select the node because it uses DoubleClick. Even the pattern does the same. Clicking to the left of node,
         // would not work when there is an icon to left of the node.

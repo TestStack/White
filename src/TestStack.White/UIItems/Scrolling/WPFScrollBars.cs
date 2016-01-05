@@ -7,9 +7,9 @@ namespace TestStack.White.UIItems.Scrolling
     public class WPFScrollBars : AbstractScrollBars
     {
         private readonly AutomationElement parentElement;
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public WPFScrollBars(AutomationElement parentElement, ActionListener actionListener)
+        public WPFScrollBars(AutomationElement parentElement, IActionListener actionListener)
         {
             this.parentElement = parentElement;
             this.actionListener = actionListener;

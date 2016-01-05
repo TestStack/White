@@ -11,10 +11,10 @@ namespace TestStack.White.Factory
     public class TableCellFactory
     {
         private readonly AutomationElement tableElement;
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
         private List<AutomationElement> customControlTypes;
 
-        public TableCellFactory(AutomationElement tableElement, ActionListener actionListener)
+        public TableCellFactory(AutomationElement tableElement, IActionListener actionListener)
         {
             this.tableElement = tableElement;
             this.actionListener = actionListener;

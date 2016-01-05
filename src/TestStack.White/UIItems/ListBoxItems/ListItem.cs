@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     public abstract class ListItem : UIItem
     {
         protected ListItem() {}
-        protected ListItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        protected ListItem(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual bool IsSelected
         {

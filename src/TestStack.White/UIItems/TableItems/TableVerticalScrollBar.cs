@@ -8,10 +8,10 @@ namespace TestStack.White.UIItems.TableItems
     //TODO Table in scrolled position is not supported
     public class TableVerticalScrollBar : UIItem, IVScrollBar
     {
-        private readonly TableVerticalScrollOffset offset;
+        private readonly ITableVerticalScrollOffset offset;
         protected TableVerticalScrollBar() {}
 
-        public TableVerticalScrollBar(AutomationElement automationElement, ActionListener actionListener, TableVerticalScrollOffset offset)
+        public TableVerticalScrollBar(AutomationElement automationElement, IActionListener actionListener, ITableVerticalScrollOffset offset)
             : base(automationElement, actionListener)
         {
             this.offset = offset;

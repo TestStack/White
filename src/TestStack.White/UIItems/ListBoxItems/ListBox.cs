@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         private AutomationPropertyChangedEventHandler handler;
 
         protected ListBox() {}
-        public ListBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public ListBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual bool IsChecked(string itemText)
         {

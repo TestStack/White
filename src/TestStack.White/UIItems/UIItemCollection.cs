@@ -24,13 +24,13 @@ namespace TestStack.White.UIItems
 
         public UIItemCollection(IEnumerable entities) : base(entities.OfType<IUIItem>()) {}
 
-        public UIItemCollection(IEnumerable<AutomationElement> automationElements, ActionListener actionListener)
+        public UIItemCollection(IEnumerable<AutomationElement> automationElements, IActionListener actionListener)
             : this(automationElements, DictionaryMappedItemFactory, actionListener) {}
 
-        public UIItemCollection(IEnumerable automationElements, ActionListener actionListener)
+        public UIItemCollection(IEnumerable automationElements, IActionListener actionListener)
             : this(automationElements, DictionaryMappedItemFactory, actionListener) {}
 
-        public UIItemCollection(IEnumerable automationElements, UIItemFactory uiItemFactory, ActionListener actionListener)
+        public UIItemCollection(IEnumerable automationElements, IUIItemFactory uiItemFactory, IActionListener actionListener)
         {
             foreach (AutomationElement automationElement in automationElements)
             {
@@ -39,7 +39,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        public UIItemCollection(IEnumerable automationElements, ActionListener actionListener, Type customItemType)
+        public UIItemCollection(IEnumerable automationElements, IActionListener actionListener, Type customItemType)
         {
             foreach (AutomationElement automationElement in automationElements)
             {

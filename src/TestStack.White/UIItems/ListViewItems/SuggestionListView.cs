@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems.ListViewItems
 {
     public static class SuggestionListView
     {
-        private static SuggestionList Find(ActionListener actionListener)
+        private static ISuggestionList Find(IActionListener actionListener)
         {
             AutomationElement dropDown =
                 new AutomationElementFinder(AutomationElement.RootElement).Child(AutomationSearchCondition.ByClassName("Auto-Suggest Dropdown"));
@@ -26,7 +26,7 @@ namespace TestStack.White.UIItems.ListViewItems
             WaitTill(new NullActionListener(), "Took too long to select the item in SuggestionList", obj => obj != null);
         }
 
-        private static SuggestionList WaitTill(ActionListener actionListener, string failureMessage, Predicate<SuggestionList> shouldRetry)
+        private static ISuggestionList WaitTill(IActionListener actionListener, string failureMessage, Predicate<ISuggestionList> shouldRetry)
         {
             try
             {
@@ -38,7 +38,7 @@ namespace TestStack.White.UIItems.ListViewItems
             }
         }
 
-        public static SuggestionList WaitAndFind(ActionListener actionListener)
+        public static ISuggestionList WaitAndFind(IActionListener actionListener)
         {
             return WaitTill(actionListener, "Took too long to find suggestion list", obj => obj == null);
         }

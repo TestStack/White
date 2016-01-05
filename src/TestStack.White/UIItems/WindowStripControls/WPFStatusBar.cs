@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.WindowStripControls
     public class WPFStatusBar : UIItem
     {
         protected WPFStatusBar() {}
-        public WPFStatusBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WPFStatusBar(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual UIItemCollection Items
         {

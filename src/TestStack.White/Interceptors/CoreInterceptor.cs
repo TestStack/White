@@ -13,7 +13,7 @@ namespace TestStack.White.Interceptors
         private readonly CoreInterceptContext coreInterceptContext;
         private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(CoreInterceptor));
 
-        public CoreInterceptor(IUIItem uiItem, ActionListener actionListener)
+        public CoreInterceptor(IUIItem uiItem, IActionListener actionListener)
         {
             coreInterceptContext = new CoreInterceptContext(uiItem, actionListener);
         }

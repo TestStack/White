@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.Custom
     {
         private UIItemContainer container;
 
-        public CustomUIItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public CustomUIItem(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         protected CustomUIItem() {}
 

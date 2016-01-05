@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.TreeItems
     public class WPFTreeNode : TreeNode
     {
         protected WPFTreeNode() {}
-        public WPFTreeNode(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WPFTreeNode(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         protected override Point SelectPoint
         {

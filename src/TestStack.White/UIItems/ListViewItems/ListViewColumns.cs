@@ -7,7 +7,7 @@ namespace TestStack.White.UIItems.ListViewItems
 {
     public class ListViewColumns : UIItemList<ListViewColumn>
     {
-        public ListViewColumns(List<AutomationElement> automationElementCollection, ActionListener actionListener)
+        public ListViewColumns(List<AutomationElement> automationElementCollection, IActionListener actionListener)
         {
             int i = 0;
             foreach (AutomationElement element in automationElementCollection)

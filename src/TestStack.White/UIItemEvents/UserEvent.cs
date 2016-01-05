@@ -24,14 +24,14 @@ namespace TestStack.White.UIItemEvents
             get { return uiItem.GetType(); }
         }
 
-        protected abstract string ActionName(EventOption eventOption);
+        protected abstract string ActionName(IEventOption eventOption);
 
         public virtual object[] ActionParameters
         {
             get { return new object[0]; }
         }
 
-        public virtual void WriteTo(EventWriter eventWriter, EventOption eventOption)
+        public virtual void WriteTo(EventWriter eventWriter, IEventOption eventOption)
         {
             eventWriter.Write(UIItemType, ActionName(eventOption), uiItem.PrimaryIdentification, ActionParameters);
         }

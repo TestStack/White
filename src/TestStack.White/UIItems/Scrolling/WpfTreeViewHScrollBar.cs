@@ -7,9 +7,9 @@ namespace TestStack.White.UIItems.Scrolling
     [PlatformSpecificItem(ReferAsType = typeof(IHScrollBar))]
     public class WpfTreeViewHScrollBar : WpfTreeViewScrollBar, IHScrollBar
     {
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public WpfTreeViewHScrollBar(AutomationElement parent, ActionListener actionListener)
+        public WpfTreeViewHScrollBar(AutomationElement parent, IActionListener actionListener)
             : base(parent)
         {
             this.actionListener = actionListener;

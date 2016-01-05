@@ -1,12 +1,12 @@
 namespace TestStack.White.UIItems.Actions
 {
-    public interface ActionListener
+    public interface IActionListener
     {
         void ActionPerforming(UIItem uiItem);
         void ActionPerformed(Action action);
     }
 
-    public class NullActionListener : ActionListener
+    public class NullActionListener : IActionListener
     {
         public virtual void ActionPerforming(UIItem uiItem) {}
 
