@@ -11,7 +11,18 @@
 None so far
 
 ### Breaking Changes
-None so far
+- Renaming of some interfaces to proper namings
+  - SpecializedWindowFactory to ISpecializedWindowFactory
+  - UIItemFactory to IUIItemFactory
+  - WindowControlVisitor to IWindowControlVisitor
+  - EventOption to IEventOption
+  - ActionListener to IActionListener
+  - Scrollable to IScrollable
+  - SuggestionList to ISuggestionList
+  - VerticalSpanProvider to IVerticalSpanProvider
+  - TableVerticalScrollOffset to ITableVerticalScrollOffset
+  - TreeNodeVisitor to ITreeNodeVisitor
+  - MenuContainer to IMenuContainer
 
 # 0.13.0 (7 June 2014)
 
