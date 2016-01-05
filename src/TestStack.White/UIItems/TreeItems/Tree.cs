@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.TreeItems
     /// <summary>
     /// Tree consists of TreeNodes. TreeNodes is a collection of TreeNode. Each TreeNode in turn consists of TreeNodes.
     /// </summary>
-    public class Tree : UIItem, VerticalSpanProvider
+    public class Tree : UIItem, IVerticalSpanProvider
     {
         private readonly AutomationElementFinder finder;
         private AutomationPropertyChangedEventHandler clickedTreeNodeHandler;
@@ -19,7 +19,7 @@ namespace TestStack.White.UIItems.TreeItems
 
         protected Tree() {}
 
-        public Tree(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public Tree(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new AutomationElementFinder(automationElement);
         }

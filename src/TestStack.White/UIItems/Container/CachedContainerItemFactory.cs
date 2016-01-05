@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.Container
     {
         private readonly CachedUIItems children;
 
-        public CachedContainerItemFactory(CachedUIItems cachedUIItems, ActionListener actionListener)
+        public CachedContainerItemFactory(CachedUIItems cachedUIItems, IActionListener actionListener)
         {
             children = cachedUIItems;
             this.actionListener = actionListener;
@@ -19,7 +19,7 @@ namespace TestStack.White.UIItems.Container
             return children.Get(searchCriteria, actionListener);
         }
 
-        public override void Visit(WindowControlVisitor windowControlVisitor)
+        public override void Visit(IWindowControlVisitor windowControlVisitor)
         {
             UIItemCollection uiItems = children.UIItems(actionListener);
             foreach (UIItem uiItem in uiItems)

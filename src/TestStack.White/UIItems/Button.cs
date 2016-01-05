@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems
     {
         private readonly ToggleableItem toggleableItem;
         protected Button() { }
-        public Button(AutomationElement automationElement, ActionListener actionListener)
+        public Button(AutomationElement automationElement, IActionListener actionListener)
             : base(automationElement, actionListener)
         {
             toggleableItem = new ToggleableItem(this);

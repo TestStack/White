@@ -25,7 +25,7 @@ namespace TestStack.White.UIItemEvents
             this.parameters = parameters;
         }
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return actionName;
         }

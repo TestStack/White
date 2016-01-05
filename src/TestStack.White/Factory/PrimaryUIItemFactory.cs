@@ -27,14 +27,14 @@ namespace TestStack.White.Factory
             }
         }
 
-        public virtual TitleBar GetTitleBar(ActionListener actionListener)
+        public virtual TitleBar GetTitleBar(IActionListener actionListener)
         {
             AutomationElement titleElement = Finder.Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
             if (titleElement == null) return null;
             return new TitleBar(titleElement, actionListener);
         }
 
-        public virtual PopUpMenu WPFPopupMenu(ActionListener actionListener)
+        public virtual PopUpMenu WPFPopupMenu(IActionListener actionListener)
         {
             var searchConditions = new[]
                                        {
@@ -46,13 +46,13 @@ namespace TestStack.White.Factory
             return popUpMenu;
         }
 
-        public virtual bool TryGetPopupMenu(ActionListener actionListener, out PopUpMenu popUpMenu)
+        public virtual bool TryGetPopupMenu(IActionListener actionListener, out PopUpMenu popUpMenu)
         {
             var searchConditions = new[] {AutomationSearchCondition.ByControlType(ControlType.Menu).WithName("DropDown")};
             return TryGetPopupMenu(searchConditions, actionListener, out popUpMenu);
         }
 
-        private bool TryGetPopupMenu(AutomationSearchCondition[] searchConditions, ActionListener actionListener, out PopUpMenu popUpMenu)
+        private bool TryGetPopupMenu(AutomationSearchCondition[] searchConditions, IActionListener actionListener, out PopUpMenu popUpMenu)
         {
             var element = Retry.For(() => Finder.Child(searchConditions), CoreAppXmlConfiguration.Instance.PopupTimeout(), TimeSpan.FromMilliseconds(100));
             if (element == null)
@@ -64,7 +64,7 @@ namespace TestStack.White.Factory
             return true;
         }
 
-        public virtual IUIItem Create(SearchCriteria searchCriteria, ActionListener actionListener)
+        public virtual IUIItem Create(SearchCriteria searchCriteria, IActionListener actionListener)
         {
             if (searchCriteria.IsIndexed)
             {
@@ -75,18 +75,18 @@ namespace TestStack.White.Factory
                                                       searchCriteria.CustomItemType);
         }
 
-        public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, ActionListener actionListener, string defaultFrameworkId)
+        public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, IActionListener actionListener, string defaultFrameworkId)
         {
             return new UIItemCollection(Finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
         }
 
-        public virtual Image WinFormImage(string primaryIdentification, ActionListener actionListener)
+        public virtual Image WinFormImage(string primaryIdentification, IActionListener actionListener)
         {
             AutomationElement element = Finder.Descendant(SearchCriteria.ByAutomationId(primaryIdentification).AutomationCondition);
             return new Image(element, actionListener);
         }
 
-        public virtual UIItemCollection ItemsWithin(Rect bounds, ActionListener actionListener)
+        public virtual UIItemCollection ItemsWithin(Rect bounds, IActionListener actionListener)
         {
             var collection = new UIItemCollection();
             List<AutomationElement> descendants = Finder.Descendants(AutomationSearchCondition.All);

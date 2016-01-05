@@ -12,12 +12,12 @@ namespace TestStack.White.UIItems.ListBoxItems
     /// <summary>
     /// ListControl is made of up ListItems and scroll bars.
     /// </summary>
-    public class ListControl : UIItem, ListItemContainer, VerticalSpanProvider
+    public class ListControl : UIItem, ListItemContainer, IVerticalSpanProvider
     {
         protected AutomationElementFinder Finder;
         protected ListControl() {}
 
-        public ListControl(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public ListControl(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             Finder = new AutomationElementFinder(automationElement);
         }

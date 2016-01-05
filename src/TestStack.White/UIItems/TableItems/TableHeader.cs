@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.TableItems
     {
         protected TableHeader() {}
 
-        public TableHeader(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public TableHeader(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual TableColumns Columns
         {

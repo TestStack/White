@@ -26,7 +26,7 @@ namespace TestStack.White.Factory
             get { return new WindowFactory(new AutomationElementFinder(AutomationElement.RootElement)); }
         }
 
-        public virtual PopUpMenu PopUp(ActionListener actionListener)
+        public virtual PopUpMenu PopUp(IActionListener actionListener)
         {
             return new PopUpMenu(Finder.AutomationElement, actionListener);
         }
@@ -152,7 +152,7 @@ namespace TestStack.White.Factory
             windows.AddRange(children.Select(childElement => Create(childElement, InitializeOption.NoCache, new NullWindowSession())));
         }
 
-        public static void AddSpecializedWindowFactory(SpecializedWindowFactory specializedWindowFactory)
+        public static void AddSpecializedWindowFactory(ISpecializedWindowFactory specializedWindowFactory)
         {
             SpecializedWindowFactories.Add(specializedWindowFactory);
         }

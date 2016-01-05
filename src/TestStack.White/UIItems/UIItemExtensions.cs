@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems
     public static class UIItemExtensions
     {
         // DictionaryMappedItemFactory does not have any state and could be shared
-        private static readonly UIItemFactory ItemFactory = new DictionaryMappedItemFactory();
+        private static readonly IUIItemFactory ItemFactory = new DictionaryMappedItemFactory();
 
         public static T GetParent<T>(this IUIItem thisItem) where T : IUIItem
         {

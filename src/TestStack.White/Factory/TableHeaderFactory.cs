@@ -5,9 +5,9 @@ using TestStack.White.UIItems.TableItems;
 
 namespace TestStack.White.Factory
 {
-    public class TableHeaderFactory : UIItemFactory
+    public class TableHeaderFactory : IUIItemFactory
     {
-        public virtual IUIItem Create(AutomationElement automationElement, ActionListener actionListener)
+        public virtual IUIItem Create(AutomationElement automationElement, IActionListener actionListener)
         {
             return new TableHeader(automationElement, actionListener);
         }

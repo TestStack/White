@@ -5,11 +5,11 @@ using TestStack.White.UIItems.MenuItems;
 
 namespace TestStack.White.UIItems.WindowStripControls
 {
-    public class MenuBar : UIItem, MenuContainer
+    public class MenuBar : UIItem, IMenuContainer
     {
         protected MenuBar() {}
 
-        public MenuBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public MenuBar(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
         }
 

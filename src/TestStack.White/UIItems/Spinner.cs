@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems
         private readonly AutomationElementFinder finder;
         protected Spinner() {}
 
-        public Spinner(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public Spinner(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new AutomationElementFinder(automationElement);
         }

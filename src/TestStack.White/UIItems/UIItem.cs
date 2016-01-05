@@ -28,7 +28,7 @@ namespace TestStack.White.UIItems
     public class UIItem : IUIItem
     {
         protected readonly AutomationElement automationElement;
-        protected ActionListener actionListener;
+        protected IActionListener actionListener;
         internal static readonly Mouse mouse = Mouse.Instance;
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
@@ -40,7 +40,7 @@ namespace TestStack.White.UIItems
         {
         }
 
-        public UIItem(AutomationElement automationElement, ActionListener actionListener)
+        public UIItem(AutomationElement automationElement, IActionListener actionListener)
         {
             if (null == automationElement) throw new NullReferenceException();
             this.automationElement = automationElement;
@@ -158,7 +158,7 @@ namespace TestStack.White.UIItems
             WindowsAPI.NativeWindow.SetForegroundWindow(new IntPtr(automationElement.Current.NativeWindowHandle));
         }
 
-        public virtual void Visit(WindowControlVisitor windowControlVisitor)
+        public virtual void Visit(IWindowControlVisitor windowControlVisitor)
         {
             windowControlVisitor.Accept(this);
         }
@@ -200,7 +200,7 @@ namespace TestStack.White.UIItems
             get { return automationElement.Current.FrameworkId.Equals(WindowsFramework.Win32.FrameworkId()) ? Name : Id; }
         }
 
-        public virtual ActionListener ActionListener
+        public virtual IActionListener ActionListener
         {
             get { return actionListener; }
         }

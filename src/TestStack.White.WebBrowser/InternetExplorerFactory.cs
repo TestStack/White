@@ -5,7 +5,7 @@ using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.WebBrowser
 {
-    public class InternetExplorerFactory : SpecializedWindowFactory
+    public class InternetExplorerFactory : ISpecializedWindowFactory
     {
         public static void Plugin()
         {

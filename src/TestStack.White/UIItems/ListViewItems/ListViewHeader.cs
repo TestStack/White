@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.ListViewItems
 
         protected ListViewHeader() {}
 
-        public ListViewHeader(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public ListViewHeader(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             automationElementFinder = new AutomationElementFinder(automationElement);
         }

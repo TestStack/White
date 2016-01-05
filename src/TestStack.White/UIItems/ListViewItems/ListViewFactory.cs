@@ -7,9 +7,9 @@ namespace TestStack.White.UIItems.ListViewItems
     public class ListViewFactory
     {
         private readonly AutomationElementFinder automationElementFinder;
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public ListViewFactory(AutomationElementFinder automationElementFinder, ActionListener actionListener)
+        public ListViewFactory(AutomationElementFinder automationElementFinder, IActionListener actionListener)
         {
             this.automationElementFinder = automationElementFinder;
             this.actionListener = actionListener;

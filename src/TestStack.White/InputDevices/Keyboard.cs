@@ -49,7 +49,7 @@ namespace TestStack.White.InputDevices
             Send(keysToType, new NullActionListener());
         }
 
-        public virtual void Send(string keysToType, ActionListener actionListener)
+        public virtual void Send(string keysToType, IActionListener actionListener)
         {
             if (heldKeys.Count > 0) keysToType = keysToType.ToLower();
 
@@ -81,7 +81,7 @@ namespace TestStack.White.InputDevices
             PressSpecialKey(key, new NullActionListener());
         }
 
-        public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key, ActionListener actionListener)
+        public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
             Send(key, true);
 
@@ -98,7 +98,7 @@ namespace TestStack.White.InputDevices
             HoldKey(key, new NullActionListener());
         }
 
-        internal virtual void HoldKey(KeyboardInput.SpecialKeys key, ActionListener actionListener)
+        internal virtual void HoldKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
             SendKeyDown((short) key, true);
             heldKeys.Add(key);
@@ -110,7 +110,7 @@ namespace TestStack.White.InputDevices
             LeaveKey(key, new NullActionListener());
         }
 
-        public virtual void LeaveKey(KeyboardInput.SpecialKeys key, ActionListener actionListener)
+        public virtual void LeaveKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
             SendKeyUp((short) key, true);
             heldKeys.Remove(key);

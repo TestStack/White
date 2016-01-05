@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.PropertyGridItems
         private readonly PropertyGridElementFinder gridElementFinder;
 
         protected PropertyGridProperty() {}
-        public PropertyGridProperty(AutomationElement automationElement, PropertyGridElementFinder gridElementFinder, ActionListener actionListener) : base(automationElement, actionListener)
+        public PropertyGridProperty(AutomationElement automationElement, PropertyGridElementFinder gridElementFinder, IActionListener actionListener) : base(automationElement, actionListener)
         {
             this.gridElementFinder = gridElementFinder;
         }

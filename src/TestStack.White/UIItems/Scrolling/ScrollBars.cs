@@ -5,14 +5,14 @@ using TestStack.White.UIItems.Actions;
 
 namespace TestStack.White.UIItems.Scrolling {
     public class ScrollBars : AbstractScrollBars {
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
         private readonly ScrollBarButtonAutomationIds hScrollBarButtonAutomationIds;
         private readonly ScrollBarButtonAutomationIds vScrollBarButtonAutomationIds;
         protected readonly AutomationElementFinder finder;
 
         protected delegate AutomationElement FindElement(AutomationSearchCondition condition);
 
-        public ScrollBars(AutomationElement automationElement, ActionListener actionListener,
+        public ScrollBars(AutomationElement automationElement, IActionListener actionListener,
             ScrollBarButtonAutomationIds hScrollBarButtonAutomationIds, ScrollBarButtonAutomationIds vScrollBarButtonAutomationIds) {
             this.actionListener = actionListener;
             this.hScrollBarButtonAutomationIds = hScrollBarButtonAutomationIds;

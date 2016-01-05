@@ -5,12 +5,12 @@ using TestStack.White.UIItems.MenuItems;
 
 namespace TestStack.White.UIItems.WindowStripControls
 {
-    public class StatusStrip : ContainerStrip, MenuContainer
+    public class StatusStrip : ContainerStrip, IMenuContainer
     {
         private readonly Menus topLevelMenu;
         protected StatusStrip() {}
 
-        public StatusStrip(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public StatusStrip(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             topLevelMenu = new Menus(automationElement, actionListener);
         }

@@ -15,7 +15,7 @@ namespace TestStack.White.Factory
     {
         protected readonly AutomationElementFinder Finder;
 
-        protected static readonly List<SpecializedWindowFactory> SpecializedWindowFactories = new List<SpecializedWindowFactory>();
+        protected static readonly List<ISpecializedWindowFactory> SpecializedWindowFactories = new List<ISpecializedWindowFactory>();
 
         protected ChildWindowFactory(AutomationElementFinder finder)
         {
@@ -48,7 +48,7 @@ namespace TestStack.White.Factory
         /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
         internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
         {
-            SpecializedWindowFactory specializedWindowFactory = SpecializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
+            ISpecializedWindowFactory specializedWindowFactory = SpecializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
             if (specializedWindowFactory != null)
             {
                 return specializedWindowFactory.Create(element, option, windowSession);

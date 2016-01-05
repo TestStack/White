@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems
     {
         private readonly ListViewHeader header;
 
-        public ListViewCells(List<AutomationElement> collection, ActionListener actionListener, ListViewHeader header)
+        public ListViewCells(List<AutomationElement> collection, IActionListener actionListener, ListViewHeader header)
             : base(collection, new ListViewCellFactory(), actionListener)
         {
             this.header = header;

@@ -8,7 +8,7 @@ using TestStack.White.UIItems.Scrolling;
 
 namespace TestStack.White.UIItems.TableItems
 {
-    public class Table : UIItem, VerticalSpanProvider, TableVerticalScrollOffset
+    public class Table : UIItem, IVerticalSpanProvider, ITableVerticalScrollOffset
     {
         private TableRows rows;
         private TableHeader header;
@@ -16,7 +16,7 @@ namespace TestStack.White.UIItems.TableItems
         private readonly TableRowFactory tableRowFactory;
         protected Table() {}
 
-        public Table(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public Table(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new AutomationElementFinder(automationElement);
             tableRowFactory = new TableRowFactory(finder);
@@ -77,7 +77,7 @@ namespace TestStack.White.UIItems.TableItems
             get { return new VerticalSpan(Bounds); }
         }
 
-        bool TableVerticalScrollOffset.IsOnTop
+        bool ITableVerticalScrollOffset.IsOnTop
         {
             get
             {

@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems
     public class Thumb : UIItem
     {
         protected Thumb() {}
-        public Thumb(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Thumb(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         /// <summary>
         /// Move horizontally

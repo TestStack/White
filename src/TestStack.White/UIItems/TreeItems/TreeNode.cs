@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.TreeItems
         private readonly AutomationElementFinder finder;
         protected TreeNode() {}
 
-        protected TreeNode(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        protected TreeNode(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new AutomationElementFinder(automationElement);
         }
@@ -101,7 +101,7 @@ namespace TestStack.White.UIItems.TreeItems
 
         protected abstract void DoCollapse();
 
-        public virtual void Visit(TreeNodeVisitor treeNodeVisitor)
+        public virtual void Visit(ITreeNodeVisitor treeNodeVisitor)
         {
             treeNodeVisitor.Accept(this);
             Nodes.Visit(treeNodeVisitor);

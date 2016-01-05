@@ -6,9 +6,9 @@ namespace TestStack.White.UIItems.Container
 {
     public abstract class ContainerItemFactory
     {
-        protected ActionListener actionListener;
+        protected IActionListener actionListener;
 
-        public virtual IUIItem Get(SearchCriteria searchCriteria, ActionListener uiItemActionListener)
+        public virtual IUIItem Get(SearchCriteria searchCriteria, IActionListener uiItemActionListener)
         {
             IUIItem item = Find(searchCriteria);
             if (item == null || item is UIItemContainer)
@@ -20,7 +20,7 @@ namespace TestStack.White.UIItems.Container
         }
 
         protected abstract IUIItem Find(SearchCriteria searchCriteria);
-        public abstract void Visit(WindowControlVisitor windowControlVisitor);
+        public abstract void Visit(IWindowControlVisitor windowControlVisitor);
         public abstract UIItemCollection GetAll(SearchCriteria searchCriteria, string frameworkId);
     }
 }

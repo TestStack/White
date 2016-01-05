@@ -45,7 +45,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         {
         }
 
-        public ComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public ComboBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             this.actionListener = actionListener;
         }

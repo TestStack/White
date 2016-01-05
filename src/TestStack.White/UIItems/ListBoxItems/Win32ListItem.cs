@@ -7,7 +7,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     public class Win32ListItem : ListItem
     {
         protected Win32ListItem() {}
-        public Win32ListItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Win32ListItem(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public override void Check()
         {

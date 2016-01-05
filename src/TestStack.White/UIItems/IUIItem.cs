@@ -11,7 +11,7 @@ using Point = System.Windows.Point;
 
 namespace TestStack.White.UIItems
 {
-    public interface IUIItem : ActionListener
+    public interface IUIItem : IActionListener
     {
         /// <summary>
         /// Should be used only if white doesn't support the feature you are looking for.
@@ -28,7 +28,7 @@ namespace TestStack.White.UIItems
         string Id { get; }
         bool Visible { get; }
         string PrimaryIdentification { get; }
-        ActionListener ActionListener { get; }
+        IActionListener ActionListener { get; }
         IScrollBars ScrollBars { get; }
         bool IsOffScreen { get; }
         bool IsFocussed { get; }
@@ -42,7 +42,7 @@ namespace TestStack.White.UIItems
         /// An alternative to use instead of Focus, might sometimes be more reliable
         /// </summary>
         void SetForeground();
-        void Visit(WindowControlVisitor windowControlVisitor);
+        void Visit(IWindowControlVisitor windowControlVisitor);
 
         /// <summary>
         /// Provides the Error on this UIItem. This would return Error object when this item has ErrorProvider displayed next to it.

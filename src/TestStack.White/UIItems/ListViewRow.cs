@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems
         private readonly AutomationElementFinder finder;
         protected ListViewRow() {}
         
-        public ListViewRow(AutomationElement automationElement, ActionListener actionListener)
+        public ListViewRow(AutomationElement automationElement, IActionListener actionListener)
             :this(automationElement, actionListener, GetHeader(automationElement, actionListener))
         {
             // we need this ctor because we want to be able to create rows from DictionaryMappedItemFactory
@@ -34,7 +34,7 @@ namespace TestStack.White.UIItems
             return factory.Header;
         }
         
-        public ListViewRow(AutomationElement automationElement, ActionListener actionListener, ListViewHeader header)
+        public ListViewRow(AutomationElement automationElement, IActionListener actionListener, ListViewHeader header)
             : base(automationElement, actionListener)
         {
             this.header = header;

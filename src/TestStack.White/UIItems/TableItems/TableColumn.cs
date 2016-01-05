@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.TableItems
         private readonly int index;
         protected TableColumn() {}
 
-        public TableColumn(AutomationElement automationElement, ActionListener actionListener, int index) : base(automationElement, actionListener)
+        public TableColumn(AutomationElement automationElement, IActionListener actionListener, int index) : base(automationElement, actionListener)
         {
             this.index = index;
         }

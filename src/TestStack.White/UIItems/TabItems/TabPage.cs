@@ -12,7 +12,7 @@ namespace TestStack.White.UIItems.TabItems
 
         protected TabPage() {}
 
-        public TabPage(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public TabPage(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             selectionItem = new SelectionItem(automationElement, actionListener);
         }

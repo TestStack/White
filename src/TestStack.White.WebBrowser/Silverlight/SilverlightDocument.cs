@@ -57,7 +57,7 @@ namespace TestStack.White.WebBrowser.Silverlight
             get { throw new System.NotSupportedException(); }
         }
 
-        protected override ActionListener ChildrenActionListener
+        protected override IActionListener ChildrenActionListener
         {
             get { return this; }
         }

@@ -5,6 +5,7 @@
 - Being able to capture part of the screen - [#350](https://github.com/TestStack/White/pull/350), [#260](https://github.com/TestStack/White/pull/260) (Slightly modified version of ([HEskandari](https://github.com/HEskandari))
 - Added color parameter to DrawHighlight
 - Added some localization for German UI
+- PDB files source indexing [#359]
 
 ### Bug Fixes
 None so far

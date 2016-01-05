@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.WindowItems
     {
         private readonly AutomationElementFinder automationElementFinder;
 
-        public TitleBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public TitleBar(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             automationElementFinder = new AutomationElementFinder(automationElement);
         }

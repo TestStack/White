@@ -23,7 +23,7 @@ namespace TestStack.White.UIItemEvents
             this.isExpanded = isExpanded;
         }
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             string lookupNode = "Node(" + PathTo(clickedNode) + ").";
             return isExpanded ? lookupNode + ExpandEventName : lookupNode + CollapseEventName;

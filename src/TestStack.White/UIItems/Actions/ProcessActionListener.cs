@@ -4,7 +4,7 @@ using TestStack.White.Configuration;
 
 namespace TestStack.White.UIItems.Actions
 {
-    public class ProcessActionListener : ActionListener
+    public class ProcessActionListener : IActionListener
     {
         private readonly Process process;
 

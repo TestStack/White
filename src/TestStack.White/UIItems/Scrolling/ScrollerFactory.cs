@@ -5,7 +5,7 @@ namespace TestStack.White.UIItems.Scrolling
 {
     internal class ScrollerFactory
     {
-        internal static IScrollBars CreateBars(AutomationElement parentElement, ActionListener listener)
+        internal static IScrollBars CreateBars(AutomationElement parentElement, IActionListener listener)
         {
             var frameworkId = parentElement.Current.FrameworkId;
             if (frameworkId == WindowsFramework.Wpf.FrameworkId())

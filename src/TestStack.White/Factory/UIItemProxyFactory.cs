@@ -7,7 +7,7 @@ namespace TestStack.White.Factory
 {
     public static class UIItemProxyFactory
     {
-        public static IUIItem Create(IUIItem item, ActionListener actionListener)
+        public static IUIItem Create(IUIItem item, IActionListener actionListener)
         {
             return (IUIItem) DynamicProxyGenerator.Instance.CreateProxy(item.GetType(), new CoreInterceptor(item, actionListener));
         }

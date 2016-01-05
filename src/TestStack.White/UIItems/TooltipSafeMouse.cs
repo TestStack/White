@@ -18,7 +18,7 @@ namespace TestStack.White.UIItems
             this.mouse = mouse;
         }
 
-        public virtual void RightClickOutsideToolTip(UIItem uiItem, ActionListener actionListener)
+        public virtual void RightClickOutsideToolTip(UIItem uiItem, IActionListener actionListener)
         {
             actionListener.ActionPerforming(uiItem);
             ToolTip toolTip = GetToolTip(uiItem, actionListener);
@@ -34,7 +34,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        public virtual void DoubleClickOutsideToolTip(UIItem uiItem, ActionListener actionListener)
+        public virtual void DoubleClickOutsideToolTip(UIItem uiItem, IActionListener actionListener)
         {
             actionListener.ActionPerforming(uiItem);
             ToolTip toolTip = GetToolTip(uiItem, actionListener);
@@ -47,7 +47,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        public virtual void ClickOutsideToolTip(UIItem uiItem, ActionListener actionListener)
+        public virtual void ClickOutsideToolTip(UIItem uiItem, IActionListener actionListener)
         {
             actionListener.ActionPerforming(uiItem);
             ToolTip toolTip = GetToolTip(uiItem, actionListener);
@@ -60,7 +60,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        private ToolTip GetToolTip(UIItem uiItem, ActionListener actionListener)
+        private ToolTip GetToolTip(UIItem uiItem, IActionListener actionListener)
         {
             mouse.Click(uiItem.Bounds.Center());
             actionListener.ActionPerformed(Action.WindowMessage);

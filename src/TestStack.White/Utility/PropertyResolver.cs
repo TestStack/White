@@ -22,6 +22,7 @@ namespace TestStack.White.Utility
             throw new ArgumentException("'getter' should be a member expression");
 
         }
+
         public static string NameFor<TObj, TProp>(Expression<Func<TObj, TProp>> getter)
         {
             var body = getter.Body as MemberExpression;
@@ -37,7 +38,6 @@ namespace TestStack.White.Utility
             }
 
             throw new ArgumentException("'getter' should be a member expression");
-
         }
     }
 }

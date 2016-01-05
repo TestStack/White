@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems.TableItems
 {
     public class TableColumns : UIItemList<TableColumn>
     {
-        public TableColumns(IEnumerable<AutomationElement> automationElements, ActionListener actionListener)
+        public TableColumns(IEnumerable<AutomationElement> automationElements, IActionListener actionListener)
         {
             int i = 0;
             foreach (AutomationElement automationElement in automationElements)

@@ -1,6 +1,6 @@
 namespace TestStack.White.UIItemEvents
 {
-    public interface EventOption
+    public interface IEventOption
     {
         bool BulkText { get; }
     }

@@ -12,7 +12,7 @@ namespace TestStack.White.UIItems
     {
         private ListViewRows(ICollection tees) : base(tees) {}
 
-        public ListViewRows(AutomationElementFinder finder, ActionListener actionListener, ListViewHeader header)
+        public ListViewRows(AutomationElementFinder finder, IActionListener actionListener, ListViewHeader header)
         {
             List<AutomationElement> collection = finder.Descendants(AutomationSearchCondition.ByControlType(ControlType.DataItem));
             foreach (AutomationElement element in collection)

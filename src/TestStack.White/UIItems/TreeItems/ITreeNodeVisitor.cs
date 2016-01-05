@@ -1,6 +1,6 @@
 namespace TestStack.White.UIItems.TreeItems
 {
-    public interface TreeNodeVisitor
+    public interface ITreeNodeVisitor
     {
         void Accept(TreeNode treeNode);
     }

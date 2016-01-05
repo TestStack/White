@@ -16,7 +16,7 @@ namespace TestStack.White.UIItemEvents
 
         public TextBoxEvent(IUIItem textBox) : base(textBox) {}
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return eventOption.BulkText ? BulkTextAction : TextAction;
         }

@@ -36,7 +36,7 @@ namespace TestStack.White.Sessions
             return applicationSession.WindowSession(modalInitializeOption);
         }
 
-        public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
+        public virtual IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, IActionListener actionListener)
         {
             logger.DebugFormat("Finding item based on criteria: ({0}) on ({1})", searchCriteria, initializeOption.Identifier);
             Point location = windowItemsMap.GetItemLocation(searchCriteria);
@@ -57,7 +57,7 @@ namespace TestStack.White.Sessions
             return Create(containerItemFactory, searchCriteria, actionListener);
         }
 
-        private IUIItem Create(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
+        private IUIItem Create(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, IActionListener actionListener)
         {
             IUIItem item = containerItemFactory.Get(searchCriteria, actionListener);
             if (item == null) return null;

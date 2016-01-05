@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems.TableItems
     public class TableCell : UIItem
     {
         protected TableCell() {}
-        public TableCell(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public TableCell(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         //BUG: Document use of TableCell.Value method
         //BUG: Fix table which doesn't have header in it

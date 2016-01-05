@@ -6,6 +6,6 @@ namespace TestStack.White.UIItems
     public class GroupBox : UIItemContainer
     {
         protected GroupBox() {}
-        public GroupBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public GroupBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
     }
 }

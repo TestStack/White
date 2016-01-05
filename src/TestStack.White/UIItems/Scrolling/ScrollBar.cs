@@ -30,14 +30,14 @@ namespace TestStack.White.UIItems.Scrolling {
 
         protected ScrollBar() {}
 
-        protected ScrollBar(AutomationElement automationElement, ActionListener actionListener, ScrollBarButtonAutomationIds automationIds)
+        protected ScrollBar(AutomationElement automationElement, IActionListener actionListener, ScrollBarButtonAutomationIds automationIds)
             : base(automationElement, actionListener) {
             this.automationIds = automationIds;
             var finder = new AutomationElementFinder(automationElement);
             primaryUIItemFactory = new PrimaryUIItemFactory(finder);
         }
 
-        private Button FindButton(ActionListener listener, string automationId) {
+        private Button FindButton(IActionListener listener, string automationId) {
             return
                 (Button)
                 primaryUIItemFactory.Create(SearchCriteria.ByControlType(ControlType.Button).AndAutomationId(automationId), listener);

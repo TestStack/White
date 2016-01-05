@@ -13,7 +13,7 @@ namespace TestStack.White.UIItems.MenuItems
         Menus childMenus;
 
         protected Menu() {}
-        public Menu(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Menu(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         /// <summary>
         /// Get a child menu based on the text. Text in UIA translates too Name property

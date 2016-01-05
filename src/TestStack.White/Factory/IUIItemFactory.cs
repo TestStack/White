@@ -4,8 +4,8 @@ using TestStack.White.UIItems.Actions;
 
 namespace TestStack.White.Factory
 {
-    public interface UIItemFactory
+    public interface IUIItemFactory
     {
-        IUIItem Create(AutomationElement automationElement, ActionListener actionListener);
+        IUIItem Create(AutomationElement automationElement, IActionListener actionListener);
     }
 }

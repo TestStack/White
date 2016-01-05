@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.TableItems
     {
         private readonly TableHeader tableHeader;
 
-        public TableCells(ICollection tableCellElements, TableHeader tableHeader, ActionListener actionListener)
+        public TableCells(ICollection tableCellElements, TableHeader tableHeader, IActionListener actionListener)
         {
             this.tableHeader = tableHeader;
             foreach (AutomationElement tableCellElement in tableCellElements)

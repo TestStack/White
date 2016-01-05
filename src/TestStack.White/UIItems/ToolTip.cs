@@ -7,7 +7,7 @@ namespace TestStack.White.UIItems
     public class ToolTip : UIItem
     {
         protected ToolTip() {}
-        public ToolTip(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public ToolTip(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual string Text
         {

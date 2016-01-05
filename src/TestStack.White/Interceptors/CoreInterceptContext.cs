@@ -8,9 +8,9 @@ namespace TestStack.White.Interceptors
     public class CoreInterceptContext : IInterceptContext
     {
         private readonly IUIItem uiItem;
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public CoreInterceptContext(IUIItem uiItem, ActionListener actionListener)
+        public CoreInterceptContext(IUIItem uiItem, IActionListener actionListener)
         {
             this.uiItem = uiItem;
             this.actionListener = actionListener;
@@ -21,7 +21,7 @@ namespace TestStack.White.Interceptors
             get { return uiItem; }
         }
 
-        public virtual ActionListener ActionListener
+        public virtual IActionListener ActionListener
         {
             get { return actionListener; }
         }
