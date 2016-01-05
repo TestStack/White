@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.WindowStripControls
     {
         protected ContainerStrip() {}
 
-        protected ContainerStrip(AutomationElement element, ActionListener listener)
+        protected ContainerStrip(AutomationElement element, IActionListener listener)
             : base(element, listener, InitializeOption.NoCache, new NullWindowSession()) {}
 
         internal virtual InitializeOption Cached

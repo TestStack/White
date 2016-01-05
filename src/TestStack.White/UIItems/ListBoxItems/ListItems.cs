@@ -7,9 +7,9 @@ namespace TestStack.White.UIItems.ListBoxItems
 {
     public class ListItems : UIItemList<ListItem>, ListItemContainer
     {
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public ListItems(List<AutomationElement> collection, ActionListener actionListener) : base(collection, actionListener)
+        public ListItems(List<AutomationElement> collection, IActionListener actionListener) : base(collection, actionListener)
         {
             this.actionListener = actionListener;
         }

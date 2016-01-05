@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         private readonly AutomationElementFinder finder;
         
         protected WPFListItem() {}
-        public WPFListItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public WPFListItem(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new AutomationElementFinder(automationElement);
         }

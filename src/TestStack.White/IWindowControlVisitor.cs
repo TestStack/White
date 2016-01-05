@@ -2,7 +2,7 @@ using TestStack.White.UIItems;
 
 namespace TestStack.White
 {
-    public interface WindowControlVisitor
+    public interface IWindowControlVisitor
     {
         void Accept(UIItem uiItem);
     }

@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems
     public class SelectionItem : UIItem
     {
         protected SelectionItem() {}
-        public SelectionItem(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public SelectionItem(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual bool IsSelected
         {

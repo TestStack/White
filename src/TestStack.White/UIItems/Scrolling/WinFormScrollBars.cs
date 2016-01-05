@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems.Scrolling {
         private IHScrollBar ihScrollBar;
         private IVScrollBar vScrollBar;
 
-        public WinFormScrollBars(AutomationElement automationElement, ActionListener actionListener)
+        public WinFormScrollBars(AutomationElement automationElement, IActionListener actionListener)
             : base(automationElement, actionListener, new DefaultScrollBarButtonAutomationIds(), new DefaultScrollBarButtonAutomationIds()) {}
 
         public override IHScrollBar Horizontal {

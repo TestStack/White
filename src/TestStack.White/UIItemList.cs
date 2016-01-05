@@ -18,9 +18,9 @@ namespace TestStack.White
             foreach (T t in tees) Add(t);
         }
 
-        public UIItemList(List<AutomationElement> collection, ActionListener actionListener) : this(collection, factory, actionListener) { }
+        public UIItemList(List<AutomationElement> collection, IActionListener actionListener) : this(collection, factory, actionListener) { }
 
-        public UIItemList(List<AutomationElement> collection, UIItemFactory factory, ActionListener actionListener)
+        public UIItemList(List<AutomationElement> collection, IUIItemFactory factory, IActionListener actionListener)
         {
             foreach (AutomationElement element in collection)
                 Add((T) factory.Create(element, actionListener));

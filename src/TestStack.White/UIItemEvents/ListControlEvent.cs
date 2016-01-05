@@ -19,7 +19,7 @@ namespace TestStack.White.UIItemEvents
             this.selectedItem = selectedItem;
         }
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return CachedMethodName;
         }

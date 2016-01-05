@@ -13,14 +13,14 @@ namespace TestStack.White.UIItems
         private readonly AutomationElementFinder finder;
         protected ListViewRow() {}
         
-        public ListViewRow(AutomationElement automationElement, ActionListener actionListener)
+        public ListViewRow(AutomationElement automationElement, IActionListener actionListener)
             : base(automationElement, actionListener)
         {
             header = null;
             finder = new AutomationElementFinder(automationElement);
         }
         
-        public ListViewRow(AutomationElement automationElement, ActionListener actionListener, ListViewHeader header)
+        public ListViewRow(AutomationElement automationElement, IActionListener actionListener, ListViewHeader header)
             : base(automationElement, actionListener)
         {
             this.header = header;

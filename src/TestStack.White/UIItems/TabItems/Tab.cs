@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems.TabItems
         private AutomationPropertyChangedEventHandler handler;
         protected Tab() {}
 
-        public Tab(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Tab(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual ITabPage SelectedTab
         {

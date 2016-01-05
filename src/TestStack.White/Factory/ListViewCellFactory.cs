@@ -4,9 +4,9 @@ using TestStack.White.UIItems.Actions;
 
 namespace TestStack.White.Factory
 {
-    public class ListViewCellFactory : UIItemFactory
+    public class ListViewCellFactory : IUIItemFactory
     {
-        public virtual IUIItem Create(AutomationElement automationElement, ActionListener actionListener)
+        public virtual IUIItem Create(AutomationElement automationElement, IActionListener actionListener)
         {
             return new ListViewCell(automationElement, actionListener);
         }

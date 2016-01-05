@@ -10,10 +10,10 @@ namespace TestStack.White.InputDevices
     /// </summary>
     public class AttachedMouse : IMouse
     {
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
         private readonly Mouse mouse;
 
-        internal AttachedMouse(Mouse mouse, ActionListener actionListener)
+        internal AttachedMouse(Mouse mouse, IActionListener actionListener)
         {
             this.actionListener = actionListener;
             this.mouse = mouse;

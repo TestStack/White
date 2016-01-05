@@ -7,7 +7,7 @@ namespace TestStack.White.UIItemEvents
     {
         public RadioButtonEvent(IUIItem uiItem) : base(uiItem) {}
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return MethodNameResolver.NameFor<RadioButton>(r=>r.Select());
         }

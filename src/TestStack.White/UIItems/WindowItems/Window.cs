@@ -57,7 +57,7 @@ namespace TestStack.White.UIItems.WindowItems
         protected Window(AutomationElement automationElement, InitializeOption initializeOption, WindowSession windowSession)
             : this(automationElement, new NullActionListener(), initializeOption, windowSession) { }
 
-        protected Window(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption, WindowSession windowSession)
+        protected Window(AutomationElement automationElement, IActionListener actionListener, InitializeOption initializeOption, WindowSession windowSession)
             : base(automationElement, actionListener, initializeOption, windowSession)
         {
             InitializeWindow();
@@ -78,7 +78,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             WindowSession.Register(this);
         }
 
-        protected override ActionListener ChildrenActionListener
+        protected override IActionListener ChildrenActionListener
         {
             get { return this; }
         }
@@ -291,7 +291,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             return ModalWindow(searchCriteria, InitializeOption.NoCache);
         }
 
-        public override void Visit(WindowControlVisitor windowControlVisitor)
+        public override void Visit(IWindowControlVisitor windowControlVisitor)
         {
             windowControlVisitor.Accept(this);
             CurrentContainerItemFactory.Visit(windowControlVisitor);
@@ -380,7 +380,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             return window;
         }
 
-        public override ActionListener ActionListener
+        public override IActionListener ActionListener
         {
             get { return this; }
         }

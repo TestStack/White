@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.TableItems
         protected TableRows() {}
         public TableRows(ICollection tees) : base(tees) {}
 
-        public TableRows(ICollection rowElements, ActionListener actionListener, TableHeader tableHeader, TableCellFactory tableCellFactory)
+        public TableRows(ICollection rowElements, IActionListener actionListener, TableHeader tableHeader, TableCellFactory tableCellFactory)
         {
             foreach (AutomationElement automationElement in rowElements)
                 Add(new TableRow(automationElement, actionListener, tableHeader, tableCellFactory));

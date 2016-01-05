@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.TreeItems
 {
     public class TreeNodes : UIItemList<TreeNode>
     {
-        public TreeNodes(AutomationElementFinder finder, ActionListener actionListener)
+        public TreeNodes(AutomationElementFinder finder, IActionListener actionListener)
             : base(finder.Children(AutomationSearchCondition.ByControlType(ControlType.TreeItem)), actionListener) {}
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace TestStack.White.UIItems.TreeItems
             return false;
         }
 
-        public virtual void Visit(TreeNodeVisitor visitor)
+        public virtual void Visit(ITreeNodeVisitor visitor)
         {
             foreach (TreeNode treeNode in this)
                 treeNode.Visit(visitor);

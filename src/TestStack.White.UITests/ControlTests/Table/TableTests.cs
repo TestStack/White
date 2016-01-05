@@ -79,9 +79,9 @@ namespace TestStack.White.UITests.ControlTests.Table
         [Test]
         public void IsInTopTest()
         {
-            Assert.That(((TableVerticalScrollOffset)table).IsOnTop, Is.True);
+            Assert.That(((ITableVerticalScrollOffset)table).IsOnTop, Is.True);
             table.Rows[table.Rows.Count - 1].Select();
-            Assert.That(((TableVerticalScrollOffset)table).IsOnTop, Is.False);
+            Assert.That(((ITableVerticalScrollOffset)table).IsOnTop, Is.False);
         }
     }
 }

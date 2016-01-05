@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     public class WPFComboBox : ComboBox
     {
         protected WPFComboBox() {}
-        public WPFComboBox(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WPFComboBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public override IScrollBars ScrollBars
         {

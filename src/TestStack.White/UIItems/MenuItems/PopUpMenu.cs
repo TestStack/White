@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems.MenuItems
     {
         protected PopUpMenu() {}
 
-        public PopUpMenu(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public PopUpMenu(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             this.actionListener = actionListener;
         }

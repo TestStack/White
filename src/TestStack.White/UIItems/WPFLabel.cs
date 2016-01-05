@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems
     public class WPFLabel : Label
     {
         protected WPFLabel() {}
-        public WPFLabel(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public WPFLabel(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual Hyperlink Hyperlink(string text)
         {

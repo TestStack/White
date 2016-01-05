@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.Scrolling
         {
         }
 
-        public HScrollBar(AutomationElement automationElement, ActionListener actionListener,
+        public HScrollBar(AutomationElement automationElement, IActionListener actionListener,
             ScrollBarButtonAutomationIds automationIds) :
                 base(automationElement, actionListener, automationIds)
         {         

@@ -14,7 +14,7 @@ namespace TestStack.White.Sessions
             return new NullWindowSession();
         }
 
-        public override IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, ActionListener actionListener)
+        public override IUIItem Get(ContainerItemFactory containerItemFactory, SearchCriteria searchCriteria, IActionListener actionListener)
         {
             return containerItemFactory.Get(searchCriteria, actionListener);
         }

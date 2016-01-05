@@ -29,7 +29,7 @@ namespace TestStack.White.Factory
             this.automationElementFinder = automationElementFinder;
         }
 
-        public virtual TableRows CreateRows(ActionListener actionListener, TableHeader tableHeader)
+        public virtual TableRows CreateRows(IActionListener actionListener, TableHeader tableHeader)
         {
             List<AutomationElement> rowElements = GetRowElements();
             return new TableRows(rowElements, actionListener, tableHeader, new TableCellFactory(automationElementFinder.AutomationElement, actionListener));

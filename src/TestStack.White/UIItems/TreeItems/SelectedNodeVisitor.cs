@@ -1,6 +1,6 @@
 namespace TestStack.White.UIItems.TreeItems
 {
-    public class SelectedNodeVisitor : TreeNodeVisitor
+    public class SelectedNodeVisitor : ITreeNodeVisitor
     {
         private TreeNode selectedNode;
 

@@ -16,7 +16,7 @@ namespace TestStack.White.UIItems.MenuItems
     {
         static readonly DictionaryMappedItemFactory Factory = new DictionaryMappedItemFactory();
 
-        public Menus(AutomationElement parent, ActionListener actionListener)
+        public Menus(AutomationElement parent, IActionListener actionListener)
         {
             if (parent == null) throw new ArgumentNullException("parent", "You must specify a parent automation id when creating a menu");
             AutomationSearchCondition condition = AutomationSearchCondition.ByControlType(ControlType.MenuItem);

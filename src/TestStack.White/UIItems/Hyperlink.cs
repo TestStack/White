@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems
     public class Hyperlink : UIItem
     {
         protected Hyperlink() {}
-        public Hyperlink(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public Hyperlink(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual void Click(int xOffset, int yOffset)
         {

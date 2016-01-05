@@ -6,9 +6,9 @@ namespace TestStack.White.UIItems.Scrolling
     public class WpfTreeViewScrollBars : AbstractScrollBars
     {
         private readonly AutomationElement parentElement;
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
 
-        public WpfTreeViewScrollBars(AutomationElement parentElement, ActionListener actionListener)
+        public WpfTreeViewScrollBars(AutomationElement parentElement, IActionListener actionListener)
         {
             this.parentElement = parentElement;
             this.actionListener = actionListener;

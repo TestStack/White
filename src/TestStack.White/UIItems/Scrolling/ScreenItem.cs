@@ -19,7 +19,7 @@ namespace TestStack.White.UIItems.Scrolling
             verticalScroll = scrollBars.Vertical;
         }
 
-        internal virtual void MakeVisible(VerticalSpanProvider verticalSpanProvider)
+        internal virtual void MakeVisible(IVerticalSpanProvider verticalSpanProvider)
         {
             if (verticalScroll == null)
                 return;

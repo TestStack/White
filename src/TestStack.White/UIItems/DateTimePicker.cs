@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems
     public class DateTimePicker : UIItem
     {
         protected DateTimePicker() {}
-        public DateTimePicker(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public DateTimePicker(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual DateTime? Date
         {

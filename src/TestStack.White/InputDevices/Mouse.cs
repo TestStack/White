@@ -130,7 +130,7 @@ namespace TestStack.White.InputDevices
             DoubleClick(point, new NullActionListener());
         }
 
-        public virtual void DoubleClick(Point point, ActionListener actionListener)
+        public virtual void DoubleClick(Point point, IActionListener actionListener)
         {
             Location = point;
             MouseLeftButtonUpAndDown();
@@ -156,7 +156,7 @@ namespace TestStack.White.InputDevices
             return new MouseInput(command, GetMessageExtraInfo());
         }
 
-        public virtual void RightClick(Point point, ActionListener actionListener)
+        public virtual void RightClick(Point point, IActionListener actionListener)
         {
             Location = point;
             RightClickHere(actionListener);
@@ -167,7 +167,7 @@ namespace TestStack.White.InputDevices
             RightClick(point, new NullActionListener());
         }
 
-        internal virtual void RightClickHere(ActionListener actionListener)
+        internal virtual void RightClickHere(IActionListener actionListener)
         {
             RightClick();
             actionListener.ActionPerformed(Action.WindowMessage);
@@ -178,14 +178,14 @@ namespace TestStack.White.InputDevices
             Click(point, new NullActionListener());
         }
 
-        public virtual void Click(Point point, ActionListener actionListener)
+        public virtual void Click(Point point, IActionListener actionListener)
         {
             Location = point;
             Click();
             ActionPerformed(actionListener);
         }
 
-        private static void ActionPerformed(ActionListener actionListener)
+        private static void ActionPerformed(IActionListener actionListener)
         {
             actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
         }

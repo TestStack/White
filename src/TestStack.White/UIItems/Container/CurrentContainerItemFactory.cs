@@ -13,13 +13,13 @@ namespace TestStack.White.UIItems.Container
     public class CurrentContainerItemFactory
     {
         private readonly AutomationElement automationElement;
-        private readonly ActionListener actionListener;
+        private readonly IActionListener actionListener;
         private readonly ContainerItemFactory nonCachedContainerItemFactory;
         private ContainerItemFactory current;
         private ContainerItemFactory cachedContainerItemFactory;
 
         public CurrentContainerItemFactory(PrimaryUIItemFactory primaryUIItemFactory, InitializeOption initializeOption, AutomationElement automationElement,
-                                           ActionListener listener)
+                                           IActionListener listener)
         {
             this.automationElement = automationElement;
             actionListener = listener;
@@ -47,7 +47,7 @@ namespace TestStack.White.UIItems.Container
             current = option.Cached ? cachedContainerItemFactory : nonCachedContainerItemFactory;
         }
 
-        public virtual void Visit(WindowControlVisitor windowControlVisitor)
+        public virtual void Visit(IWindowControlVisitor windowControlVisitor)
         {
             current.Visit(windowControlVisitor);
         }

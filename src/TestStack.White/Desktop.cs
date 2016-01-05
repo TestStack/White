@@ -23,8 +23,8 @@ namespace TestStack.White
             return new Desktop(AutomationElement.RootElement, new NullActionListener(), InitializeOption.NoCache, new NullWindowSession());
         }
 
-        private Desktop(AutomationElement automationElement, ActionListener actionListener, InitializeOption initializeOption,
-                        WindowSession windowSession) : base(automationElement, actionListener, initializeOption, windowSession)
+        private Desktop(AutomationElement automationElement, IActionListener actionListener, InitializeOption initializeOption, WindowSession windowSession)
+            : base(automationElement, actionListener, initializeOption, windowSession)
         {
             finder = new AutomationElementFinder(automationElement);
         }
@@ -38,12 +38,11 @@ namespace TestStack.White
         {
             get
             {
-                AutomationElement element =
-                    finder.Child(new[]
-                                     {
-                                         AutomationSearchCondition.ByControlType(ControlType.Pane).OfName("Program Manager"),
-                                         AutomationSearchCondition.ByControlType(ControlType.List).OfName("Desktop")
-                                     });
+                AutomationElement element = finder.Child(new[]              
+                    {
+                        AutomationSearchCondition.ByControlType(ControlType.Pane).OfName("Program Manager"),
+                        AutomationSearchCondition.ByControlType(ControlType.List).OfName("Desktop")
+                    });
                 return new ListControl(element, new ProcessActionListener(element));
             }
         }
@@ -59,7 +58,7 @@ namespace TestStack.White
         }
 
         /// <summary>
-        /// Captures a screenshot of the entire desktop, and returns the bitmap
+        /// Captures a screenshot of the entire desktop and returns the bitmap
         /// </summary>
         public static Bitmap CaptureScreenshot()
         {
@@ -68,7 +67,7 @@ namespace TestStack.White
         }
 
         /// <summary>
-        /// Captures a screenshot of the provided boundary, and returns the bitmap
+        /// Captures a screenshot of the provided boundary and returns the bitmap
         /// </summary>
         /// <param name="bounds">Screen rectangle to capture</param>
         public static Bitmap CaptureScreenshot(Rect bounds)
@@ -80,24 +79,24 @@ namespace TestStack.White
         /// <summary>
         /// Takes a screenshot of the provided boundary, and saves it to disk
         /// </summary>
-        /// <param name="bounds"></param>
+        /// <param name="bounds">Screen rectangle to capture</param>
         /// <param name="filename">The fullname of the file (including extension)</param>
-        /// <param name="imageFormat"></param>
+        /// <param name="imageFormat">The format of the image</param>
         public static void TakeScreenshot(Rect bounds, string filename, ImageFormat imageFormat)
         {
             var bitmap = CaptureScreenshot(bounds);
-            bitmap.Save(filename, imageFormat);            
+            bitmap.Save(filename, imageFormat);
         }
 
         /// <summary>
         /// Takes a screenshot of the entire desktop, and saves it to disk
         /// </summary>
         /// <param name="filename">The fullname of the file (including extension)</param>
-        /// <param name="imageFormat"></param>
+        /// <param name="imageFormat">The format of the image</param>
         public static void TakeScreenshot(string filename, ImageFormat imageFormat)
         {
             var bitmap = CaptureScreenshot();
-            bitmap.Save(filename, ImageFormat.Png);
+            bitmap.Save(filename, imageFormat);
         }
     }
 }

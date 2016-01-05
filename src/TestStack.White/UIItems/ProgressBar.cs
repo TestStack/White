@@ -6,7 +6,7 @@ namespace TestStack.White.UIItems
     public class ProgressBar : UIItem
     {
         protected ProgressBar() {}
-        public ProgressBar(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public ProgressBar(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
         public virtual double Minimum
         {

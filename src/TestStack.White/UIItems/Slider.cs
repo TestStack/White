@@ -13,7 +13,7 @@ namespace TestStack.White.UIItems
 
         protected Slider() {}
 
-        protected Slider(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        protected Slider(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             uiItemContainer = new UIItemContainer(automationElement, actionListener, InitializeOption.NoCache, new NullWindowSession());
         }

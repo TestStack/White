@@ -6,6 +6,6 @@ namespace TestStack.White.UIItems
     public class ListViewCell : Label
     {
         protected ListViewCell() {}
-        public ListViewCell(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public ListViewCell(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
     }
 }

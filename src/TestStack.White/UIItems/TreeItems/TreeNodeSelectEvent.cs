@@ -18,7 +18,7 @@ namespace TestStack.White.UIItems.TreeItems
             selectedNode = node;
         }
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return "Node( " + PathTo(selectedNode) + ")." + SelectEventName;
         }

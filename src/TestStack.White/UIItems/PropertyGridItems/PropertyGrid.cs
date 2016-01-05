@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.PropertyGridItems
         private readonly PropertyGridElementFinder finder;
         protected PropertyGrid() {}
 
-        public PropertyGrid(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener)
+        public PropertyGrid(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener)
         {
             finder = new PropertyGridElementFinder(automationElement);
         }

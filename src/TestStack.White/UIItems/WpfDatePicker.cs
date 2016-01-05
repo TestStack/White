@@ -8,7 +8,7 @@ namespace TestStack.White.UIItems
     public class WpfDatePicker : DateTimePicker
     {
         protected WpfDatePicker() {}
-        public WpfDatePicker(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) { }
+        public WpfDatePicker(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) { }
 
         public override void SetDate(DateTime? dateTime, DateFormat dateFormat)
         {

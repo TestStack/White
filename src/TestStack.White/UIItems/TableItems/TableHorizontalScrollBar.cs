@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.TableItems
     {
         protected TableHorizontalScrollBar() {}
 
-        public TableHorizontalScrollBar(AutomationElement automationElement, ActionListener actionListener) {}
+        public TableHorizontalScrollBar(AutomationElement automationElement, IActionListener actionListener) {}
 
         public virtual void ScrollLeft()
         {

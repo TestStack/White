@@ -12,7 +12,7 @@ namespace TestStack.White.UIItemEvents
             this.exception = exception;
         }
 
-        protected override string ActionName(EventOption eventOption)
+        protected override string ActionName(IEventOption eventOption)
         {
             return exception.ToString();
         }

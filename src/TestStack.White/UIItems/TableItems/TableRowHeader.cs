@@ -6,6 +6,6 @@ namespace TestStack.White.UIItems.TableItems
     public class TableRowHeader : UIItem
     {
         protected TableRowHeader() {}
-        public TableRowHeader(AutomationElement automationElement, ActionListener actionListener) : base(automationElement, actionListener) {}
+        public TableRowHeader(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
     }
 }

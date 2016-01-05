@@ -2,7 +2,7 @@ using TestStack.White.InputDevices;
 
 namespace TestStack.White.UIItems.TreeItems
 {
-    internal class ClickedNodeVisitor : TreeNodeVisitor
+    internal class ClickedNodeVisitor : ITreeNodeVisitor
     {
         private TreeNode clickedNode;
 

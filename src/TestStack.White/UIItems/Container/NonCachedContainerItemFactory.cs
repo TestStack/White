@@ -9,13 +9,13 @@ namespace TestStack.White.UIItems.Container
     {
         private readonly PrimaryUIItemFactory factory;
 
-        public NonCachedContainerItemFactory(PrimaryUIItemFactory factory, ActionListener actionListener)
+        public NonCachedContainerItemFactory(PrimaryUIItemFactory factory, IActionListener actionListener)
         {
             this.factory = factory;
             this.actionListener = actionListener;
         }
 
-        public override void Visit(WindowControlVisitor windowControlVisitor)
+        public override void Visit(IWindowControlVisitor windowControlVisitor)
         {
             throw new NotSupportedException("Use Cached approach");
         }
