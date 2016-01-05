@@ -22,7 +22,7 @@ namespace TestStack.White.UIItems
         }
 
         // Creates new header for specified row AutomationElement (use only when no Header is available)
-        private static ListViewHeader GetHeader(AutomationElement automationElement, ActionListener actionListener)
+        private static ListViewHeader GetHeader(AutomationElement automationElement, IActionListener actionListener)
         {
             var parentGrid = TreeWalker.ControlViewWalker.GetParent(automationElement);
             if (parentGrid == null)
