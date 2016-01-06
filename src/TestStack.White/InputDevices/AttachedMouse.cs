@@ -13,6 +13,12 @@ namespace TestStack.White.InputDevices
         private readonly IActionListener actionListener;
         private readonly Mouse mouse;
 
+        public virtual Point Location
+        {
+            get { return mouse.Location; }
+            set { mouse.Location = value; }
+        }
+
         internal AttachedMouse(Mouse mouse, IActionListener actionListener)
         {
             this.actionListener = actionListener;
@@ -23,11 +29,6 @@ namespace TestStack.White.InputDevices
         {
             mouse.RightClick();
             ActionPerformed();
-        }
-
-        private void ActionPerformed()
-        {
-            actionListener.ActionPerformed(Action.WindowMessage);
         }
 
         public virtual void Click()
@@ -59,17 +60,10 @@ namespace TestStack.White.InputDevices
             mouse.DragAndDrop(draggedItem, startPosition, dropItem, endPosition);
             ActionPerformed();
         }
-        //SU - Added for rightMouse button drag and drop
-        public virtual void DragAndDrop_RMB(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
-        {
-            mouse.DragAndDrop_RMB(draggedItem, startPosition, dropItem, endPosition);
-            ActionPerformed();
-        }
 
-        public virtual Point Location
+        private void ActionPerformed()
         {
-            get { return mouse.Location; }
-            set { mouse.Location = value; }
+            actionListener.ActionPerformed(Action.WindowMessage);
         }
     }
 }
