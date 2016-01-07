@@ -25,7 +25,7 @@ namespace TestStack.White.UIItems
             if (toolTip == null)
             {
                 //Because mouse has already been moved
-                mouse.RightClickHere(actionListener);
+                mouse.Click(MouseButton.Right, actionListener);
             }
             else
             {

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
@@ -40,12 +41,21 @@ namespace TestStack.White.InputDevices
         static extern int GetSystemMetrics(SystemMetric smIndex);
 
         public static Mouse Instance = new Mouse();
-        DateTime lastClickTime = DateTime.Now;
+        Dictionary<MouseButton, DateTime> lastClickTimes;
+        Dictionary<MouseButton, Point> lastClickLocations;
         readonly short doubleClickTime = GetDoubleClickTime();
-        Point lastClickLocation;
         const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
-        Mouse() { }
+        Mouse()
+        {
+            lastClickTimes = new Dictionary<MouseButton, DateTime>();
+            lastClickLocations = new Dictionary<MouseButton, Point>();
+            foreach (MouseButton mouseButton in Enum.GetValues(typeof(MouseButton)))
+            {
+                lastClickTimes.Add(mouseButton, DateTime.Now);
+                lastClickLocations.Add(mouseButton, new Point(0, 0));
+            }
+        }
 
         public virtual Point Location
         {
@@ -96,47 +106,198 @@ namespace TestStack.White.InputDevices
             get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP; }
         }
 
-        public virtual void RightClick()
+        /// <summary>
+        /// Clicks the specified mouse button. Makes sure to not accidentaly fire a double click
+        /// if called multiple times
+        /// </summary>
+        public virtual void Click(MouseButton mouseButton)
         {
-            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonDown)));
-            SendInput(InputFactory.Mouse(MouseInput(RightMouseButtonUp)));
-        }
-
-        public virtual void Click()
-        {
-            Point clickLocation = Location;
-            if (lastClickLocation.Equals(clickLocation))
+            var currentClickLocation = Location;
+            // Check if the location is the same as with last click
+            if (lastClickLocations[mouseButton].Equals(currentClickLocation))
             {
-                int timeout = doubleClickTime - DateTime.Now.Subtract(lastClickTime).Milliseconds;
+                // Get the timeout needed to not fire a double click
+                int timeout = doubleClickTime - DateTime.Now.Subtract(lastClickTimes[mouseButton]).Milliseconds;
+                // Wait the needed time to prevent the double click
                 if (timeout > 0) Thread.Sleep(timeout + ExtraMillisecondsBecauseOfBugInWindows);
             }
-            MouseLeftButtonUpAndDown();
-            lastClickTime = DateTime.Now;
-            lastClickLocation = Location;
+            // Perform the click
+            MouseButtonUpAndDown(mouseButton);
+            // Update the time and location
+            lastClickTimes[mouseButton] = DateTime.Now;
+            lastClickLocations[mouseButton] = Location;
         }
 
-        public static void LeftUp()
+        public virtual void Click(MouseButton mouseButton, Point point)
         {
-            SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonUp)));
+            Location = point;
+            Click(mouseButton);
         }
 
-        public static void LeftDown()
+        public virtual void Click(MouseButton mouseButton, IActionListener actionListener)
         {
-            SendInput(InputFactory.Mouse(MouseInput(LeftMouseButtonDown)));
+            Click(mouseButton);
+            ActionPerformed(actionListener);
         }
 
+        public virtual void Click(MouseButton mouseButton, Point point, IActionListener actionListener)
+        {
+            Location = point;
+            Click(mouseButton);
+            ActionPerformed(actionListener);
+        }
+
+        /// <summary>
+        /// Double clicks the specified mouse button.
+        /// </summary>
+        public virtual void DoubleClick(MouseButton mouseButton)
+        {
+            MouseButtonUpAndDown(mouseButton);
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
+            MouseButtonUpAndDown(mouseButton);
+        }
+
+        public virtual void DoubleClick(MouseButton mouseButton, Point point)
+        {
+            Location = point;
+            DoubleClick(mouseButton);
+        }
+
+        public virtual void DoubleClick(MouseButton mouseButton, IActionListener actionListener)
+        {
+            DoubleClick(mouseButton);
+            ActionPerformed(actionListener);
+        }
+
+        public virtual void DoubleClick(MouseButton mouseButton, Point point, IActionListener actionListener)
+        {
+            Location = point;
+            DoubleClick(mouseButton);
+            ActionPerformed(actionListener);
+        }
+
+        /// <summary>
+        /// Performs a down / up sequence for the specified button
+        /// </summary>
+        private static void MouseButtonUpAndDown(MouseButton mouseButton)
+        {
+            MouseButtonDown(mouseButton);
+            MouseButtonUp(mouseButton);
+        }
+
+        /// <summary>
+        /// Performs a down for the specified button
+        /// </summary>
+        private static void MouseButtonDown(MouseButton mouseButton)
+        {
+            SendInput(InputFactory.Mouse(GetInputForButton(mouseButton, true)));
+        }
+
+        /// <summary>
+        /// Performs an up for the specified button
+        /// </summary>
+        private static void MouseButtonUp(MouseButton mouseButton)
+        {
+            SendInput(InputFactory.Mouse(GetInputForButton(mouseButton, false)));
+        }
+
+        /// <summary>
+        /// Generates the input object for the button
+        /// </summary>
+        /// <param name="mouseButton">The button to get the input for</param>
+        /// <param name="isDown">Flag if down is wanted, up otherwise</param>
+        private static MouseInput GetInputForButton(MouseButton mouseButton, bool isDown)
+        {
+            switch (mouseButton)
+            {
+                case MouseButton.Left:
+                    return MouseInput(isDown ? LeftMouseButtonDown : LeftMouseButtonUp);
+                case MouseButton.Right:
+                    return MouseInput(isDown ? RightMouseButtonDown : RightMouseButtonUp);
+                case MouseButton.Middle:
+                    return MouseInput(isDown ? WindowsConstants.MOUSEEVENTF_MIDDLEDOWN : WindowsConstants.MOUSEEVENTF_MIDDLEUP);
+                case MouseButton.XButton1:
+                    return MouseInput(isDown ? WindowsConstants.MOUSEEVENTF_XDOWN : WindowsConstants.MOUSEEVENTF_XUP, 0x0001);
+                case MouseButton.XButton2:
+                    return MouseInput(isDown ? WindowsConstants.MOUSEEVENTF_XDOWN : WindowsConstants.MOUSEEVENTF_XUP, 0x0002);
+                default:
+                    throw new ArgumentOutOfRangeException("mouseButton", "Unknown mouse button");
+            }
+        }
+
+        /// <summary>
+        /// Performs a left click
+        /// </summary>
+        public virtual void Click()
+        {
+            Click(MouseButton.Left);
+        }
+
+        public virtual void Click(Point point)
+        {
+            Click(MouseButton.Left, point);
+        }
+
+        public virtual void Click(Point point, IActionListener actionListener)
+        {
+            Click(MouseButton.Left, point, actionListener);
+        }
+
+        /// <summary>
+        /// Performs a right click
+        /// </summary>
+        public virtual void RightClick()
+        {
+            Click(MouseButton.Right);
+        }
+
+        public virtual void RightClick(Point point)
+        {
+            Click(MouseButton.Right, point);
+        }
+
+        public virtual void RightClick(Point point, IActionListener actionListener)
+        {
+            Click(MouseButton.Right, point, actionListener);
+        }
+
+        /// <summary>
+        /// Performs a left double click
+        /// </summary>
         public virtual void DoubleClick(Point point)
         {
-            DoubleClick(point, new NullActionListener());
+            DoubleClick(MouseButton.Left, point);
         }
 
         public virtual void DoubleClick(Point point, IActionListener actionListener)
         {
-            Location = point;
-            MouseLeftButtonUpAndDown();
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
-            MouseLeftButtonUpAndDown();
-            ActionPerformed(actionListener);
+            DoubleClick(MouseButton.Left, point, actionListener);
+        }
+
+        public static void LeftUp()
+        {
+            MouseButtonUp(MouseButton.Left);
+        }
+
+        public static void LeftDown()
+        {
+            MouseButtonDown(MouseButton.Left);
+        }
+
+        public static void RightUp()
+        {
+            MouseButtonUp(MouseButton.Right);
+        }
+
+        public static void RightDown()
+        {
+            MouseButtonDown(MouseButton.Right);
+        }
+
+        public static void MouseLeftButtonUpAndDown()
+        {
+            LeftDown();
+            LeftUp();
         }
 
         private static void SendInput(Input input)
@@ -151,38 +312,9 @@ namespace TestStack.White.InputDevices
             }
         }
 
-        private static MouseInput MouseInput(int command)
+        private static MouseInput MouseInput(int command, int mouseData = 0)
         {
-            return new MouseInput(command, GetMessageExtraInfo());
-        }
-
-        public virtual void RightClick(Point point, IActionListener actionListener)
-        {
-            Location = point;
-            RightClickHere(actionListener);
-        }
-
-        public virtual void RightClick(Point point)
-        {
-            RightClick(point, new NullActionListener());
-        }
-
-        internal virtual void RightClickHere(IActionListener actionListener)
-        {
-            RightClick();
-            actionListener.ActionPerformed(Action.WindowMessage);
-        }
-
-        public virtual void Click(Point point)
-        {
-            Click(point, new NullActionListener());
-        }
-
-        public virtual void Click(Point point, IActionListener actionListener)
-        {
-            Location = point;
-            Click();
-            ActionPerformed(actionListener);
+            return new MouseInput(command, GetMessageExtraInfo(), mouseData);
         }
 
         private static void ActionPerformed(IActionListener actionListener)
@@ -197,13 +329,16 @@ namespace TestStack.White.InputDevices
         /// Some drag and drop operation need to wait for application to process something while item is being dragged.
         /// This can be set but configuring DragStepCount property. This is by default set to 1.
         /// </summary>
-        /// <param name="draggedItem"></param>
-        /// <param name="dropItem"></param>
-        public virtual void DragAndDrop(IUIItem draggedItem, IUIItem dropItem)
+        public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, IUIItem dropItem)
         {
             Point startPosition = draggedItem.Bounds.Center();
             Point endPosition = dropItem.Bounds.Center();
-            DragAndDrop(draggedItem, startPosition, dropItem, endPosition);
+            DragAndDrop(mouseButton, draggedItem, startPosition, dropItem, endPosition);
+        }
+
+        public virtual void DragAndDrop(IUIItem draggedItem, IUIItem dropItem)
+        {
+            DragAndDrop(MouseButton.Left, draggedItem, dropItem);
         }
 
         /// <summary>
@@ -213,62 +348,67 @@ namespace TestStack.White.InputDevices
         /// Some drag and drop operation need to wait for application to process something while item is being dragged.
         /// This can be set but configuring DragStepCount property. This is by default set to 1.
         /// </summary>
+        /// <param name="mouseButton">The mouse button used for dragging</param>
         /// <param name="draggedItem"></param>
         /// <param name="startPosition">Start point of the drag. You can do uiItem.Bounds to get bounds of the UIItem and use RectX extension class in White.Core.UIA namespace to find different points</param>
         /// <param name="dropItem"></param>
         /// <param name="endPosition">End point of the drag. You can do uiItem.Bounds to get bounds of the UIItem and use RectX extension class in White.Core.UIA namespace to find different points</param>
-        public virtual void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
+        public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
         {
             Location = startPosition;
-            HoldForDrag();
+            MouseButtonDown(mouseButton);
             var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
             for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
-                double newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
-                double newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);
+                var newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
+                var newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);
                 var newPoint = new Point((int)newX, (int)newY);
                 Location = newPoint;
             }
-            LeftUp();
+            MouseButtonUp(mouseButton);
             dropItem.ActionPerformed(Action.WindowMessage);
         }
 
-        private void HoldForDrag()
+        public virtual void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
         {
-            LeftDown();
+            DragAndDrop(MouseButton.Left, draggedItem, startPosition, dropItem, endPosition);
         }
 
-        public static void MouseLeftButtonUpAndDown()
+        public virtual void DragHorizontally(MouseButton mouseButton, UIItem uiItem, int distance)
         {
-            LeftDown();
-            LeftUp();
+            Location = uiItem.Bounds.Center();
+            var currentXLocation = Location.X;
+            var currentYLocation = Location.Y;
+            MouseButtonDown(mouseButton);
+            ActionPerformed(uiItem);
+            Location = new Point(currentXLocation + distance, currentYLocation);
+            MouseButtonUp(mouseButton);
+        }
+
+        public virtual void DragVertically(MouseButton mouseButton, UIItem uiItem, int distance)
+        {
+            Location = uiItem.Bounds.Center();
+            var currentXLocation = Location.X;
+            var currentYLocation = Location.Y;
+            MouseButtonDown(mouseButton);
+            ActionPerformed(uiItem);
+            Location = new Point(currentXLocation, currentYLocation + distance);
+            MouseButtonUp(mouseButton);
+        }
+
+        public virtual void DragHorizontally(UIItem uiItem, int distance)
+        {
+            DragHorizontally(MouseButton.Left, uiItem, distance);
+        }
+
+        public virtual void DragVertically(UIItem uiItem, int distance)
+        {
+            DragVertically(MouseButton.Left, uiItem, distance);
         }
 
         public virtual void MoveOut()
         {
             Location = new Point(0, 0);
-        }
-
-        public virtual void DragHorizontally(UIItem uiItem, int distance)
-        {
-            Location = uiItem.Bounds.Center();
-            double currentXLocation = Location.X;
-            double currentYLocation = Location.Y;
-            HoldForDrag();
-            ActionPerformed(uiItem);
-            Location = new Point(currentXLocation + distance, currentYLocation);
-            LeftUp();
-        }
-
-        public virtual void DragVertically(UIItem uiItem, int distance)
-        {
-            Location = uiItem.Bounds.Center();
-            double currentXLocation = Location.X;
-            double currentYLocation = Location.Y;
-            HoldForDrag();
-            ActionPerformed(uiItem);
-            Location = new Point(currentXLocation, currentYLocation + distance);
-            LeftUp();
         }
     }
 }
