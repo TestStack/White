@@ -37,13 +37,17 @@ namespace TestStack.White.UITests.ControlTests
             {
                 Assert.Ignore();
             }
+            var header = dataGridWpfUnderTest.Header;
+            Assert.That(header.Columns, Has.Count.EqualTo(5));
             var rows = dataGridWpfUnderTest.Rows;
             Assert.That(rows, Has.Count.EqualTo(3));
             var row1 = rows.Get(0);
-            Assert.That(row1.Cells, Has.Count.EqualTo(4));
+            Assert.That(row1.Cells, Has.Count.EqualTo(5));
             Assert.That(row1.Cells[0].Text, Is.EqualTo("1"));
             Assert.That(row1.Cells[1].Text, Is.EqualTo("Item1"));
             Assert.That(row1.Cells[2].Text, Does.Contain("Simple"));
+            var imgRow = row1.Cells[4];
+            Assert.That(imgRow.AutomationElement.Current.ControlType.ProgrammaticName, Is.EqualTo("ControlType.Image"));
         }
 
         [Test]
