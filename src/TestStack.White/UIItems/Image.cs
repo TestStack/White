@@ -9,7 +9,7 @@ namespace TestStack.White.UIItems
         protected Image() {}
         public Image(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             HookClickEvent(eventListener);
         }

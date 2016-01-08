@@ -77,7 +77,7 @@ namespace TestStack.White.UIItems
             mouse.Click(Bounds.Center(), actionListener);
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new TextBoxEvent(this)); };
             Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler, ValuePattern.ValueProperty);

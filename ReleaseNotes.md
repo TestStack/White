@@ -23,6 +23,10 @@ None so far
   - TableVerticalScrollOffset to ITableVerticalScrollOffset
   - TreeNodeVisitor to ITreeNodeVisitor
   - MenuContainer to IMenuContainer
+  - UIItemEventListener to IUIItemEventListener
+- Renaming Functions
+  - Changes in IUIItem / UIItem
+    - Renamed the RaiseClickEvent to Invoke
 
 # 0.13.0 (7 June 2014)
 

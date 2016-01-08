@@ -11,12 +11,12 @@ namespace TestStack.White.Recording
     {
         private readonly IUIItem uiItem;
         private readonly Create createUserEvent;
-        private readonly UIItemEventListener eventListener;
+        private readonly IUIItemEventListener eventListener;
         private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SafeAutomationEventHandler));
 
         public delegate UserEvent Create(object[] parameters);
 
-        public SafeAutomationEventHandler(IUIItem uiItem, UIItemEventListener eventListener, Create createUserEvent)
+        public SafeAutomationEventHandler(IUIItem uiItem, IUIItemEventListener eventListener, Create createUserEvent)
         {
             this.uiItem = uiItem;
             this.eventListener = eventListener;
