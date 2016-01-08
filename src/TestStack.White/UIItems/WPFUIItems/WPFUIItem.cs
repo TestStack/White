@@ -4,63 +4,156 @@ using TestStack.White.UIItems.Finders;
 
 namespace TestStack.White.UIItems.WPFUIItems
 {
+    /// <summary>
+    ///     Extention Methods for <see cref="IUIItem" /> available only for <see cref="WindowsFramework.Wpf" /> Framework
+    /// </summary>
     public static class WPFUIItem
     {
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFUIItem));
+        static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof (WPFUIItem));
 
-        public static T Get<T>(this IUIItem uiItem, SearchCriteria searchCriteria) where T : UIItem
-        {
-            var uiItemContainer = GetUiItemContainer(uiItem);
-            return uiItemContainer.Get<T>(searchCriteria);
-        }
+        #region Get Single UI Item
 
-        public static T Get<T>(this IUIItem uiItem, string primaryIdentification) where T : UIItem
-        {
-            var uiItemContainer = GetUiItemContainer(uiItem);
-            return uiItemContainer.Get<T>(primaryIdentification);
-        }
-
+        /// <summary>
+        ///     Get a single UI Item by a specific Search Criteria
+        /// </summary>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
+        /// <returns>Located UI Item</returns>
         public static IUIItem Get(this IUIItem uiItem, SearchCriteria searchCriteria)
         {
             return GetUiItemContainer(uiItem).Get(searchCriteria);
         }
 
-        public static IUIItem Get(this IUIItem uiItem, string primaryIdentification)
+        /// <summary>
+        ///     Get the first item of a certain type
+        /// </summary>
+        /// <typeparam name="T">Type of Item</typeparam>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <returns>Located UI Item</returns>
+        public static T Get<T>(this IUIItem uiItem) where T : IUIItem
         {
-            return GetUiItemContainer(uiItem).Get(primaryIdentification);
+            return GetUiItemContainer(uiItem).Get<T>();
         }
 
-        public static IUIItem[] GetMultiple(this IUIItem uiItem, SearchCriteria criteria)
+        /// <summary>
+        ///     Get the first item of a certain type and a specific Search Criteria
+        /// </summary>
+        /// <typeparam name="T">Type of Item</typeparam>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
+        /// <returns>Located UI Item</returns>
+        public static T Get<T>(this IUIItem uiItem, SearchCriteria searchCriteria) where T : IUIItem
         {
-            return GetUiItemContainer(uiItem).GetMultiple(criteria);
+            return searchCriteria == null ? uiItem.Get<T>() : GetUiItemContainer(uiItem).Get<T>(searchCriteria);
         }
 
+        #endregion
+
+        #region Get Multiple UI Items
+
+        /// <summary>
+        ///     Get multiple UI Items
+        /// </summary>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <returns>Located UI Items</returns>
+        public static IUIItem[] GetMultiple(this IUIItem uiItem)
+        {
+            return GetUiItemContainer(uiItem).GetMultiple();
+        }
+
+        /// <summary>
+        ///     Get multiple UI Items by a specific Search Critera
+        /// </summary>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
+        /// <returns>Located UI Items</returns>
+        public static IUIItem[] GetMultiple(this IUIItem uiItem, SearchCriteria searchCriteria)
+        {
+            return searchCriteria == null
+                ? uiItem.GetMultiple()
+                : GetUiItemContainer(uiItem).GetMultiple(searchCriteria);
+        }
+
+        /// <summary>
+        ///     Get multiple UI Items
+        /// </summary>
+        /// <typeparam name="T">Type of Item</typeparam>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <returns>Located UI Items</returns>
+        public static T[] GetMultiple<T>(this IUIItem uiItem) where T : IUIItem
+        {
+            return GetUiItemContainer(uiItem).GetMultiple<T>();
+        }
+
+        /// <summary>
+        ///     Get multiple UI Items
+        /// </summary>
+        /// <typeparam name="T">Type of Item</typeparam>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
+        /// <returns>Located UI Items</returns>
+        public static T[] GetMultiple<T>(this IUIItem uiItem, SearchCriteria searchCriteria) where T : IUIItem
+        {
+            return searchCriteria == null
+                ? uiItem.GetMultiple<T>()
+                : GetUiItemContainer(uiItem).GetMultiple<T>(searchCriteria);
+        }
+
+        #endregion
+
+        #region Exists
+
+        /// <summary>
+        ///     Check if any UI Item of a certain Type exists
+        /// </summary>
+        /// <typeparam name="T">Type of Item</typeparam>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <returns><c>true</c> if there is any; otherwise, <c>false</c>.</returns>
         public static bool Exists<T>(this IUIItem uiItem) where T : IUIItem
         {
             return GetUiItemContainer(uiItem).Exists<T>(SearchCriteria.All);
         }
 
-        public static bool Exists<T>(this IUIItem uiItem, string primaryIdentification) where T : IUIItem
-        {
-            return GetUiItemContainer(uiItem).Exists<T>(SearchCriteria.ByAutomationId(primaryIdentification));
-        }
-
+        /// <summary>
+        ///     Check if any UI Item of a certain Type exists
+        /// </summary>
+        /// <typeparam name="T">Type of Item</typeparam>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
+        /// <returns><c>true</c> if there is any; otherwise, <c>false</c>.</returns>
         public static bool Exists<T>(this IUIItem uiItem, SearchCriteria searchCriteria) where T : IUIItem
         {
-            return GetUiItemContainer(uiItem).Exists(searchCriteria.AndControlType(typeof(T), uiItem.Framework));
+            return GetUiItemContainer(uiItem).Exists(searchCriteria.AndControlType(typeof (T), uiItem.Framework));
         }
 
+        /// <summary>
+        ///     Check if any UI Item of a certain Type exists
+        /// </summary>
+        /// <param name="uiItem">The root UI Item from were to start searching</param>
+        /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
+        /// <returns><c>true</c> if there is any; otherwise, <c>false</c>.</returns>
         public static bool Exists(this IUIItem uiItem, SearchCriteria searchCriteria)
         {
             return GetUiItemContainer(uiItem).Exists(searchCriteria);
         }
 
-        private static UIItemContainer GetUiItemContainer(IUIItem uiItem)
+        #endregion
+
+        #region Private
+
+        static IUIItemContainer GetUiItemContainer(IUIItem uiItem)
         {
             if (!(uiItem is UIItem))
+            {
                 throw new WhiteException("Cannot get UI Item container, uiItem must be an instance of UIItem");
-            if (uiItem.Framework != WindowsFramework.Wpf) Logger.Warn("Only WPF items should be treated as container items");
-            return ((UIItem)uiItem).AsContainer();
+            }
+            if (uiItem.Framework != WindowsFramework.Wpf)
+            {
+                Logger.Warn("Only WPF items should be treated as container items");
+            }
+            return ((UIItem) uiItem).AsContainer();
         }
+
+        #endregion
     }
 }

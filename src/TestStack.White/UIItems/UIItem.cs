@@ -421,7 +421,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        internal virtual UIItemContainer AsContainer()
+        internal virtual IUIItemContainer AsContainer()
         {
             return new UIItemContainer(AutomationElement, ActionListener);
         }
