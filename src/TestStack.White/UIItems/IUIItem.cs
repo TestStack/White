@@ -14,8 +14,8 @@ namespace TestStack.White.UIItems
     public interface IUIItem : IActionListener
     {
         /// <summary>
-        ///     Should be used only if white doesn't support the feature you are looking for.
-        ///     Knowledge of UIAutomation would be required. It would better idea to also raise an issue if you are using it.
+        /// Should be used only if white doesn't support the feature you are looking for.
+        /// Knowledge of UIAutomation would be required. It would better idea to also raise an issue if you are using it.
         /// </summary>
         AutomationElement AutomationElement { get; }
 
@@ -41,15 +41,15 @@ namespace TestStack.White.UIItems
         void Focus();
 
         /// <summary>
-        ///     An alternative to use instead of Focus, might sometimes be more reliable
+        /// An alternative to use instead of Focus, might sometimes be more reliable
         /// </summary>
         void SetForeground();
 
         void Visit(IWindowControlVisitor windowControlVisitor);
 
         /// <summary>
-        ///     Provides the Error on this UIItem. This would return Error object when this item has ErrorProvider displayed next
-        ///     to it.
+        /// Provides the Error on this UIItem. 
+        /// This would return Error object when this item has ErrorProvider displayed next to it.
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
@@ -58,17 +58,17 @@ namespace TestStack.White.UIItems
         bool NameMatches(string text);
 
         /// <summary>
-        ///     Performs mouse click at the center of this item
+        /// Performs mouse click at the center of this item
         /// </summary>
         void Click();
 
         /// <summary>
-        ///     Performs mouse double click at the center of this item
+        /// Performs mouse double click at the center of this item
         /// </summary>
         void DoubleClick();
 
         /// <summary>
-        ///     Perform keyboard action on this UIItem
+        ///Perform keyboard action on this UIItem
         /// </summary>
         /// <param name="key"></param>
         void KeyIn(KeyboardInput.SpecialKeys key);
@@ -78,12 +78,12 @@ namespace TestStack.White.UIItems
         string ToString();
 
         /// <summary>
-        ///     Internal to white and intended to be used for white recording
+        /// Internal to white and intended to be used for white recording
         /// </summary>
         void UnHookEvents();
 
         /// <summary>
-        ///     Internal to white and intended to be used for white recording
+        /// Internal to white and intended to be used for white recording
         /// </summary>
         /// <param name="eventListener"></param>
         void HookEvents(UIItemEventListener eventListener);
@@ -92,13 +92,13 @@ namespace TestStack.White.UIItems
         void LogStructure();
 
         /// <summary>
-        ///     Uses the Raw View provided by UIAutomation to find elements within this UIItem. RawView sometimes contains extra
-        ///     AutomationElements. This is internal to
-        ///     white although made public. Should be used only if the standard approaches dont work. Also if you end up using it
-        ///     please raise an issue
-        ///     so that it can be fixed.
-        ///     Please understand that calling this method on any UIItem which has a lot of child AutomationElements might result
-        ///     in very bad performance.
+        /// Uses the Raw View provided by UIAutomation to find elements within this UIItem. 
+        /// RawView sometimes contains extra AutomationElements. 
+        /// This is internal to white although made public. 
+        /// Should be used only if the standard approaches dont work. 
+        /// Also if you end up using it please raise an issue so that it can be fixed.
+        /// Please understand that calling this method on any UIItem,
+        /// which has a lot of child AutomationElements might result in very bad performance.
         /// </summary>
         /// <param name="searchCriteria"></param>
         /// <returns>null or found AutomationElement</returns>
@@ -110,7 +110,7 @@ namespace TestStack.White.UIItems
         void DrawHighlight(Color color);
 
         /// <summary>
-        ///     Captures an image of the element
+        /// Captures an image of the element
         /// </summary>
         Bitmap Capture();
     }

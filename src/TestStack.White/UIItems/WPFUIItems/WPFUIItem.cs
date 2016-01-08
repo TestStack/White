@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         #region Get Single UI Item
 
         /// <summary>
-        ///     Get a single UI Item by a specific Search Criteria
+        /// Get a single UI Item by a specific Search Criteria
         /// </summary>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
         /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
@@ -25,7 +25,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         }
 
         /// <summary>
-        ///     Get the first item of a certain type
+        /// Get the first item of a certain type
         /// </summary>
         /// <typeparam name="T">Type of Item</typeparam>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
@@ -36,7 +36,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         }
 
         /// <summary>
-        ///     Get the first item of a certain type and a specific Search Criteria
+        /// Get the first item of a certain type and a specific Search Criteria
         /// </summary>
         /// <typeparam name="T">Type of Item</typeparam>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
@@ -52,7 +52,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         #region Get Multiple UI Items
 
         /// <summary>
-        ///     Get multiple UI Items
+        /// Get multiple UI Items
         /// </summary>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
         /// <returns>Located UI Items</returns>
@@ -75,7 +75,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         }
 
         /// <summary>
-        ///     Get multiple UI Items
+        /// Get multiple UI Items
         /// </summary>
         /// <typeparam name="T">Type of Item</typeparam>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
@@ -86,7 +86,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         }
 
         /// <summary>
-        ///     Get multiple UI Items
+        /// Get multiple UI Items
         /// </summary>
         /// <typeparam name="T">Type of Item</typeparam>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
@@ -104,7 +104,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         #region Exists
 
         /// <summary>
-        ///     Check if any UI Item of a certain Type exists
+        /// Check if any UI Item of a certain Type exists
         /// </summary>
         /// <typeparam name="T">Type of Item</typeparam>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
@@ -115,7 +115,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         }
 
         /// <summary>
-        ///     Check if any UI Item of a certain Type exists
+        /// Check if any UI Item of a certain Type exists
         /// </summary>
         /// <typeparam name="T">Type of Item</typeparam>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
@@ -127,7 +127,7 @@ namespace TestStack.White.UIItems.WPFUIItems
         }
 
         /// <summary>
-        ///     Check if any UI Item of a certain Type exists
+        /// Check if any UI Item of a certain Type exists
         /// </summary>
         /// <param name="uiItem">The root UI Item from were to start searching</param>
         /// <param name="searchCriteria">The Search Criteria to use for the Search</param>
@@ -141,7 +141,7 @@ namespace TestStack.White.UIItems.WPFUIItems
 
         #region Private
 
-        static IUIItemContainer GetUiItemContainer(IUIItem uiItem)
+        private static IUIItemContainer GetUiItemContainer(IUIItem uiItem)
         {
             if (!(uiItem is UIItem))
             {

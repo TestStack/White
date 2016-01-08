@@ -51,7 +51,7 @@ namespace TestStack.White.UIItems
         #endregion
         
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.ToolTip" />
+        /// Implements <see cref="IUIItemContainer.ToolTip" />
         /// </summary>
         public virtual ToolTip ToolTip
         {
@@ -59,7 +59,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.GetToolTipOn" />
+        /// Implements <see cref="IUIItemContainer.GetToolTipOn" />
         /// </summary>
         public virtual ToolTip GetToolTipOn(IUIItem uiItem)
         {
@@ -71,7 +71,7 @@ namespace TestStack.White.UIItems
         #region Get UI Item
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Get{T}()" />
+        /// Implements <see cref="IUIItemContainer.Get{T}()" />
         /// </summary>
         public virtual T Get<T>() where T : IUIItem
         {
@@ -79,7 +79,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Get{T}(string)" />
+        /// Implements <see cref="IUIItemContainer.Get{T}(string)" />
         /// </summary>
         public virtual T Get<T>(string primaryIdentification) where T : IUIItem
         {
@@ -87,7 +87,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Get{T}(SearchCriteria)" />
+        /// Implements <see cref="IUIItemContainer.Get{T}(SearchCriteria)" />
         /// </summary>
         public virtual T Get<T>(SearchCriteria searchCriteria) where T : IUIItem
         {
@@ -95,7 +95,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Get(SearchCriteria)" />
+        /// Implements <see cref="IUIItemContainer.Get(SearchCriteria)" />
         /// </summary>
         public virtual IUIItem Get(SearchCriteria searchCriteria)
         {
@@ -103,13 +103,13 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Get(SearchCriteria, TimeSpan)" />
+        /// Implements <see cref="IUIItemContainer.Get(SearchCriteria, TimeSpan)" />
         /// </summary>
         public virtual IUIItem Get(SearchCriteria searchCriteria, TimeSpan busyTimeout)
         {
             try
             {
-                IUIItem uiItem = Retry.For(() =>
+                var uiItem = Retry.For(() =>
                     CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
                     b =>
                         (bool) b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
@@ -117,7 +117,7 @@ namespace TestStack.White.UIItems
 
                 if (uiItem == null)
                 {
-                    string debugDetails = Debug.Details(automationElement);
+                    var debugDetails = Debug.Details(automationElement);
                     throw new AutomationException(string.Format("Failed to get {0}", searchCriteria), debugDetails);
                 }
 
@@ -131,7 +131,7 @@ namespace TestStack.White.UIItems
             }
             catch (Exception e)
             {
-                string debugDetails = Debug.Details(automationElement);
+                var debugDetails = Debug.Details(automationElement);
                 throw new WhiteException(string.Format("Error occured while geting {0}", searchCriteria), debugDetails,
                     e);
             }
@@ -142,15 +142,15 @@ namespace TestStack.White.UIItems
         #region Get UI Items
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.GetMultiple()" />
+        /// Implements <see cref="IUIItemContainer.GetMultiple()" />
         /// </summary>
-        public IUIItem[] GetMultiple()
+        public virtual IUIItem[] GetMultiple()
         {
             return GetMultiple(SearchCriteria.All);
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.GetMultiple(SearchCriteria)" />
+        /// Implements <see cref="IUIItemContainer.GetMultiple(SearchCriteria)" />
         /// </summary>
         public virtual IUIItem[] GetMultiple(SearchCriteria criteria)
         {
@@ -158,17 +158,17 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.GetMultiple{T}()" />
+        /// Implements <see cref="IUIItemContainer.GetMultiple{T}()" />
         /// </summary>
-        public T[] GetMultiple<T>() where T : IUIItem
+        public virtual T[] GetMultiple<T>() where T : IUIItem
         {
             return GetMultiple<T>(SearchCriteria.All);
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.GetMultiple{T}(SearchCriteria)" />
+        /// Implements <see cref="IUIItemContainer.GetMultiple{T}(SearchCriteria)" />
         /// </summary>
-        public T[] GetMultiple<T>(SearchCriteria searchCriteria) where T : IUIItem
+        public virtual T[] GetMultiple<T>(SearchCriteria searchCriteria) where T : IUIItem
         {
             var items = GetMultiple(searchCriteria.AndControlType(typeof(T), Framework));
             return items.Select(item => (T)item).Where(cast => cast != null).ToArray();
@@ -179,7 +179,7 @@ namespace TestStack.White.UIItems
         #region UI Item Exists
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Exists{T}()" />
+        /// Implements <see cref="IUIItemContainer.Exists{T}()" />
         /// </summary>
         public virtual bool Exists<T>() where T : IUIItem
         {
@@ -187,7 +187,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Exists{T}(string)" />
+        /// Implements <see cref="IUIItemContainer.Exists{T}(string)" />
         /// </summary>
         public virtual bool Exists<T>(string primaryIdentification) where T : IUIItem
         {
@@ -195,7 +195,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Exists{T}(SearchCriteria)" />
+        /// Implements <see cref="IUIItemContainer.Exists{T}(SearchCriteria)" />
         /// </summary>
         public virtual bool Exists<T>(SearchCriteria searchCriteria) where T : IUIItem
         {
@@ -203,7 +203,7 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Implements <see cref="IUIItemContainer.Exists{SearchCriteria}()" />
+        /// Implements <see cref="IUIItemContainer.Exists{SearchCriteria}()" />
         /// </summary>
         public virtual bool Exists(SearchCriteria searchCriteria)
         {
@@ -223,9 +223,9 @@ namespace TestStack.White.UIItems
         #region Public
 
         /// <summary>
-        ///     Returns a list of UIItems contained in the container/window. This is not the same as AutomationElements because
-        ///     white needs to translate
-        ///     AutomationElements to UIItem. Hence for certain AE there might not be corresponding UIItem type.
+        /// Returns a list of UIItems contained in the container/window. 
+        /// This is not the same as AutomationElements because white needs to translate AutomationElements to UIItem. 
+        /// Hence for certain AE there might not be corresponding UIItem type.
         /// </summary>
         public virtual UIItemCollection Items
         {
@@ -233,9 +233,9 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Returns a keyboard which is associated to this window. Any operation performed using the mouse would wait till the
-        ///     window is busy after this
-        ///     operation. Before any operation is performed the window is brought to focus.
+        /// Returns a keyboard which is associated to this window. 
+        /// Any operation performed using the mouse would wait till the window is busy after this operation. 
+        /// Before any operation is performed the window is brought to focus.
         /// </summary>
         public virtual AttachedKeyboard Keyboard
         {
@@ -243,9 +243,9 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Returns a mouse which is associated to this window. Any operation performed using the mouse would wait till the
-        ///     window is busy after this
-        ///     operation. Before any operation is performed the window is brought to focus.
+        /// Returns a mouse which is associated to this window. 
+        /// Any operation performed using the mouse would wait till the window is busy after this operation. 
+        /// Before any operation is performed the window is brought to focus.
         /// </summary>
         public virtual AttachedMouse Mouse
         {
@@ -276,6 +276,10 @@ namespace TestStack.White.UIItems
             get { return CurrentContainerItemFactory.FindAll<Tab>(); }
         }
 
+        /// <summary>
+        /// Overrides <see cref="UIItem.ActionPerforming"/>
+        /// </summary>
+        /// <param name="uiItem"></param>
         public override void ActionPerforming(UIItem uiItem)
         {
             Focus();
@@ -283,14 +287,18 @@ namespace TestStack.White.UIItems
             screenItem.MakeVisible(this);
         }
 
+        /// <summary>
+        /// Implements <see cref="IVerticalSpanProvider.VerticalSpan"/>
+        /// </summary>
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds); }
         }
 
         /// <summary>
-        ///     Applicable only if CacheMode is used. This is for internal purpose of white and should not be used, as caching by
-        ///     itself is not supported
+        /// Applicable only if CacheMode is used. 
+        /// This is for internal purpose of white and should not be used, 
+        /// as caching by itself is not supported
         /// </summary>
         /// <param name="option"></param>
         public virtual void ReInitialize(InitializeOption option)
@@ -312,13 +320,13 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        ///     Find all the UIItems which belongs to a window and are within (bounds of) another UIItem.
+        /// Find all the UIItems which belongs to a window and are within (bounds of) another UIItem.
         /// </summary>
         /// <param name="containingItem">Containing item</param>
         /// <returns>List of all the items.</returns>
         public virtual List<UIItem> ItemsWithin(UIItem containingItem)
         {
-            UIItemCollection itemsWithin = factory.ItemsWithin(containingItem.Bounds, this);
+            var itemsWithin = factory.ItemsWithin(containingItem.Bounds, this);
             return itemsWithin.Where(item => !item.Equals(containingItem)).Cast<UIItem>().ToList();
         }
 
@@ -337,7 +345,7 @@ namespace TestStack.White.UIItems
         {
             var customUIItem = uiItem as CustomUIItem;
             if (customUIItem == null) return;
-            FieldInfo interceptorField = customUIItem.GetType().GetField("__interceptors",
+            var interceptorField = customUIItem.GetType().GetField("__interceptors",
                 BindingFlags.NonPublic | BindingFlags.Public |
                 BindingFlags.Instance);
             var interceptors = (IInterceptor[]) interceptorField.GetValue(customUIItem);
