@@ -8,6 +8,8 @@
       <ColumnDefinition Width="100"/>
       <ColumnDefinition Width="*"/>
     </Grid.ColumnDefinitions>
-    <Forms:DataGrid Name="testDataGrid"/>
-  </Grid>
+    <WindowsFormsHost>
+        <Forms:DataGridView Name="testDataGrid"/>
+    </WindowsFormsHost>
+    </Grid>
 </Window>
