@@ -18,6 +18,7 @@ namespace TestStack.White.UIItems
         /// Knowledge of UIAutomation would be required. It would better idea to also raise an issue if you are using it.
         /// </summary>
         AutomationElement AutomationElement { get; }
+
         bool Enabled { get; }
         WindowsFramework Framework { get; }
         Point Location { get; }
@@ -38,14 +39,17 @@ namespace TestStack.White.UIItems
         void RightClickAt(Point point);
         void RightClick();
         void Focus();
+
         /// <summary>
         /// An alternative to use instead of Focus, might sometimes be more reliable
         /// </summary>
         void SetForeground();
+
         void Visit(IWindowControlVisitor windowControlVisitor);
 
         /// <summary>
-        /// Provides the Error on this UIItem. This would return Error object when this item has ErrorProvider displayed next to it.
+        /// Provides the Error on this UIItem. 
+        /// This would return Error object when this item has ErrorProvider displayed next to it.
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
@@ -64,7 +68,7 @@ namespace TestStack.White.UIItems
         void DoubleClick();
 
         /// <summary>
-        /// Perform keyboard action on this UIItem
+        ///Perform keyboard action on this UIItem
         /// </summary>
         /// <param name="key"></param>
         void KeyIn(KeyboardInput.SpecialKeys key);
@@ -88,10 +92,13 @@ namespace TestStack.White.UIItems
         void LogStructure();
 
         /// <summary>
-        /// Uses the Raw View provided by UIAutomation to find elements within this UIItem. RawView sometimes contains extra AutomationElements. This is internal to 
-        /// white although made public. Should be used only if the standard approaches dont work. Also if you end up using it please raise an issue
-        /// so that it can be fixed.
-        /// Please understand that calling this method on any UIItem which has a lot of child AutomationElements might result in very bad performance.
+        /// Uses the Raw View provided by UIAutomation to find elements within this UIItem. 
+        /// RawView sometimes contains extra AutomationElements. 
+        /// This is internal to white although made public. 
+        /// Should be used only if the standard approaches dont work. 
+        /// Also if you end up using it please raise an issue so that it can be fixed.
+        /// Please understand that calling this method on any UIItem,
+        /// which has a lot of child AutomationElements might result in very bad performance.
         /// </summary>
         /// <param name="searchCriteria"></param>
         /// <returns>null or found AutomationElement</returns>

@@ -421,7 +421,7 @@ namespace TestStack.White.UIItems
             }
         }
 
-        internal virtual UIItemContainer AsContainer()
+        internal virtual IUIItemContainer AsContainer()
         {
             return new UIItemContainer(AutomationElement, ActionListener);
         }
@@ -444,8 +444,7 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void DrawHighlight(Color color)
         {
-            Rect rectangle = AutomationElement.Current.BoundingRectangle;
-
+            var rectangle = AutomationElement.Current.BoundingRectangle;
             if (rectangle != Rect.Empty)
             {
                 new Drawing.FrameRectangle(color, rectangle).Highlight();
