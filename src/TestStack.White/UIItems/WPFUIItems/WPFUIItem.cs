@@ -1,5 +1,3 @@
-using Castle.Core.Logging;
-using TestStack.White.Configuration;
 using TestStack.White.UIItems.Finders;
 
 namespace TestStack.White.UIItems.WPFUIItems
@@ -9,8 +7,6 @@ namespace TestStack.White.UIItems.WPFUIItems
     /// </summary>
     public static class WPFUIItem
     {
-        static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof (WPFUIItem));
-
         #region Get Single UI Item
 
         /// <summary>
@@ -143,15 +139,12 @@ namespace TestStack.White.UIItems.WPFUIItems
 
         private static IUIItemContainer GetUiItemContainer(IUIItem uiItem)
         {
-            if (!(uiItem is UIItem))
+            var item = uiItem as UIItem;
+            if (item == null)
             {
                 throw new WhiteException("Cannot get UI Item container, uiItem must be an instance of UIItem");
             }
-            if (uiItem.Framework != WindowsFramework.Wpf)
-            {
-                Logger.Warn("Only WPF items should be treated as container items");
-            }
-            return ((UIItem) uiItem).AsContainer();
+            return item.AsContainer();
         }
 
         #endregion

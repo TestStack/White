@@ -201,10 +201,10 @@ namespace TestStack.White.UIItems
         /// <returns></returns>
         public virtual string ErrorProviderMessage(Window window)
         {
-            AutomationElement element =
+            var element =
                 AutomationElement.FromPoint(automationElement.Current.BoundingRectangle.ImmediateExteriorEast());
             if (element == null) return null;
-            Rect errorProviderBounds = element.Current.BoundingRectangle;
+            var errorProviderBounds = element.Current.BoundingRectangle;
             if (automationElement.Current.BoundingRectangle.Right != errorProviderBounds.Left) return null;
             mouse.Location = errorProviderBounds.Center();
             actionListener.ActionPerformed(Action.WindowMessage);
@@ -421,8 +421,19 @@ namespace TestStack.White.UIItems
             }
         }
 
-        internal virtual IUIItemContainer AsContainer()
+        /// <summary>
+        /// Make an <see cref="IUIItemContainer"/> out of the <see cref="IUIItem"/>
+        /// </summary>
+        /// <returns>Returns an <c><see cref="IUIItemContainer"/></c> if possibe</returns>
+        public virtual IUIItemContainer AsContainer()
         {
+            if (Framework != WindowsFramework.Wpf)
+            {
+                Logger.Warn("Only WPF items should be treated as container items");
+                throw new WhiteException(string.Format(
+                        "Cannot create a Container since the UI Item is not of the correct Framework Type {0}",
+                        WindowsFramework.Wpf));
+            }
             return new UIItemContainer(AutomationElement, ActionListener);
         }
 
