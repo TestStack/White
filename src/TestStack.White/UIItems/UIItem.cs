@@ -430,6 +430,9 @@ namespace TestStack.White.UIItems
             if (Framework != WindowsFramework.Wpf)
             {
                 Logger.Warn("Only WPF items should be treated as container items");
+                throw new WhiteException(string.Format(
+                        "Cannot create a Container since the UI Item is not of the correct Framework Type {0}",
+                        WindowsFramework.Wpf));
             }
             return new UIItemContainer(AutomationElement, ActionListener);
         }
