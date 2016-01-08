@@ -337,7 +337,7 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void RightClick()
         {
-            RightClickOnCenter();
+            RightClickAt(Bounds.Center());
         }
 
         /// <summary>
@@ -591,11 +591,6 @@ namespace TestStack.White.UIItems
         #endregion
         
         #region Private
-
-        private void RightClickOnCenter()
-        {
-            RightClickAt(Bounds.Center());
-        }
 
         private void PerformIfValid(System.Action action)
         {

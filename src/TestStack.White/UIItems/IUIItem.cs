@@ -201,19 +201,19 @@ namespace TestStack.White.UIItems
         void RightClick();
 
         /// <summary>
-        /// Performas a right mouse click at a defined <remarks>Point</remarks>
+        /// Performs a right mouse click at a defined <see cref="Point"/>
         /// </summary>
-        /// <param name="point">Point to mouse right click</param>
+        /// <param name="point">Point where to mouse right click</param>
         void RightClickAt(Point point);
 
         /// <summary>
-        ///Perform keyboard action on this UI Item
+        /// Perform keyboard action on this UI Item
         /// </summary>
         /// <param name="key"></param>
         void KeyIn(KeyboardInput.SpecialKeys key);
 
         /// <summary>
-        /// Sets a value on this UI Item
+        /// Set a value on this UI Item
         /// </summary>
         /// <param name="value">Value to set</param>
         void SetValue(object value);
