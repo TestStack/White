@@ -32,7 +32,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             Item(itemText).UnCheck();
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate(object sender, AutomationPropertyChangedEventArgs e)
                           {

@@ -86,7 +86,7 @@ namespace TestStack.White.UIItems.TreeItems
             }
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             clickedTreeNodeHandler = delegate
                                          {
