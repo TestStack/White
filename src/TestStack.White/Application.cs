@@ -27,7 +27,7 @@ namespace TestStack.White
         /// <summary>
         /// Flag to indicate to keep the application open when disposing the object
         /// </summary>
-        public bool KeepOpenOnDispose { get; set; }
+        public virtual bool KeepOpenOnDispose { get; set; }
 
         protected Application()
         {

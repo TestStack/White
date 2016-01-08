@@ -46,7 +46,7 @@ namespace TestStack.White.UIItems.WindowItems
         /// <summary>
         /// Flag to indicate to keep the window open when disposing the object
         /// </summary>
-        public bool KeepOpenOnDispose { get; set; }
+        public virtual bool KeepOpenOnDispose { get; set; }
 
         static Window()
         {
