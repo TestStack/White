@@ -1,3 +1,4 @@
+using System;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
@@ -11,7 +12,7 @@ using Point = System.Windows.Point;
 
 namespace TestStack.White.UIItems
 {
-    public interface IUIItem : IActionListener
+    public interface IUIItem : IActionListener, IEquatable<IUIItem>
     {
         #region Automation
 
@@ -276,11 +277,11 @@ namespace TestStack.White.UIItems
         bool ValueOfEquals(AutomationProperty property, object compareTo);
 
         /// <summary>
-        /// CHeck if the UI Item equals an object
+        /// Check if the UI Item equals an object
         /// </summary>
-        /// <param name="obj">Object to compare to</param>
+        /// <param name="other">Object to compare to</param>
         /// <returns>Returns <c>true</c> if matches, else <c>false</c></returns>
-        bool Equals(object obj);
+        bool Equals(object other);
 
         /// <summary>
         /// Get the HashCode of the UI Item

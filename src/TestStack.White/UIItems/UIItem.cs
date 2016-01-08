@@ -446,14 +446,23 @@ namespace TestStack.White.UIItems
         /// <summary>
         /// Implements <see cref="IUIItem.Equals(object)"/>
         /// </summary>
-        public override bool Equals(object obj)
+        public override bool Equals(object other)
         {
-            if (this == obj)
+            if (other == null)
             {
-                return true;
+                return false;
             }
-            var uiItem = obj as UIItem;
-            return uiItem != null && Equals(automationElement, uiItem.AutomationElement);
+
+            var uiItem = other as IUIItem;
+            return uiItem != null && Equals(uiItem);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IEquatable{T}.Equals(T)"/>
+        /// </summary>
+        public bool Equals(IUIItem other)
+        {
+            return other != null && Equals(automationElement, other.AutomationElement);
         }
 
         /// <summary>
@@ -463,7 +472,7 @@ namespace TestStack.White.UIItems
         {
             return automationElement.GetHashCode();
         }
-
+        
         /// <summary>
         /// Implements <see cref="IUIItem.ToString()"/>
         /// </summary>
