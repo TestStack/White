@@ -1,9 +1,3 @@
----
-layout: layout
-title: Change Log
-order: 9
----
-
 ## Version 0.11.0
 ### Namespace Change
 White Namespace changed from White.Core to TestStack.White

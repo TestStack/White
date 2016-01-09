@@ -1,8 +1,3 @@
----
-layout: layout
-title: Test Entities
-order: 2
----
 White supports the concept of Entities in your tests. Entities represent a *thing* in your application. This might be a Customer, and your application might have a new Customer Screen. 
 
 At the moment the communication between screen and test is done by using strings. e.g.

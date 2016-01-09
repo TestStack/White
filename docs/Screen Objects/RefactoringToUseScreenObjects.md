@@ -1,9 +1,3 @@
----
-layout: layout
-title: Refactoring to use Screen Objects
-order: 1
----
-
 ## Making Tests more Readable
 Lets start with an example of which creates a customer.
 

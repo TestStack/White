@@ -1,8 +1,3 @@
----
-layout: layout
-title: Position Based Search
----
-
 ### Speed up performance by Position based search
 
 Performance of finding UIItems (based on search criteria) is proportional to the number of items on a window. A UIItem is found by enumerating over all the controls in a window (at windows messages level, everything is a window, try spy++ to understand this better). Smaller the scope of faster would be search. Position based search is based on this idea.

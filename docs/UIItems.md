@@ -1,9 +1,3 @@
----
-layout: layout
-title: UI Items
-order: 2
----
-
 ## UIItem Identification
 Managed UI applications have a mechanism for identifying controls by specifying them names. These names are available for finding controls on using UIAutomation API. Name property used while developing application show up as AutomationId when using UIA API.
 Un-managed applications donot have such feature. In these applications the controls are usually identified by text (white terminology) (name in UIA terminology).

@@ -1,9 +1,3 @@
----
-layout: layout
-title: Screen Repository
-order: 3
----
-
 Our hand written screen class:
 
 		public class CreateCustomerStep1Screen

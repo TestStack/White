@@ -1,8 +1,3 @@
----
-layout: layout
-title: Controlling Search Depth
----
-
  - UI Automation provides two approach for querying the UIAutomation tree of an automation element.
  - Search on automation element tree: In this search the API user specifies the criteria and scope of the search. The scope is of two levels children or descendant. This is simpler API as the user doesn't need to match against every element.
 

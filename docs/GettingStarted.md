@@ -1,9 +1,3 @@
----
-layout: layout
-title: Getting started with White
-order: 1
----
-
 ### Pre-requisites
 .NET 4.0 framework
 

@@ -1,8 +1,3 @@
----
-layout: layout
-title: Third Party Controls
----
-
 White provides support for all the controls which comes with standard .NET libraries. This support is partially just abstraction over UIAutomation and window messages. So, in case of third party controls like DevExpress, PureComponents etc, there are no standard UIItem implementation in white which you can use out of the box. The reason being the automation element structure beneath is unique to each of them. These Custom UI Item can be plugged in to white.
 While implementing these you might face issues. Some known issues and possible resolution is provided below. Soon we would have a sample for each of them available here:
 

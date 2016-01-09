@@ -1,7 +1,3 @@
----
-layout: layout
-title: Localisation
----
 White uses text internally to find UIItems. These string differ based on locale. e.g. in Table(DataGrid) the header, row header etc, or scroll bars, are identified by some names given to them. These don't work in locales which are not english based. While doesn't provide all the locale values but allows you to configure these text.
 In the app.config define sections as:
 

@@ -1,8 +1,3 @@
----
-layout: layout
-title: Screen Objects in White
----
-
 **This is significant addition to white. This should allow one to design the tests better and get rid of repeated initialization of UIItems in the tests. Brings the concept of convention over configuration to functional testing**
 
 TestStack.White provides the engine for automating windows applications. Programs written using Core expresses intention of tests are UI Controls level. TestStack.White's API is tries to keep the intent of the program very clear. 

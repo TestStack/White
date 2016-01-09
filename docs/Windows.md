@@ -1,9 +1,3 @@
----
-layout: layout
-title: Working with Windows
-order: 3
----
-
 ## Getting window
 ### Application Windows
 	List<Window> windows = application.GetWindows(); //Returns a list of all main windows in belonging to an application. It doesn't return modal windows.

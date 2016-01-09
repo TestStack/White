@@ -1,9 +1,3 @@
----
-layout: layout
-title: Configuration
-order: 5
----
-
 ##NOTE: This section needs revisiting and is likely out of date
 
 Configuration

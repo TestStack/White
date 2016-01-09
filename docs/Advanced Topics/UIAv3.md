@@ -1,7 +1,3 @@
----
-layout: layout
-title: UIA v3/COM Api
----
 White will soon be running against the [UIA COM Wrapper](https://github.com/JakeGinnivan/UIAComWrapper) which means that White can support and will expose UI patterns for Virtualisation, and also add support for WinRT applications.
 
 # Breaking Changes

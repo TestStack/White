@@ -1,8 +1,3 @@
----
-layout: layout
-title: Mouse and Keyboard
----
-
 ## Using keyboard/mouse directly
 Ideally you don't need to use these directly but if you do want to use. If you do want to use it then please use window.Keyboard and window.Mouse instead on instantiating a new window. The different between these two is that the use of Keyboard.Instance gives you raw keyboard and any operation performed on it would not wait till the window is busy. You can call window.WaitForInputIdle as well.
 

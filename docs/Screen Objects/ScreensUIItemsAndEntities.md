@@ -1,7 +1,3 @@
----
-layout: layout
-title: Screens, UIItems and Entities
----
 Lets have another look closely at the CreateCustomerStep1Screen's FillAndNext method.
 
 		public virtual CreateCustomerStep2Screen FillAndNext(Customer customer)

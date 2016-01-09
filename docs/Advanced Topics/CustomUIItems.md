@@ -1,7 +1,3 @@
----
-layout: layout
-title: Custom UI Items
----
 Fundamentally all UIItems are either elementary (Label, e.g. having no other item in it) or composed of other UI Items. In white there is in-built support for standard UIItems. These are called standard mainly because of their prevalent use and ready availability in development environments.
 When we use "third party controls", this might not be enough. Even though these UI Items are still made up of elementary items and can be automated by finding them individually. But we might miss some abstraction while doing this. Also we need build a lot of things in these items ourselves which are already done in white for other items. This is where Custom UI Item would be useful.
 

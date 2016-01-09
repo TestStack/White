@@ -1,8 +1,3 @@
----
-layout: layout
-title: Handling waiting in White
----
-
 White strives to eliminate any need whatsoever for doing Thread.Sleep and retry in your test programs. So if you find yourself doing these things in your program, please use any one applicable options below. If you don't find it, please raise an issue.
 
 1. When any action is performed white automatically waits till the window can respond again to next action. One of the thing white does during this is to call windowPattern.WaitForInputIdle on the parent window of the UI item on which the action is performed. In cases where the window would be closed as a result of the action performed, this call would throw exception internally, depending on timing of the call. The caller doesn't have to worry about this as this exception is trapped.

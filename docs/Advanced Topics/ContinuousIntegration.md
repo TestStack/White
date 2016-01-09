@@ -1,8 +1,3 @@
----
-layout: layout
-title: Continuous Integration
----
-
 White drives the mouse and keyboard for it's automation, and only falls back to the automation API's when it can't use the mouse/keyboard. This simulates real world behavior more than using automation directly.  
 This means that White has to run on an UNLOCKED desktop.
 

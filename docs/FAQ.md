@@ -1,9 +1,3 @@
----
-layout: layout
-title: FAQ
-order: 10
----
-
 1. **Would there be support for Web Application testing?**  
 Because there are already a lot of good tools which do this, developing it is not under consideration at this point of time. Look at Selenium, Sahi, Watir, Watin and Watij for testing web applications.
 
