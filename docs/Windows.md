@@ -32,7 +32,7 @@ any window, including it child controls can have only one visible tooltip at a t
 
 	string message = window.ToolTip;
 	
-In some applications the tool tip is associated to an error provider which looks like ![Windows](../img/White/Windows.png). 
+In some applications the tool tip is associated to an error provider which looks like ![Windows](images/Windows.png). 
 
 When mouse is hovered on it, a message is shown as tooltip. This need not be implemented by user as it is pretty standard behaviour and white provides it out of the box. If the message is set on the error provider for ComboBox then:
 

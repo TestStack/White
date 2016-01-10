@@ -101,4 +101,4 @@ The test now uses the Customer object
 
 Our current design now looks like this.
 
-![TestEntities](../../img/White/ScreenObjects/TestEntities.png)
+![TestEntities](../images/ScreenObjects/TestEntities.png)

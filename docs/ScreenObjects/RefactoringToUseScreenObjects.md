@@ -74,7 +74,7 @@ So the example becomes like this.
 Setup method (as it has the SetUpAttribute on it) would be executed before every test. Also common stuff between two tests has been extracted into a method.
 From the point of organizing the tests I would put these two tests in a class (TestFixture in NUnit terminology) like CreateCustomerTest.
 
-![RefactoringToUseScreenObjects](../../img/White/ScreenObjects/RefactoringToUseScreenObjects.png)
+![RefactoringToUseScreenObjects](../images/ScreenObjects/RefactoringToUseScreenObjects.png)
 
 ## Reusing code across different tests
 We have written test for create customer. Lets write a test for searching a customer.
@@ -248,7 +248,7 @@ Using these screen objects, this is how our test looks like.
 
 Functional tests (like any other program) should be readable. The intent of test here is lot clearer than when test was dealing with the UIItems on the screen. This is what we have built.
 
-![RefactoringToUseScreenObjects](../../img/White/ScreenObjects/RefactoringToUseScreenObjects1.png)
+![RefactoringToUseScreenObjects](../images/ScreenObjects/RefactoringToUseScreenObjects1.png)
 
 
 We have now got to the point where we have written our own Screen Objects. White takes this further!

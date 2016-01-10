@@ -3,7 +3,7 @@ White is a framework for automating rich client applications based on Win32, Win
 ##How white works?
 
 At runtime white programs stack would look like this.
-![Index](../img/White/Index.png)
+![Index](images/Index.png)
 
 White programs **must** run in a different process from the AUT (Application Under Test) process.
 
@@ -40,7 +40,7 @@ See Working with window for more.
 UIItems can be searched based on a lot of parameters. For more look here: UIItem Identification
 
 ## Architecture
-![Index1](../img/White/Index1.png)
+![Index1](images/Index1.png)
 
 ## Silverlight Support
 You would need to add reference to white.webbrowser.dll along with TestStack.White.dll.
