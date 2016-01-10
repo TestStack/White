@@ -17,7 +17,7 @@ pages:
     - Refactoring to use Screen Objects: ScreenObjects/RefactoringToUseScreenObjects.md
     - Test Entities: ScreenObjects/TestEntities.md
 - Advanced Topics:
-    - Index: Index.md
+    - Index: AdvancedTopics/index.md
     - Continuous Integration: AdvancedTopics/ContinuousIntegration.md
     - Custom UI Items: AdvancedTopics/CustomUIItems.md
     - Localisation: AdvancedTopics/Localisation.md
