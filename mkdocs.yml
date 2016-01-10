@@ -3,7 +3,7 @@ theme: readthedocs
 repo_url: https://github.com/TestStack/White
 
 pages:
-- Home: index.md
+- Home: readme.md
 - Changelog: ChangeLog.md
 - Configuration: Configuration.md
 - Getting Started: GettingStarted.md
