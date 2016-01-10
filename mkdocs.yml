@@ -11,19 +11,19 @@ pages:
 - Windows: Windows.md
 - FAQ: FAQ.md
 - Screen Objects:
-    - Screen Objects: Screen Objects\Index.md
-    - Screen Repository: Screen Objects\ScreenRepository.md
-    - Screens UIItems And Entities: Screen Objects\ScreensUIItemsAndEntities.md
-    - Refactoring to use Screen Objects: Screen Objects\RefactoringToUseScreenObjects.md
-    - Test Entities: Screen Objects\TestEntities.md
+    - Screen Objects: ScreenObjects/Index.md
+    - Screen Repository: ScreenObjects/ScreenRepository.md
+    - Screens UIItems And Entities: ScreenObjects/ScreensUIItemsAndEntities.md
+    - Refactoring to use Screen Objects: ScreenObjects/RefactoringToUseScreenObjects.md
+    - Test Entities: ScreenObjects/TestEntities.md
 - Advanced Topics:
     - Index: Index.md
-    - Continuous Integration: Advanced Topics\ContinuousIntegration.md
-    - Custom UI Items: Advanced Topics\CustomUIItems.md
-    - Localisation: Advanced Topics\Localisation.md
-    - Mouse and keyboard: Advanced Topics\MouseAndKeyboard.md
-    - Search Depth: Advanced Topics\SearchDepth.md
-    - Waiting: Advanced Topics\Waiting.md
-    - Third party controls: Advanced Topics\ThirdPartyControls.md
-    - Position based search: Advanced Topics\PositionBasedSearch.md
-    - UIA v3: Advanced Topics\UIAv3.md
+    - Continuous Integration: AdvancedTopics/ContinuousIntegration.md
+    - Custom UI Items: AdvancedTopics/CustomUIItems.md
+    - Localisation: AdvancedTopics/Localisation.md
+    - Mouse and keyboard: AdvancedTopics/MouseAndKeyboard.md
+    - Search Depth: AdvancedTopics/SearchDepth.md
+    - Waiting: AdvancedTopics/Waiting.md
+    - Third party controls: AdvancedTopics/ThirdPartyControls.md
+    - Position based search: AdvancedTopics/PositionBasedSearch.md
+    - UIA v3: AdvancedTopics/UIAv3.md
