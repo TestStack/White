@@ -82,7 +82,7 @@
     <Compile Include="ScreenAttributes\FrameworkIdAttribute.cs" />
     <Compile Include="ScreenAttributes\IndexAttribute.cs" />
     <Compile Include="Configuration\RepositoryAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\RepositoryConfiguration.cs" />
+    <Compile Include="Configuration\IRepositoryConfiguration.cs" />
     <Compile Include="EntityMapping\Entities.cs" />
     <Compile Include="EntityMapping\Entity.cs" />
     <Compile Include="EntityMapping\EntityField.cs" />
@@ -162,4 +162,3 @@
   </Target>
   -->
 </Project>
-

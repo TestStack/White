@@ -6,9 +6,9 @@ using TestStack.White.Configuration;
 
 namespace TestStack.White.ScreenObjects.Configuration
 {
-    public class RepositoryAppXmlConfiguration : AssemblyConfiguration, RepositoryConfiguration
+    public class RepositoryAppXmlConfiguration : AssemblyConfiguration, IRepositoryConfiguration
     {
-        public static RepositoryConfiguration instance;
+        public static IRepositoryConfiguration instance;
 
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
         private const string UseHistoryKey = "UseHistory";
@@ -22,7 +22,7 @@ namespace TestStack.White.ScreenObjects.Configuration
             DefaultValues[UseHistoryKey] = false;
         }
 
-        public static RepositoryConfiguration Instance
+        public static IRepositoryConfiguration Instance
         {
             get { return instance ?? (instance = new RepositoryAppXmlConfiguration()); }
         }

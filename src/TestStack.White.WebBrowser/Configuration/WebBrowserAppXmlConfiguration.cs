@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using TestStack.White.Bricks;
 using TestStack.White.Configuration;
 
-namespace TestStack.White.WebBrowser.Config
+namespace TestStack.White.WebBrowser.Configuration
 {
-    public class WebBrowserAppXmlConfiguration : AssemblyConfiguration, WebBrowserConfiguration
+    public class WebBrowserAppXmlConfiguration : AssemblyConfiguration, IWebBrowserConfiguration
     {
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
-        private static WebBrowserConfiguration instance;
+        private static IWebBrowserConfiguration instance;
 
         static WebBrowserAppXmlConfiguration()
         {
@@ -18,7 +18,7 @@ namespace TestStack.White.WebBrowser.Config
         private WebBrowserAppXmlConfiguration() : base("White", "WebBrowser", DefaultValues, 
             CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WebBrowserAppXmlConfiguration))){}
 
-        public static WebBrowserConfiguration Instance
+        public static IWebBrowserConfiguration Instance
         {
             get { return instance ?? (instance = new WebBrowserAppXmlConfiguration()); }
         }

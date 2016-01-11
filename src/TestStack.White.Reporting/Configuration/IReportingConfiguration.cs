@@ -1,6 +1,6 @@
 namespace TestStack.White.Reporting.Configuration
 {
-    public interface ReportingConfiguration
+    public interface IReportingConfiguration
     {
         bool PublishTestReports { get; }
     }
