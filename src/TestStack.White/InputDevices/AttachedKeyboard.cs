@@ -11,14 +11,14 @@ namespace TestStack.White.InputDevices
     {
         #region Fields
 
-        private readonly UIItemContainer container;
+        private readonly IUIItemContainer container;
         private readonly IKeyboard keyboard;
 
         #endregion
 
         #region Constructor
 
-        internal AttachedKeyboard(UIItemContainer container, IKeyboard keyboard)
+        internal AttachedKeyboard(IUIItemContainer container, IKeyboard keyboard)
         {
             this.container = container;
             this.keyboard = keyboard;
