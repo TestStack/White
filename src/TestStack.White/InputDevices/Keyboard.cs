@@ -11,17 +11,11 @@ namespace TestStack.White.InputDevices
     /// </summary>
     public class Keyboard : BaseKeyboard, IKeyboard
     {
-        #region Fields
-
         /// <summary>
         /// Use Window.Keyboard method to get handle to the Keyboard. Keyboard instance got using this method would not wait while the application
         /// is busy.
         /// </summary>
-        public static readonly Keyboard Instance = new Keyboard();
-        
-        #endregion
-
-        #region Implements from BaseKeyboard
+        public static readonly IKeyboard Instance = new Keyboard();
 
         /// <summary>
         /// Overrides <see cref="BaseKeyboard.Enter(string)"/>
@@ -66,10 +60,6 @@ namespace TestStack.White.InputDevices
             actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
         }
 
-        #endregion
-
-        #region Implements IKeyboard
-
         /// <summary>
         /// Implements <see cref="IKeyboard.Send(string, IActionListener)"/>
         /// </summary>
@@ -78,30 +68,30 @@ namespace TestStack.White.InputDevices
             if (HeldKeys.Count() > 0) keysToType = keysToType.ToLower();
 
             CapsLockOn = false;
-            foreach (var key in from c in keysToType let key = BareMetaKeyboard.VkKeyScan(c) where !c.Equals('\r') select key)
+            foreach (var key in from c in keysToType let key = BareMetalKeyboard.VkKeyScan(c) where !c.Equals('\r') select key)
             {
-                if (BareMetaKeyboard.ShiftKeyIsNeeded(key))
+                if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
                 {
                     SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
                 }
-                if (BareMetaKeyboard.CtrlKeyIsNeeded(key))
+                if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
                 {
                     SendKeyDown((short) KeyboardInput.SpecialKeys.CONTROL, false);
                 }
-                if (BareMetaKeyboard.AltKeyIsNeeded(key))
+                if (BareMetalKeyboard.AltKeyIsNeeded(key))
                 {
                     SendKeyDown((short) KeyboardInput.SpecialKeys.ALT, false);
                 }
                 Press(key, false);
-                if (BareMetaKeyboard.ShiftKeyIsNeeded(key))
+                if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
                 {
                     SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
                 }
-                if (BareMetaKeyboard.CtrlKeyIsNeeded(key))
+                if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
                 {
                     SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
                 }
-                if (BareMetaKeyboard.AltKeyIsNeeded(key))
+                if (BareMetalKeyboard.AltKeyIsNeeded(key))
                 {
                     SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
                 }
@@ -138,7 +128,5 @@ namespace TestStack.White.InputDevices
             RemoveUsedKey(key);
             actionListener.ActionPerformed(Action.WindowMessage);
         }
-
-        #endregion
     }
 }

@@ -9,22 +9,14 @@ namespace TestStack.White.InputDevices
     /// </summary>
     public class AttachedKeyboard : IBaseKeyboard
     {
-        #region Fields
-
         private readonly IUIItemContainer container;
         private readonly IKeyboard keyboard;
-
-        #endregion
-
-        #region Constructor
 
         internal AttachedKeyboard(IUIItemContainer container, IKeyboard keyboard)
         {
             this.container = container;
             this.keyboard = keyboard;
         }
-
-        #endregion
 
         /// <summary>
         /// Implements <see cref="IBaseKeyboard.Enter(string)"/>

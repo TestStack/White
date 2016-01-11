@@ -33,7 +33,7 @@ namespace TestStack.White.UIItems
         protected IActionListener actionListener;
         internal static readonly Mouse mouse = Mouse.Instance;
         protected readonly PrimaryUIItemFactory factory;
-        internal readonly Keyboard keyboard = Keyboard.Instance;
+        internal readonly IKeyboard keyboard = Keyboard.Instance;
         protected IScrollBars scrollBars;
         private AutomationEventHandler handler;
         protected readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItem));
