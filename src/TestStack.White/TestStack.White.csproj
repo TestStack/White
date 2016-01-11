@@ -95,10 +95,7 @@
     <Compile Include="Configuration\WhiteDefaultLogger.cs" />
     <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
     <Compile Include="Drawing\ScreenRectangle.cs" />
-    <Compile Include="InputDevices\IBaseMouse.cs" />
     <Compile Include="InputDevices\Input64.cs" />
-    <Compile Include="InputDevices\BareMetalMouse.cs" />
-    <Compile Include="InputDevices\BaseMouse.cs" />
     <Compile Include="InputDevices\MouseButton.cs" />
     <Compile Include="InputDevices\SystemMetric.cs" />
     <Compile Include="Interceptors\IWhiteInterceptor.cs" />
