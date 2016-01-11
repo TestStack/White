@@ -11,7 +11,7 @@ namespace TestStack.White.Configuration
 {
     public class CoreAppXmlConfiguration : AssemblyConfiguration, ICoreConfiguration
     {
-        private static ICoreConfiguration instance = new CoreAppXmlConfiguration();
+        private static ICoreConfiguration instance;
         private readonly DynamicProxyInterceptors interceptors = new DynamicProxyInterceptors();
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
@@ -34,12 +34,12 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("MaxElementSearchDepth", 10);
             DefaultValues.Add("DoubleClickInterval", 0);
             DefaultValues.Add("MoveMouseToGetStatusOfHourGlass", true);
-            DefaultValues.Add("KeepOpenOnDispose", false);            
+            DefaultValues.Add("KeepOpenOnDispose", false);
         }
 
         public static ICoreConfiguration Instance
         {
-            get { return instance; }
+            get { return instance ?? (instance = new CoreAppXmlConfiguration()); }
         }
 
         private CoreAppXmlConfiguration()
