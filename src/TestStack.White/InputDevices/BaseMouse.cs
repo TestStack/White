@@ -14,16 +14,10 @@ namespace TestStack.White.InputDevices
 {
     public abstract class BaseMouse : IBaseMouse
     {
-        #region Fields
-
         protected readonly Dictionary<MouseButton, DateTime> LastClickTimes;
         protected readonly Dictionary<MouseButton, Point> LastClickLocations;
         protected readonly short DoubleClickTime = BareMetalMouse.GetDoubleClickTime();
         protected const int ExtraMillisecondsBecauseOfBugInWindows = 13;
-
-        #endregion
-
-        #region Constructor
 
         protected BaseMouse()
         {
@@ -35,10 +29,6 @@ namespace TestStack.White.InputDevices
                 LastClickLocations.Add(mouseButton, new Point(0, 0));
             }
         }
-
-        #endregion
-
-        #region Mouse Properties
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.Location"/>
@@ -75,10 +65,6 @@ namespace TestStack.White.InputDevices
             }
         }
 
-        #endregion
-
-        #region Mouse Click
-        
         /// <summary>
         /// Implements <see cref="IBaseMouse.Click(MouseButton)"/>
         /// </summary>
@@ -112,10 +98,6 @@ namespace TestStack.White.InputDevices
             Click(mouseButton);
         }
 
-        #endregion
-
-        #region Double Click
-        
         /// <summary>
         /// Implements <see cref="IBaseMouse.DoubleClick(MouseButton)"/>
         /// </summary>
@@ -134,10 +116,6 @@ namespace TestStack.White.InputDevices
             Move(point);
             DoubleClick(mouseButton);
         }
-
-        #endregion
-
-        #region Mouse Left Click
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.Click()"/>
@@ -173,10 +151,6 @@ namespace TestStack.White.InputDevices
             Click(MouseButton.Left, point);
         }
         
-        #endregion
-
-        #region Mouse Left Double Click
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.DoubleClick()"/>
         /// </summary>
@@ -212,10 +186,6 @@ namespace TestStack.White.InputDevices
             DoubleClick(MouseButton.Left, point);
         }
 
-        #endregion
-
-        #region Right Click
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.RightClick()"/>
         /// </summary>
@@ -231,10 +201,6 @@ namespace TestStack.White.InputDevices
         {
             Click(MouseButton.Right, point);
         }
-
-        #endregion
-
-        #region Drag And Drop
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.DragAndDrop(IUIItem, IUIItem)"/>
@@ -281,10 +247,6 @@ namespace TestStack.White.InputDevices
             dropItem.ActionPerformed(Action.WindowMessage);
         }
 
-        #endregion
-
-        #region Drag
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.DragHorizontally(IUIItem, int)"/>
         /// </summary>
@@ -329,10 +291,6 @@ namespace TestStack.White.InputDevices
             BareMetalMouse.MouseButtonUp(mouseButton);
         }
 
-        #endregion
-
-        #region Move
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.MoveOut()"/>
         /// </summary>
@@ -349,12 +307,6 @@ namespace TestStack.White.InputDevices
             Location = position;
         }
 
-        #endregion
-
-        #region Public
-
         public abstract void ActionPerformed(IActionListener actionListener);
-
-        #endregion
     }
 }

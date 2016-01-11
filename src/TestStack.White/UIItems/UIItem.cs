@@ -31,7 +31,7 @@ namespace TestStack.White.UIItems
 
         protected readonly AutomationElement automationElement;
         protected IActionListener actionListener;
-        internal static readonly Mouse mouse = Mouse.Instance;
+        internal static readonly Mouse mouse = new Mouse();
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
         protected IScrollBars scrollBars;

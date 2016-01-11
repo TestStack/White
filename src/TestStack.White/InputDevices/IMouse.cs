@@ -6,8 +6,6 @@ namespace TestStack.White.InputDevices
 {
     public interface IMouse : IBaseMouse
     {
-        #region Mouse Click
-
         /// <summary>
         /// Perform a Click Operation
         /// </summary>
@@ -31,10 +29,6 @@ namespace TestStack.White.InputDevices
         /// </remarks>
         void Click(MouseButton mouseButton, Point point, IActionListener actionListener);
 
-        #endregion
-
-        #region Double Click
-        
         /// <summary>
         /// Perform a Double Click Operation
         /// </summary>
@@ -49,10 +43,6 @@ namespace TestStack.White.InputDevices
         /// <param name="point">Point where to Double Click on</param>
         /// <param name="actionListener">ActionListener to use after Click Operation</param>
         void DoubleClick(MouseButton mouseButton, Point point, IActionListener actionListener);
-
-        #endregion
-
-        #region Left Click
 
         /// <summary>
         /// Perform a Left Click Operation
@@ -69,10 +59,6 @@ namespace TestStack.White.InputDevices
         /// <param name="actionListener">ActionListener to use after Click Operation</param>
         void LeftClick(Point point, IActionListener actionListener);
 
-        #endregion
-
-        #region Left Double Click
-
         /// <summary>
         /// Perform a Double Click Operation
         /// </summary>
@@ -88,10 +74,6 @@ namespace TestStack.White.InputDevices
         /// <param name="actionListener">ActionListener to use after Click Operation</param>
         void LeftDoubleClick(Point point, IActionListener actionListener);
 
-        #endregion
-
-        #region Right Click
-
         /// <summary>
         /// Perform a Right Click Operation
         /// </summary>
@@ -99,17 +81,10 @@ namespace TestStack.White.InputDevices
         /// <param name="actionListener">ActionListener to use after Click Operation</param>
         void RightClick(Point point, IActionListener actionListener);
 
-        #endregion
-
-        #region Perform Action
-
         /// <summary>
         /// Perform an Action on the Action Listener 
         /// </summary>
         /// <param name="actionListener"><see cref="IActionListener"/> to perform an Action on</param>
         void ActionPerformed(IActionListener actionListener);
-
-        #endregion
-
     }
 }

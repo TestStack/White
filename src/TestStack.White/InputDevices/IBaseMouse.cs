@@ -6,8 +6,6 @@ namespace TestStack.White.InputDevices
 {
     public interface IBaseMouse
     {
-        #region Mouse Properties
-
         /// <summary>
         /// Location <see cref="Point"/> of Mouse
         /// </summary>
@@ -18,10 +16,6 @@ namespace TestStack.White.InputDevices
         /// </summary>
         MouseCursor Cursor { get; }
 
-        #endregion
-
-        #region Mouse Click
-        
         /// <summary>
         /// Perform a Click Operation
         /// </summary>
@@ -43,10 +37,6 @@ namespace TestStack.White.InputDevices
         /// </remarks>
         void Click(MouseButton mouseButton, Point point);
 
-        #endregion
-
-        #region Double Click
-
         /// <summary>
         /// Perform a Double Click Operation
         /// </summary>
@@ -59,10 +49,6 @@ namespace TestStack.White.InputDevices
         /// <param name="mouseButton">MouseButton to double click</param>
         /// <param name="point">Point where to Double Click on</param>
         void DoubleClick(MouseButton mouseButton, Point point);
-
-        #endregion
-
-        #region Mouse Left Click
 
         /// <summary>
         /// Perform a Left Click Operation
@@ -88,10 +74,6 @@ namespace TestStack.White.InputDevices
         /// <param name="point">Point where to Click on</param>
         void LeftClick(Point point);
 
-        #endregion
-
-        #region Mouse Left Double Click
-
         /// <summary>
         /// Perform a Mouse Left Double Click Operation
         /// </summary>
@@ -116,10 +98,6 @@ namespace TestStack.White.InputDevices
         /// <param name="point">Point where to Double Click on</param>
         void LeftDoubleClick(Point point);
 
-        #endregion
-
-        #region Right Click
-
         /// <summary>
         /// Perform a Right Click Operation
         /// </summary>
@@ -130,10 +108,6 @@ namespace TestStack.White.InputDevices
         /// </summary>
         /// <param name="point">Point where to Double Click on</param>
         void RightClick(Point point);
-
-        #endregion
-
-        #region Drag And Drop
 
         /// <summary>
         /// Drags the dragged <see cref="IUIItem"/> and drops it on the drop <see cref="IUIItem"/>. 
@@ -190,10 +164,6 @@ namespace TestStack.White.InputDevices
         void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, Point startPosition, IUIItem dropItem,
             Point endPosition);
 
-        #endregion
-
-        #region Drag
-
         /// <summary>
         /// Drag an <see cref="IUIItem"/> horizontally a specific distance
         /// </summary>
@@ -224,10 +194,6 @@ namespace TestStack.White.InputDevices
         /// <param name="distance">Distance to drag</param>
         void DragVertically(MouseButton mouseButton, IUIItem uiItem, int distance);
 
-        #endregion
-
-        #region Move
-
         /// <summary>
         /// Move the Mouse Cursor to Point 0, 0
         /// </summary>
@@ -238,7 +204,5 @@ namespace TestStack.White.InputDevices
         /// </summary>
         /// <param name="position"><see cref="Point"/> where to position the Mouse Cursor to</param>
         void Move(Point position);
-
-        #endregion
     }
 }

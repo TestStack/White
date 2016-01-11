@@ -14,17 +14,11 @@ namespace TestStack.White.InputDevices
         private readonly IActionListener actionListener;
         private readonly IMouse mouse;
 
-        #region Constructor
-
         internal AttachedMouse(IMouse mouse, IActionListener actionListener)
         {
             this.actionListener = actionListener;
             this.mouse = mouse;
         }
-
-        #endregion
-
-        #region Mouse Properties
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.Location"/>
@@ -43,10 +37,6 @@ namespace TestStack.White.InputDevices
             get { return mouse.Cursor; }
         }
 
-        #endregion
-
-        #region Click
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.Click(MouseButton)"/>
         /// </summary>
@@ -63,10 +53,6 @@ namespace TestStack.White.InputDevices
             mouse.Click(mouseButton, point, actionListener);
         }
 
-        #endregion
-
-        #region Double Click
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.DoubleClick(MouseButton)"/>
         /// </summary>
@@ -82,10 +68,6 @@ namespace TestStack.White.InputDevices
         {
             mouse.DoubleClick(mouseButton, point, actionListener);
         }
-
-        #endregion
-
-        #region Left Click
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.Click()"/>
@@ -122,10 +104,6 @@ namespace TestStack.White.InputDevices
         {
             mouse.LeftClick(point, actionListener);
         }
-
-        #endregion
-
-        #region Left Double Click
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.DoubleClick()"/>
@@ -165,10 +143,6 @@ namespace TestStack.White.InputDevices
             ActionPerformed();
         }
 
-        #endregion
-
-        #region Right Click
-        
         /// <summary>
         /// Implements <see cref="IBaseMouse.RightClick(Point)"/>
         /// </summary
@@ -185,10 +159,6 @@ namespace TestStack.White.InputDevices
         {
             mouse.RightClick(point, actionListener);
         }
-
-        #endregion 
-
-        #region Drag And Drop
 
         /// <summary>
         /// Implements <see cref="IBaseMouse.DragAndDrop(IUIItem, IUIItem)"/>
@@ -226,10 +196,6 @@ namespace TestStack.White.InputDevices
             ActionPerformed();
         }
 
-        #endregion
-
-        #region Drag
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.DragHorizontally(IUIItem, int)"/>
         /// </summary
@@ -266,8 +232,6 @@ namespace TestStack.White.InputDevices
             ActionPerformed();
         }
 
-        #endregion
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.MoveOut()"/>
         /// </summary
@@ -286,13 +250,9 @@ namespace TestStack.White.InputDevices
             ActionPerformed();
         }
 
-        #region Protected
-
         protected virtual void ActionPerformed()
         {
             mouse.ActionPerformed(actionListener);
         }
-
-        #endregion
     }
 }

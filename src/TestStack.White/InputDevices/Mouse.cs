@@ -7,13 +7,8 @@ namespace TestStack.White.InputDevices
 {
     public class Mouse : BaseMouse, IMouse
     {
-        #region Fields
-
+        [Obsolete("Obsolete. Create an instance via new where you need it")]
         public static Mouse Instance = new Mouse();
-
-        #endregion
-
-        #region Mouse Click
 
         /// <summary>
         /// Implements <see cref="IMouse.Click(MouseButton, IActionListener)"/>
@@ -34,10 +29,6 @@ namespace TestStack.White.InputDevices
             ActionPerformed(actionListener);
         }
 
-        #endregion
-
-        #region Double Click
-        
         /// <summary>
         /// Implements <see cref="IMouse.DoubleClick(MouseButton, IActionListener)"/>
         /// </summary>
@@ -57,10 +48,6 @@ namespace TestStack.White.InputDevices
             ActionPerformed(actionListener);
         }
 
-        #endregion
-
-        #region Left Click
-
         /// <summary>
         /// Implements <see cref="IMouse.Click(Point, IActionListener)"/>
         /// </summary>
@@ -78,10 +65,6 @@ namespace TestStack.White.InputDevices
             Click(MouseButton.Left, point, actionListener);
         }
 
-        #endregion
-
-        #region Left Double Click
-        
         /// <summary>
         /// Implements <see cref="IMouse.DoubleClick(Point, IActionListener)"/>
         /// </summary>
@@ -99,10 +82,6 @@ namespace TestStack.White.InputDevices
             DoubleClick(MouseButton.Left, point, actionListener);
         }
 
-        #endregion
-
-        #region Right Click
-
         /// <summary>
         /// Implements <see cref="IMouse.RightClick(Point, IActionListener)"/>
         /// </summary>
@@ -110,10 +89,6 @@ namespace TestStack.White.InputDevices
         {
             Click(MouseButton.Right, point, actionListener);
         }
-
-        #endregion
-
-        #region Public
 
         /// <summary>
         /// Implements <see cref="IMouse.ActionPerformed(IActionListener)"/>
@@ -125,7 +100,5 @@ namespace TestStack.White.InputDevices
         {
             actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
         }
-
-        #endregion
     }
 }

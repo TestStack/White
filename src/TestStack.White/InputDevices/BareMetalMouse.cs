@@ -6,8 +6,6 @@ namespace TestStack.White.InputDevices
 {
     public static class BareMetalMouse
     {
-        #region DLL Import
-
         [DllImport("user32", EntryPoint = "SendInput")]
         private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
 
@@ -31,10 +29,6 @@ namespace TestStack.White.InputDevices
 
         [DllImport("user32.dll")]
         private static extern int GetSystemMetrics(SystemMetric smIndex);
-
-        #endregion
-
-        #region Private
 
         private static int RightMouseButtonDown
         {
@@ -121,7 +115,5 @@ namespace TestStack.White.InputDevices
         {
             return new MouseInput(command, GetMessageExtraInfo(), mouseData);
         }
-
-        #endregion
     }
 }
