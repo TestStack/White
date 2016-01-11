@@ -26,7 +26,7 @@ namespace TestStack.White.WebBrowser
             string commandLine = string.Format("-new-window {0}", url);
             var processStartInfo = new ProcessStartInfo {FileName = executable, Arguments = commandLine};
             Application application = Application.Launch(processStartInfo);
-            Thread.Sleep(WebBrowserAppXmlConfiguration.Instance.FirefoxSingleWindowCheckWait);
+            Thread.Sleep(WebBrowserConfigurationLocator.Get().FirefoxSingleWindowCheckWait);
             int numberOfFirefoxProcessesAfterLaunch = Process.GetProcessesByName(executableName).Length;
             bool processPerWindow = numberOfFirefoxProcessesAfterLaunch > numberBeforeLaunch;
 

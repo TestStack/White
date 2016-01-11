@@ -83,6 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\WebBrowserConfigurationLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FirefoxFactory.cs" />
     <Compile Include="BrowserWindow.cs" />
