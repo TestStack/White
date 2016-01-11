@@ -58,9 +58,9 @@ namespace TestStack.White
             if (string.IsNullOrEmpty(processStartInfo.WorkingDirectory)) processStartInfo.WorkingDirectory = ".";
 
             Logger.DebugFormat("[Launching process:{0}] [Working directory:{1}] [Process full path:{2}] [Current Directory:{3}]",
-                                             processStartInfo.FileName, 
+                                             processStartInfo.FileName,
                                              new DirectoryInfo(processStartInfo.WorkingDirectory).FullName,
-                                             new FileInfo(processStartInfo.FileName).FullName, 
+                                             new FileInfo(processStartInfo.FileName).FullName,
                                              Environment.CurrentDirectory);
             Process process;
             try
@@ -283,7 +283,10 @@ namespace TestStack.White
 
         public virtual void Dispose()
         {
-            Kill();
+            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
+            {
+                Kill();
+            }
         }
 
         public virtual Window FindSplash()

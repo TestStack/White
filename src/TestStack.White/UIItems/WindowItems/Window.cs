@@ -365,7 +365,10 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Dispose()
         {
-            Close();
+            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
+            {
+                Close();
+            }
         }
 
         /// <summary>
