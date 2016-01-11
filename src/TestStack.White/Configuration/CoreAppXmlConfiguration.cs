@@ -11,9 +11,8 @@ namespace TestStack.White.Configuration
 {
     public class CoreAppXmlConfiguration : AssemblyConfiguration, ICoreConfiguration
     {
-        private static ICoreConfiguration instance;
+        private static ICoreConfiguration instance = new CoreAppXmlConfiguration();
         private readonly DynamicProxyInterceptors interceptors = new DynamicProxyInterceptors();
-
         private static readonly Dictionary<string, object> DefaultValues = new Dictionary<string, object>();
 
         static CoreAppXmlConfiguration()
@@ -35,12 +34,12 @@ namespace TestStack.White.Configuration
             DefaultValues.Add("MaxElementSearchDepth", 10);
             DefaultValues.Add("DoubleClickInterval", 0);
             DefaultValues.Add("MoveMouseToGetStatusOfHourGlass", true);
-            DefaultValues.Add("InvertMouseButtons", true);
+            DefaultValues.Add("KeepOpenOnDispose", false);            
         }
 
         public static ICoreConfiguration Instance
         {
-            get { return instance ?? (instance = new CoreAppXmlConfiguration()); }
+            get { return instance; }
         }
 
         private CoreAppXmlConfiguration()
@@ -51,15 +50,32 @@ namespace TestStack.White.Configuration
             LoggerFactory = new WhiteDefaultLoggerFactory(LoggerLevel.Info);
         }
 
+        public virtual ILoggerFactory LoggerFactory { get; set; }
+
+        public virtual IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes)
+        {
+            var existing = new Dictionary<string, string>(UsedValues);
+            changes(this);
+
+            return new DelegateDisposable(() =>
+            {
+                foreach (var value in existing)
+                {
+                    SetUsedValue(value.Key, value.Value);
+                }
+            });
+        }
+
         private void SetUsedValue(string key, object value)
         {
             UsedValues[key] = value.ToString();
         }
 
-        public virtual DirectoryInfo WorkSessionLocation
+        public virtual IWaitHook AdditionalWaitHook { get; set; }
+
+        public virtual DynamicProxyInterceptors Interceptors
         {
-            get { return new DirectoryInfo(UsedValues["WorkSessionLocation"]); }
-            set { SetUsedValue("WorkSessionLocation", value); }
+            get { return interceptors; }
         }
 
         public virtual int BusyTimeout
@@ -80,9 +96,10 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("WaitBasedOnHourGlass", value); }
         }
 
-        public virtual DynamicProxyInterceptors Interceptors
+        public virtual DirectoryInfo WorkSessionLocation
         {
-            get { return interceptors; }
+            get { return new DirectoryInfo(UsedValues["WorkSessionLocation"]); }
+            set { SetUsedValue("WorkSessionLocation", value); }
         }
 
         public virtual int UIAutomationZeroWindowBugTimeout
@@ -139,29 +156,11 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("ComboBoxItemsPopulatedWithoutDropDownOpen", value); }
         }
 
-        public virtual bool MoveMouseToGetStatusOfHourGlass
+        public virtual bool RawElementBasedSearch
         {
-            get { return Convert.ToBoolean(UsedValues["MoveMouseToGetStatusOfHourGlass"]); }
-            set { SetUsedValue("MoveMouseToGetStatusOfHourGlass", value); }
+            get { return Convert.ToBoolean(UsedValues["RawElementBasedSearch"]); }
+            set { SetUsedValue("RawElementBasedSearch", value); }
         }
-
-        public virtual ILoggerFactory LoggerFactory { get; set; }
-
-        public virtual IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes)
-        {
-            var existing = new Dictionary<string, string>(UsedValues);
-            changes(this);
-
-            return new DelegateDisposable(() =>
-            {
-                foreach (var value in existing)
-                {
-                    SetUsedValue(value.Key, value.Value);
-                }
-            });
-        }
-
-        public virtual IWaitHook AdditionalWaitHook { get; set; }
 
         public virtual int MaxElementSearchDepth
         {
@@ -169,16 +168,25 @@ namespace TestStack.White.Configuration
             set { SetUsedValue("MaxElementSearchDepth", value); }
         }
 
-        public virtual bool RawElementBasedSearch
-        {
-            get { return Convert.ToBoolean(UsedValues["RawElementBasedSearch"]); }
-            set { SetUsedValue("RawElementBasedSearch", value); }
-        }
-
         public virtual int DoubleClickInterval
         {
             get { return Convert.ToInt32(UsedValues["DoubleClickInterval"]); }
             set { SetUsedValue("DoubleClickInterval", value); }
+        }
+
+        public virtual bool MoveMouseToGetStatusOfHourGlass
+        {
+            get { return Convert.ToBoolean(UsedValues["MoveMouseToGetStatusOfHourGlass"]); }
+            set { SetUsedValue("MoveMouseToGetStatusOfHourGlass", value); }
+        }
+
+        /// <summary>
+        /// Implements <see cref="ICoreConfiguration.KeepOpenOnDispose"/>
+        /// </summary>
+        public virtual bool KeepOpenOnDispose
+        {
+            get { return Convert.ToBoolean(UsedValues["KeepOpenOnDispose"]); }
+            set { SetUsedValue("KeepOpenOnDispose", value); }
         }
     }
 }
