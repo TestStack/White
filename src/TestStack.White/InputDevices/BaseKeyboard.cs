@@ -8,7 +8,7 @@ namespace TestStack.White.InputDevices
     /// <summary>
     /// Represents Keyboard attachment to the machine.
     /// </summary>
-    public abstract class BaseKeyboard : BareMetaKeyboard, IBaseKeyboard
+    public abstract class BaseKeyboard : IBaseKeyboard
     {
         #region Fields
 
@@ -51,7 +51,7 @@ namespace TestStack.White.InputDevices
         {
             get
             {
-                var state = GetKeyState((uint) KeyboardInput.SpecialKeys.CAPS);
+                var state = BareMetaKeyboard.GetKeyState((uint)KeyboardInput.SpecialKeys.CAPS);
                 return state != 0;
             }
             set
@@ -104,8 +104,8 @@ namespace TestStack.White.InputDevices
                 throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
             }
             KeysHeld.Remove(b);
-            var keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
-            SendInput(GetInputFor(b, keyUpDown));
+            var keyUpDown = BareMetaKeyboard.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
+            BareMetaKeyboard.SendInput(BareMetaKeyboard.GetInputFor(b, keyUpDown));
         }
 
         protected virtual void SendKeyDown(short b, bool specialKey)
@@ -115,8 +115,8 @@ namespace TestStack.White.InputDevices
                 throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
             }
             KeysHeld.Add(b);
-            var keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
-            SendInput(GetInputFor(b, keyUpDown));
+            var keyUpDown = BareMetaKeyboard.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
+            BareMetaKeyboard.SendInput(BareMetaKeyboard.GetInputFor(b, keyUpDown));
         }
 
         protected virtual void AddUsedKey(KeyboardInput.SpecialKeys key)

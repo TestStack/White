@@ -78,30 +78,30 @@ namespace TestStack.White.InputDevices
             if (HeldKeys.Count() > 0) keysToType = keysToType.ToLower();
 
             CapsLockOn = false;
-            foreach (var key in from c in keysToType let key = VkKeyScan(c) where !c.Equals('\r') select key)
+            foreach (var key in from c in keysToType let key = BareMetaKeyboard.VkKeyScan(c) where !c.Equals('\r') select key)
             {
-                if (ShiftKeyIsNeeded(key))
+                if (BareMetaKeyboard.ShiftKeyIsNeeded(key))
                 {
                     SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
                 }
-                if (CtrlKeyIsNeeded(key))
+                if (BareMetaKeyboard.CtrlKeyIsNeeded(key))
                 {
                     SendKeyDown((short) KeyboardInput.SpecialKeys.CONTROL, false);
                 }
-                if (AltKeyIsNeeded(key))
+                if (BareMetaKeyboard.AltKeyIsNeeded(key))
                 {
                     SendKeyDown((short) KeyboardInput.SpecialKeys.ALT, false);
                 }
                 Press(key, false);
-                if (ShiftKeyIsNeeded(key))
+                if (BareMetaKeyboard.ShiftKeyIsNeeded(key))
                 {
                     SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
                 }
-                if (CtrlKeyIsNeeded(key))
+                if (BareMetaKeyboard.CtrlKeyIsNeeded(key))
                 {
                     SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
                 }
-                if (AltKeyIsNeeded(key))
+                if (BareMetaKeyboard.AltKeyIsNeeded(key))
                 {
                     SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
                 }
