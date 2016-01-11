@@ -12,13 +12,13 @@ using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
-    public abstract class BaseMouse : BareMetalMouse, IBaseMouse
+    public abstract class BaseMouse : IBaseMouse
     {
         #region Fields
 
         protected readonly Dictionary<MouseButton, DateTime> LastClickTimes;
         protected readonly Dictionary<MouseButton, Point> LastClickLocations;
-        protected readonly short DoubleClickTime = GetDoubleClickTime();
+        protected readonly short DoubleClickTime = BareMetalMouse.GetDoubleClickTime();
         protected const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
         #endregion
@@ -48,7 +48,7 @@ namespace TestStack.White.InputDevices
             get
             {
                 var point = new System.Drawing.Point();
-                GetCursorPos(ref point);
+                BareMetalMouse.GetCursorPos(ref point);
                 return point.ConvertToWindowsPoint();
             }
             set
@@ -57,7 +57,7 @@ namespace TestStack.White.InputDevices
                 {
                     throw new WhiteException(string.Format("Trying to set location outside the screen. {0}", value));
                 }
-                SetCursorPos((int)value.X, (int)value.Y);
+                BareMetalMouse.SetCursorPos((int)value.X, (int)value.Y);
             }
         }
 
@@ -69,7 +69,7 @@ namespace TestStack.White.InputDevices
             get
             {
                 var cursorInfo = CursorInfo.New();
-                GetCursorInfo(ref cursorInfo);
+                BareMetalMouse.GetCursorInfo(ref cursorInfo);
                 var i = cursorInfo.handle.ToInt32();
                 return new MouseCursor(i);
             }
@@ -97,7 +97,7 @@ namespace TestStack.White.InputDevices
                 }
             }
             // Perform the click
-            MouseButtonUpAndDown(mouseButton);
+            BareMetalMouse.MouseButtonUpAndDown(mouseButton);
             // Update the time and location
             LastClickTimes[mouseButton] = DateTime.Now;
             LastClickLocations[mouseButton] = Location;
@@ -121,9 +121,9 @@ namespace TestStack.White.InputDevices
         /// </summary>
         public virtual void DoubleClick(MouseButton mouseButton)
         {
-            MouseButtonUpAndDown(mouseButton);
+            BareMetalMouse.MouseButtonUpAndDown(mouseButton);
             Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
-            MouseButtonUpAndDown(mouseButton);
+            BareMetalMouse.MouseButtonUpAndDown(mouseButton);
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace TestStack.White.InputDevices
         public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
         {
             Move(startPosition);
-            MouseButtonDown(mouseButton);
+            BareMetalMouse.MouseButtonDown(mouseButton);
             var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
             for (var i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
             {
@@ -277,7 +277,7 @@ namespace TestStack.White.InputDevices
                 var newPoint = new Point((int)newX, (int)newY);
                 Move(newPoint);
             }
-            MouseButtonUp(mouseButton);
+            BareMetalMouse.MouseButtonUp(mouseButton);
             dropItem.ActionPerformed(Action.WindowMessage);
         }
 
@@ -301,10 +301,10 @@ namespace TestStack.White.InputDevices
             Location = uiItem.Bounds.Center();
             var currentXLocation = Location.X;
             var currentYLocation = Location.Y;
-            MouseButtonDown(mouseButton);
+            BareMetalMouse.MouseButtonDown(mouseButton);
             ActionPerformed(uiItem);
             Move(new Point(currentXLocation + distance, currentYLocation));
-            MouseButtonUp(mouseButton);
+            BareMetalMouse.MouseButtonUp(mouseButton);
         }
 
         /// <summary>
@@ -323,10 +323,10 @@ namespace TestStack.White.InputDevices
             Move(uiItem.Bounds.Center());
             var currentXLocation = Location.X;
             var currentYLocation = Location.Y;
-            MouseButtonDown(mouseButton);
+            BareMetalMouse.MouseButtonDown(mouseButton);
             ActionPerformed(uiItem);
             Move(new Point(currentXLocation, currentYLocation + distance));
-            MouseButtonUp(mouseButton);
+            BareMetalMouse.MouseButtonUp(mouseButton);
         }
 
         #endregion

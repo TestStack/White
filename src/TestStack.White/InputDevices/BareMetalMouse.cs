@@ -4,84 +4,54 @@ using TestStack.White.WindowsAPI;
 
 namespace TestStack.White.InputDevices
 {
-    public class BareMetalMouse
+    public static class BareMetalMouse
     {
         #region DLL Import
 
         [DllImport("user32", EntryPoint = "SendInput")]
-        protected static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
+        private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
 
         [DllImport("user32", EntryPoint = "SendInput")]
-        protected static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
+        private static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
 
         [DllImport("user32.dll")]
-        protected static extern IntPtr GetMessageExtraInfo();
+        private static extern IntPtr GetMessageExtraInfo();
 
         [DllImport("user32.dll")]
-        protected static extern bool GetCursorPos(ref System.Drawing.Point cursorInfo);
+        internal static extern bool GetCursorPos(ref System.Drawing.Point cursorInfo);
 
         [DllImport("user32.dll")]
-        protected static extern bool SetCursorPos(int x, int y);
+        internal static extern bool SetCursorPos(int x, int y);
 
         [DllImport("user32.dll")]
-        protected static extern bool GetCursorInfo(ref CursorInfo cursorInfo);
+        internal static extern bool GetCursorInfo(ref CursorInfo cursorInfo);
 
         [DllImport("user32.dll")]
-        protected static extern short GetDoubleClickTime();
+        internal static extern short GetDoubleClickTime();
 
         [DllImport("user32.dll")]
-        protected static extern int GetSystemMetrics(SystemMetric smIndex);
-
-        #endregion
-
-        #region Public
-
-        public static void LeftUp()
-        {
-            MouseButtonUp(MouseButton.Left);
-        }
-
-        public static void LeftDown()
-        {
-            MouseButtonDown(MouseButton.Left);
-        }
-
-        public static void RightUp()
-        {
-            MouseButtonUp(MouseButton.Right);
-        }
-
-        public static void RightDown()
-        {
-            MouseButtonDown(MouseButton.Right);
-        }
-
-        public static void MouseLeftButtonUpAndDown()
-        {
-            LeftDown();
-            LeftUp();
-        }
+        private static extern int GetSystemMetrics(SystemMetric smIndex);
 
         #endregion
 
         #region Private
 
-        protected static int RightMouseButtonDown
+        private static int RightMouseButtonDown
         {
             get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTDOWN : WindowsConstants.MOUSEEVENTF_LEFTDOWN; }
         }
 
-        protected static int RightMouseButtonUp
+        private static int RightMouseButtonUp
         {
             get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_RIGHTUP : WindowsConstants.MOUSEEVENTF_LEFTUP; }
         }
 
-        protected static int LeftMouseButtonDown
+        private static int LeftMouseButtonDown
         {
             get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTDOWN : WindowsConstants.MOUSEEVENTF_RIGHTDOWN; }
         }
 
-        protected static int LeftMouseButtonUp
+        private static int LeftMouseButtonUp
         {
             get { return GetSystemMetrics(SystemMetric.SM_SWAPBUTTON) == 0 ? WindowsConstants.MOUSEEVENTF_LEFTUP : WindowsConstants.MOUSEEVENTF_RIGHTUP; }
         }
@@ -89,7 +59,7 @@ namespace TestStack.White.InputDevices
         /// <summary>
         /// Performs a down / up sequence for the specified button
         /// </summary>
-        protected static void MouseButtonUpAndDown(MouseButton mouseButton)
+        internal static void MouseButtonUpAndDown(MouseButton mouseButton)
         {
             MouseButtonDown(mouseButton);
             MouseButtonUp(mouseButton);
@@ -98,7 +68,7 @@ namespace TestStack.White.InputDevices
         /// <summary>
         /// Performs a down for the specified button
         /// </summary>
-        protected static void MouseButtonDown(MouseButton mouseButton)
+        internal static void MouseButtonDown(MouseButton mouseButton)
         {
             SendInput(InputFactory.Mouse(GetInputForButton(mouseButton, true)));
         }
@@ -106,7 +76,7 @@ namespace TestStack.White.InputDevices
         /// <summary>
         /// Performs an up for the specified button
         /// </summary>
-        protected static void MouseButtonUp(MouseButton mouseButton)
+        internal static void MouseButtonUp(MouseButton mouseButton)
         {
             SendInput(InputFactory.Mouse(GetInputForButton(mouseButton, false)));
         }
@@ -116,7 +86,7 @@ namespace TestStack.White.InputDevices
         /// </summary>
         /// <param name="mouseButton">The button to get the input for</param>
         /// <param name="isDown">Flag if down is wanted, up otherwise</param>
-        protected static MouseInput GetInputForButton(MouseButton mouseButton, bool isDown)
+        private static MouseInput GetInputForButton(MouseButton mouseButton, bool isDown)
         {
             switch (mouseButton)
             {
@@ -135,7 +105,7 @@ namespace TestStack.White.InputDevices
             }
         }
 
-        protected static void SendInput(Input input)
+        private static void SendInput(Input input)
         {
             // Added check for 32/64 bit  
             if (IntPtr.Size == 4)
@@ -147,7 +117,7 @@ namespace TestStack.White.InputDevices
             }
         }
 
-        protected static MouseInput MouseInput(int command, int mouseData = 0)
+        private static MouseInput MouseInput(int command, int mouseData = 0)
         {
             return new MouseInput(command, GetMessageExtraInfo(), mouseData);
         }
