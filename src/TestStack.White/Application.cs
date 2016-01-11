@@ -24,11 +24,6 @@ namespace TestStack.White
         private readonly WindowFactory windowFactory;
         private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Application));
 
-        /// <summary>
-        /// Flag to indicate to keep the application open when disposing the object
-        /// </summary>
-        public virtual bool KeepOpenOnDispose { get; set; }
-
         protected Application()
         {
         }
@@ -288,7 +283,7 @@ namespace TestStack.White
 
         public virtual void Dispose()
         {
-            if (!KeepOpenOnDispose)
+            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
             {
                 Kill();
             }
@@ -334,14 +329,6 @@ namespace TestStack.White
         {
             Kill();
             ApplicationSession.Save();
-        }
-
-        /// <summary>
-        /// Detaches from the current attached process
-        /// </summary>
-        public virtual void Detach()
-        {
-            KeepOpenOnDispose = true;
         }
     }
 }

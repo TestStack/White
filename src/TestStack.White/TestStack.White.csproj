@@ -111,7 +111,7 @@
     <Compile Include="AutomationException.cs" />
     <Compile Include="CacheMode.cs" />
     <Compile Include="Configuration\CoreAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\CoreConfiguration.cs" />
+    <Compile Include="Configuration\ICoreConfiguration.cs" />
     <Compile Include="Configuration\IWaitHook.cs" />
     <Compile Include="Configuration\UIItemIdAppXmlConfiguration.cs" />
     <Compile Include="Configuration\UIItemIdConfiguration.cs" />

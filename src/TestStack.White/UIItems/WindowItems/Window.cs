@@ -43,11 +43,6 @@ namespace TestStack.White.UIItems.WindowItems
 
         public delegate bool WaitTillDelegate();
 
-        /// <summary>
-        /// Flag to indicate to keep the window open when disposing the object
-        /// </summary>
-        public virtual bool KeepOpenOnDispose { get; set; }
-
         static Window()
         {
             WindowStates.Add(DisplayState.Maximized, WindowVisualState.Maximized);
@@ -370,7 +365,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Dispose()
         {
-            if (!KeepOpenOnDispose)
+            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
             {
                 Close();
             }
