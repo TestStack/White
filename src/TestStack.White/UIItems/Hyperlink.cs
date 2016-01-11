@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems
         {
             double x = automationElement.Current.BoundingRectangle.X + xOffset;
             double y = automationElement.Current.BoundingRectangle.Y + yOffset;
-            mouse.Click(new Point((int) x, (int) y), actionListener);
+            mouse.LeftClick(new Point((int) x, (int) y), actionListener);
         }
 
         public override void HookEvents(IUIItemEventListener eventListener)

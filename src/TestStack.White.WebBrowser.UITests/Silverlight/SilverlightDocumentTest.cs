@@ -71,7 +71,7 @@ namespace TestStack.White.WebBrowser.UITests.Silverlight
             var comboBox = document.Get<ComboBox>("combo");
             comboBox.Select("foo");
             comboBox.Select("foo");
-            Mouse.Instance.Click(button.Bounds.Center(), document);
+            Mouse.Instance.LeftClick(button.Bounds.Center(), document);
             Assert.That(label.Text, Is.Not.EqualTo(previousText));
         }
     }

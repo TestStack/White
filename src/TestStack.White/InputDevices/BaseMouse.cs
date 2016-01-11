@@ -78,23 +78,7 @@ namespace TestStack.White.InputDevices
         #endregion
 
         #region Mouse Click
-
-        /// <summary>
-        /// Implements <see cref="IBaseMouse.Click()"/>
-        /// </summary>
-        public virtual void Click()
-        {
-            Click(MouseButton.Left);
-        }
-
-        /// <summary>
-        /// Implements <see cref="IBaseMouse.Click(Point)"/>
-        /// </summary>
-        public virtual void Click(Point point)
-        {
-            Click(MouseButton.Left, point);
-        }
-
+        
         /// <summary>
         /// Implements <see cref="IBaseMouse.Click(MouseButton)"/>
         /// </summary>
@@ -131,15 +115,7 @@ namespace TestStack.White.InputDevices
         #endregion
 
         #region Double Click
-
-        /// <summary>
-        /// Implements <see cref="IBaseMouse.DoubleClick(Point)"/>
-        /// </summary>
-        public virtual void DoubleClick(Point point)
-        {
-            DoubleClick(MouseButton.Left, point);
-        }
-
+        
         /// <summary>
         /// Implements <see cref="IBaseMouse.DoubleClick(MouseButton)"/>
         /// </summary>
@@ -157,6 +133,83 @@ namespace TestStack.White.InputDevices
         {
             Move(point);
             DoubleClick(mouseButton);
+        }
+
+        #endregion
+
+        #region Mouse Left Click
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.Click()"/>
+        /// </summary>
+        [Obsolete("Use LeftClick instead")]
+        public virtual void Click()
+        {
+            Click(MouseButton.Left);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.Click(Point)"/>
+        /// </summary>
+        [Obsolete("Use LeftClick instead")]
+        public virtual void Click(Point point)
+        {
+            Click(MouseButton.Left, point);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.LeftClick()"/>
+        /// </summary>
+        public virtual void LeftClick()
+        {
+            Click(MouseButton.Left);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.LeftClick(Point)"/>
+        /// </summary>
+        public virtual void LeftClick(Point point)
+        {
+            Click(MouseButton.Left, point);
+        }
+        
+        #endregion
+
+        #region Mouse Left Double Click
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.DoubleClick()"/>
+        /// </summary>
+        [Obsolete("Use LeftDoubleClick instead")]
+        public virtual void DoubleClick()
+        {
+            DoubleClick(MouseButton.Left);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.DoubleClick(Point)"/>
+        /// </summary>
+        /// <param name="point">Point where to Double Click on</param>
+        [Obsolete("Use LeftDoubleClick instead")]
+        public virtual void DoubleClick(Point point)
+        {
+            DoubleClick(MouseButton.Left, point);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.LeftDoubleClick()"/>
+        /// </summary>
+        public virtual void LeftDoubleClick()
+        {
+            DoubleClick(MouseButton.Left);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IBaseMouse.LeftDoubleClick(Point)"/>
+        /// </summary>
+        public virtual void LeftDoubleClick(Point point)
+        {
+            DoubleClick(MouseButton.Left, point);
         }
 
         #endregion

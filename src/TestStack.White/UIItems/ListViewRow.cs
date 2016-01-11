@@ -68,7 +68,7 @@ namespace TestStack.White.UIItems
             {
                 throw new WhiteException(string.Format("Failed to select {0}, clickable point empty", ToString()));
             }
-            mouse.Click(clickablePoint, actionListener);
+            mouse.LeftClick(clickablePoint, actionListener);
         }
 
         /// <summary>

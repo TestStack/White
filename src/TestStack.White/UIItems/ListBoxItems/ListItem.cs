@@ -47,7 +47,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             {
                 Logger.Debug("Selecting item with Click");
                 WaitForBoundsToStabilise(this);
-                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+                mouse.LeftClick(Bounds.ImmediateInteriorEast(), actionListener);
                 if (!IsSelected)
                 {
                     Logger.Debug("Failed to select list item via click. Falling back to automation patterns");

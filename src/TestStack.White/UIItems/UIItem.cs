@@ -329,7 +329,7 @@ namespace TestStack.White.UIItems
         public virtual void DoubleClick()
         {
             actionListener.ActionPerforming(this);
-            PerformIfValid(() => mouse.DoubleClick(Bounds.Center(), actionListener));
+            PerformIfValid(() => mouse.LeftDoubleClick(Bounds.Center(), actionListener));
         }
 
         /// <summary>
@@ -623,7 +623,7 @@ namespace TestStack.White.UIItems
             {
                 throw new WhiteException(string.Format("Failed to click on {0}, bounds empty", ToString()));
             }
-            mouse.Click(bounds.Center(), actionListener);
+            mouse.LeftClick(bounds.Center(), actionListener);
         }
 
         #endregion

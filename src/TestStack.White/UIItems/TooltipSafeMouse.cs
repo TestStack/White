@@ -39,11 +39,11 @@ namespace TestStack.White.UIItems
             actionListener.ActionPerforming(uiItem);
             ToolTip toolTip = GetToolTip(uiItem, actionListener);
             if (toolTip == null)
-                mouse.DoubleClick(uiItem.Bounds.Center(), actionListener);
+                mouse.LeftDoubleClick(uiItem.Bounds.Center(), actionListener);
             else
             {
                 logger.Debug("Found tooltip DoubleClicking outside tooltip bounds");
-                mouse.DoubleClick(toolTip.LeftOutside(uiItem.Bounds), actionListener);
+                mouse.LeftDoubleClick(toolTip.LeftOutside(uiItem.Bounds), actionListener);
             }
         }
 
@@ -52,17 +52,17 @@ namespace TestStack.White.UIItems
             actionListener.ActionPerforming(uiItem);
             ToolTip toolTip = GetToolTip(uiItem, actionListener);
             if (toolTip == null)
-                mouse.Click(uiItem.Bounds.Center(), actionListener);
+                mouse.LeftClick(uiItem.Bounds.Center(), actionListener);
             else
             {
                 logger.Debug("Found tooltip Clicking outside tooltip bounds");
-                mouse.Click(toolTip.LeftOutside(uiItem.Bounds), actionListener);
+                mouse.LeftClick(toolTip.LeftOutside(uiItem.Bounds), actionListener);
             }
         }
 
         private ToolTip GetToolTip(UIItem uiItem, IActionListener actionListener)
         {
-            mouse.Click(uiItem.Bounds.Center());
+            mouse.LeftClick(uiItem.Bounds.Center());
             actionListener.ActionPerformed(Action.WindowMessage);
             Thread.Sleep(CoreAppXmlConfiguration.Instance.TooltipWaitTime);
             return ToolTip.GetFrom(uiItem.Bounds.Center());

@@ -1,5 +1,7 @@
+using System;
 using System.Windows;
 using TestStack.White.UIItems.Actions;
+using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
@@ -12,14 +14,6 @@ namespace TestStack.White.InputDevices
         #endregion
 
         #region Mouse Click
-
-        /// <summary>
-        /// Implements <see cref="IMouse.Click(Point, IActionListener)"/>
-        /// </summary>
-        public virtual void Click(Point point, IActionListener actionListener)
-        {
-            Click(MouseButton.Left, point, actionListener);
-        }
 
         /// <summary>
         /// Implements <see cref="IMouse.Click(MouseButton, IActionListener)"/>
@@ -43,15 +37,7 @@ namespace TestStack.White.InputDevices
         #endregion
 
         #region Double Click
-
-        /// <summary>
-        /// Implements <see cref="IMouse.DoubleClick(Point, IActionListener)"/>
-        /// </summary>
-        public virtual void DoubleClick(Point point, IActionListener actionListener)
-        {
-            DoubleClick(MouseButton.Left, point, actionListener);
-        }
-
+        
         /// <summary>
         /// Implements <see cref="IMouse.DoubleClick(MouseButton, IActionListener)"/>
         /// </summary>
@@ -69,6 +55,48 @@ namespace TestStack.White.InputDevices
             Location = point;
             DoubleClick(mouseButton);
             ActionPerformed(actionListener);
+        }
+
+        #endregion
+
+        #region Left Click
+
+        /// <summary>
+        /// Implements <see cref="IMouse.Click(Point, IActionListener)"/>
+        /// </summary>
+        [Obsolete("Use LeftClick instead")]
+        public virtual void Click(Point point, IActionListener actionListener)
+        {
+            Click(MouseButton.Left, point, actionListener);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.LeftClick(Point, IActionListener)"/>
+        /// </summary>
+        public virtual void LeftClick(Point point, IActionListener actionListener)
+        {
+            Click(MouseButton.Left, point, actionListener);
+        }
+
+        #endregion
+
+        #region Left Double Click
+        
+        /// <summary>
+        /// Implements <see cref="IMouse.DoubleClick(Point, IActionListener)"/>
+        /// </summary>
+        [Obsolete("Use LeftDoubleClick instead")]
+        public virtual void DoubleClick(Point point, IActionListener actionListener)
+        {
+            DoubleClick(MouseButton.Left, point, actionListener);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.LeftDoubleClick(Point, IActionListener)"/>
+        /// </summary>
+        public virtual void LeftDoubleClick(Point point, IActionListener actionListener)
+        {
+            DoubleClick(MouseButton.Left, point, actionListener);
         }
 
         #endregion

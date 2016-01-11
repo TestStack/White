@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using TestStack.White.UIItems.Actions;
 
@@ -7,13 +8,6 @@ namespace TestStack.White.InputDevices
     {
         #region Mouse Click
 
-        /// <summary>
-        /// Perform a Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Click on</param>
-        /// <param name="actionListener">ActionListener to use after Click Operation</param>
-        void Click(Point point, IActionListener actionListener);
-        
         /// <summary>
         /// Perform a Click Operation
         /// </summary>
@@ -40,14 +34,7 @@ namespace TestStack.White.InputDevices
         #endregion
 
         #region Double Click
-
-        /// <summary>
-        /// Perform a Double Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Double Click on</param>
-        /// <param name="actionListener">ActionListener to use after Click Operation</param>
-        void DoubleClick(Point point, IActionListener actionListener);
-
+        
         /// <summary>
         /// Perform a Double Click Operation
         /// </summary>
@@ -62,6 +49,44 @@ namespace TestStack.White.InputDevices
         /// <param name="point">Point where to Double Click on</param>
         /// <param name="actionListener">ActionListener to use after Click Operation</param>
         void DoubleClick(MouseButton mouseButton, Point point, IActionListener actionListener);
+
+        #endregion
+
+        #region Left Click
+
+        /// <summary>
+        /// Perform a Left Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Click on</param>
+        /// <param name="actionListener">ActionListener to use after Click Operation</param>
+        [Obsolete("Use LeftClick instead")]
+        void Click(Point point, IActionListener actionListener);
+
+        /// <summary>
+        /// Perform a Left Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Click on</param>
+        /// <param name="actionListener">ActionListener to use after Click Operation</param>
+        void LeftClick(Point point, IActionListener actionListener);
+
+        #endregion
+
+        #region Left Double Click
+
+        /// <summary>
+        /// Perform a Double Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Double Click on</param>
+        /// <param name="actionListener">ActionListener to use after Click Operation</param>
+        [Obsolete("Use LeftDoubleClick instead")]
+        void DoubleClick(Point point, IActionListener actionListener);
+
+        /// <summary>
+        /// Perform a Double Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Double Click on</param>
+        /// <param name="actionListener">ActionListener to use after Click Operation</param>
+        void LeftDoubleClick(Point point, IActionListener actionListener);
 
         #endregion
 

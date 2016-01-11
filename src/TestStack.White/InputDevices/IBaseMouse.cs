@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using TestStack.White.UIItems;
 
@@ -20,18 +21,7 @@ namespace TestStack.White.InputDevices
         #endregion
 
         #region Mouse Click
-
-        /// <summary>
-        /// Perform a Click Operation
-        /// </summary>
-        void Click();
-
-        /// <summary>
-        /// Perform a Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Click on</param>
-        void Click(Point point);
-
+        
         /// <summary>
         /// Perform a Click Operation
         /// </summary>
@@ -60,12 +50,6 @@ namespace TestStack.White.InputDevices
         /// <summary>
         /// Perform a Double Click Operation
         /// </summary>
-        /// <param name="point">Point where to Double Click on</param>
-        void DoubleClick(Point point);
-
-        /// <summary>
-        /// Perform a Double Click Operation
-        /// </summary>
         /// <param name="mouseButton">MouseButton to double click</param>
         void DoubleClick(MouseButton mouseButton);
 
@@ -75,6 +59,62 @@ namespace TestStack.White.InputDevices
         /// <param name="mouseButton">MouseButton to double click</param>
         /// <param name="point">Point where to Double Click on</param>
         void DoubleClick(MouseButton mouseButton, Point point);
+
+        #endregion
+
+        #region Mouse Left Click
+
+        /// <summary>
+        /// Perform a Left Click Operation
+        /// </summary>
+        [Obsolete("Use LeftClick instead")]
+        void Click();
+
+        /// <summary>
+        /// Perform a Left Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Click on</param>
+        [Obsolete("Use LeftClick instead")]
+        void Click(Point point);
+
+        /// <summary>
+        /// Perform a Left Click Operation
+        /// </summary>
+        void LeftClick();
+
+        /// <summary>
+        /// Perform a Left Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Click on</param>
+        void LeftClick(Point point);
+
+        #endregion
+
+        #region Mouse Left Double Click
+
+        /// <summary>
+        /// Perform a Mouse Left Double Click Operation
+        /// </summary>
+        [Obsolete("Use LeftDoubleClick instead")]
+        void DoubleClick();
+
+        /// <summary>
+        /// Perform a Mouse Left Double Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Double Click on</param>
+        [Obsolete("Use LeftDoubleClick instead")]
+        void DoubleClick(Point point);
+
+        /// <summary>
+        /// Perform a Mouse Left Double Click Operation
+        /// </summary>
+        void LeftDoubleClick();
+
+        /// <summary>
+        /// Perform a Mouse Left Double Click Operation
+        /// </summary>
+        /// <param name="point">Point where to Double Click on</param>
+        void LeftDoubleClick(Point point);
 
         #endregion
 
