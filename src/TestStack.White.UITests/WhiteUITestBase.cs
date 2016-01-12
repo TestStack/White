@@ -88,7 +88,6 @@ namespace TestStack.White.UITests
         {
             try
             {
-                Keyboard = new Keyboard();
                 var configuration = TestConfigurationFactory.Create(framework);
                 Application = configuration.LaunchApplication();
                 Repository = new ScreenRepository(Application);

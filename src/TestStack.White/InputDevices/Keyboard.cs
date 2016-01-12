@@ -13,13 +13,6 @@ namespace TestStack.White.InputDevices
     public class Keyboard : BaseKeyboard, IKeyboard
     {
         /// <summary>
-        /// Use Window.Keyboard method to get handle to the Keyboard. Keyboard instance got using this method would not wait while the application
-        /// is busy.
-        /// </summary>
-        [Obsolete("Obsolete. Create an instance where it is needed.")]
-        public static readonly IKeyboard Instance = new Keyboard();
-
-        /// <summary>
         /// Overrides <see cref="BaseKeyboard.Enter(string)"/>
         /// </summary>
         public override void Enter(string keysToType)

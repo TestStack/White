@@ -7,9 +7,6 @@ namespace TestStack.White.InputDevices
 {
     public class Mouse : BaseMouse, IMouse
     {
-        [Obsolete("Obsolete. Create an instance via new where you need it")]
-        public static Mouse Instance = new Mouse();
-
         /// <summary>
         /// Implements <see cref="IMouse.Click(MouseButton, IActionListener)"/>
         /// </summary>
@@ -49,29 +46,11 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.Click(Point, IActionListener)"/>
-        /// </summary>
-        [Obsolete("Use LeftClick instead")]
-        public virtual void Click(Point point, IActionListener actionListener)
-        {
-            Click(MouseButton.Left, point, actionListener);
-        }
-
-        /// <summary>
         /// Implements <see cref="IMouse.LeftClick(Point, IActionListener)"/>
         /// </summary>
         public virtual void LeftClick(Point point, IActionListener actionListener)
         {
             Click(MouseButton.Left, point, actionListener);
-        }
-
-        /// <summary>
-        /// Implements <see cref="IMouse.DoubleClick(Point, IActionListener)"/>
-        /// </summary>
-        [Obsolete("Use LeftDoubleClick instead")]
-        public virtual void DoubleClick(Point point, IActionListener actionListener)
-        {
-            DoubleClick(MouseButton.Left, point, actionListener);
         }
 
         /// <summary>

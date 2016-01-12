@@ -53,19 +53,6 @@ namespace TestStack.White.InputDevices
         /// <summary>
         /// Perform a Left Click Operation
         /// </summary>
-        [Obsolete("Use LeftClick instead")]
-        void Click();
-
-        /// <summary>
-        /// Perform a Left Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Click on</param>
-        [Obsolete("Use LeftClick instead")]
-        void Click(Point point);
-
-        /// <summary>
-        /// Perform a Left Click Operation
-        /// </summary>
         void LeftClick();
 
         /// <summary>
@@ -73,19 +60,6 @@ namespace TestStack.White.InputDevices
         /// </summary>
         /// <param name="point">Point where to Click on</param>
         void LeftClick(Point point);
-
-        /// <summary>
-        /// Perform a Mouse Left Double Click Operation
-        /// </summary>
-        [Obsolete("Use LeftDoubleClick instead")]
-        void DoubleClick();
-
-        /// <summary>
-        /// Perform a Mouse Left Double Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Double Click on</param>
-        [Obsolete("Use LeftDoubleClick instead")]
-        void DoubleClick(Point point);
 
         /// <summary>
         /// Perform a Mouse Left Double Click Operation

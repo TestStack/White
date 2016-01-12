@@ -49,23 +49,7 @@ namespace TestStack.White.InputDevices
         /// </summary>
         /// <param name="point">Point where to Click on</param>
         /// <param name="actionListener">ActionListener to use after Click Operation</param>
-        [Obsolete("Use LeftClick instead")]
-        void Click(Point point, IActionListener actionListener);
-
-        /// <summary>
-        /// Perform a Left Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Click on</param>
-        /// <param name="actionListener">ActionListener to use after Click Operation</param>
         void LeftClick(Point point, IActionListener actionListener);
-
-        /// <summary>
-        /// Perform a Double Click Operation
-        /// </summary>
-        /// <param name="point">Point where to Double Click on</param>
-        /// <param name="actionListener">ActionListener to use after Click Operation</param>
-        [Obsolete("Use LeftDoubleClick instead")]
-        void DoubleClick(Point point, IActionListener actionListener);
 
         /// <summary>
         /// Perform a Double Click Operation

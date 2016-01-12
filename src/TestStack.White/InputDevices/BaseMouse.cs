@@ -118,24 +118,6 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseMouse.Click()"/>
-        /// </summary>
-        [Obsolete("Use LeftClick instead")]
-        public virtual void Click()
-        {
-            Click(MouseButton.Left);
-        }
-
-        /// <summary>
-        /// Implements <see cref="IBaseMouse.Click(Point)"/>
-        /// </summary>
-        [Obsolete("Use LeftClick instead")]
-        public virtual void Click(Point point)
-        {
-            Click(MouseButton.Left, point);
-        }
-
-        /// <summary>
         /// Implements <see cref="IBaseMouse.LeftClick()"/>
         /// </summary>
         public virtual void LeftClick()
@@ -151,25 +133,6 @@ namespace TestStack.White.InputDevices
             Click(MouseButton.Left, point);
         }
         
-        /// <summary>
-        /// Implements <see cref="IBaseMouse.DoubleClick()"/>
-        /// </summary>
-        [Obsolete("Use LeftDoubleClick instead")]
-        public virtual void DoubleClick()
-        {
-            DoubleClick(MouseButton.Left);
-        }
-
-        /// <summary>
-        /// Implements <see cref="IBaseMouse.DoubleClick(Point)"/>
-        /// </summary>
-        /// <param name="point">Point where to Double Click on</param>
-        [Obsolete("Use LeftDoubleClick instead")]
-        public virtual void DoubleClick(Point point)
-        {
-            DoubleClick(MouseButton.Left, point);
-        }
-
         /// <summary>
         /// Implements <see cref="IBaseMouse.LeftDoubleClick()"/>
         /// </summary>
