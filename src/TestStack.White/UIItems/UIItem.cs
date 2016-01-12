@@ -31,9 +31,9 @@ namespace TestStack.White.UIItems
 
         protected readonly AutomationElement automationElement;
         protected IActionListener actionListener;
-        internal static readonly Mouse mouse = Mouse.Instance;
+        internal static readonly Mouse mouse = new Mouse();
         protected readonly PrimaryUIItemFactory factory;
-        internal readonly Keyboard keyboard = Keyboard.Instance;
+        internal readonly Keyboard keyboard = new Keyboard();
         protected IScrollBars scrollBars;
         private AutomationEventHandler handler;
         protected readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItem));
@@ -346,7 +346,7 @@ namespace TestStack.White.UIItems
         public virtual void DoubleClick()
         {
             actionListener.ActionPerforming(this);
-            PerformIfValid(() => mouse.DoubleClick(Bounds.Center(), actionListener));
+            PerformIfValid(() => mouse.LeftDoubleClick(Bounds.Center(), actionListener));
         }
 
         /// <summary>
@@ -614,7 +614,7 @@ namespace TestStack.White.UIItems
             {
                 throw new WhiteException(string.Format("Failed to click on {0}, bounds empty", ToString()));
             }
-            mouse.Click(bounds.Center(), actionListener);
+            mouse.LeftClick(bounds.Center(), actionListener);
         }
 
         #endregion

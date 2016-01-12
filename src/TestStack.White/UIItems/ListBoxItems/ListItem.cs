@@ -46,7 +46,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             {
                 Logger.Debug("Selecting item with Click");
                 WaitForBoundsToStabilise(this);
-                mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+                mouse.LeftClick(Bounds.ImmediateInteriorEast(), actionListener);
 
                 var timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.ComboBoxItemSelectionTimeout);
                 if (!Retry.For(() => IsSelected, timeout))

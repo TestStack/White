@@ -20,6 +20,8 @@ namespace TestStack.White.UITests
     {
         protected WindowsFramework Framework { get; private set; }
         private IDisposable mainWindow;
+        protected IMouse Mouse;
+        protected IKeyboard Keyboard;
 
         protected WhiteUITestBase(WindowsFramework framework)
         {
@@ -41,6 +43,13 @@ namespace TestStack.White.UITests
             mainWindow.Dispose();
         }
 
+        [SetUp]
+        public void BaseSetUp()
+        {
+            Mouse = new Mouse();
+            Keyboard = new Keyboard();
+        }
+
         [TearDown]
         public void BaseTestTeardown()
         {
@@ -53,8 +62,6 @@ namespace TestStack.White.UITests
         readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteUITestBase));
         readonly List<Window> windowsToClose = new List<Window>();
         readonly string screenshotDir;
-
-        internal Keyboard Keyboard;
 
         protected Window MainWindow { get; private set; }
         protected MainScreen MainScreen { get; private set; }
@@ -81,7 +88,7 @@ namespace TestStack.White.UITests
         {
             try
             {
-                Keyboard = Keyboard.Instance;
+                Keyboard = new Keyboard();
                 var configuration = TestConfigurationFactory.Create(framework);
                 Application = configuration.LaunchApplication();
                 Repository = new ScreenRepository(Application);

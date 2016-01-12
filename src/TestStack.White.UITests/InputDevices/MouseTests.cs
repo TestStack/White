@@ -20,26 +20,25 @@ namespace TestStack.White.UITests.InputDevices
         [Test]
         public void CursorTest()
         {
-            var cursor = Mouse.Instance.Cursor;
+            var cursor = Mouse.Cursor;
             Assert.That(cursor, Is.Not.Null);
         }
 
         [Test]
         public void LocationTest()
         {
-            var mouse = Mouse.Instance;
             var point = new Point(100, 100);
-            Assert.That(mouse.Location, Is.Not.EqualTo(point));
-            mouse.Location = point;
-            Retry.For(() => Assert.That(mouse.Location, Is.EqualTo(point)), TimeSpan.FromSeconds(5));
+            Assert.That(Mouse.Location, Is.Not.EqualTo(point));
+            Mouse.Location = point;
+            Retry.For(() => Assert.That(Mouse.Location, Is.EqualTo(point)), TimeSpan.FromSeconds(5));
         }
 
         [Test]
         public void RightClickTest()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
-            Mouse.Instance.Location = button.Bounds.Center();
-            Mouse.Instance.RightClick();
+            Mouse.Location = button.Bounds.Center();
+            Mouse.RightClick();
             Retry.For(() => Assert.That(button.Text, Is.EqualTo("Right click received")), TimeSpan.FromSeconds(5));
         }
     }

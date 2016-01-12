@@ -1,193 +1,134 @@
-using System.Collections.Generic;
-using System.Threading;
-using TestStack.White.Configuration;
+using System;
+using System.Linq;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
-    //BUG: KeysConverter
+    // BUG: KeysConverter
     /// <summary>
     /// Represents Keyboard attachment to the machine.
     /// </summary>
-    public class Keyboard : IKeyboard
+    public class Keyboard : BaseKeyboard, IKeyboard
     {
-        private static readonly List<KeyboardInput.SpecialKeys> scanCodeDependent = new List<KeyboardInput.SpecialKeys>
-                                                                               {
-                                                                                   KeyboardInput.SpecialKeys.RIGHT_ALT,
-                                                                                   KeyboardInput.SpecialKeys.INSERT,
-                                                                                   KeyboardInput.SpecialKeys.DELETE,
-                                                                                   KeyboardInput.SpecialKeys.LEFT,
-                                                                                   KeyboardInput.SpecialKeys.HOME,
-                                                                                   KeyboardInput.SpecialKeys.END,
-                                                                                   KeyboardInput.SpecialKeys.UP,
-                                                                                   KeyboardInput.SpecialKeys.DOWN,
-                                                                                   KeyboardInput.SpecialKeys.PAGEUP,
-                                                                                   KeyboardInput.SpecialKeys.PAGEDOWN,
-                                                                                   KeyboardInput.SpecialKeys.RIGHT,
-                                                                                   KeyboardInput.SpecialKeys.LWIN,
-                                                                                   KeyboardInput.SpecialKeys.RWIN
-                                                                               };
-
-        private readonly List<KeyboardInput.SpecialKeys> heldKeys = new List<KeyboardInput.SpecialKeys>();
-
         /// <summary>
         /// Use Window.Keyboard method to get handle to the Keyboard. Keyboard instance got using this method would not wait while the application
         /// is busy.
         /// </summary>
-        public static readonly Keyboard Instance = new Keyboard();
+        [Obsolete("Obsolete. Create an instance where it is needed.")]
+        public static readonly IKeyboard Instance = new Keyboard();
 
-        private readonly List<int> keysHeld = new List<int>();
-
-        private Keyboard()
-        {
-        }
-
-        public virtual void Enter(string keysToType)
+        /// <summary>
+        /// Overrides <see cref="BaseKeyboard.Enter(string)"/>
+        /// </summary>
+        public override void Enter(string keysToType)
         {
             Send(keysToType, new NullActionListener());
         }
 
-        public virtual void Send(string keysToType, IActionListener actionListener)
-        {
-            if (heldKeys.Count > 0) keysToType = keysToType.ToLower();
-
-            CapsLockOn = false;
-            foreach (char c in keysToType)
-            {
-                short key = Native.VkKeyScan(c);
-                if (c.Equals('\r')) continue;
-
-                if (ShiftKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
-                if (CtrlKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.CONTROL, false);
-                if (AltKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.ALT, false);
-                Press(key, false);
-                if (ShiftKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
-                if (CtrlKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
-                if (AltKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
-            }
-
-            // Let the Raw Input Thread some time to process OS's hardware input queue.
-            // As this thread works with High priority - this short wait should be enough hopefully.
-            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
-
-            actionListener.ActionPerformed(Action.WindowMessage);
-        }
-
-        public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key)
+        /// <summary>
+        /// Implements <see cref="BaseKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys)"/>
+        /// </summary>
+        public override void PressSpecialKey(KeyboardInput.SpecialKeys key)
         {
             PressSpecialKey(key, new NullActionListener());
         }
 
-        public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
-        {
-            Send(key, true);
-
-            // Let the Raw Input Thread some time to process OS's hardware input queue.
-            // As this thread works with High priority - this short wait should be enough hopefully.
-            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
-            
-            actionListener.ActionPerformed(Action.WindowMessage);
-        }
-
-        public virtual void HoldKey(KeyboardInput.SpecialKeys key)
+        /// <summary>
+        /// Implements <see cref="BaseKeyboard.HoldKey(KeyboardInput.SpecialKeys)"/>
+        /// </summary>
+        public override void HoldKey(KeyboardInput.SpecialKeys key)
         {
             HoldKey(key, new NullActionListener());
         }
-
-        internal virtual void HoldKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
-        {
-            SendKeyDown((short) key, true);
-            heldKeys.Add(key);
-            actionListener.ActionPerformed(Action.WindowMessage);
-        }
-
-        public virtual void LeaveKey(KeyboardInput.SpecialKeys key)
+        
+        /// <summary>
+        /// Implements <see cref="BaseKeyboard.LeaveKey(KeyboardInput.SpecialKeys)"/>
+        /// </summary>
+        public override void LeaveKey(KeyboardInput.SpecialKeys key)
         {
             LeaveKey(key, new NullActionListener());
         }
 
-        public virtual void LeaveKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
+        /// <summary>
+        /// Implements <see cref="IKeyboard.ActionPerformed(IActionListener)"/>
+        /// </summary>
+        /// <remarks>
+        /// Overrides the <see cref="BaseKeyboard.ActionPerformed"/> abstract Function
+        /// </remarks>
+        public override void ActionPerformed(IActionListener actionListener)
         {
-            SendKeyUp((short) key, true);
-            heldKeys.Remove(key);
+            actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
+        }
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.Send(string, IActionListener)"/>
+        /// </summary>
+        public virtual void Send(string keysToType, IActionListener actionListener)
+        {
+            if (HeldKeys.Count() > 0) keysToType = keysToType.ToLower();
+
+            CapsLockOn = false;
+            foreach (var key in from c in keysToType let key = BareMetalKeyboard.VkKeyScan(c) where !c.Equals('\r') select key)
+            {
+                if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
+                {
+                    SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
+                }
+                if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
+                {
+                    SendKeyDown((short) KeyboardInput.SpecialKeys.CONTROL, false);
+                }
+                if (BareMetalKeyboard.AltKeyIsNeeded(key))
+                {
+                    SendKeyDown((short) KeyboardInput.SpecialKeys.ALT, false);
+                }
+                Press(key, false);
+                if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
+                {
+                    SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
+                }
+                if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
+                {
+                    SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
+                }
+                if (BareMetalKeyboard.AltKeyIsNeeded(key))
+                {
+                    SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
+                }
+            }
+
+            actionListener.ActionPerformed(Action.WindowMessage);
+        }
+        
+        /// <summary>
+        /// Implements <see cref="IKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys, IActionListener)"/>
+        /// </summary>
+        public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
+        {
+            Send(key, true);
             actionListener.ActionPerformed(Action.WindowMessage);
         }
 
-        private void Press(short key, bool specialKey)
+        /// <summary>
+        /// Implements <see cref="IKeyboard.HoldKey(KeyboardInput.SpecialKeys, IActionListener)"/>
+        /// </summary>
+        public virtual void HoldKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
-            SendKeyDown(key, specialKey);
-            SendKeyUp(key, specialKey);
+            SendKeyDown((short) key, true);
+            AddUsedKey(key);
+            actionListener.ActionPerformed(Action.WindowMessage);
         }
 
-        private void Send(KeyboardInput.SpecialKeys key, bool specialKey)
+        /// <summary>
+        /// Implements <see cref="IKeyboard.LeaveKey(KeyboardInput.SpecialKeys, IActionListener)"/>
+        /// </summary>
+        public virtual void LeaveKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
-            Press((short) key, specialKey);
-        }
-
-        private static bool ShiftKeyIsNeeded(short key)
-        {
-            return ((key >> 8) & 1) == 1;
-        }
-
-        private static bool CtrlKeyIsNeeded(short key)
-        {
-            return ((key >> 8) & 2) == 2;
-        }
-
-        private static bool AltKeyIsNeeded(short key)
-        {
-            return ((key >> 8) & 4) == 4;
-        }
-
-        private void SendKeyUp(short b, bool specialKey)
-        {
-            if (!keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
-            keysHeld.Remove(b);
-            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
-            Native.SendInput(GetInputFor(b, keyUpDown));
-        }
-
-        private static KeyboardInput.KeyUpDown GetSpecialKeyCode(bool specialKey, KeyboardInput.KeyUpDown key)
-        {
-            if (specialKey && scanCodeDependent.Contains((KeyboardInput.SpecialKeys) key)) key |= KeyboardInput.KeyUpDown.KEYEVENTF_EXTENDEDKEY;
-            return key;
-        }
-
-        private void SendKeyDown(short b, bool specialKey)
-        {
-            if (keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
-            keysHeld.Add(b);
-            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
-            Native.SendInput(GetInputFor(b, keyUpDown));
-        }
-
-        private static Input GetInputFor(short character, KeyboardInput.KeyUpDown keyUpOrDown)
-        {
-            return InputFactory.Keyboard(new KeyboardInput(character, keyUpOrDown, Native.GetMessageExtraInfo()));
-        }
-
-        public virtual bool CapsLockOn
-        {
-            get
-            {
-                ushort state = Native.GetKeyState((uint)KeyboardInput.SpecialKeys.CAPS);
-                return state != 0;
-            }
-            set { if (CapsLockOn != value) Send(KeyboardInput.SpecialKeys.CAPS, true); }
-        }
-
-        public virtual KeyboardInput.SpecialKeys[] HeldKeys
-        {
-            get { return heldKeys.ToArray(); }
-        }
-
-        public virtual void LeaveAllKeys()
-        {
-            new List<KeyboardInput.SpecialKeys>(heldKeys).ForEach(LeaveKey);
+            SendKeyUp((short) key, true);
+            RemoveUsedKey(key);
+            actionListener.ActionPerformed(Action.WindowMessage);
         }
     }
 }

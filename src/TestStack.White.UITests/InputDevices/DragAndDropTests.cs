@@ -23,7 +23,7 @@ namespace TestStack.White.UITests.InputDevices
             {
                 var button = window.Get<Button>("Button");
                 var textBox = window.Get<TextBox>("TextBox");
-                Mouse.Instance.DragAndDrop(textBox, textBox.Bounds.Center(), button, button.Bounds.Center());
+                Mouse.DragAndDrop(textBox, textBox.Bounds.Center(), button, button.Bounds.Center());
 
                 Retry.For(() => Assert.That(window.Get<Label>("DragDropResults").Text, Is.EqualTo("TextBoxDraggedOntoButton")),
                     TimeSpan.FromSeconds(2));
@@ -37,7 +37,7 @@ namespace TestStack.White.UITests.InputDevices
             {
                 var button = window.Get<Button>("Button");
                 var textBox = window.Get<TextBox>("TextBox");
-                Mouse.Instance.DragAndDrop(textBox, button);
+                Mouse.DragAndDrop(textBox, button);
 
                 Retry.For(() => Assert.That(window.Get<Label>("DragDropResults").Text, Is.EqualTo("TextBoxDraggedOntoButton")),
                     TimeSpan.FromSeconds(2));
