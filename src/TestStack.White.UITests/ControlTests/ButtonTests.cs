@@ -35,10 +35,10 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        public void RaiseClickEvent()
+        public void TestInvokePattern()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
-            button.RaiseClickEvent();
+            button.Invoke();
             Assert.That(button.Text, Is.EqualTo("Clicked"));
         }
     }

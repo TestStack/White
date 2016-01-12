@@ -124,7 +124,7 @@ namespace TestStack.White.UIItems
         }
 
         //TODO While recording you get exception when clicking at the corner of the cell
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             var safeAutomationEventHandler =
                 new SafeAutomationEventHandler(this, eventListener, objs => ListViewEvent.Create(this, (AutomationPropertyChangedEventArgs) objs[0]));

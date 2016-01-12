@@ -13,6 +13,12 @@ namespace TestStack.White.InputDevices
         private readonly IActionListener actionListener;
         private readonly Mouse mouse;
 
+        public virtual Point Location
+        {
+            get { return mouse.Location; }
+            set { mouse.Location = value; }
+        }
+
         internal AttachedMouse(Mouse mouse, IActionListener actionListener)
         {
             this.actionListener = actionListener;
@@ -23,11 +29,6 @@ namespace TestStack.White.InputDevices
         {
             mouse.RightClick();
             ActionPerformed();
-        }
-
-        private void ActionPerformed()
-        {
-            actionListener.ActionPerformed(Action.WindowMessage);
         }
 
         public virtual void Click()
@@ -60,10 +61,9 @@ namespace TestStack.White.InputDevices
             ActionPerformed();
         }
 
-        public virtual Point Location
+        private void ActionPerformed()
         {
-            get { return mouse.Location; }
-            set { mouse.Location = value; }
+            actionListener.ActionPerformed(Action.WindowMessage);
         }
     }
 }

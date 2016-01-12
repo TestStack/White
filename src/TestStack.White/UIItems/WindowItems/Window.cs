@@ -290,7 +290,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public override void Visit(IWindowControlVisitor windowControlVisitor)
         {
-            windowControlVisitor.Accept(this);
+            base.Visit(windowControlVisitor);
             CurrentContainerItemFactory.Visit(windowControlVisitor);
         }
 
@@ -343,7 +343,7 @@ UI actions on window needing mouse would not work in area not falling under the 
                    (DisplayState.Minimized == value && !WinPattern.Current.CanMinimize);
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate { };
             Automation.AddAutomationEventHandler(AutomationElement.MenuOpenedEvent, automationElement,
@@ -362,7 +362,10 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Dispose()
         {
-            Close();
+            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
+            {
+                Close();
+            }
         }
 
         /// <summary>

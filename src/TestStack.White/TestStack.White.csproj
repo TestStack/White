@@ -99,6 +99,7 @@
     <Compile Include="Drawing\ScreenRectangle.cs" />
     <Compile Include="InputDevices\Input64.cs" />
     <Compile Include="InputDevices\Native.cs" />
+    <Compile Include="InputDevices\MouseButton.cs" />
     <Compile Include="InputDevices\SystemMetric.cs" />
     <Compile Include="Interceptors\IWhiteInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

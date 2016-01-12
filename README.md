@@ -13,6 +13,7 @@ TestStack has brought this project into it's offering to try and breathe some li
 #### Master Branch
 [![Build status](https://ci.appveyor.com/api/projects/status/3nq9oblpevt0uu0l/branch/master?svg=true)](https://ci.appveyor.com/project/RomanBaeriswyl/white-9yaco/branch/master)
 [![Test status](http://flauschig.ch/batch.php?type=tests&account=RomanBaeriswyl&slug=white-9yaco&branch=master)](https://ci.appveyor.com/project/RomanBaeriswyl/white-9yaco/branch/master)
+[![Documentation Status](https://readthedocs.org/projects/teststackwhite/badge/?version=latest)](http://teststackwhite.readthedocs.org/en/latest/?badge=latest)
 
 #### UIAComWrapper Branch
 [![Build status](https://ci.appveyor.com/api/projects/status/3nq9oblpevt0uu0l/branch/UIAComWrapper?svg=true)](https://ci.appveyor.com/project/RomanBaeriswyl/white-9yaco/branch/UIAComWrapper)
@@ -55,14 +56,13 @@ See the [sample apps here](https://github.com/TestStack/White/tree/master/src/Sa
 
 Documentation
 -----------------
- 
+[![Documentation Status](https://readthedocs.org/projects/teststackwhite/badge/?version=latest)](http://teststackwhite.readthedocs.org/en/latest/?badge=latest)
+
 ### Change Log
 [http://docs.teststack.net/White/ChangeLog.html](http://docs.teststack.net/White/ChangeLog.html)
 
-### Documentation Site
-[http://teststack.azurewebsites.net/white/index.html](http://teststack.azurewebsites.net/white/index.html)
-
-Also these docs can be found [directly on GitHub](https://github.com/TestStack/TestStack.docs/tree/master/_source/White).
+### Documentation
+[http://teststackwhite.readthedocs.org/en/latest](http://teststackwhite.readthedocs.org/en/latest)
 
 ### Discussion Group
 [https://groups.google.com/forum/#!forum/teststack_white](https://groups.google.com/forum/#!forum/teststack_white)

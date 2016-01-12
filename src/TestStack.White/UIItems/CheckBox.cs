@@ -48,7 +48,7 @@ namespace TestStack.White.UIItems
             Checked = false;
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate
                           {

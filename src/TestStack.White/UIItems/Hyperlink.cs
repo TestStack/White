@@ -17,7 +17,7 @@ namespace TestStack.White.UIItems
             mouse.Click(new Point((int) x, (int) y), actionListener);
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             HookClickEvent(eventListener);
         }

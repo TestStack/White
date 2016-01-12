@@ -186,7 +186,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             }
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             lastSelectedItem = SelectedItem;
             handler = delegate(object sender, AutomationPropertyChangedEventArgs e)

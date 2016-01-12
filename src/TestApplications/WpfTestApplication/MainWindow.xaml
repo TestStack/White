@@ -97,10 +97,17 @@
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                         <DataGridTextColumn Header="Contents" Binding="{Binding Contents}"/>
                         <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
-                        <DataGridTemplateColumn Header="Combobox" Width="*">
+                        <DataGridTemplateColumn Header="Combobox">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <ComboBox ItemsSource="{Binding ComboboxItems}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Image" Width="*" MinWidth="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center" Source="white.jpg" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

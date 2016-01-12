@@ -1,0 +1,29 @@
+site_name: TestStack.White
+theme: readthedocs
+repo_url: https://github.com/TestStack/White
+
+pages:
+- Home: index.md
+- Changelog: ChangeLog.md
+- Configuration: Configuration.md
+- Getting Started: GettingStarted.md
+- UI Items: UIItems.md
+- Windows: Windows.md
+- FAQ: FAQ.md
+- Screen Objects:
+    - Screen Objects: ScreenObjects/Index.md
+    - Screen Repository: ScreenObjects/ScreenRepository.md
+    - Screens UIItems And Entities: ScreenObjects/ScreensUIItemsAndEntities.md
+    - Refactoring to use Screen Objects: ScreenObjects/RefactoringToUseScreenObjects.md
+    - Test Entities: ScreenObjects/TestEntities.md
+- Advanced Topics:
+    - Index: AdvancedTopics/index.md
+    - Continuous Integration: AdvancedTopics/ContinuousIntegration.md
+    - Custom UI Items: AdvancedTopics/CustomUIItems.md
+    - Localisation: AdvancedTopics/Localisation.md
+    - Mouse and keyboard: AdvancedTopics/MouseAndKeyboard.md
+    - Search Depth: AdvancedTopics/SearchDepth.md
+    - Waiting: AdvancedTopics/Waiting.md
+    - Third party controls: AdvancedTopics/ThirdPartyControls.md
+    - Position based search: AdvancedTopics/PositionBasedSearch.md
+    - UIA v3: AdvancedTopics/UIAv3.md

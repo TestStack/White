@@ -59,7 +59,7 @@ namespace TestStack.White.UIItems.TabItems
             if (!oldTab.Equals(SelectedTab)) actionListener.ActionPerformed(new Action(ActionType.NewControls));
         }
 
-        public override void HookEvents(UIItemEventListener eventListener)
+        public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new TabEvent(this)); };
             Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Descendants, handler, SelectionItemPattern.IsSelectedProperty);

@@ -11,13 +11,17 @@ namespace TestStack.White.Configuration
     /// </summary>
     public interface ICoreConfiguration
     {
+        ILoggerFactory LoggerFactory { get; set; }
+        IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes);
+        IWaitHook AdditionalWaitHook { get; set; }
+        DynamicProxyInterceptors Interceptors { get; }
+
         /// <summary>
         /// In Milliseconds
         /// </summary>
         int BusyTimeout { get; set; }
         int FindWindowTimeout { get; set; }
         bool WaitBasedOnHourGlass { get; set; }
-        DynamicProxyInterceptors Interceptors { get; }
         DirectoryInfo WorkSessionLocation { get; set; }
         int UIAutomationZeroWindowBugTimeout { get; set; }
         int PopupTimeout { get; set; }
@@ -30,12 +34,14 @@ namespace TestStack.White.Configuration
         bool ComboBoxItemsPopulatedWithoutDropDownOpen { get; set; }
         int ComboBoxItemSelectionTimeout { get; set; }
         int RawInputQueueProcessingTime { get; set; }
-        IWaitHook AdditionalWaitHook { get; set; }
-        int MaxElementSearchDepth { get; set; }
         bool RawElementBasedSearch { get; set; }
+        int MaxElementSearchDepth { get; set; }
         int DoubleClickInterval { get; set; }
         bool MoveMouseToGetStatusOfHourGlass { get; set; }
-        ILoggerFactory LoggerFactory { get; set; }
-        IDisposable ApplyTemporarySetting(Action<ICoreConfiguration> changes);
+        /// <summary>
+        /// Flag to allow keeping the <see cref="TestStack.White.Application"/> and <see cref="TestStack.White.UIItems.WindowItems.Window" />
+        /// open after White has disposed it's objects.
+        /// </summary>
+        bool KeepOpenOnDispose { get;set;}
     }
 }
