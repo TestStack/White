@@ -18,7 +18,7 @@ namespace TestStack.White.ScreenObjects.EntityMapping
     public class Entity
     {
         [ScreenIgnore, XmlIgnore] private NestedEntities nestedEntities;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Entity));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(Entity));
         internal const BindingFlags BindingFlag = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly | BindingFlags.IgnoreCase;
 
         protected Entity() {}

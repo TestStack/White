@@ -19,7 +19,7 @@ namespace TestStack.White.Sessions
         private readonly ApplicationSession applicationSession;
         private readonly WindowItemsMap windowItemsMap;
         private readonly InitializeOption initializeOption;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WindowSession));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(WindowSession));
 
         public WindowSession(ApplicationSession applicationSession, InitializeOption initializeOption)
         {

@@ -27,7 +27,7 @@ namespace TestStack.White.UIItems.Scrolling {
         protected virtual IHScrollBar FindHorizontalBar(FindElement findElement) {
             AutomationElement horizontalScrollElement =
                 findElement(
-                    AutomationSearchCondition.ByAutomationId(UIItemIdAppXmlConfiguration.Instance.HorizontalScrollBar).OfControlType(
+                    AutomationSearchCondition.ByAutomationId(UIItemIdConfigurationLocator.Get().HorizontalScrollBar).OfControlType(
                         ControlType.ScrollBar));
             if (horizontalScrollElement == null) {
                 return new NullHScrollBar();
@@ -42,7 +42,7 @@ namespace TestStack.White.UIItems.Scrolling {
         protected virtual IVScrollBar FindVerticalBar(FindElement findElement) {
             AutomationElement verticalScrollElement =
                 findElement(
-                    AutomationSearchCondition.ByAutomationId(UIItemIdAppXmlConfiguration.Instance.VerticalScrollBar).OfControlType(
+                    AutomationSearchCondition.ByAutomationId(UIItemIdConfigurationLocator.Get().VerticalScrollBar).OfControlType(
                         ControlType.ScrollBar));
             if (verticalScrollElement == null) {
                 return new NullVScrollBar();

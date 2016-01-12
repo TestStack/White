@@ -26,7 +26,7 @@ namespace TestStack.White.UIItems
             }
             set
             {
-                SetDate(value, CoreAppXmlConfiguration.Instance.DefaultDateFormat);
+                SetDate(value, CoreConfigurationLocator.Get().DefaultDateFormat);
             }
         }
 

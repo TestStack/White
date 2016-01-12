@@ -46,7 +46,7 @@ namespace TestStack.White.UITests.Infrastructure
             var addArgs = string.Format("add app /site.name:\"Default Web Site\" /path:/TestSilverlightApplication.Web /physicalPath:\"{0}\"", fullPath);
             const string deleteArgs = "delete app /app.name:\"Default Web Site\\TestSilverlightApplication.Web\"";
 
-            var logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SilverlightTestConfiguration));
+            var logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(SilverlightTestConfiguration));
             logger.Info(string.Format("Running {0} {1}", appcmd, deleteArgs));
             Process.Start(appcmd, deleteArgs).WaitForExit();
             logger.Info(string.Format("Running {0} {1}", appcmd, addArgs));

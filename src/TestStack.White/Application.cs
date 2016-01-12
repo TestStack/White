@@ -22,7 +22,7 @@ namespace TestStack.White
         private readonly Process process;
         private readonly ApplicationSession applicationSession;
         private readonly WindowFactory windowFactory;
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Application));
+        private static readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(Application));
 
         protected Application()
         {
@@ -299,7 +299,7 @@ namespace TestStack.White
 
         public virtual void Dispose()
         {
-            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
+            if (!CoreConfigurationLocator.Get().KeepOpenOnDispose)
             {
                 Kill();
             }
@@ -315,7 +315,7 @@ namespace TestStack.White
         /// </summary>
         public virtual void WaitWhileBusy()
         {
-            process.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout);
+            process.WaitForInputIdle(CoreConfigurationLocator.Get().BusyTimeout);
         }
 
         /// <summary>

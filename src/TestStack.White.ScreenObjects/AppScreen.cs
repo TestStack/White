@@ -13,7 +13,7 @@ namespace TestStack.White.ScreenObjects
     //TODO: Take care of act kind of stuff by putting attribute
     public class AppScreen : RepositoryComponent
     {
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(AppScreen));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(AppScreen));
 
         public AppScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository) {}
 

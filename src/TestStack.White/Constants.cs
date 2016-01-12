@@ -6,7 +6,7 @@ namespace TestStack.White
     {
         public static string BusyMessage
         {
-            get { return string.Format(", after waiting for {0} ms", CoreAppXmlConfiguration.Instance.BusyTimeout); }
+            get { return string.Format(", after waiting for {0} ms", CoreConfigurationLocator.Get().BusyTimeout); }
         }
     }
 }

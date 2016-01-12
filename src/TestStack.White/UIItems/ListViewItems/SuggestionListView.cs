@@ -2,6 +2,7 @@ using System;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.Utility;
 
@@ -30,7 +31,7 @@ namespace TestStack.White.UIItems.ListViewItems
         {
             try
             {
-                return Retry.For(() => Find(actionListener), shouldRetry, CoreAppXmlConfiguration.Instance.SuggestionListTimeout());
+                return Retry.For(() => Find(actionListener), shouldRetry, CoreConfigurationLocator.Get().SuggestionListTimeout.AsTimeSpan());
             }
             catch (Exception ex)
             {

@@ -93,7 +93,14 @@
     <Compile Include="Bricks\IInterceptContext.cs" />
     <Compile Include="Bricks\DynamicProxyGenerator.cs" />
     <Compile Include="Bricks\DynamicProxyInterceptors.cs" />
-    <Compile Include="Configuration\ConfigurationExtensions.cs" />
+    <Compile Include="Configuration\CoreConfiguration.cs" />
+    <Compile Include="Configuration\CoreConfigurationLocator.cs" />
+    <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Configuration\Readers\AppConfigReader.cs" />
+    <Compile Include="Configuration\ConfigurationBase.cs" />
+    <Compile Include="Configuration\Readers\IConfigurationReader.cs" />
+    <Compile Include="Configuration\UIItemIdConfiguration.cs" />
+    <Compile Include="Configuration\UIItemIdConfigurationLocator.cs" />
     <Compile Include="Configuration\WhiteDefaultLogger.cs" />
     <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
     <Compile Include="Drawing\ScreenRectangle.cs" />
@@ -115,11 +122,7 @@
     <Compile Include="AutomationElementSearch\ElementSearchResult.cs" />
     <Compile Include="AutomationException.cs" />
     <Compile Include="CacheMode.cs" />
-    <Compile Include="Configuration\CoreAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\ICoreConfiguration.cs" />
     <Compile Include="Configuration\IWaitHook.cs" />
-    <Compile Include="Configuration\UIItemIdAppXmlConfiguration.cs" />
-    <Compile Include="Configuration\IUIItemIdConfiguration.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Desktop.cs" />
@@ -159,6 +162,7 @@
     <Compile Include="ScreenMap\WindowsAutomationTypesSurrogates.cs" />
     <Compile Include="Span.cs" />
     <Compile Include="SystemExtensions\DoubleX.cs" />
+    <Compile Include="SystemExtensions\IntExtensions.cs" />
     <Compile Include="SystemExtensions\RectangleExtensions.cs" />
     <Compile Include="SystemExtensions\TypeExtensions.cs" />
     <Compile Include="UIA\AutomationElementCollectionX.cs" />

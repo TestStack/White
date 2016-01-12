@@ -3,6 +3,7 @@ using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.Sessions;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.Utility;
 using TestStack.White.WebBrowser.Silverlight;
@@ -34,12 +35,12 @@ namespace TestStack.White.WebBrowser
 
                             return finder.Descendant(automationSearchCondition);
                         },
-                        CoreAppXmlConfiguration.Instance.BusyTimeout());
+                        CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
 
                     if (silverlightControl == null)
                     {
                         var message = string.Format("Could not find Silverlight document after waiting for {0}. " +
-                            "Timeout value configured by BusyTimeout in White/Core", CoreAppXmlConfiguration.Instance.BusyTimeout);
+                            "Timeout value configured by BusyTimeout in White/Core", CoreConfigurationLocator.Get().BusyTimeout);
                         throw new UIItemSearchException(message);
                     }
 

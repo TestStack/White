@@ -36,7 +36,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             Restart();
             ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
 
-            var config = CoreAppXmlConfiguration.Instance;
+            var config = CoreConfigurationLocator.Get();
             var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             try
             {
@@ -53,7 +53,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         public void ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrievalTest()
         {
             // Arrange
-            var config = CoreAppXmlConfiguration.Instance;
+            var config = CoreConfigurationLocator.Get();
             var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
 
@@ -82,7 +82,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         public void ComboBoxWithAutoExpandCollapsedOnceItemsAreRetrievedTest()
         {
             // Arrange
-            var config = CoreAppXmlConfiguration.Instance;
+            var config = CoreConfigurationLocator.Get();
             var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
             try

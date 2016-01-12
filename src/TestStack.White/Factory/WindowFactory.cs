@@ -1,12 +1,13 @@
+using Castle.Core.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Automation;
-using Castle.Core.Logging;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Sessions;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
@@ -18,7 +19,7 @@ namespace TestStack.White.Factory
 {
     public class WindowFactory : ChildWindowFactory
     {
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WindowFactory));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(WindowFactory));
         private WindowFactory(AutomationElementFinder automationElementFinder) : base(automationElementFinder) {}
 
         public static WindowFactory Desktop
@@ -47,7 +48,7 @@ namespace TestStack.White.Factory
                 FindDescendantWindowElements(Finder, process, windowElements);
                 if (windowElements.Count == 0) logger.Warn("Could not find any windows for this application.");
                 return windowElements;
-            }, list => list.Count == 0, CoreAppXmlConfiguration.Instance.UIAutomationZeroWindowBugTimeout());
+            }, list => list.Count == 0, CoreConfigurationLocator.Get().UIAutomationZeroWindowBugTimeout.AsTimeSpan());
 
             return items ?? new List<AutomationElement>();
         }

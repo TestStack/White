@@ -11,7 +11,7 @@ namespace TestStack.White.Reporting.Domain
         private readonly string archiveLocation;
         private readonly string flowName;
         private int currentSubFlowIndex = -1;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SubFlow));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(SubFlow));
 
         public SubFlows(string archiveLocation, string flowName)
         {

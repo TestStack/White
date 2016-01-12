@@ -21,7 +21,7 @@ namespace TestStack.White.UITests.AutomationElementSearch
         [OneTimeSetUp]
         public void Setup()
         {
-            cleanup = CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c =>
+            cleanup = CoreConfigurationLocator.Get().ApplyTemporarySettings(c =>
             {
                 c.RawElementBasedSearch = true;
                 c.MaxElementSearchDepth = 2;
