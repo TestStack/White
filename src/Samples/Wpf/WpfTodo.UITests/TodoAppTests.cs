@@ -15,8 +15,6 @@ namespace WpfTodo.UITests
     public class TodoAppTests : UITestBase
     {
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void AutomateTest()
         {
             var workPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
