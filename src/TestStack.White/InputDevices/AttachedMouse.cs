@@ -1,3 +1,4 @@
+using System;
 using System.Windows;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Actions;
@@ -8,19 +9,24 @@ namespace TestStack.White.InputDevices
     /// Any operation performed using the mouse would wait till the window is busy after this operation. Before any operation is 
     /// performed the window, from which it was retreived, is brought to focus if it is not.
     /// </summary>
-    public class AttachedMouse : IAttachedMouse
+    public class AttachedMouse : IMouse
     {
         private readonly IActionListener actionListener;
-        private readonly IMouse mouse;
+        private readonly IMouseWithActionListener mouse;
 
         internal AttachedMouse(IMouse mouse, IActionListener actionListener)
+            : this(TryMouseWithActionListener(mouse), actionListener)
+        {
+        }
+
+        internal AttachedMouse(IMouseWithActionListener mouse, IActionListener actionListener)
         {
             this.actionListener = actionListener;
             this.mouse = mouse;
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.Location"/>
+        /// Implements <see cref="IMouse.Location"/>
         /// </summary>
         public virtual Point Location
         {
@@ -29,7 +35,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.Cursor"/>
+        /// Implements <see cref="IMouse.Cursor"/>
         /// </summary>
         public virtual MouseCursor Cursor
         {
@@ -37,7 +43,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.Click(MouseButton)"/>
+        /// Implements <see cref="IMouse.Click(MouseButton)"/>
         /// </summary>
         public virtual void Click(MouseButton mouseButton)
         {
@@ -45,7 +51,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.Click(MouseButton, Point)"/>
+        /// Implements <see cref="IMouse.Click(MouseButton, Point)"/>
         /// </summary>
         public virtual void Click(MouseButton mouseButton, Point point)
         {
@@ -53,7 +59,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DoubleClick(MouseButton)"/>
+        /// Implements <see cref="IMouse.DoubleClick(MouseButton)"/>
         /// </summary>
         public virtual void DoubleClick(MouseButton mouseButton)
         {
@@ -61,7 +67,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DoubleClick(MouseButton, Point)"/>
+        /// Implements <see cref="IMouse.DoubleClick(MouseButton, Point)"/>
         /// </summary>
         public virtual void DoubleClick(MouseButton mouseButton, Point point)
         {
@@ -69,7 +75,7 @@ namespace TestStack.White.InputDevices
         }
         
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.LeftClick()"/>
+        /// Implements <see cref="IMouse.LeftClick()"/>
         /// </summary>
         public virtual void LeftClick()
         {
@@ -78,7 +84,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.LeftClick(Point)"/>
+        /// Implements <see cref="IMouse.LeftClick(Point)"/>
         /// </summary>
         public virtual void LeftClick(Point point)
         {
@@ -86,7 +92,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.LeftDoubleClick()"/>
+        /// Implements <see cref="IMouse.LeftDoubleClick()"/>
         /// </summary>
         public virtual void LeftDoubleClick()
         {
@@ -95,7 +101,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.LeftDoubleClick(Point)"/>
+        /// Implements <see cref="IMouse.LeftDoubleClick(Point)"/>
         /// </summary>
         public virtual void LeftDoubleClick(Point point)
         {
@@ -104,7 +110,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.RightClick(Point)"/>
+        /// Implements <see cref="IMouse.RightClick(Point)"/>
         /// </summary>
         public virtual void RightClick()
         {
@@ -113,7 +119,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.RightClick(Point)"/>
+        /// Implements <see cref="IMouse.RightClick(Point)"/>
         /// </summary>
         public virtual void RightClick(Point point)
         {
@@ -121,7 +127,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragAndDrop(IUIItem, IUIItem)"/>
+        /// Implements <see cref="IMouse.DragAndDrop(IUIItem, IUIItem)"/>
         /// </summary>
         public virtual void DragAndDrop(IUIItem draggedItem, IUIItem dropItem)
         {
@@ -130,7 +136,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragAndDrop(MouseButton, IUIItem, IUIItem)"/>
+        /// Implements <see cref="IMouse.DragAndDrop(MouseButton, IUIItem, IUIItem)"/>
         /// </summary>
         public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, IUIItem dropItem)
         {
@@ -139,7 +145,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragAndDrop(IUIItem, Point, IUIItem, Point)"/>
+        /// Implements <see cref="IMouse.DragAndDrop(IUIItem, Point, IUIItem, Point)"/>
         /// </summary>
         public virtual void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
         {
@@ -148,7 +154,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragAndDrop(MouseButton, IUIItem, Point, IUIItem, Point)"/>
+        /// Implements <see cref="IMouse.DragAndDrop(MouseButton, IUIItem, Point, IUIItem, Point)"/>
         /// </summary>
         public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
         {
@@ -157,7 +163,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragHorizontally(IUIItem, int)"/>
+        /// Implements <see cref="IMouse.DragHorizontally(IUIItem, int)"/>
         /// </summary>
         public virtual void DragHorizontally(IUIItem uiItem, int distance)
         {
@@ -166,7 +172,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragHorizontally(MouseButton, IUIItem, int)"/>
+        /// Implements <see cref="IMouse.DragHorizontally(MouseButton, IUIItem, int)"/>
         /// </summary>
         public virtual void DragHorizontally(MouseButton mouseButton, IUIItem uiItem, int distance)
         {
@@ -175,7 +181,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragVertically(IUIItem, int)"/>
+        /// Implements <see cref="IMouse.DragVertically(IUIItem, int)"/>
         /// </summary>
         public virtual void DragVertically(IUIItem uiItem, int distance)
         {
@@ -184,7 +190,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.DragVertically(MouseButton, IUIItem, int)"/>
+        /// Implements <see cref="IMouse.DragVertically(MouseButton, IUIItem, int)"/>
         /// </summary>
         public virtual void DragVertically(MouseButton mouseButton, IUIItem uiItem, int distance)
         {
@@ -193,7 +199,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.MoveOut()"/>
+        /// Implements <see cref="IMouse.MoveOut()"/>
         /// </summary>
         public virtual void MoveOut()
         {
@@ -202,7 +208,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IAttachedMouse.Move(Point)"/>
+        /// Implements <see cref="IMouse.Move(Point)"/>
         /// </summary>
         public virtual void Move(Point position)
         {
@@ -213,6 +219,16 @@ namespace TestStack.White.InputDevices
         protected virtual void ActionPerformed()
         {
             mouse.ActionPerformed(actionListener);
+        }
+
+        internal static IMouseWithActionListener TryMouseWithActionListener(IMouse mouseToCheck)
+        {
+            var actionMouse = mouseToCheck as IMouseWithActionListener;
+            if (actionMouse == null)
+            {
+                throw new Exception("Mouse does not Implement" + typeof(IMouseWithActionListener));
+            }
+            return actionMouse;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace TestStack.White.InputDevices
     /// <summary>
     /// Represents Keyboard attachment to the machine.
     /// </summary>
-    public class Keyboard : IKeyboard
+    public class Keyboard : IKeyboardWithActionListener
     {
         private readonly List<KeyboardInput.SpecialKeys> heldKeys = new List<KeyboardInput.SpecialKeys>();
         protected readonly List<int> KeysHeld = new List<int>();
@@ -37,7 +37,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IKeyboard.Send(string, IActionListener)"/>
+        /// Implements <see cref="IKeyboardWithActionListener.Send(string, IActionListener)"/>
         /// </summary>
         public virtual void Send(string keysToType, IActionListener actionListener)
         {
@@ -88,7 +88,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys, IActionListener)"/>
+        /// Implements <see cref="IKeyboardWithActionListener.PressSpecialKey(KeyboardInput.SpecialKeys, IActionListener)"/>
         /// </summary>
         public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
@@ -105,7 +105,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IKeyboard.HoldKey(KeyboardInput.SpecialKeys, IActionListener)"/>
+        /// Implements <see cref="IKeyboardWithActionListener.HoldKey(KeyboardInput.SpecialKeys, IActionListener)"/>
         /// </summary>
         public virtual void HoldKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
@@ -123,7 +123,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IKeyboard.LeaveKey(KeyboardInput.SpecialKeys, IActionListener)"/>
+        /// Implements <see cref="IKeyboardWithActionListener.LeaveKey(KeyboardInput.SpecialKeys, IActionListener)"/>
         /// </summary>
         public virtual void LeaveKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
@@ -171,7 +171,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IKeyboard.ActionPerformed(IActionListener)"/>
+        /// Implements <see cref="IKeyboardWithActionListener.ActionPerformed(IActionListener)"/>
         /// </summary>
         /// <remarks>
         public virtual void ActionPerformed(IActionListener actionListener)

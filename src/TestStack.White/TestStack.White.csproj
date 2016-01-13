@@ -97,13 +97,13 @@
     <Compile Include="Configuration\WhiteDefaultLogger.cs" />
     <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
     <Compile Include="Drawing\ScreenRectangle.cs" />
+    <Compile Include="InputDevices\IKeyboardWithActionListener.cs" />
+    <Compile Include="InputDevices\IMouseWithActionListener.cs" />
     <Compile Include="InputDevices\KeyboardWin32.cs" />
     <Compile Include="InputDevices\MouseWin32.cs" />
     <Compile Include="InputDevices\Keyboard.cs" />
-    <Compile Include="InputDevices\IAttachedKeyboard.cs" />
     <Compile Include="InputDevices\Mouse.cs" />
     <Compile Include="InputDevices\IKeyboard.cs" />
-    <Compile Include="InputDevices\IAttachedMouse.cs" />
     <Compile Include="InputDevices\IMouse.cs" />
     <Compile Include="InputDevices\Input64.cs" />
     <Compile Include="InputDevices\Native.cs" />

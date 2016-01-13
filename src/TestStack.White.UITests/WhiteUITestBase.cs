@@ -20,8 +20,8 @@ namespace TestStack.White.UITests
     {
         protected WindowsFramework Framework { get; private set; }
         private IDisposable mainWindow;
-        protected IMouse Mouse;
-        protected IKeyboard Keyboard;
+        protected IMouseWithActionListener Mouse;
+        protected IKeyboardWithActionListener Keyboard;
 
         protected WhiteUITestBase(WindowsFramework framework)
         {

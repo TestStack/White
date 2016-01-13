@@ -12,7 +12,7 @@ using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
-    public class Mouse : IMouse
+    public class Mouse : IMouseWithActionListener
     {
         protected readonly Dictionary<MouseButton, DateTime> LastClickTimes;
         protected readonly Dictionary<MouseButton, Point> LastClickLocations;
@@ -93,7 +93,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.Click(MouseButton, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.Click(MouseButton, IActionListener)"/>
         /// </summary>
         public virtual void Click(MouseButton mouseButton, IActionListener actionListener)
         {
@@ -111,7 +111,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.Click(MouseButton, Point, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.Click(MouseButton, Point, IActionListener)"/>
         /// </summary>
         public virtual void Click(MouseButton mouseButton, Point point, IActionListener actionListener)
         {
@@ -131,7 +131,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.DoubleClick(MouseButton, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.DoubleClick(MouseButton, IActionListener)"/>
         /// </summary>
         public virtual void DoubleClick(MouseButton mouseButton, IActionListener actionListener)
         {
@@ -149,7 +149,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.DoubleClick(MouseButton, Point, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.DoubleClick(MouseButton, Point, IActionListener)"/>
         /// </summary>
         public virtual void DoubleClick(MouseButton mouseButton, Point point, IActionListener actionListener)
         {
@@ -175,7 +175,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.LeftClick(Point, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.LeftClick(Point, IActionListener)"/>
         /// </summary>
         public virtual void LeftClick(Point point, IActionListener actionListener)
         {
@@ -199,7 +199,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.LeftDoubleClick(Point, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.LeftDoubleClick(Point, IActionListener)"/>
         /// </summary>
         public virtual void LeftDoubleClick(Point point, IActionListener actionListener)
         {
@@ -223,7 +223,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.RightClick(Point, IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.RightClick(Point, IActionListener)"/>
         /// </summary>
         public virtual void RightClick(Point point, IActionListener actionListener)
         {
@@ -336,7 +336,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IMouse.ActionPerformed(IActionListener)"/>
+        /// Implements <see cref="IMouseWithActionListener.ActionPerformed(IActionListener)"/>
         /// </summary>
         public virtual void ActionPerformed(IActionListener actionListener)
         {
