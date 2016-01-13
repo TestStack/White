@@ -19,6 +19,9 @@ namespace TestStack.White.InputDevices
         protected readonly short DoubleClickTime = BareMetalMouse.GetDoubleClickTime();
         protected const int ExtraMillisecondsBecauseOfBugInWindows = 13;
 
+        [Obsolete("Obsolete. Create an instance via new where you need it")]
+        public static Mouse Instance = new Mouse();
+
         public Mouse()
         {
             LastClickTimes = new Dictionary<MouseButton, DateTime>();

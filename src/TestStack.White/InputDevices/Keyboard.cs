@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.WindowsAPI;
+using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
@@ -13,7 +15,14 @@ namespace TestStack.White.InputDevices
     {
         private readonly List<KeyboardInput.SpecialKeys> heldKeys = new List<KeyboardInput.SpecialKeys>();
         protected readonly List<int> KeysHeld = new List<int>();
-        
+
+        /// <summary>
+        /// Use Window.Keyboard method to get handle to the Keyboard. 
+        /// Keyboard instance got using this method would not wait while the application is busy.
+        /// </summary>
+        [Obsolete("Obsolete. Create an instance where it is needed.")]
+        public static readonly IKeyboard Instance = new Keyboard();
+
         public Keyboard()
         {
             heldKeys = new List<KeyboardInput.SpecialKeys>();
