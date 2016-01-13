@@ -19,6 +19,8 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void IncrementTest()
         {
             var spinner = MainWindow.Get<Spinner>("NumericUpDown");
@@ -28,6 +30,8 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void DecrementTest()
         {
             var spinner = MainWindow.Get<Spinner>("NumericUpDown");
@@ -35,8 +39,10 @@ namespace TestStack.White.UITests.ControlTests.InputControls
             spinner.Decrement();
             Assert.That(spinner.Value, Is.EqualTo(3.8));
         }
-        [Test]
 
+        [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void ValueTest()
         {
             var spinner = MainWindow.Get<Spinner>("NumericUpDown");

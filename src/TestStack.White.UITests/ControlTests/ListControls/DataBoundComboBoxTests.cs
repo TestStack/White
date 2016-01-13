@@ -14,6 +14,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CanSelectDataboundItemsTest()
         {
             var comboBoxUnderTest = MainWindow.Get<ComboBox>("DataBoundComboBox");

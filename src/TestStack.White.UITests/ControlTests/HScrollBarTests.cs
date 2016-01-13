@@ -37,6 +37,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void ShouldScrollRightTest()
         {
             var initialValue = hScrollBar.Value;
@@ -45,6 +47,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void ShouldScrollRightLargeTest()
         {
             var initialValue = hScrollBar.Value;
@@ -53,6 +57,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void ShouldScrollLeftTest()
         {
             hScrollBar.ScrollRightLarge();

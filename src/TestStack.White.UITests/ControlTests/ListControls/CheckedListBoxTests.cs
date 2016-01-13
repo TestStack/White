@@ -15,6 +15,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CanCheckItemTest()
         {
             var listBoxUnderTest = MainWindow.Get<ListBox>("CheckedListBox");
@@ -24,6 +26,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CheckSelectedItemTest()
         {
             var listBoxUnderTest = MainWindow.Get<ListBox>("CheckedListBox");
@@ -35,6 +39,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CheckUncheckItemTest()
         {
             var listBoxUnderTest = MainWindow.Get<ListBox>("CheckedListBox");
