@@ -7,7 +7,7 @@ namespace TestStack.White.InputDevices
     /// Any operation performed using the keyboard would wait till the container is busy after this operation. Before any operation is 
     /// performed on the container, from which it was retreived, is brought to focus if it is not.
     /// </summary>
-    public class AttachedKeyboard : IBaseKeyboard
+    public class AttachedKeyboard : IAttachedKeyboard
     {
         private readonly IUIItemContainer container;
         private readonly IKeyboard keyboard;
@@ -19,7 +19,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.Enter(string)"/>
+        /// Implements <see cref="IAttachedKeyboard.Enter(string)"/>
         /// </summary>
         public virtual void Enter(string keysToType)
         {
@@ -28,7 +28,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys)"/>
+        /// Implements <see cref="IAttachedKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys)"/>
         /// </summary>
         public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key)
         {
@@ -37,7 +37,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.HoldKey(KeyboardInput.SpecialKeys)"/>
+        /// Implements <see cref="IAttachedKeyboard.HoldKey(KeyboardInput.SpecialKeys)"/>
         /// </summary>
         public virtual void HoldKey(KeyboardInput.SpecialKeys key)
         {
@@ -46,7 +46,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.LeaveKey(KeyboardInput.SpecialKeys)"/>
+        /// Implements <see cref="IAttachedKeyboard.LeaveKey(KeyboardInput.SpecialKeys)"/>
         /// </summary>
         public virtual void LeaveKey(KeyboardInput.SpecialKeys key)
         {
@@ -55,7 +55,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.CapsLockOn"/>
+        /// Implements <see cref="IAttachedKeyboard.CapsLockOn"/>
         /// </summary>
         public virtual bool CapsLockOn
         {
@@ -70,7 +70,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.HeldKeys"/>
+        /// Implements <see cref="IAttachedKeyboard.HeldKeys"/>
         /// </summary>
         public virtual KeyboardInput.SpecialKeys[] HeldKeys
         {
@@ -81,7 +81,7 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
-        /// Implements <see cref="IBaseKeyboard.LeaveAllKeys()"/>
+        /// Implements <see cref="IAttachedKeyboard.LeaveAllKeys()"/>
         /// </summary>
         public virtual void LeaveAllKeys()
         {

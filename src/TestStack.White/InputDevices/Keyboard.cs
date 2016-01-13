@@ -1,8 +1,7 @@
-using System;
+using System.Collections.Generic;
 using System.Linq;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.WindowsAPI;
-using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
@@ -10,49 +9,22 @@ namespace TestStack.White.InputDevices
     /// <summary>
     /// Represents Keyboard attachment to the machine.
     /// </summary>
-    public class Keyboard : BaseKeyboard, IKeyboard
+    public class Keyboard : IKeyboard
     {
-        /// <summary>
-        /// Overrides <see cref="BaseKeyboard.Enter(string)"/>
-        /// </summary>
-        public override void Enter(string keysToType)
+        private readonly List<KeyboardInput.SpecialKeys> heldKeys = new List<KeyboardInput.SpecialKeys>();
+        protected readonly List<int> KeysHeld = new List<int>();
+        
+        public Keyboard()
         {
-            Send(keysToType, new NullActionListener());
-        }
-
-        /// <summary>
-        /// Implements <see cref="BaseKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys)"/>
-        /// </summary>
-        public override void PressSpecialKey(KeyboardInput.SpecialKeys key)
-        {
-            PressSpecialKey(key, new NullActionListener());
-        }
-
-        /// <summary>
-        /// Implements <see cref="BaseKeyboard.HoldKey(KeyboardInput.SpecialKeys)"/>
-        /// </summary>
-        public override void HoldKey(KeyboardInput.SpecialKeys key)
-        {
-            HoldKey(key, new NullActionListener());
+            heldKeys = new List<KeyboardInput.SpecialKeys>();
         }
         
         /// <summary>
-        /// Implements <see cref="BaseKeyboard.LeaveKey(KeyboardInput.SpecialKeys)"/>
+        /// Implements <see cref="IKeyboard.Enter(string)"/>
         /// </summary>
-        public override void LeaveKey(KeyboardInput.SpecialKeys key)
+        public virtual void Enter(string keysToType)
         {
-            LeaveKey(key, new NullActionListener());
-        }
-
-        /// <summary>
-        /// Implements <see cref="IKeyboard.ActionPerformed(IActionListener)"/>
-        /// </summary>
-        /// <remarks>
-        /// Overrides the <see cref="BaseKeyboard.ActionPerformed"/> abstract Function
-        /// </remarks>
-        public override void ActionPerformed(IActionListener actionListener)
-        {
-            actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
+            Send(keysToType, new NullActionListener());
         }
 
         /// <summary>
@@ -67,34 +39,42 @@ namespace TestStack.White.InputDevices
             {
                 if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
                 {
-                    SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
+                    SendKeyDown((short)KeyboardInput.SpecialKeys.SHIFT, false);
                 }
                 if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
                 {
-                    SendKeyDown((short) KeyboardInput.SpecialKeys.CONTROL, false);
+                    SendKeyDown((short)KeyboardInput.SpecialKeys.CONTROL, false);
                 }
                 if (BareMetalKeyboard.AltKeyIsNeeded(key))
                 {
-                    SendKeyDown((short) KeyboardInput.SpecialKeys.ALT, false);
+                    SendKeyDown((short)KeyboardInput.SpecialKeys.ALT, false);
                 }
                 Press(key, false);
                 if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
                 {
-                    SendKeyUp((short) KeyboardInput.SpecialKeys.SHIFT, false);
+                    SendKeyUp((short)KeyboardInput.SpecialKeys.SHIFT, false);
                 }
                 if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
                 {
-                    SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
+                    SendKeyUp((short)KeyboardInput.SpecialKeys.CONTROL, false);
                 }
                 if (BareMetalKeyboard.AltKeyIsNeeded(key))
                 {
-                    SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
+                    SendKeyUp((short)KeyboardInput.SpecialKeys.ALT, false);
                 }
             }
 
             actionListener.ActionPerformed(Action.WindowMessage);
         }
-        
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys)"/>
+        /// </summary>
+        public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key)
+        {
+            PressSpecialKey(key, new NullActionListener());
+        }
+
         /// <summary>
         /// Implements <see cref="IKeyboard.PressSpecialKey(KeyboardInput.SpecialKeys, IActionListener)"/>
         /// </summary>
@@ -105,13 +85,29 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
+        /// Implements <see cref="IKeyboard.HoldKey(KeyboardInput.SpecialKeys)"/>
+        /// </summary>
+        public virtual void HoldKey(KeyboardInput.SpecialKeys key)
+        {
+            HoldKey(key, new NullActionListener());
+        }
+
+        /// <summary>
         /// Implements <see cref="IKeyboard.HoldKey(KeyboardInput.SpecialKeys, IActionListener)"/>
         /// </summary>
         public virtual void HoldKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
-            SendKeyDown((short) key, true);
+            SendKeyDown((short)key, true);
             AddUsedKey(key);
             actionListener.ActionPerformed(Action.WindowMessage);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.LeaveKey(KeyboardInput.SpecialKeys)"/>
+        /// </summary>
+        public virtual void LeaveKey(KeyboardInput.SpecialKeys key)
+        {
+            LeaveKey(key, new NullActionListener());
         }
 
         /// <summary>
@@ -119,9 +115,107 @@ namespace TestStack.White.InputDevices
         /// </summary>
         public virtual void LeaveKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
-            SendKeyUp((short) key, true);
+            SendKeyUp((short)key, true);
             RemoveUsedKey(key);
             actionListener.ActionPerformed(Action.WindowMessage);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.CapsLockOn"/>
+        /// </summary>
+        public virtual bool CapsLockOn
+        {
+            get
+            {
+                var state = BareMetalKeyboard.GetKeyState((uint)KeyboardInput.SpecialKeys.CAPS);
+                return state != 0;
+            }
+            set
+            {
+                if (CapsLockOn != value)
+                {
+                    Send(KeyboardInput.SpecialKeys.CAPS, true);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.HeldKeys"/>
+        /// </summary>
+        public virtual KeyboardInput.SpecialKeys[] HeldKeys
+        {
+            get
+            {
+                return heldKeys.ToArray();
+            }
+        }
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.LeaveAllKeys()"/>
+        /// </summary>
+        public virtual void LeaveAllKeys()
+        {
+            new List<KeyboardInput.SpecialKeys>(heldKeys).ForEach(LeaveKey);
+        }
+
+        protected virtual void Press(short key, bool specialKey)
+        {
+            SendKeyDown(key, specialKey);
+            SendKeyUp(key, specialKey);
+        }
+
+        protected virtual void Send(KeyboardInput.SpecialKeys key, bool specialKey)
+        {
+            Press((short)key, specialKey);
+        }
+
+        protected virtual void SendKeyUp(short b, bool specialKey)
+        {
+            if (!KeysHeld.Contains(b))
+            {
+                throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
+            }
+            KeysHeld.Remove(b);
+            var keyUpDown = BareMetalKeyboard.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
+            BareMetalKeyboard.SendInput(BareMetalKeyboard.GetInputFor(b, keyUpDown));
+        }
+
+        protected virtual void SendKeyDown(short b, bool specialKey)
+        {
+            if (KeysHeld.Contains(b))
+            {
+                throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
+            }
+            KeysHeld.Add(b);
+            var keyUpDown = BareMetalKeyboard.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
+            BareMetalKeyboard.SendInput(BareMetalKeyboard.GetInputFor(b, keyUpDown));
+        }
+
+        protected virtual void AddUsedKey(KeyboardInput.SpecialKeys key)
+        {
+            if (heldKeys.Contains(key))
+            {
+                return;
+            }
+            heldKeys.Add(key);
+        }
+
+        protected virtual void RemoveUsedKey(KeyboardInput.SpecialKeys key)
+        {
+            if (!heldKeys.Contains(key))
+            {
+                return;
+            }
+            heldKeys.Remove(key);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IKeyboard.ActionPerformed(IActionListener)"/>
+        /// </summary>
+        /// <remarks>
+        public virtual void ActionPerformed(IActionListener actionListener)
+        {
+            actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
         }
     }
 }

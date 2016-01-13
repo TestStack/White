@@ -1,10 +1,9 @@
-using System;
 using System.Windows;
 using TestStack.White.UIItems;
 
 namespace TestStack.White.InputDevices
 {
-    public interface IBaseMouse
+    public interface IAttachedMouse
     {
         /// <summary>
         /// Location <see cref="Point"/> of Mouse

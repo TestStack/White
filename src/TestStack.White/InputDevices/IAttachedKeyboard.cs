@@ -2,7 +2,7 @@ using TestStack.White.WindowsAPI;
 
 namespace TestStack.White.InputDevices
 {
-    public interface IBaseKeyboard
+    public interface IAttachedKeyboard
     {
         /// <summary>
         /// Enter a string

@@ -1,12 +1,94 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
+using TestStack.White.Configuration;
+using TestStack.White.Drawing;
+using TestStack.White.UIA;
+using TestStack.White.UIItems;
 using TestStack.White.UIItems.Actions;
+using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.InputDevices
 {
-    public class Mouse : BaseMouse, IMouse
+    public class Mouse : IMouse
     {
+        protected readonly Dictionary<MouseButton, DateTime> LastClickTimes;
+        protected readonly Dictionary<MouseButton, Point> LastClickLocations;
+        protected readonly short DoubleClickTime = BareMetalMouse.GetDoubleClickTime();
+        protected const int ExtraMillisecondsBecauseOfBugInWindows = 13;
+
+        public Mouse()
+        {
+            LastClickTimes = new Dictionary<MouseButton, DateTime>();
+            LastClickLocations = new Dictionary<MouseButton, Point>();
+            foreach (MouseButton mouseButton in Enum.GetValues(typeof(MouseButton)))
+            {
+                LastClickTimes.Add(mouseButton, DateTime.Now);
+                LastClickLocations.Add(mouseButton, new Point(0, 0));
+            }
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.Location"/>
+        /// </summary>
+        public virtual Point Location
+        {
+            get
+            {
+                var point = new System.Drawing.Point();
+                BareMetalMouse.GetCursorPos(ref point);
+                return point.ConvertToWindowsPoint();
+            }
+            set
+            {
+                if (value.IsInvalid())
+                {
+                    throw new WhiteException(string.Format("Trying to set location outside the screen. {0}", value));
+                }
+                BareMetalMouse.SetCursorPos((int)value.X, (int)value.Y);
+            }
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.Cursor"/>
+        /// </summary>
+        public virtual MouseCursor Cursor
+        {
+            get
+            {
+                var cursorInfo = CursorInfo.New();
+                BareMetalMouse.GetCursorInfo(ref cursorInfo);
+                var i = cursorInfo.handle.ToInt32();
+                return new MouseCursor(i);
+            }
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.Click(MouseButton)"/>
+        /// </summary>
+        public virtual void Click(MouseButton mouseButton)
+        {
+            var currentClickLocation = Location;
+            // Check if the location is the same as with last click
+            if (LastClickLocations[mouseButton].Equals(currentClickLocation))
+            {
+                // Get the timeout needed to not fire a double click
+                var timeout = DoubleClickTime - DateTime.Now.Subtract(LastClickTimes[mouseButton]).Milliseconds;
+                // Wait the needed time to prevent the double click
+                if (timeout > 0)
+                {
+                    Thread.Sleep(timeout + ExtraMillisecondsBecauseOfBugInWindows);
+                }
+            }
+            // Perform the click
+            BareMetalMouse.MouseButtonUpAndDown(mouseButton);
+            // Update the time and location
+            LastClickTimes[mouseButton] = DateTime.Now;
+            LastClickLocations[mouseButton] = Location;
+        }
+
         /// <summary>
         /// Implements <see cref="IMouse.Click(MouseButton, IActionListener)"/>
         /// </summary>
@@ -14,6 +96,15 @@ namespace TestStack.White.InputDevices
         {
             Click(mouseButton);
             ActionPerformed(actionListener);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.Click(MouseButton, Point)"/>
+        /// </summary>
+        public virtual void Click(MouseButton mouseButton, Point point)
+        {
+            Move(point);
+            Click(mouseButton);
         }
 
         /// <summary>
@@ -27,12 +118,31 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
+        /// Implements <see cref="IMouse.DoubleClick(MouseButton)"/>
+        /// </summary>
+        public virtual void DoubleClick(MouseButton mouseButton)
+        {
+            BareMetalMouse.MouseButtonUpAndDown(mouseButton);
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
+            BareMetalMouse.MouseButtonUpAndDown(mouseButton);
+        }
+
+        /// <summary>
         /// Implements <see cref="IMouse.DoubleClick(MouseButton, IActionListener)"/>
         /// </summary>
         public virtual void DoubleClick(MouseButton mouseButton, IActionListener actionListener)
         {
             DoubleClick(mouseButton);
             ActionPerformed(actionListener);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DoubleClick(MouseButton, Point)"/>
+        /// </summary>
+        public virtual void DoubleClick(MouseButton mouseButton, Point point)
+        {
+            Move(point);
+            DoubleClick(mouseButton);
         }
 
         /// <summary>
@@ -46,11 +156,43 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
+        /// Implements <see cref="IMouse.LeftClick()"/>
+        /// </summary>
+        public virtual void LeftClick()
+        {
+            Click(MouseButton.Left);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.LeftClick(Point)"/>
+        /// </summary>
+        public virtual void LeftClick(Point point)
+        {
+            Click(MouseButton.Left, point);
+        }
+
+        /// <summary>
         /// Implements <see cref="IMouse.LeftClick(Point, IActionListener)"/>
         /// </summary>
         public virtual void LeftClick(Point point, IActionListener actionListener)
         {
             Click(MouseButton.Left, point, actionListener);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.LeftDoubleClick()"/>
+        /// </summary>
+        public virtual void LeftDoubleClick()
+        {
+            DoubleClick(MouseButton.Left);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.LeftDoubleClick(Point)"/>
+        /// </summary>
+        public virtual void LeftDoubleClick(Point point)
+        {
+            DoubleClick(MouseButton.Left, point);
         }
 
         /// <summary>
@@ -62,6 +204,22 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
+        /// Implements <see cref="IMouse.RightClick()"/>
+        /// </summary>
+        public virtual void RightClick()
+        {
+            Click(MouseButton.Right);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.RightClick(Point)"/>
+        /// </summary>
+        public virtual void RightClick(Point point)
+        {
+            Click(MouseButton.Right, point);
+        }
+
+        /// <summary>
         /// Implements <see cref="IMouse.RightClick(Point, IActionListener)"/>
         /// </summary>
         public virtual void RightClick(Point point, IActionListener actionListener)
@@ -70,12 +228,115 @@ namespace TestStack.White.InputDevices
         }
 
         /// <summary>
+        /// Implements <see cref="IMouse.DragAndDrop(IUIItem, IUIItem)"/>
+        /// </summary>
+        public virtual void DragAndDrop(IUIItem draggedItem, IUIItem dropItem)
+        {
+            DragAndDrop(MouseButton.Left, draggedItem, dropItem);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragAndDrop(MouseButton, IUIItem, IUIItem)"/>
+        /// </summary>
+        public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, IUIItem dropItem)
+        {
+            var startPosition = draggedItem.Bounds.Center();
+            var endPosition = dropItem.Bounds.Center();
+            DragAndDrop(mouseButton, draggedItem, startPosition, dropItem, endPosition);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragAndDrop(IUIItem, Point, IUIItem, Point)"/>
+        /// </summary>
+        public virtual void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
+        {
+            DragAndDrop(MouseButton.Left, draggedItem, startPosition, dropItem, endPosition);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragAndDrop(MouseButton, IUIItem, Point, IUIItem, Point)"/>
+        /// </summary>
+        public virtual void DragAndDrop(MouseButton mouseButton, IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition)
+        {
+            Move(startPosition);
+            BareMetalMouse.MouseButtonDown(mouseButton);
+            var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
+            for (var i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
+            {
+                var newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
+                var newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);
+                var newPoint = new Point((int)newX, (int)newY);
+                Move(newPoint);
+            }
+            BareMetalMouse.MouseButtonUp(mouseButton);
+            dropItem.ActionPerformed(Action.WindowMessage);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragHorizontally(IUIItem, int)"/>
+        /// </summary>
+        public virtual void DragHorizontally(IUIItem uiItem, int distance)
+        {
+            DragHorizontally(MouseButton.Left, uiItem, distance);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragHorizontally(MouseButton, IUIItem, int)"/>
+        /// </summary>
+        public virtual void DragHorizontally(MouseButton mouseButton, IUIItem uiItem, int distance)
+        {
+            Location = uiItem.Bounds.Center();
+            var currentXLocation = Location.X;
+            var currentYLocation = Location.Y;
+            BareMetalMouse.MouseButtonDown(mouseButton);
+            ActionPerformed(uiItem);
+            Move(new Point(currentXLocation + distance, currentYLocation));
+            BareMetalMouse.MouseButtonUp(mouseButton);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragVertically(IUIItem, int)"/>
+        /// </summary>
+        public virtual void DragVertically(IUIItem uiItem, int distance)
+        {
+            DragVertically(MouseButton.Left, uiItem, distance);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.DragVertically(MouseButton, IUIItem, int)"/>
+        /// </summary>
+        public virtual void DragVertically(MouseButton mouseButton, IUIItem uiItem, int distance)
+        {
+            Move(uiItem.Bounds.Center());
+            var currentXLocation = Location.X;
+            var currentYLocation = Location.Y;
+            BareMetalMouse.MouseButtonDown(mouseButton);
+            ActionPerformed(uiItem);
+            Move(new Point(currentXLocation, currentYLocation + distance));
+            BareMetalMouse.MouseButtonUp(mouseButton);
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.MoveOut()"/>
+        /// </summary>
+        public virtual void MoveOut()
+        {
+            Move(new Point(0, 0));
+        }
+
+        /// <summary>
+        /// Implements <see cref="IMouse.Move(Point)"/>
+        /// </summary>
+        public virtual void Move(Point position)
+        {
+            Location = position;
+        }
+
+        /// <summary>
         /// Implements <see cref="IMouse.ActionPerformed(IActionListener)"/>
         /// </summary>
         /// <remarks>
-        /// Overrides the <see cref="BaseMouse.ActionPerformed"/> abstract Function
-        /// </remarks>
-        public override void ActionPerformed(IActionListener actionListener)
+        public virtual void ActionPerformed(IActionListener actionListener)
         {
             actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
         }
