@@ -9,7 +9,7 @@ namespace TestStack.White.InputDevices
     /// <summary>
     /// Represents Keyboard attachment to the machine.
     /// </summary>
-    public static class BareMetalKeyboard
+    internal static class KeyboardWin32
     {
         private static readonly List<KeyboardInput.SpecialKeys> ScanCodeDependent = new List<KeyboardInput.SpecialKeys>
                                                                                {

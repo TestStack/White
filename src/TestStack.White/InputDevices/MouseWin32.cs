@@ -4,7 +4,7 @@ using TestStack.White.WindowsAPI;
 
 namespace TestStack.White.InputDevices
 {
-    public static class BareMetalMouse
+    internal static class MouseWin32
     {
         [DllImport("user32", EntryPoint = "SendInput")]
         private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);

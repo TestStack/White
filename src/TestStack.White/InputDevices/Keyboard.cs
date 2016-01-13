@@ -41,33 +41,36 @@ namespace TestStack.White.InputDevices
         /// </summary>
         public virtual void Send(string keysToType, IActionListener actionListener)
         {
-            if (HeldKeys.Count() > 0) keysToType = keysToType.ToLower();
+            if (HeldKeys.Count() > 0)
+            {
+                keysToType = keysToType.ToLower();
+            }
 
             CapsLockOn = false;
-            foreach (var key in from c in keysToType let key = BareMetalKeyboard.VkKeyScan(c) where !c.Equals('\r') select key)
+            foreach (var key in from c in keysToType let key = KeyboardWin32.VkKeyScan(c) where !c.Equals('\r') select key)
             {
-                if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
+                if (KeyboardWin32.ShiftKeyIsNeeded(key))
                 {
                     SendKeyDown((short)KeyboardInput.SpecialKeys.SHIFT, false);
                 }
-                if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
+                if (KeyboardWin32.CtrlKeyIsNeeded(key))
                 {
                     SendKeyDown((short)KeyboardInput.SpecialKeys.CONTROL, false);
                 }
-                if (BareMetalKeyboard.AltKeyIsNeeded(key))
+                if (KeyboardWin32.AltKeyIsNeeded(key))
                 {
                     SendKeyDown((short)KeyboardInput.SpecialKeys.ALT, false);
                 }
                 Press(key, false);
-                if (BareMetalKeyboard.ShiftKeyIsNeeded(key))
+                if (KeyboardWin32.ShiftKeyIsNeeded(key))
                 {
                     SendKeyUp((short)KeyboardInput.SpecialKeys.SHIFT, false);
                 }
-                if (BareMetalKeyboard.CtrlKeyIsNeeded(key))
+                if (KeyboardWin32.CtrlKeyIsNeeded(key))
                 {
                     SendKeyUp((short)KeyboardInput.SpecialKeys.CONTROL, false);
                 }
-                if (BareMetalKeyboard.AltKeyIsNeeded(key))
+                if (KeyboardWin32.AltKeyIsNeeded(key))
                 {
                     SendKeyUp((short)KeyboardInput.SpecialKeys.ALT, false);
                 }
@@ -136,7 +139,7 @@ namespace TestStack.White.InputDevices
         {
             get
             {
-                var state = BareMetalKeyboard.GetKeyState((uint)KeyboardInput.SpecialKeys.CAPS);
+                var state = KeyboardWin32.GetKeyState((uint)KeyboardInput.SpecialKeys.CAPS);
                 return state != 0;
             }
             set
@@ -167,6 +170,15 @@ namespace TestStack.White.InputDevices
             new List<KeyboardInput.SpecialKeys>(heldKeys).ForEach(LeaveKey);
         }
 
+        /// <summary>
+        /// Implements <see cref="IKeyboard.ActionPerformed(IActionListener)"/>
+        /// </summary>
+        /// <remarks>
+        public virtual void ActionPerformed(IActionListener actionListener)
+        {
+            actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
+        }
+
         protected virtual void Press(short key, bool specialKey)
         {
             SendKeyDown(key, specialKey);
@@ -185,8 +197,8 @@ namespace TestStack.White.InputDevices
                 throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
             }
             KeysHeld.Remove(b);
-            var keyUpDown = BareMetalKeyboard.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
-            BareMetalKeyboard.SendInput(BareMetalKeyboard.GetInputFor(b, keyUpDown));
+            var keyUpDown = KeyboardWin32.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
+            KeyboardWin32.SendInput(KeyboardWin32.GetInputFor(b, keyUpDown));
         }
 
         protected virtual void SendKeyDown(short b, bool specialKey)
@@ -196,8 +208,8 @@ namespace TestStack.White.InputDevices
                 throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
             }
             KeysHeld.Add(b);
-            var keyUpDown = BareMetalKeyboard.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
-            BareMetalKeyboard.SendInput(BareMetalKeyboard.GetInputFor(b, keyUpDown));
+            var keyUpDown = KeyboardWin32.GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
+            KeyboardWin32.SendInput(KeyboardWin32.GetInputFor(b, keyUpDown));
         }
 
         protected virtual void AddUsedKey(KeyboardInput.SpecialKeys key)
@@ -216,15 +228,6 @@ namespace TestStack.White.InputDevices
                 return;
             }
             heldKeys.Remove(key);
-        }
-
-        /// <summary>
-        /// Implements <see cref="IKeyboard.ActionPerformed(IActionListener)"/>
-        /// </summary>
-        /// <remarks>
-        public virtual void ActionPerformed(IActionListener actionListener)
-        {
-            actionListener.ActionPerformed(new Action(ActionType.WindowMessage));
         }
     }
 }

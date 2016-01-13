@@ -97,8 +97,8 @@
     <Compile Include="Configuration\WhiteDefaultLogger.cs" />
     <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
     <Compile Include="Drawing\ScreenRectangle.cs" />
-    <Compile Include="InputDevices\BareMetalKeyboard.cs" />
-    <Compile Include="InputDevices\BareMetalMouse.cs" />
+    <Compile Include="InputDevices\KeyboardWin32.cs" />
+    <Compile Include="InputDevices\MouseWin32.cs" />
     <Compile Include="InputDevices\Keyboard.cs" />
     <Compile Include="InputDevices\IAttachedKeyboard.cs" />
     <Compile Include="InputDevices\Mouse.cs" />

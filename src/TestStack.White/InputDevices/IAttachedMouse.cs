@@ -20,8 +20,8 @@ namespace TestStack.White.InputDevices
         /// </summary>
         /// <param name="mouseButton">MouseButton to Click</param>
         /// <remarks>
-        /// Clicks the specified mouse button. Makes sure to not accidentaly fire a double click
-        /// if called multiple times
+        /// Clicks the specified mouse button. 
+        /// Makes sure to not accidentaly fire a double click if called multiple times
         /// </remarks>
         void Click(MouseButton mouseButton);
 
@@ -31,8 +31,8 @@ namespace TestStack.White.InputDevices
         /// <param name="mouseButton">MouseButton to Click</param>
         /// <param name="point">Point to Click on</param>
         /// <remarks>
-        /// Clicks the specified mouse button. Makes sure to not accidentaly fire a double click
-        /// if called multiple times
+        /// Clicks the specified mouse button. 
+        /// Makes sure to not accidentaly fire a double click if called multiple times
         /// </remarks>
         void Click(MouseButton mouseButton, Point point);
 
