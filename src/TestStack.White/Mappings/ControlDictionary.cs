@@ -11,7 +11,6 @@ using TestStack.White.UIItems.Scrolling;
 using TestStack.White.UIItems.TabItems;
 using TestStack.White.UIItems.TableItems;
 using TestStack.White.UIItems.TreeItems;
-using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UIItems.WindowStripControls;
 
 namespace TestStack.White.Mappings
@@ -24,11 +23,10 @@ namespace TestStack.White.Mappings
 
         private ControlDictionary()
         {
-            items.AddFrameworkSpecificPrimary(ControlType.Edit, typeof(TextBox), typeof(WinFormTextBox), typeof(TextBox), typeof(TextBox));
+            items.AddFrameworkSpecificPrimary(ControlType.Edit, typeof(TextBox), typeof(WinFormTextBox), typeof(TextBox));
 
             items.AddWinFormPrimary(typeof(WinFormSlider), ControlType.Slider);
             items.AddWPFPrimary(typeof(WPFSlider), ControlType.Slider);
-            items.AddSilverlightPrimary(typeof(WPFSlider), ControlType.Slider);
 
             items.AddPrimary(typeof(Thumb), ControlType.Thumb);
             items.AddPrimary(typeof(Button), ControlType.Button);
@@ -45,7 +43,6 @@ namespace TestStack.White.Mappings
             items.AddWin32Primary(typeof(MenuBar), ControlType.MenuBar);
             items.AddWinFormPrimary(typeof(MenuBar), ControlType.MenuBar);
             items.AddWPFPrimary(typeof(MenuBar), ControlType.Menu);
-            items.AddSilverlightPrimary(typeof(MenuBar), ControlType.Menu);
 
             items.AddPrimary(typeof(ProgressBar), ControlType.ProgressBar);
             items.AddPrimary(typeof(Spinner), ControlType.Spinner);
@@ -58,18 +55,15 @@ namespace TestStack.White.Mappings
 
             items.AddPrimary(typeof(Label), ControlType.Text);
             items.AddWPFPrimary(typeof(WPFLabel), ControlType.Text);
-            items.AddSilverlightPrimary(typeof(WPFLabel), ControlType.Text);
-            items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox), typeof(SilverlightComboBox));
+            items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox));
             items.AddInternetExplorerPrimary(typeof(ComboBox), ControlType.ComboBox);
-            items.AddFrameworkSpecificPrimary(ControlType.StatusBar, typeof(StatusStrip), typeof(StatusStrip), typeof(WPFStatusBar), typeof(WPFStatusBar));
+            items.AddFrameworkSpecificPrimary(ControlType.StatusBar, typeof(StatusStrip), typeof(StatusStrip), typeof(WPFStatusBar));
             items.AddWPFPrimary(typeof(CustomUIItem), ControlType.Custom);
             items.AddWinFormPrimary(typeof(TextBox), ControlType.Document);
             items.AddWin32Primary(typeof(TextBox), ControlType.Document);
             items.AddWPFPrimary(typeof(Image), ControlType.Image);
-            items.AddSilverlightPrimary(typeof(Image), ControlType.Image);
             items.AddWin32Primary(typeof(Image), ControlType.Image);
 
-            items.AddSilverlightPrimary(typeof(SilverlightChildWindow), ControlType.Window);
 
             items.AddSecondary(typeof(TableRowHeader), ControlType.Header);
             items.AddSecondary(typeof(TabPage), ControlType.TabItem, true);
@@ -84,7 +78,6 @@ namespace TestStack.White.Mappings
             items.Add(ControlDictionaryItem.WinFormSecondary(typeof(Win32ListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.Win32Secondary(typeof(Win32ListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.WPFSecondary(typeof(WPFListItem), ControlType.ListItem));
-            items.Add(ControlDictionaryItem.SilverlightSecondary(typeof(WPFListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.InternetExplorerSecondary(typeof(WPFListItem), ControlType.ListItem));
 
             items.Add(ControlDictionaryItem.WinFormSecondary(typeof(Win32TreeNode), ControlType.TreeItem));
