@@ -80,9 +80,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BrowserFactoryTest.cs" />
-    <Compile Include="SilverlightTestFixture.cs" />
-    <Compile Include="Silverlight\SilverlightApplicationTest.cs" />
-    <Compile Include="Silverlight\SilverlightDocumentTest.cs" />
     <Compile Include="WebBrowserCodebaseTest.cs" />
   </ItemGroup>
   <ItemGroup>

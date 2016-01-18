@@ -87,16 +87,12 @@ namespace TestStack.White.UnitTests.Mappings
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.Wpf.FrameworkId(), false), Is.EqualTo(typeof(Button)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.WinForms.FrameworkId(), true), Is.EqualTo(typeof(WinFormComboBox)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.Wpf.FrameworkId(), false), Is.EqualTo(typeof(WPFComboBox)));
-            Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.Silverlight.FrameworkId(), false), Is.EqualTo(typeof(SilverlightComboBox)));
-            Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Text, WindowsFramework.Silverlight.FrameworkId(), false), Is.EqualTo(typeof(WPFLabel)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Group, WindowsFramework.Wpf.FrameworkId(), false), Is.EqualTo(typeof(GroupBox)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Image, WindowsFramework.Win32.FrameworkId(), true), Is.EqualTo(typeof(Image)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.None.FrameworkId(), false), Is.EqualTo(typeof(Button)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.None.FrameworkId(), true), Is.EqualTo(typeof(Button)));
             Assert.That(() => { controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.None.FrameworkId(), false); }, Throws.TypeOf<ControlDictionaryException>());
             Assert.That(() => { controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ComboBox, WindowsFramework.None.FrameworkId(), true); }, Throws.TypeOf<ControlDictionaryException>());
-            Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Button, WindowsFramework.Silverlight.FrameworkId(), true), Is.EqualTo(typeof(Button)));
-            Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Edit, WindowsFramework.Silverlight.FrameworkId(), true), Is.EqualTo(typeof(TextBox)));
             Assert.That(controlDictionary.GetTestControlType("SysDateTimePick32", string.Empty, ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), true), Is.EqualTo(typeof(DateTimePicker)));
             Assert.That(controlDictionary.GetTestControlType("Winforms.SysDateTimePick32.ad8aa", string.Empty, ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), true), Is.EqualTo(typeof(DateTimePicker)));
             Assert.That(controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.ListItem, string.Empty, false), Is.EqualTo(typeof(Win32ListItem)));
