@@ -154,10 +154,9 @@ namespace TestStack.White.Mappings
                 if (isPrimary.Length == 1)
                     return isPrimary.Single().TestControlType;
 
-                //Get the first TestControldType when 'dictionaryItems' contains multiple elements...(virtusa)
+                //Get the first TestControldType when 'dictionaryItems' contains multiple elements...
                 var isFirstItem = dictionaryItems.First();
                 return isFirstItem.TestControlType;
-                //...(virtusa)
 
                 throw new ControlDictionaryException(string.Format(
                    "Multiple TestControls found for ControlType={0} and FrameworkId:{1} - {2}",

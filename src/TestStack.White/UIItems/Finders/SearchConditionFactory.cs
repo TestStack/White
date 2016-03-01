@@ -1,8 +1,11 @@
 using System;
 using System.Linq;
 using System.Windows.Automation;
+using System.Xml;
+using System.Xml.XPath;
 using TestStack.White.Mappings;
 using TestStack.White.UIItems.Custom;
+using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.UIItems.Finders
 {
@@ -39,6 +42,46 @@ namespace TestStack.White.UIItems.Finders
         {
             return new SimpleSearchCondition(automationElement => automationElement.Current.AutomationId,
                                              new AutomationElementProperty(id, "AutomationId", AutomationElement.AutomationIdProperty));
+        }
+
+        /// <summary>
+        /// Getting the objects (AutomationElement) hierarchy of the given window
+        /// Create SimpleSearchCondition with AutomationId for given xpath
+        /// </summary>
+        /// <param name="xpath"></param>
+        /// <param name="window"></param>
+        /// <returns></returns>
+        public static SearchCondition CreateForXPath(string xpath, Window window)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            string hierarchy = window.GetHierarchy(window.AutomationElement);
+
+            xmlDoc.LoadXml(hierarchy);
+            XmlNodeList nodeList = xmlDoc.SelectNodes(xpath);
+            if (nodeList.Count == 0)
+            {
+                throw new Exception("No element found for given XPath: " + xpath);
+            }
+            else if (nodeList.Count > 1)
+            {
+                throw new Exception("Multiple elements found for given XPath: " + xpath);
+            }
+            else
+            {
+                foreach (XmlNode node in nodeList)
+                {
+                    var automationId = node.Attributes["AutomationId"].Value;
+                    var className = node.Attributes["ClassName"].Value;
+                    //var controlType = node.Attributes["ControlType"].Value;
+                    var frameworkId = node.Attributes["FrameworkId"].Value;
+                    var name = node.Attributes["Name"].Value;
+
+                    return new SimpleSearchCondition(automationElement => automationElement.Current.AutomationId,
+                                             new AutomationElementProperty(automationId, "AutomationId", AutomationElement.AutomationIdProperty));
+                }
+            }
+
+            throw new Exception("Invalid Xpath");
         }
 
         public static SearchCondition CreateForName(string name)

@@ -51,9 +51,8 @@ namespace TestStack.White.UIItems
                 }
                 catch (ControlDictionaryException e)
                 {
-                    //Printing the Bease exception message...(virtusa)
+                    //Printing the Bease exception message...
                     logger.Warn(e.GetBaseException().Message);
-                    //...(virtusa)
                     logger.WarnFormat("Couldn't create UIItem for AutomationElement, {0}", automationElement.Display());
                 }
             }

@@ -370,10 +370,9 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void Enter(string value)
         {
-            //...(virtusa)
+            //
             //var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
             //if (pattern != null) pattern.SetValue(string.Empty);
-            //...(virtusa)
 
             if (string.IsNullOrEmpty(value)) return;
 

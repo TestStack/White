@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
 using TestStack.White.Configuration;
+using TestStack.White.UIItems.Finders;
 
 namespace TestStack.White.AutomationElementSearch
 {
@@ -32,15 +33,15 @@ namespace TestStack.White.AutomationElementSearch
         {
             var collection = automationElement.FindAll(TreeScope.Descendants, automationSearchCondition.Condition);
 
-            //Automation elements identified in current window...(virtusa)
-            AutomationElement[] elementsArray = new AutomationElement[collection.Count];
-            collection.CopyTo(elementsArray, 0);
+            //Automation elements identified in current window...
+            //AutomationElement[] elementsArray = new AutomationElement[collection.Count];
 
-            foreach (AutomationElement e in elementsArray)
-            {
-                logger.InfoFormat("Element Automation Id: ({0})..", e.Current.AutomationId);
-            }
-            //...(virtusa)
+            //collection.CopyTo(elementsArray, 0);
+
+            //foreach (AutomationElement e in elementsArray)
+            //{
+            //    logger.InfoFormat("Element Automation Id: ({0})..", e.Current.AutomationId);
+            //}
 
             var enumerable = collection.Cast<AutomationElement>();
             return new List<AutomationElement>(enumerable);

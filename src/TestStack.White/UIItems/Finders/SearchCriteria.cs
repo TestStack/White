@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.UIItems.Custom;
+using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UIItems.WindowStripControls;
 
 namespace TestStack.White.UIItems.Finders
@@ -70,6 +71,17 @@ namespace TestStack.White.UIItems.Finders
         public static SearchCriteria ByAutomationId(string identification)
         {
             return new SearchCriteria(SearchConditionFactory.CreateForAutomationId(identification));
+        }
+
+        /// <summary>
+        /// Create criteria for specified window with specified xpath
+        /// </summary>
+        /// <param name="xpath"></param>
+        /// <param name="window"></param>
+        /// <returns></returns>
+        public static SearchCriteria ByXPath(string xpath, Window window)
+        {
+            return new SearchCriteria(SearchConditionFactory.CreateForXPath(xpath, window));
         }
 
         public static SearchCriteria ByFramework(string framework)

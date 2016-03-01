@@ -1,12 +1,15 @@
+using Castle.Core.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
+using System.Xml;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
@@ -43,6 +46,10 @@ namespace TestStack.White.UIItems.WindowItems
 
         public delegate bool WaitTillDelegate();
 
+        public string Hierarchy { get; set; }
+
+        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Window));
+
         static Window()
         {
             WindowStates.Add(DisplayState.Maximized, WindowVisualState.Maximized);
@@ -76,6 +83,96 @@ UI actions on window needing mouse would not work in area not falling under the 
                     Title, Bounds, bounds);
             }
             WindowSession.Register(this);
+        }
+
+        /// <summary>
+        /// Getting AutomationElement proerties and child AutomationElements..
+        /// Create XMLDocument of the AutomationElement hierarchy..
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        internal string GetHierarchy(AutomationElement element)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+            XmlNode rootNode = xmlDoc.CreateElement(element.Current.LocalizedControlType.Replace(" ", "-"));
+            xmlDoc.AppendChild(rootNode);
+            addAttributes(element, xmlDoc, rootNode);
+            findChildElement(element, xmlDoc, rootNode);
+
+            return xmlDoc.OuterXml;
+        }
+
+        /// <summary>
+        /// Find the child element of given element recursively 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="xmlDoc"></param>
+        /// <param name="node"></param>
+        private void findChildElement(AutomationElement element, XmlDocument xmlDoc, XmlNode node)
+        {
+            try
+            {
+                AutomationElementCollection childElementCollection = element.FindAll(TreeScope.Children, Condition.TrueCondition);
+                foreach (AutomationElement childElement in childElementCollection)
+                {
+                    XmlNode childNode;
+                    if (String.IsNullOrWhiteSpace(childElement.Current.LocalizedControlType))
+                    {
+                        childNode = xmlDoc.CreateElement("Unknown");
+                    }
+                    else
+                    {
+                        childNode = xmlDoc.CreateElement(childElement.Current.LocalizedControlType.Replace(" ", "-"));
+                    }
+                    node.AppendChild(childNode);
+                    addAttributes(childElement, xmlDoc, childNode);
+                    findChildElement(childElement, xmlDoc, childNode);
+                }
+            }
+            catch (InvalidOperationException e)
+            {
+               logger.Warn(e.Message);
+            }
+            catch (ArgumentException e)
+            {
+                logger.Warn(e.Message);
+            }
+        }
+
+        /// <summary>
+        /// Getting the important attributes of AutomationElement..
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="xmlDoc"></param>
+        /// <param name="node"></param>
+        private void addAttributes(AutomationElement element, XmlDocument xmlDoc, XmlNode node)
+        {
+            try
+            {
+                XmlAttribute automationIdAttr = xmlDoc.CreateAttribute("AutomationId");
+                automationIdAttr.Value = element.Current.AutomationId;
+                node.Attributes.Append(automationIdAttr);
+
+                XmlAttribute classAttr = xmlDoc.CreateAttribute("ClassName");
+                classAttr.Value = element.Current.ClassName;
+                node.Attributes.Append(classAttr);
+
+                //XmlAttribute controlTypeAttr = xmlDoc.CreateAttribute("ControlType");
+                //controlTypeAttr.Value = element.Current.ControlType;
+                //node.Attributes.Append(controlTypeAttr);
+
+                XmlAttribute frameworkAttr = xmlDoc.CreateAttribute("FrameworkId");
+                frameworkAttr.Value = element.Current.FrameworkId;
+                node.Attributes.Append(frameworkAttr);
+
+                XmlAttribute nameAttr = xmlDoc.CreateAttribute("Name");
+                nameAttr.Value = element.Current.Name;
+                node.Attributes.Append(nameAttr);
+            }
+            catch (Exception e)
+            {
+                logger.Warn(e.Message);
+            }
         }
 
         protected override IActionListener ChildrenActionListener
