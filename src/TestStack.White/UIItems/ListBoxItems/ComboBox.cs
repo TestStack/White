@@ -1,3 +1,4 @@
+using System;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Recording;
@@ -67,26 +68,72 @@ namespace TestStack.White.UIItems.ListBoxItems
 
         public override void Select(string itemText)
         {
-            if (!Enabled)
+            //if (!Enabled)
+            //{
+            //    Logger.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
+            //    return;
+            //}
+            //if (Equals(itemText, SelectedItemText)) return;
+            //base.Select(itemText);
+
+            AutomationElement comboboxList = this.AutomationElement.FindFirst(TreeScope.Children,
+                new PropertyCondition(AutomationElement.ControlTypeProperty,
+                ControlType.List));
+
+            AutomationElementCollection comboboxItem = comboboxList.FindAll(TreeScope.Children,
+                new PropertyCondition(AutomationElement.ControlTypeProperty,
+                ControlType.ListItem));
+
+            AutomationElement[] itemArray = new AutomationElement[comboboxItem.Count];
+            comboboxItem.CopyTo(itemArray, 0);
+
+            AutomationElement itemToSelect = null;
+
+            for (int i = 0; i < itemArray.Length; i++)
             {
-                Logger.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
-                return;
+                if (itemArray[i].Current.Name.Equals(itemText))
+                {
+                    itemToSelect = itemArray[i];
+                }
             }
-            if (Equals(itemText, SelectedItemText)) return;
-            base.Select(itemText);
+
+            if (itemToSelect != null)
+            {
+                Object selectPattern = null;
+                if (itemToSelect.TryGetCurrentPattern(SelectionItemPattern.Pattern, out selectPattern))
+                {
+                    ((SelectionItemPattern)selectPattern).Select();
+                }
+            }
         }
 
         public override void Select(int index)
         {
-            if (!Enabled)
+            //if (!Enabled)
+            //{
+            //    Logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
+            //    return;
+            //}
+            //base.Select(index);
+            //var p = (ExpandCollapsePattern) this.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
+            //if (p.Current.ExpandCollapseState.Equals(ExpandCollapseState.Expanded))
+            //    p.Collapse();
+
+            AutomationElement comboboxList = this.AutomationElement.FindFirst(TreeScope.Children, 
+                new PropertyCondition(AutomationElement.ControlTypeProperty,
+                ControlType.List));
+
+            AutomationElementCollection comboboxItem = comboboxList.FindAll(TreeScope.Children,
+                new PropertyCondition(AutomationElement.ControlTypeProperty,
+                ControlType.ListItem));
+
+            AutomationElement itemToSelect = comboboxItem[index];
+
+            Object selectPattern = null;
+            if (itemToSelect.TryGetCurrentPattern(SelectionItemPattern.Pattern, out selectPattern))
             {
-                Logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
-                return;
+                ((SelectionItemPattern)selectPattern).Select();
             }
-            base.Select(index);
-            var p = (ExpandCollapsePattern) this.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
-            if (p.Current.ExpandCollapseState.Equals(ExpandCollapseState.Expanded))
-                p.Collapse();
         }
 
         public override void HookEvents(IUIItemEventListener eventListener)
