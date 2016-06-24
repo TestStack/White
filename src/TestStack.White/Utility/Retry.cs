@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using TestStack.White.Configuration;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems.WindowItems;
 
 namespace TestStack.White.Utility
@@ -15,7 +16,7 @@ namespace TestStack.White.Utility
         /// <param name="getMethod">The operation to perform.</param>
         public static Window ForDefault(Func<Window> getMethod)
         {
-            return For(getMethod, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
+            return For(getMethod, CoreConfigurationLocator.Get().FindWindowTimeout.AsTimeSpan());
         }
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace TestStack.White.Utility
         /// <param name="shouldRetry">The predicate used for retry.</param>
         public static Window ForDefault(Func<Window> getMethod, Predicate<Window> shouldRetry)
         {
-            return For(getMethod, shouldRetry, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
+            return For(getMethod, shouldRetry, CoreConfigurationLocator.Get().FindWindowTimeout.AsTimeSpan());
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace TestStack.White.Utility
         /// <param name="getMethod">The operation to perform.</param>
         public static T ForDefault<T>(Func<T> getMethod)
         {
-            return For(getMethod, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            return For(getMethod, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace TestStack.White.Utility
         /// <param name="shouldRetry">The predicate used for retry.</param>
         public static T ForDefault<T>(Func<T> getMethod, Predicate<T> shouldRetry)
         {
-            return For(getMethod, shouldRetry, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            return For(getMethod, shouldRetry, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
         }
 
         /// <summary>

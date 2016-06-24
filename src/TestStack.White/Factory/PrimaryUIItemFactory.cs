@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
@@ -54,7 +55,7 @@ namespace TestStack.White.Factory
 
         private bool TryGetPopupMenu(AutomationSearchCondition[] searchConditions, IActionListener actionListener, out PopUpMenu popUpMenu)
         {
-            var element = Retry.For(() => Finder.Child(searchConditions), CoreAppXmlConfiguration.Instance.PopupTimeout(), TimeSpan.FromMilliseconds(100));
+            var element = Retry.For(() => Finder.Child(searchConditions), CoreConfigurationLocator.Get().PopupTimeout.AsTimeSpan(), TimeSpan.FromMilliseconds(100));
             if (element == null)
             {
                 popUpMenu = null;

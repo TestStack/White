@@ -20,7 +20,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         {
             var comboBoxUnderTest = MainWindow.Get<ComboBox>("DataBoundComboBox");
             ListItems items;
-            CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
+            CoreConfigurationLocator.Get().ComboBoxItemsPopulatedWithoutDropDownOpen = false;
             try
             {
                 items = comboBoxUnderTest.Items;
@@ -28,7 +28,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             }
             finally
             {
-                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
+                CoreConfigurationLocator.Get().ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
             items = comboBoxUnderTest.Items;
             Assert.That(items, Has.Count.EqualTo(5));

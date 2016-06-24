@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems
     internal class TooltipSafeMouse
     {
         private readonly Mouse mouse;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(TooltipSafeMouse));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(TooltipSafeMouse));
 
         public TooltipSafeMouse(Mouse mouse)
         {
@@ -64,7 +64,7 @@ namespace TestStack.White.UIItems
         {
             mouse.Click(uiItem.Bounds.Center());
             actionListener.ActionPerformed(Action.WindowMessage);
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.TooltipWaitTime);
+            Thread.Sleep(CoreConfigurationLocator.Get().TooltipWaitTime);
             return ToolTip.GetFrom(uiItem.Bounds.Center());
         }
     }

@@ -24,7 +24,7 @@ namespace WpfTodo.UITests
                 Name = "WpfTodo"
             };
 
-            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(workPath);
+            CoreConfigurationLocator.Get().WorkSessionLocation = new DirectoryInfo(workPath);
             using (var workSession = new WorkSession(workConfiguration, new NullWorkEnvironment()))
             {
                 var screenRepository = workSession.Attach(Application);

@@ -71,8 +71,8 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\ReportingConfigurationLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Configuration\ReportingAppXmlConfiguration.cs" />
     <Compile Include="Configuration\ReportingConfiguration.cs" />
     <Compile Include="Domain\IReport.cs" />
     <Compile Include="Domain\NullSessionReport.cs" />
@@ -114,4 +114,3 @@
   </Target>
   -->
 </Project>
-

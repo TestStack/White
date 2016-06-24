@@ -85,13 +85,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration\WebBrowserConfigurationLocator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FirefoxFactory.cs" />
     <Compile Include="BrowserWindow.cs" />
-    <Compile Include="Config\WebBrowserAppXmlConfiguration.cs" />
     <Compile Include="FirefoxWindow.cs" />
     <Compile Include="Firefox.cs" />
-    <Compile Include="Config\WebBrowserConfiguration.cs" />
+    <Compile Include="Configuration\WebBrowserConfiguration.cs" />
     <Compile Include="InternetExplorerFactory.cs" />
     <Compile Include="InternetExplorerWindow.cs" />
     <Compile Include="InternetExplorer.cs" />

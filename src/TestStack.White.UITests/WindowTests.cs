@@ -1,5 +1,5 @@
-using System;
 using NUnit.Framework;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Automation;
@@ -95,7 +95,7 @@ namespace TestStack.White.UITests
             {
                 Assert.Ignore();
             }
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(c => c.BusyTimeout = 100))
             {
                 Assert.That(() => { MainWindow.Get<TextBox>("HiddenTextBox"); },
                     Throws.TypeOf<AutomationException>().With.Message.EqualTo(
@@ -126,7 +126,7 @@ namespace TestStack.White.UITests
         {
             Assert.That(MainWindow.GetToolStrip("ToolStrip1"), Is.Not.Null);
             Assert.That(MainWindow.GetToolStrip("ToolStrip2"), Is.Not.Null);
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(c => c.BusyTimeout = 100))
             {
                 Assert.That(() => { MainWindow.GetToolStrip("ToolStrip3"); },
                     Throws.TypeOf<AutomationException>().With.Message.EqualTo(
@@ -169,7 +169,7 @@ namespace TestStack.White.UITests
         public void HandleDynamicallyAddedControlsTest()
         {
             SelectOtherControls();
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(c => c.BusyTimeout = 100))
             {
                 Assert.That(() => { MainWindow.Get<TextBox>("AddedTextBox"); },
                     Throws.TypeOf<AutomationException>());

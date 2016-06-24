@@ -14,6 +14,7 @@ using TestStack.White.Factory;
 using TestStack.White.InputDevices;
 using TestStack.White.Recording;
 using TestStack.White.Sessions;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
@@ -81,7 +82,7 @@ UI actions on window needing mouse would not work in area not falling under the 
                     Title, Bounds, bounds);
             }
             WindowSession.Register(this);
-            
+
             var hwnd = new IntPtr(automationElement.Current.NativeWindowHandle);
             int ownerProcessId;
             ownerThreadId = NativeWindow.GetWindowThreadProcessId(hwnd, out ownerProcessId);
@@ -206,7 +207,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         protected static void HourGlassWait()
         {
-            if (!CoreAppXmlConfiguration.Instance.WaitBasedOnHourGlass) return;
+            if (!CoreConfigurationLocator.Get().WaitBasedOnHourGlass) return;
             try
             {
                 Retry.For(() => InputDevices.Mouse.Instance.Cursor,
@@ -214,12 +215,12 @@ UI actions on window needing mouse would not work in area not falling under the 
                           {
                               if (MouseCursor.WaitCursors.Contains(cursor))
                               {
-                                  if (CoreAppXmlConfiguration.Instance.MoveMouseToGetStatusOfHourGlass)
+                                  if (CoreConfigurationLocator.Get().MoveMouseToGetStatusOfHourGlass)
                                       InputDevices.Mouse.Instance.MoveOut();
                                   return true;
                               }
                               return false;
-                          }, CoreAppXmlConfiguration.Instance.BusyTimeout());
+                          }, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
             }
             catch (Exception)
             {
@@ -300,7 +301,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// <exception cref="UIActionException">when methods reached the timeout</exception>
         public virtual void WaitTill(WaitTillDelegate waitTillDelegate)
         {
-            WaitTill(waitTillDelegate, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            WaitTill(waitTillDelegate, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
         }
 
         /// <exception cref="UIActionException">when methods reached the timeout</exception>
@@ -362,7 +363,7 @@ UI actions on window needing mouse would not work in area not falling under the 
 
         public virtual void Dispose()
         {
-            if (!CoreAppXmlConfiguration.Instance.KeepOpenOnDispose)
+            if (!CoreConfigurationLocator.Get().KeepOpenOnDispose)
             {
                 Close();
             }

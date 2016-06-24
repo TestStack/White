@@ -34,7 +34,7 @@ namespace TestStack.White.UITests.ControlTests.WindowStripControls
         [Test]
         public void ThrowsWhenDoesNotExistsTest()
         {
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(c => c.BusyTimeout = 100))
             {
                 Assert.That(() => { MainWindow.Get<StatusStrip>("foo"); },
                     Throws.TypeOf<AutomationException>().With.

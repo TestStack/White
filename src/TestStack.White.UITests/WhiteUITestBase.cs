@@ -24,7 +24,7 @@ namespace TestStack.White.UITests
         protected WhiteUITestBase(WindowsFramework framework)
         {
             Framework = framework;
-            CoreAppXmlConfiguration.Instance.LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
+            CoreConfigurationLocator.Get().LoggerFactory = new ConsoleFactory(LoggerLevel.Debug);
             screenshotDir = @"c:\FailedTestsScreenshots";
             Directory.CreateDirectory(screenshotDir);
         }
@@ -50,7 +50,7 @@ namespace TestStack.White.UITests
             }
         }
 
-        readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WhiteUITestBase));
+        readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(WhiteUITestBase));
         readonly List<Window> windowsToClose = new List<Window>();
         readonly string screenshotDir;
 

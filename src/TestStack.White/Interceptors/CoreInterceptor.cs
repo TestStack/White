@@ -11,7 +11,7 @@ namespace TestStack.White.Interceptors
     public class CoreInterceptor : IInterceptor
     {
         private readonly CoreInterceptContext coreInterceptContext;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(CoreInterceptor));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(CoreInterceptor));
 
         public CoreInterceptor(IUIItem uiItem, IActionListener actionListener)
         {
@@ -23,7 +23,7 @@ namespace TestStack.White.Interceptors
             coreInterceptContext.VerifyUIItem();
             try
             {
-                CoreAppXmlConfiguration.Instance.Interceptors.Process(invocation, coreInterceptContext);
+                CoreConfigurationLocator.Get().Interceptors.Process(invocation, coreInterceptContext);
             }
             catch (Exception)
             {

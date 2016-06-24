@@ -6,6 +6,7 @@ using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.Utility;
@@ -21,7 +22,7 @@ namespace TestStack.White.UIItems.MenuItems
             if (parent == null) throw new ArgumentNullException("parent", "You must specify a parent automation id when creating a menu");
             AutomationSearchCondition condition = AutomationSearchCondition.ByControlType(ControlType.MenuItem);
             var finder = new AutomationElementFinder(parent);
-            finder = Retry.For(()=> PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent), CoreAppXmlConfiguration.Instance.BusyTimeout());
+            finder = Retry.For(()=> PerformanceHackAsPopupMenuForWin32AppComesOnDesktop(finder, parent), CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
             List<AutomationElement> children = finder.Descendants(condition);
             foreach (AutomationElement child in children)
                 Add((Menu) Factory.Create(child, actionListener));

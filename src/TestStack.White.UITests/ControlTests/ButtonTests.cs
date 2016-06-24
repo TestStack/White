@@ -25,7 +25,7 @@ namespace TestStack.White.UITests.ControlTests
         [Test]
         public void ThrowsWhenNotFound()
         {
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.FindWindowTimeout = 500))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(c => c.FindWindowTimeout = 500))
             {
                 Assert.That(() => { MainWindow.Get<Button>(SearchCriteria.ByAutomationId("foo")); },
                     Throws.TypeOf<AutomationException>().With.

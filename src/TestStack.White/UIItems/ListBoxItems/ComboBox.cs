@@ -95,7 +95,7 @@ namespace TestStack.White.UIItems.ListBoxItems
 
         public virtual bool Expand()
         {
-            if (CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return false;
+            if (CoreConfigurationLocator.Get().ComboBoxItemsPopulatedWithoutDropDownOpen) return false;
             if (!Enabled) return false;
 
             var ecp = AutomationElement.GetPattern<ExpandCollapsePattern>();

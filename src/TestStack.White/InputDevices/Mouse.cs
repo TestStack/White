@@ -153,7 +153,7 @@ namespace TestStack.White.InputDevices
         public virtual void DoubleClick(MouseButton mouseButton)
         {
             MouseButtonUpAndDown(mouseButton);
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.DoubleClickInterval);
+            Thread.Sleep(CoreConfigurationLocator.Get().DoubleClickInterval);
             MouseButtonUpAndDown(mouseButton);
         }
 
@@ -186,7 +186,7 @@ namespace TestStack.White.InputDevices
             // Let the Raw Input Thread some time to process OS's hardware input queue.
             // As this thread works with High priority - this short wait should be enough hopefully.
             // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
+            Thread.Sleep(CoreConfigurationLocator.Get().RawInputQueueProcessingTime);
         }
 
         /// <summary>
@@ -355,8 +355,8 @@ namespace TestStack.White.InputDevices
         {
             Location = startPosition;
             MouseButtonDown(mouseButton);
-            var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
-            for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
+            var dragStepFraction = (float)(1.0 / CoreConfigurationLocator.Get().DragStepCount);
+            for (int i = 1; i <= CoreConfigurationLocator.Get().DragStepCount; i++)
             {
                 var newX = startPosition.X + (endPosition.X - startPosition.X) * (dragStepFraction * i);
                 var newY = startPosition.Y + (endPosition.Y - startPosition.Y) * (dragStepFraction * i);

@@ -22,7 +22,7 @@ namespace TestStack.White.ScreenObjects.Sessions
 
         public virtual IReport CreateSessionReport()
         {
-            if (ReportingAppXmlConfiguration.Instance.PublishTestReports)
+            if (ReportingConfigurationLocator.Get().PublishTestReports)
                 return new SessionReport(archiveLocation, name);
             return new NullSessionReport();
         }

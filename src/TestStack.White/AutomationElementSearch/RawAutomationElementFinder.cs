@@ -11,7 +11,7 @@ namespace TestStack.White.AutomationElementSearch
     {
         private readonly AutomationElement automationElement;
         private static readonly TreeWalker RawViewWalker = TreeWalker.RawViewWalker;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(RawAutomationElementFinder));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(RawAutomationElementFinder));
 
         public RawAutomationElementFinder(AutomationElement automationElement)
         {
@@ -26,7 +26,7 @@ namespace TestStack.White.AutomationElementSearch
         public virtual AutomationElement Descendant(AutomationSearchCondition automationSearchCondition)
         {
             return
-                FindAll(automationSearchCondition, ElementSearchResult.ForOne(), CoreAppXmlConfiguration.Instance.MaxElementSearchDepth).Elements.FirstOrDefault
+                FindAll(automationSearchCondition, ElementSearchResult.ForOne(), CoreConfigurationLocator.Get().MaxElementSearchDepth).Elements.FirstOrDefault
                     ();
         }
 
@@ -37,7 +37,7 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual List<AutomationElement> Descendants(AutomationSearchCondition automationSearchCondition)
         {
-            return FindAll(automationSearchCondition, ElementSearchResult.ForMany(), CoreAppXmlConfiguration.Instance.MaxElementSearchDepth).Elements;
+            return FindAll(automationSearchCondition, ElementSearchResult.ForMany(), CoreConfigurationLocator.Get().MaxElementSearchDepth).Elements;
         }
 
         private ElementSearchResult FindAll(AutomationSearchCondition automationSearchCondition, ElementSearchResult elementSearchResult, int depth)

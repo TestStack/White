@@ -45,7 +45,7 @@ namespace TestStack.White.UITests
         [Test]
         public void ThrowsWhenNotFoundTest()
         {
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(s => s.FindWindowTimeout = 1000))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(s => s.FindWindowTimeout = 1000))
             {
                 Assert.That(() => { MainWindow.ModalWindow("foo"); },
                    Throws.TypeOf<AutomationException>().With.Message.EqualTo("Could not find modal window with title: foo"));

@@ -23,7 +23,7 @@ namespace TestStack.White.ScreenMap
         private bool dirty;
         private bool loadedFromFile;
         private Point currentWindowPosition;
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WindowItemsMap));
+        private static readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(WindowItemsMap));
 
         protected WindowItemsMap()
         {
@@ -127,7 +127,7 @@ namespace TestStack.White.ScreenMap
 
         private static string FileLocation(InitializeOption initializeOption)
         {
-            return string.Format(@"{0}\{1}.xml", CoreAppXmlConfiguration.Instance.WorkSessionLocation, initializeOption.Identifier);
+            return string.Format(@"{0}\{1}.xml", CoreConfigurationLocator.Get().WorkSessionLocation, initializeOption.Identifier);
         }
 
         public virtual void Save()

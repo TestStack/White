@@ -1,6 +1,7 @@
-using System;
 using Castle.Core.Logging;
+using System;
 using TestStack.White.Configuration;
+using TestStack.White.SystemExtensions;
 using TestStack.White.Utility;
 
 namespace TestStack.White.UIItems.Scrolling
@@ -9,7 +10,7 @@ namespace TestStack.White.UIItems.Scrolling
     {
         private readonly UIItem uiItem;
         private readonly IVScrollBar verticalScroll;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(ScreenItem));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(ScreenItem));
 
         public ScreenItem(UIItem uiItem, IScrollBars scrollBars)
         {
@@ -58,7 +59,7 @@ namespace TestStack.White.UIItems.Scrolling
                     const string messageFormat = "Trying to make {0} visible, item's bounds are {1} and parent's span is {2}";
                     logger.DebugFormat(messageFormat, uiItem, bounds, verticalSpan);
                     return verticalSpan.Contains(bounds);
-                }, CoreAppXmlConfiguration.Instance.BusyTimeout(), TimeSpan.FromMilliseconds(0));
+                }, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan(), TimeSpan.FromMilliseconds(0));
 
             if (!success)
             throw new UIActionException(string.Format("Could not make the {0} visible{1}", uiItem, Constants.BusyMessage));

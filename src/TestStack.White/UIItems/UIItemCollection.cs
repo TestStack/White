@@ -15,7 +15,7 @@ namespace TestStack.White.UIItems
     public class UIItemCollection : List<IUIItem>
     {
         private static readonly DictionaryMappedItemFactory DictionaryMappedItemFactory = new DictionaryMappedItemFactory();
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItemCollection));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(UIItemCollection));
 
         public UIItemCollection(params UIItem[] uiItems)
         {

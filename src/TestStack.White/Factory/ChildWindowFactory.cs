@@ -4,6 +4,7 @@ using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Sessions;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
@@ -39,7 +40,7 @@ namespace TestStack.White.Factory
 
         protected virtual AutomationElement WaitTillFound(Func<AutomationElement> find, string message)
         {
-            var element = Retry.For(find, CoreAppXmlConfiguration.Instance.FindWindowTimeout());
+            var element = Retry.For(find, CoreConfigurationLocator.Get().FindWindowTimeout.AsTimeSpan());
             if (element == null)
                 throw new AutomationException(message, Debug.GetAllWindows());
             return element;

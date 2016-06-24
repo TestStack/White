@@ -13,7 +13,7 @@ namespace TestStack.White.ScreenObjects.Services
         private bool hasError;
 
         private static readonly string ExecutionHistoryFile = 
-            string.Format(@"{0}\{1}.xml", CoreAppXmlConfiguration.Instance.WorkSessionLocation, "ExecutionHistory");
+            string.Format(@"{0}\{1}.xml", CoreConfigurationLocator.Get().WorkSessionLocation, "ExecutionHistory");
 
         public ExecutionHistory()
         {

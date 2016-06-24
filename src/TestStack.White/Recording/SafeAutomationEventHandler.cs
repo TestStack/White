@@ -12,7 +12,7 @@ namespace TestStack.White.Recording
         private readonly IUIItem uiItem;
         private readonly Create createUserEvent;
         private readonly IUIItemEventListener eventListener;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SafeAutomationEventHandler));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(SafeAutomationEventHandler));
 
         public delegate UserEvent Create(object[] parameters);
 

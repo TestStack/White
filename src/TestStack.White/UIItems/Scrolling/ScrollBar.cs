@@ -3,6 +3,7 @@ using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.Utility;
@@ -53,7 +54,7 @@ namespace TestStack.White.UIItems.Scrolling {
             {
                 BackLargeChangeButton.Click();
                 return Value;
-            }, v => v > 0, CoreAppXmlConfiguration.Instance.BusyTimeout(), TimeSpan.FromMilliseconds(0));
+            }, v => v > 0, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan(), TimeSpan.FromMilliseconds(0));
 
             if (value > 0)
                 throw new UIActionException(string.Format("Could not set the ScrollBar to minimum visible{0}", Constants.BusyMessage));

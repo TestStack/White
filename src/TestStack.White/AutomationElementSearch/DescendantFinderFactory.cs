@@ -7,7 +7,7 @@ namespace TestStack.White.AutomationElementSearch
     {
         public static IDescendantFinder Create(AutomationElement automationElement)
         {
-            if (CoreAppXmlConfiguration.Instance.RawElementBasedSearch) return new RawAutomationElementFinder(automationElement);
+            if (CoreConfigurationLocator.Get().RawElementBasedSearch) return new RawAutomationElementFinder(automationElement);
             return new DescendantFinder(automationElement);
         }
     }

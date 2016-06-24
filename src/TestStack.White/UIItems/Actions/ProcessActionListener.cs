@@ -18,7 +18,7 @@ namespace TestStack.White.UIItems.Actions
 
         public virtual void ActionPerformed(Action action)
         {
-            process.WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout);
+            process.WaitForInputIdle(CoreConfigurationLocator.Get().BusyTimeout);
         }
     }
 }

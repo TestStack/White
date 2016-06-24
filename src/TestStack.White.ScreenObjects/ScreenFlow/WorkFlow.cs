@@ -20,7 +20,7 @@ namespace TestStack.White.ScreenObjects.ScreenFlow
         private readonly GraphWriter graph;
         private readonly FlowWriter flow;
         private readonly string directory;
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WorkFlow));
+        private static readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(WorkFlow));
 
         public WorkFlow(string name, string archiveLocation)
         {

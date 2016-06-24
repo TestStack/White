@@ -12,7 +12,7 @@ namespace TestStack.White.UIA
 {
     public static class AutomationElementX
     {
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof (AutomationElementX));
+        private static readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof (AutomationElementX));
         private static readonly Dictionary<Type, AutomationPattern> AutomationPatterns = new Dictionary<Type, AutomationPattern>();
 
         public static string Display(this AutomationElement automationElement)

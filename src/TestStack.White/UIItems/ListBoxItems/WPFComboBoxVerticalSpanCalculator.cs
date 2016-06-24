@@ -10,7 +10,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         private readonly Rect lastItem;
         private readonly Rect combo;
         private readonly double percentVisible;
-        private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFComboBoxVerticalSpanCalculator));
+        private readonly ILogger logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(WPFComboBoxVerticalSpanCalculator));
 
         public WPFComboBoxVerticalSpanCalculator(Rect combo, Rect firstItem, Rect lastItem, double percentVisible)
         {

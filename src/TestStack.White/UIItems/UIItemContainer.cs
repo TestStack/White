@@ -1,14 +1,15 @@
+using Castle.DynamicProxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Automation;
-using Castle.DynamicProxy;
 using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.InputDevices;
 using TestStack.White.Interceptors;
 using TestStack.White.Sessions;
+using TestStack.White.SystemExtensions;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Container;
@@ -36,7 +37,8 @@ namespace TestStack.White.UIItems
 
         public UIItemContainer(AutomationElement automationElement, IActionListener actionListener,
             InitializeOption initializeOption,
-            WindowSession windowSession) : base(automationElement, actionListener)
+            WindowSession windowSession)
+            : base(automationElement, actionListener)
         {
             WindowSession = windowSession;
             CurrentContainerItemFactory = new CurrentContainerItemFactory(factory, initializeOption, automationElement,
@@ -49,7 +51,7 @@ namespace TestStack.White.UIItems
         }
 
         #endregion
-        
+
         /// <summary>
         /// Implements <see cref="IUIItemContainer.ToolTip" />
         /// </summary>
@@ -91,7 +93,7 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual T Get<T>(SearchCriteria searchCriteria) where T : IUIItem
         {
-            return (T) Get(searchCriteria.AndControlType(typeof (T), Framework));
+            return (T)Get(searchCriteria.AndControlType(typeof(T), Framework));
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual IUIItem Get(SearchCriteria searchCriteria)
         {
-            return Get(searchCriteria, CoreAppXmlConfiguration.Instance.BusyTimeout());
+            return Get(searchCriteria, CoreConfigurationLocator.Get().BusyTimeout.AsTimeSpan());
         }
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace TestStack.White.UIItems
                 var uiItem = Retry.For(() =>
                     CurrentContainerItemFactory.Find(searchCriteria, WindowSession),
                     b =>
-                        (bool) b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
+                        (bool)b.AutomationElement.GetCurrentPropertyValue(AutomationElement.IsOffscreenProperty, false),
                     busyTimeout);
 
                 if (uiItem == null)
@@ -254,7 +256,7 @@ namespace TestStack.White.UIItems
 
         public virtual MenuBar MenuBar
         {
-            get { return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework)); }
+            get { return (MenuBar)Get(SearchCriteria.ForMenuBar(Framework)); }
         }
 
         public virtual List<MenuBar> MenuBars
@@ -267,7 +269,7 @@ namespace TestStack.White.UIItems
             get
             {
                 Focus();
-                return (ToolStrip) Get(SearchCriteria.ByControlType(ControlType.ToolBar));
+                return (ToolStrip)Get(SearchCriteria.ByControlType(ControlType.ToolBar));
             }
         }
 
@@ -308,12 +310,12 @@ namespace TestStack.White.UIItems
 
         public virtual MenuBar GetMenuBar(SearchCriteria searchCriteria)
         {
-            return (MenuBar) Get(SearchCriteria.ForMenuBar(Framework).Merge(searchCriteria));
+            return (MenuBar)Get(SearchCriteria.ForMenuBar(Framework).Merge(searchCriteria));
         }
 
         public virtual ToolStrip GetToolStrip(string primaryIdentification)
         {
-            var toolStrip = (ToolStrip) Get(SearchCriteria.ByAutomationId(primaryIdentification));
+            var toolStrip = (ToolStrip)Get(SearchCriteria.ByAutomationId(primaryIdentification));
             if (toolStrip == null) return null;
             toolStrip.Associate(WindowSession);
             return toolStrip;
@@ -348,8 +350,8 @@ namespace TestStack.White.UIItems
             var interceptorField = customUIItem.GetType().GetField("__interceptors",
                 BindingFlags.NonPublic | BindingFlags.Public |
                 BindingFlags.Instance);
-            var interceptors = (IInterceptor[]) interceptorField.GetValue(customUIItem);
-            var realCustomUIItem = (CustomUIItem) ((CoreInterceptor) interceptors[0]).Context.UiItem;
+            var interceptors = (IInterceptor[])interceptorField.GetValue(customUIItem);
+            var realCustomUIItem = (CustomUIItem)((CoreInterceptor)interceptors[0]).Context.UiItem;
             realCustomUIItem.SetContainer(new UIItemContainer(customUIItem.AutomationElement, ChildrenActionListener,
                 InitializeOption.NoCache, WindowSession));
         }
@@ -370,9 +372,9 @@ namespace TestStack.White.UIItems
 
         protected virtual void CustomWait()
         {
-            if (CoreAppXmlConfiguration.Instance.AdditionalWaitHook != null)
+            if (CoreConfigurationLocator.Get().AdditionalWaitHook != null)
             {
-                CoreAppXmlConfiguration.Instance.AdditionalWaitHook.WaitFor(this);
+                CoreConfigurationLocator.Get().AdditionalWaitHook.WaitFor(this);
             }
         }
 

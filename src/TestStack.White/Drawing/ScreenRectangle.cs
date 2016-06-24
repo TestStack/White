@@ -64,7 +64,7 @@ namespace TestStack.White.Drawing
         internal virtual void Highlight()
         {
             rectangles.ToList().ForEach(x => x.Show());
-            Thread.Sleep(CoreAppXmlConfiguration.Instance.HighlightTimeout);
+            Thread.Sleep(CoreConfigurationLocator.Get().HighlightTimeout);
             rectangles.ToList().ForEach(x => x.Hide());
         }
     }

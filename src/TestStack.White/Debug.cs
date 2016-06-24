@@ -10,7 +10,7 @@ namespace TestStack.White
 {
     public static class Debug
     {
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(Debug));
+        private static readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(Debug));
         private const string Tab = "  ";
 
         public static void ProcessDetails(string processName)

@@ -38,7 +38,7 @@ namespace TestStack.White.UITests.ControlTests
             Assert.That(categories, Has.Exactly(1).Matches<PropertyGridCategory>(c => c.Text == "General"));
             Assert.That(categories, Has.Exactly(1).Matches<PropertyGridCategory>(c => c.Text == "Input"));
             Assert.That(categories, Has.Exactly(1).Matches<PropertyGridCategory>(c => c.Text == "Number"));
-            Assert.That(categories, Has.Exactly(1).Matches<PropertyGridCategory>(c => c.Text == UIItemIdAppXmlConfiguration.Instance.PropertyGridMiscText));
+            Assert.That(categories, Has.Exactly(1).Matches<PropertyGridCategory>(c => c.Text == UIItemIdConfigurationLocator.Get().PropertyGridMiscText));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace TestStack.White.UITests.ControlTests
             var propertyGridCategory = propertyGrid.Category("Input");
             var property = propertyGridCategory.GetProperty("FileName");
             property.BrowseForValue();
-            MainWindow.ModalWindow(UIItemIdAppXmlConfiguration.Instance.OpenFileDialogTitle).Close();
+            MainWindow.ModalWindow(UIItemIdConfigurationLocator.Get().OpenFileDialogTitle).Close();
         }
 
         [Test]
@@ -67,7 +67,7 @@ namespace TestStack.White.UITests.ControlTests
         public void PropertiesTest()
         {
             Assert.That(propertyGrid.Category("General").Properties, Has.Count.EqualTo(3));
-            Assert.That(propertyGrid.Category(UIItemIdAppXmlConfiguration.Instance.PropertyGridMiscText).Properties, Has.Count.EqualTo(2));
+            Assert.That(propertyGrid.Category(UIItemIdConfigurationLocator.Get().PropertyGridMiscText).Properties, Has.Count.EqualTo(2));
             Assert.That(propertyGrid.Category("Number").Properties, Has.Count.EqualTo(2));
         }
 

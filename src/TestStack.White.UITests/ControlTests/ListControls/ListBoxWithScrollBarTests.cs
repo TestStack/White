@@ -51,7 +51,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             }
             var listBox = MainWindow.Get<ListBox>("ListBoxWpf");
             var listItem = (WPFListItem)listBox.Items.Find(item => item.Text.StartsWith("Hrishikesh"));
-            using (CoreAppXmlConfiguration.Instance.ApplyTemporarySetting(c => c.BusyTimeout = 100))
+            using (CoreConfigurationLocator.Get().ApplyTemporarySettings(c => c.BusyTimeout = 100))
             {
                 Assert.That(() => { listItem.Get<TextBox>(SearchCriteria.ByAutomationId("foo")); },
                     Throws.TypeOf<AutomationException>().With.Message.EqualTo(

@@ -18,7 +18,7 @@ namespace TestStack.White.Reporting.Domain
         private readonly string directory;
         private DateTime screenCreationTime;
         private readonly string name;
-        private static readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(SubFlow));
+        private static readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(SubFlow));
 
         public SubFlow(string subFlowName, string flowName, string archiveLocation)
         {

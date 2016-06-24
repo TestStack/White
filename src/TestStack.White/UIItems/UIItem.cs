@@ -36,7 +36,7 @@ namespace TestStack.White.UIItems
         internal readonly Keyboard keyboard = Keyboard.Instance;
         protected IScrollBars scrollBars;
         private AutomationEventHandler handler;
-        protected readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItem));
+        protected readonly ILogger Logger = CoreConfigurationLocator.Get().LoggerFactory.Create(typeof(UIItem));
 
         #endregion
 
@@ -586,7 +586,7 @@ namespace TestStack.White.UIItems
         private void PerformIfValid(System.Action action)
         {
             var startTime = DateTime.Now;
-            var busyTimeout = CoreAppXmlConfiguration.Instance.BusyTimeout / 1000;
+            var busyTimeout = CoreConfigurationLocator.Get().BusyTimeout / 1000;
             while (DateTime.Now.Subtract(startTime).TotalSeconds < busyTimeout)
             {
                 if (Enabled && !IsOffScreen)
