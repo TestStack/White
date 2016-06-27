@@ -16,6 +16,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright Jake Ginnivan 2012</copyright>
     <tags>White UIAutomation Testing UIA WPF Silverlight Win32 Automation</tags>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Windows.Automation" />
+    </frameworkAssemblies>    
     <dependencies>
       <dependency id="Castle.Core" version="3.3.0" />
     </dependencies>
