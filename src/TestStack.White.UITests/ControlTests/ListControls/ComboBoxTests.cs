@@ -9,8 +9,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 {
     [TestFixture(WindowsFramework.WinForms)]
     [TestFixture(WindowsFramework.Wpf)]
-    [Category("NeedsFix")]
-    [Ignore("NeedsFix")]
     public class ComboBoxTests : WhiteUITestBase
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
