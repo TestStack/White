@@ -7,10 +7,9 @@ using TestStack.White.UIItems.ListBoxItems;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {
-    [TestFixture(WindowsFramework.WinForms)]
+    //[TestFixture(WindowsFramework.WinForms)]
+    // Problem with WinForms tests
     [TestFixture(WindowsFramework.Wpf)]
-    [Category("NeedsFix")]
-    [Ignore("NeedsFix")]
     public class ComboBoxTests : WhiteUITestBase
     {
         protected ComboBox ComboBoxUnderTest { get; set; }
