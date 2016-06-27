@@ -81,7 +81,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             Retry.For(() =>
             {
                 var oldBounds = item.Bounds;
-                Thread.Sleep(10);
+                Thread.Sleep(CoreAppXmlConfiguration.Instance.ComboBoxItemSelectDelay);
                 return oldBounds.Equals(item.Bounds);
             }, TimeSpan.FromSeconds(1), TimeSpan.FromMilliseconds(10));
         }
