@@ -7,13 +7,6 @@ Tests/automation programs using White can be written with whatever .NET language
 
 White provides a consistent object-oriented API, hiding the complexity of Microsoft's UIAutomation library (on which White is based) and windows messages.
 
-Namespace Change
-----------------
-**White's namespace has changed to 'TestStack.White'!**
-
-When you upgrade type `Fix-WhiteNamespace` into your NuGet powershell console to perform the rename,
-the replace will leave all modified files open, and output the results into the 'Find Results 2' window
-
 Common Resources
 ----------------
 
