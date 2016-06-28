@@ -15,6 +15,15 @@ namespace TestStack.White.UITests
         }
 
         [Test]
+        public void IsClosedTest()
+        {
+            MainWindow.Get<Button>("OpenMessageBox").Click();
+            var messageBox = MainWindow.MessageBox("Test message box");
+            Assert.That(messageBox.IsClosed, Is.False);
+            messageBox.Close();
+            Assert.That(messageBox.IsClosed, Is.True);
+        }
+        [Test]
         public void CloseMessageBoxTest()
         {
             MainWindow.Get<Button>("OpenMessageBox").Click();
