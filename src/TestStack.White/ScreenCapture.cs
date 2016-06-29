@@ -12,7 +12,7 @@ namespace TestStack.White
     /// <summary>
     /// Provides functions to capture the entire screen, or a particular window, and save it to a file.
     /// </summary>
-    internal class ScreenCapture
+    public class ScreenCapture
     {
         // This code is a modified version of many similar classes along the same lines. There is no one source I can credit with this class
 
