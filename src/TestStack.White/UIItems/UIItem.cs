@@ -35,6 +35,7 @@ namespace TestStack.White.UIItems
         protected readonly PrimaryUIItemFactory factory;
         internal readonly Keyboard keyboard = Keyboard.Instance;
         protected IScrollBars scrollBars;
+        private static readonly ScreenCapture ScreenCapture = new ScreenCapture();
         private AutomationEventHandler handler;
         protected readonly ILogger Logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(UIItem));
 
@@ -234,6 +235,12 @@ namespace TestStack.White.UIItems
         {
             get
             {
+                if (automationElement.Current.NativeWindowHandle == 0)
+                {
+                    // In wpf controls does not have window handles, falling back to screencapture.
+                    return ScreenCapture.CaptureArea(Bounds);
+                }
+
                 var displayedItem = new DisplayedItem(new IntPtr(automationElement.Current.NativeWindowHandle));
                 using (System.Drawing.Image image = displayedItem.GetVisibleImage())
                     return new Bitmap(image);
