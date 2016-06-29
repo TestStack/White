@@ -7,6 +7,8 @@ namespace TestStack.White.UIItems
         [FrameworkId("WPF")]
         Wpf,
         Win32,
+        [FrameworkId("XAML")]
+        Xaml,
         [FrameworkId("WinForm")]
         WinForms,
         Silverlight,

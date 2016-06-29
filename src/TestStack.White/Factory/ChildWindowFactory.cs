@@ -55,7 +55,7 @@ namespace TestStack.White.Factory
 
             var windowsFramework = WindowsFrameworkExtensions.FromFrameworkId(element.Current.FrameworkId);
             if (windowsFramework == WindowsFramework.WinForms) return new WinFormWindow(element, option, windowSession);
-            if (windowsFramework == WindowsFramework.Wpf) return new WPFWindow(element, WindowFactory.Desktop, option, windowSession);
+            if (windowsFramework == WindowsFramework.Wpf || windowsFramework == WindowsFramework.Xaml) return new WPFWindow(element, WindowFactory.Desktop, option, windowSession);
             if (windowsFramework == WindowsFramework.Win32) return new Win32Window(element, WindowFactory.Desktop, option, windowSession);
             throw new UIItemSearchException(string.Format("{0} is not supported yet.", windowsFramework));
         }
