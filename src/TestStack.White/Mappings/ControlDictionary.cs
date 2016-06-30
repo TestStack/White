@@ -16,7 +16,7 @@ using TestStack.White.UIItems.WindowStripControls;
 
 namespace TestStack.White.Mappings
 {
-    public sealed class ControlDictionary
+    public class ControlDictionary
     {
         public static readonly ControlDictionary Instance = new ControlDictionary();
         private readonly ControlDictionaryItems items = new ControlDictionaryItems();
@@ -105,7 +105,7 @@ namespace TestStack.White.Mappings
             editableControls.Add(typeof(ListControl));
         }
 
-        public bool HasPrimaryChildren(ControlType controlType)
+        public virtual bool HasPrimaryChildren(ControlType controlType)
         {
             if (controlType.Equals(ControlType.Custom)) return true;
             var results = items.FindBy(controlType).ToArray();
@@ -113,7 +113,7 @@ namespace TestStack.White.Mappings
             return results.Any(i => i.HasPrimaryChildren);
         }
 
-        public ControlType[] GetControlType(Type testControlType, string frameworkId)
+        public virtual ControlType[] GetControlType(Type testControlType, string frameworkId)
         {
             var controlDictionaryItem = items.FindBy(testControlType, frameworkId);
             if (controlDictionaryItem == null)
@@ -124,7 +124,7 @@ namespace TestStack.White.Mappings
             return controlDictionaryItem.Select(c => c.ControlType).ToArray();
         }
 
-        public Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
+        public virtual Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
         {
             if (object.Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
             {
@@ -200,7 +200,7 @@ namespace TestStack.White.Mappings
                 string.IsNullOrEmpty(controlDictionaryItem.FrameworkId);
         }
 
-        public bool IsPrimaryControl(ControlType controlType, string className, string name)
+        public virtual bool IsPrimaryControl(ControlType controlType, string className, string name)
         {
             return items.Exists(controlDictionaryItem =>
             {
@@ -211,17 +211,17 @@ namespace TestStack.White.Mappings
             });
         }
 
-        public bool IsExcluded(ControlType controlType)
+        public virtual bool IsExcluded(ControlType controlType)
         {
             return items.Exists(controlDictionaryItem => controlDictionaryItem.ControlType.Equals(controlType) && controlDictionaryItem.IsExcluded);
         }
 
-        public bool IsControlTypeSupported(ControlType controlType)
+        public virtual bool IsControlTypeSupported(ControlType controlType)
         {
             return items.Any(controlDictionaryItem => controlDictionaryItem.ControlType.Equals(controlType));
         }
 
-        public List<ControlType> PrimaryControlTypes(string frameworkId)
+        public virtual List<ControlType> PrimaryControlTypes(string frameworkId)
         {
             var controlTypes = new List<ControlType>();
             foreach (ControlDictionaryItem controlDictionaryItem in items)
@@ -233,12 +233,12 @@ namespace TestStack.White.Mappings
             return controlTypes;
         }
 
-        public bool IsEditable(UIItem uiItem)
+        public virtual bool IsEditable(UIItem uiItem)
         {
             return editableControls.All(t => t.IsInstanceOfType(uiItem));
         }
 
-        public Type GetTestControlType(AutomationElement automationElement)
+        public virtual Type GetTestControlType(AutomationElement automationElement)
         {
             AutomationElement.AutomationElementInformation current = automationElement.Current;
             return GetTestControlType(current.ClassName, current.Name, current.ControlType, current.FrameworkId, current.NativeWindowHandle != 0);

@@ -19,7 +19,7 @@ namespace TestStack.White.Bricks
     /// <summary>
     /// The dynamic proxy interceptors.
     /// </summary>
-    public sealed class DynamicProxyInterceptors : List<IWhiteInterceptor>
+    public class DynamicProxyInterceptors : List<IWhiteInterceptor>
     {
         /// <summary>
         /// The to-string.
@@ -42,7 +42,7 @@ namespace TestStack.White.Bricks
         /// <param name="invocation">
         /// The invocation.
         /// </param>
-        public void Process(IInvocation invocation)
+        public virtual void Process(IInvocation invocation)
         {
             this.ForEach(obj => obj.PreProcess(invocation, null));
             invocation.Proceed();
@@ -58,7 +58,7 @@ namespace TestStack.White.Bricks
         /// <param name="interceptedContext">
         /// The intercepted context.
         /// </param>
-        public void Process(IInvocation invocation, CoreInterceptContext interceptedContext)
+        public virtual void Process(IInvocation invocation, CoreInterceptContext interceptedContext)
         {
             this.ForEach(obj => obj.PreProcess(invocation, interceptedContext));
             var invokeTargetDelegate = DelegateInvoker.CreateInvoker(interceptedContext.Target, invocation.Method);

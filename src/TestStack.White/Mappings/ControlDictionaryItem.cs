@@ -4,7 +4,7 @@ using TestStack.White.UIItems;
 
 namespace TestStack.White.Mappings
 {
-    public sealed class ControlDictionaryItem
+    public class ControlDictionaryItem
     {
         private readonly Type testControlType;
         private readonly ControlType controlType;
@@ -122,29 +122,29 @@ namespace TestStack.White.Mappings
             return Secondary(testControlType, controlType, WindowsFramework.Xaml.FrameworkId());
         }
 
-        public bool IsPrimary => this.isPrimary;
+        public virtual bool IsPrimary => this.isPrimary;
 
-        public Type TestControlType => this.testControlType;
+        public virtual Type TestControlType => this.testControlType;
 
-        public string FrameworkId => this.frameworkId;
+        public virtual string FrameworkId => this.frameworkId;
 
-        public ControlType ControlType => this.controlType;
+        public virtual ControlType ControlType => this.controlType;
 
-        public string ClassName => this.className;
+        public virtual string ClassName => this.className;
 
-        public bool IsExcluded => this.isExcluded;
+        public virtual bool IsExcluded => this.isExcluded;
 
-        public bool IsIdentifiedByClassName => this.identifiedByClassName;
+        public virtual bool IsIdentifiedByClassName => this.identifiedByClassName;
 
-        public bool HasPrimaryChildren => this.hasPrimaryChildren;
+        public virtual bool HasPrimaryChildren => this.hasPrimaryChildren;
 
-        public bool OfFramework(string id)
+        public virtual bool OfFramework(string id)
         {
             //TODO id.Equals(id) will always return true.. figure out what this is doing
             return string.IsNullOrEmpty(id) || id.Equals(id);
         }
 
-        public bool IsIdentifiedByName { set; get; }
+        public virtual bool IsIdentifiedByName { set; get; }
 
         /// <inheritdoc />
         public override string ToString()
