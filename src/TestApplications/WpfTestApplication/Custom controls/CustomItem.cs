@@ -1,29 +1,55 @@
-﻿using System.Windows;
-using System.Windows.Automation.Peers;
-using System.Windows.Media;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CustomItem.cs" company="TestStack">
+//   All rights reserved.
+// </copyright>
+// <summary>
+//   Defines the CustomItem type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
-namespace WpfTestApplication
+namespace WpfTestApplication.Custom_controls
 {
+    using System.Windows;
+    using System.Windows.Automation.Peers;
+    using System.Windows.Media;
+
+    /// <summary>
+    /// The custom item.
+    /// </summary>
     public class CustomItem : UIElement
     {
-        public string Name
-        {
-            get { return (string)GetValue(NameProperty); }
-            set { SetValue(NameProperty, value); }
-        }
+        /// <summary>
+        /// The name property.
+        /// </summary>
+        public static readonly DependencyProperty NameProperty = DependencyProperty.Register("Name", typeof(string), typeof(CustomItem));
 
-        public static readonly DependencyProperty NameProperty =
-            DependencyProperty.Register("Name", typeof(string), typeof(CustomItem));
+        /// <summary>
+        /// The y property.
+        /// </summary>
+        public static readonly DependencyProperty YProperty = DependencyProperty.Register("Y", typeof(double), typeof(CustomItem));
 
+
+        /// <summary>
+        /// Gets or sets the y.
+        /// </summary>
         public double Y
         {
             get { return (double)GetValue(YProperty); }
-            set { SetValue(YProperty, value); }
+            set { this.SetValue(YProperty, value); }
         }
 
-        public static readonly DependencyProperty YProperty =
-            DependencyProperty.Register("Y", typeof(double), typeof(CustomItem));
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
+        public string Name
+        {
+            get { return (string)GetValue(NameProperty); }
+            set { this.SetValue(NameProperty, value); }
+        }
 
+        /// <summary>
+        /// Gets or sets the x.
+        /// </summary>
         public double X
         {
             get { return (double)GetValue(XProperty); }
