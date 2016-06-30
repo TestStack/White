@@ -124,7 +124,7 @@ namespace TestStack.White.Mappings
             return controlDictionaryItem.Select(c => c.ControlType).ToArray();
         }
 
-        private Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
+        public Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
         {
             if (object.Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
             {
