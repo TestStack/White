@@ -4,7 +4,7 @@ using TestStack.White.UIItems;
 
 namespace TestStack.White.Mappings
 {
-    public class ControlDictionaryItem
+    public sealed class ControlDictionaryItem
     {
         private readonly Type testControlType;
         private readonly ControlType controlType;
@@ -38,11 +38,6 @@ namespace TestStack.White.Mappings
             return new ControlDictionaryItem(testControlType, controlType, string.Empty, false, true, false, null, hasPrimaryChildren);
         }
 
-        private static ControlDictionaryItem Primary(Type testControlType, ControlType controlType, string frameworkId)
-        {
-            return new ControlDictionaryItem(testControlType, controlType, string.Empty, false, true, false, frameworkId, false);
-        }
-
         public static ControlDictionaryItem WinFormPrimary(Type testControlType, ControlType controlType)
         {
             return Primary(testControlType, controlType, WindowsFramework.WinForms.FrameworkId());
@@ -63,9 +58,21 @@ namespace TestStack.White.Mappings
             return Primary(testControlType, controlType, WindowsFramework.Silverlight.FrameworkId());
         }
 
-        private static ControlDictionaryItem Secondary(Type testControlType, ControlType controlType, string frameworkId)
+        /// <summary>
+        /// The XAML primary.
+        /// </summary>
+        /// <param name="testControlType">
+        /// The test control type.
+        /// </param>
+        /// <param name="controlType">
+        /// The control type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ControlDictionaryItem"/>.
+        /// </returns>
+        public static ControlDictionaryItem XamlPrimary(Type testControlType, ControlType controlType)
         {
-            return new ControlDictionaryItem(testControlType, controlType, string.Empty, false, false, false, frameworkId, false);
+            return Primary(testControlType, controlType, WindowsFramework.Xaml.FrameworkId());
         }
 
         public static ControlDictionaryItem Secondary(Type testControlType, ControlType controlType)
@@ -98,61 +105,92 @@ namespace TestStack.White.Mappings
             return Secondary(testControlType, controlType, WindowsFramework.Silverlight.FrameworkId());
         }
 
-        public virtual bool IsPrimary
+        /// <summary>
+        /// The XAML secondary.
+        /// </summary>
+        /// <param name="testControlType">
+        /// The test control type.
+        /// </param>
+        /// <param name="controlType">
+        /// The control type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ControlDictionaryItem"/>.
+        /// </returns>
+        public static ControlDictionaryItem XamlSecondary(Type testControlType, ControlType controlType)
         {
-            get { return isPrimary; }
+            return Secondary(testControlType, controlType, WindowsFramework.Xaml.FrameworkId());
         }
 
-        public virtual Type TestControlType
-        {
-            get { return testControlType; }
-        }
+        public bool IsPrimary => this.isPrimary;
 
-        public virtual string FrameworkId
-        {
-            get { return frameworkId; }
-        }
+        public Type TestControlType => this.testControlType;
 
-        public virtual ControlType ControlType
-        {
-            get { return controlType; }
-        }
+        public string FrameworkId => this.frameworkId;
 
-        public virtual string ClassName
-        {
-            get { return className; }
-        }
+        public ControlType ControlType => this.controlType;
 
-        public virtual bool IsExcluded
-        {
-            get { return isExcluded; }
-        }
+        public string ClassName => this.className;
 
-        public virtual bool IsIdentifiedByClassName
-        {
-            get { return identifiedByClassName; }
-        }
+        public bool IsExcluded => this.isExcluded;
 
-        public virtual bool HasPrimaryChildren
-        {
-            get { return hasPrimaryChildren; }
-        }
+        public bool IsIdentifiedByClassName => this.identifiedByClassName;
 
-        public virtual bool OfFramework(string id)
+        public bool HasPrimaryChildren => this.hasPrimaryChildren;
+
+        public bool OfFramework(string id)
         {
             //TODO id.Equals(id) will always return true.. figure out what this is doing
             return string.IsNullOrEmpty(id) || id.Equals(id);
         }
 
-        public virtual bool IsIdentifiedByName { set; get; }
+        public bool IsIdentifiedByName { set; get; }
 
+        /// <inheritdoc />
         public override string ToString()
         {
-            return
-                string.Format(
-                    "TestControlType: {0}, ControlType: {1}, ClassName: {2}, IdentifiedByClassName: {3}, IsPrimary: {4}, IsExcluded: {5}, FrameworkId: {6}, HasPrimaryChildren: {7}, IsIdentifiedByName: {8}",
-                    testControlType.Name, controlType.LocalizedControlType, className, identifiedByClassName, isPrimary, isExcluded, frameworkId, hasPrimaryChildren,
-                    IsIdentifiedByName);
+            return 
+                $"TestControlType: {this.testControlType.Name}, ControlType: {this.controlType.LocalizedControlType}, ClassName: {this.className}, IdentifiedByClassName: {this.identifiedByClassName}, IsPrimary: {this.isPrimary}, IsExcluded: {this.isExcluded}, FrameworkId: {this.frameworkId}, HasPrimaryChildren: {this.hasPrimaryChildren}, IsIdentifiedByName: {this.IsIdentifiedByName}";
+        }
+
+        /// <summary>
+        /// The primary.
+        /// </summary>
+        /// <param name="testControlType">
+        /// The test control type.
+        /// </param>
+        /// <param name="controlType">
+        /// The control type.
+        /// </param>
+        /// <param name="frameworkId">
+        /// The framework id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ControlDictionaryItem"/>.
+        /// </returns>
+        private static ControlDictionaryItem Primary(Type testControlType, ControlType controlType, string frameworkId)
+        {
+            return new ControlDictionaryItem(testControlType, controlType, string.Empty, false, true, false, frameworkId, false);
+        }
+
+        /// <summary>
+        /// The secondary.
+        /// </summary>
+        /// <param name="testControlType">
+        /// The test control type.
+        /// </param>
+        /// <param name="controlType">
+        /// The control type.
+        /// </param>
+        /// <param name="frameworkId">
+        /// The framework id.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ControlDictionaryItem"/>.
+        /// </returns>
+        private static ControlDictionaryItem Secondary(Type testControlType, ControlType controlType, string frameworkId)
+        {
+            return new ControlDictionaryItem(testControlType, controlType, string.Empty, false, false, false, frameworkId, false);
         }
     }
 }

@@ -1,14 +1,32 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Automation;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="CustomControlTypeMapping.cs" company="TestStack">
+//   All rights reserved.
+// </copyright>
+// <summary>
+//   Defines the CustomControlTypeMapping type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TestStack.White.UIItems.Custom
 {
-    public class CustomControlTypeMapping
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Automation;
+
+    /// <summary>
+    /// The custom control type mapping.
+    /// </summary>
+    public static class CustomControlTypeMapping
     {
+        /// <summary>
+        /// The mappings.
+        /// </summary>
         private static readonly Dictionary<CustomUIItemType, ControlType> Mappings = new Dictionary<CustomUIItemType, ControlType>();
 
+        /// <summary>
+        /// Initializes static members of the <see cref="CustomControlTypeMapping"/> class.
+        /// </summary>
         static CustomControlTypeMapping()
         {
             Mappings[CustomUIItemType.Pane] = System.Windows.Automation.ControlType.Pane;
@@ -52,24 +70,45 @@ namespace TestStack.White.UIItems.Custom
             Mappings[CustomUIItemType.TreeItem] = System.Windows.Automation.ControlType.TreeItem;
         }
 
+        /// <summary>
+        /// The control type.
+        /// </summary>
+        /// <param name="customUIItemType">
+        /// The custom UI item type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="System.Windows.Automation.ControlType"/>.
+        /// </returns>
         public static ControlType ControlType(CustomUIItemType customUIItemType)
         {
             return Mappings[customUIItemType];
         }
 
+        /// <summary>
+        /// The control type.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="framework">
+        /// The framework.
+        /// </param>
+        /// <returns>
+        /// The <see cref="System.Windows.Automation.ControlType"/>.
+        /// </returns>
         public static ControlType ControlType(Type type, WindowsFramework framework)
         {
             var controlTypeMappingAttribute = type.GetCustomAttributes(typeof(ControlTypeMappingAttribute), true)
                 .OfType<ControlTypeMappingAttribute>()
                 .ToArray();
             if (!controlTypeMappingAttribute.Any())
-                throw new CustomUIItemException("ControlTypeMappingAttribute needs to be defined for this type: " + type.FullName);
+            {
+                throw new CustomUIItemException(
+                    "ControlTypeMappingAttribute needs to be defined for this type: " + type.FullName);
+            }
 
             var frameworkSpecific = controlTypeMappingAttribute.FirstOrDefault(c => c.AppliesToFramework == framework);
-            if (frameworkSpecific != null)
-                return ControlType(frameworkSpecific.CustomUIItemType);
-
-            return ControlType(controlTypeMappingAttribute.Single(a=>a.AppliesToFramework == null).CustomUIItemType);
+            return ControlType(frameworkSpecific?.CustomUIItemType ?? controlTypeMappingAttribute.Single(a => a.AppliesToFramework == null).CustomUIItemType);
         }
     }
 }
