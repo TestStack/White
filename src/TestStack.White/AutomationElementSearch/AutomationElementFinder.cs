@@ -1,28 +1,48 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Automation;
-using TestStack.White.UIItems.Finders;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AutomationElementFinder.cs" company="TestStack">
+//   All rights reserved.
+// </copyright>
+// <summary>
+//   Internal to white and should not be used unless a known issue. One should be able to find all items
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TestStack.White.AutomationElementSearch
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Windows.Automation;
+
+    using TestStack.White.UIItems.Finders;
+
     /// <summary>
     /// Internal to white and should not be used unless a known issue. One should be able to find all items 
     /// </summary>
     public class AutomationElementFinder
     {
+        /// <summary>
+        /// The automation element.
+        /// </summary>
         private readonly AutomationElement automationElement;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AutomationElementFinder"/> class.
+        /// </summary>
+        /// <param name="automationElement">
+        /// The automation element.
+        /// </param>
         public AutomationElementFinder(AutomationElement automationElement)
         {
-            if (automationElement == null) throw new ArgumentNullException("automationElement");
+            if (automationElement == null)
+            {
+                throw new ArgumentNullException(nameof(automationElement));
+            }
+
             this.automationElement = automationElement;
         }
 
-        public virtual AutomationElement AutomationElement
-        {
-            get { return automationElement; }
-        }
+        public virtual AutomationElement AutomationElement => automationElement;
 
         public virtual List<AutomationElement> Children(params AutomationSearchCondition[] automationSearchConditions)
         {
