@@ -19,7 +19,7 @@ namespace TestStack.White.Factory
     /// <summary>
     /// The dictionary mapped item factory.
     /// </summary>
-    public sealed class DictionaryMappedItemFactory : IUIItemFactory
+    public class DictionaryMappedItemFactory : IUIItemFactory
     {
         /// <summary>
         /// Creates the UI item.
@@ -33,7 +33,7 @@ namespace TestStack.White.Factory
         /// <returns>
         /// The <see cref="IUIItem"/>.
         /// </returns>
-        public IUIItem Create(AutomationElement automationElement, IActionListener actionListener)
+        public virtual IUIItem Create(AutomationElement automationElement, IActionListener actionListener)
         {
             if (automationElement == null)
             {
@@ -58,7 +58,7 @@ namespace TestStack.White.Factory
         /// <returns>
         /// The <see cref="IUIItem"/>.
         /// </returns>
-        public IUIItem Create(AutomationElement automationElement, IActionListener actionListener, Type customItemType)
+        public virtual IUIItem Create(AutomationElement automationElement, IActionListener actionListener, Type customItemType)
         {
             if (automationElement == null)
             {

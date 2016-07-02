@@ -12,69 +12,94 @@ namespace TestStack.White.UIItems
         protected TextBox() {}
         public TextBox(AutomationElement automationElement, IActionListener actionListener) : base(automationElement, actionListener) {}
 
-        /// <summary>
+        /// <summary>Gets or sets the text.</summary>
+        /// <remarks>
         /// Enters the text in the textbox. The text would be cleared first. This is not as good performing as the BulkText method. 
         /// This does raise all keyboard events - that means that your string will consist of letters that match the letters
         /// of your string but in current input language.
-        /// </summary>
+        /// </remarks>
         public virtual string Text
         {
             get
             {
-                if (automationElement.Current.IsPassword)
+                if (this.automationElement.Current.IsPassword)
+                {
                     throw new WhiteException("Text cannot be retrieved from textbox which has secret text (e.g. password) stored in it");
-                var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
-                if (pattern != null) return pattern.Current.Value;
-                var textPattern = Pattern(TextPattern.Pattern) as TextPattern;
-                if (textPattern != null) return textPattern.DocumentRange.GetText(int.MaxValue);
+                }
 
-                throw new WhiteException(string.Format("AutomationElement for {0} supports neither ValuePattern or TextPattern", ToString()));
+                var pattern = this.Pattern(ValuePattern.Pattern) as ValuePattern;
+                if (pattern != null)
+                {
+                    return pattern.Current.Value;
+                }
+
+                var textPattern = this.Pattern(TextPattern.Pattern) as TextPattern;
+                if (textPattern != null)
+                {
+                    return textPattern.DocumentRange.GetText(int.MaxValue);
+                }
+
+                throw new WhiteException($"AutomationElement for {this.ToString()} supports neither ValuePattern or TextPattern");
             }
-            set { Enter(value); }
+
+            set
+            {
+                this.Enter(value);
+            }
         }
 
         /// <summary>
+        /// Gets or sets the text.
+        /// </summary>
+        /// <remarks>
         /// Sets the text in the textbox. The text would be cleared first. This is a better performing than the Text method. This doesn't raise all keyboard events.
         /// The string will be set exactly as it is in your code.
-        /// </summary>
+        /// </remarks>
         public virtual string BulkText
         {
+            get
+            {
+                return this.Text;
+            }
+
             set
             {
                 try
                 {
-                    var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
-                    if (pattern != null) pattern.SetValue(value);
+                    var pattern = this.Pattern(ValuePattern.Pattern) as ValuePattern;
+                    if (pattern != null)
+                    {
+                        pattern.SetValue(value);
+                    }
                     else
                     {
-                        Logger.WarnFormat("BulkText failed, {0} does not support ValuePattern. Trying Text", ToString());
-                        Text = value;
-                        actionListener.ActionPerformed(Action.WindowMessage);
+                        this.Logger.WarnFormat("BulkText failed, {0} does not support ValuePattern. Trying Text", this.ToString());
+                        this.Text = value;
+                        this.actionListener.ActionPerformed(Action.WindowMessage);
                     }
                 }
                 catch (System.InvalidOperationException)
                 {
-                    Logger.Warn("BulkText failed, now trying Text on " + ToString());
-                    Text = value;
-                    actionListener.ActionPerformed(Action.WindowMessage);
+                    this.Logger.Warn("BulkText failed, now trying Text on " + this.ToString());
+                    this.Text = value;
+                    this.actionListener.ActionPerformed(Action.WindowMessage);
                 }
             }
-            get { return Text; }
         }
 
-        public virtual bool IsReadOnly
-        {
-            get { return ((ValuePattern) Pattern(ValuePattern.Pattern)).Current.IsReadOnly; }
-        }
+        /// <summary>
+        /// Gets or sets the value indicates whether the control is read-only.
+        /// </summary>
+        public virtual bool IsReadOnly => ((ValuePattern) this.Pattern(ValuePattern.Pattern)).Current.IsReadOnly;
 
         public virtual void ClickAtRightEdge()
         {
-            mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+            mouse.Click(this.Bounds.ImmediateInteriorEast(), this.actionListener);
         }
 
         public virtual void ClickAtCenter()
         {
-            mouse.Click(Bounds.Center(), actionListener);
+            mouse.Click(this.Bounds.Center(), this.actionListener);
         }
 
         public override void HookEvents(IUIItemEventListener eventListener)
