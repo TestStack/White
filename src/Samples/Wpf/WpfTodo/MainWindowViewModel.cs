@@ -6,7 +6,6 @@
 //   Defines the MainWindowViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo
 {
     using System.Collections.ObjectModel;
@@ -18,46 +17,46 @@ namespace WpfTodo
     using Todo.Core;
 
     /// <summary>
-    /// The main window view model.
+    ///     The main window view model.
     /// </summary>
     public class MainWindowViewModel : NotifyPropertyChanged
     {
         /// <summary>
-        /// The repo.
+        ///     The repo.
         /// </summary>
         private readonly ITaskRepository repo = new InMemoryTaskRepository();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainWindowViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
         /// </summary>
         public MainWindowViewModel()
         {
             this.AddTaskCommand = new DelegateCommand(this.AddNewTask);
             this.Tasks = new ObservableCollection<TodoItem>();
         }
-        
-        /// <summary>
-        /// Gets the tasks.
-        /// </summary>
-        public ObservableCollection<TodoItem> Tasks { get; private set; }
 
         /// <summary>
-        /// Gets the add task command.
+        ///     Gets the add task command.
         /// </summary>
         public ICommand AddTaskCommand { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether loading tasks.
+        ///     Gets a value indicating whether loading tasks.
         /// </summary>
         public bool LoadingTasks { get; private set; }
 
         /// <summary>
-        /// Gets or sets the owner.
+        ///     Gets or sets the owner.
         /// </summary>
         public Window Owner { get; set; }
 
         /// <summary>
-        /// The add new task.
+        ///     Gets the tasks.
+        /// </summary>
+        public ObservableCollection<TodoItem> Tasks { get; }
+
+        /// <summary>
+        ///     The add new task.
         /// </summary>
         private void AddNewTask()
         {
@@ -73,7 +72,7 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// The refresh.
+        ///     The refresh.
         /// </summary>
         private void Refresh()
         {
@@ -83,13 +82,13 @@ namespace WpfTodo
                 t =>
                     {
                         foreach (var task in t.Result.OrderBy(o => o.DueDate))
-                {
-                    Tasks.Add(task);
-                }
+                        {
+                            Tasks.Add(task);
+                        }
 
-                LoadingTasks = false;
-            }, 
-            TaskScheduler.FromCurrentSynchronizationContext());
+                        LoadingTasks = false;
+                    }, 
+                TaskScheduler.FromCurrentSynchronizationContext());
         }
     }
 }

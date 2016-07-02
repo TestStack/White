@@ -1,37 +1,36 @@
-﻿<Window x:Class="WpfTestApplication.GetMultiple"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="WpfTestApplication.GetMultiple" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:wpfTestApplication="clr-namespace:WpfTestApplication"
-        xmlns:customControls="clr-namespace:WpfTestApplication.Custom_controls"
-        Title="GetMultiple" Height="300" Width="300">
-    <StackPanel>
-        <Button AutomationProperties.AutomationId="Test" Content="Button" />
-        <Button AutomationProperties.AutomationId="Test" Content="Button" />
-        <Button AutomationProperties.AutomationId="Test" Content="Button" />
+        xmlns:customControls="clr-namespace:WpfTestApplication.Custom_controls" Title="GetMultiple" Height="300"
+        Width="300">
+  <StackPanel>
+    <Button AutomationProperties.AutomationId="Test" Content="Button" />
+    <Button AutomationProperties.AutomationId="Test" Content="Button" />
+    <Button AutomationProperties.AutomationId="Test" Content="Button" />
 
-        <CheckBox AutomationProperties.AutomationId="Test2" Content="Checkbox" />
-        <CheckBox AutomationProperties.AutomationId="Test2" Content="Checkbox" />
-        <CheckBox AutomationProperties.AutomationId="Test2" Content="Checkbox" />
+    <CheckBox AutomationProperties.AutomationId="Test2" Content="Checkbox" />
+    <CheckBox AutomationProperties.AutomationId="Test2" Content="Checkbox" />
+    <CheckBox AutomationProperties.AutomationId="Test2" Content="Checkbox" />
 
-        <ItemsControl Height="100">
-            <customControls:CustomItem X="0.0" Y="1.0" />
-            <customControls:CustomItem X="0.0" Y="26.0" />
-            <customControls:CustomItem X="0.0" Y="51.0" />
+    <ItemsControl Height="100">
+      <customControls:CustomItem X="0.0" Y="1.0" />
+      <customControls:CustomItem X="0.0" Y="26.0" />
+      <customControls:CustomItem X="0.0" Y="51.0" />
 
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.Template>
-                <ControlTemplate>
-                    <ScrollViewer>
-                        <ContentControl>
-                            <ItemsPresenter />
-                        </ContentControl>
-                    </ScrollViewer>
-                </ControlTemplate>
-            </ItemsControl.Template>
-        </ItemsControl>
-    </StackPanel>
+      <ItemsControl.ItemsPanel>
+        <ItemsPanelTemplate>
+          <VirtualizingStackPanel />
+        </ItemsPanelTemplate>
+      </ItemsControl.ItemsPanel>
+      <ItemsControl.Template>
+        <ControlTemplate>
+          <ScrollViewer>
+            <ContentControl>
+              <ItemsPresenter />
+            </ContentControl>
+          </ScrollViewer>
+        </ControlTemplate>
+      </ItemsControl.Template>
+    </ItemsControl>
+  </StackPanel>
 </Window>

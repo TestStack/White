@@ -1,9 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Automation;
-using System.Windows.Controls;
-
-namespace WpfTestApplication
+﻿namespace WpfTestApplication
 {
+    using System.Windows;
+    using System.Windows.Automation;
+    using System.Windows.Controls;
+
     public partial class ListControls
     {
         public ListControls()
@@ -12,18 +12,7 @@ namespace WpfTestApplication
             AddContextMenu();
         }
 
-        private void ChangeListItems_OnClick(object sender, RoutedEventArgs e)
-        {
-            ListBoxWpf.Items.Clear();
-            ListBoxWpf.Items.Add("Jackson");
-            ListBoxWpf.Items.Add("Lucus");
-            ListBoxWpf.Items.Add("Cameron");
-            ListBoxWpf.Items.Add("Tarantino");
-            ListBoxWpf.Items.Add("Singleton");
-            ListBoxWpf.Items.Add("Allen");
-        }
-
-        void AddContextMenu()
+        private void AddContextMenu()
         {
             var contextMenu2 = new ContextMenu();
             var root = new MenuItem { Header = "Root" };
@@ -39,14 +28,25 @@ namespace WpfTestApplication
             ListBoxWithVScrollBar.ContextMenu = contextMenu2;
         }
 
-        private void RootClick(object sender, RoutedEventArgs e)
+        private void ChangeListItems_OnClick(object sender, RoutedEventArgs e)
         {
-            AutomationProperties.SetHelpText(ListBoxWithVScrollBar, "Root2 Clicked");
+            ListBoxWpf.Items.Clear();
+            ListBoxWpf.Items.Add("Jackson");
+            ListBoxWpf.Items.Add("Lucus");
+            ListBoxWpf.Items.Add("Cameron");
+            ListBoxWpf.Items.Add("Tarantino");
+            ListBoxWpf.Items.Add("Singleton");
+            ListBoxWpf.Items.Add("Allen");
         }
 
         private void Level2Click(object sender, RoutedEventArgs e)
         {
             AutomationProperties.SetHelpText(ListBoxWithVScrollBar, "Level 2 Clicked");
+        }
+
+        private void RootClick(object sender, RoutedEventArgs e)
+        {
+            AutomationProperties.SetHelpText(ListBoxWithVScrollBar, "Root2 Clicked");
         }
     }
 }

@@ -6,26 +6,25 @@
 //   Defines the NotifyPropertyChanged type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Todo.Core
 {
     using System.ComponentModel;
 
     /// <summary>
-    /// The notify property changed.
+    ///     The notify property changed.
     /// </summary>
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {
         /// <summary>
-        /// The property changed.
+        ///     The property changed.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// The on property changed.
+        ///     The on property changed.
         /// </summary>
         /// <param name="propertyName">
-        /// The property name.
+        ///     The property name.
         /// </param>
         protected void OnPropertyChanged(string propertyName)
         {

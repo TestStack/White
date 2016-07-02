@@ -6,7 +6,6 @@
 //   Defines the UITestBase type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo.UITests.Screens
 {
     using System;
@@ -16,12 +15,12 @@ namespace WpfTodo.UITests.Screens
     using TestStack.White;
 
     /// <summary>
-    /// The UI test base.
+    ///     The UI test base.
     /// </summary>
     public abstract class UITestBase : IDisposable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UITestBase"/> class.
+        ///     Initializes a new instance of the <see cref="UITestBase" /> class.
         /// </summary>
         protected UITestBase()
         {
@@ -34,12 +33,12 @@ namespace WpfTodo.UITests.Screens
         }
 
         /// <summary>
-        /// Gets the application.
+        ///     Gets the application.
         /// </summary>
-        protected Application Application { get; private set; }
+        protected Application Application { get; }
 
         /// <summary>
-        /// The dispose.
+        ///     The dispose.
         /// </summary>
         public void Dispose()
         {

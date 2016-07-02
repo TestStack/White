@@ -6,7 +6,6 @@
 //   Defines the TodoWindow type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo.UITests.Screens
 {
     using System;
@@ -24,35 +23,36 @@ namespace WpfTodo.UITests.Screens
     using Todo.Core;
 
     /// <summary>
-    /// The to-do window.
+    ///     The to-do window.
     /// </summary>
     public class TodoWindow : Screen
     {
         /// <summary>
-        /// The tasks list.
-        /// </summary>
-        private readonly ListBox tasksList = null;
-
-        /// <summary>
-        /// The add task button.
+        ///     The add task button.
         /// </summary>
         private readonly Button addTaskButton = null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TodoWindow"/> class.
+        ///     The tasks list.
+        /// </summary>
+        private readonly ListBox tasksList = null;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="TodoWindow" /> class.
         /// </summary>
         /// <param name="window">
-        /// The window.
+        ///     The window.
         /// </param>
         /// <param name="screenRepository">
-        /// The screen repository.
+        ///     The screen repository.
         /// </param>
-        public TodoWindow(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
+        public TodoWindow(Window window, ScreenRepository screenRepository)
+            : base(window, screenRepository)
         {
         }
 
         /// <summary>
-        /// Gets the tasks.
+        ///     Gets the tasks.
         /// </summary>
         public virtual IEnumerable<TodoItem> Tasks
         {
@@ -60,20 +60,24 @@ namespace WpfTodo.UITests.Screens
             {
                 this.WaitWhileBusy();
                 return from ListItem item in this.tasksList.Items
-                       select new TodoItem
-                       {
-                           Title = item.Get<Label>(SearchCriteria.ByAutomationId("Title")).Text,
-                           Description = item.Get<Label>(SearchCriteria.ByAutomationId("Description")).Text,
-                           DueDate = DateTime.Parse(item.Get<Label>(SearchCriteria.ByAutomationId("DueDate")).Text)
-                       };
+                       select
+                           new TodoItem
+                               {
+                                   Title = item.Get<Label>(SearchCriteria.ByAutomationId("Title")).Text, 
+                                   Description =
+                                       item.Get<Label>(SearchCriteria.ByAutomationId("Description")).Text, 
+                                   DueDate =
+                                       DateTime.Parse(
+                                           item.Get<Label>(SearchCriteria.ByAutomationId("DueDate")).Text)
+                               };
             }
         }
 
         /// <summary>
-        /// The new task.
+        ///     The new task.
         /// </summary>
         /// <returns>
-        /// The <see cref="NewTaskScreen"/>.
+        ///     The <see cref="NewTaskScreen" />.
         /// </returns>
         public virtual NewTaskScreen NewTask()
         {

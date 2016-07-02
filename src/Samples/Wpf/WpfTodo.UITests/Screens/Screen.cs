@@ -6,7 +6,6 @@
 //   Defines the Screen type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo.UITests.Screens
 {
     using System;
@@ -17,37 +16,39 @@ namespace WpfTodo.UITests.Screens
     using TestStack.White.Utility;
 
     /// <summary>
-    /// The screen.
+    ///     The screen.
     /// </summary>
     public class Screen : AppScreen
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Screen"/> class.
+        ///     Initializes a new instance of the <see cref="Screen" /> class.
         /// </summary>
         /// <param name="window">
-        /// The window.
+        ///     The window.
         /// </param>
         /// <param name="screenRepository">
-        /// The screen repository.
+        ///     The screen repository.
         /// </param>
-        protected Screen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
+        protected Screen(Window window, ScreenRepository screenRepository)
+            : base(window, screenRepository)
         {
         }
 
         /// <summary>
-        /// The shell is busy.
+        ///     The shell is busy.
         /// </summary>
         /// <returns>
-        /// The <see cref="bool"/>.
+        ///     The <see cref="bool" />.
         /// </returns>
         public bool ShellIsBusy()
         {
-            var currentPropertyValue = Window.AutomationElement.GetCurrentPropertyValue(AutomationElement.HelpTextProperty);
+            var currentPropertyValue =
+                Window.AutomationElement.GetCurrentPropertyValue(AutomationElement.HelpTextProperty);
             return currentPropertyValue != null && ((string)currentPropertyValue).Contains("Busy");
         }
 
         /// <summary>
-        /// The wait while busy.
+        ///     The wait while busy.
         /// </summary>
         protected virtual void WaitWhileBusy()
         {

@@ -6,7 +6,6 @@
 //   Defines the TodoAppTests type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo.UITests
 {
     using System;
@@ -24,23 +23,19 @@ namespace WpfTodo.UITests
     using WpfTodo.UITests.Screens;
 
     /// <summary>
-    /// The to-do app tests.
+    ///     The to-do app tests.
     /// </summary>
     [TestFixture]
     public class TodoAppTests : UITestBase
     {
         /// <summary>
-        /// The automate test.
+        ///     The automate test.
         /// </summary>
         [Test]
         public void AutomateTest()
         {
             var workPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            var workConfiguration = new WorkConfiguration
-            {
-                ArchiveLocation = workPath,
-                Name = "WpfTodo"
-            };
+            var workConfiguration = new WorkConfiguration { ArchiveLocation = workPath, Name = "WpfTodo" };
 
             if (workPath != null)
             {

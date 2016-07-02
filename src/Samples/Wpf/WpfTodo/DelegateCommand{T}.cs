@@ -6,38 +6,37 @@
 //   A command that calls the specified delegate when the command is executed.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo
 {
     using System;
     using System.Windows.Input;
 
     /// <summary>
-    /// A command that calls the specified delegate when the command is executed.
+    ///     A command that calls the specified delegate when the command is executed.
     /// </summary>
     /// <typeparam name="T">The command type.</typeparam>
     public class DelegateCommand<T> : ICommand
     {
         /// <summary>
-        /// The can execute method.
+        ///     The can execute method.
         /// </summary>
         private readonly Func<T, bool> canExecuteMethod;
 
         /// <summary>
-        /// The execute method.
+        ///     The execute method.
         /// </summary>
         private readonly Action<T> executeMethod;
 
         /// <summary>
-        /// The is executing.
+        ///     The is executing.
         /// </summary>
         private bool isExecuting;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DelegateCommand{T}"/> class.
+        ///     Initializes a new instance of the <see cref="DelegateCommand{T}" /> class.
         /// </summary>
         /// <param name="executeMethod">
-        /// The execute method.
+        ///     The execute method.
         /// </param>
         public DelegateCommand(Action<T> executeMethod)
             : this(executeMethod, null)
@@ -45,13 +44,13 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DelegateCommand{T}"/> class. 
+        ///     Initializes a new instance of the <see cref="DelegateCommand{T}" /> class.
         /// </summary>
         /// <param name="executeMethod">
-        /// The execute method.
+        ///     The execute method.
         /// </param>
         /// <param name="canExecuteMethod">
-        /// The execute method flag.
+        ///     The execute method flag.
         /// </param>
         protected DelegateCommand(Action<T> executeMethod, Func<T, bool> canExecuteMethod)
         {
@@ -65,7 +64,7 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// The can execute changed.
+        ///     The can execute changed.
         /// </summary>
         public event EventHandler CanExecuteChanged
         {
@@ -81,7 +80,37 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// The raise can execute changed.
+        ///     The can execute.
+        /// </summary>
+        /// <param name="parameter">
+        ///     The parameter.
+        /// </param>
+        /// <returns>
+        ///     The <see cref="bool" />.
+        /// </returns>
+        public bool CanExecute(T parameter)
+        {
+            if (this.canExecuteMethod == null)
+            {
+                return true;
+            }
+
+            return this.canExecuteMethod(parameter);
+        }
+
+        /// <summary>
+        ///     The execute.
+        /// </summary>
+        /// <param name="parameter">
+        ///     The parameter.
+        /// </param>
+        public void Execute(T parameter)
+        {
+            this.executeMethod(parameter);
+        }
+
+        /// <summary>
+        ///     The raise can execute changed.
         /// </summary>
         public void RaiseCanExecuteChanged()
         {
@@ -89,13 +118,13 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// The can execute.
+        ///     The can execute.
         /// </summary>
         /// <param name="parameter">
-        /// The parameter.
+        ///     The parameter.
         /// </param>
         /// <returns>
-        /// The <see cref="bool"/>.
+        ///     The <see cref="bool" />.
         /// </returns>
         bool ICommand.CanExecute(object parameter)
         {
@@ -103,10 +132,10 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// The execute.
+        ///     The execute.
         /// </summary>
         /// <param name="parameter">
-        /// The parameter.
+        ///     The parameter.
         /// </param>
         void ICommand.Execute(object parameter)
         {
@@ -122,36 +151,6 @@ namespace WpfTodo
                 this.isExecuting = false;
                 this.RaiseCanExecuteChanged();
             }
-        }
-
-        /// <summary>
-        /// The can execute.
-        /// </summary>
-        /// <param name="parameter">
-        /// The parameter.
-        /// </param>
-        /// <returns>
-        /// The <see cref="bool"/>.
-        /// </returns>
-        public bool CanExecute(T parameter)
-        {
-            if (this.canExecuteMethod == null)
-            {
-                return true;
-            }
-
-            return this.canExecuteMethod(parameter);
-        }
-
-        /// <summary>
-        /// The execute.
-        /// </summary>
-        /// <param name="parameter">
-        /// The parameter.
-        /// </param>
-        public void Execute(T parameter)
-        {
-            this.executeMethod(parameter);
         }
     }
 }

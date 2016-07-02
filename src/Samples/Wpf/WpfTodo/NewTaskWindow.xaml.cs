@@ -6,26 +6,25 @@
 //   Defines the NewTaskWindow type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo
 {
     using Todo.Core;
 
     /// <summary>
-    /// The new task window.
+    ///     The new task window.
     /// </summary>
     public partial class NewTaskWindow
     {
         /// <summary>
-        /// The new task view model.
+        ///     The new task view model.
         /// </summary>
         private readonly NewTaskViewModel newTaskViewModel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NewTaskWindow"/> class.
+        ///     Initializes a new instance of the <see cref="NewTaskWindow" /> class.
         /// </summary>
         /// <param name="taskRepository">
-        /// The task repository.
+        ///     The task repository.
         /// </param>
         public NewTaskWindow(ITaskRepository taskRepository)
         {
@@ -35,7 +34,7 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// Gets the to-do item.
+        ///     Gets the to-do item.
         /// </summary>
         public TodoItem TodoItem => newTaskViewModel.TodoItem;
     }

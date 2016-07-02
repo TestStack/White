@@ -6,16 +6,15 @@
 //   Defines the ListControls type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace TestSilverlightApplication
 {
     /// <summary>
-    /// The list controls.
+    ///     The list controls.
     /// </summary>
     public partial class ListControls
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListControls"/> class.
+        ///     Initializes a new instance of the <see cref="ListControls" /> class.
         /// </summary>
         public ListControls()
         {

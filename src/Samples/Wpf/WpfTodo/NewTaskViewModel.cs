@@ -6,7 +6,6 @@
 //   Defines the NewTaskViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo
 {
     using System.Threading.Tasks;
@@ -16,20 +15,20 @@ namespace WpfTodo
     using Todo.Core;
 
     /// <summary>
-    /// The new task view model.
+    ///     The new task view model.
     /// </summary>
     public class NewTaskViewModel : NotifyPropertyChanged
     {
         /// <summary>
-        /// The task repository.
+        ///     The task repository.
         /// </summary>
         private readonly ITaskRepository taskRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NewTaskViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="NewTaskViewModel" /> class.
         /// </summary>
         /// <param name="taskRepository">
-        /// The task repository.
+        ///     The task repository.
         /// </param>
         public NewTaskViewModel(ITaskRepository taskRepository)
         {
@@ -40,38 +39,38 @@ namespace WpfTodo
                     {
                         Owner.DialogResult = false;
                         Owner.Close();
-                    },
+                    }, 
                 () => !this.Saving);
             TodoItem = new TodoItem();
         }
 
         /// <summary>
-        /// Gets the to-do item.
-        /// </summary>
-        public TodoItem TodoItem { get; private set; }
-
-        /// <summary>
-        /// Gets or sets the owner.
-        /// </summary>
-        public Window Owner { get; set; }
-
-        /// <summary>
-        /// Gets the create task command.
-        /// </summary>
-        public ICommand CreateTaskCommand { get; private set; }
-
-        /// <summary>
-        /// Gets the cancel command.
+        ///     Gets the cancel command.
         /// </summary>
         public ICommand CancelCommand { get; private set; }
 
         /// <summary>
-        /// Gets a value indicating whether saving.
+        ///     Gets the create task command.
+        /// </summary>
+        public ICommand CreateTaskCommand { get; private set; }
+
+        /// <summary>
+        ///     Gets or sets the owner.
+        /// </summary>
+        public Window Owner { get; set; }
+
+        /// <summary>
+        ///     Gets a value indicating whether saving.
         /// </summary>
         public bool Saving { get; private set; }
 
         /// <summary>
-        /// The create task.
+        ///     Gets the to-do item.
+        /// </summary>
+        public TodoItem TodoItem { get; }
+
+        /// <summary>
+        ///     The create task.
         /// </summary>
         private void CreateTask()
         {
@@ -82,7 +81,7 @@ namespace WpfTodo
                         Saving = false;
                         Owner.DialogResult = true;
                         Owner.Close();
-                    },
+                    }, 
                 TaskScheduler.FromCurrentSynchronizationContext());
         }
     }

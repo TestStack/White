@@ -6,19 +6,17 @@
 //   Defines the VerticalGridSplitter type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace TestSilverlightApplication
 {
     using System.Windows;
-    using System.Windows.Controls;
 
     /// <summary>
-    /// The vertical grid splitter.
+    ///     The vertical grid splitter.
     /// </summary>
     public partial class VerticalGridSplitter
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VerticalGridSplitter"/> class.
+        ///     Initializes a new instance of the <see cref="VerticalGridSplitter" /> class.
         /// </summary>
         public VerticalGridSplitter()
         {
@@ -26,32 +24,31 @@ namespace TestSilverlightApplication
         }
 
         /// <summary>
-        /// The ok button_ click.
+        ///     The cancel button_ click.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="e">
-        /// The e.
-        /// </param>
-        private void OKButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-        }
-
-        /// <summary>
-        /// The cancel button_ click.
-        /// </summary>
-        /// <param name="sender">
-        /// The sender.
-        /// </param>
-        /// <param name="e">
-        /// The e.
+        ///     The e.
         /// </param>
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = false;
         }
+
+        /// <summary>
+        ///     The ok button_ click.
+        /// </summary>
+        /// <param name="sender">
+        ///     The sender.
+        /// </param>
+        /// <param name="e">
+        ///     The e.
+        /// </param>
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }
     }
 }
-

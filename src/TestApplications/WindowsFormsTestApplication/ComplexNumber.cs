@@ -8,9 +8,12 @@
             Imaginary = imaginary;
         }
 
-        public ComplexNumber() { }
+        public ComplexNumber()
+        {
+        }
+
+        public int Imaginary { get; set; }
 
         public int Real { get; set; }
-        public int Imaginary { get; set; }
     }
 }

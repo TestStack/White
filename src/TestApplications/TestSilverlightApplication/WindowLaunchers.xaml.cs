@@ -6,18 +6,17 @@
 //   Defines the WindowLaunchers type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace TestSilverlightApplication
 {
     using System.Windows;
 
     /// <summary>
-    /// The window launchers.
+    ///     The window launchers.
     /// </summary>
     public partial class WindowLaunchers
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WindowLaunchers"/> class.
+        ///     Initializes a new instance of the <see cref="WindowLaunchers" /> class.
         /// </summary>
         public WindowLaunchers()
         {
@@ -25,13 +24,13 @@ namespace TestSilverlightApplication
         }
 
         /// <summary>
-        /// The launch horizontal grid splitter.
+        ///     The launch horizontal grid splitter.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="e">
-        /// The e.
+        ///     The e.
         /// </param>
         private void LaunchHorizontalGridSplitter(object sender, RoutedEventArgs e)
         {
@@ -39,13 +38,13 @@ namespace TestSilverlightApplication
         }
 
         /// <summary>
-        /// The launch vertical grid splitter.
+        ///     The launch vertical grid splitter.
         /// </summary>
         /// <param name="sender">
-        /// The sender.
+        ///     The sender.
         /// </param>
         /// <param name="e">
-        /// The e.
+        ///     The e.
         /// </param>
         private void LaunchVerticalGridSplitter(object sender, RoutedEventArgs e)
         {

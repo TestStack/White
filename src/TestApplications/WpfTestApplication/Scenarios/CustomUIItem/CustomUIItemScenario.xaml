@@ -1,9 +1,9 @@
 ﻿<Window x:Class="WpfTestApplication.Scenarios.CustomUIItem.CustomUIItemScenario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:customUiItem="clr-namespace:WpfTestApplication.Scenarios.CustomUIItem"
-        Title="CustomUIItemScenario" Height="300" Width="300">
-    <Grid>
-        <customUiItem:MyDateControl VerticalAlignment="Top" x:Name="DateOfBirth" />
-    </Grid>
+        xmlns:customUiItem="clr-namespace:WpfTestApplication.Scenarios.CustomUIItem" Title="CustomUIItemScenario"
+        Height="300" Width="300">
+  <Grid>
+    <customUiItem:MyDateControl VerticalAlignment="Top" x:Name="DateOfBirth" />
+  </Grid>
 </Window>

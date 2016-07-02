@@ -6,7 +6,6 @@
 //   Defines the NewTaskScreen type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo.UITests.Screens
 {
     using System;
@@ -18,48 +17,47 @@ namespace WpfTodo.UITests.Screens
     using TestStack.White.UIItems.WindowItems;
 
     /// <summary>
-    /// The new task screen.
+    ///     The new task screen.
     /// </summary>
     public class NewTaskScreen : Screen
     {
         /// <summary>
-        /// The create button.
+        ///     The create button.
         /// </summary>
         private readonly Button createButton = null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NewTaskScreen"/> class.
+        ///     Initializes a new instance of the <see cref="NewTaskScreen" /> class.
         /// </summary>
         /// <param name="window">
-        /// The window.
+        ///     The window.
         /// </param>
         /// <param name="screenRepository">
-        /// The screen repository.
+        ///     The screen repository.
         /// </param>
-        public NewTaskScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
+        public NewTaskScreen(Window window, ScreenRepository screenRepository)
+            : base(window, screenRepository)
         {
         }
 
         /// <summary>
-        /// Gets or sets the title.
-        /// </summary>
-        public virtual string Title
-        {
-            get { return Window.Get<TextBox>("Title").Text; }
-            set { Window.Get<TextBox>("Title").Text = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the description.
+        ///     Gets or sets the description.
         /// </summary>
         public virtual string Description
         {
-            get { return Window.Get<TextBox>("Description").Text; }
-            set { Window.Get<TextBox>("Description").Text = value; }
+            get
+            {
+                return Window.Get<TextBox>("Description").Text;
+            }
+
+            set
+            {
+                Window.Get<TextBox>("Description").Text = value;
+            }
         }
 
         /// <summary>
-        /// Gets or sets the due date.
+        ///     Gets or sets the due date.
         /// </summary>
         public virtual DateTime DueDate
         {
@@ -78,7 +76,23 @@ namespace WpfTodo.UITests.Screens
         }
 
         /// <summary>
-        /// The create.
+        ///     Gets or sets the title.
+        /// </summary>
+        public virtual string Title
+        {
+            get
+            {
+                return Window.Get<TextBox>("Title").Text;
+            }
+
+            set
+            {
+                Window.Get<TextBox>("Title").Text = value;
+            }
+        }
+
+        /// <summary>
+        ///     The create.
         /// </summary>
         public virtual void Create()
         {

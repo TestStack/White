@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Input;
-
-namespace WpfTestApplication
+﻿namespace WpfTestApplication
 {
+    using System.Windows;
+    using System.Windows.Input;
+
     public partial class DragAndDropTestWindow
     {
         public DragAndDropTestWindow()
@@ -12,7 +12,7 @@ namespace WpfTestApplication
 
         private void ButtonOnDrop(object sender, DragEventArgs e)
         {
-            DragDropResults.Content = "TextBoxDraggedOntoButton";            
+            DragDropResults.Content = "TextBoxDraggedOntoButton";
         }
 
         private void TextBox_OnPreviewMouseDown(object sender, MouseButtonEventArgs e)

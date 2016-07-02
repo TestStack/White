@@ -6,18 +6,17 @@
 //   Defines the DelegateCommand type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace WpfTodo
 {
     using System;
 
     /// <summary>
-    /// The delegate command.
+    ///     The delegate command.
     /// </summary>
     public class DelegateCommand : DelegateCommand<object>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DelegateCommand"/> class.
+        ///     Initializes a new instance of the <see cref="DelegateCommand" /> class.
         /// </summary>
         /// <param name="executeMethod">The execute method.</param>
         public DelegateCommand(Action executeMethod)
@@ -26,7 +25,7 @@ namespace WpfTodo
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DelegateCommand"/> class.
+        ///     Initializes a new instance of the <see cref="DelegateCommand" /> class.
         /// </summary>
         /// <param name="executeMethod">The execute method.</param>
         /// <param name="canExecuteMethod">The execute method flag.</param>

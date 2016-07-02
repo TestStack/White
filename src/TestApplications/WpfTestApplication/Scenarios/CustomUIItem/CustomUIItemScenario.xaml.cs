@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-
-namespace WpfTestApplication.Scenarios.CustomUIItem
+﻿namespace WpfTestApplication.Scenarios.CustomUIItem
 {
+    using System.Windows;
+
     /// <summary>
-    /// Interaction logic for CustomUIItemScenario.xaml
+    ///     Interaction logic for CustomUIItemScenario.xaml
     /// </summary>
     public partial class CustomUIItemScenario : Window
     {

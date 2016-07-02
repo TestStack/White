@@ -11,10 +11,14 @@
             Details = details;
         }
 
-        public string Name { get; set; }
-        public string Country { get; set; }
         public bool Alive { get; set; }
-        public string Display { get; set; }
+
+        public string Country { get; set; }
+
         public string Details { get; set; }
+
+        public string Display { get; set; }
+
+        public string Name { get; set; }
     }
 }

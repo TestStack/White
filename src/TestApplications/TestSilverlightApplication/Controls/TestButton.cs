@@ -6,18 +6,17 @@
 //   Defines the TestButton type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace TestSilverlightApplication.Controls
 {
     using System.Windows.Controls;
 
     /// <summary>
-    /// The test button.
+    ///     The test button.
     /// </summary>
     public class TestButton : Button
     {
         /// <summary>
-        /// The on click.
+        ///     The on click.
         /// </summary>
         protected override void OnClick()
         {

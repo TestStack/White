@@ -6,29 +6,28 @@
 //   Defines the TodoItem type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Todo.Core
 {
     using System;
 
     /// <summary>
-    /// The to-do item.
+    ///     The to-do item.
     /// </summary>
     public class TodoItem : NotifyPropertyChanged
     {
         /// <summary>
-        /// Gets or sets the title.
-        /// </summary>
-        public string Title { get; set; }
-
-        /// <summary>
-        /// Gets or sets the description.
+        ///     Gets or sets the description.
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the due date.
+        ///     Gets or sets the due date.
         /// </summary>
         public DateTime? DueDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the title.
+        /// </summary>
+        public string Title { get; set; }
     }
 }

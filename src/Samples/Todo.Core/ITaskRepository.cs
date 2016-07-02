@@ -6,56 +6,55 @@
 //   Defines the ITaskRepository type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace Todo.Core
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// The TaskRepository interface.
+    ///     The TaskRepository interface.
     /// </summary>
     public interface ITaskRepository
     {
         /// <summary>
-        /// The get all.
-        /// </summary>
-        /// <returns>
-        /// The <see cref="Task"/>.
-        /// </returns>
-        Task<IEnumerable<TodoItem>> GetAll();
-
-        /// <summary>
-        /// The add.
+        ///     The add.
         /// </summary>
         /// <param name="todoItem">
-        /// The to-do item.
+        ///     The to-do item.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         Task Add(TodoItem todoItem);
 
         /// <summary>
-        /// The delete.
+        ///     The delete.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        ///     The id.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         Task Delete(int id);
 
         /// <summary>
-        /// The get.
+        ///     The get.
         /// </summary>
         /// <param name="id">
-        /// The id.
+        ///     The id.
         /// </param>
         /// <returns>
-        /// The <see cref="Task"/>.
+        ///     The <see cref="Task" />.
         /// </returns>
         Task<TodoItem> Get(int id);
+
+        /// <summary>
+        ///     The get all.
+        /// </summary>
+        /// <returns>
+        ///     The <see cref="Task" />.
+        /// </returns>
+        Task<IEnumerable<TodoItem>> GetAll();
     }
 }

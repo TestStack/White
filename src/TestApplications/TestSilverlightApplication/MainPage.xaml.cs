@@ -6,7 +6,6 @@
 //   Defines the MainPage type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
 namespace TestSilverlightApplication
 {
     using System.Collections.ObjectModel;
@@ -15,17 +14,17 @@ namespace TestSilverlightApplication
     using System.Windows.Controls;
 
     /// <summary>
-    /// The main page.
+    ///     The main page.
     /// </summary>
     public partial class MainPage
     {
         /// <summary>
-        /// The button click count.
+        ///     The button click count.
         /// </summary>
         private int butonClickCount;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainPage"/> class.
+        ///     Initializes a new instance of the <see cref="MainPage" /> class.
         /// </summary>
         public MainPage()
         {
@@ -38,19 +37,13 @@ namespace TestSilverlightApplication
         }
 
         /// <summary>
-        /// The list items.
+        ///     The list items.
         /// </summary>
-        public ObservableCollection<string> ListItems => new ObservableCollection<string>
-                                                             {
-                                                                 "Test",
-                                                                 "Test2",
-                                                                 "Test3",
-                                                                 "Test4",
-                                                                 "Test5"
-                                                             };
+        public ObservableCollection<string> ListItems
+            => new ObservableCollection<string> { "Test", "Test2", "Test3", "Test4", "Test5" };
 
         /// <summary>
-        /// Adds to the combo box.
+        ///     Adds to the combo box.
         /// </summary>
         /// <param name="comboBox">The combo box.</param>
         /// <param name="texts">The texts.</param>
@@ -64,7 +57,7 @@ namespace TestSilverlightApplication
         }
 
         /// <summary>
-        /// The button click.
+        ///     The button click.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event argument.</param>
