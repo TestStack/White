@@ -527,6 +527,15 @@ namespace TestStack.White.UIItems
         /// <returns>Returns an <c><see cref="IUIItemContainer"/></c> if possibe</returns>
         public virtual IUIItemContainer AsContainer()
         {
+            return AsContainerInternal();
+        }
+
+        #endregion
+
+        #region Internal
+
+        internal virtual IUIItemContainer AsContainerInternal()
+        {
             if (Framework != WindowsFramework.Wpf)
             {
                 Logger.Warn("Only WPF items should be treated as container items");
