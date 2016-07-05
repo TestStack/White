@@ -536,6 +536,9 @@ namespace TestStack.White.UIItems
 
         internal virtual IUIItemContainer AsContainerInternal()
         {
+            // This function needs to be internal because all public method from this
+            // class call interceptors. Sometimes we don't need focus on element, for
+            // example in GetMultiple method, so this method created for internal usage.
             if (Framework != WindowsFramework.Wpf)
             {
                 Logger.Warn("Only WPF items should be treated as container items");
