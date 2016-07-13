@@ -1,4 +1,8 @@
 using NUnit.Framework;
+using System;
+using System.IO;
+using System.Reflection;
+using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
@@ -14,6 +18,14 @@ namespace TestStack.White.UITests
         public GenericScreenTypeTests(WindowsFramework framework)
             : base(framework)
         {
+        }
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            // Set the worksession path to the current assemblys directory
+            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(currentAssemblyDirectory);
         }
 
         [Test]

@@ -106,6 +106,8 @@ namespace TestStack.White.UnitTests.Mappings
         [Fact]
         public void GetTestType()
         {
+            Assert.Equal(typeof(Label), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Text, string.Empty, false));
+            Assert.Equal(typeof(Label), controlDictionary.GetTestControlType(string.Empty, string.Empty, ControlType.Text, null, false));
             Assert.Equal(typeof(Button), controlDictionary.GetTestControlType(string.Empty, "foo", ControlType.Button, WindowsFramework.WinForms.FrameworkId(), false));
             Assert.Equal(typeof(Panel), controlDictionary.GetTestControlType(string.Empty, "foo", ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), false));
             Assert.Equal(typeof(PropertyGrid), controlDictionary.GetTestControlType(string.Empty, "PropertyGrid", ControlType.Pane, WindowsFramework.WinForms.FrameworkId(), false));

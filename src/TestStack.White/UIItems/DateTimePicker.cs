@@ -16,6 +16,10 @@ namespace TestStack.White.UIItems
             get
             {
                 var property = (string) Property(ValuePattern.ValueProperty);
+
+                if (string.IsNullOrEmpty(property))
+                    property = (string) Property(LegacyIAccessiblePattern.ValueProperty);
+
                 if (string.IsNullOrEmpty(property))
                     return null;
                 return DateTime.Parse(property);

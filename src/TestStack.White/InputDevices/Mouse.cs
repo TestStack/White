@@ -183,6 +183,10 @@ namespace TestStack.White.InputDevices
         {
             MouseButtonDown(mouseButton);
             MouseButtonUp(mouseButton);
+            // Let the Raw Input Thread some time to process OS's hardware input queue.
+            // As this thread works with High priority - this short wait should be enough hopefully.
+            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
         }
 
         /// <summary>
@@ -292,12 +296,6 @@ namespace TestStack.White.InputDevices
         public static void RightDown()
         {
             MouseButtonDown(MouseButton.Right);
-        }
-
-        public static void MouseLeftButtonUpAndDown()
-        {
-            LeftDown();
-            LeftUp();
         }
 
         private static void SendInput(Input input)

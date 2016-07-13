@@ -29,6 +29,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CategoriesTest()
         {
             var categories = propertyGrid.Categories;
@@ -40,6 +42,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void BrowseForValueTest()
         {
             var propertyGridCategory = propertyGrid.Category("Input");
@@ -49,6 +53,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CannotBrowseForValueTest()
         {
             var propertyWithoutBrowseButton = propertyGrid.Category("General").GetProperty("WindowSize");
@@ -56,6 +62,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void PropertiesTest()
         {
             Assert.That(propertyGrid.Category("General").Properties, Has.Count.EqualTo(3));
@@ -64,6 +72,8 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void PropertyTest()
         {
             var gridProperty = propertyGrid.Category("General").Properties[0];

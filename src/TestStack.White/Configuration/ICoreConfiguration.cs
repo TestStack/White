@@ -32,6 +32,9 @@ namespace TestStack.White.Configuration
         int DragStepCount { get; set; }
         bool InProc { get; set; }
         bool ComboBoxItemsPopulatedWithoutDropDownOpen { get; set; }
+        int ComboBoxItemSelectionTimeout { get; set; }
+        int ComboBoxItemSelectDelay { get; set; }
+        int RawInputQueueProcessingTime { get; set; }
         bool RawElementBasedSearch { get; set; }
         int MaxElementSearchDepth { get; set; }
         int DoubleClickInterval { get; set; }

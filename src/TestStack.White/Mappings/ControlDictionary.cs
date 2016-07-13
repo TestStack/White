@@ -56,10 +56,12 @@ namespace TestStack.White.Mappings
             dictionaryItem.IsIdentifiedByName = true;
             items.Add(dictionaryItem);
 
-            items.AddFrameworkSpecificPrimary(ControlType.Text, typeof(Label), typeof(Label), typeof(WPFLabel), typeof(WPFLabel));
+            items.AddPrimary(typeof(Label), ControlType.Text);
+            items.AddWPFPrimary(typeof(WPFLabel), ControlType.Text);
+            items.AddSilverlightPrimary(typeof(WPFLabel), ControlType.Text);
             items.AddFrameworkSpecificPrimary(ControlType.ComboBox, typeof(Win32ComboBox), typeof(WinFormComboBox), typeof(WPFComboBox), typeof(SilverlightComboBox));
+            items.AddInternetExplorerPrimary(typeof(ComboBox), ControlType.ComboBox);
             items.AddFrameworkSpecificPrimary(ControlType.StatusBar, typeof(StatusStrip), typeof(StatusStrip), typeof(WPFStatusBar), typeof(WPFStatusBar));
-
             items.AddWPFPrimary(typeof(CustomUIItem), ControlType.Custom);
             items.AddWinFormPrimary(typeof(TextBox), ControlType.Document);
             items.AddWin32Primary(typeof(TextBox), ControlType.Document);
@@ -83,6 +85,7 @@ namespace TestStack.White.Mappings
             items.Add(ControlDictionaryItem.Win32Secondary(typeof(Win32ListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.WPFSecondary(typeof(WPFListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.SilverlightSecondary(typeof(WPFListItem), ControlType.ListItem));
+            items.Add(ControlDictionaryItem.InternetExplorerSecondary(typeof(WPFListItem), ControlType.ListItem));
 
             items.Add(ControlDictionaryItem.WinFormSecondary(typeof(Win32TreeNode), ControlType.TreeItem));
             items.Add(ControlDictionaryItem.WPFSecondary(typeof(WPFTreeNode), ControlType.TreeItem));
@@ -118,6 +121,9 @@ namespace TestStack.White.Mappings
 
         public virtual Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
         {
+            //We want to be working with null, not an empty string
+            if (frameWorkId == string.Empty) frameWorkId = null;
+
             if (Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
                 frameWorkId = WindowsFramework.Win32.FrameworkId();
 
@@ -144,6 +150,9 @@ namespace TestStack.White.Mappings
                 if (primaries.Length == 1)
                     return primaries.Single().TestControlType;
 
+                var frameworkMatches = dictionaryItems.Where(i => i.FrameworkId == frameWorkId).ToArray();
+                if (frameworkMatches.Length == 1)
+                    return frameworkMatches.Single().TestControlType;
                 var identifiedByName = dictionaryItems.Where(i => i.IsIdentifiedByName).ToArray();
                 if (identifiedByName.Length == 1)
                     return identifiedByName.Single().TestControlType;
