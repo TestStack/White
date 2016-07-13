@@ -32,11 +32,6 @@ namespace TestStack.White.Mappings
             Add(ControlDictionaryItem.WinFormPrimary(testControlType, controlType));
         }
 
-        public virtual void AddSilverlightPrimary(Type testControlType, ControlType controlType)
-        {
-            Add(ControlDictionaryItem.SilverlightPrimary(testControlType, controlType));
-        }
-
         public virtual void AddPrimary(Type testControlType, ControlType controlType)
         {
             Add(ControlDictionaryItem.Primary(testControlType, controlType));
@@ -76,12 +71,11 @@ namespace TestStack.White.Mappings
                     .ToArray();
         }
 
-        public virtual void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType, Type silverlightType)
+        public virtual void AddFrameworkSpecificPrimary(ControlType controlType, Type win32Type, Type winformType, Type wpfType)
         {
             AddWin32Primary(win32Type, controlType);
             AddWinFormPrimary(winformType, controlType);
             AddWPFPrimary(wpfType, controlType);
-            AddSilverlightPrimary(silverlightType, controlType);
         }
     }
 }

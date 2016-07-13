@@ -121,7 +121,6 @@
     <Compile Include="ControlTests\Splitters\HorizontalThumbTests.cs" />
     <Compile Include="ControlTests\Splitters\VerticalThumbTests.cs" />
     <Compile Include="Factory\InitializeOptionTests.cs" />
-    <Compile Include="Infrastructure\SilverlightTestConfiguration.cs" />
     <Compile Include="Infrastructure\WindowsConfiguration.cs" />
     <Compile Include="InputDevices\AttachedKeyboardTests.cs" />
     <Compile Include="InputDevices\DragAndDropTests.cs" />

@@ -13,8 +13,6 @@ namespace TestStack.White.UITests.Infrastructure
                     return new WpfTestConfiguration();
                 case WindowsFramework.WinForms:
                     return new WinformsTestConfiguration();
-                case WindowsFramework.Silverlight:
-                    return new SilverlightTestConfiguration();
                 case WindowsFramework.Win32:
                 case WindowsFramework.Swt:
                 //case Constants.WinRT:

@@ -95,7 +95,6 @@
     <Compile Include="InternetExplorerFactory.cs" />
     <Compile Include="InternetExplorerWindow.cs" />
     <Compile Include="InternetExplorer.cs" />
-    <Compile Include="Silverlight\SilverlightDocument.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

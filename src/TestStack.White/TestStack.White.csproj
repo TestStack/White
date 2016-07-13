@@ -175,8 +175,6 @@
     <Compile Include="UIItems\Finders\SimpleSearchCondition.cs" />
     <Compile Include="UIItems\Finders\TestControlTypeX.cs" />
     <Compile Include="UIItems\FrameworkIdAttribute.cs" />
-    <Compile Include="UIItems\ListBoxItems\SilverlightComboBox.cs" />
-    <Compile Include="UIItems\ListBoxItems\SilverlightComboBoxVerticalSpanCalculator.cs" />
     <Compile Include="UIItems\ListBoxItems\WinFormComboBox.cs" />
     <Compile Include="UIItems\ListBoxItems\WPFComboBoxVerticalSpanCalculator.cs" />
     <Compile Include="UIItems\PropertyGridItems\PropertyGrid.cs" />
@@ -185,8 +183,6 @@
     <Compile Include="UIItems\PropertyGridItems\PropertyGridProperty.cs" />
     <Compile Include="UIItems\Scrolling\DefaultScrollBarButtonAutomationIds.cs" />
     <Compile Include="UIItems\Scrolling\ScrollBarButtonAutomationIds.cs" />
-    <Compile Include="UIItems\Scrolling\SilverlightHScrollBarButtonAutomationIds.cs" />
-    <Compile Include="UIItems\Scrolling\SilverlightVScrollBarButtonAutomationIds.cs" />
     <Compile Include="UIItems\Scrolling\IVerticalSpanProvider.cs" />
     <Compile Include="UIItems\Scrolling\WpfTreeViewHScrollBar.cs" />
     <Compile Include="UIItems\Scrolling\WpfTreeViewScrollBar.cs" />
@@ -201,7 +197,6 @@
     <Compile Include="UIItems\TableItems\ITableVerticalScrollOffset.cs" />
     <Compile Include="UIItems\Thumb.cs" />
     <Compile Include="UIItems\ToggleableItem.cs" />
-    <Compile Include="UIItems\WindowItems\SilverlightChildWindow.cs" />
     <Compile Include="UIItems\WindowsFrameworkExtensions.cs" />
     <Compile Include="UIItems\WinFormSlider.cs" />
     <Compile Include="UIItems\Spinner.cs" />
