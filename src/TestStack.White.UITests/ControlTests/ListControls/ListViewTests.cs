@@ -13,8 +13,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectRowTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -31,8 +29,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectScrolledRowTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -44,8 +40,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectedRowTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -58,8 +52,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectBasedOnCellTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -71,8 +63,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void ColumnsTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -84,10 +74,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
                 Assert.That(columns[1].Name, Is.EqualTo("Value"));
             }
         }
-
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void RowCountTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -98,8 +85,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void CellCountTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -111,8 +96,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void CellTextTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -128,8 +111,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectedRowsTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -143,8 +124,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void MultiSelectTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))
@@ -157,8 +136,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectWhenHorizontalScrollIsPresentTest()
         {
             using (var window = StartScenario("OpenListView", "ListViewWindow"))

@@ -23,6 +23,11 @@ namespace TestStack.White.UIItems.WindowItems
             this.windowFactory = windowFactory;
         }
 
+        public override T Get<T>(string primaryIdentification)
+        {
+            return Get<T>(SearchCriteria.ByText(primaryIdentification));
+        }
+
         public override PopUpMenu Popup
         {
             get { return windowFactory.PopUp(this); }

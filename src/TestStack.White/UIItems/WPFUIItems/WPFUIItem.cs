@@ -144,7 +144,7 @@ namespace TestStack.White.UIItems.WPFUIItems
             {
                 throw new WhiteException("Cannot get UI Item container, uiItem must be an instance of UIItem");
             }
-            return item.AsContainerInternal();
+            return item.AsContainer();
         }
 
         #endregion

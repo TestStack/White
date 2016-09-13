@@ -30,7 +30,7 @@ namespace TestStack.White.WebBrowser
                         {
                             var automationSearchCondition = AutomationSearchCondition
                                 .ByControlType(ControlType.Window)
-                                .WithName("Silverlight Control");
+                                .OfName("Silverlight Control");
 
                             return finder.Descendant(automationSearchCondition);
                         },

@@ -135,8 +135,6 @@ namespace TestStack.White.UITests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void WindowScrollsToMakeItemVisibleBeforePerformingAnyActionTest()
         {
             using (var window = StartScenario("OpenWindowWithScrollbars", "WindowWithScrollbars"))

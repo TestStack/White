@@ -29,8 +29,6 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectItemInEditableComboBoxTest()
         {
             ComboBoxUnderTest.Select("Test3");

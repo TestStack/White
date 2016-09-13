@@ -20,8 +20,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void ClickTest()
         {
             var hyperlink = MainWindow.Get<Hyperlink>("LinkLabel");

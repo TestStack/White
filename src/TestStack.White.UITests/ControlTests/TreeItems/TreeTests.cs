@@ -49,8 +49,6 @@ namespace TestStack.White.UITests.ControlTests.TreeItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectNodeWhichNeedsScrollingTest()
         {
             tree.Node("Root").Select();
@@ -64,8 +62,6 @@ namespace TestStack.White.UITests.ControlTests.TreeItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectNodeTest()
         {
             var treeNode = tree.Node("Root", "Child");
@@ -105,8 +101,6 @@ namespace TestStack.White.UITests.ControlTests.TreeItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void ScrollAndSelectTest()
         {
             var treeNode = tree.Node("Lots Of Children", "Child40");

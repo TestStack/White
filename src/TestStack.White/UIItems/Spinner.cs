@@ -1,6 +1,5 @@
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
-using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
 
 namespace TestStack.White.UIItems
@@ -31,7 +30,7 @@ namespace TestStack.White.UIItems
             AutomationElement spinnerElementContainingValue =
                 finder.FindChildRaw(AutomationSearchCondition.ByAutomationId(automationElement.Current.AutomationId).OfControlType(ControlType.Spinner));
             if (spinnerElementContainingValue == null) throw new WhiteAssertionException("Could not find Raw Spinner Element containing the value");
-            return spinnerElementContainingValue.GetPattern<ValuePattern>();
+            return (ValuePattern) spinnerElementContainingValue.GetCurrentPattern(ValuePattern.Pattern);
         }
 
         public virtual void Increment()

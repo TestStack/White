@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Windows.Automation;
-using TestStack.White.Configuration;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.Utility;
@@ -40,32 +39,19 @@ namespace TestStack.White.UIItems.ListBoxItems
             if (Bounds.IsEmpty)
             {
                 Logger.Debug("Bounds empty, falling back to automation patterns");
-                GetPattern<SelectionItemPattern>().Select();
+                var selectionItemPattern =
+                    (SelectionItemPattern) automationElement.GetCurrentPattern(SelectionItemPattern.Pattern);
+                selectionItemPattern.Select();
             }
             else
             {
                 Logger.Debug("Selecting item with Click");
                 WaitForBoundsToStabilise(this);
                 mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
-
-                var timeout = TimeSpan.FromMilliseconds(CoreAppXmlConfiguration.Instance.ComboBoxItemSelectionTimeout);
-                if (!Retry.For(() => IsSelected, timeout))
+                if (!IsSelected)
                 {
                     Logger.Debug("Failed to select list item via click. Falling back to automation patterns");
-                    try
-                    {
-                        GetPattern<SelectionItemPattern>().Select();
-                    }
-                    catch (InvalidOperationException)
-                    {
-                        // Sometimes Select() method throws InvalidOperationException because item is
-                        // already selected, so it can't re-select it again, but this fact is not
-                        // discovered before, e.g. because app's UI thread is busy and hadn't handled
-                        // SelectedItem change before timeout.
-                        // If as a final result this item is selected - we're fine regarless of this
-                        // exception. Otherwise we should throw again.
-                        if (!IsSelected) throw;
-                    }
+                    ((SelectionItemPattern)automationElement.GetCurrentPattern(SelectionItemPattern.Pattern)).Select();
                 }
             }
 
@@ -81,7 +67,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             Retry.For(() =>
             {
                 var oldBounds = item.Bounds;
-                Thread.Sleep(CoreAppXmlConfiguration.Instance.ComboBoxItemSelectDelay);
+                Thread.Sleep(10);
                 return oldBounds.Equals(item.Bounds);
             }, TimeSpan.FromSeconds(1), TimeSpan.FromMilliseconds(10));
         }

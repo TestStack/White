@@ -23,7 +23,7 @@ namespace TestStack.White.UIItems.TableItems
             set
             {
                 actionListener.ActionPerforming(this);
-                var valuePattern = GetPattern<ValuePattern>();
+                var valuePattern = (ValuePattern) Pattern(ValuePattern.Pattern);
                 if (value is string)
                 {
                     Click();
@@ -44,7 +44,7 @@ namespace TestStack.White.UIItems.TableItems
 
         public override void Click()
         {
-            GetPattern<InvokePattern>().Invoke();
+            ((InvokePattern) Pattern(InvokePattern.Pattern)).Invoke();
         }
 
         public override void RightClick()

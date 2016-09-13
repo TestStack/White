@@ -1,8 +1,5 @@
 using NUnit.Framework;
-using System;
 using System.IO;
-using System.Reflection;
-using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 
@@ -12,8 +9,6 @@ namespace TestStack.White.UITests.Factory
     [TestFixture(WindowsFramework.Wpf)]
     public class InitializeOptionTests : WhiteUITestBase
     {
-        private string fooFilePath;
-
         public InitializeOptionTests(WindowsFramework framework)
             : base(framework)
         {
@@ -22,32 +17,26 @@ namespace TestStack.White.UITests.Factory
         [OneTimeSetUp]
         public void Setup()
         {
-            // Set the worksession path to the current assemblys directory
-            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(currentAssemblyDirectory);
-
-            fooFilePath = Path.Combine(currentAssemblyDirectory, "foo.xml");
-
-            if (File.Exists(fooFilePath))
+            if (File.Exists("foo.xml"))
             {
-                File.Delete(fooFilePath);
+                File.Delete("foo.xml");
             }
         }
 
         [OneTimeTearDown]
         public void Teardown()
         {
-            File.Delete(fooFilePath);
+            File.Delete("foo.xml");
         }
 
         [Test]
         public void IdentifiedByCreatesAFileTest()
         {
-            File.Delete(fooFilePath);
+            File.Delete("foo.xml");
             var window = Application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("Foo"));
             window.Get<Button>("ButtonWithTooltip").Click();
             Application.ApplicationSession.Save();
-            Assert.That(File.Exists(fooFilePath), Is.True);
+            Assert.That(File.Exists("foo.xml"), Is.True);
         }
     }
 }

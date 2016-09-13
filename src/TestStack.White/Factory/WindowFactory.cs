@@ -133,7 +133,7 @@ namespace TestStack.White.Factory
                 AutomationElement titleBarElement =
                     new AutomationElementFinder(automationElement).Child(AutomationSearchCondition.ByControlType(ControlType.TitleBar));
                 if (titleBarElement == null) return false;
-                return match.Invoke(titleBarElement.Current.Name ?? titleBarElement.GetCurrentPropertyValue(ValuePattern.ValueProperty).ToString());
+                return match.Invoke(titleBarElement.Current.Name);
             });
         }
 

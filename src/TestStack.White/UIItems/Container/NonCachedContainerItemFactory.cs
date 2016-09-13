@@ -25,9 +25,9 @@ namespace TestStack.White.UIItems.Container
             return factory.Create(searchCriteria, actionListener);
         }
 
-        public override UIItemCollection GetAll(SearchCriteria searchCriteria, string defaultFrameworkId)
+        public override UIItemCollection GetAll(SearchCriteria searchCriteria)
         {
-            return factory.CreateAll(searchCriteria, actionListener, defaultFrameworkId);
+            return factory.CreateAll(searchCriteria, actionListener);
         }
     }
 }

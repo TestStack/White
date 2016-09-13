@@ -1,4 +1,4 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Windows.Automation;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
@@ -7,8 +7,7 @@ using TestStack.White.UIItems.ListBoxItems;
 
 namespace TestStack.White.UITests.ControlTests.ListControls
 {
-    //[TestFixture(WindowsFramework.WinForms)]
-    // Problem with WinForms tests
+    [TestFixture(WindowsFramework.WinForms)]
     [TestFixture(WindowsFramework.Wpf)]
     public class ComboBoxTests : WhiteUITestBase
     {
@@ -37,16 +36,14 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             Restart();
             ComboBoxUnderTest = MainWindow.Get<ComboBox>(SearchCriteria.ByAutomationId("AComboBox"));
 
-            var config = CoreAppXmlConfiguration.Instance;
-            var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             try
             {
-                config.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
+                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
                 Assert.That(ComboBoxUnderTest.Items, Has.Count.EqualTo(0));
             }
             finally
             {
-                config.ComboBoxItemsPopulatedWithoutDropDownOpen = originalVal;
+                CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
         }
 
@@ -54,13 +51,14 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         public void ComboBoxOnlyCollapsesWhenExpansionWasForItemRetrievalTest()
         {
             // Arrange
+            var expandCollapsePattern = (ExpandCollapsePattern)ComboBoxUnderTest.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
             var config = CoreAppXmlConfiguration.Instance;
             var originalVal = config.ComboBoxItemsPopulatedWithoutDropDownOpen;
             config.ComboBoxItemsPopulatedWithoutDropDownOpen = false;
 
             try
             {
-                ComboBoxUnderTest.Expand();
+                expandCollapsePattern.Expand();
 
                 // Act
 #pragma warning disable 168
@@ -69,13 +67,13 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 #pragma warning restore 168
 
                 // Assert
-                var expansionState = ComboBoxUnderTest.ExpandCollapseState;
+                var expansionState = expandCollapsePattern.Current.ExpandCollapseState;
                 Assert.That(expansionState, Is.EqualTo(ExpandCollapseState.Expanded));
             }
             finally
             {
                 config.ComboBoxItemsPopulatedWithoutDropDownOpen = originalVal;
-                ComboBoxUnderTest.Collapse();
+                expandCollapsePattern.Collapse();
             }
         }
 
@@ -96,7 +94,7 @@ namespace TestStack.White.UITests.ControlTests.ListControls
 #pragma warning restore 168
 
                 // Assert
-                var expansionState = ComboBoxUnderTest.ExpandCollapseState;
+                var expansionState = (ExpandCollapseState)ComboBoxUnderTest.AutomationElement.GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
                 // The combobox should have been collapsed after the items were retrieved
                 Assert.That(expansionState, Is.EqualTo(ExpandCollapseState.Collapsed));
             }

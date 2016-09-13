@@ -63,19 +63,19 @@ namespace TestStack.White.UIItems.Container
             return ControlDictionary.Instance
                 .GetControlType(typeof (T), automationElement.Current.FrameworkId)
                 .SelectMany(ct => current
-                    .GetAll(SearchCriteria.ByControlType(ct), automationElement.Current.FrameworkId)
+                    .GetAll(SearchCriteria.ByControlType(ct))
                     .OfType<T>())
                 .ToList();
         }
 
         public virtual UIItemCollection FindAll()
         {
-            return current.GetAll(SearchCriteria.All, automationElement.Current.FrameworkId);
+            return current.GetAll(SearchCriteria.All);
         }
 
         public virtual UIItemCollection FindAll(SearchCriteria criteria)
         {
-            return current.GetAll(criteria, automationElement.Current.FrameworkId);
+            return current.GetAll(criteria);
         }
     }
 }

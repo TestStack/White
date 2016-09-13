@@ -11,7 +11,6 @@ namespace TestStack.White.UIItems
         WinForms,
         Silverlight,
         [FrameworkId("SWT")]
-        Swt,
-        InternetExplorer
+        Swt
     }
 }

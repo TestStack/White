@@ -1,8 +1,6 @@
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
-using TestStack.White.UIA;
 using TestStack.White.UIItems.Actions;
-using TestStack.White.UIItems.WPFUIItems;
 
 namespace TestStack.White.UIItems.ListBoxItems
 {
@@ -27,31 +25,6 @@ namespace TestStack.White.UIItems.ListBoxItems
         private TextBox GetTextBox()
         {
             return new TextBox(Finder.Child(AutomationSearchCondition.ByControlType(ControlType.Edit)), actionListener);
-        }
-
-        public override ExpandCollapseState ExpandCollapseState
-        {
-            get
-            {
-                var itemsList = Finder.FindChildRaw(AutomationSearchCondition.ByControlType(ControlType.List));
-                return itemsList == null ? ExpandCollapseState.Collapsed : ExpandCollapseState.Expanded;
-            }
-        }
-
-        public override bool Expand()
-        {
-            if (ExpandCollapseState == ExpandCollapseState.Expanded) return false;
-            var openButton = AutomationElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
-            openButton.GetPattern<InvokePattern>().Invoke();
-            return true;
-        }
-
-        public override bool Collapse()
-        {
-            if (ExpandCollapseState == ExpandCollapseState.Collapsed) return false;
-            var openButton = AutomationElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
-            openButton.GetPattern<InvokePattern>().Invoke();
-            return true;
         }
     }
 }

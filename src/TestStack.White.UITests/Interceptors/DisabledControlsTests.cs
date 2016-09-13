@@ -29,8 +29,6 @@ namespace TestStack.White.UITests.Interceptors
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void AllowActionsPossibleOnDisabledInputControlsTest()
         {
             SelectInputControls();
@@ -47,8 +45,6 @@ namespace TestStack.White.UITests.Interceptors
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void AllowActionsPossibleOnDisabledListControlsTest()
         {
             SelectListControls();

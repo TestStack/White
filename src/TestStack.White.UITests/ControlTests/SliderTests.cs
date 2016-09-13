@@ -22,8 +22,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SetValueTest()
         {
             slider.Value = 5;
@@ -31,8 +29,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void LargeIncrementTest()
         {
             slider.Value = 5;
@@ -41,8 +37,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void LargeDecrementTest()
         {
             slider.Value = 5;
@@ -51,8 +45,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SmallIncrementTest()
         {
             slider.Value = 5;
@@ -61,8 +53,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SmallDecrementTest()
         {
             slider.Value = 5;

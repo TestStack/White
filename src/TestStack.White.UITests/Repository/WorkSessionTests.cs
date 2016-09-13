@@ -1,8 +1,5 @@
 using NUnit.Framework;
-using System;
 using System.IO;
-using System.Reflection;
-using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.ScreenObjects.Services;
 using TestStack.White.ScreenObjects.Sessions;
@@ -14,28 +11,18 @@ namespace TestStack.White.UITests.Repository
     [TestFixture]
     public class WorkSessionTests
     {
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            // Set the worksession path to the current assemblys directory
-            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(currentAssemblyDirectory);
-        }
-
         [Test]
         public void ShouldNotSaveAnyWindowInformationToFileWhenNoWindowsAreLaunched()
         {
             var numberOfFilesBeforeSessionStart = NumberOfFiles();
-            using (WorkSession()) { }
+            using (WorkSession()){}
             Assert.That(NumberOfFiles(), Is.EqualTo(numberOfFilesBeforeSessionStart));
         }
 
         [Test]
         public void ShouldSaveWindowInformationInFile()
         {
-            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            var fooFile = Path.Combine(currentAssemblyDirectory, "foo.xml");
-            File.Delete(fooFile);
+            File.Delete("foo.xml");
             using (var workSession = WorkSession())
             {
                 var application = new WinformsTestConfiguration().LaunchApplication();
@@ -43,7 +30,7 @@ namespace TestStack.White.UITests.Repository
                 var window = application.GetWindow("MainWindow", InitializeOption.NoCache.AndIdentifiedBy("foo"));
                 window.Get<Button>("ButtonWithTooltip");
             }
-            Assert.That(File.Exists(fooFile), Is.True);
+            Assert.That(File.Exists("foo.xml"), Is.True);
         }
 
         [Test]

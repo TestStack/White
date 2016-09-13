@@ -1,11 +1,8 @@
-using System;
 using System.Windows.Automation;
 using TestStack.White.Recording;
 using TestStack.White.UIA;
 using TestStack.White.UIItemEvents;
 using TestStack.White.UIItems.Actions;
-using TestStack.White.WindowsAPI;
-using Action = TestStack.White.UIItems.Actions.Action;
 
 namespace TestStack.White.UIItems
 {
@@ -26,17 +23,14 @@ namespace TestStack.White.UIItems
             {
                 if (automationElement.Current.IsPassword)
                     throw new WhiteException("Text cannot be retrieved from textbox which has secret text (e.g. password) stored in it");
-                var pattern = GetPattern<ValuePattern>();
+                var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
                 if (pattern != null) return pattern.Current.Value;
-                var textPattern = GetPattern<TextPattern>();
+                var textPattern = Pattern(TextPattern.Pattern) as TextPattern;
                 if (textPattern != null) return textPattern.DocumentRange.GetText(int.MaxValue);
 
                 throw new WhiteException(string.Format("AutomationElement for {0} supports neither ValuePattern or TextPattern", ToString()));
             }
-            set
-            {
-                Enter(value);
-            }
+            set { Enter(value); }
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace TestStack.White.UIItems
             {
                 try
                 {
-                    var pattern = GetPattern<ValuePattern>();
+                    var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
                     if (pattern != null) pattern.SetValue(value);
                     else
                     {
@@ -70,7 +64,7 @@ namespace TestStack.White.UIItems
 
         public virtual bool IsReadOnly
         {
-            get { return GetPattern<ValuePattern>().Current.IsReadOnly; }
+            get { return ((ValuePattern) Pattern(ValuePattern.Pattern)).Current.IsReadOnly; }
         }
 
         public virtual void ClickAtRightEdge()

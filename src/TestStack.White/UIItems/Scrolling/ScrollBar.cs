@@ -61,7 +61,7 @@ namespace TestStack.White.UIItems.Scrolling {
         }
 
         public virtual void SetToMaximum() {
-            GetPattern<RangeValuePattern>().SetValue(MaximumValue);
+            ((RangeValuePattern) Pattern(RangeValuePattern.Pattern)).SetValue(MaximumValue);
             ForwardSmallChangeButton.Click();
         }
 

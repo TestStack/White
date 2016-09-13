@@ -12,7 +12,8 @@ namespace TestStack.White.UIItems
 
         public override void SetDate(DateTime? dateTime, DateFormat dateFormat)
         {
-            GetPattern<ValuePattern>().SetValue(dateTime != null ? dateTime.Value.ToShortDateString() : string.Empty);
+            var valuePattern = (ValuePattern)AutomationElement.GetCurrentPattern(ValuePattern.Pattern);
+            valuePattern.SetValue(dateTime != null ? dateTime.Value.ToShortDateString() : "");
         }
     }
 }

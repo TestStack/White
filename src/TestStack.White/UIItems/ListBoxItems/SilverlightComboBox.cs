@@ -21,7 +21,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         {
             get
             {
-                var scrollPattern = GetPattern<ScrollPattern>();
+                var scrollPattern = (ScrollPattern) Pattern(ScrollPattern.Pattern);
                 var bounds = Bounds;
                 var firstVisibleItem = Items.First(i=>!i.IsOffScreen).Bounds;
                 var lastItem = Items.Last(i=>i.Bounds != Rect.Empty).Bounds;

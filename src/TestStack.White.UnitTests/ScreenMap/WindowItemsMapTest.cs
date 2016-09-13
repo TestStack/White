@@ -1,9 +1,6 @@
 using NUnit.Framework;
-using System;
 using System.IO;
-using System.Reflection;
 using System.Windows;
-using TestStack.White.Configuration;
 using TestStack.White.Factory;
 using TestStack.White.ScreenMap;
 using TestStack.White.UIA;
@@ -14,19 +11,9 @@ namespace TestStack.White.UnitTests.ScreenMap
     [TestFixture]
     public class WindowItemsMapTest
     {
-        [OneTimeSetUp]
-        public void Setup()
+        public WindowItemsMapTest()
         {
-            // Set the worksession path to the current assemblys directory
-            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(currentAssemblyDirectory);
-
-            var fooFilePath = Path.Combine(currentAssemblyDirectory, "foo.xml");
-
-            if (File.Exists(fooFilePath))
-            {
-                File.Delete(fooFilePath);
-            }
+            File.Delete("foo.xml");
         }
 
         [Test]

@@ -29,8 +29,6 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void ClickOnPopupMenuTest()
         {
             var listBox = MainWindow.Get<ListBox>("ListBoxWithVScrollBar");
@@ -42,8 +40,6 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void ClickOnNestedMenuTest()
         {
             var listBox = MainWindow.Get<ListBox>("ListBoxWithVScrollBar");

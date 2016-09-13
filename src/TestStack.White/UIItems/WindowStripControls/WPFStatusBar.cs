@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems.WindowStripControls
         {
             get
             {
-                var uiItemCollection = factory.CreateAll(SearchCriteria.All, actionListener, automationElement.Current.FrameworkId)
+                var uiItemCollection = factory.CreateAll(SearchCriteria.All, actionListener)
                     .Where(i=>i.AutomationElement.Current.ClassName == "StatusBarItem");
                 return new UIItemCollection(uiItemCollection);
             }

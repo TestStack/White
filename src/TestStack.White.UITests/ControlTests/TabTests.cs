@@ -67,8 +67,6 @@ namespace TestStack.White.UITests.ControlTests
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void FindControlsInsideTabTest()
         {
             tab.SelectTabPage(1);

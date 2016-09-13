@@ -69,16 +69,15 @@ namespace TestStack.White.AutomationElementSearch
             var windowSearchConditions = new AutomationSearchConditionFactory().GetWindowSearchConditions(processId);
             foreach (var searchCondition in windowSearchConditions)
             {
-                AutomationElement windowElement = Child(searchCondition.WithName(title));
+                var windowElement = Child(searchCondition.OfName(title));
                 if (windowElement != null) return windowElement;
             }
 
-            return Child(0,
-                         new[]
-                             {
-                                 AutomationSearchCondition.GetWindowWithTitleBarSearchCondition(processId),
-                                 AutomationSearchCondition.ByControlType(ControlType.TitleBar).WithName(title)
-                             });
+            return Child(0, new[]
+                {
+                    AutomationSearchCondition.GetWindowWithTitleBarSearchCondition(processId),
+                    AutomationSearchCondition.ByControlType(ControlType.TitleBar).OfName(title)
+                });
         }
 
         public virtual AutomationElement FindWindow(SearchCriteria searchCriteria, int processId)

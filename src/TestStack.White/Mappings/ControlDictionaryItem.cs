@@ -63,11 +63,6 @@ namespace TestStack.White.Mappings
             return Primary(testControlType, controlType, WindowsFramework.Silverlight.FrameworkId());
         }
 
-        public static ControlDictionaryItem InternetExplorerPrimary(Type testControlType, ControlType controlType)
-        {
-            return Primary(testControlType, controlType, WindowsFramework.InternetExplorer.FrameworkId());
-        }
-
         private static ControlDictionaryItem Secondary(Type testControlType, ControlType controlType, string frameworkId)
         {
             return new ControlDictionaryItem(testControlType, controlType, string.Empty, false, false, false, frameworkId, false);
@@ -101,11 +96,6 @@ namespace TestStack.White.Mappings
         public static ControlDictionaryItem SilverlightSecondary(Type testControlType, ControlType controlType)
         {
             return Secondary(testControlType, controlType, WindowsFramework.Silverlight.FrameworkId());
-        }
-
-        public static ControlDictionaryItem InternetExplorerSecondary(Type testControlType, ControlType controlType)
-        {
-            return Secondary(testControlType, controlType, WindowsFramework.InternetExplorer.FrameworkId());
         }
 
         public virtual bool IsPrimary

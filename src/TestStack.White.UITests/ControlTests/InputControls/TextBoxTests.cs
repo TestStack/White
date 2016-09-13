@@ -24,8 +24,6 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void EnterTextTest()
         {
             var textBox = MainWindow.Get<TextBox>("TextBox");
@@ -65,8 +63,6 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SuggestionListTest()
         {
             if (Framework != WindowsFramework.WinForms)
@@ -82,8 +78,6 @@ namespace TestStack.White.UITests.ControlTests.InputControls
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void SelectFromSuggestionListTest()
         {
             if (Framework != WindowsFramework.WinForms)

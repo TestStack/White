@@ -24,7 +24,7 @@ namespace TestStack.White.UIItems
         {
             if (!Bounds.IsEmpty) Click();
             
-            var selectionItemPattern = GetPattern<SelectionItemPattern>();
+            var selectionItemPattern = (SelectionItemPattern) Pattern(SelectionItemPattern.Pattern);
             if (selectionItemPattern == null)
             {
                 throw new UIActionException(string.Format("{0} cannot be selected as its position is unknown and doesn't support SelectionItemPattern", ToString()));

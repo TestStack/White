@@ -26,7 +26,7 @@ namespace TestStack.White.UIItems.Container
                 uiItem.Visit(windowControlVisitor);
         }
 
-        public override UIItemCollection GetAll(SearchCriteria searchCriteria, string frameworkId)
+        public override UIItemCollection GetAll(SearchCriteria searchCriteria)
         {
             return children.GetAll(searchCriteria, actionListener);
         }

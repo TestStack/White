@@ -35,11 +35,6 @@ namespace TestStack.White.UIItems.WindowItems
             get { return FindButton("Close"); }
         }
 
-        public virtual string Title { get
-        {
-            return Name ?? automationElement.GetCurrentPropertyValue(ValuePattern.ValueProperty).ToString();
-        }}
-
         public virtual void SetDisplayState(DisplayState displayState)
         {
             switch (displayState)
@@ -64,8 +59,8 @@ namespace TestStack.White.UIItems.WindowItems
 
         private Button FindButton(string automationId)
         {
-            var condition = AutomationSearchCondition.ByControlType(ControlType.Button).WithName(automationId);
-            var element = automationElementFinder.Child(condition);
+            AutomationElement element =
+                automationElementFinder.Child(AutomationSearchCondition.ByControlType(ControlType.Button).WithAutomationId(automationId));
             if (element == null) return null;
             return new Button(element, actionListener);
         }

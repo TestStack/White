@@ -91,22 +91,6 @@ namespace TestStack.White
         }
 
         /// <summary>
-        /// Launches an app
-        /// </summary>
-        /// <param name="appUserModelId">something like (%package_family_name% + "!App"_</param>
-        public static Application LaunchWindows8Application(string appUserModelId)
-        {
-            IApplicationActivationManager appActiveManager = new ApplicationActivationManager();
-            // This call ensures that the app is launched as the foreground window
-            //CoAllowSetForegroundWindow(appActiveManager, IntPtr.Zero);
-
-            uint pid;
-            appActiveManager.ActivateApplication(appUserModelId, null, ActivateOptions.None, out pid);
-
-            return Attach((int)pid);
-        }
-
-        /// <summary>
         /// Attaches White to an existing process by process id 
         /// </summary>
         /// <exception cref="WhiteException">White Failed to Attach to process</exception>

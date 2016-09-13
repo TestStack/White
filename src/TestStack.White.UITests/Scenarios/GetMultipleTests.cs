@@ -34,8 +34,6 @@ namespace TestStack.White.UITests.Scenarios
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void GetMultipleButtonsTest()
         {
             MainWindow.Get<Button>("GetMultipleButton").Click();

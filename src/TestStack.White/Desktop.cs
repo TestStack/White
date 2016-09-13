@@ -38,12 +38,11 @@ namespace TestStack.White
         {
             get
             {
-                AutomationElement element =
-                    finder.Child(new[]
-                                     {
-                                         AutomationSearchCondition.ByControlType(ControlType.Pane).WithName("Program Manager"),
-                                         AutomationSearchCondition.ByControlType(ControlType.List).WithName("Desktop")
-                                     });
+                AutomationElement element = finder.Child(new[]              
+                    {
+                        AutomationSearchCondition.ByControlType(ControlType.Pane).OfName("Program Manager"),
+                        AutomationSearchCondition.ByControlType(ControlType.List).OfName("Desktop")
+                    });
                 return new ListControl(element, new ProcessActionListener(element));
             }
         }

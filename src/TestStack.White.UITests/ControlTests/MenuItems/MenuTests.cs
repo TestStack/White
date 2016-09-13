@@ -22,8 +22,6 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void ClickTest()
         {
             var menu = MainWindow.MenuBar.MenuItem("File", "Click Me");
@@ -43,8 +41,6 @@ namespace TestStack.White.UITests.ControlTests.MenuItems
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void FindMultiLevelMenuItemTest()
         {
             var menuBar = MainWindow.MenuBar;

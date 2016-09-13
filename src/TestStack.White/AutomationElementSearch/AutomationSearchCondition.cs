@@ -33,11 +33,11 @@ namespace TestStack.White.AutomationElementSearch
         public static AutomationSearchCondition ByName(string name)
         {
             var automationSearchCondition = new AutomationSearchCondition();
-            automationSearchCondition.WithName(name);
+            automationSearchCondition.OfName(name);
             return automationSearchCondition;
         }
 
-        public virtual AutomationSearchCondition WithName(string name)
+        public virtual AutomationSearchCondition OfName(string name)
         {
             conditions.Add(new PropertyCondition(AutomationElement.NameProperty, name));
             return this;

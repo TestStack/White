@@ -1,7 +1,4 @@
 using NUnit.Framework;
-using System;
-using System.IO;
-using System.Reflection;
 using TestStack.White.Reporting.Domain;
 
 namespace TestStack.White.UITests.Reporting
@@ -60,8 +57,7 @@ namespace TestStack.White.UITests.Reporting
 
         private SessionReport CreateTestObject()
         {
-            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-            return new SessionReport(Path.Combine(currentAssemblyDirectory, "archiveLocation"), "testName");
+            return new SessionReport("archiveLocation", "testName");
         }
     }
 }

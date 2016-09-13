@@ -26,7 +26,7 @@ namespace TestStack.White.UIItems.PropertyGridItems
 
         private ValuePattern ValuePattern()
         {
-            return GetPattern<ValuePattern>();
+            return ((ValuePattern) Pattern(System.Windows.Automation.ValuePattern.Pattern));
         }
 
         public virtual bool IsReadOnly

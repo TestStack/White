@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows.Automation;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
@@ -37,33 +36,6 @@ namespace TestStack.White.UITests.Scenarios
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
-        public void LegacyIAccessibleTest()
-        {
-            const uint STATE_SYSTEM_CHECKED = 0x10; // from oleacc.h
-
-            using (var app = Application.Launch(Notepad))
-            using (var window = app.GetWindow("Untitled - Notepad"))
-            {
-                var formatMenu = window.AutomationElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.NameProperty, "Format"));
-                
-                var menuBar = window.Get<MenuBar>();
-                
-                // notepad seems to remember last state of Word Wrap, so don't know what it will be
-                var wordWrap = menuBar.MenuItem("Format", "Word Wrap");
-                var legacyPattern = wordWrap.GetPattern<LegacyIAccessiblePattern>();
-                bool isChecked = (legacyPattern.Current.State & STATE_SYSTEM_CHECKED) != 0;
-                wordWrap.Click();
-
-                var wordWrap2nd = menuBar.MenuItem("Format", "Word Wrap");
-                var legacyPattern2nd = wordWrap2nd.GetPattern<LegacyIAccessiblePattern>();
-                bool isChecked2nd = (legacyPattern2nd.Current.State & STATE_SYSTEM_CHECKED) != 0;
-                Assert.AreNotEqual(isChecked, isChecked2nd);
-            }
-        }
-
-        [Test]
         [Ignore("There are different IE versions which make this test fail")]
         public void InternetExplorerTests()
         {
@@ -89,8 +61,6 @@ namespace TestStack.White.UITests.Scenarios
         }
 
         [Test]
-        [Category("NeedsFix")]
-        [Ignore("NeedsFix")]
         public void CalculatorTests()
         {
             //strat process for the above exe file location

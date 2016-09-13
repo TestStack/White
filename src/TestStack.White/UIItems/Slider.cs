@@ -36,7 +36,7 @@ namespace TestStack.White.UIItems
 
         private RangeValuePattern RangePattern()
         {
-            return GetPattern<RangeValuePattern>();
+            return ((RangeValuePattern) Pattern(RangeValuePattern.Pattern));
         }
 
         public virtual Button LargeIncrementButton

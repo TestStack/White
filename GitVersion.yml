@@ -1,6 +1,0 @@
-assembly-versioning-scheme: MajorMinor
-mode: ContinuousDeployment
-next-version: 0.14.0
-branches: {}
-ignore:
-  sha: []

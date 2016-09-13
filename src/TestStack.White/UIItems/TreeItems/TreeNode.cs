@@ -62,7 +62,7 @@ namespace TestStack.White.UIItems.TreeItems
         /// </summary>
         public virtual bool UnSelect()
         {
-            var pattern = GetPattern<SelectionItemPattern>();
+            var pattern = (SelectionItemPattern) Pattern(SelectionItemPattern.Pattern);
             if (pattern != null)
             {
                 pattern.RemoveFromSelection();
