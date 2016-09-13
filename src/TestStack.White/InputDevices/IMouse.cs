@@ -12,5 +12,10 @@ namespace TestStack.White.InputDevices
         void Click(Point point);
         void DragAndDrop(IUIItem draggedItem, IUIItem dropItem);
         void DragAndDrop(IUIItem draggedItem, Point startPosition, IUIItem dropItem, Point endPosition);
+        void MouseMove(Point endPosition);
+        void LeftDown();
+        void RightDown();
+        void LeftUp();
+        void RightUp();
     }
 }

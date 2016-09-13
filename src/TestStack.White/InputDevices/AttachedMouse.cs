@@ -49,6 +49,36 @@ namespace TestStack.White.InputDevices
             ActionPerformed();
         }
 
+        public virtual void LeftDown()
+        {
+            mouse.LeftDown();
+            ActionPerformed();
+        }
+
+        public virtual void RightDown()
+        {
+            mouse.RightDown();
+            ActionPerformed();
+        }
+
+        public virtual void LeftUp()
+        {
+            mouse.LeftUp();
+            ActionPerformed();
+        }
+
+        public virtual void RightUp()
+        {
+            mouse.RightUp();
+            ActionPerformed();
+        }
+
+        public virtual void MouseMove(Point endPosition)
+        {
+            mouse.MouseMove(endPosition);
+            ActionPerformed();
+        }
+
         public virtual void DragAndDrop(IUIItem draggedItem, IUIItem dropItem)
         {
             mouse.DragAndDrop(draggedItem, dropItem);

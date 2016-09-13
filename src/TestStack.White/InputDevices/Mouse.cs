@@ -176,6 +176,19 @@ namespace TestStack.White.InputDevices
             ActionPerformed(actionListener);
         }
 
+        public virtual void MouseMove(Point endPosition)
+        {
+            var currentClickLocation = Location;
+            var dragStepFraction = (float)(1.0 / CoreAppXmlConfiguration.Instance.DragStepCount);
+            for (int i = 1; i <= CoreAppXmlConfiguration.Instance.DragStepCount; i++)
+            {
+                var newX = currentClickLocation.X + (endPosition.X - currentClickLocation.X) * (dragStepFraction * i);
+                var newY = currentClickLocation.Y + (endPosition.Y - currentClickLocation.Y) * (dragStepFraction * i);
+                var newPoint = new Point((int)newX, (int)newY);
+                Location = newPoint;
+            }
+        }
+
         /// <summary>
         /// Performs a down / up sequence for the specified button
         /// </summary>
@@ -274,30 +287,30 @@ namespace TestStack.White.InputDevices
             DoubleClick(MouseButton.Left, point, actionListener);
         }
 
-        public static void LeftUp()
+        public virtual void LeftUp()
         {
             MouseButtonUp(MouseButton.Left);
         }
 
-        public static void LeftDown()
+        public virtual void LeftDown()
         {
             MouseButtonDown(MouseButton.Left);
         }
 
-        public static void RightUp()
+        public virtual void RightUp()
         {
             MouseButtonUp(MouseButton.Right);
         }
 
-        public static void RightDown()
+        public virtual void RightDown()
         {
             MouseButtonDown(MouseButton.Right);
         }
 
         public static void MouseLeftButtonUpAndDown()
         {
-            LeftDown();
-            LeftUp();
+            MouseButtonDown(MouseButton.Left);
+            MouseButtonUp(MouseButton.Left);
         }
 
         private static void SendInput(Input input)
