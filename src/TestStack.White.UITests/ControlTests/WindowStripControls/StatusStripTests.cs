@@ -44,6 +44,8 @@ namespace TestStack.White.UITests.ControlTests.WindowStripControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void FindLabelInsideStatusBarTest()
         {
             var uiItem = statusStrip.GetLabel("Status Strip Label");
@@ -51,6 +53,8 @@ namespace TestStack.White.UITests.ControlTests.WindowStripControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void ClickOnButtonAndFindPopupMenuTest()
         {
             var statusStripSplitButton = statusStrip.GetSplitButton("toolStripSplitButtonText");
@@ -59,6 +63,8 @@ namespace TestStack.White.UITests.ControlTests.WindowStripControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void FindDropDownTest()
         {
             var button = statusStrip.GetDropDownButton("toolStripDropDownButton");

@@ -21,6 +21,6 @@ namespace TestStack.White.UIItems.Container
 
         protected abstract IUIItem Find(SearchCriteria searchCriteria);
         public abstract void Visit(IWindowControlVisitor windowControlVisitor);
-        public abstract UIItemCollection GetAll(SearchCriteria searchCriteria);
+        public abstract UIItemCollection GetAll(SearchCriteria searchCriteria, string frameworkId);
     }
 }

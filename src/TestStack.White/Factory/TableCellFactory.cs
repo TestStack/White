@@ -23,7 +23,7 @@ namespace TestStack.White.Factory
         public virtual TableCells CreateCells(TableHeader tableHeader, AutomationElement rowElement)
         {
             if (customControlTypes == null)
-                customControlTypes = new AutomationElementFinder(tableElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.Custom));
+                customControlTypes = new AutomationElementFinder(tableElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.DataItem));
             string rowNameSuffix = " " + rowElement.Current.Name;
             Predicate<AutomationElement> cellPredicate = element =>
             {

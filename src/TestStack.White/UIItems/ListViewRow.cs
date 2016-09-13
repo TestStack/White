@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
+using TestStack.White.Factory;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.ListViewItems;
 using TestStack.White.WindowsAPI;
@@ -14,10 +15,23 @@ namespace TestStack.White.UIItems
         protected ListViewRow() {}
         
         public ListViewRow(AutomationElement automationElement, IActionListener actionListener)
-            : base(automationElement, actionListener)
+            :this(automationElement, actionListener, GetHeader(automationElement, actionListener))
         {
-            header = null;
-            finder = new AutomationElementFinder(automationElement);
+            // we need this ctor because we want to be able to create rows from DictionaryMappedItemFactory
+            // without separate factory
+        }
+
+        // Creates new header for specified row AutomationElement (use only when no Header is available)
+        private static ListViewHeader GetHeader(AutomationElement automationElement, IActionListener actionListener)
+        {
+            var parentGrid = TreeWalker.ControlViewWalker.GetParent(automationElement);
+            if (parentGrid == null)
+                throw new UIItemSearchException("Can't find parent DataGrid element");
+            if (parentGrid.Current.ControlType != ControlType.DataGrid)
+                throw new UIItemSearchException("Parent of specified element is not DataGrid");
+            var parentGridFinder = new AutomationElementFinder(parentGrid);
+            var factory = new ListViewFactory(parentGridFinder, actionListener);
+            return factory.Header;
         }
         
         public ListViewRow(AutomationElement automationElement, IActionListener actionListener, ListViewHeader header)

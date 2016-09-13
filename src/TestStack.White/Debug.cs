@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Automation;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
+using TestStack.White.UIA;
 using TestStack.White.UIItems;
 
 namespace TestStack.White
@@ -95,7 +96,7 @@ namespace TestStack.White
             AutomationElementCollection allWindows = baseElement.FindAll(TreeScope.Children, windowCondition);
             foreach (AutomationElement windowElement in allWindows)
             {
-                var pattern = (WindowPattern) UIItem.Pattern(windowElement, WindowPattern.Pattern);
+                var pattern = windowElement.GetPattern<WindowPattern>();
                 string modalText = pattern == null ? "(null)" : pattern.Current.IsModal.ToString();
                 stringBuilder.AppendFormat("{0}Name: {1},  Bounds: {2} ProcessId: {3}, Modal: {4}", padding, windowElement.Current.Name,
                                            windowElement.Current.BoundingRectangle, windowElement.Current.ProcessId, modalText);

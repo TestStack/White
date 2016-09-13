@@ -1,6 +1,10 @@
+using System;
+using System.Threading;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
+using TestStack.White.Configuration;
 using TestStack.White.Recording;
+using TestStack.White.UIA;
 using TestStack.White.UIItemEvents;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Scrolling;
@@ -9,6 +13,31 @@ namespace TestStack.White.UIItems.ListBoxItems
 {
     public class ComboBox : ListControl
     {
+        private class TempExpand : IDisposable
+        {
+            private readonly ComboBox parent;
+            private readonly bool needsCollapse;
+
+            private TempExpand(ComboBox parent)
+            {
+                this.parent = parent;
+                needsCollapse = parent.Expand();
+                parent.Logger.DebugFormat("TempExpand called. Expansion made: {0}", needsCollapse);
+            }
+
+            public virtual void Dispose()
+            {
+                parent.Logger.DebugFormat("TempExpand finished. Will be collapsed: {0}", needsCollapse);
+                if (needsCollapse)
+                    parent.Collapse();
+            }
+
+            public static TempExpand IfNeeded(ComboBox parent)
+            {
+                return new TempExpand(parent);
+            }
+        }
+
         private AutomationPropertyChangedEventHandler handler;
         private ListItem lastSelectedItem;
 
@@ -55,6 +84,55 @@ namespace TestStack.White.UIItems.ListBoxItems
             }
         }
 
+        public override ListItems Items
+        {
+            get
+            {
+                using (TempExpand.IfNeeded(this))
+                    return base.Items;
+            }
+        }
+
+        public virtual bool Expand()
+        {
+            if (CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen) return false;
+            if (!Enabled) return false;
+
+            var ecp = AutomationElement.GetPattern<ExpandCollapsePattern>();
+            if (ecp != null && ecp.Current.ExpandCollapseState == ExpandCollapseState.Collapsed)
+            {
+                ecp.Expand();
+                Thread.Sleep(50);
+                return true;
+            }
+            return false;
+        }
+
+        public virtual bool Collapse()
+        {
+            var ecp = AutomationElement.GetPattern<ExpandCollapsePattern>();
+            if (ecp != null && ecp.Current.ExpandCollapseState == ExpandCollapseState.Expanded)
+            {
+                ecp.Collapse();
+                return true;
+            }
+            return false;
+        }
+
+        public virtual ExpandCollapseState ExpandCollapseState
+        {
+            get
+            {
+                var ecp = AutomationElement.GetPattern<ExpandCollapsePattern>();
+                if (ecp != null)
+                {
+                    var state = ecp.Current.ExpandCollapseState;
+                    return state;
+                }
+                return ExpandCollapseState.LeafNode;
+            }
+        }
+
         public virtual bool IsEditable
         {
             get { return EditableElement() != null;}
@@ -72,8 +150,11 @@ namespace TestStack.White.UIItems.ListBoxItems
                 Logger.WarnFormat("Could not select {0}in {1} since it is disabled", itemText, Name);
                 return;
             }
-            if (Equals(itemText, SelectedItemText)) return;
-            base.Select(itemText);
+            using (TempExpand.IfNeeded(this))
+            {
+                if (Equals(itemText, SelectedItemText)) return;
+                base.Select(itemText);
+            }
         }
 
         public override void Select(int index)
@@ -83,10 +164,26 @@ namespace TestStack.White.UIItems.ListBoxItems
                 Logger.Warn("Could not select " + index + "in " + Name + " since it is disabled");
                 return;
             }
-            base.Select(index);
-            var p = (ExpandCollapsePattern) this.AutomationElement.GetCurrentPattern(ExpandCollapsePattern.Pattern);
-            if (p.Current.ExpandCollapseState.Equals(ExpandCollapseState.Expanded))
-                p.Collapse();
+            using (TempExpand.IfNeeded(this))
+                base.Select(index);
+        }
+
+        public override string SelectedItemText
+        {
+            get
+            {
+                using (TempExpand.IfNeeded(this))
+                    return base.SelectedItemText;
+            }
+        }
+
+        public override ListItem SelectedItem
+        {
+            get
+            {
+                using (TempExpand.IfNeeded(this))
+                    return base.SelectedItem;
+            }
         }
 
         public override void HookEvents(IUIItemEventListener eventListener)

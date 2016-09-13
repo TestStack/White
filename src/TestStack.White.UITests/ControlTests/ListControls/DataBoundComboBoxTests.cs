@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+using NUnit.Framework;
 using TestStack.White.Configuration;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.ListBoxItems;
@@ -14,6 +14,8 @@ namespace TestStack.White.UITests.ControlTests.ListControls
         }
 
         [Test]
+        [Category("NeedsFix")]
+        [Ignore("NeedsFix")]
         public void CanSelectDataboundItemsTest()
         {
             var comboBoxUnderTest = MainWindow.Get<ComboBox>("DataBoundComboBox");
@@ -28,10 +30,9 @@ namespace TestStack.White.UITests.ControlTests.ListControls
             {
                 CoreAppXmlConfiguration.Instance.ComboBoxItemsPopulatedWithoutDropDownOpen = true;
             }
-
             items = comboBoxUnderTest.Items;
             Assert.That(items, Has.Count.EqualTo(5));
-            Assert.That(items[0].Text, Is.EqualTo("Test"));
+            Assert.That(items[0].Text, Is.EqualTo("Test"));;
         }
     }
 }

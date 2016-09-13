@@ -1,5 +1,8 @@
 using NUnit.Framework;
 using System;
+using System.IO;
+using System.Reflection;
+using TestStack.White.Configuration;
 using TestStack.White.ScreenObjects.Services;
 
 namespace TestStack.White.UnitTests.Repository.Services
@@ -10,6 +13,14 @@ namespace TestStack.White.UnitTests.Repository.Services
         private ServiceExecution serviceExecution;
         private ExecutionHistory executionHistory;
         private Type type;
+
+        [OneTimeSetUp]
+        public void OneTimeSetup()
+        {
+            // Set the worksession path to the current assemblys directory
+            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            CoreAppXmlConfiguration.Instance.WorkSessionLocation = new DirectoryInfo(currentAssemblyDirectory);
+        }
 
         [SetUp]
         public void Setup()

@@ -1,5 +1,7 @@
-using System;
 using NUnit.Framework;
+using System;
+using System.IO;
+using System.Reflection;
 using TestStack.White.Reporting.Domain;
 
 namespace TestStack.White.UITests.Reporting
@@ -34,7 +36,8 @@ namespace TestStack.White.UITests.Reporting
 
         private SubFlow CreateTestObject()
         {
-            return new SubFlow("subFlow", "flow", "archiveLocation");
+            var currentAssemblyDirectory = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+            return new SubFlow("subFlow", "flow", Path.Combine(currentAssemblyDirectory, "archiveLocation"));
         }
 
         private static Type One()

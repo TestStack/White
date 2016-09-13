@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>TestStack.White</id>
+    <id>TestStack.White.Uia3</id>
     <version>$version$</version>
-    <title>TestStack.White</title>
-    <summary>TestStack.White is the official replacement for the White UI automation framework</summary>
+    <title>TestStack.White.Uia3</title>
+    <summary>TestStack.White is the official replacement for the White UI automation framework. Uia3 flavor works with UIAv3</summary>
     <description>White is a framework for automating rich client applications based on Win32, WinForms, WPF, Silverlight and SWT (Java) platforms. It is .NET based and does not require the use of any proprietary scripting languages. Tests/automation programs using White can be written with whatever .NET language, IDE and tools you are already using. White provides a consistent object-oriented API, hiding the complexity of Microsoft's UIAutomation library (on which White is based) and windows messages.
+
+UIAv3 works better with WPF and newer technologies and supports new UIA Patterns appeared in Windows 8.1. For WinForms and Win32 apps it is better to use normal TestStack.White package.
 
 * TestStack.White is the official replacement for White *</description>
     <authors>Vivek Singh, Jake Ginnivan</authors>
@@ -15,20 +17,16 @@
     <projectUrl>https://github.com/TestStack/White</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <copyright>Copyright Jake Ginnivan 2012</copyright>
-    <tags>White UIAutomation Testing UIA WPF Silverlight Win32 Automation</tags>
-    <frameworkAssemblies>
-      <frameworkAssembly assemblyName="System.Windows.Automation" />
-    </frameworkAssemblies>    
+    <tags>White UIAutomation Testing UIA WPF Silverlight Win32 Automation UIAv3</tags>
     <dependencies>
       <dependency id="Castle.Core" version="3.3.0" />
+      <dependency id="UIAComWrapper" version="1.1.0.14" />
     </dependencies>
   </metadata>
   <files>
     <file src="..\src\TestStack.White\bin\$configuration$\TestStack.White.dll" target="lib\net40" />
     <file src="..\src\TestStack.White\bin\$configuration$\TestStack.White.pdb" target="lib\net40" />
     <file src="..\src\TestStack.White\bin\$configuration$\TestStack.White.xml" target="lib\net40" />
-    <file src="Init.ps1" target="tools" />
-    <file src="TestStack.White.psm1" target="tools" />
     <file src="readme.txt" target="" />
   </files>
 </package>

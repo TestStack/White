@@ -48,7 +48,7 @@ namespace TestStack.White.Factory
 
         public virtual bool TryGetPopupMenu(IActionListener actionListener, out PopUpMenu popUpMenu)
         {
-            var searchConditions = new[] {AutomationSearchCondition.ByControlType(ControlType.Menu).OfName("DropDown")};
+            var searchConditions = new[] {AutomationSearchCondition.ByControlType(ControlType.Menu).WithName("DropDown")};
             return TryGetPopupMenu(searchConditions, actionListener, out popUpMenu);
         }
 
@@ -68,14 +68,14 @@ namespace TestStack.White.Factory
         {
             if (searchCriteria.IsIndexed)
             {
-                UIItemCollection collection = CreateAll(searchCriteria, actionListener);
+                UIItemCollection collection = CreateAll(searchCriteria, actionListener, null);
                 return searchCriteria.IndexedItem(collection);
             }
             return dictionaryMappedItemFactory.Create(Finder.Descendant(searchCriteria.AutomationCondition), actionListener,
                                                       searchCriteria.CustomItemType);
         }
 
-        public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, IActionListener actionListener)
+        public virtual UIItemCollection CreateAll(SearchCriteria searchCriteria, IActionListener actionListener, string defaultFrameworkId)
         {
             return new UIItemCollection(Finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
         }

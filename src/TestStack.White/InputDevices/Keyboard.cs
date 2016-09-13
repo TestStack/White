@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
+using System.Threading;
+using TestStack.White.Configuration;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
@@ -30,21 +30,6 @@ namespace TestStack.White.InputDevices
                                                                                    KeyboardInput.SpecialKeys.RWIN
                                                                                };
 
-        [DllImport("user32", EntryPoint = "SendInput")]
-        private static extern int SendInput(uint numberOfInputs, ref Input input, int structSize);
-
-        [DllImport("user32", EntryPoint = "SendInput")]
-        private static extern int SendInput64(int numberOfInputs, ref Input64 input, int structSize);
-
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetMessageExtraInfo();
-
-        [DllImport("user32.dll")]
-        private static extern short VkKeyScan(char ch);
-
-        [DllImport("user32.dll")]
-        private static extern ushort GetKeyState(uint virtKey);
-
         private readonly List<KeyboardInput.SpecialKeys> heldKeys = new List<KeyboardInput.SpecialKeys>();
 
         /// <summary>
@@ -71,7 +56,7 @@ namespace TestStack.White.InputDevices
             CapsLockOn = false;
             foreach (char c in keysToType)
             {
-                short key = VkKeyScan(c);
+                short key = Native.VkKeyScan(c);
                 if (c.Equals('\r')) continue;
 
                 if (ShiftKeyIsNeeded(key)) SendKeyDown((short) KeyboardInput.SpecialKeys.SHIFT, false);
@@ -82,6 +67,11 @@ namespace TestStack.White.InputDevices
                 if (CtrlKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.CONTROL, false);
                 if (AltKeyIsNeeded(key)) SendKeyUp((short) KeyboardInput.SpecialKeys.ALT, false);
             }
+
+            // Let the Raw Input Thread some time to process OS's hardware input queue.
+            // As this thread works with High priority - this short wait should be enough hopefully.
+            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
 
             actionListener.ActionPerformed(Action.WindowMessage);
         }
@@ -94,6 +84,12 @@ namespace TestStack.White.InputDevices
         public virtual void PressSpecialKey(KeyboardInput.SpecialKeys key, IActionListener actionListener)
         {
             Send(key, true);
+
+            // Let the Raw Input Thread some time to process OS's hardware input queue.
+            // As this thread works with High priority - this short wait should be enough hopefully.
+            // For details see this post: http://blogs.msdn.com/b/oldnewthing/archive/2014/02/13/10499047.aspx
+            Thread.Sleep(CoreAppXmlConfiguration.Instance.RawInputQueueProcessingTime);
+            
             actionListener.ActionPerformed(Action.WindowMessage);
         }
 
@@ -152,7 +148,7 @@ namespace TestStack.White.InputDevices
             if (!keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
             keysHeld.Remove(b);
             KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
-            SendInput(GetInputFor(b, keyUpDown));
+            Native.SendInput(GetInputFor(b, keyUpDown));
         }
 
         private static KeyboardInput.KeyUpDown GetSpecialKeyCode(bool specialKey, KeyboardInput.KeyUpDown key)
@@ -166,31 +162,19 @@ namespace TestStack.White.InputDevices
             if (keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
             keysHeld.Add(b);
             KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
-            SendInput(GetInputFor(b, keyUpDown));
-        }
-
-        private static void SendInput(Input input)
-        {
-            // Added check for 32/64 bit  
-            if (IntPtr.Size == 4)
-                SendInput(1, ref input, Marshal.SizeOf(typeof(Input)));
-            else
-            {
-                var input64 = new Input64(input);
-                SendInput64(1, ref input64, Marshal.SizeOf(typeof(Input)));
-            }
+            Native.SendInput(GetInputFor(b, keyUpDown));
         }
 
         private static Input GetInputFor(short character, KeyboardInput.KeyUpDown keyUpOrDown)
         {
-            return InputFactory.Keyboard(new KeyboardInput(character, keyUpOrDown, GetMessageExtraInfo()));
+            return InputFactory.Keyboard(new KeyboardInput(character, keyUpOrDown, Native.GetMessageExtraInfo()));
         }
 
         public virtual bool CapsLockOn
         {
             get
             {
-                ushort state = GetKeyState((uint) KeyboardInput.SpecialKeys.CAPS);
+                ushort state = Native.GetKeyState((uint)KeyboardInput.SpecialKeys.CAPS);
                 return state != 0;
             }
             set { if (CapsLockOn != value) Send(KeyboardInput.SpecialKeys.CAPS, true); }
