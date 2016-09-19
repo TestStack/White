@@ -97,6 +97,14 @@
     <Compile Include="Configuration\WhiteDefaultLogger.cs" />
     <Compile Include="Configuration\WhiteDefaultLoggerFactory.cs" />
     <Compile Include="Drawing\ScreenRectangle.cs" />
+    <Compile Include="InputDevices\IKeyboardWithActionListener.cs" />
+    <Compile Include="InputDevices\IMouseWithActionListener.cs" />
+    <Compile Include="InputDevices\KeyboardWin32.cs" />
+    <Compile Include="InputDevices\MouseWin32.cs" />
+    <Compile Include="InputDevices\Keyboard.cs" />
+    <Compile Include="InputDevices\Mouse.cs" />
+    <Compile Include="InputDevices\IKeyboard.cs" />
+    <Compile Include="InputDevices\IMouse.cs" />
     <Compile Include="InputDevices\Input64.cs" />
     <Compile Include="InputDevices\Native.cs" />
     <Compile Include="InputDevices\MouseButton.cs" />
@@ -143,11 +151,7 @@
     <Compile Include="HorizontalSpan.cs" />
     <Compile Include="InputDevices\AttachedKeyboard.cs" />
     <Compile Include="InputDevices\AttachedMouse.cs" />
-    <Compile Include="InputDevices\IKeyboard.cs" />
-    <Compile Include="InputDevices\IMouse.cs" />
     <Compile Include="InputDevices\InputDeviceException.cs" />
-    <Compile Include="InputDevices\Keyboard.cs" />
-    <Compile Include="InputDevices\Mouse.cs" />
     <Compile Include="InputDevices\MouseCursor.cs" />
     <Compile Include="Interceptors\CoreInterceptContext.cs" />
     <Compile Include="Interceptors\ScrollInterceptor.cs" />

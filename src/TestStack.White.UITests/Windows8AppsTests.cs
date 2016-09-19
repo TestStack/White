@@ -41,10 +41,11 @@ namespace TestStack.White.UITests
 
         void OpenAppBar()
         {
+            var keyboard = new Keyboard();
             Thread.Sleep(100);
-            Keyboard.Instance.HoldKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.LWIN);
-            Keyboard.Instance.Enter("z");
-            Keyboard.Instance.LeaveKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.LWIN);
+            keyboard.HoldKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.LWIN);
+            keyboard.Enter("z");
+            keyboard.LeaveKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.LWIN);
         }
     }
 }

@@ -13,7 +13,8 @@ namespace TestStack.White.UIItems.TreeItems
 
         public virtual void Accept(TreeNode treeNode)
         {
-            if (treeNode.Bounds.Top <= Mouse.Instance.Location.Y && treeNode.Bounds.Bottom >= Mouse.Instance.Location.Y)
+            var mouse = new Mouse();
+            if (treeNode.Bounds.Top <= mouse.Location.Y && treeNode.Bounds.Bottom >= mouse.Location.Y)
                 clickedNode = treeNode;
         }
     }
