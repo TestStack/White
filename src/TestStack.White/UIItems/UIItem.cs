@@ -327,7 +327,30 @@ namespace TestStack.White.UIItems
         public virtual void Click()
         {
             actionListener.ActionPerforming(this);
-            PerformIfValid(PerformClick);
+            PerformIfValid(ClickCenter);
+        }
+
+        private void ClickCenter()
+        {
+            PerformRelativeClick(0.5f, 0.5f);
+        }
+
+        /// <summary>
+        /// Performs mouse click at relative location 1,1 is bottom right
+        /// </summary>
+        public virtual void RelativeClick(float x, float y)
+        {
+            actionListener.ActionPerforming(this);
+            PerformIfValid(() => PerformRelativeClick(x, y));
+        }
+
+        /// <summary>
+        /// Performs mouse click at an absolut location from top left
+        /// </summary>
+        public virtual void AbsoluteClick(Point offset)
+        {
+            actionListener.ActionPerforming(this);
+            PerformIfValid(() => PerformOffsetClick(offset));
         }
 
         /// <summary>
@@ -622,7 +645,7 @@ namespace TestStack.White.UIItems
             throw new AutomationException(string.Format("Cannot perform action on {0}, {1}", this, message), Debug.Details(AutomationElement));
         }
 
-        private void PerformClick()
+        private void PerformRelativeClick(float width, float height)
         {
             if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
             var bounds = Bounds;
@@ -630,7 +653,18 @@ namespace TestStack.White.UIItems
             {
                 throw new WhiteException(string.Format("Failed to click on {0}, bounds empty", ToString()));
             }
-            mouse.Click(bounds.Center(), actionListener);
+            mouse.Click(new Point(bounds.Left + (bounds.Width * width), bounds.Top + (bounds.Height * height)), actionListener);
+        }
+
+        private void PerformOffsetClick(Point offset)
+        {
+            if (!Enabled) Logger.WarnFormat("Clicked on disabled item: {0}", ToString());
+            var bounds = Bounds;
+            if (bounds.IsEmpty)
+            {
+                throw new WhiteException(string.Format("Failed to click on {0}, bounds empty", ToString()));
+            }
+            mouse.Click(new Point(bounds.Left + offset.X, bounds.Top + offset.Y), actionListener);
         }
 
         #endregion

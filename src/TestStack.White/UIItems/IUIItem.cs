@@ -191,6 +191,16 @@ namespace TestStack.White.UIItems
         void Click();
 
         /// <summary>
+        /// Performs mouse click at relative location 1,1 is bottom right
+        /// </summary>
+        void RelativeClick(float x, float y);
+
+        /// <summary>
+        /// Performs mouse click at an absolute location from top left
+        /// </summary>
+        void AbsoluteClick(Point offset);
+
+        /// <summary>
         /// Performs mouse double click at the center of the UI Item
         /// </summary>
         void DoubleClick();
