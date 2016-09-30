@@ -42,13 +42,16 @@ namespace TestStack.White.UIItems.ListBoxItems
 
             if (!AutomationElement.TryGetCurrentPattern(ExpandCollapsePattern.Pattern, out expandCollapse)) return;
 
-            var state = (ExpandCollapseState) automationElement
-                .GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
-            if (state == ExpandCollapseState.Collapsed)
-            {
-                ((ExpandCollapsePattern)expandCollapse).Expand();
+            ExpandCollapseState state;
+            do {
+                state = (ExpandCollapseState) automationElement
+                    .GetCurrentPropertyValue(ExpandCollapsePattern.ExpandCollapseStateProperty);
+                if (state == ExpandCollapseState.Collapsed)
+                {
+                    ((ExpandCollapsePattern)expandCollapse).Expand();
+                }
                 Thread.Sleep(50);
-            }
+            } while (state != ExpandCollapseState.Expanded);
         }
 
         public virtual ListItem Item(string itemText)
