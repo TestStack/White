@@ -168,6 +168,18 @@ UI actions on window needing mouse would not work in area not falling under the 
                 XmlAttribute nameAttr = xmlDoc.CreateAttribute("Name");
                 nameAttr.Value = element.Current.Name;
                 node.Attributes.Append(nameAttr);
+
+                object patternObj;
+                if (element.TryGetCurrentPattern(TextPattern.Pattern, out patternObj))
+                {
+                    XmlAttribute textAttr = xmlDoc.CreateAttribute("Text");
+                    var textPattern = (TextPattern) patternObj;
+                    textAttr.Value = textPattern.DocumentRange.GetText(-1).TrimEnd('\r');
+                    Console.WriteLine("Text attribute added..");
+                    node.Attributes.Append(textAttr);
+                }
+
+                
             }
             catch (Exception e)
             {

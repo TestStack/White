@@ -76,8 +76,28 @@ namespace TestStack.White.UIItems.Finders
                     var frameworkId = node.Attributes["FrameworkId"].Value;
                     var name = node.Attributes["Name"].Value;
 
-                    return new SimpleSearchCondition(automationElement => automationElement.Current.AutomationId,
+                    if (!String.IsNullOrEmpty(automationId))
+                    {
+                        return new SimpleSearchCondition(automationElement => automationElement.Current.AutomationId,
                                              new AutomationElementProperty(automationId, "AutomationId", AutomationElement.AutomationIdProperty));
+                    }
+                    else if (!String.IsNullOrEmpty(name))
+                    {
+                        return new SimpleSearchCondition(automationElement => automationElement.Current.Name,
+                                             new AutomationElementProperty(name, "Name", AutomationElement.NameProperty));
+                    }
+                    else if (!String.IsNullOrEmpty(className))
+                    {
+                        return new SimpleSearchCondition(automationElement => automationElement.Current.ClassName,
+                                             new AutomationElementProperty(className, "ClassName", AutomationElement.ClassNameProperty));
+                    }
+                    else if (!String.IsNullOrEmpty(frameworkId))
+                    {
+                        return new SimpleSearchCondition(automationElement => automationElement.Current.FrameworkId,
+                                             new AutomationElementProperty(frameworkId, "FrameworkId", AutomationElement.FrameworkIdProperty));
+                    }
+
+                    
                 }
             }
 

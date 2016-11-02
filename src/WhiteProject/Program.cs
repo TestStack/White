@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using TestStack.White;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Factory;
+using TestStack.White.InputDevices;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.ListBoxItems;
@@ -17,22 +19,24 @@ namespace WhiteProject
 {
     class Program
     {
-        const string WINDOW_NAME = "Add New Machine";
+        const string WINDOW_NAME = "Start menu";
 
         static void Main(string[] args)
         {
             Console.WriteLine("Applications...");
             Window loginWindow = null;
-
+            Window startMenu = null;
+            Window startEditWindow = null;
+            Thread.Sleep(5000);
             List<Window> windows = WindowFactory.Desktop.DesktopWindows();
             
             //var fdaf = new ProcessStartInfo("gsdg");
             //Application application = Application.AttachOrLaunch(fdaf);
             //Window mainWindow = application.GetWindows()[0];
-
+            //Thread.Sleep(5000);
             foreach (Window w in windows)
             {
-                if(w.Title.Equals(WINDOW_NAME))
+                if (w.AutomationElement.Current.Name.Equals(WINDOW_NAME))
                 {
                     //Console.WriteLine(w.Title);
                     //Console.WriteLine(w.Hierarchy);
@@ -40,7 +44,60 @@ namespace WhiteProject
                     loginWindow.Focus();
                 }
             }
-            Console.Clear();
+
+            //IUIItem start = loginWindow.Get(SearchCriteria.ByXPath("//button[@Name='Start']", loginWindow));
+            //start.Click();
+
+            //List<Window> windows1 = WindowFactory.Desktop.DesktopWindows();
+
+            //foreach (Window w in windows1)
+            //{
+            //    if (w.AutomationElement.Current.ClassName.Equals("IEFrame"))
+            //    {
+            //        //Console.WriteLine(w.Title);
+            //        //Console.WriteLine(w.Hierarchy);
+            //        startMenu = w;
+            //        startMenu.Focus();
+            //    }
+            //}
+
+            // 
+
+            //IUIItem searchPath = loginWindow.Get(SearchCriteria.ByXPath("//button[@Name='Previous Locations']", loginWindow));
+            //searchPath.Click();
+            //IUIItem searchText = loginWindow.Get(SearchCriteria.ByXPath("//edit[@Name='Address']", loginWindow));
+            //searchPath.Enter("dfasdgs");
+
+            IUIItem startEdit1 = loginWindow.Get(SearchCriteria.ByXPath("//pane[@Name='Start menu']/pane[5]/pane[1]/pane[1]", loginWindow));
+            startEdit1.Click();
+            IUIItem startEdit = loginWindow.Get(SearchCriteria.ByXPath("//edit[@Name='Search Box']", loginWindow));
+            //startEdit.Click();
+            startEdit.Enter("notepad");
+            startEdit.DrawHighlight();
+            startEdit.Click();
+
+            IUIItem startEdit2 = loginWindow.Get(SearchCriteria.ByXPath("//window[@AutomationId='MangoDashBoard']/menu[4]/menu-item[@Name='Actions']/menu-item[@Name='Copy']", loginWindow));
+            startEdit2.Click();
+            
+ //startEdit.SetValue("virtusarpa");
+
+
+
+
+
+
+            startEdit.DrawHighlight();
+          //  startEdit.Click();
+            //Thread.Sleep(3000);
+            //startEdit.SetValue("remote1");
+           // startEdit.Click();
+
+            //Thread.Sleep(2000);
+
+            //IUIItem remote = startEditWindow.Get(SearchCriteria.ByXPath("//list-item[@Name='Remote Desktop Connection']", startEditWindow));
+            //remote.Click();
+
+            //Console.Clear();
              
             //IUIItem[] uiItemList = loginWindow.GetMultiple(SearchCriteria.All);
             //Console.WriteLine(uiItemList.Length);
@@ -59,7 +116,7 @@ namespace WhiteProject
             //Console.WriteLine(uiItemList.Length);
 
 
-            var comboBox = loginWindow.Get<TestStack.White.UIItems.ListBoxItems.ComboBox>(SearchCriteria.ByXPath("//window[@Name='Add New Machine']/combo-box[1]", loginWindow));
+            //var comboBox = loginWindow.Get<TestStack.White.UIItems.ListBoxItems.ComboBox>(SearchCriteria.ByXPath("//window[@Name='Add New Machine']/combo-box[1]", loginWindow));
 
             //ComboBoxClick(loginWindow, comboBox.AutomationElement);
 
@@ -75,7 +132,7 @@ namespace WhiteProject
             //{
             //    Console.WriteLine(item.Text);
             //}
-            comboBox.Select("Linux");
+            //comboBox.Select("Linux");
 
             //AutomationElement selectElement = comboBox.AutomationElement;
 
@@ -90,6 +147,16 @@ namespace WhiteProject
             //username.Enter("nija");
 
             //SetCombobValueByUIA(comboBox.AutomationElement, "Mac");
+
+            //var testMachineGroup = loginWindow.Get(SearchCriteria.ByXPath("//title-pane[@Name='Test Machine Group']/text[1]", loginWindow));
+            //testMachineGroup.Click();
+
+            //var draggedElement = loginWindow.Get(SearchCriteria.ByXPath("//window[@Name='Tempo Workstation 1.0.2.1']/list[1]/list-item[1]", loginWindow));
+            //draggedElement.Click();
+
+            //var dropElement = loginWindow.Get(SearchCriteria.ByXPath("//title-pane[@Name='Test Machine Group']/list[1]", loginWindow));
+
+            //Mouse.Instance.DragAndDrop(draggedElement, dropElement);
 
 
             Console.ReadLine();
