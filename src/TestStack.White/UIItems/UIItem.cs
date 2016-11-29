@@ -51,7 +51,7 @@ namespace TestStack.White.UIItems
         {
             if (null == automationElement) throw new NullReferenceException();
             this.automationElement = automationElement;
-            this.actionListener = actionListener;
+            this.actionListener = actionListener ?? new NullActionListener();
             factory = new PrimaryUIItemFactory(new AutomationElementFinder(automationElement));
         }
 
