@@ -17,7 +17,7 @@ namespace TestStack.White.UIItems
     /// A ListView consists of ListViewHeader and ListViewRows. ListViewHeader contains ListViewColumns. ListViewRows is collection of all the visible
     /// rows. A ListViewRow consists of ListViewCells.
     /// </summary>
-    public class ListView : UIItem, ISuggestionList, IVerticalSpanProvider
+    public class ListView : UIItem, ISuggestionList, ISpanProvider
     {
         private readonly ListViewFactory listViewFactory;
         private AutomationPropertyChangedEventHandler handler;
@@ -163,6 +163,11 @@ namespace TestStack.White.UIItems
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds).Minus(ScrollBars.Horizontal.Bounds); }
+        }
+
+        public virtual HorizontalSpan HorizontalSpan
+        {
+            get { return new HorizontalSpan(Bounds); }
         }
     }
 }

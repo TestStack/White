@@ -1,7 +1,8 @@
 namespace TestStack.White.UIItems.Scrolling
 {
-    public interface IVerticalSpanProvider
+    public interface ISpanProvider
     {
         VerticalSpan VerticalSpan { get; }
+        HorizontalSpan HorizontalSpan { get; }
     }
 }

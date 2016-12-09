@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.TreeItems
     /// <summary>
     /// Tree consists of TreeNodes. TreeNodes is a collection of TreeNode. Each TreeNode in turn consists of TreeNodes.
     /// </summary>
-    public class Tree : UIItem, IVerticalSpanProvider
+    public class Tree : UIItem, ISpanProvider
     {
         private readonly AutomationElementFinder finder;
         private AutomationPropertyChangedEventHandler clickedTreeNodeHandler;
@@ -140,6 +140,11 @@ namespace TestStack.White.UIItems.TreeItems
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds).Minus(ScrollBars.Horizontal.Bounds); }
+        }
+
+        public virtual HorizontalSpan HorizontalSpan
+        {
+            get { return new HorizontalSpan(Bounds); }
         }
 
         public override void ActionPerformed(Action action)

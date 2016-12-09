@@ -17,6 +17,11 @@ namespace TestStack.White.UIItems.Scrolling
             get { return false; }
         }
 
+        public virtual bool IsNotMinimum
+        {
+            get { return Value > 0; }
+        }
+
         public virtual Rect Bounds
         {
             get { return Rect.Empty; }

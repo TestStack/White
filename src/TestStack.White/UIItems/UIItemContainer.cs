@@ -23,7 +23,7 @@ namespace TestStack.White.UIItems
 {
     //BUG: Allow finding more than one item, also ability to do this within a container
     //TODO: Dont let people compile code is they are trying to find UIItem which are secondary or window
-    public class UIItemContainer : UIItem, IUIItemContainer, IVerticalSpanProvider
+    public class UIItemContainer : UIItem, IUIItemContainer, ISpanProvider
     {
         protected readonly CurrentContainerItemFactory CurrentContainerItemFactory;
         protected WindowSession WindowSession = new NullWindowSession();
@@ -288,11 +288,19 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
-        /// Implements <see cref="IVerticalSpanProvider.VerticalSpan"/>
+        /// Implements <see cref="ISpanProvider.VerticalSpan"/>
         /// </summary>
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds); }
+        }
+
+        /// <summary>
+        /// Implements <see cref="ISpanProvider.HorizontalSpan"/>
+        /// </summary>
+        public virtual HorizontalSpan HorizontalSpan
+        {
+            get { return new HorizontalSpan(Bounds); }
         }
 
         /// <summary>

@@ -184,7 +184,7 @@
     <Compile Include="UIItems\Scrolling\ScrollBarButtonAutomationIds.cs" />
     <Compile Include="UIItems\Scrolling\SilverlightHScrollBarButtonAutomationIds.cs" />
     <Compile Include="UIItems\Scrolling\SilverlightVScrollBarButtonAutomationIds.cs" />
-    <Compile Include="UIItems\Scrolling\IVerticalSpanProvider.cs" />
+    <Compile Include="UIItems\Scrolling\ISpanProvider.cs" />
     <Compile Include="UIItems\Scrolling\WpfTreeViewHScrollBar.cs" />
     <Compile Include="UIItems\Scrolling\WpfTreeViewScrollBar.cs" />
     <Compile Include="UIItems\Scrolling\WpfTreeViewScrollBars.cs" />

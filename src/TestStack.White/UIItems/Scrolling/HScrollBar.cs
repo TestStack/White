@@ -40,5 +40,10 @@ namespace TestStack.White.UIItems.Scrolling
         {
             get { return BackSmallChangeButton != null; }
         }
+
+        public virtual bool IsNotMinimum
+        {
+            get { return Value > 0; }
+        }
     }
 }
