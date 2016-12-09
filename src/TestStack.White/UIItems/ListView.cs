@@ -10,7 +10,6 @@ using TestStack.White.UIItems.Scrolling;
 
 namespace TestStack.White.UIItems
 {
-    //TODO Take care of horizontal scrolling
     /// <summary>
     /// Understands testing ListView in WinForm and WPF. Anything which is of ControlType=DataGrid. In order to test DataGridView in WinForm use
     /// Table class.
