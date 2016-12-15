@@ -4,7 +4,7 @@
 ## Getting Started
 1. Install via NuGet  
 `> install-package TestStack.White`
-1. Have a look at the [WPF](https://github.com/TestStack/White/tree/master/src/Sample%20App/Wpf) or [WinForms](https://github.com/TestStack/White/tree/master/src/Sample%20App/WinForms) sample projects
+1. Have a look at the [WPF](https://github.com/TestStack/White/tree/master/src/TestApplications/WpfTestApplication) or [WinForms](https://github.com/TestStack/White/tree/master/src/TestApplications/WindowsFormsTestApplication) sample projects
 1. Have a look at Whites UI Tests, White has automated tests for most controls to prevent regressions in the codebase. These serve as a great example of how to automate different controls. See [White's UI Tests](https://github.com/TestStack/White/tree/master/src/TestStack.White.UITests/ControlTests)
 1. Download [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/) which is an ESSENTIAL tool when doing UI Automation work.
 1. Start writing tests, first off you require a unit testing framework like xUnit or nUnit. See below for a basic walkthrough
