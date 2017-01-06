@@ -169,6 +169,10 @@ UI actions on window needing mouse would not work in area not falling under the 
                 nameAttr.Value = element.Current.Name;
                 node.Attributes.Append(nameAttr);
 
+                XmlAttribute helpTextAttr = xmlDoc.CreateAttribute("HelpText");
+                helpTextAttr.Value = element.Current.HelpText;
+                node.Attributes.Append(helpTextAttr);
+
                 object patternObj;
                 if (element.TryGetCurrentPattern(TextPattern.Pattern, out patternObj))
                 {
