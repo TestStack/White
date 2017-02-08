@@ -75,6 +75,7 @@ namespace TestStack.White.UIItems.Finders
                     //var controlType = node.Attributes["ControlType"].Value;
                     var frameworkId = node.Attributes["FrameworkId"].Value;
                     var name = node.Attributes["Name"].Value;
+                    var helpText = node.Attributes["HelpText"].Value;
 
                     if (!String.IsNullOrEmpty(name))
                     {
@@ -85,6 +86,11 @@ namespace TestStack.White.UIItems.Finders
                     {
                         return new SimpleSearchCondition(automationElement => automationElement.Current.AutomationId,
                                              new AutomationElementProperty(automationId, "AutomationId", AutomationElement.AutomationIdProperty));
+                    }
+                    else if (!String.IsNullOrEmpty(helpText))
+                    {
+                        return new SimpleSearchCondition(automationElement => automationElement.Current.HelpText,
+                                             new AutomationElementProperty(helpText, "HelpText", AutomationElement.HelpTextProperty));
                     }
                     else if (!String.IsNullOrEmpty(className))
                     {
