@@ -34,7 +34,7 @@ namespace TestStack.White.Configuration
 
         public static TimeSpan PopupTimeout(this ICoreConfiguration coreConfiguration)
         {
-            return TimeSpan.FromMilliseconds(coreConfiguration.UIAutomationZeroWindowBugTimeout);
+            return TimeSpan.FromMilliseconds(coreConfiguration.PopupTimeout);
         }
     }
 }
