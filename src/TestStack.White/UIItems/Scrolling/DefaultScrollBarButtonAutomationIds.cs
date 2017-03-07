@@ -1,5 +1,5 @@
 namespace TestStack.White.UIItems.Scrolling {
-    internal class DefaultScrollBarButtonAutomationIds : ScrollBarButtonAutomationIds {
+    public class DefaultScrollBarButtonAutomationIds : ScrollBarButtonAutomationIds {
         public virtual string ForwardLarge {
             get { return "LargeIncrement"; }
         }
