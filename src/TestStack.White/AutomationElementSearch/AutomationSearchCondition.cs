@@ -128,8 +128,12 @@ namespace TestStack.White.AutomationElementSearch
             foreach (Condition condition in testConditions)
             {
                 if (condition is AndCondition && !Satisfies(element, ((AndCondition) condition).GetConditions(), true)) return false;
-                if (condition is OrCondition && !Satisfies(element, ((OrCondition) condition).GetConditions(), false)) return false;
-
+                if (condition is OrCondition)
+                {
+                    bool result = Satisfies(element, ((OrCondition)condition).GetConditions(), false);
+                    if (!result && and) return false;
+                    if (result && !and) return true;
+                }
                 if (condition is PropertyCondition)
                 {
                     var match = ValueMatchers[((PropertyCondition) condition).Property.ProgrammaticName](element.Current, ((PropertyCondition) condition).Value);
@@ -137,7 +141,7 @@ namespace TestStack.White.AutomationElementSearch
                     if (match && !and) return true;
                 }
             }
-            return true;
+            return and;
         }
 
         public virtual void Add(Condition condition)
