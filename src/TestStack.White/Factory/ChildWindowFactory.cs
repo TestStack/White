@@ -46,7 +46,7 @@ namespace TestStack.White.Factory
         }
 
         /// <exception cref="UIItemSearchException">The application type is not supported by White</exception>
-        internal static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
+        public static Window Create(AutomationElement element, InitializeOption option, WindowSession windowSession)
         {
             ISpecializedWindowFactory specializedWindowFactory = SpecializedWindowFactories.Find(factory => factory.DoesSpecializeInThis(element));
             if (specializedWindowFactory != null)
