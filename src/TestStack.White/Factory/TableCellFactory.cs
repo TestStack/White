@@ -31,6 +31,8 @@ namespace TestStack.White.Factory
                 return name.EndsWith(rowNameSuffix);
             };
             List<AutomationElement> tableCellElements = customControlTypes.FindAll(cellPredicate);
+            if (tableCellElements.Count > 0) return new TableCells(tableCellElements, tableHeader, actionListener);
+            tableCellElements = new AutomationElementFinder(rowElement).Descendants(AutomationSearchCondition.ByControlType(ControlType.DataItem));
             return new TableCells(tableCellElements, tableHeader, actionListener);
         }
     }
