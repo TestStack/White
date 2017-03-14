@@ -246,7 +246,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         /// <exception cref="System.ArgumentException">when current process is not available any more (id expired)</exception>
         protected virtual void WaitForProcess()
         {
-            Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle();
+            Process.GetProcessById(automationElement.Current.ProcessId).WaitForInputIdle(CoreAppXmlConfiguration.Instance.BusyTimeout);
         }
 
         public override void ActionPerformed(Action action)
