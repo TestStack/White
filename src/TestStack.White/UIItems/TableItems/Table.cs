@@ -8,7 +8,7 @@ using TestStack.White.UIItems.Scrolling;
 
 namespace TestStack.White.UIItems.TableItems
 {
-    public class Table : UIItem, IVerticalSpanProvider, ITableVerticalScrollOffset
+    public class Table : UIItem, ISpanProvider, ITableVerticalScrollOffset
     {
         private TableRows rows;
         private TableHeader header;
@@ -75,6 +75,11 @@ namespace TestStack.White.UIItems.TableItems
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds); }
+        }
+
+        public virtual HorizontalSpan HorizontalSpan
+        {
+            get { return new HorizontalSpan(Bounds); }
         }
 
         bool ITableVerticalScrollOffset.IsOnTop

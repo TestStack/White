@@ -10,5 +10,15 @@ namespace TestStack.White
         {
             return DoesntContain(rect, rect.Left, rect.Right);
         }
+
+        public virtual bool DoesntContain(Rect rect)
+        {
+            return DoesntContain(rect, rect.Left, rect.Right);
+        }
+
+        public virtual bool Contains(Rect rect)
+        {
+            return !DoesntContain(rect);
+        }
     }
 }

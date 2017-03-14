@@ -11,7 +11,7 @@ namespace TestStack.White.UIItems.ListBoxItems
     /// <summary>
     /// ListControl is made of up ListItems and scroll bars.
     /// </summary>
-    public class ListControl : UIItem, ListItemContainer, IVerticalSpanProvider
+    public class ListControl : UIItem, ListItemContainer, ISpanProvider
     {
         protected AutomationElementFinder Finder;
         protected ListControl() {}
@@ -105,6 +105,11 @@ namespace TestStack.White.UIItems.ListBoxItems
         public virtual VerticalSpan VerticalSpan
         {
             get { return new VerticalSpan(Bounds); }
+        }
+
+        public virtual HorizontalSpan HorizontalSpan
+        {
+            get { return new HorizontalSpan(Bounds); }
         }
     }
 }

@@ -84,6 +84,11 @@ namespace TestStack.White.UIItems.Scrolling
             get { return ScrollPattern.Current.HorizontallyScrollable; }
         }
 
+        public virtual bool IsNotMinimum
+        {
+            get { return Value > 0; }
+        }
+
         public override void SetToMinimum()
         {
             ScrollPattern.SetScrollPercent(0, ScrollPattern.Current.VerticalScrollPercent);

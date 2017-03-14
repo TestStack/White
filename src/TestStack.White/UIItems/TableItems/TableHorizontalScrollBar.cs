@@ -37,6 +37,11 @@ namespace TestStack.White.UIItems.TableItems
             get { return false; }
         }
 
+        public virtual bool IsNotMinimum
+        {
+            get { return Value > 0; }
+        }
+
         public virtual double Value
         {
             get { return 0; }

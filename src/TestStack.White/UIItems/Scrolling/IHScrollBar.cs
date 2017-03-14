@@ -7,5 +7,6 @@ namespace TestStack.White.UIItems.Scrolling
         void ScrollLeftLarge();
         void ScrollRightLarge();
         bool IsScrollable { get; }
+        bool IsNotMinimum { get; }
     }
 }
