@@ -54,7 +54,7 @@ namespace TestStack.White.UITests
         readonly List<Window> windowsToClose = new List<Window>();
         readonly string screenshotDir;
 
-        internal Keyboard Keyboard;
+        internal IKeyboard Keyboard;
 
         protected Window MainWindow { get; private set; }
         protected MainScreen MainScreen { get; private set; }
@@ -81,7 +81,7 @@ namespace TestStack.White.UITests
         {
             try
             {
-                Keyboard = Keyboard.Instance;
+                Keyboard = White.InputDevices.Keyboard.Instance;
                 var configuration = TestConfigurationFactory.Create(framework);
                 Application = configuration.LaunchApplication();
                 Repository = new ScreenRepository(Application);
