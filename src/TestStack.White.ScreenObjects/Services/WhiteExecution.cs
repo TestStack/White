@@ -37,7 +37,7 @@ namespace TestStack.White.ScreenObjects.Services
             if (services.TryGetValue(typeof (T), out service)) return (T) service;
 
             service = (T) Activator.CreateInstance(typeof(T), objs);
-            if (RepositoryAppXmlConfiguration.Instance.UseHistory || ReportingAppXmlConfiguration.Instance.PublishTestReports)
+            if (RepositoryConfigurationLocator.Get().UseHistory || ReportingAppXmlConfiguration.Instance.PublishTestReports)
             {
                 service = (Service) DynamicProxyGenerator.Instance.CreateProxy(typeof (T), new ServiceInterceptor(service, serviceExecution, sessionReport));
                 services.Add(typeof (T), service);

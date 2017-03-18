@@ -91,7 +91,7 @@ namespace TestStack.White.ScreenObjects.Services
 
         public static ServiceExecution Create(IWorkEnvironment workEnvironment)
         {
-            if (!RepositoryAppXmlConfiguration.Instance.UseHistory)
+            if (!RepositoryConfigurationLocator.Get().UseHistory)
                 return new NullServiceExecution();
             ExecutionHistory executionHistory = ExecutionHistory.Create();
             return new ServiceExecution(executionHistory, workEnvironment ?? new NullWorkEnvironment());
