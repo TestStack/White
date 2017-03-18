@@ -20,14 +20,15 @@ namespace TestStack.White.UITests.InputDevices
         [Test]
         public void CursorTest()
         {
-            var cursor = Mouse.Instance.Cursor;
+            var mouse = new Mouse();
+            var cursor = mouse.Cursor;
             Assert.That(cursor, Is.Not.Null);
         }
 
         [Test]
         public void LocationTest()
         {
-            var mouse = Mouse.Instance;
+            var mouse = new Mouse();
             var point = new Point(100, 100);
             Assert.That(mouse.Location, Is.Not.EqualTo(point));
             mouse.Location = point;
@@ -38,8 +39,8 @@ namespace TestStack.White.UITests.InputDevices
         public void RightClickTest()
         {
             var button = MainWindow.Get<Button>("ButtonWithTooltip");
-            Mouse.Instance.Location = button.Bounds.Center();
-            Mouse.Instance.RightClick();
+            var mouse = new Mouse {Location = button.Bounds.Center()};
+            mouse.RightClick();
             Retry.For(() => Assert.That(button.Text, Is.EqualTo("Right click received")), TimeSpan.FromSeconds(5));
         }
     }

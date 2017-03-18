@@ -69,12 +69,12 @@ namespace TestStack.White.UIItems
 
         public virtual void ClickAtRightEdge()
         {
-            mouse.Click(Bounds.ImmediateInteriorEast(), actionListener);
+            mouse.LeftClick(Bounds.ImmediateInteriorEast(), actionListener);
         }
 
         public virtual void ClickAtCenter()
         {
-            mouse.Click(Bounds.Center(), actionListener);
+            mouse.LeftClick(Bounds.Center(), actionListener);
         }
 
         public override void HookEvents(IUIItemEventListener eventListener)

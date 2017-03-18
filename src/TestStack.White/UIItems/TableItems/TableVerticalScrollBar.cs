@@ -19,12 +19,12 @@ namespace TestStack.White.UIItems.TableItems
 
         public virtual void ScrollUp()
         {
-            mouse.Click(Bounds.ImmediateInteriorNorth(), actionListener);
+            mouse.LeftClick(Bounds.ImmediateInteriorNorth(), actionListener);
         }
 
         public virtual void ScrollDown()
         {
-            mouse.Click(Bounds.ImmediateInteriorSouth(), actionListener);
+            mouse.LeftClick(Bounds.ImmediateInteriorSouth(), actionListener);
         }
 
         public virtual void ScrollUpLarge()

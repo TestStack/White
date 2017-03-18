@@ -37,7 +37,8 @@ namespace TestStack.White.UIItemEvents
 
         public static UserEvent Create(ListView listView, AutomationPropertyChangedEventArgs eventArgs)
         {
-            var columnPosition = (int) Mouse.Instance.Location.X;
+            var mouse = new Mouse();
+            var columnPosition = (int)mouse.Location.X;
             if (listView.SelectedRows.Count == 0)
             {
                 var listViewEvent = new ListViewEvent(listView, TryUnSelectAll, new object[] {});
