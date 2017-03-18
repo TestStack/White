@@ -224,8 +224,17 @@ namespace TestStack.White.Mappings
 
         public virtual Type GetTestControlType(AutomationElement automationElement)
         {
+            TreeWalker tWalker = TreeWalker.ControlViewWalker;
             AutomationElement.AutomationElementInformation current = automationElement.Current;
-            return GetTestControlType(current.ClassName, current.Name, current.ControlType, current.FrameworkId, current.NativeWindowHandle != 0);
+            AutomationElement parent = tWalker.GetParent(automationElement);
+            String frameId = current.FrameworkId;
+            while (string.IsNullOrEmpty(frameId) || (parent != null && tWalker.GetParent(parent) != null))
+            {
+                frameId = parent.Current.FrameworkId;
+                parent = tWalker.GetParent(parent);
+            }
+
+            return GetTestControlType(current.ClassName, current.Name, current.ControlType, frameId, current.NativeWindowHandle != 0);
         }
     }
 }
