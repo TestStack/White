@@ -464,6 +464,8 @@ namespace TestStack.White.UIItems
             return uiItem != null && Equals(uiItem);
         }
 
+        public virtual string ItemStatus { get { return automationElement.Current.ItemStatus; } }
+
         /// <summary>
         /// Implements <see cref="IEquatable{T}.Equals(T)"/>
         /// </summary>
