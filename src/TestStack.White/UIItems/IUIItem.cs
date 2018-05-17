@@ -191,6 +191,12 @@ namespace TestStack.White.UIItems
         void Click();
 
         /// <summary>
+        /// Performs mouse click at a defined <see cref="Point"/>
+        /// </summary>
+        /// <param name="point">Point where to mouse left click</param>
+        void ClickAt(Point point);
+
+        /// <summary>
         /// Performs mouse double click at the center of the UI Item
         /// </summary>
         void DoubleClick();
