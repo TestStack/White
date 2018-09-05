@@ -219,11 +219,24 @@ namespace TestStack.White.Mappings
             AutomationElement.AutomationElementInformation current = automationElement.Current;
             AutomationElement parent = tWalker.GetParent(automationElement);
             String frameId = current.FrameworkId;
-            while (string.IsNullOrEmpty(frameId) || tWalker.GetParent(parent) != null)
+
+            // This has to be in a try catch block because otherwise custom Windows Forms controls can cause exception if they have null parent
+            // as IRawElementProviderFragmentRoot should have according to documentation
+            try
             {
-                frameId = parent.Current.FrameworkId;
-                parent = tWalker.GetParent(parent);
+                while (string.IsNullOrEmpty(frameId) || tWalker.GetParent(parent) != null)
+                {
+                    frameId = parent.Current.FrameworkId;
+                    parent = tWalker.GetParent(parent);
+                }
             }
+            catch
+            {
+                // Catch possible null reference exception
+                frameId = String.Empty;
+                parent = null;
+            }
+
 
             return GetTestControlType(current.ClassName, current.Name, current.ControlType, frameId, current.NativeWindowHandle != 0);
         }
