@@ -4,13 +4,16 @@ Un-managed applications donot have such feature. In these applications the contr
 
 Within a window any UIItem can be identified based combination following criteria.
 
-1. **AutomationId** is the programmatic identifier specified by the AppDeveloper. In WinForm and WPF this is the name supplied to the control. This is not present for SWT and Win32 applications. (applies only to .NET applications WinForm, WPF, Silverlight.)
-For managed applications:
+1. **AutomationId** is the programmatic identifier specified by the AppDeveloper. In WinForm and WPF this is the name supplied to the control. This is not present for SWT and Win32 applications. (applies only to .NET applications WinForm, WPF, Silverlight.)  
 
+    For managed applications:  
+ 
 		SearchCriteria searchCriteria = SearchCriteria.ByAutomationId("btnOK");
 		Button button = window.Get<Button>("btnOK"); //default search mechanism is by automation id
-		button = window.Get<Button>(searchCriteria); // is same as above
-		For un-managed applications:
+		button = window.Get<Button>(searchCriteria); // is same as above  
+
+    For un-managed applications:  
+
 		Button button = window.Get<Button>("OK"); //default search mechanism is by UIAutomation name
 		button = window.Get<Button>(SearchCriteria.ByText("OK")); // same as above
 
@@ -18,9 +21,11 @@ For managed applications:
 
 		Button button = window.Get<Button>("btnOK"); //<Button> acts as criteria as well as the return type
 		button = (Button) window.Get(SearchCriteria.ByAutomationId("btnOK").AndControlType(typeof(Button))); // same as above
+		
 3. **ControlType** is the ControlType defined in UIAutomation. Since this is same as above these shouldn't be a reason to use this
 
 		button = (Button) window.Get(SearchCriteria.ByControlType(ControlType.Button).AndAutomationId("btnOK"));
+		
 4. **Text** is the additional property defined for accessibility purposes. This property maps to some attribute on UIItem which is visible on the control. Find the detailed map here:
 
 		button = window.Get<Button>(SearchCriteria.ByText("OK")); //OK is the display text on the button.
