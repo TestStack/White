@@ -27,7 +27,18 @@ namespace TestStack.White.InputDevices
                                                                                    KeyboardInput.SpecialKeys.PAGEDOWN,
                                                                                    KeyboardInput.SpecialKeys.RIGHT,
                                                                                    KeyboardInput.SpecialKeys.LWIN,
-                                                                                   KeyboardInput.SpecialKeys.RWIN
+                                                                                   KeyboardInput.SpecialKeys.RWIN,
+
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_0,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_1,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_2,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_3,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_4,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_5,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_6,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_7,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_8,
+                                                                                   KeyboardInput.SpecialKeys.NUMPAD_9
                                                                                };
 
         [DllImport("user32", EntryPoint = "SendInput")]
@@ -151,13 +162,13 @@ namespace TestStack.White.InputDevices
         {
             if (!keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot unpress the key {0}, it has not been pressed", b));
             keysHeld.Remove(b);
-            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP);
+            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYUP, b);
             SendInput(GetInputFor(b, keyUpDown));
         }
 
-        private static KeyboardInput.KeyUpDown GetSpecialKeyCode(bool specialKey, KeyboardInput.KeyUpDown key)
+        private static KeyboardInput.KeyUpDown GetSpecialKeyCode(bool specialKey, KeyboardInput.KeyUpDown key, short b)
         {
-            if (specialKey && scanCodeDependent.Contains((KeyboardInput.SpecialKeys) key)) key |= KeyboardInput.KeyUpDown.KEYEVENTF_EXTENDEDKEY;
+            if (specialKey && scanCodeDependent.Contains((KeyboardInput.SpecialKeys) b)) key |= KeyboardInput.KeyUpDown.KEYEVENTF_EXTENDEDKEY;
             return key;
         }
 
@@ -165,7 +176,8 @@ namespace TestStack.White.InputDevices
         {
             if (keysHeld.Contains(b)) throw new InputDeviceException(string.Format("Cannot press the key {0} as its already pressed", b));
             keysHeld.Add(b);
-            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN);
+
+            KeyboardInput.KeyUpDown keyUpDown = GetSpecialKeyCode(specialKey, KeyboardInput.KeyUpDown.KEYEVENTF_KEYDOWN, b);
             SendInput(GetInputFor(b, keyUpDown));
         }
 
