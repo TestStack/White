@@ -132,7 +132,7 @@ namespace TestStack.White.UIItems
             catch (Exception e)
             {
                 var debugDetails = Debug.Details(automationElement);
-                throw new WhiteException(string.Format("Error occured while geting {0}", searchCriteria), debugDetails,
+                throw new WhiteException(string.Format("Error occurred while getting {0}", searchCriteria), debugDetails,
                     e);
             }
         }
