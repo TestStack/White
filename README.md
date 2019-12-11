@@ -1,3 +1,14 @@
+# **DEPRECATED** - no longer actively maintained
+The White project lacks maintainers and community activity. As last maintainer, I tried to bring back some life to White but quickly ended up tripping over issues with the old architecture of this project which prevented implementing some features I wanted (eg. UIA3 support).
+
+For that reason, a new project called [FlaUI](https://github.com/FlaUI/FlaUI) was born. FlaUI is a complete rewrite from scratch that supports UIA2 (Managed) and UIA3 (Interop), is easily extensible, supports .NET Core and .NET Standard and allows accessing all UIA features up to the latest Windows SDK.
+
+FlaUI is now mature enough to be the successor of White and is already widely used. There is also an [adapter](https://github.com/FlaUI/FlaUI.Adapter.White) available that allows re-using some of the syntax of White but execute it in FlaUI (feel free to help improving it).
+
+Thanks for all the creators and maintainers of White for this great project but now it is time to head over to [FlaUI](https://github.com/FlaUI/FlaUI). Feel free to raise questions, problems, improvement ideas in [gitter](https://gitter.im/FlaUI/Lobby) or in [FlaUIs issues](https://github.com/FlaUI/FlaUI/issues).
+
+I hope to see you there.
+
 # TestStack.White
 
 White is a framework for automating rich client applications based on Win32, WinForms, WPF, Silverlight and SWT (Java) platforms. It is .NET based and does not require the use of any proprietary scripting languages. Tests/automation programs using White can be written with whatever .NET language, IDE and tools you are already using. White provides a consistent object-oriented API, hiding the complexity of Microsoft's UIAutomation library (on which White is based) and windows messages. 
