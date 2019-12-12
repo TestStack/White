@@ -1,51 +1,109 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="DelegateInvoker.cs" company="TestStack">
+//   All rights reserved.
+// </copyright>
+// <summary>
+//   This class builds an object to invoke a late-bound method, without using MethodInfo.InvokeAction and thus avoiding exceptions being wrapped
+//   as target invocation exceptions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TestStack.White.Bricks
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+
     /// <summary>
     /// This class builds an object to invoke a late-bound method, without using MethodInfo.InvokeAction and thus avoiding exceptions being wrapped 
     /// as target invocation exceptions.
     /// </summary>
     internal static class DelegateInvoker
     {
-        static T Get<T>(object o)
+        /// <summary>
+        /// The ActionInvokerWrapper interface.
+        /// </summary>
+        internal interface IActionInvokerWrapper
+        {
+            /// <summary>
+            /// The call.
+            /// </summary>
+            /// <param name="args">
+            /// The args.
+            /// </param>
+            /// <returns>
+            /// The <see cref="object"/>.
+            /// </returns>
+            object Call(object[] args);
+        }
+
+        /// <summary>
+        /// The get.
+        /// </summary>
+        /// <param name="o">
+        /// The o.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of the object.
+        /// </typeparam>
+        /// <returns>
+        /// The object.
+        /// </returns>
+        public static T Get<T>(object o)
         {
             if (o == null)
+            {
                 return default(T);
+            }
 
             return (T)o;
         }
 
-        internal interface IActionInvokerWrapper
-        {
-            object Call(object[] args);
-        }
-
+        /// <summary>
+        /// The create invoker.
+        /// </summary>
+        /// <param name="target">
+        /// The target.
+        /// </param>
+        /// <param name="method">
+        /// The method.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IActionInvokerWrapper"/>.
+        /// </returns>
+        /// <exception cref="ArgumentException">
+        /// </exception>
         public static IActionInvokerWrapper CreateInvoker(object target, MethodInfo method)
         {
-            if (method.ReturnType == typeof (void))
+            if (method.ReturnType == typeof(void))
+            {
                 return CreateReturnVoidInvoker(target, method);
+            }
+
             var parameterTypes = new List<Type>();
             parameterTypes.AddRange(method.GetParameters().Select(x => x.ParameterType));
             parameterTypes.Add(method.ReturnType);
 
             var invokerType = InvokerTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
             if (invokerType == null)
-                throw new ArgumentException(string.Format("Could not create an invoker for the method '{0}'. This type of method is not supported. Try reducing the number of arguments in action.", method));
+            {
+                throw new ArgumentException($"Could not create an invoker for the method '{method}'. This type of method is not supported. Try reducing the number of arguments in action.");
+            }
 
             invokerType = invokerType.MakeGenericType(parameterTypes.ToArray());
 
             var invokerWrapperType = InvokerWrapperTypes.SingleOrDefault(x => x.GetGenericArguments().Length == parameterTypes.Count);
             if (invokerWrapperType == null)
-                throw new ArgumentException(string.Format("Could not create an invoker for the method '{0}'. This type of method is not supported. Try reducing the number of arguments in action.", method));
+            {
+                throw new ArgumentException($"Could not create an invoker for the method '{method}'. This type of method is not supported. Try reducing the number of arguments in action.");
+            }
 
             invokerWrapperType = invokerWrapperType.MakeGenericType(parameterTypes.ToArray());
 
             var invoker = Delegate.CreateDelegate(invokerType, target, method);
             var wrapper = Activator.CreateInstance(invokerWrapperType, invoker);
+
             return (IActionInvokerWrapper)wrapper;
         }
 

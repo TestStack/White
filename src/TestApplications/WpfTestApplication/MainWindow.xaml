@@ -4,146 +4,146 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="MainWindow" Height="450"
         Width="800" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Menu x:Name="MenuBar" Grid.ColumnSpan="2">
-            <MenuItem Header="File" AutomationProperties.AutomationId="FileId">
-                <MenuItem Header="Click Me" Click="ClickMe_OnClick" />
-            </MenuItem>
-            <MenuItem Header="Multi-Level Menu" AutomationProperties.AutomationId="FileId">
-                <MenuItem Header="Item 1" Click="ClickMe_OnClick" />
-                <MenuItem Header="Level 1">
-                    <MenuItem Header="Item 3" Click="ClickMe_OnClick"/>
-                    <MenuItem Header="Level 2">
-                        <MenuItem Header="Level 3" Click="ClickMe_OnClick" />
-                        <MenuItem Header="Item 4" Click="ClickMe_OnClick" />
-                    </MenuItem>
-                </MenuItem>
-                <MenuItem Header="Item 2" />
-            </MenuItem>
-        </Menu>
-        <ToolBar x:Name="ToolStrip1" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0">
-            <Button Content="Button in toolbar"></Button>
-        </ToolBar>
-        <ToolBar x:Name="ToolStrip2" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
-        </ToolBar>
-        <TabControl Grid.Row="3" Grid.Column="0" x:Name="ControlsTab">
-            <TabItem Header="List Controls" x:Name="ListControlsTab">
-                <wpfTestApplication:ListControls x:Name="ListControls" />
-            </TabItem>
-            <TabItem Header="Input Controls">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Margin="5">
-                        <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
-                        <DatePicker x:Name="DatePicker" />
-                        <CheckBox x:Name="CheckBox" Content="A checkbox" />
-                        <CheckBox x:Name="TriStateCheckBox" Content="Tristate Checkbox" IsThreeState="True" IsChecked="{x:Null}" />
-                        <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
-                        <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" Width="200" HorizontalScrollBarVisibility="Auto" />
-                        <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
-                        <PasswordBox x:Name="PasswordBox" />
-                        <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
-                        <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
-                    </StackPanel>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Other Controls">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel>
-                        <TextBlock x:Name="LinkLabelContainer">
-                    <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
-                        </TextBlock>
-                        <ProgressBar Value="50" x:Name="ProgressBar" />
-                        <Canvas>
-                            <TextBox x:Name="TextBoxInsidePanel" Width="50"></TextBox>
-                        </Canvas>
-                        <StackPanel Orientation="Horizontal" x:Name="AddControlPanel">
-                            <Button x:Name="AddTextBox" Content="Add TextBox" Click="AddTextBox_OnClick" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" x:Name="HiddenControlPanel">
-                            <Button x:Name="ShowHiddenTextBox" Content="Show Hidden TextBox" Click="ShowHiddenTextBox_OnClick" />
-                            <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
-                        </StackPanel>
-                        <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="White.jpg" Width="100" x:Name="Image"/>
-                        <Slider x:Name="Slider" LargeChange="4" SmallChange="1" />
-                    </StackPanel>
-                    <StackPanel>
-                        <TreeView x:Name="TreeView" Width="195" Height="155">
-                            <TreeViewItem Visibility="Visible" Header="Root" Name="RootNode">
-                                <TreeViewItem Visibility="Visible" Header="Child" Name="ChildNode">
-                                    <TreeViewItem Visibility="Visible" Header="Grand Child"/>
-                                </TreeViewItem>
-
-                            </TreeViewItem>
-                            <TreeViewItem Visibility="Visible" Header="Main" Name="Main"/>
-                        </TreeView>
-                        <Button Content="Add Node" x:Name="AddNode" Click="AddNode_OnClick" />
-                    </StackPanel>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Data Grid">
-                <DataGrid x:Name="DataGridControl" AutoGenerateColumns="False" CanUserAddRows="false" ItemsSource="{Binding States}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
-                        <DataGridTextColumn Header="Contents" Binding="{Binding Contents}"/>
-                        <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
-                        <DataGridTemplateColumn Header="Combobox">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <ComboBox ItemsSource="{Binding ComboboxItems}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Image" Width="*" MinWidth="100">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center" Source="white.jpg" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
-        </TabControl>
-        <GroupBox Header="Scenarios" Grid.Row="3" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">
-            <StackPanel>
-                <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter"
-                        AutomationProperties.AutomationId="OpenHorizontalSplitterButton" />
-                <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter"
-                        AutomationProperties.AutomationId="OpenVerticalSplitterButton" />
-                <Button Content="_Button with Tooltip" ToolTip="I have a tooltip" x:Name="ButtonWithTooltip"
-                        PreviewMouseUp="ButtonWithTooltip_OnPreviewMouseUp" Click="ButtonWithTooltip_OnClick"
-                        MouseRightButtonUp="RightClickOnButtonWithTooltip" />
-                <Button Content="Get Multiple" Click="GetMultiple"
-                        AutomationProperties.AutomationId="GetMultipleButton" />
-                <Button Content="ListView Control" Click="OpenListView"
-                        AutomationProperties.AutomationId="OpenListView" />
-                <Button Content="DragDropScenario" Click="OpenDragDropScenario"
-                        AutomationProperties.AutomationId="DragDropScenario" />
-                <Button Content="Disable Controls" Click="DisableControlsClick" x:Name="DisableControls" />
-                <Button Content="FormWithoutScrollAndItemOutside" Click="OpenFormWithoutScrollAndItemOutside"
-                        AutomationProperties.AutomationId="OpenFormWithoutScrollAndItemOutside" />
-                <Button Content="Custom UI Item" Click="CustomUIItemScenarioClick"
-                        AutomationProperties.AutomationId="CustomUIItemScenario" />
-                <Button Content="Open Message Box" Click="OpenMessageBoxClick"
-                        AutomationProperties.AutomationId="OpenMessageBox" />
-                <Button Content="Open Window With Scrollbars" Click="OpenWindowWithScrollbars"
-                        AutomationProperties.AutomationId="OpenWindowWithScrollbars" />
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Menu x:Name="MenuBar" Grid.ColumnSpan="2">
+      <MenuItem Header="File" AutomationProperties.AutomationId="FileId">
+        <MenuItem Header="Click Me" Click="ClickMe_OnClick" />
+      </MenuItem>
+      <MenuItem Header="Multi-Level Menu" AutomationProperties.AutomationId="FileId">
+        <MenuItem Header="Item 1" Click="ClickMe_OnClick" />
+        <MenuItem Header="Level 1">
+          <MenuItem Header="Item 3" Click="ClickMe_OnClick" />
+          <MenuItem Header="Level 2">
+            <MenuItem Header="Level 3" Click="ClickMe_OnClick" />
+            <MenuItem Header="Item 4" Click="ClickMe_OnClick" />
+          </MenuItem>
+        </MenuItem>
+        <MenuItem Header="Item 2" />
+      </MenuItem>
+    </Menu>
+    <ToolBar x:Name="ToolStrip1" Grid.ColumnSpan="2" Grid.Row="1" Grid.Column="0">
+      <Button Content="Button in toolbar" />
+    </ToolBar>
+    <ToolBar x:Name="ToolStrip2" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" />
+    <TabControl Grid.Row="3" Grid.Column="0" x:Name="ControlsTab">
+      <TabItem Header="List Controls" x:Name="ListControlsTab">
+        <wpfTestApplication:ListControls x:Name="ListControls" />
+      </TabItem>
+      <TabItem Header="Input Controls">
+        <StackPanel Orientation="Horizontal">
+          <StackPanel Margin="5">
+            <Label x:Name="DateTimePickerLabel">DateTimePicker</Label>
+            <DatePicker x:Name="DatePicker" />
+            <CheckBox x:Name="CheckBox" Content="A checkbox" />
+            <CheckBox x:Name="TriStateCheckBox" Content="Tristate Checkbox" IsThreeState="True" IsChecked="{x:Null}" />
+            <TextBox x:Name="TextBox" TextChanged="TextBox_OnTextChanged" />
+            <TextBox x:Name="MultiLineTextBox" AcceptsReturn="True" Height="60" Width="200"
+                     HorizontalScrollBarVisibility="Auto" />
+            <TextBlock x:Name="PasswordTextBlock">PasswordBox</TextBlock>
+            <PasswordBox x:Name="PasswordBox" />
+            <RadioButton x:Name="RadioButton1" Content="RadioButton1" />
+            <RadioButton x:Name="RadioButton2" Content="RadioButton2" />
+          </StackPanel>
+        </StackPanel>
+      </TabItem>
+      <TabItem Header="Other Controls">
+        <StackPanel Orientation="Horizontal">
+          <StackPanel>
+            <TextBlock x:Name="LinkLabelContainer">
+              <Hyperlink x:Name="LinkLabel" Click="Hyperlink_OnClick">Link Text</Hyperlink>
+            </TextBlock>
+            <ProgressBar Value="50" x:Name="ProgressBar" />
+            <Canvas>
+              <TextBox x:Name="TextBoxInsidePanel" Width="50" />
+            </Canvas>
+            <StackPanel Orientation="Horizontal" x:Name="AddControlPanel">
+              <Button x:Name="AddTextBox" Content="Add TextBox" Click="AddTextBox_OnClick" />
             </StackPanel>
-        </GroupBox>
-        <StatusBar Name="StatusBar" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">
-            <StatusBarItem>Status Item 1</StatusBarItem>
-            <StatusBarItem>Status Item 2</StatusBarItem>
-        </StatusBar>
-    </Grid>
+            <StackPanel Orientation="Horizontal" x:Name="HiddenControlPanel">
+              <Button x:Name="ShowHiddenTextBox" Content="Show Hidden TextBox" Click="ShowHiddenTextBox_OnClick" />
+              <TextBox Visibility="Hidden" x:Name="HiddenTextBox" />
+            </StackPanel>
+            <Image HorizontalAlignment="Left" VerticalAlignment="Top" Source="White.jpg" Width="100" x:Name="Image" />
+            <Slider x:Name="Slider" LargeChange="4" SmallChange="1" />
+          </StackPanel>
+          <StackPanel>
+            <TreeView x:Name="TreeView" Width="195" Height="155">
+              <TreeViewItem Visibility="Visible" Header="Root" Name="RootNode">
+                <TreeViewItem Visibility="Visible" Header="Child" Name="ChildNode">
+                  <TreeViewItem Visibility="Visible" Header="Grand Child" />
+                </TreeViewItem>
+
+              </TreeViewItem>
+              <TreeViewItem Visibility="Visible" Header="Main" Name="Main" />
+            </TreeView>
+            <Button Content="Add Node" x:Name="AddNode" Click="AddNode_OnClick" />
+          </StackPanel>
+        </StackPanel>
+      </TabItem>
+      <TabItem Header="Data Grid">
+        <DataGrid x:Name="DataGridControl" AutoGenerateColumns="False" CanUserAddRows="false"
+                  ItemsSource="{Binding States}">
+          <DataGrid.Columns>
+            <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+            <DataGridTextColumn Header="Contents" Binding="{Binding Contents}" />
+            <DataGridTextColumn Header="Description" Binding="{Binding Description}" />
+            <DataGridTemplateColumn Header="Combobox">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <ComboBox ItemsSource="{Binding ComboboxItems}" />
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+            <DataGridTemplateColumn Header="Image" Width="*" MinWidth="100">
+              <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                  <Image Height="24" Width="24" VerticalAlignment="Center" HorizontalAlignment="Center"
+                         Source="white.jpg" />
+                </DataTemplate>
+              </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+          </DataGrid.Columns>
+        </DataGrid>
+      </TabItem>
+    </TabControl>
+    <GroupBox Header="Scenarios" Grid.Row="3" Grid.Column="1" AutomationProperties.AutomationId="ScenariosPane">
+      <StackPanel>
+        <Button Content="Launch Horizontal GridSplitter Window" Click="LaunchHorizontalGridSplitter"
+                AutomationProperties.AutomationId="OpenHorizontalSplitterButton" />
+        <Button Content="Launch Vertical GridSplitter Window" Click="LaunchVerticalGridSplitter"
+                AutomationProperties.AutomationId="OpenVerticalSplitterButton" />
+        <Button Content="_Button with Tooltip" ToolTip="I have a tooltip" x:Name="ButtonWithTooltip"
+                PreviewMouseUp="ButtonWithTooltip_OnPreviewMouseUp" Click="ButtonWithTooltip_OnClick"
+                MouseRightButtonUp="RightClickOnButtonWithTooltip" />
+        <Button Content="Get Multiple" Click="GetMultiple" AutomationProperties.AutomationId="GetMultipleButton" />
+        <Button Content="ListView Control" Click="OpenListView" AutomationProperties.AutomationId="OpenListView" />
+        <Button Content="DragDropScenario" Click="OpenDragDropScenario"
+                AutomationProperties.AutomationId="DragDropScenario" />
+        <Button Content="Disable Controls" Click="DisableControlsClick" x:Name="DisableControls" />
+        <Button Content="FormWithoutScrollAndItemOutside" Click="OpenFormWithoutScrollAndItemOutside"
+                AutomationProperties.AutomationId="OpenFormWithoutScrollAndItemOutside" />
+        <Button Content="Custom UI Item" Click="CustomUIItemScenarioClick"
+                AutomationProperties.AutomationId="CustomUIItemScenario" />
+        <Button Content="Open Message Box" Click="OpenMessageBoxClick"
+                AutomationProperties.AutomationId="OpenMessageBox" />
+        <Button Content="Open Window With Scrollbars" Click="OpenWindowWithScrollbars"
+                AutomationProperties.AutomationId="OpenWindowWithScrollbars" />
+      </StackPanel>
+    </GroupBox>
+    <StatusBar Name="StatusBar" Grid.Row="4" Grid.ColumnSpan="2" Grid.Column="0">
+      <StatusBarItem>Status Item 1</StatusBarItem>
+      <StatusBarItem>Status Item 2</StatusBarItem>
+    </StatusBar>
+  </Grid>
 </Window>

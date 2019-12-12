@@ -1,7 +1,7 @@
-﻿using System.Windows.Forms;
-
-namespace WindowsFormsTestApplication.Scenarios
+﻿namespace WindowsFormsTestApplication.Scenarios
 {
+    using System.Windows.Forms;
+
     public partial class WindowWithNoTitleBar : Form
     {
         public WindowWithNoTitleBar()

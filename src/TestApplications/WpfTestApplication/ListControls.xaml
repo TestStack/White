@@ -1,154 +1,155 @@
 ﻿<UserControl x:Class="WpfTestApplication.ListControls"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
-    <StackPanel Orientation="Horizontal">
-        <StackPanel Margin="5">
-            <ListBox Height="70" Width="100" x:Name="ListBoxWithVScrollBar" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-                <ListBoxItem>1</ListBoxItem>
-                <ListBoxItem>2</ListBoxItem>
-                <ListBoxItem>3</ListBoxItem>
-                <ListBoxItem>4</ListBoxItem>
-                <ListBoxItem>5</ListBoxItem>
-                <ListBoxItem>6</ListBoxItem>
-                <ListBoxItem>7</ListBoxItem>
-                <ListBoxItem>8</ListBoxItem>
-                <ListBoxItem>9</ListBoxItem>
-                <ListBoxItem>0</ListBoxItem>
-            </ListBox>
+             xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" d:DesignHeight="300"
+             d:DesignWidth="300" d:DataContext="{d:DesignInstance wpfTestApplication:MainWindow}">
+  <StackPanel Orientation="Horizontal">
+    <StackPanel Margin="5">
+      <ListBox Height="70" Width="100" x:Name="ListBoxWithVScrollBar" ScrollViewer.CanContentScroll="True"
+               ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel />
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+        <ListBoxItem>1</ListBoxItem>
+        <ListBoxItem>2</ListBoxItem>
+        <ListBoxItem>3</ListBoxItem>
+        <ListBoxItem>4</ListBoxItem>
+        <ListBoxItem>5</ListBoxItem>
+        <ListBoxItem>6</ListBoxItem>
+        <ListBoxItem>7</ListBoxItem>
+        <ListBoxItem>8</ListBoxItem>
+        <ListBoxItem>9</ListBoxItem>
+        <ListBoxItem>0</ListBoxItem>
+      </ListBox>
 
-            <ListBox Height="88" x:Name="ListBoxWpf" VerticalAlignment="Bottom" Width="100">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel />
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBoxItem>Spielberg</ListBoxItem>
-                <ListBoxItem>Nagesh</ListBoxItem>
-                <ListBoxItem>
-                    <TextBox Background="Red" Text="Hrishikesh" TextWrapping="Wrap" />
-                </ListBoxItem>
-                <ListBoxItem>Hitchcock</ListBoxItem>
-                <ListBoxItem>Rodriguez</ListBoxItem>
-                <ListBoxItem>Whedon</ListBoxItem>
-            </ListBox>
-            <Button Content="Change items" x:Name="ChangeListItems" Click="ChangeListItems_OnClick" />
-        </StackPanel>
+      <ListBox Height="88" x:Name="ListBoxWpf" VerticalAlignment="Bottom" Width="100">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel />
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBoxItem>Spielberg</ListBoxItem>
+        <ListBoxItem>Nagesh</ListBoxItem>
+        <ListBoxItem>
+          <TextBox Background="Red" Text="Hrishikesh" TextWrapping="Wrap" />
+        </ListBoxItem>
+        <ListBoxItem>Hitchcock</ListBoxItem>
+        <ListBoxItem>Rodriguez</ListBoxItem>
+        <ListBoxItem>Whedon</ListBoxItem>
+      </ListBox>
+      <Button Content="Change items" x:Name="ChangeListItems" Click="ChangeListItems_OnClick" />
+    </StackPanel>
     <StackPanel>
-        <TextBlock Text="ComboBoxTests" />
-        <ComboBox x:Name="AComboBox" Width="150" HorizontalAlignment="Left">
-            <ComboBox.Items>
-                <ComboBoxItem>Test</ComboBoxItem>
-                <ComboBoxItem>Test2</ComboBoxItem>
-                <ComboBoxItem>Test3</ComboBoxItem>
-                <ComboBoxItem>Test4</ComboBoxItem>
-                <ComboBoxItem>Test5</ComboBoxItem>
-                <ComboBoxItem>Test6</ComboBoxItem>
-                <ComboBoxItem>Test7</ComboBoxItem>
-                <ComboBoxItem>Test8</ComboBoxItem>
-                <ComboBoxItem>Test9</ComboBoxItem>
-                <ComboBoxItem>Test10</ComboBoxItem>
-                <ComboBoxItem>Test11</ComboBoxItem>
-                <ComboBoxItem>Test12</ComboBoxItem>
-                <ComboBoxItem>Test13</ComboBoxItem>
-                <ComboBoxItem>Test14</ComboBoxItem>
-                <ComboBoxItem>Test15</ComboBoxItem>
-                <ComboBoxItem>Test16</ComboBoxItem>
-                <ComboBoxItem>Test17</ComboBoxItem>
-                <ComboBoxItem>Test18</ComboBoxItem>
-                <ComboBoxItem>Test19</ComboBoxItem>
-                <ComboBoxItem>Test20</ComboBoxItem>
-                <ComboBoxItem>ReallyReallyReallyLongTextHere</ComboBoxItem>
-            </ComboBox.Items>
-        </ComboBox>
-        <TextBlock Text="EditableComboBoxTests" />
-        <ComboBox Width="120" IsEditable="True" x:Name="EditableComboBox" HorizontalAlignment="Left">
-            <ComboBox.Items>
-                <ComboBoxItem>Test</ComboBoxItem>
-                <ComboBoxItem>Test2</ComboBoxItem>
-                <ComboBoxItem>Test3</ComboBoxItem>
-                <ComboBoxItem>Test4</ComboBoxItem>
-            </ComboBox.Items>
-        </ComboBox>
-        <TextBlock Text="DataBoundComboBoxTests" />
-        <ComboBox Width="120" IsEditable="True" x:Name="DataBoundComboBox" HorizontalAlignment="Left"
-                          ItemsSource="{Binding ListItems}" />
+      <TextBlock Text="ComboBoxTests" />
+      <ComboBox x:Name="AComboBox" Width="150" HorizontalAlignment="Left">
+        <ComboBox.Items>
+          <ComboBoxItem>Test</ComboBoxItem>
+          <ComboBoxItem>Test2</ComboBoxItem>
+          <ComboBoxItem>Test3</ComboBoxItem>
+          <ComboBoxItem>Test4</ComboBoxItem>
+          <ComboBoxItem>Test5</ComboBoxItem>
+          <ComboBoxItem>Test6</ComboBoxItem>
+          <ComboBoxItem>Test7</ComboBoxItem>
+          <ComboBoxItem>Test8</ComboBoxItem>
+          <ComboBoxItem>Test9</ComboBoxItem>
+          <ComboBoxItem>Test10</ComboBoxItem>
+          <ComboBoxItem>Test11</ComboBoxItem>
+          <ComboBoxItem>Test12</ComboBoxItem>
+          <ComboBoxItem>Test13</ComboBoxItem>
+          <ComboBoxItem>Test14</ComboBoxItem>
+          <ComboBoxItem>Test15</ComboBoxItem>
+          <ComboBoxItem>Test16</ComboBoxItem>
+          <ComboBoxItem>Test17</ComboBoxItem>
+          <ComboBoxItem>Test18</ComboBoxItem>
+          <ComboBoxItem>Test19</ComboBoxItem>
+          <ComboBoxItem>Test20</ComboBoxItem>
+          <ComboBoxItem>ReallyReallyReallyLongTextHere</ComboBoxItem>
+        </ComboBox.Items>
+      </ComboBox>
+      <TextBlock Text="EditableComboBoxTests" />
+      <ComboBox Width="120" IsEditable="True" x:Name="EditableComboBox" HorizontalAlignment="Left">
+        <ComboBox.Items>
+          <ComboBoxItem>Test</ComboBoxItem>
+          <ComboBoxItem>Test2</ComboBoxItem>
+          <ComboBoxItem>Test3</ComboBoxItem>
+          <ComboBoxItem>Test4</ComboBoxItem>
+        </ComboBox.Items>
+      </ComboBox>
+      <TextBlock Text="DataBoundComboBoxTests" />
+      <ComboBox Width="120" IsEditable="True" x:Name="DataBoundComboBox" HorizontalAlignment="Left"
+                ItemsSource="{Binding ListItems}" />
 
-        <TextBlock Text="CheckedListBoxTests" />
-        <ListBox Name="CheckedListBox">
-            <CheckBox>Item1</CheckBox>
-            <CheckBox>Item2</CheckBox>
-            <CheckBox>Item3</CheckBox>
-            <CheckBox>Item4</CheckBox>
-        </ListBox>
+      <TextBlock Text="CheckedListBoxTests" />
+      <ListBox Name="CheckedListBox">
+        <CheckBox>Item1</CheckBox>
+        <CheckBox>Item2</CheckBox>
+        <CheckBox>Item3</CheckBox>
+        <CheckBox>Item4</CheckBox>
+      </ListBox>
     </StackPanel>
-    </StackPanel>
+  </StackPanel>
 </UserControl>

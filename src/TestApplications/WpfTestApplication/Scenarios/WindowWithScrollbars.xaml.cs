@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Automation;
-
-namespace WpfTestApplication.Scenarios
+﻿namespace WpfTestApplication.Scenarios
 {
+    using System.Windows;
+    using System.Windows.Automation;
+
     public partial class WindowWithScrollbars
     {
         public WindowWithScrollbars()
@@ -12,7 +12,7 @@ namespace WpfTestApplication.Scenarios
 
         private void ButtonBackUpTop_OnClick(object sender, RoutedEventArgs e)
         {
-            AutomationProperties.SetHelpText(ButtonBackUpTop, "ButtonBackUpTopClicked");            
+            AutomationProperties.SetHelpText(ButtonBackUpTop, "ButtonBackUpTopClicked");
         }
 
         private void HiddenButton_OnClick(object sender, RoutedEventArgs e)

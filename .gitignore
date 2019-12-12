@@ -107,3 +107,4 @@ packages
 build
 
 Thumbs.db
+/src/.vs/config/applicationhost.config

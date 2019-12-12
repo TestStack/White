@@ -1,7 +1,8 @@
-﻿using System.Windows.Forms;
-
-namespace WindowsFormsTestApplication
+﻿namespace WindowsFormsTestApplication
 {
+    using System;
+    using System.Windows.Forms;
+
     public partial class ListControls : UserControl
     {
         public ListControls()
@@ -9,21 +10,21 @@ namespace WindowsFormsTestApplication
             InitializeComponent();
         }
 
-        private void ListControls_EnabledChanged(object sender, System.EventArgs e)
+        private void level2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListBoxWithVScrollBar.AccessibleDescription = "Level 2 Clicked";
+        }
+
+        private void ListControls_EnabledChanged(object sender, EventArgs e)
         {
             AComboBox.Enabled = Enabled;
             EditableComboBox.Enabled = Enabled;
             CheckedListBox.Enabled = Enabled;
         }
 
-        private void mainToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ListBoxWithVScrollBar.AccessibleDescription = "Root2 Clicked";
-        }
-
-        private void level2ToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-            ListBoxWithVScrollBar.AccessibleDescription = "Level 2 Clicked";
         }
     }
 }

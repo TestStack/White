@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace WindowsFormsTestApplication.Scenarios
+﻿namespace WindowsFormsTestApplication.Scenarios
 {
+    using System;
+    using System.Windows.Forms;
+
     public partial class WindowWithScrollbars : Form
     {
         public WindowWithScrollbars()

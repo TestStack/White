@@ -1,35 +1,33 @@
-﻿<Window x:Class="WpfTestApplication.ListViewWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+﻿<Window x:Class="WpfTestApplication.ListViewWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication"
-        mc:Ignorable="d" Title="ListViewWindow" Height="300" Width="300"
-        d:DataContext="{d:DesignInstance wpfTestApplication:ListViewWindow}">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="100" />
-        </Grid.ColumnDefinitions>
-        <ListView ItemsSource="{Binding ListViewItems}" x:Name="ListView" SelectionChanged="ListViewOnSelectionChanged">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel />
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
-                    <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <ListView ItemsSource="{Binding ListViewItemsWithScroll}" x:Name="ListViewWithHorizontalScroll" Grid.Column="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
-    </Grid>
+        xmlns:wpfTestApplication="clr-namespace:WpfTestApplication" mc:Ignorable="d" Title="ListViewWindow"
+        Height="300" Width="300" d:DataContext="{d:DesignInstance wpfTestApplication:ListViewWindow}">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="100" />
+    </Grid.ColumnDefinitions>
+    <ListView ItemsSource="{Binding ListViewItems}" x:Name="ListView" SelectionChanged="ListViewOnSelectionChanged">
+      <ListView.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel />
+        </ItemsPanelTemplate>
+      </ListView.ItemsPanel>
+      <ListView.View>
+        <GridView>
+          <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
+          <GridViewColumn Header="Value" DisplayMemberBinding="{Binding Value}" />
+        </GridView>
+      </ListView.View>
+    </ListView>
+    <ListView ItemsSource="{Binding ListViewItemsWithScroll}" x:Name="ListViewWithHorizontalScroll" Grid.Column="1">
+      <ListView.View>
+        <GridView>
+          <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
+        </GridView>
+      </ListView.View>
+    </ListView>
+  </Grid>
 </Window>

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace WindowsFormsTestApplication
+﻿namespace WindowsFormsTestApplication
 {
+    using System;
+    using System.Windows.Forms;
+
     public partial class ListViewWindow : Form
     {
         public ListViewWindow()

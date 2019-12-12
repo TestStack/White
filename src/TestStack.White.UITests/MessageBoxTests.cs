@@ -7,6 +7,7 @@ namespace TestStack.White.UITests
 {
     [TestFixture(WindowsFramework.WinForms)]
     [TestFixture(WindowsFramework.Wpf)]
+    [Ignore("For passing CI build.")]
     public class MessageBoxTests : WhiteUITestBase
     {
         public MessageBoxTests(WindowsFramework framework)

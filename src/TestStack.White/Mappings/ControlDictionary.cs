@@ -24,6 +24,10 @@ namespace TestStack.White.Mappings
 
         private ControlDictionary()
         {
+            this.items.AddXamlSpecificPrimary(ControlType.ComboBox, typeof(ComboBox));
+            this.items.AddXamlSpecificPrimary(ControlType.Text, typeof(TextBox));
+            this.items.AddXamlSpecificPrimary(ControlType.Edit, typeof(TextBox));
+
             items.AddFrameworkSpecificPrimary(ControlType.Edit, typeof(TextBox), typeof(WinFormTextBox), typeof(TextBox), typeof(TextBox));
 
             items.AddWinFormPrimary(typeof(WinFormSlider), ControlType.Slider);
@@ -83,6 +87,7 @@ namespace TestStack.White.Mappings
             items.Add(ControlDictionaryItem.Win32Secondary(typeof(Win32ListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.WPFSecondary(typeof(WPFListItem), ControlType.ListItem));
             items.Add(ControlDictionaryItem.SilverlightSecondary(typeof(WPFListItem), ControlType.ListItem));
+            this.items.Add(ControlDictionaryItem.XamlSecondary(typeof(WPFListItem), ControlType.ListItem));
 
             items.Add(ControlDictionaryItem.WinFormSecondary(typeof(Win32TreeNode), ControlType.TreeItem));
             items.Add(ControlDictionaryItem.WPFSecondary(typeof(WPFTreeNode), ControlType.TreeItem));
@@ -112,32 +117,51 @@ namespace TestStack.White.Mappings
         {
             var controlDictionaryItem = items.FindBy(testControlType, frameworkId);
             if (controlDictionaryItem == null)
-                throw new WhiteException(string.Format("Cannot find {0} for {1}", testControlType.Name, frameworkId));
+            {
+                throw new WhiteException($"Cannot find {testControlType.Name} for {frameworkId}");
+            }
+
             return controlDictionaryItem.Select(c => c.ControlType).ToArray();
         }
 
         public virtual Type GetTestControlType(string className, string name, ControlType controlType, string frameWorkId, bool isNativeControl)
         {
-            if (Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
-                frameWorkId = WindowsFramework.Win32.FrameworkId();
-
-            var dictionaryItems = items.Where(controlDictionaryItem =>
+            if (object.Equals(controlType, ControlType.ListItem) && string.IsNullOrEmpty(frameWorkId))
             {
-                if (!ControlTypeMatches(controlType, controlDictionaryItem)) return false;
-                if (!FrameworkIdMatches(frameWorkId, controlDictionaryItem)) return false;
-                if (controlDictionaryItem.IsIdentifiedByClassName && !className.Contains(controlDictionaryItem.ClassName))
-                    return false;
-                if (controlDictionaryItem.IsIdentifiedByName && controlDictionaryItem.TestControlType.Name != name)
-                    return false;
+                frameWorkId = WindowsFramework.Win32.FrameworkId();
+            }
 
-                return true;
-            })
-            .ToArray();
+            var dictionaryItems = this.items.Where(controlDictionaryItem =>
+                {
+                    if (!ControlTypeMatches(controlType, controlDictionaryItem))
+                    {
+                        return false;
+                    }
+
+                    if (!FrameworkIdMatches(frameWorkId, controlDictionaryItem))
+                    {
+                        return false;
+                    }
+
+                    if (controlDictionaryItem.IsIdentifiedByClassName && !className.Contains(controlDictionaryItem.ClassName))
+                    {
+                        return false;
+                    }
+
+                    if (controlDictionaryItem.IsIdentifiedByName && controlDictionaryItem.TestControlType.Name != name)
+                    {
+                        return false;
+                    }
+
+                    return true;
+            }).ToArray();
+
             if (!dictionaryItems.Any())
             {
-                throw new ControlDictionaryException(string.Format("Could not find TestControl for ControlType={0} and FrameworkId:{1}",
-                                                                   controlType.LocalizedControlType, frameWorkId));
+                throw new ControlDictionaryException(
+                    $"Could not find TestControl for ControlType={controlType.LocalizedControlType} and FrameworkId:{frameWorkId}");
             }
+
             if (dictionaryItems.Length > 1)
             {
                 var primaries = dictionaryItems.Where(i => IsPrimaryControl(i.ControlType, className, name)).ToArray();
@@ -160,6 +184,7 @@ namespace TestStack.White.Mappings
                    string.Join(", ", dictionaryItems.Select(d => d.TestControlType == null ? "null" : d.TestControlType.FullName))));
 
             }
+
             return dictionaryItems.Single().TestControlType;
         }
 

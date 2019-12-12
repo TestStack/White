@@ -1,48 +1,70 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Automation;
-using TestStack.White.AutomationElementSearch;
-using TestStack.White.Configuration;
-using TestStack.White.Factory;
-using TestStack.White.InputDevices;
-using TestStack.White.Recording;
-using TestStack.White.Sessions;
-using TestStack.White.UIA;
-using TestStack.White.UIItems.Actions;
-using TestStack.White.UIItems.Finders;
-using TestStack.White.UIItems.MenuItems;
-using TestStack.White.UIItems.WindowStripControls;
-using TestStack.White.Utility;
-using Action = TestStack.White.UIItems.Actions.Action;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Window.cs" company="TestStack">
+//   All rights reserved.
+// </copyright>
+// <summary>
+//   Defines the Window type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace TestStack.White.UIItems.WindowItems
 {
-    //TODO support for standard dialog windows
-    //TODO Read data from console window, Printer, StartMenu, DateTime, UserProfile, ControlPanel, Desktop
-    //TODO Get color of controls
-    //TODO Number of display monitors
-    //TODO move window
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Runtime.InteropServices;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Automation;
+
+    using TestStack.White.AutomationElementSearch;
+    using TestStack.White.Configuration;
+    using TestStack.White.Factory;
+    using TestStack.White.InputDevices;
+    using TestStack.White.Recording;
+    using TestStack.White.Sessions;
+    using TestStack.White.UIA;
+    using TestStack.White.UIItems.Actions;
+    using TestStack.White.UIItems.Finders;
+    using TestStack.White.UIItems.MenuItems;
+    using TestStack.White.UIItems.WindowStripControls;
+    using TestStack.White.Utility;
+
+    using Action = TestStack.White.UIItems.Actions.Action;
+
+    // TODO support for standard dialog windows
+    // TODO Read data from console window, Printer, StartMenu, DateTime, UserProfile, ControlPanel, Desktop
+    // TODO Get color of controls
+    // TODO Number of display monitors
+    // TODO move window
+
+    /// <summary>
+    /// The window.
+    /// </summary>
     public abstract class Window : UIItemContainer, IDisposable
     {
+        /// <summary>
+        /// The window states.
+        /// </summary>
         private static readonly Dictionary<DisplayState, WindowVisualState> WindowStates =
             new Dictionary<DisplayState, WindowVisualState>();
 
-        private AutomationEventHandler handler;
         /// <summary>
         /// If a window is opened then you try and close it straight away, the window can fail to close
-        /// 
         /// This make sure the window is open for a minimum amount of time
         /// </summary>
         private readonly Task minOpenTime;
 
-        public delegate bool WaitTillDelegate();
+        /// <summary>
+        /// The handler.
+        /// </summary>
+        private AutomationEventHandler handler;
 
+        /// <summary>
+        /// Initializes static members of the <see cref="Window"/> class.
+        /// </summary>
         static Window()
         {
             WindowStates.Add(DisplayState.Maximized, WindowVisualState.Maximized);
@@ -50,38 +72,79 @@ namespace TestStack.White.UIItems.WindowItems
             WindowStates.Add(DisplayState.Restored, WindowVisualState.Normal);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Window"/> class.
+        /// </summary>
         protected Window()
         {
         }
 
-        protected Window(AutomationElement automationElement, InitializeOption initializeOption, WindowSession windowSession)
-            : this(automationElement, new NullActionListener(), initializeOption, windowSession) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Window"/> class.
+        /// </summary>
+        /// <param name="automationElement">
+        /// The automation element.
+        /// </param>
+        /// <param name="initializeOption">
+        /// The initialize option.
+        /// </param>
+        /// <param name="windowSession">
+        /// The window session.
+        /// </param>
+        protected Window(
+            AutomationElement automationElement,
+            InitializeOption initializeOption,
+            WindowSession windowSession)
+            : this(automationElement, new NullActionListener(), initializeOption, windowSession)
+        {
+        }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Window"/> class.
+        /// </summary>
+        /// <param name="automationElement">
+        /// The automation element.
+        /// </param>
+        /// <param name="actionListener">
+        /// The action listener.
+        /// </param>
+        /// <param name="initializeOption">
+        /// The initialize option.
+        /// </param>
+        /// <param name="windowSession">
+        /// The window session.
+        /// </param>
         protected Window(AutomationElement automationElement, IActionListener actionListener, InitializeOption initializeOption, WindowSession windowSession)
             : base(automationElement, actionListener, initializeOption, windowSession)
         {
-            InitializeWindow();
-            minOpenTime = Task.Factory.StartNew(() => Thread.Sleep(500));
+            this.InitializeWindow();
+            this.minOpenTime = Task.Factory.StartNew(() => Thread.Sleep(500));
         }
 
+        /// <summary>
+        /// The wait till delegate.
+        /// </summary>
+        /// <returns>Whether it has been waited or not.</returns>
+        public delegate bool WaitTillDelegate();
+
+        /// <summary>
+        /// The initialize window.
+        /// </summary>
         private void InitializeWindow()
         {
-            ActionPerformed();
-            Rect bounds = Desktop.Instance.Bounds;
-            if (!bounds.Contains(Bounds) && (TitleBar != null && TitleBar.MinimizeButton != null))
+            this.ActionPerformed();
+            var bounds = Desktop.Instance.Bounds;
+            if (!bounds.Contains(this.Bounds) && TitleBar?.MinimizeButton != null)
             {
                 Logger.WarnFormat(
-                    @"Window with title: {0} whose dimensions are: {1}, is not contained completely on the desktop {2}. 
-UI actions on window needing mouse would not work in area not falling under the desktop",
+                    @"Window with title: {0} whose dimensions are: {1}, is not contained completely on the desktop {2}. UI actions on window needing mouse would not work in area not falling under the desktop",
                     Title, Bounds, bounds);
             }
-            WindowSession.Register(this);
+
+            this.WindowSession.Register(this);
         }
 
-        protected override IActionListener ChildrenActionListener
-        {
-            get { return this; }
-        }
+        protected override IActionListener ChildrenActionListener => this;
 
         public virtual string Title
         {
@@ -168,11 +231,20 @@ UI actions on window needing mouse would not work in area not falling under the 
             }
         }
 
+        /// <summary>
+        /// The status bar.
+        /// </summary>
+        /// <param name="initializeOption">
+        /// The initialize option.
+        /// </param>
+        /// <returns>
+        /// The <see cref="StatusStrip"/>.
+        /// </returns>
         public virtual StatusStrip StatusBar(InitializeOption initializeOption)
         {
             var statusStrip = (StatusStrip)Get(SearchCriteria.ByControlType(ControlType.StatusBar));
             statusStrip.Cached = initializeOption;
-            statusStrip.Associate(WindowSession);
+            statusStrip.Associate(this.WindowSession);
             return statusStrip;
         }
 

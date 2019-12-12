@@ -1,17 +1,13 @@
-﻿using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms.Design;
-
-namespace WindowsFormsTestApplication
+﻿namespace WindowsFormsTestApplication
 {
+    using System.ComponentModel;
+    using System.Drawing;
+    using System.Drawing.Design;
+    using System.Windows.Forms.Design;
+
     [DefaultProperty("NotWhole")]
     public class BasicTypes
     {
-        private Size windowSize = new Size(100, 100);
-        private Font windowFont = new Font("Arial", 8, FontStyle.Regular);
-        private Color toolbarColor = SystemColors.Control;
-        private string fileName = "test.txt";
-
         public BasicTypes(string buffer, bool boolean, int integer, float notWhole)
         {
             Buffer = buffer;
@@ -20,45 +16,29 @@ namespace WindowsFormsTestApplication
             Boolean = boolean;
         }
 
-        [Description("Select a file..."), Category("Input"), Browsable(true),
-        Editor(typeof(FileNameEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        public string FileName
-        {
-            get { return fileName; }
-            set { fileName = value; }
-        }
+        [DefaultValue(false)]
+        public bool Boolean { get; set; }
 
         [Description("String")]
         public string Buffer { get; set; }
 
+        [Description("Select a file..."), Category("Input"), Browsable(true), 
+         Editor(typeof(FileNameEditor), typeof(UITypeEditor))]
+        public string FileName { get; set; } = "test.txt";
+
         [Category("Number")]
         public int Integer { get; set; }
-
-        [DefaultValue(false)]
-        public bool Boolean { get; set; }
 
         [Category("Number"), ReadOnly(true)]
         public float NotWhole { get; set; }
 
         [Category("General")]
-        public Size WindowSize
-        {
-            get { return windowSize; }
-            set { windowSize = value; }
-        }
+        public Color ToolbarColor { get; set; } = SystemColors.Control;
 
         [Category("General")]
-        public Font WindowFont
-        {
-            get { return windowFont; }
-            set { windowFont = value; }
-        }
+        public Font WindowFont { get; set; } = new Font("Arial", 8, FontStyle.Regular);
 
         [Category("General")]
-        public Color ToolbarColor
-        {
-            get { return toolbarColor; }
-            set { toolbarColor = value; }
-        }
+        public Size WindowSize { get; set; } = new Size(100, 100);
     }
 }
