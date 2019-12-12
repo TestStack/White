@@ -49,8 +49,10 @@ namespace TestStack.White.UIItems
                     var uiItem = DictionaryMappedItemFactory.Create(automationElement, actionListener, customItemType);
                     if (uiItem != null) Add(uiItem);
                 }
-                catch (ControlDictionaryException)
+                catch (ControlDictionaryException e)
                 {
+                    //Printing the Bease exception message...
+                    logger.Warn(e.GetBaseException().Message);
                     logger.WarnFormat("Couldn't create UIItem for AutomationElement, {0}", automationElement.Display());
                 }
             }

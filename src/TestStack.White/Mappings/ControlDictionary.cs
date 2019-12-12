@@ -154,6 +154,10 @@ namespace TestStack.White.Mappings
                 if (isPrimary.Length == 1)
                     return isPrimary.Single().TestControlType;
 
+                //Get the first TestControldType when 'dictionaryItems' contains multiple elements...
+                var isFirstItem = dictionaryItems.First();
+                return isFirstItem.TestControlType;
+
                 throw new ControlDictionaryException(string.Format(
                    "Multiple TestControls found for ControlType={0} and FrameworkId:{1} - {2}",
                    controlType.LocalizedControlType, frameWorkId,

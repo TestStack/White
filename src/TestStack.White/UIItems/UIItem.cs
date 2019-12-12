@@ -377,8 +377,10 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual void Enter(string value)
         {
-            var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
-            if (pattern != null) pattern.SetValue(string.Empty);
+            //
+            //var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+            //if (pattern != null) pattern.SetValue(string.Empty);
+
             if (string.IsNullOrEmpty(value)) return;
 
             actionListener.ActionPerformed(Action.WindowMessage);
