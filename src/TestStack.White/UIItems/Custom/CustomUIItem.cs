@@ -31,5 +31,34 @@ namespace TestStack.White.UIItems.Custom
         {
             throw new NotImplementedException();
         }
+
+        /// <summary>
+        /// Allows setting value of Custom UI items
+        /// </summary>
+        public override void SetValue(object value)
+        {
+            //Look for value pattern in the object
+            var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+            if (pattern != null)
+            {
+                pattern.SetValue(value.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Allows getting value of Custom UI items
+        /// </summary>
+        /// <returns>Value pattern value as a string</returns>
+        public string GetValue()
+        {
+            var pattern = Pattern(ValuePattern.Pattern) as ValuePattern;
+            if (pattern != null)
+            {
+                return pattern.Current.Value;
+            }
+
+            //If nothing found or pattern is not accessible return empty string
+            return string.Empty;
+        }
     }
 }
