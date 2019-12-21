@@ -14,7 +14,7 @@ For managed applications:
 		Button button = window.Get<Button>("OK"); //default search mechanism is by UIAutomation name
 		button = window.Get<Button>(SearchCriteria.ByText("OK")); // same as above
 
-2. **UIItem** type (e.g. Button, ComoboBox)
+2. **UIItem** type (e.g. Button, ComboBox)
 
 		Button button = window.Get<Button>("btnOK"); //<Button> acts as criteria as well as the return type
 		button = (Button) window.Get(SearchCriteria.ByAutomationId("btnOK").AndControlType(typeof(Button))); // same as above
