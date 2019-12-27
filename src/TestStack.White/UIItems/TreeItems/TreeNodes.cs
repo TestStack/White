@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.Factory;
@@ -32,7 +33,7 @@ namespace TestStack.White.UIItems.TreeItems
 
         private TreeNode MatchingNode(string nodeText)
         {
-            return Find(treeNode => treeNode.Text.Equals(nodeText));
+            return Find(treeNode => Regex.IsMatch(treeNode.AutomationElement.Current.Name, nodeText, RegexOptions.IgnoreCase));
         }
 
         /// <summary>
