@@ -219,7 +219,7 @@ namespace TestStack.White.Mappings
             AutomationElement.AutomationElementInformation current = automationElement.Current;
             AutomationElement parent = tWalker.GetParent(automationElement);
             String frameId = current.FrameworkId;
-            while (string.IsNullOrEmpty(frameId) || tWalker.GetParent(parent) != null)
+            while (string.IsNullOrEmpty(frameId) && tWalker.GetParent(parent) != null)
             {
                 frameId = parent.Current.FrameworkId;
                 parent = tWalker.GetParent(parent);
