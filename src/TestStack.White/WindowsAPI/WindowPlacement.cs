@@ -109,6 +109,21 @@ namespace TestStack.White.WindowsAPI
             INSERT = 0x2D,
             DELETE = 0x2E,
             CAPS = 0x14,
+
+            NUMPAD_0 = 0x60,
+            NUMPAD_1 = 0x61,
+            NUMPAD_2 = 0x62,
+            NUMPAD_3 = 0x63,
+            NUMPAD_4 = 0x64,
+            NUMPAD_5 = 0x65,
+            NUMPAD_6 = 0x66,
+            NUMPAD_7 = 0x67,
+            NUMPAD_8 = 0x68,
+            NUMPAD_9 = 0x69,
+
+            VK_ADD = 0x6B,
+            VK_SUBTRACT = 0x6D,
+
             F1 = 0x70,
             F2 = 0x71,
             F3 = 0x72,
