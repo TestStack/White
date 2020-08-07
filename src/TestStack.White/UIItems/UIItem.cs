@@ -331,6 +331,15 @@ namespace TestStack.White.UIItems
         }
 
         /// <summary>
+        /// Implements <see cref="IUIItem.ClickAt"/>
+        /// </summary>
+        public virtual void ClickAt(Point point)
+        {
+            actionListener.ActionPerforming(this);
+            mouse.Click(point, actionListener);
+        }
+
+        /// <summary>
         /// Implements <see cref="IUIItem.DoubleClick"/>
         /// </summary>
         public virtual void DoubleClick()
